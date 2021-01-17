@@ -11,7 +11,7 @@
   backend: {
       name: 'github', # Name of your git hosting service (ie. github, gitlab)
       repo: 'ibrahimuylas/ibrahim-uylas', # Path to your GitHub repository
-      branch: master,
+      branch: master
     },
 
   #########################################################################
