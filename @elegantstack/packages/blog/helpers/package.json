@@ -1,0 +1,16 @@
+{
+  "name": "@elegantstack/helpers-blog",
+  "version": "2.0.0",
+  "main": "index.js",
+  "private": true,
+  "author": "ElegantStack Team",
+  "license": "",
+  "dependencies": {
+    "dedupe": "^3.0.2"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.24.11",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

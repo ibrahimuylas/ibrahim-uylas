@@ -1,0 +1,17 @@
+############################################
+## Sanity Fallback Types
+############################################
+
+type SanityImageFixed {
+  base64: String
+  width: Float!
+  height: Float!
+  src: String!
+  srcSet: String!
+  srcWebp: String
+  srcSetWebp: String
+}
+
+type SanityImageAsset implements Node {
+  fixed(width: Int, height: Int): SanityImageFixed
+}

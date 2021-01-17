@@ -1,0 +1,14 @@
+{
+  "name": "@elegantstack/gatsby-plugin-proxy-schema",
+  "version": "2.9.0",
+  "main": "index.js",
+  "private": true,
+  "author": "ElegantStack Team",
+  "license": "",
+  "dependencies": {
+    "@elegantstack/gatsby-plugin-proxy-directives": "^2.8.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.24.11"
+  }
+}

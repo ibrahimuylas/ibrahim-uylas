@@ -1,0 +1,23 @@
+{
+  "name": "@elegantstack/gatsby-theme-flexiblog-agency",
+  "version": "2.9.0",
+  "main": "index.js",
+  "private": true,
+  "author": "ElegantStack Team",
+  "license": "",
+  "dependencies": {
+    "@elegantstack/core-blog": "^2.9.0",
+    "@elegantstack/flow-ui-components": "^2.9.0",
+    "@elegantstack/flow-ui-layout": "^2.8.0",
+    "@elegantstack/flow-ui-theme": "^2.8.0",
+    "@elegantstack/flow-ui-widgets": "^2.8.0",
+    "@elegantstack/helpers": "^2.8.0",
+    "@elegantstack/helpers-blog": "^2.0.0",
+    "@elegantstack/pages-blog": "^2.7.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.24.11",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

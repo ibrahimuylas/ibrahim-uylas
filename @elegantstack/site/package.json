@@ -1,0 +1,23 @@
+{
+	"name": "@elegantstack/gatsby-starter-flexiblog-agency",
+	"private": true,
+	"version": "2.9.0",
+	"scripts": {
+		"develop": "gatsby develop",
+		"start": "gatsby develop",
+		"build": "gatsby build",
+		"clean": "gatsby clean",
+		"serve": "gatsby serve"
+	},
+	"dependencies": {
+		"@elegantstack/gatsby-theme-flexiblog-agency": "2.9.0",
+		"gatsby": "^2.24.11",
+		"gatsby-plugin-netlify-cms": "^4.8.0",
+		"netlify-cms-app": "^2.14.12",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1"
+	},
+	"devDependencies": {
+		"prettier": "^2.0.5"
+	}
+}

@@ -1,0 +1,16 @@
+{
+  "name": "elegantstack",
+  "private": true,
+  "license": "",
+  "workspaces": ["packages/**", "site"],
+  "scripts": {
+    "clean": "lerna clean",
+    "release": "lerna version",
+    "prettier:windows": "./node_modules/.bin/prettier --write \"{packages,starters}/**/*.{jsx,js}\""
+  },
+  "devDependencies": {
+    "conventional-changelog-conventionalcommits": "^4.5.0",
+    "lerna": "^3.16.4",
+    "prettier": "^1.19.1"
+  }
+}

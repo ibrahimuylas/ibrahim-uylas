@@ -1,0 +1,16 @@
+{
+  "name": "@elegantstack/gatsby-plugin-utility-directives",
+  "version": "2.8.0",
+  "main": "index.js",
+  "private": true,
+  "author": "ElegantStack Team",
+  "license": "",
+  "dependencies": {
+    "@sanity/block-content-to-markdown": "^0.0.5",
+    "slugify": "^1.4.5",
+    "url-join": "^4.0.1"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.24.11"
+  }
+}

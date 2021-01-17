@@ -1,0 +1,17 @@
+{
+  "name": "@elegantstack/helpers",
+  "version": "2.8.0",
+  "main": "index.js",
+  "private": true,
+  "author": "ElegantStack Team",
+  "license": "",
+  "dependencies": {
+    "gatsby-plugin-mailchimp": "^5.2.2",
+    "react-icons": "^4.1.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.24.11",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

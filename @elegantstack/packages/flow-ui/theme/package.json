@@ -1,0 +1,24 @@
+{
+  "name": "@elegantstack/flow-ui-theme",
+  "version": "2.8.0",
+  "main": "index.js",
+  "private": true,
+  "author": "ElegantStack Team",
+  "license": "",
+  "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "@theme-ui/prism": "^0.3.4",
+    "@theme-ui/typography": "^0.3.4",
+    "gatsby-plugin-emotion": "4.5.0",
+    "gatsby-plugin-preconnect": "1.1.54",
+    "gatsby-plugin-theme-ui": "^0.3.4",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
+    "prop-types": "^15.7.2",
+    "theme-ui": "^0.3.4"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.24.11",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

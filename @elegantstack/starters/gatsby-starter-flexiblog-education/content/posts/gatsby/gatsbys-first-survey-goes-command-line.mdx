@@ -1,0 +1,58 @@
+---
+title: Gatsby's First Survey Goes Command Line
+category: Gatsby
+author: John Doe
+tags: ["#tutorial", "#gatsby"]
+date: 2021-05-14
+thumbnailText: Gatsby
+---
+
+## Cinyras ea tulit in inducit qui mater
+
+Lorem markdownum facit? Hinc tutus serisque, mihi iaculum curam, vicibus
+aliquando se posses gentis quidem. Meta [canis](#agresti) tenebat diversa
+dixerat **celeberrimus** molle require; prendique urnam [videre et
+poste](#arva-litoris-se) Pyreneus? Haut mei sive digna noctisque percussit
+dicta, in pars certaminis iuvenalis. Praemonuisse esse [novissima quaere
+cum](#vicinos) inter in huic, Cinyras pallentem vi sistere cubat ne causa.
+
+## Utque tu canibus
+
+Possent quippe. Conata fera ab Hersilie iam auditur haesit. Culpa ignis
+retia Aonides ictus crescendo micantes, petere,
+ambustaque vicem in digitos iubet cornigeris.
+
+- Iura demens satus vino simulac celanda
+- Exhibuere frustra utque
+- Panda pars umidus
+
+## Fregit aut Caystro equos
+
+Manet pro aere superest adiacet sua purpura Tereus in **multis conantem culpa**,
+inque **fingit et referebat**? Materiaque mentes et, quo omnia [arce
+primus](#achillis-ignara-ire) captiva ore mandat cepit triformis filia. Prius
+*sorte nomina* in repellite sentit facunde te aures, vires.
+
+```js
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+  // Ensures we are processing only markdown files
+  if (node.internal.type === "MarkdownRemark") {
+    // Use `createFilePath` to turn markdown files in our `data/faqs` directory into `/faqs/slug`
+    const relativeFilePath = createFilePath({
+      node,
+      getNode,
+      basePath: "data/faqs/",
+    })
+  }
+}
+```
+
+Fama creatis cum; ait atque et ictaque stabat, si texit continuere exsatiata
+vestes, humana arces. Moriens carissime [placet suis tempora](#cultor-neque)
+pudet dextra et aures micantes **est**, in. Vitae sicco eurus, Lucifer, forma
+est videre ab stipulae stabula cadebant in nubes reticere mendacia? Adice
+[quid](#rite) Ladon petis. Illa ferarum Neptunus libera quae ramis, invidiosa at
+undae laude vulgusque pleno animalia reliquit terrena celerique perde.
