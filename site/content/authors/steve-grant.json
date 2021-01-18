@@ -5,6 +5,10 @@
   "thumbnail": "steve-grant.png",
   "social": [
     {
+      "name": "Github",
+      "url": "github.com/ibraimuylas"
+    },
+    {
       "name": "Instagram",
       "url": "https://instagram.com/instagram"
     },
@@ -17,5 +21,9 @@
       "url": "https://example.com"
     }
   ],
-  "skills": ["Public Relation", "Market Analyst", "Designer"]
+  "skills": [
+    "Public Relation",
+    "Market Analyst",
+    "Designer"
+  ]
 }
