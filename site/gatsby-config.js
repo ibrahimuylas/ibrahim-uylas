@@ -1,6 +1,32 @@
 module.exports = {
   plugins: [
     {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID"
+      },
+    },
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {},
+    },
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint: process.env.MAILCHIMP_END_POINT,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-algolia",
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        chunkSize: 10000,
+        queries: require("@elegantstack/algolia-blog/src/queries"),
+      },
+    },
+    {
       resolve: "gatsby-plugin-netlify-cms",
       options: {},
     },
@@ -8,6 +34,12 @@ module.exports = {
       // ATTENTION: Match the theme name with the theme you're using
       resolve: "@elegantstack/gatsby-theme-flexiblog-agency",
       options: {
+        services: {
+          mailchimp: false,
+          algolia: false,
+          disqus: true,
+
+        },
         sources: {
           local: true,
         },
@@ -16,12 +48,13 @@ module.exports = {
   ],
   // Customize your site metadata:
   siteMetadata: {
+    siteUrl: "https://uylas.netlify.app/", // Your site URL without trailing slash,
     //General Site Metadata
-    title: 'FlexiBlog Theme',
-    name: 'FlexiBlog',
-    description: 'My site description...',
-    address: 'New York, NY',
-    email: 'email@example.com',
+    title: 'Ibrahim Uylas',
+    name: 'IbrahimUylas',
+    description: 'Kampcilik ve doga yuruyusleri...',
+    address: 'Istanbul, Turkiye',
+    email: 'kamcilik@ibrahimuylas.com',
     phone: '+1 (888) 888-8888',
 
     //Site Social Media Links
