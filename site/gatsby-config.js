@@ -12,12 +12,6 @@ module.exports = {
       options: {},
     },
     {
-      resolve: "gatsby-plugin-mailchimp",
-      options: {
-        endpoint: "c4130e63d403b3f9b0a9e4df2f4ca529-us7",
-      },
-    },
-    {
       resolve: "gatsby-plugin-algolia",
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
@@ -35,7 +29,7 @@ module.exports = {
       resolve: "@elegantstack/gatsby-theme-flexiblog-agency",
       options: {
         services: {
-          mailchimp: false,
+          
           algolia: false,
           disqus: true,
 
