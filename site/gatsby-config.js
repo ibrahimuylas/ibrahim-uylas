@@ -50,11 +50,11 @@ module.exports = {
   siteMetadata: {
     siteUrl: "https://uylas.netlify.app/", // Your site URL without trailing slash,
     //General Site Metadata
-    title: 'Ibrahim Uylas',
-    name: 'IbrahimUylas',
-    description: 'Kampcilik ve doga yuruyusleri...',
-    address: 'Istanbul, Turkiye',
-    email: 'kamcilik@ibrahimuylas.com',
+    title: 'FlexiBlog Theme',
+     name: 'FlexiBlog',
+     description: 'My site description...',
+     address: 'New York, NY',
+     email: 'email@example.com',
     phone: '+1 (888) 888-8888',
 
     //Site Social Media Links
