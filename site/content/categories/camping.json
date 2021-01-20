@@ -1,5 +1,7 @@
 {
-  "name": "Camping",
-  "description": "Kampcilik",
-  "color": "#ff0000"
+  "name": "Kampçılık",
+  "description": "Bu bölümde kamp hayatıyla ilgili bir çok bilgi bulabilirsiniz. Kampçılık Nedir? Yeni Başlayanlar İçin Kamp Hayatı. Kamp İçin Gerekli Ekipmanlar Nelerdir? Kampta Dikkat Edilmesi Gerekenler Nelerdir?  Trekking Rotaları ve Kamp Yerleri Nasıl Bulunur?  Tavsiye Edilen Uygulamalar.  Kullandığım Kamp Malzemelerim.  Kamp Ürün İncelemeleri.",
+  "color": "#b7ffb6",
+  "slug": "kampcilik",
+  "icon": "kampcilik.svg"
 }
