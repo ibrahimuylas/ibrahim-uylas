@@ -1,24 +1,8 @@
 module.exports = {
   plugins: [
     {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID"
-      },
-    },
-    {
       resolve: "gatsby-plugin-sitemap",
       options: {},
-    },
-    {
-      resolve: "gatsby-plugin-algolia",
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        chunkSize: 10000,
-        queries: require("@elegantstack/algolia-blog/src/queries"),
-      },
     },
     {
       resolve: "gatsby-plugin-netlify-cms",
@@ -29,10 +13,7 @@ module.exports = {
       resolve: "@elegantstack/gatsby-theme-flexiblog-agency",
       options: {
         services: {
-          
-          algolia: false,
           disqus: true,
-
         },
         sources: {
           local: true,
