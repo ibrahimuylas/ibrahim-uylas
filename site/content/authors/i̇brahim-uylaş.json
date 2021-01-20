@@ -1,0 +1,29 @@
+{
+  "name": "İbrahim Uylaş",
+  "slug": "ibrahim-uylas",
+  "description": "Trekking'e tutkuyla bağlı, kamçı, doğa sever, gezgin, maceracı bir mühendis.",
+  "title": "Yoldaki Yazılımcı",
+  "social": [
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/ibrahimuylas/"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/ibrahimuylas"
+    },
+    {
+      "name": "Gıthub",
+      "url": "http://www.gıthub.com/ibrahimuylas"
+    },
+    {
+      "name": "Linkedin",
+      "url": "http://www.linkedin.com/in/ibrahimuylas"
+    },
+    {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/ibrahimuylas"
+    }
+  ],
+  "thumbnail": "ibrahim-profil.jpg"
+}
