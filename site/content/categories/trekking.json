@@ -1,5 +1,7 @@
 {
-  "name": "Trekking",
-  "description": "Doga Yuruyusleri Trekking Category",
-  "color": "#2718a0"
+  "name": "Doğa Yürüyüşleri",
+  "description": "Bu bölümde doğa yürüyüşleri ile ilgili her seyi bulabilirsiniz. Doğa yürüyüilerini Trekking ve Hiking olarak iki anabaşlık altında bulabilirsiniz.",
+  "color": "#9f98e0",
+  "slug": "doga-yuruyusleri",
+  "icon": "doga-yuruyusleri-trekking-hiking.svg"
 }
