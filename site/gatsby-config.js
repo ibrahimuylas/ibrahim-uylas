@@ -1,6 +1,12 @@
 module.exports = {
   plugins: [
     {
+      resolve: "gatsby-plugin-disqus",
+      options: {
+        shortname: process.env.DISQUS_SHORTNAME,
+      },
+    },
+    {
       resolve: "gatsby-plugin-sitemap",
       options: {},
     },
