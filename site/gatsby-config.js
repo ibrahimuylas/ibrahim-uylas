@@ -36,43 +36,47 @@ module.exports = {
   ],
   // Customize your site metadata:
   siteMetadata: {
-    siteUrl: "https://uylas.netlify.app/", // Your site URL without trailing slash,
+    siteUrl: "https://www.ibrahimuylas.com", // Your site URL without trailing slash,
     //General Site Metadata
-    title: 'FlexiBlog Theme',
-     name: 'FlexiBlog',
-     description: 'My site description...',
-     address: 'New York, NY',
-     email: 'email@example.com',
-    phone: '+1 (888) 888-8888',
+    title: 'İbrahim Uylaş',
+     name: 'IbrahimUylas',
+     description: 'Kampçılık ve doğa yürüyüşleriyle ilgili ne ararsan var, ne vereyim abime!',
+     address: 'An itibariyle Londra',
+     email: 'ibrahim@uylas.net',
+    phone: '',
 
     //Site Social Media Links
     social: [
       {
-        name: 'Github',
-        url: 'https://github.com/gatsbyjs'
+        name: 'Instagram',
+        url: 'https://instagram.com/ibrahimuylas'
+      },
+      {
+        name: 'Facebook',
+        url: 'https://facebook.com/ibrahimuylas'
       },
       {
         name: 'Twitter',
-        url: 'https://twitter.com/gatsbyjs'
+        url: 'https://twitter.com/ibrahimuylas'
       },
       {
-        name: 'Instagram',
-        url: 'https://github.com/gatsbyjs'
+        name: 'Github',
+        url: 'https://github.com/ibrahimuylas'
       }
     ],
 
     //Header Menu Items
     headerMenu: [
       {
-        name: 'Home',
+        name: 'Ana Sayfa',
         slug: '/'
       },
       {
-        name: 'Our Team',
-        slug: '/authors'
+        name: 'Rotalar',
+        slug: '/contact'
       },
       {
-        name: 'Contact',
+        name: 'İletişim',
         slug: '/contact'
       }
     ],
@@ -80,36 +84,40 @@ module.exports = {
     //Footer Menu Items (2 Sets)
     footerMenu: [
       {
-        title: 'Quick Links',
+        title: 'Hızlı Linkler',
         items: [
           {
-            name: 'Advertise with us',
-            slug: '/contact'
+            name: 'Kampçılık',
+            slug: '/category/kampcilik'
           },
           {
-            name: 'About Us',
-            slug: '/about'
+            name: 'Doğa Yürüyüşleri',
+            slug: '/category/doga-yuruyusleri'
           },
           {
-            name: 'Contact Us',
-            slug: '/contact'
+            name: 'Trekking',
+            slug: '/tag/trekking'
+          },
+          {
+            name: 'Hiking',
+            slug: '/tag/hiking'
           }
         ]
       },
       {
-        title: 'Legal Stuff',
+        title: 'Hakkında',
         items: [
           {
-            name: 'Privacy Notice',
-            slug: '/'
+            name: 'İletişim',
+            slug: '/contact'
           },
           {
-            name: 'Cookie Policy',
-            slug: '/'
+            name: 'Bu Adam Kim?',
+            slug: '/ibrahim-uylas-kimdir'
           },
           {
-            name: 'Terms Of Use',
-            slug: '/'
+            name: 'Neden Yola Çıkmalı?',
+            slug: '/neden-yola-cikmali'
           }
         ]
       }
