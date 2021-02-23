@@ -7,7 +7,11 @@ import './CardList.Slider.css'
 import styles from './CardList.Slider.Styles'
 
 import loadable from '@loadable/component'
-const Slider = loadable(() => import('react-slick'))
+const Slider = loadable(() =>
+  import(
+    /* webpackChunkName: 'react-slick' */ /* webpackPrefetch: true */ 'react-slick'
+  )
+)
 
 const CardListSlider = React.forwardRef((props, ref) => {
   const {

@@ -10,7 +10,7 @@
 		"serve": "gatsby serve"
 	},
 	"dependencies": {
-		"@elegantstack/gatsby-theme-flexiblog-agency": "2.9.0",
+		"@elegantstack/gatsby-theme-flexiblog-agency": "2.10.0",
 		"dotenv": "^8.2.0",
 		"gatsby": "^2.24.11",
 		"gatsby-plugin-disqus": "^1.2.2",

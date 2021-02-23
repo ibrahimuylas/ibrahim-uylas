@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Hero, Main, PreFooter } from '@layout'
+import { Layout, Stack, Hero, Main, PreFooter } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Pagination from '@components/Pagination'
@@ -11,7 +11,7 @@ const Posts = ({ data: { paginatedPosts = {}, posts }, ...props }) => {
   const { pageContext: { services = {}, basePath } = {} } = props
 
   return (
-    <>
+    <Layout {...props}>
       <Seo title='Home' />
       <Hero>
         <HeroComponent {...props} />
@@ -38,7 +38,7 @@ const Posts = ({ data: { paginatedPosts = {}, posts }, ...props }) => {
           {services.mailchimp && <NewsletterExpanded simple />}
         </Main>
       </Stack>
-    </>
+    </Layout>
   )
 }
 

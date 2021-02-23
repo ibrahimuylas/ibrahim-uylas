@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Main, Sidebar } from '@layout'
+import { Layout, Stack, Main, Sidebar } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
@@ -17,7 +17,7 @@ const Posts = ({
   const categories = useBlogCategories()
 
   return (
-    <>
+    <Layout {...props}>
       <Seo title='Home' />
       <Divider />
       <Stack effectProps={{ effect: false }}>
@@ -67,7 +67,7 @@ const Posts = ({
                       'horizontal-md',
                       'horizontal',
                       'horizontal',
-                      'vertical',
+                      'vertical'
                     ]}
                   />
                   <Divider space={2} />
@@ -92,7 +92,7 @@ const Posts = ({
                     pl: 0,
                     pr: [0, 0, 0, 3],
                     display: [null, `flex`],
-                    flexDirection: [`column`, `column`, `column`, `row`],
+                    flexDirection: [`column`, `column`, `column`, `row`]
                   }}
                 >
                   <CardList
@@ -103,7 +103,7 @@ const Posts = ({
                       'horizontal-md',
                       'horizontal',
                       'horizontal',
-                      'vertical',
+                      'vertical'
                     ]}
                     omitCategory
                   />
@@ -111,7 +111,7 @@ const Posts = ({
                 <Main
                   sx={{
                     display: [null, `flex`],
-                    flexDirection: [`column`, `column`, `column`, `row`],
+                    flexDirection: [`column`, `column`, `column`, `row`]
                   }}
                 >
                   <Divider space={2} />
@@ -123,7 +123,7 @@ const Posts = ({
                     variant={[
                       'horizontal-md',
                       'horizontal-md',
-                      'horizontal-aside',
+                      'horizontal-aside'
                     ]}
                     mediaType='icon'
                     omitCategory
@@ -134,7 +134,7 @@ const Posts = ({
                   sx={{
                     pl: [0, 0, 0, 3],
                     display: [null, `flex`],
-                    flexDirection: [`column`, `column`, `column`, `row`],
+                    flexDirection: [`column`, `column`, `column`, `row`]
                   }}
                 >
                   <CardList
@@ -146,7 +146,7 @@ const Posts = ({
                       'horizontal-md',
                       'horizontal',
                       'horizontal',
-                      'vertical',
+                      'vertical'
                     ]}
                     omitCategory
                   />
@@ -174,7 +174,7 @@ const Posts = ({
           )}
         </Main>
       </Stack>
-    </>
+    </Layout>
   )
 }
 

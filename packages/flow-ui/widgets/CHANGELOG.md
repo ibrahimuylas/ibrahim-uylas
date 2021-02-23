@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.9.0...v2.10.0) (2021-02-13)
+
+
+### Features
+
+* upgrade dependencies ([46d41a3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/46d41a339cd9774a913fa3d70f633661e884a3e8))
+
+
+### Bug Fixes
+
+* **flow-ui-widgets:** check file existance in BannerHorizontal ([0748adc](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/0748adcaea2390754824132b522623379fc8ef03))
+* **flow-ui-widgets:** react prop type warning in Post.Image ([c8a1f64](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/c8a1f64ec65e34a863888e6cec5aabd7e5db45cc))
+
+
+### Performance Improvements
+
+* **flow-ui-widgets:** add prefetch hints to search, post comments and share lazy loading ([0a41eb0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/0a41eb002de3844d0740f251f0484f77afc8df10))
+
+
+### Refactor
+
+* **flow-ui-widgets:** change touch event to click for search button ([8eca084](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/8eca0844c9b9aa6a780e5405de9a99f85ebff3dc))
+* **siteMetadata:** move siteMetadata to helpers-blog package ([1fb9168](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/1fb9168fb50c503b76481fcd60cf4c95c51072a5))
+
+
+
+
 ## [2.8.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.7.0...v2.8.0) (2020-12-15)
 
 

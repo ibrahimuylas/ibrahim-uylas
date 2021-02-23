@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Main, Sidebar } from '@layout'
+import { Layout, Stack, Main, Sidebar } from '@layout'
 import PageTitle from '@components/PageTitle'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
@@ -7,8 +7,8 @@ import ContactForm from '@widgets/ContactForm'
 import ContactInfo from '@widgets/ContactInfo'
 import Commitment from '@widgets/Commitment'
 
-export default () => (
-  <>
+export default props => (
+  <Layout {...props}>
     <Seo title='Contact' />
     <Divider />
     <Stack>
@@ -28,5 +28,5 @@ export default () => (
         <ContactInfo />
       </Sidebar>
     </Stack>
-  </>
+  </Layout>
 )

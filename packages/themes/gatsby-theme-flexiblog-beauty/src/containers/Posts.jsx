@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Container } from 'theme-ui'
-import { Stack, Main, Sidebar, Hero } from '@layout'
+import { Layout, Stack, Main, Sidebar, Hero } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import MemphisPattern from '@components/MemphisPattern'
@@ -16,12 +16,12 @@ const styles = {
     top: `50%`,
     position: `absolute`,
     transform: `translate(-50%, -50%)`,
-    display: [`none`, `none`, `none`, `block`],
+    display: [`none`, `none`, `none`, `block`]
   },
   heroThumbsInner: {
     width: `1/3`,
-    ml: `auto`,
-  },
+    ml: `auto`
+  }
 }
 
 const Posts = ({
@@ -33,7 +33,7 @@ const Posts = ({
   const sliderRef = React.useRef()
 
   return (
-    <>
+    <Layout {...props}>
       <Seo title='Home' />
       <Hero full sx={{ position: `relative` }}>
         <CardList
@@ -130,7 +130,7 @@ const Posts = ({
                       'horizontal-md',
                       'horizontal',
                       'horizontal',
-                      'vertical',
+                      'vertical'
                     ]}
                     omitCategory
                     omitExcerpt
@@ -155,7 +155,7 @@ const Posts = ({
                       'horizontal-md',
                       'horizontal',
                       'horizontal',
-                      'vertical',
+                      'vertical'
                     ]}
                     omitCategory
                     omitExcerpt
@@ -177,7 +177,7 @@ const Posts = ({
                         'horizontal-md',
                         'horizontal',
                         'horizontal',
-                        'horizontal-lg',
+                        'horizontal-lg'
                       ]}
                       title='Trending Now'
                       aside
@@ -200,7 +200,7 @@ const Posts = ({
           )}
         </Main>
       </Stack>
-    </>
+    </Layout>
   )
 }
 

@@ -1,6 +1,6 @@
-import Loadable from '@loadable/component'
+import loadable from '@loadable/component'
 import SearchFallback from './Search.Fallback'
 
-export default Loadable(() => import('./Search'), {
+export default loadable(() => import(/* webpackPrefetch: true */ './Search'), {
   fallback: SearchFallback
 })

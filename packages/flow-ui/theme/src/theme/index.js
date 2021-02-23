@@ -21,6 +21,7 @@ import layout from './layout'
 import global from './global'
 
 export default merge(typography, {
+  useCustomProperties: true,
   initialColorModeName,
   colors,
   prism,
@@ -39,5 +40,5 @@ export default merge(typography, {
   messages,
   forms,
   layout,
-  global,
+  global
 })

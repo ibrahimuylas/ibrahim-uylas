@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { Button } from 'theme-ui'
-import { Stack, Main } from '@layout'
+import { Layout, Stack, Main } from '@layout'
 import PageTitle from '@components/PageTitle'
 import Section from '@components/Section'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
 
-export default () => (
-  <>
+export default props => (
+  <Layout {...props}>
     <Seo title='Page Not Found' />
     <Divider />
     <Stack>
@@ -26,5 +26,5 @@ export default () => (
         </Section>
       </Main>
     </Stack>
-  </>
+  </Layout>
 )

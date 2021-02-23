@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Main, Sidebar } from '@layout'
+import { Layout, Stack, Main, Sidebar } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Reveal from '@components/Reveal'
@@ -21,7 +21,7 @@ const Posts = ({
   const categories = useBlogCategories()
 
   return (
-    <>
+    <Layout {...props}>
       <Seo title='Home' />
       <Divider />
       <Stack effectProps={{ effect: false }}>
@@ -44,7 +44,7 @@ const Posts = ({
             title='Top Stories'
           />
           {posts.group &&
-            posts.group.map((group) => (
+            posts.group.map(group => (
               <>
                 <Divider />
                 <Reveal>
@@ -99,7 +99,7 @@ const Posts = ({
           </Sticky>
         </Sidebar>
       </Stack>
-    </>
+    </Layout>
   )
 }
 

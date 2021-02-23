@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.9.0...v2.10.0) (2021-02-13)
+
+
+### Refactor
+
+* skip creating existing field extensions in gatsby-plugin-utility-directives ([bc15792](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/bc1579225d46420fb224ce774494186b78969070))
+
+
+
+
 ## [2.8.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.7.0...v2.8.0) (2020-12-15)
 
 

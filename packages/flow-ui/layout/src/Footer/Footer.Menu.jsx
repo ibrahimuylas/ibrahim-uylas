@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from 'theme-ui'
 import Navigation from '@components/Navigation'
-import useSiteMetadata from '@helpers/useSiteMetadata'
+import useSiteMetadata from '@helpers-blog/useSiteMetadata'
 
 const styles = {
   navHeader: {

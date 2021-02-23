@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Hero, Main, Sidebar } from '@layout'
+import { Layout, Stack, Hero, Main, Sidebar } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
@@ -13,7 +13,7 @@ const Posts = ({
   const { pageContext: { services = {} } = {} } = props
 
   return (
-    <>
+    <Layout {...props}>
       <Seo title='Home' />
       <Divider />
       <Stack effectProps={{ effect: false }}>
@@ -115,7 +115,7 @@ const Posts = ({
       <Stack>
         <Main>{services.mailchimp && <NewsletterExpanded />}</Main>
       </Stack>
-    </>
+    </Layout>
   )
 }
 

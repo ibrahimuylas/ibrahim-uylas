@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.9.0...v2.10.0) (2021-02-13)
+
+
+### Features
+
+* upgrade dependencies ([46d41a3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/46d41a339cd9774a913fa3d70f633661e884a3e8))
+
+
+### Performance Improvements
+
+* **starters:** optimize placeholder images ([9ce53c1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/9ce53c14fd1dca90110a4b2ce966f1d89dfed126))
+
+
+
+
 ## [2.9.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.8.0...v2.9.0) (2020-12-31)
 
 **Note:** Version bump only for package @elegantstack/gatsby-starter-flexiblog-minimal-v2

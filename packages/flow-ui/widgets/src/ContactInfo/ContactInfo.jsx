@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Text, IconButton } from 'theme-ui'
 import { FaPhone, FaEnvelope, FaLocationArrow } from 'react-icons/fa'
 import Section from '@components/Section'
-import useSiteMetadata from '@helpers/useSiteMetadata'
+import useSiteMetadata from '@helpers-blog/useSiteMetadata'
 
 const ContactInfo = () => {
   const { phone, address, email } = useSiteMetadata()

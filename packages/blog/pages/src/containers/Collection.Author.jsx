@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Main, PreFooter } from '@layout'
+import { Layout, Stack, Main, PreFooter } from '@layout'
 import PageTitle from '@components/PageTitle'
 import Pagination from '@components/Pagination'
 import CardList from '@components/CardList'
@@ -7,8 +7,8 @@ import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
 import AuthorExpanded from '@widgets/AuthorExpanded'
 
-const Collection = ({ data: { posts, collectionInfo } }) => (
-  <>
+const Collection = ({ data: { posts, collectionInfo }, ...props }) => (
+  <Layout {...props}>
     <Seo title={collectionInfo.name} />
     <Divider />
     <Stack effectProps={{ effect: 'fadeInDown' }}>
@@ -32,7 +32,7 @@ const Collection = ({ data: { posts, collectionInfo } }) => (
     <PreFooter>
       <Pagination {...posts.pageInfo} {...collectionInfo} />
     </PreFooter>
-  </>
+  </Layout>
 )
 
 export default Collection

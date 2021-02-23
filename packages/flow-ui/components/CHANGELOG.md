@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.9.0...v2.10.0) (2021-02-13)
+
+
+### Features
+
+* upgrade dependencies ([46d41a3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/46d41a339cd9774a913fa3d70f633661e884a3e8))
+
+
+### Bug Fixes
+
+* **flow-ui-components:** fix slider ssr layout shift ([e1fbb40](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/e1fbb4097ac46c5814a4679520f00f907ebde9c1))
+* **flow-ui-components:** ignore eslint warning in CodeBlock ([3b5da2a](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/3b5da2a99eb6d90d8fb2dbb1028763f2deef8521))
+
+
+### Performance Improvements
+
+* **flow-ui-components:** add prefetch hints to CardList.Slider ([4d1ce37](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/4d1ce37220f4b63c576a7d0537faec8e0e6e1c13))
+* **flow-ui-components:** add prefetch hints to CodeBlock ([d8ae598](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/d8ae598b68a27798ac5028e910e3f30f71004f60))
+* **flow-ui-components:** add prefetch hints to Drawer ([fb07392](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/fb07392c5d7d0a73a0f6cc546e88f67822e0d053))
+* **flow-ui-components:** add prefetch hints to PoweredByGatsby ([58f6f05](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/58f6f059df97a1bd6963623b7aaf358c4c00ca7d))
+* **starters:** optimize placeholder images ([9ce53c1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/9ce53c14fd1dca90110a4b2ce966f1d89dfed126))
+
+
+
+
 ## [2.9.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.8.0...v2.9.0) (2020-12-31)
 
 

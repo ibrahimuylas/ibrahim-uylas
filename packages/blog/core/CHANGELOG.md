@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.9.0...v2.10.0) (2021-02-13)
+
+
+### Features
+
+* upgrade dependencies ([46d41a3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/46d41a339cd9774a913fa3d70f633661e884a3e8))
+
+
+### Performance Improvements
+
+* **core-blog:** add webp and quality to author fragment ([a6ee815](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/a6ee815498c78d7e88492022196ee72784fff605))
+
+
+### Refactor
+
+* **core-blog:** remove unnecessary code from ArticleTag node creator ([309ccac](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/309ccac8a0891e89b86a2c564ca4966df94571ec))
+* **siteMetadata:** change fragment name ([6395527](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/6395527e7f423183af162b5065a00ba9e853b8a6))
+
+
+
+
 ## [2.9.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.8.0...v2.9.0) (2020-12-31)
 
 

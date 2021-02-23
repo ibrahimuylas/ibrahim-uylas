@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card as CardComponent } from 'theme-ui'
-import { Stack, Main } from '@layout'
+import { Layout, Stack, Main } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
@@ -15,7 +15,6 @@ import {
 
 const Post = ({
   data: { post, tagCategoryPosts, tagPosts, categoryPosts, previous, next },
-  location,
   ...props
 }) => {
   const relatedPosts = [
@@ -26,7 +25,7 @@ const Post = ({
   const { pageContext: { services = {}, siteUrl } = {} } = props
 
   return (
-    <>
+    <Layout {...props}>
       <Seo {...post} siteUrl={siteUrl} />
       <Divider space={3} />
       <Stack>
@@ -36,7 +35,7 @@ const Post = ({
             <PostHead {...post} />
             <Divider line />
             <PostBody {...post} />
-            <PostTagsShare {...post} location={location} />
+            <PostTagsShare {...post} location={props.location} />
             {services.disqus && <PostComments {...post} />}
           </CardComponent>
           <Divider />
@@ -54,7 +53,7 @@ const Post = ({
           )}
         </Main>
       </Stack>
-    </>
+    </Layout>
   )
 }
 

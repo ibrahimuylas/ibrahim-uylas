@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.9.0...v2.10.0) (2021-02-13)
+
+
+### Features
+
+* upgrade dependencies ([46d41a3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/46d41a339cd9774a913fa3d70f633661e884a3e8))
+
+
+### Bug Fixes
+
+* **flow-ui-layout:** add sourceInstanceName filter in logo query ([4c2f635](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/4c2f6350f916359f8570059cca6ffd2cdb3cbb28))
+
+
+### Performance Improvements
+
+* **flow-ui-layout":** add webp to logo image query ([ec1f7a3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/ec1f7a3e9362c9047d11a17c91da5c4b57fabec9))
+
+
+### Refactor
+
+* **flow-ui-layout:** add theme-ui ThemeProvider to Layout ([0726e1f](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/0726e1fed6fdc0bfa1e43b701c25ae1c0779ad2a))
+* **flow-ui-layout:** change touch event to click for color mode button ([ce66849](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/ce66849701187e7875648687de8f5b5714d1afa4))
+* **flow-ui-layout:** remove gatsby-plugin-layout ([bd9ecc8](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/bd9ecc846f87b2ecdc94fd08cab5f9fea88486cd))
+* **siteMetadata:** move siteMetadata to helpers-blog package ([1fb9168](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/1fb9168fb50c503b76481fcd60cf4c95c51072a5))
+
+
+
+
 ## [2.8.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.7.0...v2.8.0) (2020-12-15)
 
 

@@ -25,18 +25,14 @@ module.exports = (
 
     // Create nodes
     tags.forEach(tag => {
-      const name = tag.id ? tag.name : tag
-
-      if (!name) return
-
-      const id = createNodeId(`${name} >>> ${newNodeType}`)
+      const id = createNodeId(`${tag} >>> ${newNodeType}`)
 
       // Skip existing node
       if (getNode(id)) return
 
       const newNode = {
         id,
-        name,
+        name: tag,
         parent: node.id,
         internal: {
           type: newNodeType

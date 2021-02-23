@@ -6,9 +6,9 @@ const useSiteMetadata = () => {
 }
 
 const siteMetadataQuery = graphql`
-  query SiteMetadataQuery {
+  query BlogSiteMetadataQuery {
     site {
-      ...SiteMetadata
+      ...BlogSiteMetadata
     }
   }
 `

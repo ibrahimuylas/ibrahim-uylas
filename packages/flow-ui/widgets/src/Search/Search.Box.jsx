@@ -42,7 +42,7 @@ const SearchBox = ({
     <>
       <IconButton
         sx={styles.mobileTrigger}
-        onTouchStart={handleFocus}
+        onClick={handleFocus}
         aria-label='Search'
       >
         <FaSearch />

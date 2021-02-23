@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Main, Sidebar, PreFooter } from '@layout'
+import { Layout, Stack, Main, Sidebar, PreFooter } from '@layout'
 import CardList from '@components/CardList'
 import Pagination from '@components/Pagination'
 import Divider from '@components/Divider'
@@ -13,7 +13,7 @@ const Posts = ({
   const { pageContext: { services = {}, basePath } = {} } = props
 
   return (
-    <>
+    <Layout {...props}>
       <Seo title='Home' />
       {props.location.pathname === basePath && (
         <>
@@ -42,7 +42,7 @@ const Posts = ({
                   'horizontal-md',
                   'horizontal',
                   'horizontal',
-                  'horizontal-aside',
+                  'horizontal-aside'
                 ]}
                 omitMedia
                 omitCategory
@@ -62,7 +62,7 @@ const Posts = ({
                   'horizontal-md',
                   'horizontal',
                   'horizontal',
-                  'vertical',
+                  'vertical'
                 ]}
               />
             </Main>
@@ -90,7 +90,7 @@ const Posts = ({
           </>
         )}
       </PreFooter>
-    </>
+    </Layout>
   )
 }
 

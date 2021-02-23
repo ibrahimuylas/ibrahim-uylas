@@ -2,7 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { Box, Text, Card, Flex, Button } from 'theme-ui'
-import { Stack, Main } from '@layout'
+import { Layout, Stack, Main } from '@layout'
 import PageTitle from '@components/PageTitle'
 import Divider from '@components/Divider'
 import Section from '@components/Section'
@@ -43,7 +43,7 @@ export default props => {
   const { fluid } = (photo && photo.childImageSharp) || {}
 
   return (
-    <>
+    <Layout {...props}>
       <Seo title='About' />
       <Divider />
       <Stack>
@@ -129,7 +129,7 @@ export default props => {
           </Flex>
         </Main>
       </Stack>
-    </>
+    </Layout>
   )
 }
 

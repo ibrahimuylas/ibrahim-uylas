@@ -61,7 +61,7 @@ export const HeaderColorMode = () => {
     <Box>
       <IconButton
         aria-label={label}
-        onTouchStart={handleChange}
+        onClick={handleChange}
         sx={styles.mobileTrigger}
       >
         {isDark ? <FaMoon /> : <FaSun />}

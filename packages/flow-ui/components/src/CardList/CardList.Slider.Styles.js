@@ -10,6 +10,9 @@ export default {
     '.slick-slide.slick-active + :not(.slick-active)': {
       opacity: [null, 0],
       transform: [null, `scale(0.7)`]
+    },
+    '.slick-track': {
+      left: `0 !important`
     }
   },
   fade: {
@@ -19,7 +22,8 @@ export default {
     },
     '.slick-track': {
       display: `flex`,
-      alignItems: `center`
+      alignItems: `center`,
+      left: `0 !important`
     }
   },
   controlBottom: {

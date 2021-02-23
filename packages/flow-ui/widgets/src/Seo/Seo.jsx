@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { helmetJsonLdProp } from 'react-schemaorg'
-import useSiteMetadata from '@helpers/useSiteMetadata'
+import useSiteMetadata from '@helpers-blog/useSiteMetadata'
 
 const Seo = ({
   title,
@@ -15,13 +15,13 @@ const Seo = ({
   timeToRead,
   children,
   thumbnail,
-  siteUrl,
+  siteUrl
 }) => {
   const site = useSiteMetadata()
 
   const social = (author && author.social) || site.social || []
   const twitter =
-    social.find((s) => s.name && s.name.toLowerCase() === 'twitter') || {}
+    social.find(s => s.name && s.name.toLowerCase() === 'twitter') || {}
 
   description = excerpt || description || site.description
 
@@ -51,7 +51,7 @@ const Seo = ({
     { name: 'twitter:site', content: site.name },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
-    { name: 'twitter:creator', content: twitter.url },
+    { name: 'twitter:creator', content: twitter.url }
   ]
 
   if (keywords && keywords.length > 0) {
@@ -66,7 +66,7 @@ const Seo = ({
     metaTags.push({ name: 'twitter:label1', value: 'Reading time' })
     metaTags.push({
       name: 'twitter:data1',
-      value: `${timeToRead} min read`,
+      value: `${timeToRead} min read`
     })
   }
 
@@ -87,7 +87,7 @@ const Seo = ({
       '@type': 'Article',
       headline: title,
       image: thumbnailUrl,
-      datePublished: date,
+      datePublished: date
     })
     scripts.push(articleJsonLd)
   }
@@ -102,15 +102,15 @@ const Seo = ({
           '@type': 'ListItem',
           position: 1,
           name: site.name,
-          item: siteUrl,
+          item: siteUrl
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: category.name,
-          item: `${siteUrl}${category.slug}`,
-        },
-      ],
+          item: `${siteUrl}${category.slug}`
+        }
+      ]
     })
     scripts.push(breadcrumbJsonLd)
   }
@@ -118,7 +118,7 @@ const Seo = ({
   return (
     <Helmet
       htmlAttributes={{
-        lang: 'en',
+        lang: 'en'
       }}
       title={title}
       titleTemplate={`%s | ${site.title}`}

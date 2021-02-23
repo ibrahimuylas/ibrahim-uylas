@@ -35,7 +35,7 @@ const BannerHorizontal = () => {
   const data = useStaticQuery(bannerHorizontalQuery)
   const { file } = data
 
-  const banner = file.banner && file.banner.regular
+  const banner = file && file.banner && file.banner.regular
 
   return (
     <Flex sx={styles.wrapper(banner && banner.src)}>

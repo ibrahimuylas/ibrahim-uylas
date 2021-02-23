@@ -1,12 +1,12 @@
 import React from 'react'
-import { Stack, Main } from '@layout'
+import { Layout, Stack, Main } from '@layout'
 import PageTitle from '@components/PageTitle'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
 import ContactForm from '@widgets/ContactForm'
 
-export default () => (
-  <>
+export default props => (
+  <Layout {...props}>
     <Seo title='Contact' />
     <Divider />
     <Stack>
@@ -21,5 +21,5 @@ export default () => (
         <ContactForm />
       </Main>
     </Stack>
-  </>
+  </Layout>
 )

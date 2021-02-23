@@ -38,7 +38,7 @@ export const PostImage = ({ thumbnail, wide, full, inCard }) => {
       <Img
         fluid={thumbnail.hero}
         css={css({ ...styles[variant], ...(inCard && styles.inCard) })}
-        imgStyle={(variant === 'wide' || variant === 'full') && styles.fullImg}
+        imgStyle={(variant === 'wide' || variant === 'full') ? styles.fullImg : undefined}
       />
       <Divider space={3} />
     </>

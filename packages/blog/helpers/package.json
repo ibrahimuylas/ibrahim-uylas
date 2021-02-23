@@ -1,6 +1,6 @@
 {
   "name": "@elegantstack/helpers-blog",
-  "version": "2.0.0",
+  "version": "2.10.0",
   "main": "index.js",
   "private": true,
   "author": "ElegantStack Team",

@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.9.0...v2.10.0) (2021-02-13)
+
+
+### Features
+
+* upgrade dependencies ([46d41a3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/46d41a339cd9774a913fa3d70f633661e884a3e8))
+
+
+### Bug Fixes
+
+* **flow-ui-components:** fix slider ssr layout shift ([e1fbb40](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/e1fbb4097ac46c5814a4679520f00f907ebde9c1))
+* **flow-ui-components:** ignore eslint warning in CodeBlock ([3b5da2a](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/3b5da2a99eb6d90d8fb2dbb1028763f2deef8521))
+* **flow-ui-layout:** add sourceInstanceName filter in logo query ([4c2f635](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/4c2f6350f916359f8570059cca6ffd2cdb3cbb28))
+* **flow-ui-widgets:** check file existance in BannerHorizontal ([0748adc](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/0748adcaea2390754824132b522623379fc8ef03))
+* **flow-ui-widgets:** react prop type warning in Post.Image ([c8a1f64](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/c8a1f64ec65e34a863888e6cec5aabd7e5db45cc))
+
+
+### Performance Improvements
+
+* **core-blog:** add webp and quality to author fragment ([a6ee815](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/a6ee815498c78d7e88492022196ee72784fff605))
+* **flow-ui-components:** add prefetch hints to CardList.Slider ([4d1ce37](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/4d1ce37220f4b63c576a7d0537faec8e0e6e1c13))
+* **flow-ui-components:** add prefetch hints to CodeBlock ([d8ae598](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/d8ae598b68a27798ac5028e910e3f30f71004f60))
+* **flow-ui-components:** add prefetch hints to Drawer ([fb07392](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/fb07392c5d7d0a73a0f6cc546e88f67822e0d053))
+* **flow-ui-components:** add prefetch hints to PoweredByGatsby ([58f6f05](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/58f6f059df97a1bd6963623b7aaf358c4c00ca7d))
+* **flow-ui-layout":** add webp to logo image query ([ec1f7a3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/ec1f7a3e9362c9047d11a17c91da5c4b57fabec9))
+* **flow-ui-widgets:** add prefetch hints to search, post comments and share lazy loading ([0a41eb0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/0a41eb002de3844d0740f251f0484f77afc8df10))
+* **starters:** optimize placeholder images ([9ce53c1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/9ce53c14fd1dca90110a4b2ce966f1d89dfed126))
+* **starters:** upgrade gatsby and react versions ([41f5e5a](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/41f5e5a718127067251e504c86ed94c161d53e6f))
+
+
+### Refactor
+
+* **siteMetadata:** change fragment name ([6395527](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/6395527e7f423183af162b5065a00ba9e853b8a6))
+* **siteMetadata:** move siteMetadata to helpers-blog package ([1fb9168](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/1fb9168fb50c503b76481fcd60cf4c95c51072a5))
+* skip creating existing field extensions in gatsby-plugin-proxy-directives ([705672f](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/705672f6e6bedf758d3d2ddb1d2ac4dc357b23ad))
+* skip creating existing field extensions in gatsby-plugin-utility-directives ([bc15792](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/bc1579225d46420fb224ce774494186b78969070))
+* **core-blog:** add Layout to Collection pages ([985e3f6](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/985e3f64f3b8402e1ebe234fac511fa181f8d65c))
+* **core-blog:** remove unnecessary code from ArticleTag node creator ([309ccac](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/309ccac8a0891e89b86a2c564ca4966df94571ec))
+* **flow-ui-layout:** add theme-ui ThemeProvider to Layout ([0726e1f](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/0726e1fed6fdc0bfa1e43b701c25ae1c0779ad2a))
+* **flow-ui-layout:** change touch event to click for color mode button ([ce66849](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/ce66849701187e7875648687de8f5b5714d1afa4))
+* **flow-ui-layout:** remove gatsby-plugin-layout ([bd9ecc8](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/bd9ecc846f87b2ecdc94fd08cab5f9fea88486cd))
+* **flow-ui-theme:** remove gatsby-plugin-theme-ui ([d5eb099](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/d5eb0990847d5f203b9d0b489a48949440bba34f))
+* **flow-ui-widgets:** change touch event to click for search button ([8eca084](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/8eca0844c9b9aa6a780e5405de9a99f85ebff3dc))
+* **gatsby-theme-flexiblog:** add Layout to all pages in themes ([9636dc9](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/9636dc9f96a87c5c8bd1f6b663540e9e00586201))
+* **pages-blog:** add Layout to pages ([6de73fb](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/6de73fb043cb2dd3485c9f90d09149d6813462dc))
+* add more rules to prettierrc ([ff640db](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/ff640dbca3f4cde415626bf7b6c9a4612c90b811))
+
+
+
+
 ## [2.9.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.8.0...v2.9.0) (2020-12-31)
 
 

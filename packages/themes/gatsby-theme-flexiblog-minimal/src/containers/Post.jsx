@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card as CardComponent } from 'theme-ui'
-import { Stack, Main } from '@layout'
+import { Layout, Stack, Main } from '@layout'
 import CardList from '@components/CardList'
 import Card from '@components/Card'
 import Divider from '@components/Divider'
@@ -11,18 +11,17 @@ import { PostBody, PostComments, PostTagsShare } from '@widgets/Post'
 
 const Post = ({
   data: { post, tagCategoryPosts, tagPosts, categoryPosts },
-  location,
   ...props
 }) => {
   const relatedPosts = [
     ...(tagCategoryPosts ? tagCategoryPosts.nodes : []),
     ...(tagPosts ? tagPosts.nodes : []),
-    ...(categoryPosts ? categoryPosts.nodes : []),
+    ...(categoryPosts ? categoryPosts.nodes : [])
   ]
   const { pageContext: { services = {}, siteUrl } = {} } = props
 
   return (
-    <>
+    <Layout {...props}>
       <Seo {...post} siteUrl={siteUrl} />
       <Divider />
       <Stack effectProps={{ effect: 'fadeInDown' }}>
@@ -35,7 +34,7 @@ const Post = ({
         <Main>
           <CardComponent variant='paper-lg'>
             <PostBody {...post} />
-            <PostTagsShare {...post} location={location} />
+            <PostTagsShare {...post} location={props.location} />
           </CardComponent>
           <Divider />
           <AuthorExpanded author={post.author} />
@@ -64,7 +63,7 @@ const Post = ({
           )}
         </Main>
       </Stack>
-    </>
+    </Layout>
   )
 }
 

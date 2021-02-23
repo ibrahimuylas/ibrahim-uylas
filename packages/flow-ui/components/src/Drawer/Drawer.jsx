@@ -3,29 +3,33 @@ import PropTypes from 'prop-types'
 import { Box, IconButton } from 'theme-ui'
 import { FaBars, FaTimes } from 'react-icons/fa'
 // import useScrollDisabler from '@components/useScrollDisabler'
-import Loadable from '@loadable/component'
+import loadable from '@loadable/component'
 import './Drawer.css'
 
-const DrawerMenu = Loadable(() => import('rc-drawer'))
+const DrawerMenu = loadable(() =>
+  import(
+    /* webpackChunkName: 'rc-drawer' */ /* webpackPrefetch: true */ 'rc-drawer'
+  )
+)
 
 const styles = {
   handler: {
     display: ['', '', 'none'], //to avoid ssr rehydration issue
     transition: `left 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86)`,
-    left: -4
+    left: -4,
   },
   handlerOpen: {
     position: `fixed`,
     zIndex: 99999,
     left: 4,
-    top: 4
+    top: 4,
   },
   content: {
     bg: `contentBg`,
     height: `full`,
     fontSize: 3,
-    p: 4
-  }
+    p: 4,
+  },
 }
 
 const Drawer = ({ container, width, locationState, ...props }) => {
@@ -38,7 +42,7 @@ const Drawer = ({ container, width, locationState, ...props }) => {
   const handlerStyle = open
     ? {
         ...styles.handler,
-        ...styles.handlerOpen
+        ...styles.handlerOpen,
       }
     : styles.handler
 
@@ -78,10 +82,10 @@ export default Drawer
 
 Drawer.defaultProps = {
   width: 300,
-  container: null
+  container: null,
 }
 
 Drawer.propTypes = {
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  container: PropTypes.instanceOf(PropTypes.element)
+  container: PropTypes.instanceOf(PropTypes.element),
 }

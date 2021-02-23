@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from 'theme-ui'
-import { Stack, Main, Hero } from '@layout'
+import { Layout, Stack, Main, Hero } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
@@ -17,18 +17,18 @@ const Posts = ({
   const sliderRef = React.useRef()
 
   return (
-    <>
+    <Layout {...props}>
       <Seo title='Home' />
       <Hero
         pt={4}
         pb={5}
         sx={{
-          background: (t) =>
+          background: t =>
             `linear-gradient(
               0deg,
               ${t.colors.omegaLighter},
               ${t.colors.background}
-            )`,
+            )`
         }}
       >
         <Divider space={3} />
@@ -88,7 +88,7 @@ const Posts = ({
       >
         <Main
           sx={{
-            display: [`block`, `block`, `block`, `flex`],
+            display: [`block`, `block`, `block`, `flex`]
           }}
         >
           <CardList
@@ -101,7 +101,7 @@ const Posts = ({
         <Main
           sx={{
             mx: [0, 0, 0, 3],
-            display: [`block`, `block`, `block`, `flex`],
+            display: [`block`, `block`, `block`, `flex`]
           }}
         >
           <CardList
@@ -119,7 +119,7 @@ const Posts = ({
               'horizontal-md',
               'horizontal-md',
               'horizontal',
-              'horizontal-aside',
+              'horizontal-aside'
             ]}
             limit={3}
             skip={3}
@@ -183,7 +183,7 @@ const Posts = ({
       <Stack>
         <Main>{services.mailchimp && <NewsletterExpanded />}</Main>
       </Stack>
-    </>
+    </Layout>
   )
 }
 

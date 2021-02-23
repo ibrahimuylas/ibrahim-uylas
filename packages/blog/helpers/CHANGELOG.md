@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.9.0...v2.10.0) (2021-02-13)
+
+
+### Refactor
+
+* **siteMetadata:** change fragment name ([6395527](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/6395527e7f423183af162b5065a00ba9e853b8a6))
+* **siteMetadata:** move siteMetadata to helpers-blog package ([1fb9168](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/1fb9168fb50c503b76481fcd60cf4c95c51072a5))
+
+
+
+
 # [2.0.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v1.2.0...v2.0.0) (2020-07-26)
 
 

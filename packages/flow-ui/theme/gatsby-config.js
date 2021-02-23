@@ -4,7 +4,6 @@ module.exports = options => {
   return {
     plugins: [
       `gatsby-plugin-emotion`,
-      `gatsby-plugin-theme-ui`,
       //Add preconnect to google fonts servers for performance
       {
         resolve: 'gatsby-plugin-preconnect',

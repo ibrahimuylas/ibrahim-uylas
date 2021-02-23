@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Main } from '@layout'
+import { Layout, Stack, Main } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
@@ -11,7 +11,7 @@ const Posts = ({ data: { posts = {}, featuredPosts = {} }, ...props }) => {
   const { pageContext: { services = {} } = {} } = props
 
   return (
-    <>
+    <Layout {...props}>
       <Seo title='Home' />
       <Divider />
       <Stack>
@@ -67,7 +67,7 @@ const Posts = ({ data: { posts = {}, featuredPosts = {} }, ...props }) => {
           )}
         </Main>
       </Stack>
-    </>
+    </Layout>
   )
 }
 

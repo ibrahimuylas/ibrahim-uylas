@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Hero, Main, Sidebar, PreFooter } from '@layout'
+import { Layout, Stack, Hero, Main, Sidebar, PreFooter } from '@layout'
 import CardList from '@components/CardList'
 import Sticky from '@components/Sticky'
 import Divider from '@components/Divider'
@@ -18,7 +18,7 @@ const Posts = ({ data: { paginatedPosts = {} }, ...props }) => {
   const categories = useBlogCategories()
 
   return (
-    <>
+    <Layout {...props}>
       <Seo title='Home' />
       <Hero sx={{ bg: `contentBg` }}>
         <HeroComponent {...props} />
@@ -53,7 +53,7 @@ const Posts = ({ data: { paginatedPosts = {} }, ...props }) => {
       <PreFooter>
         <Pagination {...paginatedPosts.pageInfo} basePath={basePath} />
       </PreFooter>
-    </>
+    </Layout>
   )
 }
 

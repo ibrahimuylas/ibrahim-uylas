@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card as CardComponent } from 'theme-ui'
-import { Stack, Main, Sidebar } from '@layout'
+import { Layout, Stack, Main, Sidebar } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Sticky from '@components/Sticky'
@@ -12,23 +12,22 @@ import {
   PostBody,
   PostComments,
   PostTagsShare,
-  PostFooter,
+  PostFooter
 } from '@widgets/Post'
 
 const Post = ({
   data: { post, tagCategoryPosts, tagPosts, categoryPosts, previous, next },
-  location,
   ...props
 }) => {
   const relatedPosts = [
     ...(tagCategoryPosts ? tagCategoryPosts.nodes : []),
     ...(tagPosts ? tagPosts.nodes : []),
-    ...(categoryPosts ? categoryPosts.nodes : []),
+    ...(categoryPosts ? categoryPosts.nodes : [])
   ]
   const { pageContext: { services = {}, siteUrl } = {} } = props
 
   return (
-    <>
+    <Layout {...props}>
       <Seo {...post} siteUrl={siteUrl} />
       <Divider />
       <Stack effectProps={{ effect: 'fadeInDown' }}>
@@ -40,7 +39,7 @@ const Post = ({
           <CardComponent variant='paper'>
             <PostImage {...post} inCard />
             <PostBody {...post} />
-            <PostTagsShare {...post} location={location} />
+            <PostTagsShare {...post} location={props.location} />
             {services.disqus && <PostComments {...post} />}
             <PostFooter {...{ previous, next }} />
           </CardComponent>
@@ -64,7 +63,7 @@ const Post = ({
           )}
         </Sidebar>
       </Stack>
-    </>
+    </Layout>
   )
 }
 

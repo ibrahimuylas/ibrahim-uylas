@@ -1,16 +1,16 @@
 import React from 'react'
-import { Stack, Main } from '@layout'
+import { Layout, Stack, Main } from '@layout'
 import PageTitle from '@components/PageTitle'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
 import AuthorExpanded from '@widgets/AuthorExpanded'
 import { useBlogAuthors } from '@helpers-blog'
 
-export default () => {
+export default props => {
   const authors = useBlogAuthors()
 
   return (
-    <>
+    <Layout {...props}>
       <Seo title='Our Team' />
       <Divider />
       <Stack effectProps={{ effect: 'fadeInDown' }}>
@@ -21,7 +21,7 @@ export default () => {
       </Stack>
       <Stack>
         <Main>
-          {authors.map((author) => (
+          {authors.map(author => (
             <>
               <Divider />
               <AuthorExpanded author={author} withLink />
@@ -29,6 +29,6 @@ export default () => {
           ))}
         </Main>
       </Stack>
-    </>
+    </Layout>
   )
 }

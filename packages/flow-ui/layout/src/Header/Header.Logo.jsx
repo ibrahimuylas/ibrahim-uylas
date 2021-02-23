@@ -2,7 +2,7 @@ import React from 'react'
 import { useColorMode } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import Logo from '@components/Logo'
-import useSiteMetadata from '@helpers/useSiteMetadata'
+import useSiteMetadata from '@helpers-blog/useSiteMetadata'
 
 export const HeaderLogo = ({ ...props }) => {
   const { title } = useSiteMetadata()
@@ -27,17 +27,23 @@ export const HeaderLogo = ({ ...props }) => {
 
 const logoQuery = graphql`
   query LogoQuery {
-    logo: file(absolutePath: { regex: "/logo.(jpeg|jpg|gif|png)/" }) {
+    logo: file(
+      absolutePath: { regex: "/logo.(jpeg|jpg|gif|png)/" }
+      sourceInstanceName: { eq: "asset" }
+    ) {
       childImageSharp {
         fixed(width: 150, quality: 100) {
-          ...GatsbyImageSharpFixed_noBase64
+          ...GatsbyImageSharpFixed_withWebp_noBase64
         }
       }
     }
-    logoDark: file(absolutePath: { regex: "/logo-dark.(jpeg|jpg|gif|png)/" }) {
+    logoDark: file(
+      absolutePath: { regex: "/logo-dark.(jpeg|jpg|gif|png)/" }
+      sourceInstanceName: { eq: "asset" }
+    ) {
       childImageSharp {
         fixed(width: 150, quality: 100) {
-          ...GatsbyImageSharpFixed_noBase64
+          ...GatsbyImageSharpFixed_withWebp_noBase64
         }
       }
     }

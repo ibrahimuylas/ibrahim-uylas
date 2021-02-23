@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 
 export const query = graphql`
-  fragment SiteMetadata on Site {
+  fragment BlogSiteMetadata on Site {
     siteMetadata {
       title
       name

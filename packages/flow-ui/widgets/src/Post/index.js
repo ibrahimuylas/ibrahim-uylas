@@ -1,4 +1,4 @@
-import Loadable from '@loadable/component'
+import loadable from '@loadable/component'
 
 export { PostBody } from './Post.Body'
 export { PostFooter } from './Post.Footer'
@@ -7,5 +7,9 @@ export { PostImage } from './Post.Image'
 export { PostTags } from './Post.Tags'
 export { PostTagsShare } from './Post.Tags.Share'
 
-export const PostComments = Loadable(() => import('./Post.Comments'))
-export const PostShare = Loadable(() => import('./Post.Share'))
+export const PostComments = loadable(() =>
+  import(/* webpackPrefetch: true */ './Post.Comments')
+)
+export const PostShare = loadable(() =>
+  import(/* webpackPrefetch: true */ './Post.Share')
+)

@@ -15,19 +15,23 @@ export const query = graphql`
     thumbnail {
       __typename
       ... on ImageSharp {
-        regular: fixed(width: 150, height: 150, cropFocus: NORTH) {
+        regular: fixed(width: 150, height: 150, cropFocus: NORTH, quality: 85) {
           width
           height
           src
           srcSet
+          srcWebp
+          srcSetWebp
         }
       }
       ... on ContentfulAsset {
-        regular: fixed(width: 150, height: 150, cropFocus: TOP) {
+        regular: fixed(width: 150, height: 150, cropFocus: TOP, quality: 85) {
           width
           height
           src
           srcSet
+          srcWebp
+          srcSetWebp
         }
       }
       ... on SanityImageAsset {
@@ -36,6 +40,8 @@ export const query = graphql`
           height
           src
           srcSet
+          srcWebp
+          srcSetWebp
         }
       }
     }

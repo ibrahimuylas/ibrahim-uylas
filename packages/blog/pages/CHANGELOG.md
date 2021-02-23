@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.9.0...v2.10.0) (2021-02-13)
+
+
+### Refactor
+
+* **core-blog:** add Layout to Collection pages ([985e3f6](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/985e3f64f3b8402e1ebe234fac511fa181f8d65c))
+* **pages-blog:** add Layout to pages ([6de73fb](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/6de73fb043cb2dd3485c9f90d09149d6813462dc))
+
+
+
+
 # [2.7.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.6.2...v2.7.0) (2020-12-05)
 
 
