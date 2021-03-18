@@ -49,7 +49,7 @@ module.exports = {
     social: [
       {
         name: 'Youtube',
-        url: 'https://www.youtube.com/c/ibrahimuylas'
+        url: 'https://www.youtube.com/ibrahimuylas'
       },
       {
         name: 'Instagram',
