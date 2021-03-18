@@ -48,6 +48,10 @@ module.exports = {
     //Site Social Media Links
     social: [
       {
+        name: 'Youtube',
+        url: 'https://www.youtube.com/c/ibrahimuylas'
+      },
+      {
         name: 'Instagram',
         url: 'https://instagram.com/ibrahimuylas'
       },
