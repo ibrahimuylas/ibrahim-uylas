@@ -90,9 +90,9 @@ const Posts = ({
                 <Sidebar
                   sx={{
                     pl: 0,
-                    pr: [0, 0, 0, 3],
+                    pr: [0, null, null, 3],
                     display: [null, `flex`],
-                    flexDirection: [`column`, `column`, `column`, `row`]
+                    flexDirection: [`column`, null, null, `row`]
                   }}
                 >
                   <CardList
@@ -111,7 +111,7 @@ const Posts = ({
                 <Main
                   sx={{
                     display: [null, `flex`],
-                    flexDirection: [`column`, `column`, `column`, `row`]
+                    flexDirection: [`column`, null, null, `row`]
                   }}
                 >
                   <Divider space={2} />
@@ -132,9 +132,9 @@ const Posts = ({
                 </Main>
                 <Sidebar
                   sx={{
-                    pl: [0, 0, 0, 3],
+                    pl: [0, null, null, 3],
                     display: [null, `flex`],
-                    flexDirection: [`column`, `column`, `column`, `row`]
+                    flexDirection: [`column`, null, null, `row`]
                   }}
                 >
                   <CardList

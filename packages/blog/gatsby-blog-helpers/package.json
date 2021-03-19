@@ -1,0 +1,11 @@
+{
+  "name": "@elegantstack/gatsby-blog-helpers",
+  "version": "3.0.0",
+  "main": "index.js",
+  "private": true,
+  "author": "ElegantStack Team",
+  "license": "",
+  "dependencies": {
+    "dedupe": "^3.0.2"
+  }
+}

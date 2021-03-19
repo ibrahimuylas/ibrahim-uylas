@@ -1,0 +1,12 @@
+{
+  "name": "@elegantstack/gatsby-common-helpers",
+  "version": "3.0.0",
+  "main": "index.js",
+  "private": true,
+  "author": "ElegantStack Team",
+  "license": "",
+  "dependencies": {
+    "gatsby-plugin-mailchimp": "^5.2.2",
+    "react-icons": "^4.2.0"
+  }
+}

@@ -1,7 +1,7 @@
 {
 	"name": "@elegantstack/gatsby-starter-flexiblog-agency",
 	"private": true,
-	"version": "2.9.0",
+	"version": "3.0.0",
 	"scripts": {
 		"develop": "gatsby develop",
 		"start": "gatsby clean && gatsby develop",
@@ -10,16 +10,16 @@
 		"serve": "gatsby serve"
 	},
 	"dependencies": {
-		"@elegantstack/gatsby-theme-flexiblog-agency": "2.10.0",
+		"@elegantstack/gatsby-theme-flexiblog-agency": "3.0.0",
 		"dotenv": "^8.2.0",
-		"gatsby": "^2.24.11",
+		"gatsby": "^3.0.0",
 		"gatsby-plugin-disqus": "^1.2.2",
 		"gatsby-plugin-google-analytics": "^2.11.0",
 		"gatsby-plugin-netlify-cms": "^4.8.0",
 		"gatsby-plugin-sitemap": "^2.10.0",
 		"netlify-cms-app": "^2.14.12",
-		"react": "^16.13.1",
-		"react-dom": "^16.13.1"
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1"
 	},
 	"devDependencies": {
 		"prettier": "^2.0.5"

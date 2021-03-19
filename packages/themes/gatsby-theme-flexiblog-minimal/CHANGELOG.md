@@ -3,6 +3,96 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-minimal@2.11.0...@elegantstack/gatsby-theme-flexiblog-minimal@3.0.0) (2021-03-17)
+
+
+### Features
+
+* Upgrade to Gatsby v3 and upgrade other dependencies ([50a69aa](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/50a69aa908fae6c16b2c5127f6339114297a57fa))
+
+
+### Refactor
+
+* **gatsby-blog-core:** rename @elegantstack/core-blog package to @elegantstack/gatsby-blog-core ([a9a77a4](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/a9a77a4d6fb375ccf8ab063015e164ee08e10d01))
+* **gatsby-blog-helpers:** rename @elegantstack/helpers-blog package to @elegantstack/gatsby-blog-helpers ([7592f8e](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/7592f8e82ffb8148473878d2ab9edb19c6d3f5fa))
+* **gatsby-blog-pages:** rename @elegantstack/pages-blog package to @elegantstack/gatsby-blog-pages ([aedd513](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/aedd513ad1756e33e2bb95ac32057371392cb057))
+* **helpers:** rename @elegantstack/helpers package to @elegantstack/common-helpers ([a39fe74](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/a39fe74e2c08af5091ac4a5b5cff414f23d5b71f))
+
+
+
+
+## 2.11.0 (2021-02-25)
+
+
+### Performance Improvements
+
+* **packages/themes:** add eager loading for images above the fold ([4371aef](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/4371aef470f5c0a4b3454b39cffe03987a333967))
+
+## 2.10.0 (2021-02-13)
+
+
+### Refactor
+
+* **gatsby-theme-flexiblog:** add Layout to all pages in themes ([9636dc9](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/9636dc9f96a87c5c8bd1f6b663540e9e00586201))
+
+## 2.9.0 (2020-12-31)
+
+## 2.8.0 (2020-12-15)
+
+## 2.7.0 (2020-12-05)
+
+### 2.6.2 (2020-10-24)
+
+### 2.6.1 (2020-10-03)
+
+## 2.6.0 (2020-10-03)
+
+
+### Bug Fixes
+
+* fix post body not revealing in post pages for smaller screens ([2521026](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/2521026bb2002f496c75ae3b1438e94c33ee97e0))
+
+## 2.5.0 (2020-10-02)
+
+## 2.4.0 (2020-09-26)
+
+### 2.3.1 (2020-08-20)
+
+## 2.3.0 (2020-08-06)
+
+
+### Features
+
+* Add Open Graph Image to post pages for social sharing ([3ee2e05](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/3ee2e05369f2722c6e44a442099a3fa82944e845))
+
+
+### Bug Fixes
+
+* Add missing flow-ui-components package to all themes gatsby-config file to fix component shadowing of flow-ui-components. ([faf3276](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/faf32760fc0102ddc98eb56a51b0733f78754cc4))
+
+### 2.2.2 (2020-08-02)
+
+
+### Bug Fixes
+
+* fix paging in paginated homepages ([3299fd6](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/3299fd6a42de9f2151fcbf2900113723935ff847))
+
+### 2.2.1 (2020-08-01)
+
+## 2.2.0 (2020-07-28)
+
+## 2.1.0 (2020-07-27)
+
+## 2.0.0 (2020-07-26)
+
+
+### Features
+
+* upgrade dependencies in package files ([9391fad](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/9391fad0a525f7a8514ab722831eff9a2eae8e04))
+
+
+
+
 ## [2.10.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/v2.9.0...v2.10.0) (2021-02-13)
 
 

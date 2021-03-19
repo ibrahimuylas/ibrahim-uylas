@@ -28,6 +28,7 @@ const Posts = ({
                 nodes={featuredPosts.nodes}
                 limit={1}
                 variant={['vertical', 'horizontal-lg']}
+                loading='eager'
               />
             </Main>
             <Sidebar

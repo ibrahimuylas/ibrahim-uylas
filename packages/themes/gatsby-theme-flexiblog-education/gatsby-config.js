@@ -2,19 +2,19 @@ module.exports = options => {
   return {
     plugins: [
       {
-        resolve: '@elegantstack/core-blog',
+        resolve: '@elegantstack/gatsby-blog-core',
         options
       },
       {
-        resolve: '@elegantstack/pages-blog',
+        resolve: '@elegantstack/gatsby-blog-pages',
         options
       },
       {
-        resolve: '@elegantstack/helpers-blog',
+        resolve: '@elegantstack/gatsby-blog-helpers',
         options
       },
       {
-        resolve: '@elegantstack/helpers',
+        resolve: '@elegantstack/gatsby-common-helpers',
         options
       },
       {

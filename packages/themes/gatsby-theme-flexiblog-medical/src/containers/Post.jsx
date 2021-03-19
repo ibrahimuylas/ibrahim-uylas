@@ -31,7 +31,7 @@ const Post = ({
       <Stack>
         <Main>
           <CardComponent variant='paper-lg'>
-            <PostImage {...post} inCard />
+            <PostImage {...post} inCardLarge />
             <PostHead {...post} />
             <Divider line />
             <PostBody {...post} />

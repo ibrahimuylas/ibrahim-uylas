@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage as Img, getImage } from 'gatsby-plugin-image'
 import { Box, Text, Card, Flex, Button } from 'theme-ui'
 import { Layout, Stack, Main } from '@layout'
 import PageTitle from '@components/PageTitle'
@@ -25,22 +25,20 @@ const styles = {
     right: 4
   },
   grid: {
-    flexWrap: [`wrap`, `wrap`, `nowrap`],
+    flexWrap: [`wrap`, null, `nowrap`],
     ' > div + div': {
       ml: [0, 0, 5]
     }
   },
   column: {
     flex: `auto`,
-    flexBasis: [`full`, `full`, `1/2`]
+    flexBasis: [`full`, null, `1/2`]
   }
 }
 
 export default props => {
   const data = useStaticQuery(aboutQuery)
-
-  const { photo } = data
-  const { fluid } = (photo && photo.childImageSharp) || {}
+  const image = getImage(data.avatar)
 
   return (
     <Layout {...props}>
@@ -54,7 +52,7 @@ export default props => {
           />
           <Divider />
           <Box sx={styles.imageWrapper}>
-            <Img fluid={fluid} />
+            <Img image={image} />
             <Button sx={styles.button}>Contact Me</Button>
           </Box>
           <Divider />
@@ -135,13 +133,13 @@ export default props => {
 
 const aboutQuery = graphql`
   query AboutQuery {
-    photo: file(absolutePath: { regex: "/about.(jpeg|jpg|gif|png)/" }) {
+    avatar: file(absolutePath: { regex: "/about.(jpeg|jpg|gif|png)/" }) {
       childImageSharp {
-        fluid(maxWidth: 1140, maxHeight: 500, cropFocus: NORTH) {
-          ...GatsbyImageSharpFluid_noBase64
-          width: presentationWidth
-          height: presentationWidth
-        }
+        gatsbyImageData(
+          width: 1140
+          height: 500
+          transformOptions: { cropFocus: NORTH }
+        )
       }
     }
   }
