@@ -1,15 +1,5 @@
 module.exports = {
-  flags: {
-    DEV_SSR: false
-  },
-  plugins: [
-    {
-      resolve: '@elegantstack/gatsby-theme-flexiblog-medical',
-      options: {
-        // Theme options goes here
-      }
-    }
-  ],
+  plugins: ['@elegantstack/gatsby-theme-flexiblog-medical'],
   // Customize your site metadata:
   siteMetadata: {
     //General Site Metadata

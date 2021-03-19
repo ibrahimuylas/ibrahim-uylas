@@ -1,0 +1,29 @@
+############################################
+## Contentful Fallback Types
+############################################
+
+type ContentfulFixed {
+  aspectRatio: Float
+  base64: String
+  width: Float!
+  height: Float!
+  src: String!
+  srcSet: String!
+  srcWebp: String
+  srcSetWebp: String
+}
+
+enum ContentfulImageCropFocus {
+  TOP
+  CENTER
+  BOTTOM
+}
+
+type ContentfulAsset implements Node {
+  fixed(
+    width: Int
+    height: Int
+    cropFocus: ContentfulImageCropFocus
+    quality: Int
+  ): ContentfulFixed
+}

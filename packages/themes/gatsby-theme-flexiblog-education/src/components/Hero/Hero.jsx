@@ -8,7 +8,7 @@ import Photo from './Hero.Photo'
 
 const styles = {
   stats: {
-    display: [`none`, null, `block`],
+    display: [`none`, `none`, `block`],
     borderRadius: `left`,
     overflow: `hidden`,
     position: `absolute`,

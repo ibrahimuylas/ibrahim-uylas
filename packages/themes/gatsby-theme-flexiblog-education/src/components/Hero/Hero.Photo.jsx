@@ -4,7 +4,7 @@ import { Box } from 'theme-ui'
 
 const styles = {
   image: image => ({
-    display: [`none`, null, `block`],
+    display: [`none`, `none`, `block`],
     height: `120%`,
     width: `1/2`,
     minWidth: 380,

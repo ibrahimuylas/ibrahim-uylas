@@ -8,7 +8,7 @@ import Divider from '@components/Divider'
 
 const styles = {
   heading: {
-    background: t => `
+    background: (t) => `
       linear-gradient(
         45deg,
         ${t.colors.alpha} 32.5%,
@@ -17,13 +17,13 @@ const styles = {
     color: `beta`,
     WebkitBackgroundClip: `text`,
     WebkitTextFillColor: `transparent`,
-    fontWeight: `bold`
+    fontWeight: `bold`,
   },
   running: {
     color: `omegaDark`,
     fontWeight: `normal`,
-    maxWidth: [`full`, null, `2/3`]
-  }
+    maxWidth: [`full`, `full`, `2/3`],
+  },
 }
 
 export default () => (

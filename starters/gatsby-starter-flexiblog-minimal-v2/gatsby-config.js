@@ -1,15 +1,5 @@
 module.exports = {
-  flags: {
-    DEV_SSR: false
-  },
-  plugins: [
-    {
-      resolve: '@elegantstack/gatsby-theme-flexiblog-minimal-v2',
-      options: {
-        // Theme options goes here
-      }
-    }
-  ],
+  plugins: ['@elegantstack/gatsby-theme-flexiblog-minimal-v2'],
   // Customize your site metadata:
   siteMetadata: {
     //General Site Metadata

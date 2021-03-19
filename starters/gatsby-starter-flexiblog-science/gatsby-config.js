@@ -1,15 +1,5 @@
 module.exports = {
-  flags: {
-    DEV_SSR: false
-  },
-  plugins: [
-    {
-      resolve: '@elegantstack/gatsby-theme-flexiblog-science',
-      options: {
-        // Theme options goes here
-      }
-    }
-  ],
+  plugins: ['@elegantstack/gatsby-theme-flexiblog-science'],
   siteMetadata: {
     //General Site Metadata
     title: 'FlexiBlog Theme',

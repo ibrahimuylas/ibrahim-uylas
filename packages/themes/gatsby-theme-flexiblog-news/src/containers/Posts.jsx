@@ -23,7 +23,6 @@ const Posts = ({
           columns={[1, 2, 3]}
           variant={['horizontal-md', 'vertical-cover']}
           title="Editor's Pick This Week"
-          loading='eager'
           omitCategory
         />
       </Stack>
@@ -35,7 +34,6 @@ const Posts = ({
           skip={3}
           columns={[1, 2, 3]}
           variant={['horizontal-md', 'horizontal-aside']}
-          loading='eager'
         />
       </Stack>
       <Divider />

@@ -1,12 +1,11 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { getImage } from 'gatsby-plugin-image'
 import { Box } from 'theme-ui'
 import Avatar from '@components/Avatar'
 
 const styles = {
   wrapper: {
-    display: [`none`, null, `block`],
+    display: [`none`, `none`, `block`],
     position: `relative`,
     textAlign: `center`
   },
@@ -18,29 +17,24 @@ const styles = {
 
 export default () => {
   const data = useStaticQuery(heroQuery)
-  const image = data && data.avatar && data.avatar.childImageSharp
+  const { file } = data
 
   return (
     <Box sx={styles.wrapper}>
-      <Avatar
-        avatar={image}
-        withPattern
-        patternStyles={styles.pattern}
-        loading='eager'
-      />
+      <Avatar avatar={file.avatar} withPattern patternStyles={styles.pattern} />
     </Box>
   )
 }
 
 const heroQuery = graphql`
   query HeroQuery {
-    avatar: file(absolutePath: { regex: "/hero.(jpeg|jpg|gif|png)/" }) {
-      childImageSharp {
-        regular: gatsbyImageData(
-          width: 320
-          height: 320
-          transformOptions: { cropFocus: NORTH }
-        )
+    file(absolutePath: { regex: "/hero.(jpeg|jpg|gif|png)/" }) {
+      avatar: childImageSharp {
+        regular: fluid(maxWidth: 320, maxHeight: 320, cropFocus: NORTH) {
+          ...GatsbyImageSharpFluid_noBase64
+          width: presentationWidth
+          height: presentationWidth
+        }
       }
     }
   }

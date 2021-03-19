@@ -1,12 +1,17 @@
 {
-  "version": "independent",
+  "version": "2.10.0",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/**", "starters/**", "site"],
+  "packages": [
+    "packages/**",
+    "starters/**",
+    "site"
+  ],
   "command": {
     "version": {
-      "message": "chore(release): Publish",
+      "message": "chore(release): publish %s",
       "conventionalCommits": true,
+      "createRelease": "gitlab",
       "push": false,
       "changelogPreset": {
         "name": "conventionalcommits",
@@ -45,7 +50,9 @@
             "hidden": true
           }
         ],
-        "issuePrefixes": ["#"],
+        "issuePrefixes": [
+          "#"
+        ],
         "issueUrlFormat": "{{host}}/{{owner}}/{{repository}}/issues/{{id}}",
         "commitUrlFormat": "{{host}}/{{owner}}/{{repository}}/commit/{{hash}}",
         "compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
