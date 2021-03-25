@@ -16,7 +16,7 @@ const styles = {
     top: `50%`,
     position: `absolute`,
     transform: `translate(-50%, -50%)`,
-    display: [`none`, `none`, `none`, `block`]
+    display: [`none`, null, null, `block`]
   },
   heroThumbsInner: {
     width: `1/3`,
@@ -47,6 +47,7 @@ const Posts = ({
           dots={false}
           arrows={false}
           ref={sliderRef}
+          loading='eager'
         />
         <Container sx={styles.heroThumbsContainer}>
           <Box sx={styles.heroThumbsInner}>
@@ -57,6 +58,7 @@ const Posts = ({
               imageVariant='hero'
               omitCategory
               asNavFor={sliderRef}
+              loading='eager'
             />
           </Box>
         </Container>

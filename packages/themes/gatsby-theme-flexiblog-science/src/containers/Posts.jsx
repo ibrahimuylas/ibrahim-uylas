@@ -52,8 +52,9 @@ const Posts = ({
             arrows={false}
             controlPosition='bottom'
             ref={sliderRef}
+            loading='eager'
           />
-          <Box sx={{ display: [`none`, `none`, `block`] }}>
+          <Box sx={{ display: [`none`, null, `block`] }}>
             <Divider />
             <CardList
               nodes={featuredPosts.nodes}
@@ -62,6 +63,7 @@ const Posts = ({
               columns={[1, 0, 3]}
               omitCategory
               asNavFor={sliderRef}
+              loading='eager'
             />
           </Box>
         </Box>
@@ -84,11 +86,11 @@ const Posts = ({
       <Stack
         effectProps={{ effect: false }}
         title='Whats New?'
-        direction={[`column`, `column`, `column`, `row`]}
+        direction={[`column`, null, null, `row`]}
       >
         <Main
           sx={{
-            display: [`block`, `block`, `block`, `flex`]
+            display: [`block`, null, null, `flex`]
           }}
         >
           <CardList
@@ -100,8 +102,8 @@ const Posts = ({
         <Divider space={2} />
         <Main
           sx={{
-            mx: [0, 0, 0, 3],
-            display: [`block`, `block`, `block`, `flex`]
+            mx: [0, null, null, 3],
+            display: [`block`, null, null, `flex`]
           }}
         >
           <CardList

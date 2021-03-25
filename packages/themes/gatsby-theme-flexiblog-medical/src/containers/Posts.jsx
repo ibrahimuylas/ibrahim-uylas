@@ -34,6 +34,7 @@ const Posts = ({
             title='Featured this month'
             slider
             autoPlay
+            loading='eager'
           />
           <Divider />
           <CardList
@@ -42,6 +43,7 @@ const Posts = ({
             limit={2}
             skip={4}
             title='Top Stories'
+            loading='eager'
           />
           {posts.group &&
             posts.group.map(group => (

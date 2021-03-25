@@ -27,13 +27,13 @@ const makeSlug = (options = {}, fieldConfig) => async (
 
   if (!fromValue) return null
 
-  //Get path prefix from pluginOptions
-  const plugin = context.nodeModel
-    .getAllNodes({ type: 'SitePlugin' })
-    .find(
-      (node) => node.name === '@elegantstack/gatsby-plugin-utility-directives'
-    )
-  // .find(node => node.name === fieldConfig.extensions.plugin)
+  const plugin = await context.nodeModel.runQuery({
+    query: {
+      filter: { name: { eq: '@elegantstack/gatsby-plugin-utility-directives' } }
+    },
+    type: `SitePlugin`,
+    firstOnly: true
+  })
 
   const { basePath, sitePaths } = withDefaults(plugin.pluginOptions)
   const pathPrefix = (sitePaths && sitePaths[source.internal.type]) || ''
@@ -44,7 +44,7 @@ const makeSlug = (options = {}, fieldConfig) => async (
       pathPrefix,
       slugify(fromValue, {
         lower: true,
-        strict: true,
+        remove: /[^\w\s.{}\/\-]+/g
       })
     )
   )
@@ -66,9 +66,9 @@ const normalizeSocial = (options = {}, fieldConfig) => async (
   const fieldValue = await resolver(source, args, context, info)
   if (fieldValue == null || fieldValue.length < 1) return null
 
-  return fieldValue.map((social) => ({
+  return fieldValue.map(social => ({
     name: social.name || null,
-    url: social.url || social,
+    url: social.url || social
   }))
 }
 
@@ -91,7 +91,7 @@ const blockContentToMarkdown = (options = {}, fieldConfig) => async (
   // Get gatsby-source-sanity options
   const plugin = context.nodeModel
     .getAllNodes({ type: 'SitePlugin' })
-    .find((node) => node.name === 'gatsby-source-sanity')
+    .find(node => node.name === 'gatsby-source-sanity')
 
   const { projectId, dataset } = plugin.pluginOptions
 
@@ -99,13 +99,13 @@ const blockContentToMarkdown = (options = {}, fieldConfig) => async (
     ...source,
     rawBody: toMarkdown(fieldValue, {
       projectId,
-      dataset,
-    }),
+      dataset
+    })
   }
 }
 
 module.exports = {
   makeSlug,
   normalizeSocial,
-  blockContentToMarkdown,
+  blockContentToMarkdown
 }
