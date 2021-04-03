@@ -8,21 +8,28 @@ import getImageVariant from '@components/utils/getImageVariant'
 const styles = {
   regular: {
     minHeight: `23rem`,
-    bg: `omegaLighter`,
-    borderRadius: `lg`
+    img: {
+      borderRadius: `lg`
+    }
   },
   wide: {
-    borderRadius: `lg`
+    img: {
+      borderRadius: `lg`
+    }
   },
   inCard: {
-    borderRadius: t => `${t.radii.lg} ${t.radii.lg} 0 0`,
     mt: -4,
-    mx: -4
+    mx: -4,
+    img: {
+      borderRadius: t => `${t.radii.lg} ${t.radii.lg} 0 0`
+    }
   },
   inCardLarge: {
-    borderRadius: t => `${t.radii.lg} ${t.radii.lg} 0 0`,
     mt: -5,
-    mx: -5
+    mx: -5,
+    img: {
+      borderRadius: t => `${t.radii.lg} ${t.radii.lg} 0 0`
+    }
   }
 }
 
@@ -45,7 +52,6 @@ export const PostImage = ({
         image={image}
         alt={title}
         css={css({
-          bg: `omegaLighter`,
           ...styles[variant],
           ...(inCard && styles.inCard),
           ...(inCardLarge && styles.inCardLarge)

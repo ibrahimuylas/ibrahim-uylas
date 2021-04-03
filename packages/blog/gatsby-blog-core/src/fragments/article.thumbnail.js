@@ -14,7 +14,7 @@ export const query = graphql`
         ImageSharp_hero: gatsbyImageData(
           width: 1600
           height: 650
-          transformOptions: { cropFocus: CENTER }
+          transformOptions: { cropFocus: ATTENTION }
           outputPixelDensities: [0.5, 1]
         )
       }
@@ -36,22 +36,16 @@ export const query = graphql`
         )
       }
       ... on SanityImageAsset {
-        SanityImageAsset_vertical: fixed(width: 380, height: 290) {
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          width
-          height
-        }
-        SanityImageAsset_hero: fixed(width: 1600, height: 650) {
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          width
-          height
-        }
+        SanityImageAsset_vertical: gatsbyImageData(
+          width: 380
+          height: 290
+          outputPixelDensities: [0.5, 1]
+        )
+        SanityImageAsset_hero: gatsbyImageData(
+          width: 1600
+          height: 650
+          outputPixelDensities: [0.5, 1]
+        )
       }
     }
   }
@@ -74,7 +68,7 @@ export const query = graphql`
         ImageSharp_hero: gatsbyImageData(
           width: 1600
           height: 650
-          transformOptions: { cropFocus: CENTER }
+          transformOptions: { cropFocus: ATTENTION }
           outputPixelDensities: [0.5, 1]
         )
       }
@@ -104,30 +98,21 @@ export const query = graphql`
         )
       }
       ... on SanityImageAsset {
-        SanityImageAsset_vertical: fixed(width: 360, height: 470) {
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          width
-          height
-        }
-        SanityImageAsset_horizontal: fixed(width: 750, height: 400) {
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          width
-          height
-        }
-        SanityImageAsset_hero: fixed(width: 1600, height: 650) {
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          width
-          height
-        }
+        SanityImageAsset_vertical: gatsbyImageData(
+          width: 360
+          height: 470
+          outputPixelDensities: [0.5, 1]
+        )
+        SanityImageAsset_horizontal: gatsbyImageData(
+          width: 807
+          height: 400
+          outputPixelDensities: [0.5, 1]
+        )
+        SanityImageAsset_hero: gatsbyImageData(
+          width: 1600
+          height: 650
+          outputPixelDensities: [0.5, 1]
+        )
       }
     }
   }

@@ -49,8 +49,9 @@ const styles = {
   }),
   imageWrapper: {
     mx: `auto`,
-    borderRadius: `0 0 9999px 9999px`,
-    overflow: `hidden`
+    img: {
+      borderRadius: `0 0 9999px 9999px`
+    }
   }
 }
 

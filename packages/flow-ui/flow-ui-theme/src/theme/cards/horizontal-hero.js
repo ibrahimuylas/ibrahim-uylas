@@ -5,14 +5,14 @@ export default {
     bg: `transparent`,
     ':hover': {
       transform: `none`,
-      boxShadow: `none`,
-    },
+      boxShadow: `none`
+    }
   },
   content: {
     flexDirection: [`column`, `row-reverse`],
     alignItems: `center`,
     py: [0, 2],
-    position: `relative`,
+    position: `relative`
   },
   media: {
     width: [`full`, `auto`],
@@ -26,60 +26,61 @@ export default {
       content: `""`,
       bg: `omegaLight`,
       position: `absolute`,
-      borderRadius: (t) => `${t.radii.default} 0`,
+      borderRadius: t => `${t.radii.default} 0`
     },
     '::before': {
       top: -2,
       left: -2,
-      size: `2/3`,
+      size: `2/3`
     },
     '::after': {
       bottom: -2,
       right: -2,
       size: 80,
-      borderRadius: [`0`, `3rem 0`],
-    },
+      borderRadius: [`0`, `3rem 0`]
+    }
   },
   image: {
-    borderRadius: (t) => [
-      `${t.radii.default} 3rem 0 0`,
-      `${t.radii.default} 3rem 3rem`,
-    ],
     maxHeight: `none`,
+    bg: `transparent`,
     zIndex: 2,
     img: {
-      objectFit: `none !important`,
-    },
+      borderRadius: t => [
+        `${t.radii.default} 3rem 0 0`,
+        `${t.radii.default} 3rem 3rem`
+      ],
+      objectFit: `none !important`
+    }
   },
   iconBox: {
     borderRadius: `xxl`,
     minHeight: `15rem`,
-    zIndex: 2,
+    zIndex: 2
   },
   iconText: {
-    display: [`none`, `block`],
+    display: [`none`, `block`]
   },
   icon: {
-    size: `icon.lg`,
+    size: `icon.lg`
   },
   body: {
     bg: [`contentBg`, `transparent`],
     borderRadius: `default`,
-    p: [4, 0],
+    p: [4, 0]
   },
   category: {
-    display: `inline-block`,
+    display: `inline-block`
   },
   title: {
     variant: `text.h1`,
-    m: 0,
+    m: 0
   },
   excerpt: {
     display: [`none`, `block`],
     flex: 0,
     fontSize: 3,
     mt: 4,
-    mb: 0,
+    mb: 0
   },
   footer: {
     variant: `text.h4`,
@@ -90,19 +91,19 @@ export default {
     m: 0,
     mt: 4,
     px: 3,
-    py: 2,
+    py: 2
   },
   authorPhoto: {
-    display: [`none`, `block`],
+    display: [`none`, `block`]
   },
   author: {
     display: `inline-block`,
-    flexBasis: [`auto`, `full`],
+    flexBasis: [`auto`, `full`]
   },
   date: {
-    display: `inline-block`,
+    display: `inline-block`
   },
   timeToRead: {
-    display: `inline-block`,
-  },
+    display: `inline-block`
+  }
 }

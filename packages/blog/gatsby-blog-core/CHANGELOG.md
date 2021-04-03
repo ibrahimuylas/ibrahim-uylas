@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.2.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.2.0...@elegantstack/gatsby-blog-core@3.2.1) (2021-03-30)
+
+
+### Refactor
+
+* **gatsby-blog-core:** change hero image cropFocus to ATTENTION ([3ead701](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/3ead7014fb1eb97a301e998d531d014556b9532e))
+
+
+
+
+## [3.2.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.1.0...@elegantstack/gatsby-blog-core@3.2.0) (2021-03-27)
+
+
+### Features
+
+* **gatsby-blog-core:** re-enable Sanity CMS with support for new sourcing plugin ([ff30a85](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/ff30a85e6a26d005580928f9e9824b61c7fc557c))
+* upgrade dependencies ([da85e59](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/da85e59915b171796803e5e281fae0cd2e263e3c))
+
+
+
+
 ## [3.1.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.0.1...@elegantstack/gatsby-blog-core@3.1.0) (2021-03-20)
 
 

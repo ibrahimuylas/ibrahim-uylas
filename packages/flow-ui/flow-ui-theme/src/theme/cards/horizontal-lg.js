@@ -4,12 +4,16 @@ export default {
   },
   media: {
     flexBasis: `1/2`,
+    textAlign: `left`,
     m: 0
   },
   image: {
     borderRadius: `none`,
     minHeight: `15rem`,
-    maxHeight: `none`
+    maxHeight: `none`,
+    img: {
+      borderRadius: t => `${t.radii.lg} 0 0 ${t.radii.lg}`
+    }
   },
   iconBox: {
     borderRadius: `none`,

@@ -1,34 +1,34 @@
 export default {
   card: {
     bg: `transparent`,
+    borderRadius: `lg`,
+    overflow: `hidden`,
+    willChange: `transform`
   },
   content: {
     flexDirection: `row`,
-    position: `relative`,
+    position: `relative`
   },
   media: {
     flexBasis: `full`,
-    m: 0,
+    m: 0
   },
   image: {
     minHeight: `15rem`,
     maxHeight: [`20rem`, 470],
-    bg: `transparent`,
-    img: {
-      // objectFit: `none !important`,
-    },
+    bg: `transparent`
   },
   iconBox: {
     borderRadius: `default`,
-    minHeight: `20rem`,
+    minHeight: `20rem`
   },
   iconText: {
-    display: `none`,
+    display: `none`
   },
   icon: {
     height: `5/6`,
     ml: `40%`,
-    opacity: 0.5,
+    opacity: 0.5
   },
   body: {
     height: `full`,
@@ -40,37 +40,37 @@ export default {
 			)`,
     position: `absolute`,
     zIndex: 3,
-    p: [3, 4],
+    p: [3, 4]
   },
   category: {
-    display: [`none`, `block`],
+    display: [`none`, `block`]
   },
   title: {
     variant: `text.h2`,
     color: `white`,
-    mt: `auto`,
+    mt: `auto`
   },
   excerpt: {
-    display: `none`,
+    display: `none`
   },
   footer: {
-    variant: `text.small`,
+    variant: `text.small`
   },
   authorPhoto: {
-    display: `block`,
+    display: `block`
   },
   author: {
     display: `inline-block`,
     flexBasis: `full`,
     'a, a:visited': {
-      color: `white`,
+      color: `white`
     },
-    pr: [0, 0],
+    pr: [0, 0]
   },
   date: {
-    display: `inline-block`,
+    display: `inline-block`
   },
   timeToRead: {
-    display: [`none`, `inline-block`],
-  },
+    display: [`none`, `inline-block`]
+  }
 }

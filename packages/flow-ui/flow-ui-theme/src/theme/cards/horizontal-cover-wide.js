@@ -18,10 +18,13 @@ export default {
   },
   image: {
     minHeight: `auto`,
-    maxHeight: `none`
+    maxHeight: `none`,
+    img: {
+      borderRadius: `lg`
+    }
   },
   iconBox: {
-    borderRadius: `default`,
+    borderRadius: `lg`,
     minHeight: `20rem`
   },
   iconText: {

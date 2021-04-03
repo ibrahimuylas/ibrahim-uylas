@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.0.3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-components@3.0.2...@elegantstack/flow-ui-components@3.0.3) (2021-03-30)
+
+
+### Bug Fixes
+
+* **flow-ui-theme, flow-ui-components:** fix round corners for images in safari ([06570b5](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/06570b58e8f5413dc9af463c48d053bd6e6955d3))
+
+
+
+
+### [3.0.2](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-components@3.0.1...@elegantstack/flow-ui-components@3.0.2) (2021-03-27)
+
+
+### Bug Fixes
+
+* **flow-ui-components:** fix slider dots in mobile ([d762964](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/d762964a309a5bc162047b6da27588244318cf51))
+
+
+
+
 ### [3.0.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-components@3.0.0...@elegantstack/flow-ui-components@3.0.1) (2021-03-20)
 
 

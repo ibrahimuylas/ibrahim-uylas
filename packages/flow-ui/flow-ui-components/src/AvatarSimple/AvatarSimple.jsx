@@ -16,6 +16,9 @@ const styles = {
     overFlow: `hidden`,
     opacity: 0.9,
     mr: 3,
+    img: {
+      borderRadius: `full`
+    },
     ':hover': {
       opacity: 1
     },

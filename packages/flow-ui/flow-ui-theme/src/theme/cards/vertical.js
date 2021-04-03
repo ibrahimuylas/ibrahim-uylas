@@ -8,11 +8,10 @@ export default {
     mb: 0
   },
   image: {
-    borderRadius: `default`,
     minHeight: `8.3rem`,
     maxHeight: `15rem`,
     img: {
-      objectFit: `none !important`
+      borderRadius: `default`
     }
   },
   iconBox: {

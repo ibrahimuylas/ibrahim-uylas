@@ -11,9 +11,11 @@ export default {
     mr: 0
   },
   image: {
-    borderRadius: `default`,
     minHeight: `8.3rem`,
-    maxHeight: `none`
+    maxHeight: `none`,
+    img: {
+      borderRadius: `default`
+    }
   },
   iconBox: {
     borderRadius: `default`,

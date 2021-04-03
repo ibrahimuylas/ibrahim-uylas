@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.0.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-common-helpers@3.0.0...@elegantstack/gatsby-common-helpers@3.0.1) (2021-03-27)
+
+
+### Bug Fixes
+
+* **gastby-common-helpers:** handle undefined optional data for onSubmit in useForm hook ([16f7d1f](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/16f7d1f0ecd1ebcdac0bfd11c4b14862d0794641))
+
+
+
+
 ## 3.0.0 (2021-03-17)
 
 

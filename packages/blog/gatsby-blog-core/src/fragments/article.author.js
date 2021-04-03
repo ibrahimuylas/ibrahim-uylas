@@ -51,22 +51,20 @@ export const query = graphql`
         )
       }
       ... on SanityImageAsset {
-        SanityImageAsset_small: fixed(width: 48, height: 48) {
-          width
-          height
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-        }
-        SanityImageAsset_regular: fixed(width: 150, height: 150) {
-          width
-          height
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-        }
+        SanityImageAsset_small: gatsbyImageData(
+          width: 48
+          height: 48
+          layout: FIXED
+          placeholder: NONE
+          fit: CLIP
+        )
+        SanityImageAsset_regular: gatsbyImageData(
+          width: 150
+          height: 150
+          layout: FIXED
+          placeholder: NONE
+          fit: CLIP
+        )
       }
     }
   }

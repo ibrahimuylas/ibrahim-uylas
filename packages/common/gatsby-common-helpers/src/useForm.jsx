@@ -7,7 +7,7 @@ const useForm = () => {
   const [values, setValues] = useState()
   const [action, setAction] = useState()
 
-  const handleSubmit = (e, { values, action }) => {
+  const handleSubmit = (e, { values, action } = {}) => {
     e.preventDefault()
     if (values) setValues(values)
     if (action) setAction(action)

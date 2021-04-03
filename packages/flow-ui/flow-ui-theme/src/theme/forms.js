@@ -12,6 +12,7 @@ export default {
     }
   },
   input: {
+    fontFamily: `body`,
     border: `none`,
     bg: `omegaLight`,
     color: `omegaDark`,

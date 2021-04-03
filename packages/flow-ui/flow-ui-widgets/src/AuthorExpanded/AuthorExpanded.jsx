@@ -60,9 +60,10 @@ const styles = {
     top: 0,
     zIndex: 2,
     background: [
-      t => `linear-gradient(0deg, ${t.colors.contentBg} 20%, transparent 80%)`,
       t =>
-        `linear-gradient(270deg, ${t.colors.contentBg} 20%, transparent 100%)`
+        `linear-gradient(0deg, ${t.colors.contentBg} 20%, rgba(255, 255, 255, 0) 80%)`,
+      t =>
+        `linear-gradient(270deg, ${t.colors.contentBg} 20%, rgba(255, 255, 255, 0) 100%)`
     ]
   }
 }

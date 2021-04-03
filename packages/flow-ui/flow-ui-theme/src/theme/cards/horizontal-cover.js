@@ -16,7 +16,10 @@ export default {
     m: 0
   },
   image: {
-    minHeight: `15rem`
+    minHeight: `15rem`,
+    img: {
+      borderRadius: `lg`
+    }
   },
   iconBox: {
     borderRadius: `default`,
@@ -37,8 +40,9 @@ export default {
     background: `linear-gradient(
 				120deg,
 				#2d3748 0%,
-				transparent 120%
+				transparent 180%
 			)`,
+    borderRadius: `lg`,
     position: `absolute`,
     zIndex: 3,
     p: 0,
@@ -50,37 +54,37 @@ export default {
     display: [`none`, `block`]
   },
   title: {
-    variant: `text.h2`,
-    color: `white`,
-    width: `full`
-  },
-  excerpt: {
-    display: [`none`, null, `block`],
-    width: `4/5`,
-    flex: `0`,
-    color: `omega`,
-    fontSize: 2,
+    fontSize: [4, , null, 6],
     textShadow: t => `
 			1px 1px 0px #2d3748
     `,
-    mb: 3
+    color: `white`,
+    width: `full`,
+    mt: `auto`
+  },
+  excerpt: {
+    display: `none`
   },
   footer: {
-    variant: `text.small`
+    mt: `auto`,
+    pb: 6
   },
   authorPhoto: {
-    display: `none`
+    display: [`none`, `block`]
   },
   author: {
     display: `inline-block`,
+    flexBasis: `full`,
     'a, a:visited': {
       color: `omegaLight`
     }
   },
   date: {
-    display: `none`
+    display: [`none`, `inline-block`],
+    color: `omegaLight`
   },
   timeToRead: {
-    display: `none`
+    display: [`none`, `inline-block`],
+    color: `omegaLight`
   }
 }

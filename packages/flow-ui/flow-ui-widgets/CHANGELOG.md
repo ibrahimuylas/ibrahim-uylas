@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.1.2](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-widgets@3.1.1...@elegantstack/flow-ui-widgets@3.1.2) (2021-03-30)
+
+
+### Bug Fixes
+
+* **flow-ui-components:** fix gradient for AuthorExpanded in safari ([854c6a7](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/854c6a7088022427862e5d3181f2f9ed7b75532e))
+* **flow-ui-theme, flow-ui-components:** fix round corners for images in safari ([06570b5](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/06570b58e8f5413dc9af463c48d053bd6e6955d3))
+
+
+### Refactor
+
+* **flow-ui-widgets:** improve styling and accessibility of Search bar ([fbf8f08](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/fbf8f08ddf2dd94e5a6ffceb5ee56cb9daf3e2d0))
+
+
+
+
+### [3.1.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-widgets@3.1.0...@elegantstack/flow-ui-widgets@3.1.1) (2021-03-27)
+
+
+### Bug Fixes
+
+* **flow-ui-widgets:** fix Sponsor widget round corners in safari ([0bcca6d](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/0bcca6d034ee955148f72f7f249b8cb577d18ad4))
+
+
+### Refactor
+
+* **flow-ui-widgets:** change search on-demand loading trigger to onClick ([8fdbc5e](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/8fdbc5e2b3aeac8bff783c6c10bb8bce44fa3901))
+
+
+
+
 ## [3.1.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-widgets@3.0.0...@elegantstack/flow-ui-widgets@3.1.0) (2021-03-20)
 
 

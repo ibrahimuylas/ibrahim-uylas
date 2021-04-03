@@ -6,7 +6,6 @@ const SearchComponent = loadable(() => import('./Search'))
 
 const Search = () => {
   const [searchLoaded, setSearchLoaded] = useState()
-  const [isFocused, setIsFocused] = useState()
 
   const loadSearchModule = useCallback(() => {
     SearchComponent.load().then(() => {
@@ -14,22 +13,14 @@ const Search = () => {
     })
   })
 
-  const loadSearchWithFocus = useCallback(() => {
-    loadSearchModule()
-    setIsFocused(true)
-  })
-
   const loadSearch = useCallback(() => {
     loadSearchModule()
   })
 
   return searchLoaded ? (
-    <SearchComponent isFocused={isFocused} />
+    <SearchComponent isFocused={true} />
   ) : (
-    <SearchInput
-      loadSearch={loadSearch}
-      loadSearchWithFocus={loadSearchWithFocus}
-    />
+    <SearchInput loadSearch={loadSearch} />
   )
 }
 

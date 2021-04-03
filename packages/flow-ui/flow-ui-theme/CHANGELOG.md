@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.0.4](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-theme@3.0.3...@elegantstack/flow-ui-theme@3.0.4) (2021-03-30)
+
+
+### Bug Fixes
+
+* **flow-ui-theme:** add missing fontFamily to input and textarea tags ([74501c0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/74501c01cbcf51e1b84998b473de3d18ae7f9bde))
+* **flow-ui-theme, flow-ui-components:** fix round corners for images in safari ([06570b5](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/06570b58e8f5413dc9af463c48d053bd6e6955d3))
+
+
+
+
+### [3.0.3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-theme@3.0.2...@elegantstack/flow-ui-theme@3.0.3) (2021-03-27)
+
+
+### Refactor
+
+* **flow-ui-theme:** improve styling of horizontal-cover blog card ([c313140](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/c3131403173d32541fd23b94b9ff9ae55c840606))
+
+
+
+
 ### [3.0.2](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-theme@3.0.1...@elegantstack/flow-ui-theme@3.0.2) (2021-03-20)
 
 **Note:** Version bump only for package @elegantstack/flow-ui-theme

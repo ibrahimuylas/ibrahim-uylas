@@ -61,14 +61,14 @@ const Hits = ({ searchState, searchResults }) => {
 const ConnectedHits = connectStateResults(Hits)
 
 const Results = () => (
-  <>
+  <Box sx={styles.resultsWrapper}>
     <Box sx={styles.hitsWrapper}>
       <ConnectedHits />
     </Box>
     <Box sx={styles.poweredBy}>
       <PoweredBy />
     </Box>
-  </>
+  </Box>
 )
 
 export default Results

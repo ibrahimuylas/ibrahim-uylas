@@ -10,17 +10,11 @@ const customStyles = {
   }
 }
 
-const SearchInput = ({
-  isLoaded,
-  focus,
-  loadSearch,
-  loadSearchWithFocus,
-  ...props
-}) => (
+const SearchInput = ({ isLoaded, focus, loadSearch, ...props }) => (
   <>
     <IconButton
       sx={styles.mobileTrigger}
-      onClick={loadSearchWithFocus || props.onFocus}
+      onClick={loadSearch || props.onFocus}
       aria-label='Search'
     >
       <FaSearch />
@@ -33,7 +27,8 @@ const SearchInput = ({
         type='text'
         placeholder='Discover news, articles and more...'
         aria-label='Search'
-        onMouseEnter={loadSearch ? loadSearch : undefined}
+        onClick={loadSearch ? loadSearch : undefined}
+        autoFocus={isLoaded ? true : undefined}
         {...props}
       />
     </Box>

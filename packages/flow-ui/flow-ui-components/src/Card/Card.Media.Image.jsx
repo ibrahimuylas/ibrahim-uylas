@@ -10,8 +10,10 @@ const CardMediaImage = ({ variant, loading, image, title }) => (
     alt={title}
     css={css({
       height: `full`,
-      bg: `omegaLighter`,
       verticalAlign: `middle`, //avoid baseline gap
+      img: {
+        bg: `omegaLighter`
+      },
       variant: rv(variant, 'image')
     })}
   />

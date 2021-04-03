@@ -16,7 +16,7 @@ export default {
     left: `50%`,
     transform: focus ? `translate(-50%, 0)` : `translate(0, 0)`,
     zIndex: 99,
-    width: focus ? `80vw` : `auto`,
+    width: focus ? `90vw` : `auto`,
     maxWidth: focus ? `40em` : `none`,
     borderStyle: `solid`,
     borderColor: focus ? `omegaLight` : `headerBg`,
@@ -34,13 +34,11 @@ export default {
   },
   poweredBy: {
     position: `absolute`,
-    top: [`70vh`, `50vh`],
-    mt: 5,
     zIndex: 98,
     width: `80vw`,
     maxWidth: `40em`,
     left: `50%`,
-    transform: `translate(-50%, 150%)`,
+    transform: `translate(-50%, 50%)`,
     textAlign: `right`,
     fontWeight: `medium`,
     fontSize: 2,
@@ -53,16 +51,20 @@ export default {
     display: `block`,
     margin: `auto`
   },
+  resultsWrapper: {
+    size: `100%`,
+    position: `absolute`,
+    top: 6,
+    mt: -4,
+    right: `50%`,
+    transform: `translateX(50%)`,
+    zIndex: 99
+  },
   hitsWrapper: {
     display: `block`,
     overflowY: `scroll`,
     WebkitOverflowScrolling: `touch`,
-    position: `absolute`,
-    top: 4,
-    right: `50%`,
-    transform: `translateX(50%)`,
-    zIndex: 99,
-    width: `80vw`,
+    width: `90vw`,
     maxWidth: `40em`,
     maxHeight: [`70vh`, `50vh`],
     boxShadow: `
@@ -72,7 +74,7 @@ export default {
     bg: `contentBg`,
     borderRadius: `default`,
     p: 4,
-    mt: 5,
+    mx: `auto`,
     mark: {
       fontWeight: `bold`,
       backgroundColor: `highlight`

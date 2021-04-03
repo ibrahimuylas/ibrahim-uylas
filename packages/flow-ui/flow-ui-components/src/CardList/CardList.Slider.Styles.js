@@ -74,11 +74,11 @@ export default {
       ml: 5
     },
     '.slick-dots': {
-      display: [`none`, `block`],
       textAlign: `center`,
       width: `auto`,
-      top: 5,
-      left: 4,
+      top: [`auto`, 5],
+      bottom: [3, `auto`],
+      left: [2, 4],
       p: 0,
       ml: 3
     },

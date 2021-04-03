@@ -7,8 +7,10 @@ import Section from '@components/Section'
 
 const styles = {
   image: {
-    borderRadius: `default`,
-    overflow: `hidden`
+    overflow: `hidden`,
+    img: {
+      borderRadius: `lg`
+    }
   },
   caption: {
     display: `block`,
