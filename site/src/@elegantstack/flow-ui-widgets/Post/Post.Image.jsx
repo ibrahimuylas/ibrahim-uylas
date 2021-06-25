@@ -7,7 +7,7 @@ import getImageVariant from '@components/utils/getImageVariant'
 
 const styles = {
   regular: {
-    minHeight: `15rem`,
+    minHeight: `40rem`,
     img: {
       borderRadius: `lg`
     }
