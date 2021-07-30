@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.4.1...@elegantstack/gatsby-blog-core@3.5.0) (2021-06-17)
+
+
+### Features
+
+* upgrade gatsby and other dependencies ([941b5ea](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/941b5ea131271f222c557d9ab3b38da5a8140d2d))
+* **gatsby-blog-core, gatsby-plugin-utility-directives:** add slugSanitizeRegex theme option for custom slug sanitization regex ([cc78284](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/cc78284388c5c300679394e2ae08472d64ac0a7c))
+
+
+### Bug Fixes
+
+* **gatsby-blog-core:** disable extension warning for gatsby-transformer-sharp ([ee79bdd](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/ee79bdd875c98c2de9bfa5c8e405eaed7a3d7adb))
+
+
+
+
+### [3.4.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.4.0...@elegantstack/gatsby-blog-core@3.4.1) (2021-06-10)
+
+
+### Bug Fixes
+
+* **gatsby-blog-core:** fix author thumbnail image in Strapi CMS ([be6a041](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/be6a041b9ef9cd603df61523d1cfb532c0c25bc7))
+
+
+
+## [3.4.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.3.0...@elegantstack/gatsby-blog-core@3.4.0) (2021-05-30)
+
+
+### Features
+
+* **gatsby-blog-core:** add support for Strapi v1 sourcing plugin ([400a5ba](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/400a5ba32ceeeded8396d012679eb6dcc5997ce4))
+
+
+
+
+## [3.3.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.2.1...@elegantstack/gatsby-blog-core@3.3.0) (2021-05-19)
+
+
+### Features
+
+* upgrade dependencies ([dae5750](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/dae57508db7811d0a33ceeb53d57f9b680196f37))
+
+
+### Refactor
+
+* **gatsby-blog-core:** move gatsby-plugin-sharp quality from gatsby-config.js to fragments ([fd698df](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/fd698dfe01cb95b1615bf995539ddc2126c3a746))
+* **gatsby-blog-core, gatsby-blog-helpers:** move alias import declerations to aliased packages ([0a4c409](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/0a4c4090e79affdc34440fdf9e0db4c2e9a16846))
+
+
+
+
 ### [3.2.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.2.0...@elegantstack/gatsby-blog-core@3.2.1) (2021-03-30)
 
 

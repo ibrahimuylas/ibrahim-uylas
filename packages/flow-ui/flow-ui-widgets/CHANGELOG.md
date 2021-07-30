@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-widgets@3.2.1...@elegantstack/flow-ui-widgets@3.3.0) (2021-06-17)
+
+
+### Features
+
+* upgrade gatsby and other dependencies ([941b5ea](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/941b5ea131271f222c557d9ab3b38da5a8140d2d))
+
+
+
+
+### [3.2.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-widgets@3.2.0...@elegantstack/flow-ui-widgets@3.2.1) (2021-05-30)
+
+
+### Bug Fixes
+
+* **flow-ui-widgets:** fix Catgeories widget styling issue ([d953b51](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/d953b510cc5e0e53007ab653f76b8e2d8a3b4244))
+* **flow-ui-widgets:** fix missing og:image ([417188d](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/417188d2b07462a91ab368f579d369fe6ca0dbe1))
+
+
+
+
+## [3.2.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-widgets@3.1.3...@elegantstack/flow-ui-widgets@3.2.0) (2021-05-19)
+
+
+### Features
+
+* upgrade dependencies ([dae5750](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/dae57508db7811d0a33ceeb53d57f9b680196f37))
+
+
+### Refactor
+
+* **flow-ui-components, flow-ui-widgets, flow-ui-layout:** move alias import declerations to aliased packages ([1ec5752](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/1ec5752478924fec647a0a8c0a8c975a32a9d4b0))
+
+
+
+
+### [3.1.3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-widgets@3.1.2...@elegantstack/flow-ui-widgets@3.1.3) (2021-04-22)
+
+
+### Bug Fixes
+
+* **flow-ui-components:** add alt prop to Sponsor component's image ([b741b31](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/b741b31faa0b0d29136a9cfe53aa7882a57fc781))
+* **flow-ui-widgets:** fix overflow of image in post page on mobile ([6e2da9f](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/6e2da9fae30e706b47796c662f09a333945be5f8))
+
+
+
+
 ### [3.1.2](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-widgets@3.1.1...@elegantstack/flow-ui-widgets@3.1.2) (2021-03-30)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@elegantstack/flow-ui-layout",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "index.js",
   "private": true,
   "author": "ElegantStack Team",
@@ -13,6 +13,7 @@
     "@elegantstack/flow-ui-components": "^2.0.0",
     "@elegantstack/flow-ui-theme": "^2.0.0",
     "@elegantstack/flow-ui-widgets": "^2.0.0",
-    "@elegantstack/gatsby-common-helpers": "^2.0.0"
+    "@elegantstack/gatsby-common-helpers": "^2.0.0",
+    "@elegantstack/gatsby-plugin-alias-imports": "^3.0.0"
   }
 }

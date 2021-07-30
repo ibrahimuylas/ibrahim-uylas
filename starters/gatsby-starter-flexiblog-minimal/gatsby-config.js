@@ -6,7 +6,7 @@ module.exports = {
     {
       resolve: '@elegantstack/gatsby-theme-flexiblog-minimal',
       options: {
-        // Theme options goes here
+        // Add theme options here
       }
     }
   ],

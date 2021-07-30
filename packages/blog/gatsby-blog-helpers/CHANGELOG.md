@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-helpers@3.0.0...@elegantstack/gatsby-blog-helpers@3.1.0) (2021-05-19)
+
+
+### Features
+
+* **gatsby-blog-helpers:** add useRecentPosts hook ([875285c](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/875285c604d9c6e3a5ce87593369882d128e3cd7))
+
+
+### Refactor
+
+* **gatsby-blog-core, gatsby-blog-helpers:** move alias import declerations to aliased packages ([0a4c409](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/0a4c4090e79affdc34440fdf9e0db4c2e9a16846))
+
+
+
+
 ## 3.0.0 (2021-03-17)
 
 

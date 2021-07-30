@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-personal@3.3.2...@elegantstack/gatsby-theme-flexiblog-personal@3.4.0) (2021-06-17)
+
+**Note:** Version bump only for package @elegantstack/gatsby-theme-flexiblog-personal
+
+
+
+
+
+
+### [3.3.2](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-personal@3.3.1...@elegantstack/gatsby-theme-flexiblog-personal@3.3.2) (2021-06-10)
+
+**Note:** Version bump only for package @elegantstack/gatsby-theme-flexiblog-personal
+
+
+
+
+
+### [3.3.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-personal@3.3.0...@elegantstack/gatsby-theme-flexiblog-personal@3.3.1) (2021-05-30)
+
+**Note:** Version bump only for package @elegantstack/gatsby-theme-flexiblog-personal
+
+
+
+
+
+
+## [3.3.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-personal@3.2.1...@elegantstack/gatsby-theme-flexiblog-personal@3.3.0) (2021-05-19)
+
+
+### Features
+
+* upgrade dependencies ([dae5750](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/dae57508db7811d0a33ceeb53d57f9b680196f37))
+
+
+### Bug Fixes
+
+* **gatsby-theme-flexiblog-personal:** remove black placeholder for hero image ([fe9e253](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/fe9e253c5e4895563d25cf79ac6953f6fd6572b0))
+
+
+
+
+### [3.2.2](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-personal@3.2.1...@elegantstack/gatsby-theme-flexiblog-personal@3.2.2) (2021-04-22)
+
+
+### Bug Fixes
+
+* **gatsby-theme-flexiblog-personal:** remove black placeholder for hero image ([fe9e253](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/fe9e253c5e4895563d25cf79ac6953f6fd6572b0))
+
+
+
+
 ### [3.2.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-personal@3.2.0...@elegantstack/gatsby-theme-flexiblog-personal@3.2.1) (2021-03-30)
 
 **Note:** Version bump only for package @elegantstack/gatsby-theme-flexiblog-personal

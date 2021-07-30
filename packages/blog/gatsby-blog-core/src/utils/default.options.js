@@ -109,6 +109,8 @@ module.exports = pluginOptions => {
 
   const darkMode = getValue(pluginOptions, 'darkMode', true)
 
+  const slugSanitizeRegex = getValue(pluginOptions, 'slugSanitizeRegex', null)
+
   const pageContextOptions = {
     paginatePostsPage,
     basePath,
@@ -130,6 +132,7 @@ module.exports = pluginOptions => {
     homePostsPerPage,
     paginatePostsPage,
     collectionPostsPerPage,
+    slugSanitizeRegex,
     pageContextOptions
   }
 }

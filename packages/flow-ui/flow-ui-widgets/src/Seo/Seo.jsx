@@ -1,7 +1,9 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { helmetJsonLdProp } from 'react-schemaorg'
+import { getSrc } from 'gatsby-plugin-image'
 import useSiteMetadata from '@helpers-blog/useSiteMetadata'
+import getImageVariant from '@components/utils/getImageVariant'
 
 const Seo = ({
   title,
@@ -25,12 +27,10 @@ const Seo = ({
 
   description = excerpt || description || site.description
 
-  thumbnail = thumbnail && thumbnail.hero && thumbnail.hero.src
-  const thumbnailUrl =
-    thumbnail &&
-    (thumbnail.startsWith('//')
-      ? thumbnail
-      : siteUrl && `${siteUrl}${thumbnail}`)
+  const imageSrc = getSrc(getImageVariant(thumbnail, 'hero'))
+  const imageUrl =
+    imageSrc &&
+    (imageSrc.startsWith('//') ? imageSrc : siteUrl && `${siteUrl}${imageSrc}`)
 
   /**
    * Meta Tags
@@ -45,7 +45,7 @@ const Seo = ({
     { property: 'og:description', content: description },
     { property: 'og:type', content: 'website' },
     { property: 'og:site_name', content: site.name },
-    { property: 'og:image', content: thumbnailUrl },
+    { property: 'og:image', content: imageUrl },
 
     { name: 'twitter:card', content: 'summary' },
     { name: 'twitter:site', content: site.name },
@@ -86,7 +86,7 @@ const Seo = ({
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: title,
-      image: thumbnailUrl,
+      image: imageUrl,
       datePublished: date
     })
     scripts.push(articleJsonLd)

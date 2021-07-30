@@ -27,7 +27,7 @@ const Sponsor = props => {
   return (
     <Section aside title='Our Sponsor' {...props}>
       <Link href='/' target='_blank'>
-        <Img image={image} css={css(styles.image)} />
+        <Img image={image} css={css(styles.image)} alt='Sponsor' />
       </Link>
       <Link variant='mute' as={GLink} to='/contact' sx={styles.caption}>
         ADVERTISE WITH US

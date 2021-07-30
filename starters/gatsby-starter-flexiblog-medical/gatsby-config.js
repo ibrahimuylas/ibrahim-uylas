@@ -6,7 +6,7 @@ module.exports = {
     {
       resolve: '@elegantstack/gatsby-theme-flexiblog-medical',
       options: {
-        // Theme options goes here
+        // Add theme options here
       }
     }
   ],

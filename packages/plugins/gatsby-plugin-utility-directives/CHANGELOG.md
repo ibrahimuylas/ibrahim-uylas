@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-plugin-utility-directives@3.1.0...@elegantstack/gatsby-plugin-utility-directives@3.2.0) (2021-06-17)
+
+
+### Features
+
+* **gatsby-blog-core, gatsby-plugin-utility-directives:** add slugSanitizeRegex theme option for custom slug sanitization regex ([cc78284](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/cc78284388c5c300679394e2ae08472d64ac0a7c))
+
+
+
+
+## [3.1.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-plugin-utility-directives@3.0.1...@elegantstack/gatsby-plugin-utility-directives@3.1.0) (2021-05-19)
+
+
+### Features
+
+* upgrade dependencies ([dae5750](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/dae57508db7811d0a33ceeb53d57f9b680196f37))
+
+
+
+
 ### [3.0.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-plugin-utility-directives@3.0.0...@elegantstack/gatsby-plugin-utility-directives@3.0.1) (2021-03-20)
 
 

@@ -10,12 +10,14 @@ export const query = graphql`
           height: 290
           transformOptions: { cropFocus: CENTER }
           outputPixelDensities: [0.5, 1]
+          quality: 75
         )
         ImageSharp_hero: gatsbyImageData(
           width: 1600
           height: 650
           transformOptions: { cropFocus: ATTENTION }
           outputPixelDensities: [0.5, 1]
+          quality: 75
         )
       }
       ... on ContentfulAsset {
@@ -58,18 +60,21 @@ export const query = graphql`
           height: 470
           transformOptions: { cropFocus: CENTER }
           outputPixelDensities: [0.5, 1]
+          quality: 75
         )
         ImageSharp_horizontal: gatsbyImageData(
           width: 807
           height: 400
           transformOptions: { cropFocus: CENTER }
           outputPixelDensities: [0.5, 1]
+          quality: 75
         )
         ImageSharp_hero: gatsbyImageData(
           width: 1600
           height: 650
           transformOptions: { cropFocus: ATTENTION }
           outputPixelDensities: [0.5, 1]
+          quality: 75
         )
       }
       ... on ContentfulAsset {

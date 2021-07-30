@@ -7,7 +7,6 @@ import Section from '@components/Section'
 const styles = {
   horizontal: {
     display: `flex`,
-    justifyContent: [`flex-start`, `space-evenly`],
     flexWrap: `nowrap`,
     overflowX: `auto`,
     width: `auto`,
@@ -16,7 +15,7 @@ const styles = {
     a: {
       flex: 1,
       minWidth: [`1/3`, `auto`],
-      m: [3, 2]
+      m: 2
     }
   }
 }

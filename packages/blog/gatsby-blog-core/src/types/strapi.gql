@@ -31,7 +31,7 @@ type StrapiArticleProxy implements Node & Article
     @proxyResolver(on: "Mdx")
   thumbnailText: String @proxyField
   thumbnail: ImageSharp
-    @proxyField(from: "parent.thumbnail___NODE")
+    @proxyField(from: "parent.thumbnail.localFile___NODE")
     @link(by: "parent.id")
   tableOfContents(maxDepth: Int = 6): JSON
     @link(from: "parent", on: "StrapiArticle")
@@ -72,6 +72,6 @@ type StrapiAuthorProxy implements Node & ArticleAuthor
   social: [SocialMedia] @proxyField @normalizeSocial
   skills: [String] @proxyField
   thumbnail: ImageSharp
-    @proxyField(from: "parent.thumbnail___NODE")
+    @proxyField(from: "parent.thumbnail.localFile___NODE")
     @link(by: "parent.id")
 }

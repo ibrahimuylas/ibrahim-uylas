@@ -25,8 +25,8 @@ const styles = {
     }
   },
   inCardLarge: {
-    mt: -5,
-    mx: -5,
+    mt: [-4, -5],
+    mx: [-4, -5],
     img: {
       borderRadius: t => `${t.radii.lg} ${t.radii.lg} 0 0`
     }

@@ -1,11 +1,10 @@
 module.exports = {
   plugins: [
-    'gatsby-plugin-react-helmet',
     {
       resolve: '@elegantstack/gatsby-plugin-alias-imports',
       options: {
         alias: {
-          '@widgets': '@elegantstack/flow-ui-widgets/src'
+          '@helpers-blog': '@elegantstack/gatsby-blog-helpers/src'
         },
         extensions: ['js', 'jsx']
       }

@@ -27,19 +27,6 @@ module.exports = options => {
       options
     },
     {
-      resolve: '@elegantstack/gatsby-plugin-alias-imports',
-      options: {
-        alias: {
-          '@layout': '@elegantstack/flow-ui-layout/src',
-          '@components': '@elegantstack/flow-ui-components/src',
-          '@widgets': '@elegantstack/flow-ui-widgets/src',
-          '@helpers': '@elegantstack/gatsby-common-helpers/src',
-          '@helpers-blog': '@elegantstack/gatsby-blog-helpers/src'
-        },
-        extensions: ['js', 'jsx']
-      }
-    },
-    {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: mdxExtensions,
@@ -69,13 +56,13 @@ module.exports = options => {
     },
     'gatsby-plugin-catch-links',
     'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-plugin-sharp',
+      resolve: 'gatsby-transformer-sharp',
       options: {
-        defaultQuality: 75
+        checkSupportedExtensions: false
       }
-    },
-    'gatsby-transformer-sharp'
+    }
   ].filter(Boolean)
 
   // Resolve local paths

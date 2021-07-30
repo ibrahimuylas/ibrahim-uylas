@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-starter-flexiblog-education@3.3.2...@elegantstack/gatsby-starter-flexiblog-education@3.4.0) (2021-06-17)
+
+
+### Features
+
+* upgrade gatsby and other dependencies ([941b5ea](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/941b5ea131271f222c557d9ab3b38da5a8140d2d))
+
+
+
+
+### [3.3.2](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-starter-flexiblog-education@3.3.1...@elegantstack/gatsby-starter-flexiblog-education@3.3.2) (2021-06-10)
+
+**Note:** Version bump only for package @elegantstack/gatsby-starter-flexiblog-education
+
+
+
+
+
+### [3.3.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-starter-flexiblog-education@3.3.0...@elegantstack/gatsby-starter-flexiblog-education@3.3.1) (2021-05-30)
+
+**Note:** Version bump only for package @elegantstack/gatsby-starter-flexiblog-education
+
+
+
+
+
+
+## [3.3.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-starter-flexiblog-education@3.2.1...@elegantstack/gatsby-starter-flexiblog-education@3.3.0) (2021-05-19)
+
+
+### Features
+
+* upgrade dependencies ([dae5750](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/dae57508db7811d0a33ceeb53d57f9b680196f37))
+
+
+
+
+### [3.2.2](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-starter-flexiblog-education@3.2.1...@elegantstack/gatsby-starter-flexiblog-education@3.2.2) (2021-04-22)
+
+**Note:** Version bump only for package @elegantstack/gatsby-starter-flexiblog-education
+
+
+
+
+
+
 ### [3.2.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-starter-flexiblog-education@3.2.0...@elegantstack/gatsby-starter-flexiblog-education@3.2.1) (2021-03-30)
 
 

@@ -1,22 +1,22 @@
 {
   "name": "@elegantstack/gatsby-theme-flexiblog-education",
-  "version": "3.2.1",
+  "version": "3.4.0",
   "main": "index.js",
   "private": true,
   "author": "ElegantStack Team",
   "license": "",
   "dependencies": {
-    "@elegantstack/flow-ui-components": "^3.0.3",
-    "@elegantstack/flow-ui-layout": "^3.0.0",
+    "@elegantstack/flow-ui-components": "^3.1.0",
+    "@elegantstack/flow-ui-layout": "^3.0.1",
     "@elegantstack/flow-ui-theme": "^3.0.4",
-    "@elegantstack/flow-ui-widgets": "^3.1.2",
-    "@elegantstack/gatsby-blog-core": "^3.2.1",
-    "@elegantstack/gatsby-blog-helpers": "^3.0.0",
+    "@elegantstack/flow-ui-widgets": "^3.3.0",
+    "@elegantstack/gatsby-blog-core": "^3.5.0",
+    "@elegantstack/gatsby-blog-helpers": "^3.1.0",
     "@elegantstack/gatsby-blog-pages": "^3.0.0",
-    "@elegantstack/gatsby-common-helpers": "^3.0.1"
+    "@elegantstack/gatsby-common-helpers": "^3.0.2"
   },
   "peerDependencies": {
-    "gatsby": "^3.1.2",
+    "gatsby": "^3.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }

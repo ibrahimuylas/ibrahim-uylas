@@ -12,6 +12,7 @@ const styles = {
       color: `heading`
     },
     svg: {
+      fill: `omegaDarker`,
       height: 24,
       ml: 2
     }
