@@ -6,7 +6,11 @@ export const useRecentPosts = () => {
 }
 
 const recentPostsQuery = graphql`
-  query allRecentArticleQuery {
+  query allRecentArticleQuery(
+    $includeExcerpt: Boolean! = true
+    $includeTimeToRead: Boolean! = true
+    $imageQuality: Int! = 75
+  ) {
     recentPosts: allArticle(
       filter: { private: { ne: true }, draft: { ne: true } }
       sort: { fields: [date], order: DESC }

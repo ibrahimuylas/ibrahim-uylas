@@ -11,6 +11,9 @@ export const pageQuery = graphql`
     $categoryId: String
     $tagsIds: [String]
     $hasTags: Boolean!
+    $includeExcerpt: Boolean!
+    $includeTimeToRead: Boolean!
+    $imageQuality: Int!
   ) {
     post: article(id: { eq: $id }) {
       ...ArticleInformation
@@ -21,7 +24,7 @@ export const pageQuery = graphql`
     tagCategoryPosts: allArticle(
       filter: {
         private: { ne: true }
-        draft: {ne: true}
+        draft: { ne: true }
         tags: { elemMatch: { id: { in: $tagsIds } } }
         category: { id: { eq: $categoryId } }
         id: { ne: $id }
@@ -39,7 +42,7 @@ export const pageQuery = graphql`
     tagPosts: allArticle(
       filter: {
         private: { ne: true }
-        draft: {ne: true}
+        draft: { ne: true }
         tags: { elemMatch: { id: { in: $tagsIds } } }
         id: { ne: $id }
       }
@@ -56,7 +59,7 @@ export const pageQuery = graphql`
     categoryPosts: allArticle(
       filter: {
         private: { ne: true }
-        draft: {ne: true}
+        draft: { ne: true }
         category: { id: { eq: $categoryId } }
         id: { ne: $id }
       }

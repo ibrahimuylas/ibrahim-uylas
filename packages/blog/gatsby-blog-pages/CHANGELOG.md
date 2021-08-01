@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-pages@3.0.0...@elegantstack/gatsby-blog-pages@3.1.0) (2021-08-01)
+
+
+### Bug Fixes
+
+* **gatsby-blog-pages:** add description meta tag to author/tag/category pages ([b360490](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/b3604907a78b46c04449db718c953d146d179d1a))
+
+
+
+
 ## 3.0.0 (2021-03-17)
 
 

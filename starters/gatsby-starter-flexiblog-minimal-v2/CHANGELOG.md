@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-starter-flexiblog-minimal-v2@3.4.0...@elegantstack/gatsby-starter-flexiblog-minimal-v2@3.5.0) (2021-08-01)
+
+
+### Features
+
+* update Gatsby and dependencies ([95b3b72](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/95b3b7234b39eb66e5957f9acc0d10519b400941))
+
+
+
+
 ## [3.4.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-starter-flexiblog-minimal-v2@3.3.2...@elegantstack/gatsby-starter-flexiblog-minimal-v2@3.4.0) (2021-06-17)
 
 

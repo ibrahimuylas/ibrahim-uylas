@@ -6,8 +6,8 @@ export const query = graphql`
     title
     slug
     link
-    excerpt
-    timeToRead
+    excerpt @include(if: $includeExcerpt)
+    timeToRead @include(if: $includeTimeToRead)
     featured
     thumbnailText
     date(formatString: "MMMM DD, YYYY")

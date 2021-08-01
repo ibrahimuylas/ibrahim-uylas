@@ -8,7 +8,7 @@ import Seo from '@widgets/Seo'
 
 const PageCollection = ({ data: { posts, collectionInfo }, ...props }) => (
   <Layout {...props}>
-    <Seo title={collectionInfo.name} />
+    <Seo title={collectionInfo.name} description={collectionInfo.description} />
     <Divider />
     <Stack effectProps={{ effect: 'fadeInDown' }}>
       <PageTitle

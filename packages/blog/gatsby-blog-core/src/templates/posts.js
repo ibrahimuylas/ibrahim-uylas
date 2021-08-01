@@ -4,11 +4,18 @@ import PostsPage from '../containers/Posts'
 export default PostsPage
 
 export const pageQuery = graphql`
-  query PostsPageQuery($paginatePostsPage: Boolean!, $skip: Int, $limit: Int) {
+  query PostsPageQuery(
+    $paginatePostsPage: Boolean!
+    $skip: Int
+    $limit: Int
+    $includeExcerpt: Boolean!
+    $includeTimeToRead: Boolean!
+    $imageQuality: Int!
+  ) {
     featuredPosts: allArticle(
       filter: {
         private: { ne: true }
-        draft: {ne: true}
+        draft: { ne: true }
         featured: { eq: true }
       }
       sort: { fields: [date], order: DESC }
@@ -21,10 +28,7 @@ export const pageQuery = graphql`
     }
 
     recentPosts: allArticle(
-      filter: {
-        private: { ne: true }
-        draft: {ne: true}
-      }
+      filter: { private: { ne: true }, draft: { ne: true } }
       sort: { fields: [date], order: DESC }
       limit: 6
     ) {
@@ -35,10 +39,7 @@ export const pageQuery = graphql`
     }
 
     posts: allArticle(
-      filter: {
-        private: { ne: true }
-        draft: {ne: true}
-      }
+      filter: { private: { ne: true }, draft: { ne: true } }
       sort: { fields: [date], order: DESC }
       limit: 1000
     ) @skip(if: $paginatePostsPage) {
@@ -52,10 +53,7 @@ export const pageQuery = graphql`
     }
 
     paginatedPosts: allArticle(
-      filter: {
-        private: { ne: true }
-        draft: {ne: true}
-      }
+      filter: { private: { ne: true }, draft: { ne: true } }
       sort: { fields: [date], order: DESC }
       limit: $limit
       skip: $skip

@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.5.0...@elegantstack/gatsby-blog-core@3.6.0) (2021-08-01)
+
+
+### Features
+
+* update Gatsby and dependencies ([95b3b72](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/95b3b7234b39eb66e5957f9acc0d10519b400941))
+* **gatsby-blog-core:** add theme option for changing article image quality ([ca8446a](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/ca8446adc9ac02325a79a34a4ee84cd7aa39f2e5))
+
+
+### Performance Improvements
+
+* **gatsby-blog-core:** add theme option for disabling article timeToRead and excerpt for faster builds ([1553bce](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/1553bce72779c401ccae78e811c015298349c802))
+* **gatsby-blog-core:** remove unnecessary excerpt field from post page query for faster builds ([6d5b780](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/6d5b78085e8626f9cc0238d15a42ed1a6e8000b3))
+
+
+### Refactor
+
+* **gatsby-blog-core:** change cropFocus to CENTER for cropping blog images ([f4b3a96](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/f4b3a962db1233340c4e983fe0512a284c4ab848))
+* **gatsby-blog-core:** delete irrelevant duplicate file of algolia queries ([e35739f](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/e35739fab25a49c5307f4b1ca28ac5127c161e71))
+
+
+
+
 ## [3.5.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.4.1...@elegantstack/gatsby-blog-core@3.5.0) (2021-06-17)
 
 

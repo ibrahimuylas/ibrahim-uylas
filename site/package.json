@@ -12,7 +12,7 @@
 	"dependencies": {
 		"@elegantstack/gatsby-theme-flexiblog-agency": "*",
 		"dotenv": "^8.2.0",
-		"gatsby": "^3.7.2",
+		"gatsby": "^3.10.2",
 		"gatsby-plugin-disqus": "^1.2.2",
 		"gatsby-plugin-google-analytics": "^3.2.0",
 		"gatsby-plugin-netlify-cms": "^5.2.0",

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-medical@3.4.0...@elegantstack/gatsby-theme-flexiblog-medical@3.5.0) (2021-08-01)
+
+**Note:** Version bump only for package @elegantstack/gatsby-theme-flexiblog-medical
+
+
+
+
+
+
 ## [3.4.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-medical@3.3.2...@elegantstack/gatsby-theme-flexiblog-medical@3.4.0) (2021-06-17)
 
 **Note:** Version bump only for package @elegantstack/gatsby-theme-flexiblog-medical
