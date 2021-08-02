@@ -1,6 +1,12 @@
 module.exports = {
   plugins: [
     {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: "https://uylas.us7.list-manage.com/subscribe/post?u=56f18106e942eac04fac11bc7&amp;id=b37cfb1ab8"
+      }
+    },
+    {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         // The property ID; the tracking code won't be generated without it
@@ -26,6 +32,7 @@ module.exports = {
       resolve: "@elegantstack/gatsby-theme-flexiblog-agency",
       options: {
         services: {
+          mailchimp: true,
           disqus: true,
         },
         sources: {
@@ -74,10 +81,6 @@ module.exports = {
       {
         name: 'Ana Sayfa',
         slug: '/'
-      },
-      {
-        name: 'Rotalar',
-        slug: '/contact'
       },
       {
         name: 'İletişim',

@@ -17,11 +17,11 @@ const Posts = ({
   let categories = useBlogCategories();
 
   let sortedPostGroup = [];
-  sortedPostGroup.push(posts.group.find(_=> _.categoryName === "Kampçılık"));
-  sortedPostGroup.push(posts.group.find(_=> _.categoryName === "Doğa Yürüyüşleri"));
-  sortedPostGroup.push(posts.group.find(_=> _.categoryName === "Rotalar"));
-  sortedPostGroup.push(posts.group.find(_=> _.categoryName === "Ekipmanlar"));
-  sortedPostGroup.push(posts.group.find(_=> _.categoryName === "Diğer"));
+  sortedPostGroup.push(posts.group.find(_ => _.categoryName === "Kampçılık"));
+  sortedPostGroup.push(posts.group.find(_ => _.categoryName === "Doğa Yürüyüşleri"));
+  sortedPostGroup.push(posts.group.find(_ => _.categoryName === "Rotalar"));
+  sortedPostGroup.push(posts.group.find(_ => _.categoryName === "Ekipmanlar"));
+  sortedPostGroup.push(posts.group.find(_ => _.categoryName === "Diğer"));
 
   posts.group = sortedPostGroup;
 
@@ -67,7 +67,17 @@ const Posts = ({
           <BannerVertical />
         </Sidebar>
       </Stack>
-      <Divider space={5} />
+      <Stack>
+        <Main>
+          {services.mailchimp && (
+            <>
+              <Divider space={4} />
+              <NewsletterExpanded />
+            </>
+          )}
+        </Main>
+      </Stack>
+      <Divider space={4} />
       {posts.group.length &&
         posts.group.map((group, index) => (
           <React.Fragment key={`${group.categoryName}.list`}>
@@ -182,16 +192,6 @@ const Posts = ({
             {index !== posts.group.length - 1 && <Divider />}
           </React.Fragment>
         ))}
-      <Stack>
-        <Main>
-          {services.mailchimp && (
-            <>
-              <Divider space={5} />
-              <NewsletterExpanded />
-            </>
-          )}
-        </Main>
-      </Stack>
     </Layout>
   )
 }

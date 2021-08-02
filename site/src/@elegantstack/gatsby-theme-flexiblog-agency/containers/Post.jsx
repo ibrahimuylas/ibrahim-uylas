@@ -4,7 +4,8 @@ import { Layout, Stack, Main } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
-import AuthorExpanded from '@widgets/AuthorExpanded'
+import NewsletterExpanded from '@widgets/NewsletterExpanded'
+// import AuthorExpanded from '@widgets/AuthorExpanded'
 import {
   PostHead,
   PostImage,
@@ -39,7 +40,7 @@ const Post = ({
             {services.disqus && <PostComments {...post} />}
           </CardComponent>
           <Divider />
-          <AuthorExpanded author={post.author} />
+          {/* <AuthorExpanded author={post.author} /> */}
           <Divider />
           {post.category && (
             <CardList
@@ -50,6 +51,16 @@ const Post = ({
               limit={6}
               distinct
             />
+          )}
+        </Main>
+      </Stack>
+      <Stack>
+        <Main>
+          {services.mailchimp && (
+            <>
+              <Divider space={5} />
+              <NewsletterExpanded />
+            </>
           )}
         </Main>
       </Stack>
