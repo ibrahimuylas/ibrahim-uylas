@@ -7,7 +7,15 @@ import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
 import AuthorExpanded from '@widgets/AuthorExpanded'
 import NewsletterCompact from '@widgets/NewsletterCompact'
-import { PostImage, PostBody, PostComments, PostTagsShare } from '@widgets/Post'
+import TableOfContentsExpanded from '@widgets/TableOfContentsExpanded'
+import {
+  PostImage,
+  PostBody,
+  PostComments,
+  PostCommentsFacebook,
+  PostCommentsGraph,
+  PostTagsShare
+} from '@widgets/Post'
 
 const Post = ({
   data: { post, tagCategoryPosts, tagPosts, categoryPosts, previous, next },
@@ -28,18 +36,30 @@ const Post = ({
         <Main>
           <Card {...post} variant='horizontal-hero' omitExcerpt omitMedia />
         </Main>
-        <Sidebar pl={[null, 2, 4, 5]}>
-          <NewsletterCompact omitTitle />
-        </Sidebar>
+        {services.mailchimp && (
+          <Sidebar pl={[null, 2, 4, 5]}>
+            <NewsletterCompact omitTitle />
+          </Sidebar>
+        )}
       </Stack>
       <Divider space={3} />
       <Stack effectProps={{ fraction: 0 }}>
         <Main>
+          {post.tableOfContents?.items && (
+            <>
+              <TableOfContentsExpanded {...post} />
+              <Divider />
+            </>
+          )}
           <CardComponent variant='paper-lg'>
             <PostImage {...post} inCard />
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
             {services.disqus && <PostComments {...post} />}
+            {services.graphComment && <PostCommentsGraph {...post} />}
+            {services.facebookComment && (
+              <PostCommentsFacebook {...post} siteUrl={siteUrl} />
+            )}
           </CardComponent>
           <Divider />
           <AuthorExpanded author={post.author} />

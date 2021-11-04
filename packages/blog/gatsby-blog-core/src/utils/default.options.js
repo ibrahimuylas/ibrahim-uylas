@@ -5,7 +5,9 @@ module.exports = pluginOptions => {
   const services = {
     algolia: getValue(pluginOptions, 'services.algolia', false),
     mailchimp: getValue(pluginOptions, 'services.mailchimp', false),
-    disqus: getValue(pluginOptions, 'services.disqus', false)
+    disqus: getValue(pluginOptions, 'services.disqus', false),
+    graphComment: getValue(pluginOptions, 'services.graphComment', false),
+    facebookComment: getValue(pluginOptions, 'services.facebookComment', false)
   }
 
   const sources = [
@@ -42,7 +44,9 @@ module.exports = pluginOptions => {
     }
   ]
 
-  const siteUrl = pluginOptions.siteUrl || null
+  const siteUrl = pluginOptions.siteUrl
+    ? pluginOptions.siteUrl.replace(/\/$/, '')
+    : null
 
   const basePath = pluginOptions.basePath || '/'
 
@@ -113,6 +117,11 @@ module.exports = pluginOptions => {
 
   const includeExcerpt = getValue(pluginOptions, 'includeExcerpt', true)
   const includeTimeToRead = getValue(pluginOptions, 'includeTimeToRead', true)
+  const includeTableOfContents = getValue(
+    pluginOptions,
+    'includeTableOfContents',
+    true
+  )
   const imageQuality = getValue(pluginOptions, 'imageQuality', 75)
 
   const pageContextOptions = {
@@ -124,6 +133,7 @@ module.exports = pluginOptions => {
     darkMode,
     includeExcerpt,
     includeTimeToRead,
+    includeTableOfContents,
     imageQuality
   }
 

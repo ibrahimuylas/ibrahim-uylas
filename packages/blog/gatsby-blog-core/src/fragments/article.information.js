@@ -6,6 +6,8 @@ export const query = graphql`
     title
     slug
     link
+    excerpt
+    tableOfContents(maxDepth: 2) @include(if: $includeTableOfContents)
     timeToRead @include(if: $includeTimeToRead)
     featured
     thumbnailText

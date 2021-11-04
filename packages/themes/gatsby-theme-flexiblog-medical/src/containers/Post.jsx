@@ -10,6 +10,8 @@ import {
   PostImage,
   PostBody,
   PostComments,
+  PostCommentsFacebook,
+  PostCommentsGraph,
   PostTagsShare
 } from '@widgets/Post'
 
@@ -37,6 +39,10 @@ const Post = ({
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
             {services.disqus && <PostComments {...post} />}
+            {services.graphComment && <PostCommentsGraph {...post} />}
+            {services.facebookComment && (
+              <PostCommentsFacebook {...post} siteUrl={siteUrl} />
+            )}
           </CardComponent>
           <Divider />
           <AuthorExpanded author={post.author} />

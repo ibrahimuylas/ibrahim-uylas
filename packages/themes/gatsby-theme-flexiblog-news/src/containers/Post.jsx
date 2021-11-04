@@ -6,11 +6,14 @@ import Divider from '@components/Divider'
 import Sticky from '@components/Sticky'
 import Seo from '@widgets/Seo'
 import AuthorCompact from '@widgets/AuthorCompact'
+import TableOfContentsCompact from '@widgets/TableOfContentsCompact'
 import {
   PostHead,
   PostImage,
   PostBody,
   PostComments,
+  PostCommentsFacebook,
+  PostCommentsGraph,
   PostTagsShare,
   PostFooter
 } from '@widgets/Post'
@@ -41,14 +44,24 @@ const Post = ({
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
             {services.disqus && <PostComments {...post} />}
+            {services.graphComment && <PostCommentsGraph {...post} />}
+            {services.facebookComment && (
+              <PostCommentsFacebook {...post} siteUrl={siteUrl} />
+            )}
             <PostFooter {...{ previous, next }} />
           </Card>
         </Main>
         <Sidebar>
           <AuthorCompact author={post.author} omitTitle />
           <Divider />
-          {post.category && (
-            <Sticky>
+          <Sticky>
+            {post.tableOfContents?.items && (
+              <>
+                <TableOfContentsCompact {...post} />
+                <Divider />
+              </>
+            )}
+            {post.category && (
               <CardList
                 title='Related Posts'
                 nodes={relatedPosts}
@@ -59,8 +72,8 @@ const Post = ({
                 distinct
                 aside
               />
-            </Sticky>
-          )}
+            )}
+          </Sticky>
         </Sidebar>
       </Stack>
     </Layout>

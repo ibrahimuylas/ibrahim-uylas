@@ -5,7 +5,15 @@ import CardList from '@components/CardList'
 import Card from '@components/Card'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
-import { PostImage, PostBody, PostComments, PostTagsShare } from '@widgets/Post'
+import TableOfContentsExpanded from '@widgets/TableOfContentsExpanded'
+import {
+  PostImage,
+  PostBody,
+  PostComments,
+  PostCommentsFacebook,
+  PostCommentsGraph,
+  PostTagsShare
+} from '@widgets/Post'
 
 const Post = ({
   data: { post, tagCategoryPosts, tagPosts, categoryPosts, previous, next },
@@ -30,11 +38,21 @@ const Post = ({
       <Divider space={3} />
       <Stack effectProps={{ fraction: 0 }}>
         <Main>
+          {post.tableOfContents?.items && (
+            <>
+              <TableOfContentsExpanded {...post} />
+              <Divider />
+            </>
+          )}
           <CardComponent variant='paper-lg'>
             <PostImage {...post} inCard />
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
             {services.disqus && <PostComments {...post} />}
+            {services.graphComment && <PostCommentsGraph {...post} />}
+            {services.facebookComment && (
+              <PostCommentsFacebook {...post} siteUrl={siteUrl} />
+            )}
           </CardComponent>
           <Divider />
           {post.category && (

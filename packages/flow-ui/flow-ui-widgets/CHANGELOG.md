@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-widgets@3.5.0...@elegantstack/flow-ui-widgets@3.6.0) (2021-09-07)
+
+
+### Features
+
+* add Facebook Cooments integration ([2f0eef3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/2f0eef3874a85a12454ddbdd290d0c41b07d71c1))
+* add GraphComment.com integration ([f327dbb](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/f327dbb33df1c74c931293d075f753bc866f5e50))
+* **flow-ui-widgets:** add locale to Seo component props ([d53d7dd](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/d53d7dda555694df238a17d5a73176e0524a0ca4))
+* upgrade Gatsby and dependencies ([d59a731](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/d59a731107925db1a03367d9a24d7c40dae622e6))
+
+
+### Bug Fixes
+
+* **flow-ui-widgets:** fix react key warning for TOC components ([a6b5104](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/a6b510470720fb5bf695fe0e1419353b33a1d2f0))
+
+
+
+
+## [3.5.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-widgets@3.4.0...@elegantstack/flow-ui-widgets@3.5.0) (2021-08-19)
+
+
+### Features
+
+* **flow-ui-widgets:** add TableOfContentsCompact & TableOfContentsExpanded ([1e17598](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/1e17598edde06100d4eae0c1df1e305e30de2f0e))
+
+
+### Bug Fixes
+
+* **flow-ui-widgets:** set open graph type property to article for post pages ([849a720](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/849a7203a50496d5041aad953ea1c0f11d03d657))
+
+
+
 ## [3.4.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-widgets@3.3.0...@elegantstack/flow-ui-widgets@3.4.0) (2021-08-01)
 
 

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-minimal-v2@3.6.0...@elegantstack/gatsby-theme-flexiblog-minimal-v2@3.7.0) (2021-09-07)
+
+
+### Features
+
+* add Facebook Comments & GraphComment to theme Post pages ([a611c97](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/a611c9799bb97a642afbf3fc114dd1fc9dc7077f))
+
+
+
+
+## [3.6.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-minimal-v2@3.5.0...@elegantstack/gatsby-theme-flexiblog-minimal-v2@3.6.0) (2021-08-19)
+
+
+### Features
+
+* add TableOfContent widget to Post pages ([c6b64e5](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/c6b64e592174206d42a9e3559c6025faf4546509))
+
+
+
 ## [3.5.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-minimal-v2@3.4.0...@elegantstack/gatsby-theme-flexiblog-minimal-v2@3.5.0) (2021-08-01)
 
 **Note:** Version bump only for package @elegantstack/gatsby-theme-flexiblog-minimal-v2

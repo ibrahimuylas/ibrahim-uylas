@@ -6,11 +6,14 @@ import Divider from '@components/Divider'
 import Sticky from '@components/Sticky'
 import Seo from '@widgets/Seo'
 import AuthorCompact from '@widgets/AuthorCompact'
+import TableOfContentsExpanded from '@widgets/TableOfContentsExpanded'
 import {
   PostHead,
   PostImage,
   PostBody,
   PostComments,
+  PostCommentsFacebook,
+  PostCommentsGraph,
   PostTagsShare,
   PostFooter
 } from '@widgets/Post'
@@ -41,10 +44,20 @@ const Post = ({
       <Divider space={3} />
       <Stack effectProps={{ fraction: 0 }}>
         <Main>
+          {post.tableOfContents?.items && (
+            <>
+              <TableOfContentsExpanded {...post} columns={1} />
+              <Divider />
+            </>
+          )}
           <CardComponent variant='paper'>
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
             {services.disqus && <PostComments {...post} />}
+            {services.graphComment && <PostCommentsGraph {...post} />}
+            {services.facebookComment && (
+              <PostCommentsFacebook {...post} siteUrl={siteUrl} />
+            )}
             <PostFooter {...{ previous, next }} />
           </CardComponent>
         </Main>

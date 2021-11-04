@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-education@3.6.0...@elegantstack/gatsby-theme-flexiblog-education@3.7.0) (2021-09-07)
+
+
+### Features
+
+* add Facebook Comments & GraphComment to theme Post pages ([a611c97](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/a611c9799bb97a642afbf3fc114dd1fc9dc7077f))
+
+
+
+
+## [3.6.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-education@3.5.0...@elegantstack/gatsby-theme-flexiblog-education@3.6.0) (2021-08-19)
+
+
+### Features
+
+* add TableOfContent widget to Post pages ([c6b64e5](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/c6b64e592174206d42a9e3559c6025faf4546509))
+
+
+### Bug Fixes
+
+* **gatsby-theme-flexiblog-education:** hide Newsletter widget in Post page if MailChimp is not enabled ([0ea11c4](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/0ea11c43944cda14510557d1952810c75691b5fa))
+
+
+
 ## [3.5.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-education@3.4.0...@elegantstack/gatsby-theme-flexiblog-education@3.5.0) (2021-08-01)
 
 **Note:** Version bump only for package @elegantstack/gatsby-theme-flexiblog-education

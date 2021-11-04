@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.0.2](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-layout@3.0.1...@elegantstack/flow-ui-layout@3.0.2) (2021-09-07)
+
+
+### Refactor
+
+* **flow-ui-layout:** change logo placeholder to NONE ([4f77a3e](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/4f77a3e29a586e798eab8d0b16dd3c35e7f5ded8))
+
+
+
+
 ### [3.0.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-layout@3.0.0...@elegantstack/flow-ui-layout@3.0.1) (2021-05-19)
 
 

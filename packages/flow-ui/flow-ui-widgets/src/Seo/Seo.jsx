@@ -17,7 +17,8 @@ const Seo = ({
   timeToRead,
   children,
   thumbnail,
-  siteUrl
+  siteUrl,
+  locale
 }) => {
   const site = useSiteMetadata()
 
@@ -43,7 +44,7 @@ const Seo = ({
 
     { property: 'og:title', content: title || site.title },
     { property: 'og:description', content: description },
-    { property: 'og:type', content: 'website' },
+    { property: 'og:type', content: date ? 'article' : 'website' },
     { property: 'og:site_name', content: site.name },
     { property: 'og:image', content: imageUrl },
 
@@ -118,7 +119,7 @@ const Seo = ({
   return (
     <Helmet
       htmlAttributes={{
-        lang: 'en'
+        lang: locale || 'en'
       }}
       title={title}
       titleTemplate={`%s | ${site.title}`}

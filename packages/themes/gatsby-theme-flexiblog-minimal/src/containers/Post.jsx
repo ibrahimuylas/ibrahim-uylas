@@ -7,7 +7,14 @@ import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
 import AuthorExpanded from '@widgets/AuthorExpanded'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
-import { PostBody, PostComments, PostTagsShare } from '@widgets/Post'
+import TableOfContentsExpanded from '@widgets/TableOfContentsExpanded'
+import {
+  PostBody,
+  PostComments,
+  PostCommentsFacebook,
+  PostCommentsGraph,
+  PostTagsShare
+} from '@widgets/Post'
 
 const Post = ({
   data: { post, tagCategoryPosts, tagPosts, categoryPosts },
@@ -29,21 +36,26 @@ const Post = ({
           <Card {...post} variant='horizontal-hero' omitExcerpt />
         </Main>
       </Stack>
-      <Divider />
+      <Divider space={3} />
       <Stack effectProps={{ fraction: 0 }}>
         <Main>
+          {post.tableOfContents?.items && (
+            <>
+              <TableOfContentsExpanded {...post} />
+              <Divider />
+            </>
+          )}
           <CardComponent variant='paper-lg'>
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
+            {services.disqus && <PostComments {...post} />}
+            {services.graphComment && <PostCommentsGraph {...post} />}
+            {services.facebookComment && (
+              <PostCommentsFacebook {...post} siteUrl={siteUrl} />
+            )}
           </CardComponent>
           <Divider />
           <AuthorExpanded author={post.author} />
-          {services.disqus && (
-            <>
-              <Divider />
-              <PostComments {...post} />
-            </>
-          )}
           <Divider />
           {post.category && (
             <CardList

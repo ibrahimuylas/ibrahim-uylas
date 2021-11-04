@@ -25,11 +25,13 @@ export default {
   },
   h4: {
     ...heading,
-    fontSize: 2
+    fontSize: 2,
+    fontWeight: `medium`
   },
   h5: {
     ...heading,
-    fontSize: 1
+    fontSize: 1,
+    fontWeight: `medium`
   },
   medium: {
     fontSize: 3,

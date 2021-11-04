@@ -13,6 +13,7 @@ export const pageQuery = graphql`
     $hasTags: Boolean!
     $includeExcerpt: Boolean!
     $includeTimeToRead: Boolean!
+    $includeTableOfContents: Boolean!
     $imageQuality: Int!
   ) {
     post: article(id: { eq: $id }) {

@@ -10,6 +10,12 @@ export { PostTagsShare } from './Post.Tags.Share'
 export const PostComments = loadable(() =>
   import(/* webpackPrefetch: true */ './Post.Comments')
 )
+export const PostCommentsFacebook = loadable(() =>
+  import(/* webpackPrefetch: true */ './Post.Comments.Facebook')
+)
+export const PostCommentsGraph = loadable(() =>
+  import(/* webpackPrefetch: true */ './Post.Comments.Graph')
+)
 export const PostShare = loadable(() =>
   import(/* webpackPrefetch: true */ './Post.Share')
 )

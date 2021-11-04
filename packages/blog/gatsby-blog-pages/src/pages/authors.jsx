@@ -21,11 +21,11 @@ const PageAuthors = props => {
       </Stack>
       <Stack>
         <Main>
-          {authors.map(author => (
-            <>
+          {authors.map((author, i) => (
+            <React.Fragment key={`item-${i}`}>
               <Divider />
               <AuthorExpanded author={author} withLink />
-            </>
+            </React.Fragment>
           ))}
         </Main>
       </Stack>

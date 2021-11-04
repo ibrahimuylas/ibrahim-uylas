@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.8.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.7.0...@elegantstack/gatsby-blog-core@3.8.0) (2021-09-07)
+
+
+### Features
+
+* add Facebook Cooments integration ([2f0eef3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/2f0eef3874a85a12454ddbdd290d0c41b07d71c1))
+* add GraphComment.com integration ([f327dbb](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/f327dbb33df1c74c931293d075f753bc866f5e50))
+* upgrade Gatsby and dependencies ([d59a731](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/d59a731107925db1a03367d9a24d7c40dae622e6))
+
+
+### Refactor
+
+* **gatsby-blog-core:** remove trailing slash from siteUrl in theme options ([8d7b18c](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/8d7b18cdf9a42d0a479ee70bd721d759b84be45e))
+
+
+
+
+## [3.7.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.6.0...@elegantstack/gatsby-blog-core@3.7.0) (2021-08-19)
+
+
+### Features
+
+* **gatsby-blog-core:** add includeTableOfContents theme option ([f992cf3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/f992cf39d5a73df801a65d7c0d2ffa21dc94e338))
+* **gatsby-blog-core:** add tableOfContents to article query ([d0a1f46](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/d0a1f469ac2eec96747161041bef7877f4ea3893))
+
+
+### Bug Fixes
+
+* add back excerpt field to post page used for SEO description metatag ([3205f6c](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/3205f6c6f33ddbfc00bd96fe1734064022f138e3))
+
+
+
 ## [3.6.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.5.0...@elegantstack/gatsby-blog-core@3.6.0) (2021-08-01)
 
 

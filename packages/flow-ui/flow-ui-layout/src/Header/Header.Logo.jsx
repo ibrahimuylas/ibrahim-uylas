@@ -36,7 +36,7 @@ const logoQuery = graphql`
           width: 150
           layout: FIXED
           quality: 100
-          placeholder: TRACED_SVG
+          placeholder: NONE
         )
       }
     }
@@ -49,7 +49,7 @@ const logoQuery = graphql`
           width: 150
           layout: FIXED
           quality: 100
-          placeholder: TRACED_SVG
+          placeholder: NONE
         )
       }
     }
