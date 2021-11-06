@@ -84,7 +84,7 @@ module.exports = {
       },
       {
         name: 'İletişim',
-        slug: '/contact'
+        slug: '/iletisim'
       }
     ],
 
@@ -116,7 +116,7 @@ module.exports = {
         items: [
           {
             name: 'İletişim',
-            slug: '/contact'
+            slug: '/iletisim'
           },
           {
             name: 'Bu Adam Kim?',
