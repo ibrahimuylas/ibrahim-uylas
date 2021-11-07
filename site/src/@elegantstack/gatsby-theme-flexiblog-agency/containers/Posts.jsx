@@ -13,26 +13,28 @@ const Posts = ({
   data: { posts = {}, featuredPosts = {}, recentPosts = {} },
   ...props
 }) => {
-  const { pageContext: { services = {} } = {} } = props;
-  let categories = useBlogCategories();
+  const { pageContext: { services = {} } = {} } = props
+  let categories = useBlogCategories()
 
-  let sortedPostGroup = [];
-  sortedPostGroup.push(posts.group.find(_ => _.categoryName === "Kampçılık"));
-  sortedPostGroup.push(posts.group.find(_ => _.categoryName === "Doğa Yürüyüşleri"));
-  sortedPostGroup.push(posts.group.find(_ => _.categoryName === "Rotalar"));
-  sortedPostGroup.push(posts.group.find(_ => _.categoryName === "Ekipmanlar"));
-  sortedPostGroup.push(posts.group.find(_ => _.categoryName === "Diğer"));
+  let sortedPostGroup = []
+  sortedPostGroup.push(posts.group.find(_ => _.categoryName === 'Kampçılık'))
+  sortedPostGroup.push(
+    posts.group.find(_ => _.categoryName === 'Doğa Yürüyüşleri')
+  )
+  sortedPostGroup.push(posts.group.find(_ => _.categoryName === 'Rotalar'))
+  sortedPostGroup.push(posts.group.find(_ => _.categoryName === 'Ekipmanlar'))
+  sortedPostGroup.push(posts.group.find(_ => _.categoryName === 'Diğer'))
 
-  posts.group = sortedPostGroup;
+  posts.group = sortedPostGroup
 
-  let sortedCategories = [];
-  sortedCategories.push(categories.find(_ => _.name === "Kampçılık"));
-  sortedCategories.push(categories.find(_ => _.name === "Doğa Yürüyüşleri"));
-  sortedCategories.push(categories.find(_ => _.name === "Rotalar"));
-  sortedCategories.push(categories.find(_ => _.name === "Ekipmanlar"));
-  sortedCategories.push(categories.find(_ => _.name === "Diğer"));
+  let sortedCategories = []
+  sortedCategories.push(categories.find(_ => _.name === 'Kampçılık'))
+  sortedCategories.push(categories.find(_ => _.name === 'Doğa Yürüyüşleri'))
+  sortedCategories.push(categories.find(_ => _.name === 'Rotalar'))
+  sortedCategories.push(categories.find(_ => _.name === 'Ekipmanlar'))
+  sortedCategories.push(categories.find(_ => _.name === 'Diğer'))
 
-  categories = sortedCategories;
+  categories = sortedCategories
 
   return (
     <Layout {...props}>
