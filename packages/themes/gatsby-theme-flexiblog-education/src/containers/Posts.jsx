@@ -42,7 +42,7 @@ const Posts = ({ data: { posts = {}, featuredPosts = {} }, ...props }) => {
       <Stack>
         <Main>
           {posts.group.map(group => (
-            <>
+            <React.Fragment key={`${group.categoryName}.list`}>
               <Divider />
               <CardList
                 nodes={group.nodes}
@@ -53,7 +53,7 @@ const Posts = ({ data: { posts = {}, featuredPosts = {} }, ...props }) => {
                 columns={[1, 2, 2, 2]}
                 withTitleLink
               />
-            </>
+            </React.Fragment>
           ))}
         </Main>
       </Stack>

@@ -11,6 +11,7 @@ type ContentfulArticleProxy implements Node & Article
   date: Date @proxyField @dateformat
   featured: Boolean @proxyField
   private: Boolean @proxyField
+  protected: Boolean @proxyField
   author: ContentfulAuthorProxy
     @proxyField(from: "parent.author___NODE")
     @link(by: "parent.id")

@@ -11,6 +11,7 @@ type MdxArticleProxy implements Node & Article
   date: Date @proxyField(from: "parent.frontmatter.date") @dateformat
   featured: Boolean @proxyField(from: "parent.frontmatter.featured")
   private: Boolean @proxyField(from: "parent.frontmatter.private")
+  protected: Boolean @proxyField(from: "parent.frontmatter.protected")
   author: ArticleAuthor
     @proxyField(from: "parent.frontmatter.author")
     @link(by: "name")

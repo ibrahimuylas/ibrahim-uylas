@@ -14,7 +14,7 @@ module.exports = async (
     {
       allArticle(
         filter: { draft: { ne: true } }
-        sort: { fields: [date, title], order: DESC }
+        sort: [{ date: DESC }, { title: ASC }]
         limit: 1000
       ) {
         edges {
@@ -51,7 +51,7 @@ module.exports = async (
 
     //For querying related posts based on tags and category
     const categoryId = category && category.id
-    const tagsIds = (tags && tags.map(({ id }) => id)) || []
+    const tagsIds = (tags && tags.map(tag => tag && tag.id)) || []
     const hasTags = tagsIds.length > 0
 
     createPage({

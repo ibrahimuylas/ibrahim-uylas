@@ -10,6 +10,7 @@ export const query = graphql`
     tableOfContents(maxDepth: 2) @include(if: $includeTableOfContents)
     timeToRead @include(if: $includeTimeToRead)
     featured
+    protected
     thumbnailText
     date(formatString: "MMMM DD, YYYY")
     category {

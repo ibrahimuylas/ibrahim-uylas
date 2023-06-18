@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/gatsby-plugin-proxy-directives@3.1.0...@elegantstack/gatsby-plugin-proxy-directives@4.0.0) (2023-03-11)
+
+
+### Refactor
+
+* refactor code for Gatsby v5 support ([f3852fd](https://github.com/ElegantStack/gatsby-themes/commit/f3852fd3b880cb7b77271f358b092ce730797334))
+
+
+
+
+## [3.1.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/gatsby-plugin-proxy-directives@3.0.0...@elegantstack/gatsby-plugin-proxy-directives@3.1.0) (2022-02-28)
+
+
+### Bug Fixes
+
+* **gatsby-plugin-proxy-directives:** fix GraphQL schemaCustomization warning ([daad80d](https://github.com/ElegantStack/gatsby-themes/commit/daad80d4782feacef5a38b6e87afe8219cad1931))
+
+
+
+
 ## 3.0.0 (2021-03-17)
 
 

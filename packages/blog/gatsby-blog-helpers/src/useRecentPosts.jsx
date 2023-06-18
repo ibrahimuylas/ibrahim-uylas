@@ -13,7 +13,7 @@ const recentPostsQuery = graphql`
   ) {
     recentPosts: allArticle(
       filter: { private: { ne: true }, draft: { ne: true } }
-      sort: { fields: [date], order: DESC }
+      sort: { date: DESC }
       limit: 6
     ) {
       nodes {

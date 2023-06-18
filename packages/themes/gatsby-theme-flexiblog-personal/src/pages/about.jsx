@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link as GLink } from 'gatsby'
 import { GatsbyImage as Img, getImage } from 'gatsby-plugin-image'
 import { Box, Text, Card, Flex, Button } from 'theme-ui'
 import { Layout, Stack, Main } from '@layout'
@@ -53,7 +53,9 @@ export default props => {
           <Divider />
           <Box sx={styles.imageWrapper}>
             <Img image={image} />
-            <Button sx={styles.button}>Contact Me</Button>
+            <Button as={GLink} to='/contact' sx={styles.button}>
+              Contact Me
+            </Button>
           </Box>
           <Divider />
           <Flex sx={styles.grid}>

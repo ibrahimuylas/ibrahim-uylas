@@ -1,7 +1,4 @@
 module.exports = {
-  flags: {
-    DEV_SSR: false
-  },
   plugins: [
     {
       resolve: '@elegantstack/gatsby-theme-flexiblog-beauty',

@@ -49,9 +49,10 @@ module.exports = options => {
           },
           { resolve: 'gatsby-remark-responsive-iframe' },
           { resolve: 'gatsby-remark-copy-linked-files' },
-          { resolve: 'gatsby-remark-smartypants' }
+          { resolve: 'gatsby-remark-smartypants' },
+          ...options.gatsbyRemarkPlugins
         ],
-        remarkPlugins: [require('remark-slug')]
+        remarkPlugins: [require('remark-slug'), ...options.remarkPlugins]
       }
     },
     'gatsby-plugin-catch-links',

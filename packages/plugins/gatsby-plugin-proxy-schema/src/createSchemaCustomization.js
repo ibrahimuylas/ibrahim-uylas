@@ -71,21 +71,43 @@ module.exports = async ({ actions, store, cache, reporter }, pluginOptions) => {
    * missing contentful types during query extraction from components
    */
   const addRemoteSourceTypes = async source => {
-    const { typeDefs, typeDefsFallback, enabled, sourcePlugin } = source
+    const {
+      typeDefs,
+      typeDefsFallback,
+      enabled,
+      sourcePlugin,
+      sourcePluginVersion
+    } = source
 
-    const isPluginInstalled =
+    const installedPlugin =
       sourcePlugin &&
       flattenedPlugins.find(plugin => plugin.name == sourcePlugin)
 
     if (enabled) {
-      if (isPluginInstalled) {
+      if (installedPlugin) {
+        //Check if installed plugin has the minimum required version
+        if (
+          sourcePluginVersion &&
+          installedPlugin.version.localeCompare(
+            sourcePluginVersion,
+            undefined,
+            {
+              numeric: true,
+              sensitivity: 'base'
+            }
+          ) === -1
+        ) {
+          reporter.panic(
+            throwError({ source, installedPlugin }).deprecated_source_plugin
+          )
+        }
         await extractProxyDefs(typeDefs)
         allTypeDefs.push(typeDefs)
       } else {
         reporter.panic(throwError({ source }).missing_source)
       }
     } else {
-      if (isPluginInstalled) {
+      if (installedPlugin) {
         reporter.panic(throwError({ source }).unused_source)
       } else {
         typeDefsFallback && allTypeDefs.push(typeDefsFallback)
@@ -107,8 +129,9 @@ module.exports = async ({ actions, store, cache, reporter }, pluginOptions) => {
     const { path, name } = localPath
 
     const files = glob.sync(
-      `${nodePath.resolve(program.directory, path)}/**/*{${extensions &&
-        extensions.join(',')}}`
+      `${nodePath.resolve(program.directory, path)}/**/*{${
+        extensions && extensions.join(',')
+      }}`
     )
     // Create types only if local files exist
     if (files.length >= 1) {

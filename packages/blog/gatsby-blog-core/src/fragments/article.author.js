@@ -20,7 +20,7 @@ export const query = graphql`
           height: 48
           layout: FIXED
           transformOptions: { cropFocus: NORTH }
-          placeholder: TRACED_SVG
+          placeholder: BLURRED
           quality: 75
         )
         ImageSharp_regular: gatsbyImageData(
@@ -28,7 +28,7 @@ export const query = graphql`
           height: 150
           layout: FIXED
           transformOptions: { cropFocus: NORTH }
-          placeholder: TRACED_SVG
+          placeholder: BLURRED
           quality: 80
         )
       }

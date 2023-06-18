@@ -40,7 +40,7 @@ const heroQuery = graphql`
           width: 320
           height: 320
           transformOptions: { cropFocus: NORTH }
-          placeholder: TRACED_SVG
+          placeholder: BLURRED
         )
       }
     }

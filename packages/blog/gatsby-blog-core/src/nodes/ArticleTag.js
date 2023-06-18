@@ -10,7 +10,7 @@ module.exports = (
     'Mdx',
     'ContentfulArticle',
     'SanityArticle',
-    'StrapiArticle'
+    'STRAPI_ARTICLE'
   ]
   const newNodeType = 'ArticleTag'
 
@@ -21,10 +21,12 @@ module.exports = (
       if (!localPaths.find(path => path.name === source)) return
     }
 
-    const { tags = [] } = node.frontmatter || node
+    const { tags, tags_array } = node.frontmatter || node
+
+    const tagsToCreate = tags_array || tags || []
 
     // Create nodes
-    tags.forEach(tag => {
+    tagsToCreate.forEach(tag => {
       const id = createNodeId(`${tag} >>> ${newNodeType}`)
 
       // Skip existing node

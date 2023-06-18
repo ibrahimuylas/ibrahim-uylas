@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/flow-ui-layout@3.1.0...@elegantstack/flow-ui-layout@4.0.0) (2023-03-11)
+
+
+### Features
+
+* upgrade to Gatsby v5 and update other dependencies ([aba9eb2](https://github.com/ElegantStack/gatsby-themes/commit/aba9eb243ebe39f0f02885b9693703a316c0a91f))
+
+
+
+
+## [3.1.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/flow-ui-layout@3.0.3...@elegantstack/flow-ui-layout@3.1.0) (2022-05-18)
+
+
+### Features
+
+* Upgrade Gatsby and React and other depenedencies ([144ccc1](https://github.com/ElegantStack/gatsby-themes/commit/144ccc14a11f5f5cb5721d744922a3f164410f17))
+
+
+
+### [3.0.3](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-layout@3.0.2...@elegantstack/flow-ui-layout@3.0.3) (2021-11-15)
+
+
+### Bug Fixes
+
+* **flow-ui-layout:** change logo image layout to CONSTRAINED ([815234d](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/815234d037ec809c5d474de2abebcbcb17751b38))
+
+
+
+
 ### [3.0.2](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-layout@3.0.1...@elegantstack/flow-ui-layout@3.0.2) (2021-09-07)
 
 

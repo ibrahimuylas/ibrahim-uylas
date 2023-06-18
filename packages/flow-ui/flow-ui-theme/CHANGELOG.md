@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/flow-ui-theme@3.5.0...@elegantstack/flow-ui-theme@4.0.0) (2023-03-11)
+
+
+### Features
+
+* upgrade to Gatsby v5 and update other dependencies ([aba9eb2](https://github.com/ElegantStack/gatsby-themes/commit/aba9eb243ebe39f0f02885b9693703a316c0a91f))
+
+
+
+
+## [3.5.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/flow-ui-theme@3.4.0...@elegantstack/flow-ui-theme@3.5.0) (2022-05-18)
+
+
+### Features
+
+* **flow-ui-theme:** add smooth scroll to styles ([373edf8](https://github.com/ElegantStack/gatsby-themes/commit/373edf8e982871917fd95f06ce52090427d3fdea))
+
+
+
+## [3.4.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/flow-ui-theme@3.3.0...@elegantstack/flow-ui-theme@3.4.0) (2022-02-28)
+
+
+### Features
+
+* upgrade Gatsby and other dependencies ([c42e47d](https://github.com/ElegantStack/gatsby-themes/commit/c42e47d5aea6364d7671bf5f75fbed7cee431c73))
+
+
+
+
+## [3.3.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-theme@3.2.0...@elegantstack/flow-ui-theme@3.3.0) (2021-11-15)
+
+
+### Features
+
+* upgrade to Gatsby v4 ([e481e4a](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/e481e4ab705d20c9d3daf3b2048f29eef308f420))
+
+
+### Bug Fixes
+
+* **flow-ui-theme:** adjust objectFit of card images for better image quality ([474c2fd](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/474c2fd76b315490dca737b73712ef472d67bafc))
+
+
+
+
 ## [3.2.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/flow-ui-theme@3.1.0...@elegantstack/flow-ui-theme@3.2.0) (2021-09-07)
 
 

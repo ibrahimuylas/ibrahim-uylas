@@ -25,14 +25,13 @@ const makeSlug =
 
     if (!fromValue) return null
 
-    const plugin = await context.nodeModel.runQuery({
+    const plugin = await context.nodeModel.findOne({
       query: {
         filter: {
           name: { eq: '@elegantstack/gatsby-plugin-utility-directives' }
         }
       },
-      type: 'SitePlugin',
-      firstOnly: true
+      type: 'SitePlugin'
     })
 
     const { basePath, sitePaths, slugSanitizeRegex } = withDefaults(
@@ -86,7 +85,7 @@ const blockContentToMarkdown =
 
     // Get gatsby-source-sanity options
     const plugin = context.nodeModel
-      .getAllNodes({ type: 'SitePlugin' })
+      .findAll({ type: 'SitePlugin' })
       .find(node => node.name === 'gatsby-source-sanity')
 
     const { projectId, dataset } = plugin.pluginOptions

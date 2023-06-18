@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/gatsby-theme-flexiblog-personal@3.10.0...@elegantstack/gatsby-theme-flexiblog-personal@4.0.0) (2023-03-11)
+
+
+### Refactor
+
+* refactor code for Gatsby v5 support ([f3852fd](https://github.com/ElegantStack/gatsby-themes/commit/f3852fd3b880cb7b77271f358b092ce730797334))
+
+
+
+
+## [3.10.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/gatsby-theme-flexiblog-personal@3.9.0...@elegantstack/gatsby-theme-flexiblog-personal@3.10.0) (2022-05-18)
+
+
+### Features
+
+* Upgrade Gatsby and React and other depenedencies ([144ccc1](https://github.com/ElegantStack/gatsby-themes/commit/144ccc14a11f5f5cb5721d744922a3f164410f17))
+
+
+
+## [3.9.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/gatsby-theme-flexiblog-personal@3.8.0...@elegantstack/gatsby-theme-flexiblog-personal@3.9.0) (2022-02-28)
+
+
+### Bug Fixes
+
+* **gatsby-theme-flexiblog-personal:** fix missing contact button link in about page ([446ddfa](https://github.com/ElegantStack/gatsby-themes/commit/446ddfa846bdf473c467ba108157acda88cf1dd2))
+
+
+
+
+## [3.8.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-personal@3.7.0...@elegantstack/gatsby-theme-flexiblog-personal@3.8.0) (2021-11-15)
+
+
+### Features
+
+* upgrade to Gatsby v4 ([e481e4a](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/e481e4ab705d20c9d3daf3b2048f29eef308f420))
+
+
+
+
 ## [3.7.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-theme-flexiblog-personal@3.6.0...@elegantstack/gatsby-theme-flexiblog-personal@3.7.0) (2021-09-07)
 
 

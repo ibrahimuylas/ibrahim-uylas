@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/gatsby-plugin-utility-directives@3.4.0...@elegantstack/gatsby-plugin-utility-directives@4.0.0) (2023-03-11)
+
+
+### Refactor
+
+* refactor code for Gatsby v5 support ([f3852fd](https://github.com/ElegantStack/gatsby-themes/commit/f3852fd3b880cb7b77271f358b092ce730797334))
+
+
+
+
+## [3.4.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/gatsby-plugin-utility-directives@3.3.1...@elegantstack/gatsby-plugin-utility-directives@3.4.0) (2022-02-28)
+
+
+### Features
+
+* upgrade Gatsby and other dependencies ([c42e47d](https://github.com/ElegantStack/gatsby-themes/commit/c42e47d5aea6364d7671bf5f75fbed7cee431c73))
+
+
+
+
+### [3.3.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-plugin-utility-directives@3.3.0...@elegantstack/gatsby-plugin-utility-directives@3.3.1) (2021-11-15)
+
+
+### Bug Fixes
+
+* **gatsby-plugin-utility-directives:** replace deprecated runQuery with findOne ([acc7908](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/acc79082e7a772dd723a966a3b74d1e8588d3e97))
+
+
+
+
 ## [3.3.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-plugin-utility-directives@3.2.0...@elegantstack/gatsby-plugin-utility-directives@3.3.0) (2021-08-01)
 
 

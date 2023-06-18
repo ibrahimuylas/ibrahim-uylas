@@ -11,6 +11,7 @@ type SanityArticleProxy implements Node & Article
   date: Date @proxyField @dateformat
   featured: Boolean @proxyField
   private: Boolean @proxyField
+  protected: Boolean @proxyField
   author: SanityAuthorProxy
     @proxyField(from: "parent.author._ref")
     @link(by: "parent.id")

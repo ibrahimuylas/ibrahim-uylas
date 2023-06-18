@@ -15,14 +15,13 @@ export const pageQuery = graphql`
     collectionInfo: articleAuthor(slug: { eq: $slug }) {
       ...ArticleAuthor
     }
-
     posts: allArticle(
       filter: {
         private: { ne: true }
         draft: { ne: true }
         author: { slug: { eq: $slug } }
       }
-      sort: { fields: [date], order: DESC }
+      sort: { date: DESC }
       limit: $limit
       skip: $skip
     ) {

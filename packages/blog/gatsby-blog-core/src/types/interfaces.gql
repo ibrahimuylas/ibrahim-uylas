@@ -10,6 +10,7 @@ interface Article implements Node {
   date: Date @proxy(from: "date") @dateformat
   featured: Boolean
   private: Boolean
+  protected: Boolean
   author: ArticleAuthor
   category: ArticleCategory
   tags: [ArticleTag]

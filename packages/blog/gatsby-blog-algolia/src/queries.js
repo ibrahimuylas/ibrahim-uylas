@@ -7,7 +7,7 @@ const postQuery = `{
   ) {
     edges {
       node {
-        objectID: id
+        id
 				title
         slug
         link
@@ -16,6 +16,9 @@ const postQuery = `{
 					name
 					slug
 				}
+        internal {
+          contentDigest
+        }
       }
     }
   }

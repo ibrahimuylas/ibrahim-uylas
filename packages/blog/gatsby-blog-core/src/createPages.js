@@ -25,7 +25,7 @@ module.exports = async (helpers, pluginOptions) => {
    */
   await createCollectionPage(helpers, pluginOptions, {
     template: require.resolve('./templates/collection.category'),
-    slugField: 'category___slug'
+    slugField: '{category: {slug: SELECT}}'
   })
 
   /**
@@ -33,7 +33,7 @@ module.exports = async (helpers, pluginOptions) => {
    */
   await createCollectionPage(helpers, pluginOptions, {
     template: require.resolve('./templates/collection.tag'),
-    slugField: 'tags___slug'
+    slugField: '{tags: {slug: SELECT}}'
   })
 
   /**
@@ -41,6 +41,6 @@ module.exports = async (helpers, pluginOptions) => {
    */
   await createCollectionPage(helpers, pluginOptions, {
     template: require.resolve('./templates/collection.author'),
-    slugField: 'author___slug'
+    slugField: '{author: {slug: SELECT}}'
   })
 }

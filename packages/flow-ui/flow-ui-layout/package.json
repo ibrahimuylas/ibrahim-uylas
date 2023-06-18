@@ -1,19 +1,12 @@
 {
   "name": "@elegantstack/flow-ui-layout",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "main": "index.js",
   "private": true,
   "author": "ElegantStack Team",
   "license": "",
   "dependencies": {
-    "rc-switch": "^3.2.1",
+    "rc-switch": "^4.0.0",
     "theme-ui": "^0.3.4"
-  },
-  "peerDependencies": {
-    "@elegantstack/flow-ui-components": "^2.0.0",
-    "@elegantstack/flow-ui-theme": "^2.0.0",
-    "@elegantstack/flow-ui-widgets": "^2.0.0",
-    "@elegantstack/gatsby-common-helpers": "^2.0.0",
-    "@elegantstack/gatsby-plugin-alias-imports": "^3.0.0"
   }
 }

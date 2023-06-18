@@ -18,7 +18,7 @@ export const pageQuery = graphql`
         draft: { ne: true }
         featured: { eq: true }
       }
-      sort: { fields: [date], order: DESC }
+      sort: { date: DESC }
       limit: 10
     ) {
       nodes {
@@ -26,10 +26,9 @@ export const pageQuery = graphql`
         ...ArticleThumbnailFeatured
       }
     }
-
     recentPosts: allArticle(
       filter: { private: { ne: true }, draft: { ne: true } }
-      sort: { fields: [date], order: DESC }
+      sort: { date: DESC }
       limit: 6
     ) {
       nodes {
@@ -37,13 +36,12 @@ export const pageQuery = graphql`
         ...ArticleThumbnailRegular
       }
     }
-
     posts: allArticle(
       filter: { private: { ne: true }, draft: { ne: true } }
-      sort: { fields: [date], order: DESC }
+      sort: { date: DESC }
       limit: 1000
     ) @skip(if: $paginatePostsPage) {
-      group(field: category___name, limit: 10) {
+      group(field: { category: { name: SELECT } }, limit: 10) {
         categoryName: fieldValue
         nodes {
           ...ArticlePreview
@@ -51,10 +49,9 @@ export const pageQuery = graphql`
         }
       }
     }
-
     paginatedPosts: allArticle(
       filter: { private: { ne: true }, draft: { ne: true } }
-      sort: { fields: [date], order: DESC }
+      sort: { date: DESC }
       limit: $limit
       skip: $skip
     ) @include(if: $paginatePostsPage) {

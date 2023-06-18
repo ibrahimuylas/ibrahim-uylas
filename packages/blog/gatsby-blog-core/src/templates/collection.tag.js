@@ -17,14 +17,13 @@ export const pageQuery = graphql`
       name
       slug
     }
-
     posts: allArticle(
       filter: {
         private: { ne: true }
         draft: { ne: true }
         tags: { elemMatch: { slug: { eq: $slug } } }
       }
-      sort: { fields: [date], order: DESC }
+      sort: { date: DESC }
       limit: $limit
       skip: $skip
     ) {

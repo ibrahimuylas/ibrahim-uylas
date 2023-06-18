@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/gatsby-plugin-proxy-schema@3.0.1...@elegantstack/gatsby-plugin-proxy-schema@3.1.0) (2022-05-18)
+
+
+### Features
+
+* **gatsby-plugin-proxy-schema:** add version check for data sourcing plugins ([98bb739](https://github.com/ElegantStack/gatsby-themes/commit/98bb7390fdadeedf6d88deb52ec2cc5ec72320de))
+
+
+
+
 ### [3.0.1](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-plugin-proxy-schema@3.0.0...@elegantstack/gatsby-plugin-proxy-schema@3.0.1) (2021-03-20)
 
 **Note:** Version bump only for package @elegantstack/gatsby-plugin-proxy-schema

@@ -3,6 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/gatsby-blog-core@3.11.0...@elegantstack/gatsby-blog-core@4.0.0) (2023-03-11)
+
+
+### Features
+
+* upgrade to Gatsby v5 and update other dependencies ([aba9eb2](https://github.com/ElegantStack/gatsby-themes/commit/aba9eb243ebe39f0f02885b9693703a316c0a91f))
+
+
+### Bug Fixes
+
+* use patch hook for specific themes ([6b9d9e2](https://github.com/ElegantStack/gatsby-themes/commit/6b9d9e2e900b845c76e5323bc33b92ea27585b2e))
+
+
+### Refactor
+
+* refactor code for Gatsby v5 support ([f3852fd](https://github.com/ElegantStack/gatsby-themes/commit/f3852fd3b880cb7b77271f358b092ce730797334))
+
+
+
+
+## [3.11.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/gatsby-blog-core@3.10.0...@elegantstack/gatsby-blog-core@3.11.0) (2022-05-18)
+
+
+### Features
+
+* **gatsby-blog-core:** migrate to Strapi v4 ([0d58f33](https://github.com/ElegantStack/gatsby-themes/commit/0d58f33fcc30f92ca96e0ad5edfa345427dc4bea))
+* Upgrade Gatsby and React and other depenedencies ([144ccc1](https://github.com/ElegantStack/gatsby-themes/commit/144ccc14a11f5f5cb5721d744922a3f164410f17))
+
+
+### Bug Fixes
+
+* **gatsby-blog-core:** fix error when no article tag is used ([0a10c62](https://github.com/ElegantStack/gatsby-themes/commit/0a10c627cfa5b6c8a81dc6ca33c061c5dcda3d89))
+
+
+
+## [3.10.0](https://github.com/ElegantStack/gatsby-themes/compare/@elegantstack/gatsby-blog-core@3.9.0...@elegantstack/gatsby-blog-core@3.10.0) (2022-02-28)
+
+
+### Refactor
+
+* **gatsby-plugin-smooth-scrollbar:** remove unused package ([4b08b77](https://github.com/ElegantStack/gatsby-themes/commit/4b08b77f1e0516dd52d33a09597c907401521009))
+
+
+
+
+## [3.9.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.8.0...@elegantstack/gatsby-blog-core@3.9.0) (2021-11-15)
+
+
+### Features
+
+* **gatsby-blog-core:** add protected field to Article type for future implementation of gated content ([e8205ef](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/e8205efb851ee8cc95036072916a0df48d322640))
+* upgrade to Gatsby v4 ([e481e4a](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/e481e4ab705d20c9d3daf3b2048f29eef308f420))
+
+
+### Bug Fixes
+
+* **gatsby-blog-core:** fix strapi category icon not resolving ([5fffb30](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/commit/5fffb30ca827d2f5cc99abc25186e21d50921e55))
+
+
+
+
 ## [3.8.0](https://gitlab.com/alimoosavi15/gatsby-theme-flexiblog/compare/@elegantstack/gatsby-blog-core@3.7.0...@elegantstack/gatsby-blog-core@3.8.0) (2021-09-07)
 
 

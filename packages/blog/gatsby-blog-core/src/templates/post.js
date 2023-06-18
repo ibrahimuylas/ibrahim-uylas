@@ -20,8 +20,6 @@ export const pageQuery = graphql`
       ...ArticleInformation
       ...ArticleThumbnailRegular
     }
-
-    # Related posts based on tags and category
     tagCategoryPosts: allArticle(
       filter: {
         private: { ne: true }
@@ -30,7 +28,7 @@ export const pageQuery = graphql`
         category: { id: { eq: $categoryId } }
         id: { ne: $id }
       }
-      sort: { fields: [date], order: DESC }
+      sort: { date: DESC }
       limit: 6
     ) @include(if: $hasTags) {
       nodes {
@@ -38,8 +36,6 @@ export const pageQuery = graphql`
         ...ArticleThumbnailRegular
       }
     }
-
-    # Related posts based on tags only
     tagPosts: allArticle(
       filter: {
         private: { ne: true }
@@ -47,7 +43,7 @@ export const pageQuery = graphql`
         tags: { elemMatch: { id: { in: $tagsIds } } }
         id: { ne: $id }
       }
-      sort: { fields: [date], order: DESC }
+      sort: { date: DESC }
       limit: 6
     ) @include(if: $hasTags) {
       nodes {
@@ -55,8 +51,6 @@ export const pageQuery = graphql`
         ...ArticleThumbnailRegular
       }
     }
-
-    # Related posts based on category only
     categoryPosts: allArticle(
       filter: {
         private: { ne: true }
@@ -64,7 +58,7 @@ export const pageQuery = graphql`
         category: { id: { eq: $categoryId } }
         id: { ne: $id }
       }
-      sort: { fields: [date], order: DESC }
+      sort: { date: DESC }
       limit: 6
     ) {
       nodes {
@@ -72,13 +66,11 @@ export const pageQuery = graphql`
         ...ArticleThumbnailRegular
       }
     }
-
     previous: article(id: { eq: $previousId }) {
       id
       slug
       title
     }
-
     next: article(id: { eq: $nextId }) {
       id
       slug
