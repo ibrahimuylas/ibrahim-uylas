@@ -1,6 +1,10 @@
 module.exports = {
   plugins: [
     {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {}
+    },
+    {
       resolve: '@elegantstack/gatsby-theme-flexiblog-agency',
       options: {
         // Add theme options here. Check documentation for available options.
