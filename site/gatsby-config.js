@@ -1,14 +1,42 @@
 module.exports = {
   plugins: [
     {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: 'UA-190518336-1'
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {}
+    },
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: "https://uylas.us7.list-manage.com/subscribe/post?u=56f18106e942eac04fac11bc7&amp;id=b37cfb1ab8"
+      }
+    },
+    {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {}
+    },
+    {
+      resolve: 'gatsby-plugin-disqus',
+      options: {
+        shortname: 'ibrahim-uylas'
+      }
     },
     {
       resolve: '@elegantstack/gatsby-theme-flexiblog-agency',
       options: {
         // Add theme options here. Check documentation for available options.
         siteUrl: process.env.URL || process.env.VERCEL_URL,
+        services: {
+          disqus: true,
+          facebookComment: true,
+          mailchimp: true,
+        },
         sources: {
           local: true,
         }
