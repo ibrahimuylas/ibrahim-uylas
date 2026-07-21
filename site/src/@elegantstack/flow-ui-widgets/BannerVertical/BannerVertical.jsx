@@ -11,7 +11,7 @@ const styles = {
     bg: `omegaLighter`,
     borderRadius: `lg`,
     size: `full`,
-    p: 4,
+    p: 4
   },
   heading: {
     color: `omegaDark`,
@@ -19,12 +19,12 @@ const styles = {
       color: `beta`,
       size: `icon.lg`,
       display: `block`,
-      mb: 3,
-    },
+      mb: 3
+    }
   },
   subheading: {
     color: `omegaDark`,
-    fontWeight: `normal`,
+    fontWeight: `normal`
   },
   list: {
     color: `omegaDark`,
@@ -33,7 +33,7 @@ const styles = {
     p: 0,
     li: {
       p: 0,
-      my: 2,
+      my: 2
     },
     'li:before': {
       content: `""`,
@@ -42,13 +42,13 @@ const styles = {
       bg: `success`,
       borderRadius: `full`,
       size: `7px`,
-      mr: `7px`,
-    },
+      mr: `7px`
+    }
   },
   button: {
     display: `block`,
-    mt: `auto`,
-  },
+    mt: `auto`
+  }
 }
 
 const BannerVertical = () => (
@@ -58,17 +58,21 @@ const BannerVertical = () => (
       Merhaba,
     </Heading>
     <Text variant='small'>
-      Ben İbrahim Uylaş. Kampçı, doğa yürüyüşçüsü, maceracı, motosiklet tutkunu, yol yapmayı seven, yolda olan ve yolda yaşayan bir bilgisayar mühendisiyim.
+      Ben İbrahim Uylaş. Kampçı, doğa yürüyüşçüsü, maceracı, motosiklet tutkunu,
+      yol yapmayı seven, yolda olan ve yolda yaşayan bir bilgisayar
+      mühendisiyim.
     </Text>
     <Divider space={3} />
 
     <Text variant='small' sx={styles.list}>
-      Şu aralar Londra'da yaşamaktayım ve  kampçılık, doğa yürüyüşleri, ekipmanlar, rotalar ve yol anılarımı sizinle paylaşıyorum. Sende tecrübelerini yorum olarak ekleyip katkıda bulunabilirsin.
+      Şu aralar Londra'da yaşamaktayım ve kampçılık, doğa yürüyüşleri,
+      ekipmanlar, rotalar ve yol anılarımı sizinle paylaşıyorum. Sende
+      tecrübelerini yorum olarak ekleyip katkıda bulunabilirsin.
     </Text>
     <Button
       variant='primary'
       as={Link}
-      to='/ibrahim-uylas-kimdir'
+      to='/ibrahim-uylas-kimdir/'
       sx={styles.button}
       aria-label='ibrahim uylaş kimdir'
     >

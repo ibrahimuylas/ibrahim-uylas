@@ -91,7 +91,7 @@ module.exports = {
       },
       {
         name: 'İletişim',
-        slug: '/iletisim'
+        slug: '/iletisim/'
       }
     ],
 
@@ -102,19 +102,19 @@ module.exports = {
         items: [
           {
             name: 'Kampçılık',
-            slug: '/category/kampcilik'
+            slug: '/category/kampcilik/'
           },
           {
             name: 'Doğa Yürüyüşleri',
-            slug: '/category/doga-yuruyusleri'
+            slug: '/category/doga-yuruyusleri/'
           },
           {
             name: 'Trekking',
-            slug: '/tag/trekking'
+            slug: '/trekking-ne-demek/'
           },
           {
             name: 'Hiking',
-            slug: '/tag/hiking'
+            slug: '/hiking-ne-demek/'
           }
         ]
       },
@@ -123,15 +123,15 @@ module.exports = {
         items: [
           {
             name: 'İletişim',
-            slug: '/iletisim'
+            slug: '/iletisim/'
           },
           {
             name: 'Bu Adam Kim?',
-            slug: '/ibrahim-uylas-kimdir'
+            slug: '/ibrahim-uylas-kimdir/'
           },
           {
             name: 'Neden Yola Çıkmalı?',
-            slug: '/neden-yola-cikmali'
+            slug: '/neden-yola-cikmali/'
           }
         ]
       }

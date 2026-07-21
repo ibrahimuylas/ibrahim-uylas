@@ -25,6 +25,8 @@ const Seo = ({
   const { pathname } = useLocation()
   const resolvedSiteUrl = (siteUrl || site.siteUrl || '').replace(/\/$/, '')
   const canonicalUrl = resolvedSiteUrl && `${resolvedSiteUrl}${pathname || '/'}`
+  const shouldNoIndex =
+    /^\/(?:author|tag)\//.test(pathname) || /\/page\/\d+\/?$/.test(pathname)
 
   const social = (author && author.social) || site.social || []
   const twitter =
@@ -76,6 +78,10 @@ const Seo = ({
       name: 'twitter:data1',
       value: `${timeToRead} dk`
     })
+  }
+
+  if (shouldNoIndex) {
+    metaTags.push({ name: 'robots', content: 'noindex,follow' })
   }
 
   if (meta) {
