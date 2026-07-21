@@ -8,11 +8,20 @@ const useMailChimp = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     setSubmitting(true)
-    const data = new FormData(e.target)
-    const email = data.get('email')
-    const result = await addToMailchimp(email)
-    setResult(result)
-    setSubmitting(false)
+
+    try {
+      const data = new FormData(e.target)
+      const email = data.get('email')
+      const result = await addToMailchimp(email)
+      setResult(result)
+    } catch {
+      setResult({
+        result: 'error',
+        msg: 'Kayıt şu anda tamamlanamadı. Lütfen biraz sonra tekrar deneyin.'
+      })
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const success = result && result.result === 'success'

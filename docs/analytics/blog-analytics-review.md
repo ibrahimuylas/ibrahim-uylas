@@ -55,6 +55,10 @@ reflect the earlier tracking configuration as much as visitor behaviour.
 - Linked the production Search Console domain property to GA4.
 - Added `newsletter_signup` and `related_article_click` event tracking without
   sending personal information.
+- Limited the GA4 plugin to Netlify production builds so deploy previews and
+  local development do not enter the production property.
+- Corrected the Mailchimp subscription endpoint and added a recoverable error
+  state so failed requests no longer leave the form loading indefinitely.
 - Added an article contents navigation and improved Turkish metadata and
   newsletter copy.
 - Improved embedded-video loading and accessibility attributes.
@@ -67,7 +71,7 @@ reflect the earlier tracking configuration as much as visitor behaviour.
    DebugView.
 2. Mark `newsletter_signup` as a key event after GA4 receives it for the first
    time.
-3. Exclude development and preview traffic from reporting.
+3. Confirm production contains the GA4 tag and deploy previews do not.
 4. Allow at least 28 days of clean data before treating engagement changes as a
    trend.
 5. Review landing pages by organic search traffic, engagement, related-article

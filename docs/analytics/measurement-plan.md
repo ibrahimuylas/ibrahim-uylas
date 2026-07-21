@@ -34,6 +34,7 @@ contact form is a disabled demonstration and must not emit a successful outcome.
   text to GA4.
 - URL parameters must contain only public page paths or public destination URLs.
 - Event parameters describe the UI interaction, not the visitor.
+- The GA4 build plugin must run only when Netlify sets `CONTEXT=production`.
 
 ## Verification
 

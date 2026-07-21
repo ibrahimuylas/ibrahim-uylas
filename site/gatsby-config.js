@@ -1,14 +1,16 @@
 const googleAnalyticsMeasurementId = process.env.GATSBY_GA_MEASUREMENT_ID
 const siteUrl = 'https://www.ibrahimuylas.com'
+const isProductionDeploy = process.env.CONTEXT === 'production'
 
-const googleAnalyticsPlugin = googleAnalyticsMeasurementId
-  ? {
-      resolve: 'gatsby-plugin-google-gtag',
-      options: {
-        trackingIds: [googleAnalyticsMeasurementId]
+const googleAnalyticsPlugin =
+  googleAnalyticsMeasurementId && isProductionDeploy
+    ? {
+        resolve: 'gatsby-plugin-google-gtag',
+        options: {
+          trackingIds: [googleAnalyticsMeasurementId]
+        }
       }
-    }
-  : null
+    : null
 
 module.exports = {
   plugins: [
@@ -22,7 +24,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mailchimp',
       options: {
-        endpoint: "https://uylas.us7.list-manage.com/subscribe/post?u=56f18106e942eac04fac11bc7&amp;id=b37cfb1ab8"
+        endpoint:
+          'https://uylas.us7.list-manage.com/subscribe/post?u=56f18106e942eac04fac11bc7&id=b37cfb1ab8'
       }
     },
     {
@@ -43,10 +46,10 @@ module.exports = {
         services: {
           disqus: true,
           facebookComment: true,
-          mailchimp: true,
+          mailchimp: true
         },
         sources: {
-          local: true,
+          local: true
         }
       }
     }
@@ -57,7 +60,8 @@ module.exports = {
     //General Site Metadata
     title: 'İbrahim Uylaş',
     name: 'IbrahimUylas',
-    description: 'Kampçılık ve doğa yürüyüşleriyle ilgili ne ararsan var, ne vereyim abime!',
+    description:
+      'Kampçılık ve doğa yürüyüşleriyle ilgili ne ararsan var, ne vereyim abime!',
     address: 'An itibariyle Londra',
     email: 'ibrahim@uylas.net',
     phone: '',
