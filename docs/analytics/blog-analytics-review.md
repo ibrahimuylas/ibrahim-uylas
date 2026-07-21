@@ -57,8 +57,9 @@ reflect the earlier tracking configuration as much as visitor behaviour.
   sending personal information.
 - Limited the GA4 plugin to Netlify production builds so deploy previews and
   local development do not enter the production property.
-- Corrected the Mailchimp subscription endpoint and added a recoverable error
-  state so failed requests no longer leave the form loading indefinitely.
+- Replaced the retired browser-side Mailchimp endpoint with a Netlify function
+  that keeps credentials private, uses double opt-in, and returns a recoverable
+  error state instead of leaving the form loading indefinitely.
 - Added an article contents navigation and improved Turkish metadata and
   newsletter copy.
 - Improved embedded-video loading and accessibility attributes.
@@ -67,16 +68,14 @@ reflect the earlier tracking configuration as much as visitor behaviour.
 
 ## Next measurement cycle
 
-1. Deploy the implementation and verify the two custom events in GA4 Realtime or
-   DebugView.
+1. Verify the newsletter signup and `newsletter_signup` event after deployment.
 2. Mark `newsletter_signup` as a key event after GA4 receives it for the first
    time.
-3. Confirm production contains the GA4 tag and deploy previews do not.
-4. Allow at least 28 days of clean data before treating engagement changes as a
+3. Allow at least 28 days of clean data before treating engagement changes as a
    trend.
-5. Review landing pages by organic search traffic, engagement, related-article
+4. Review landing pages by organic search traffic, engagement, related-article
    clicks, and newsletter signup rate.
-6. Refresh and interlink the strongest route, camping, and equipment articles
+5. Refresh and interlink the strongest route, camping, and equipment articles
    based on verified Search Console queries.
 
 Event definitions and privacy rules are maintained in the

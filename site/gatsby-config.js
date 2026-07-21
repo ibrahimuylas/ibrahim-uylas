@@ -22,13 +22,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-mailchimp',
-      options: {
-        endpoint:
-          'https://uylas.us7.list-manage.com/subscribe/post?u=56f18106e942eac04fac11bc7&id=b37cfb1ab8'
-      }
-    },
-    {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {}
     },

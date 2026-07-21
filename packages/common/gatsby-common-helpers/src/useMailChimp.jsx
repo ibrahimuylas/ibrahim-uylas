@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import addToMailchimp from 'gatsby-plugin-mailchimp'
+
+const successMessage =
+  'Kaydınız alındı. Lütfen e-posta kutunuzdaki onay bağlantısını kontrol edin.'
 
 const useMailChimp = () => {
   const [result, setResult] = useState()
@@ -12,8 +14,20 @@ const useMailChimp = () => {
     try {
       const data = new FormData(e.target)
       const email = data.get('email')
-      const result = await addToMailchimp(email)
-      setResult(result)
+      const response = await fetch('/.netlify/functions/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email })
+      })
+
+      if (!response.ok) throw new Error('Newsletter subscription failed')
+
+      setResult({
+        result: 'success',
+        msg: successMessage
+      })
     } catch {
       setResult({
         result: 'error',

@@ -7,7 +7,6 @@
   "license": "",
   "dependencies": {
     "@elegantstack/gatsby-plugin-alias-imports": "^3.0.0",
-    "gatsby-plugin-mailchimp": "^5.2.2",
     "react-icons": "^4.7.1"
   }
 }

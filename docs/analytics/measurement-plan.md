@@ -15,15 +15,15 @@ The implementation should answer four questions:
 
 ## Events
 
-| Event                   | Source                        | Parameters                | Key event |
-| ----------------------- | ----------------------------- | ------------------------- | --------- |
-| `page_view`             | GA4/Gatsby                    | GA4 defaults              | No        |
-| `user_engagement`       | GA4 enhanced measurement      | GA4 defaults              | No        |
-| `scroll`                | GA4 enhanced measurement      | GA4 defaults              | No        |
-| `click`                 | GA4 enhanced measurement      | GA4 defaults              | No        |
-| `file_download`         | GA4 enhanced measurement      | GA4 defaults              | No        |
-| `related_article_click` | Related-post section          | `link_url`, `source_path` | No        |
-| `newsletter_signup`     | Successful Mailchimp response | `form_name`, `page_path`  | Yes       |
+| Event                   | Source                         | Parameters                | Key event |
+| ----------------------- | ------------------------------ | ------------------------- | --------- |
+| `page_view`             | GA4/Gatsby                     | GA4 defaults              | No        |
+| `user_engagement`       | GA4 enhanced measurement       | GA4 defaults              | No        |
+| `scroll`                | GA4 enhanced measurement       | GA4 defaults              | No        |
+| `click`                 | GA4 enhanced measurement       | GA4 defaults              | No        |
+| `file_download`         | GA4 enhanced measurement       | GA4 defaults              | No        |
+| `related_article_click` | Related-post section           | `link_url`, `source_path` | No        |
+| `newsletter_signup`     | Successful newsletter function | `form_name`, `page_path`  | Yes       |
 
 `contact_submit` remains reserved for a future working contact form. The current
 contact form is a disabled demonstration and must not emit a successful outcome.
@@ -34,6 +34,8 @@ contact form is a disabled demonstration and must not emit a successful outcome.
   text to GA4.
 - URL parameters must contain only public page paths or public destination URLs.
 - Event parameters describe the UI interaction, not the visitor.
+- The Mailchimp API key must remain in Netlify and must never be bundled into the
+  browser application.
 - The GA4 build plugin must run only when Netlify sets `CONTEXT=production`.
 
 ## Verification
