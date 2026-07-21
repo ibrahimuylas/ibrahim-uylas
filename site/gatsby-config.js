@@ -1,12 +1,17 @@
+const googleAnalyticsMeasurementId = process.env.GATSBY_GA_MEASUREMENT_ID
+
+const googleAnalyticsPlugin = googleAnalyticsMeasurementId
+  ? {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: [googleAnalyticsMeasurementId]
+      }
+    }
+  : null
+
 module.exports = {
   plugins: [
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: 'UA-190518336-1'
-      }
-    },
+    googleAnalyticsPlugin,
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {}
@@ -42,7 +47,7 @@ module.exports = {
         }
       }
     }
-  ],
+  ].filter(Boolean),
   // Customize your site metadata:
   siteMetadata: {
     siteUrl: "https://www.ibrahimuylas.com", // Your site URL without trailing slash,
