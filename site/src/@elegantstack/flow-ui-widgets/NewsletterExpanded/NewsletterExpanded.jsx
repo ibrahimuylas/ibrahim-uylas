@@ -43,13 +43,8 @@ const styles = {
 }
 
 const NewsletterExpanded = ({ simple }) => {
-  const {
-    handleSubmit,
-    canSubmit,
-    submitting,
-    message,
-    success
-  } = useMailChimp()
+  const { handleSubmit, canSubmit, submitting, message, success } =
+    useMailChimp()
 
   return (
     <Card variant='paper' sx={styles.card}>
@@ -60,9 +55,10 @@ const NewsletterExpanded = ({ simple }) => {
             <FaWind css={css(styles.wind)} />
           </Box>
         )}
-        <Heading variant='h2'>Yeni içeriklerden haberdar ol!</Heading>
+        <Heading variant='h2'>Yeni rota ve kamp rehberlerini kaçırma</Heading>
         <Text variant='p'>
-          Yeni bir yazı paylaştığımda sana ulaşmasını istiyorsan hemen mail adresini gir ve kayıt ol.
+          Yeni bir rota, kamp alanı veya ekipman rehberi yayımladığımda kısa bir
+          e-postayla haber almak için listeye katıl.
         </Text>
         <Box sx={styles.form}>
           <NewsletterForm

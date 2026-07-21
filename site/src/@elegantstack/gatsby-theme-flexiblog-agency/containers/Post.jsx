@@ -5,6 +5,8 @@ import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
+import ArticleContents from '../../../components/ArticleContents'
+import { trackEvent } from '../../../utils/analytics'
 // import AuthorExpanded from '@widgets/AuthorExpanded'
 import {
   PostHead,
@@ -25,6 +27,17 @@ const Post = ({
   ]
   const { pageContext: { services = {}, siteUrl } = {} } = props
 
+  const handleRelatedPostClick = event => {
+    const link = event.target.closest && event.target.closest('a')
+
+    if (!link) return
+
+    trackEvent('related_article_click', {
+      link_url: link.pathname,
+      source_path: props.location.pathname
+    })
+  }
+
   return (
     <Layout {...props}>
       <Seo {...post} siteUrl={siteUrl} />
@@ -35,6 +48,7 @@ const Post = ({
             <PostImage {...post} inCardLarge />
             <PostHead {...post} />
             <Divider line />
+            <ArticleContents items={post.tableOfContents?.items} />
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
             {services.disqus && <PostComments {...post} />}
@@ -43,14 +57,16 @@ const Post = ({
           {/* <AuthorExpanded author={post.author} /> */}
           <Divider />
           {post.category && (
-            <CardList
-              title='Related Posts'
-              nodes={relatedPosts}
-              variant={['horizontal-md']}
-              columns={[1, 2, 2, 2]}
-              limit={6}
-              distinct
-            />
+            <div onClick={handleRelatedPostClick}>
+              <CardList
+                title='İlgili Yazılar'
+                nodes={relatedPosts}
+                variant={['horizontal-md']}
+                columns={[1, 2, 2, 2]}
+                limit={6}
+                distinct
+              />
+            </div>
           )}
         </Main>
       </Stack>

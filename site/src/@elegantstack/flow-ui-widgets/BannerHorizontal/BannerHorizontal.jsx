@@ -31,10 +31,12 @@ const BannerHorizontal = () => {
           width='100%'
           height='315'
           src='https://www.youtube.com/embed/_3C3EcKKVSs'
-          title='YouTube video player'
-          frameborder='0'
+          title='İbrahim Uylaş doğa videosu'
+          frameBorder='0'
+          loading='lazy'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-          allowfullscreen
+          allowFullScreen
+          referrerPolicy='strict-origin-when-cross-origin'
         ></iframe>
       </Box>
       <Box sx={styles.right}>
@@ -42,10 +44,12 @@ const BannerHorizontal = () => {
           width='100%'
           height='315'
           src='https://www.youtube.com/embed/CGOhJ-vo390'
-          title='YouTube video player'
-          frameborder='0'
+          title='İbrahim Uylaş kamp videosu'
+          frameBorder='0'
+          loading='lazy'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-          allowfullscreen
+          allowFullScreen
+          referrerPolicy='strict-origin-when-cross-origin'
         ></iframe>
       </Box>
     </Flex>

@@ -15,7 +15,7 @@ export const PostHead = ({ title, author, date, timeToRead, category }) => {
     <TextList>
       {author && author.slug && (
         <Text sx={styles.item}>
-          {`By `}
+          {`Yazan `}
           <Link variant='mute' as={GLink} to={author.slug}>
             <strong>{author.name}</strong>
           </Link>
@@ -23,7 +23,7 @@ export const PostHead = ({ title, author, date, timeToRead, category }) => {
       )}
       {category && category.slug && (
         <Text sx={styles.item}>
-          {`Published in `}
+          {`Kategori `}
           <Link variant='mute' as={GLink} to={category.slug}>
             <strong>{category.name}</strong>
           </Link>
