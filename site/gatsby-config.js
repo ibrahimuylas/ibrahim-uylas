@@ -1,4 +1,5 @@
 const googleAnalyticsMeasurementId = process.env.GATSBY_GA_MEASUREMENT_ID
+const siteUrl = 'https://www.ibrahimuylas.com'
 
 const googleAnalyticsPlugin = googleAnalyticsMeasurementId
   ? {
@@ -14,7 +15,9 @@ module.exports = {
     googleAnalyticsPlugin,
     {
       resolve: 'gatsby-plugin-sitemap',
-      options: {}
+      options: {
+        excludes: ['/admin/**', '/author/**', '/tag/**', '/**/page/**']
+      }
     },
     {
       resolve: 'gatsby-plugin-mailchimp',
@@ -36,7 +39,7 @@ module.exports = {
       resolve: '@elegantstack/gatsby-theme-flexiblog-agency',
       options: {
         // Add theme options here. Check documentation for available options.
-        siteUrl: process.env.URL || process.env.VERCEL_URL,
+        siteUrl,
         services: {
           disqus: true,
           facebookComment: true,
@@ -50,7 +53,7 @@ module.exports = {
   ].filter(Boolean),
   // Customize your site metadata:
   siteMetadata: {
-    siteUrl: "https://www.ibrahimuylas.com", // Your site URL without trailing slash,
+    siteUrl, // Your site URL without trailing slash,
     //General Site Metadata
     title: 'İbrahim Uylaş',
     name: 'IbrahimUylas',

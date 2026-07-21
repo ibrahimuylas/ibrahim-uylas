@@ -6,7 +6,7 @@ export const query = graphql`
     title
     slug
     link
-    excerpt
+    excerpt(pruneLength: 155)
     tableOfContents(maxDepth: 2) @include(if: $includeTableOfContents)
     timeToRead @include(if: $includeTimeToRead)
     featured

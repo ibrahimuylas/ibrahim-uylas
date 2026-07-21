@@ -1,5 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import { useLocation } from '@reach/router'
 import { helmetJsonLdProp } from 'react-schemaorg'
 import { getSrc } from 'gatsby-plugin-image'
 import useSiteMetadata from '@helpers-blog/useSiteMetadata'
@@ -21,6 +22,9 @@ const Seo = ({
   locale
 }) => {
   const site = useSiteMetadata()
+  const { pathname } = useLocation()
+  const resolvedSiteUrl = (siteUrl || site.siteUrl || '').replace(/\/$/, '')
+  const canonicalUrl = resolvedSiteUrl && `${resolvedSiteUrl}${pathname || '/'}`
 
   const social = (author && author.social) || site.social || []
   const twitter =
@@ -31,7 +35,9 @@ const Seo = ({
   const imageSrc = getSrc(getImageVariant(thumbnail, 'hero'))
   const imageUrl =
     imageSrc &&
-    (imageSrc.startsWith('//') ? imageSrc : siteUrl && `${siteUrl}${imageSrc}`)
+    (imageSrc.startsWith('//')
+      ? imageSrc
+      : resolvedSiteUrl && `${resolvedSiteUrl}${imageSrc}`)
 
   /**
    * Meta Tags
@@ -47,6 +53,7 @@ const Seo = ({
     { property: 'og:type', content: date ? 'article' : 'website' },
     { property: 'og:site_name', content: site.name },
     { property: 'og:image', content: imageUrl },
+    { property: 'og:url', content: canonicalUrl },
 
     { name: 'twitter:card', content: 'summary' },
     { name: 'twitter:site', content: site.name },
@@ -88,7 +95,12 @@ const Seo = ({
       '@type': 'Article',
       headline: title,
       image: imageUrl,
-      datePublished: date
+      datePublished: date,
+      author: {
+        '@type': 'Person',
+        name: author.name
+      },
+      mainEntityOfPage: canonicalUrl
     })
     scripts.push(articleJsonLd)
   }
@@ -103,13 +115,19 @@ const Seo = ({
           '@type': 'ListItem',
           position: 1,
           name: site.name,
-          item: siteUrl
+          item: resolvedSiteUrl
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: category.name,
-          item: `${siteUrl}${category.slug}`
+          item: `${resolvedSiteUrl}${category.slug}`
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: title,
+          item: canonicalUrl
         }
       ]
     })
@@ -119,13 +137,14 @@ const Seo = ({
   return (
     <Helmet
       htmlAttributes={{
-        lang: locale || 'en'
+        lang: locale || 'tr'
       }}
       title={title}
       titleTemplate={`%s | ${site.title}`}
       meta={metaTags}
       script={scripts}
     >
+      {canonicalUrl && <link rel='canonical' href={canonicalUrl} />}
       {children}
     </Helmet>
   )
