@@ -13,6 +13,9 @@ export const query = graphql`
     protected
     thumbnailText
     date(formatString: "MMMM DD, YYYY")
+    modified(formatString: "MMMM DD, YYYY")
+    datePublished: date(formatString: "YYYY-MM-DD")
+    dateModified: modified(formatString: "YYYY-MM-DD")
     category {
       ...ArticleCategory
     }

@@ -9,6 +9,7 @@ type MdxArticleProxy implements Node & Article
   title: String! @proxyField(from: "parent.frontmatter.title")
   slug: String! @proxyField(from: "parent.frontmatter") @makeSlug
   date: Date @proxyField(from: "parent.frontmatter.date") @dateformat
+  modified: Date @proxyField(from: "parent.frontmatter.modified") @dateformat
   featured: Boolean @proxyField(from: "parent.frontmatter.featured")
   private: Boolean @proxyField(from: "parent.frontmatter.private")
   protected: Boolean @proxyField(from: "parent.frontmatter.protected")

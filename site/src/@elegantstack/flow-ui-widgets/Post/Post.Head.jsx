@@ -10,7 +10,14 @@ const styles = {
   }
 }
 
-export const PostHead = ({ title, author, date, timeToRead, category }) => {
+export const PostHead = ({
+  title,
+  author,
+  date,
+  modified,
+  timeToRead,
+  category
+}) => {
   const info = (
     <TextList>
       {author && author.slug && (
@@ -29,7 +36,8 @@ export const PostHead = ({ title, author, date, timeToRead, category }) => {
           </Link>
         </Text>
       )}
-      {date && <Text sx={styles.item}>{date}</Text>}
+      {date && <Text sx={styles.item}>{`Yayımlandı: ${date}`}</Text>}
+      {modified && <Text sx={styles.item}>{`Güncellendi: ${modified}`}</Text>}
       {timeToRead && (
         <Text sx={{ ...styles.item, color: `error` }}>
           <strong>{timeToRead} dk</strong>

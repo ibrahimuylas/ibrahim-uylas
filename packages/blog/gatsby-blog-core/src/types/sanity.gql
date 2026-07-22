@@ -9,6 +9,7 @@ type SanityArticleProxy implements Node & Article
   title: String! @proxyField
   slug: String! @link(from: "parent", on: "SanityArticle") @makeSlug
   date: Date @proxyField @dateformat
+  modified: Date @proxyField @dateformat
   featured: Boolean @proxyField
   private: Boolean @proxyField
   protected: Boolean @proxyField

@@ -15,6 +15,8 @@ const Seo = ({
   author,
   category,
   date,
+  datePublished,
+  dateModified,
   timeToRead,
   children,
   thumbnail,
@@ -27,6 +29,7 @@ const Seo = ({
   const canonicalUrl = resolvedSiteUrl && `${resolvedSiteUrl}${pathname || '/'}`
   const shouldNoIndex =
     /^\/(?:author|tag)\//.test(pathname) || /\/page\/\d+\/?$/.test(pathname)
+  const published = datePublished || date
 
   const social = (author && author.social) || site.social || []
   const twitter =
@@ -52,7 +55,7 @@ const Seo = ({
 
     { property: 'og:title', content: title || site.title },
     { property: 'og:description', content: description },
-    { property: 'og:type', content: date ? 'article' : 'website' },
+    { property: 'og:type', content: published ? 'article' : 'website' },
     { property: 'og:site_name', content: site.name },
     { property: 'og:image', content: imageUrl },
     { property: 'og:url', content: canonicalUrl },
@@ -68,8 +71,12 @@ const Seo = ({
     metaTags.push({ name: 'keywords', content: keywords.join(', ') })
   }
 
-  if (date) {
-    metaTags.push({ name: 'article:published_time', content: date })
+  if (published) {
+    metaTags.push({ name: 'article:published_time', content: published })
+  }
+
+  if (dateModified) {
+    metaTags.push({ name: 'article:modified_time', content: dateModified })
   }
 
   if (timeToRead) {
@@ -101,7 +108,8 @@ const Seo = ({
       '@type': 'Article',
       headline: title,
       image: imageUrl,
-      datePublished: date,
+      datePublished: published,
+      ...(dateModified && { dateModified }),
       author: {
         '@type': 'Person',
         name: author.name

@@ -8,6 +8,7 @@ interface Article implements Node {
   slug: String!
   #proxy is a workaround for gatsby issue #21476
   date: Date @proxy(from: "date") @dateformat
+  modified: Date @proxy(from: "modified") @dateformat
   featured: Boolean
   private: Boolean
   protected: Boolean
