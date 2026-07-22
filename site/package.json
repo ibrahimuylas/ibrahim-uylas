@@ -5,9 +5,11 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby clean && gatsby develop",
-    "build": "gatsby build",
+    "build": "GATSBY_CPU_COUNT=1 gatsby build",
     "clean": "gatsby clean",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "validate:seo:likya": "node scripts/seo/validate-likya-canonicals.js",
+    "validate:seo:likya:http": "node scripts/seo/check-likya-http.js"
   },
   "dependencies": {
     "@elegantstack/gatsby-theme-flexiblog-agency": "*",

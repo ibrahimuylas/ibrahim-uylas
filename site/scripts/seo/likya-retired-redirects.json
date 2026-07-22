@@ -1,0 +1,12 @@
+[
+  {
+    "source": "content/posts/rotalar/likya-yolu-yürüyüş-rotası/index.mdx",
+    "from": "/likya-yolu-yuruyus-rotasi/",
+    "to": "/likya-yolu-rotasi/"
+  },
+  {
+    "source": "content/posts/diğer/likya-yolu-ölüdenizden-üçağıza-11-gün-230km/index.mdx",
+    "from": "/likya-yolu-oludenizden-ucagiza-11-gun-230km/",
+    "to": "/likya-yolu-11-gunde-yurudugum-parkur/"
+  }
+]

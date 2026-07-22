@@ -1,0 +1,213 @@
+[
+  {
+    "kind": "hub",
+    "source": "content/posts/diğer/likya-yolu-rotası/index.mdx",
+    "canonical": "/likya-yolu-rotasi/"
+  },
+  {
+    "kind": "itinerary",
+    "source": "content/posts/diğer/likya-yolu-11-günde-yürüdüğüm-parkur/index.mdx",
+    "canonical": "/likya-yolu-11-gunde-yurudugum-parkur/"
+  },
+  {
+    "kind": "guide",
+    "day": 1,
+    "date": "2014-09-20",
+    "section": "Ölüdeniz – Kabak Koyu",
+    "distanceKm": 25,
+    "source": "content/posts/rotalar/likya-yolu-rotası-ölüdenizden-kabak-koyuna/index.mdx",
+    "canonical": "/likya-yolu-rotasi-oludenizden-kabak-koyuna/"
+  },
+  {
+    "kind": "guide",
+    "day": 2,
+    "date": "2014-09-21",
+    "section": "Kabak Koyu – Sidyma Antik Kenti",
+    "distanceKm": 23,
+    "source": "content/posts/rotalar/likya-yolu-rotası-kabak-koyundan-sidyma-antik-kentine/index.mdx",
+    "canonical": "/likya-yolu-rotasi-kabak-koyundan-sidyma-antik-kentine/"
+  },
+  {
+    "kind": "guide",
+    "day": 3,
+    "date": "2014-09-22",
+    "section": "Sidyma – Karadere",
+    "distanceKm": 17,
+    "source": "content/posts/rotalar/likya-yolu-rotası-sidymadan-karadereye/index.mdx",
+    "canonical": "/likya-yolu-rotasi-sidymadan-karadereye/"
+  },
+  {
+    "kind": "guide",
+    "day": 4,
+    "date": "2014-09-23",
+    "section": "Karadere – Kınık",
+    "distanceKm": 15,
+    "source": "content/posts/rotalar/likya-yolu-rotası-karadereden-kınıka/index.mdx",
+    "canonical": "/likya-yolu-rotasi-karadereden-kinika/"
+  },
+  {
+    "kind": "guide",
+    "day": 5,
+    "date": "2014-09-24",
+    "section": "Kınık – Üzümlü",
+    "distanceKm": 22,
+    "source": "content/posts/rotalar/likya-yolu-rotası-kınıkdan-üzümlüye/index.mdx",
+    "canonical": "/likya-yolu-rotasi-kinikdan-uzumluye/"
+  },
+  {
+    "kind": "guide",
+    "day": 6,
+    "date": "2014-09-25",
+    "section": "Üzümlü – Bezirgan",
+    "distanceKm": 22,
+    "source": "content/posts/rotalar/likya-yolu-rotası-üzümlüden-bezirgan-köyüne/index.mdx",
+    "canonical": "/likya-yolu-rotasi-uzumluden-bezirgan-koyune/"
+  },
+  {
+    "kind": "guide",
+    "day": 7,
+    "date": "2014-09-26",
+    "section": "Bezirgan – Sarıbelen",
+    "distanceKm": 12,
+    "source": "content/posts/rotalar/likya-yolu-rotası-bezirgandan-sarıbelene/index.mdx",
+    "canonical": "/likya-yolu-rotasi-bezirgandan-saribelene/"
+  },
+  {
+    "kind": "guide",
+    "day": 8,
+    "date": "2014-09-27",
+    "section": "Sarıbelen – Gökçeören",
+    "distanceKm": 12,
+    "source": "content/posts/rotalar/likya-yolu-rotası-sarıbelenden-gökçeörene/index.mdx",
+    "canonical": "/likya-yolu-rotasi-saribelenden-gokceorene/"
+  },
+  {
+    "kind": "guide",
+    "day": 9,
+    "date": "2014-09-28",
+    "section": "Gökçeören – Kaş",
+    "distanceKm": 28,
+    "source": "content/posts/rotalar/likya-yolu-rotası-gökçeörenden-kaşa/index.mdx",
+    "canonical": "/likya-yolu-rotasi-gokceorenden-kasa/"
+  },
+  {
+    "kind": "guide",
+    "day": 10,
+    "date": "2014-09-29",
+    "section": "Kaş – Körmen Adası",
+    "distanceKm": 13,
+    "source": "content/posts/rotalar/likya-yolu-rotası-kaşdan-körmen-adasına/index.mdx",
+    "canonical": "/likya-yolu-rotasi-kasdan-kormen-adasina/"
+  },
+  {
+    "kind": "guide",
+    "day": 11,
+    "date": "2014-09-30",
+    "section": "Körmen Adası – Kaleüçağız",
+    "distanceKm": 23,
+    "source": "content/posts/rotalar/likya-yolu-rotası-körmen-adasından-kaleüçağıza/index.mdx",
+    "canonical": "/likya-yolu-rotasi-kormen-adasindan-kaleucagiza/"
+  },
+  {
+    "kind": "journal",
+    "day": 1,
+    "source": "content/posts/diğer/likya-yolu-1-gün/index.mdx",
+    "canonical": "/likya-yolu-1.-gun/",
+    "alias": "/likya-yolu-1-gun/"
+  },
+  {
+    "kind": "journal",
+    "day": 2,
+    "source": "content/posts/diğer/likya-yolu-2-gün/index.mdx",
+    "canonical": "/likya-yolu-2.-gun/",
+    "alias": "/likya-yolu-2-gun/"
+  },
+  {
+    "kind": "journal",
+    "day": 3,
+    "source": "content/posts/diğer/likya-yolu-3-gün/index.mdx",
+    "canonical": "/likya-yolu-3.-gun/",
+    "alias": "/likya-yolu-3-gun/"
+  },
+  {
+    "kind": "journal",
+    "day": 4,
+    "source": "content/posts/diğer/likya-yolu-4-gün/index.mdx",
+    "canonical": "/likya-yolu-4.-gun/",
+    "alias": "/likya-yolu-4-gun/"
+  },
+  {
+    "kind": "journal",
+    "day": 5,
+    "source": "content/posts/diğer/likya-yolu-5-gün/index.mdx",
+    "canonical": "/likya-yolu-5.-gun/",
+    "alias": "/likya-yolu-5-gun/"
+  },
+  {
+    "kind": "journal",
+    "day": 6,
+    "source": "content/posts/diğer/likya-yolu-6-gün/index.mdx",
+    "canonical": "/likya-yolu-6.-gun/",
+    "alias": "/likya-yolu-6-gun/"
+  },
+  {
+    "kind": "journal",
+    "day": 7,
+    "source": "content/posts/diğer/likya-yolu-7-gün/index.mdx",
+    "canonical": "/likya-yolu-7.-gun/",
+    "alias": "/likya-yolu-7-gun/"
+  },
+  {
+    "kind": "journal",
+    "day": 8,
+    "source": "content/posts/diğer/likya-yolu-8-gün/index.mdx",
+    "canonical": "/likya-yolu-8.-gun/",
+    "alias": "/likya-yolu-8-gun/"
+  },
+  {
+    "kind": "journal",
+    "day": 9,
+    "source": "content/posts/diğer/likya-yolu-9-gün/index.mdx",
+    "canonical": "/likya-yolu-9.-gun/",
+    "alias": "/likya-yolu-9-gun/"
+  },
+  {
+    "kind": "journal",
+    "day": 10,
+    "source": "content/posts/diğer/likya-yolu-10-gün/index.mdx",
+    "canonical": "/likya-yolu-10.-gun/",
+    "alias": "/likya-yolu-10-gun/"
+  },
+  {
+    "kind": "journal",
+    "day": 11,
+    "source": "content/posts/diğer/likya-yolu-11-gün/index.mdx",
+    "canonical": "/likya-yolu-11.-gun/",
+    "alias": "/likya-yolu-11-gun/"
+  },
+  {
+    "kind": "support",
+    "source": "content/posts/diğer/bunun-adı-aşk-likya-yolu/index.mdx",
+    "canonical": "/bunun-adi-ask-likya-yolu/"
+  },
+  {
+    "kind": "support",
+    "source": "content/posts/diğer/likya-yolu-hazırlıkları/index.mdx",
+    "canonical": "/likya-yolu-hazirliklari/"
+  },
+  {
+    "kind": "support",
+    "source": "content/posts/diğer/likya-parkuru-sırt-çantam/index.mdx",
+    "canonical": "/likya-parkuru-sirt-cantam/"
+  },
+  {
+    "kind": "support",
+    "source": "content/posts/diğer/likya-yoluna-neden-tek-gidiyorsun/index.mdx",
+    "canonical": "/likya-yoluna-neden-tek-gidiyorsun/"
+  },
+  {
+    "kind": "support",
+    "source": "content/posts/diğer/likya’ya-1-kala/index.mdx",
+    "canonical": "/likyaya-1-kala/"
+  }
+]
