@@ -6,24 +6,24 @@ export { PostImage } from './Post.Image'
 export { PostTagsShare } from './Post.Tags.Share'
 
 const PostCommentsLazy = React.lazy(() => import('./Post.Comments'))
-export const PostComments = () => (
+export const PostComments = props => (
   <Suspense fallback={null}>
-    <PostCommentsLazy />
+    <PostCommentsLazy {...props} />
   </Suspense>
 )
 
 const PostCommentsFacebookLazy = React.lazy(() =>
   import('./Post.Comments.Facebook')
 )
-export const PostCommentsFacebook = () => (
+export const PostCommentsFacebook = props => (
   <Suspense fallback={null}>
-    <PostCommentsFacebookLazy />
+    <PostCommentsFacebookLazy {...props} />
   </Suspense>
 )
 
 const PostCommentsGraphLazy = React.lazy(() => import('./Post.Comments.Graph'))
-export const PostCommentsGraph = () => (
+export const PostCommentsGraph = props => (
   <Suspense fallback={null}>
-    <PostCommentsGraphLazy />
+    <PostCommentsGraphLazy {...props} />
   </Suspense>
 )

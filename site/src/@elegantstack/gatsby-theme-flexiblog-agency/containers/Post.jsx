@@ -51,7 +51,7 @@ const Post = ({
             <ArticleContents items={post.tableOfContents?.items} />
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
-            {services.disqus && <PostComments {...post} />}
+            {services.disqus && <PostComments {...post} siteUrl={siteUrl} />}
           </CardComponent>
           <Divider />
           {/* <AuthorExpanded author={post.author} /> */}
