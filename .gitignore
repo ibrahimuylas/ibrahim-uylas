@@ -77,3 +77,8 @@ yarn-error.log
 
 # firebase cache files
 .firebase/
+IMPLEMENTATION_PLAN.md
+PROGRESS.md
+.ralph/
+PROMPT_plan.md
+PROMPT_build.md
