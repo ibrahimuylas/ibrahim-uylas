@@ -25,8 +25,8 @@ const styles = {
     }
   },
   inCardLarge: {
-    mt: -5,
-    mx: -5,
+    mt: [-4, -5],
+    mx: [-4, -5],
     img: {
       borderRadius: t => `${t.radii.lg} ${t.radii.lg} 0 0`
     }
@@ -51,6 +51,8 @@ export const PostImage = ({
       <Img
         image={image}
         alt={title}
+        loading='eager'
+        fetchPriority='high'
         css={css({
           ...styles[variant],
           ...(inCard && styles.inCard),
