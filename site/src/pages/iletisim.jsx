@@ -34,11 +34,11 @@ const PageIletisim = props => (
             <li>
               instagram üzerinden{' '}
               <Link
-                href='https://www.instagram.com/ibrahimuylas/'
+                href='https://www.instagram.com/uylasonwheels/'
                 target='_blank'
                 rel='noreferrer'
               >
-                @ibrahimuylas
+                @uylasonwheels
               </Link>
               'a mesaj yaz
             </li>
