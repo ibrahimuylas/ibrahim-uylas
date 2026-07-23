@@ -73,6 +73,12 @@
             },
             { name: 'date', label: 'Date', widget: 'datetime' },
             {
+              name: 'modified',
+              label: 'Modified Date',
+              widget: 'datetime',
+              required: false,
+            },
+            {
               name: 'featured',
               label: 'Featured',
               widget: 'boolean',
@@ -108,6 +114,12 @@
               name: 'link',
               label: 'Link',
               hint: 'Disable page creation and link the post card to an external Web page.',
+              required: false,
+            },
+            {
+              name: 'description',
+              label: 'SEO Description',
+              hint: 'Short, unique summary for search results and social sharing.',
               required: false,
             },
             {

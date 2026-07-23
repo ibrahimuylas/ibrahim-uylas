@@ -8,6 +8,7 @@ type StrapiArticleProxy implements Node & Article
   @proxyOf(type: "STRAPI_ARTICLE") {
   title: String! @proxyField
   slug: String! @link(from: "parent", on: "STRAPI_ARTICLE") @makeSlug
+  description: String @proxyField
   date: Date @proxyField @dateformat
   modified: Date @proxyField @dateformat
   featured: Boolean @proxyField

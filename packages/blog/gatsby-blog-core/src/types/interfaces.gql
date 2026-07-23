@@ -6,6 +6,7 @@ interface Article implements Node {
   id: ID!
   title: String!
   slug: String!
+  description: String
   #proxy is a workaround for gatsby issue #21476
   date: Date @proxy(from: "date") @dateformat
   modified: Date @proxy(from: "modified") @dateformat

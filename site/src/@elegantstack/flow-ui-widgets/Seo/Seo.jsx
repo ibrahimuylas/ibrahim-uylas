@@ -35,7 +35,7 @@ const Seo = ({
   const twitter =
     social.find(s => s.name && s.name.toLowerCase() === 'twitter') || {}
 
-  description = excerpt || description || site.description
+  description = description || excerpt || site.description
 
   const imageSrc = getSrc(getImageVariant(thumbnail, 'hero'))
   const imageUrl =
@@ -60,7 +60,7 @@ const Seo = ({
     { property: 'og:image', content: imageUrl },
     { property: 'og:url', content: canonicalUrl },
 
-    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:site', content: site.name },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
@@ -112,7 +112,10 @@ const Seo = ({
       ...(dateModified && { dateModified }),
       author: {
         '@type': 'Person',
-        name: author.name
+        name: author.name,
+        ...(author.slug && {
+          url: `${resolvedSiteUrl}${author.slug}`
+        })
       },
       mainEntityOfPage: canonicalUrl
     })

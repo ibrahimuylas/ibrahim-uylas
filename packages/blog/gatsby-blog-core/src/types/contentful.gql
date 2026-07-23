@@ -8,6 +8,7 @@ type ContentfulArticleProxy implements Node & Article
   @proxyOf(type: "ContentfulArticle") {
   title: String! @proxyField
   slug: String! @link(from: "parent", on: "ContentfulArticle") @makeSlug
+  description: String @proxyField
   date: Date @proxyField @dateformat
   modified: Date @proxyField @dateformat
   featured: Boolean @proxyField
