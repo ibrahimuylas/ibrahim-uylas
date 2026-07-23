@@ -1,0 +1,4 @@
+interface:
+  display_name: "İbrahim Blog Yazısı"
+  short_description: "İbrahim üslubuyla SEO odaklı blog yazısı"
+  default_prompt: "$blog-yazisi ile kaynak bağlantı ve notlarımdan SEO odaklı Türkçe yazı, görsel planı ve AI promptları hazırla."
