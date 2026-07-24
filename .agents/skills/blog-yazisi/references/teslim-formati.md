@@ -58,17 +58,17 @@ Banner için kadraj ve boşluk yönünü belirt. Kullanıcı kendi fotoğrafın�
 
 ## 4. AI görsel promptları
 
-Banner dışındaki her AI görseli için ayrı başlık ve tek parça, doğrudan kopyalanabilir prompt ver.
+Banner dışındaki her AI görseli için ayrı başlık ve Stitch'e doğrudan kopyalanabilir bağımsız bir prompt bloğu ver. Banner promptunu yalnızca kullanıcı açıkça isterse aynı formatta ekle.
 
-Her prompt şunları içersin:
+Her promptta kısa ve somut cümlelerle şu sırayı kullan:
 
-- Sahne ve ana nesne
-- Kamera açısı veya infografik düzeni
-- Işık, renk ve görsel dil
-- Bir önceki görsellerle stil tutarlılığı
-- 3:2 yatay oran ve en az 1600 piksel genişlik
-- Yasaklar: logo, filigran, bozuk anatomi, anlamsız metin
-- İnfografikse kullanılacak Türkçe etiketlerin tam yazımı
+1. Sahne ve ana nesne
+2. Kompozisyon ve kamera açısı veya infografik düzeni
+3. Işık, renk ve premium outdoor editoryal görsel dil
+4. 3:2 yatay oran ve en az 1600 piksel genişlik
+5. Yasaklar: logo, filigran, bozuk anatomi, anlamsız metin
+
+Promptları başka görsellere veya önceki promptlara atıf yapmadan kendi başına anlaşılır yaz. Stil tutarlılığını sağlamak için aynı estetik tanımını her promptta açıkça tekrarla. İnfografiklerde yalnızca gerekli Türkçe etiketleri tırnak içinde eksiksiz ver; diğer görsellerde metin isteme. Dosya adı, WebP dönüşümü, sıkıştırma, SEO açıklaması veya promptun nasıl kullanılacağı gibi üretim sonrası bilgileri promptun içine koyma.
 
 Prompttan sonra şu yayın notunu yalnızca bir kez ver:
 

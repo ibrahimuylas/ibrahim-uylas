@@ -41,6 +41,12 @@ Eksik ama engelleyici olmayan ayrıntıları makul biçimde belirle. Kişisel de
 - Yazının uzunluğuna göre 4-5 AI görseli planla.
 - Her görsel için yerleşim, amaç, SEO uyumlu ASCII dosya adı, gerçek içeriği tarif eden alt metin ve gerekiyorsa kısa caption ver.
 - Görselleri sırf süs olsun diye değil, bölümün anlaşılmasını veya ritmini iyileştirmek için kullan.
+- Her promptu Stitch-friendly üret:
+  - Tek başına anlaşılır, doğrudan kopyalanabilir ve başka bir promptun bağlamına ihtiyaç duymayan bağımsız bir blok yaz.
+  - Bilgileri şu sırayla ver: sahne ve ana nesne; kompozisyon ve kamera; ışık, renk ve estetik; teknik çıktı; kısıtlar.
+  - Tutarlı estetiği “önceki görselle aynı” gibi referanslarla değil, aynı görsel dil tanımını her promptta tekrarlayarak koru.
+  - Kısa, somut ve çelişkisiz cümleler kullan; anahtar kelime yığını, meta açıklama ve üretim sonrası talimat ekleme.
+  - İnfografiklerde metni en aza indir ve yalnızca kullanılacak Türkçe etiketleri tırnak içinde eksiksiz belirt.
 - Promptlarda ortak olarak şunları iste:
   - 3:2 yatay kompozisyon
   - En az 1600 piksel genişlik
@@ -48,6 +54,7 @@ Eksik ama engelleyici olmayan ayrıntıları makul biçimde belirle. Kişisel de
   - Marka, filigran ve anlamsız yazı olmaması
   - İnfografik değilse görsel üzerinde metin olmaması
   - İnfografikse yalnızca verilen Türkçe etiketlerin eksiksiz kullanılması
+- Banner promptunu yalnızca kullanıcı açıkça isterse ver. Kullanıcının fotoğrafı kullanılacaksa referans fotoğraftaki kimliği ve yüzü koru; yeni yüz veya yapay kişi üretme.
 - WebP, sıkıştırma ve nihai dosya adı üretim sonrası teslim talimatıdır; görsel modelinin sahne promptuna teknik dosya biçimi gibi yedirme.
 
 ## Teslim ve sınırlar
