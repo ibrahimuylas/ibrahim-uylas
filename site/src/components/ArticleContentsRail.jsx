@@ -16,7 +16,11 @@ const styles = {
     maxHeight: `calc(100vh - 2rem)`,
     overflowY: `auto`,
     transform: `translateY(-50%)`,
+    overscrollBehavior: `contain`,
     scrollbarWidth: `none`,
+    touchAction: `none`,
+    userSelect: `none`,
+    WebkitUserSelect: `none`,
     '&::-webkit-scrollbar': {
       display: `none`
     }
@@ -45,6 +49,7 @@ const styles = {
     borderRadius: `sm`,
     bg: `transparent`,
     cursor: `pointer`,
+    WebkitTapHighlightColor: `transparent`,
     '&:focus': {
       outline: `2px solid`,
       outlineColor: `alpha`,
@@ -150,6 +155,7 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
   const previewRef = useRef(null)
   const blurFrameRef = useRef(null)
   const previewFrameRef = useRef(null)
+  const touchInteractionRef = useRef(null)
   const [details, setDetails] = useState({})
   const [preview, setPreview] = useState(null)
   const [previewTop, setPreviewTop] = useState(PREVIEW_GUTTER)
@@ -200,11 +206,33 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
   }, [preview])
 
   useEffect(() => {
-    const handleResize = () => setPreview(null)
+    const handleResize = () => {
+      touchInteractionRef.current = null
+      setPreview(null)
+    }
 
     window.addEventListener(`resize`, handleResize)
     return () => window.removeEventListener(`resize`, handleResize)
   }, [])
+
+  useEffect(() => {
+    if (!preview) return undefined
+
+    const handleOutsidePointerDown = event => {
+      if (!railRef.current?.contains(event.target)) {
+        touchInteractionRef.current = null
+        setPreview(null)
+      }
+    }
+
+    document.addEventListener(`pointerdown`, handleOutsidePointerDown, true)
+    return () =>
+      document.removeEventListener(
+        `pointerdown`,
+        handleOutsidePointerDown,
+        true
+      )
+  }, [preview])
 
   useEffect(
     () => () => {
@@ -215,17 +243,21 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
     []
   )
 
-  const showPreview = (event, index) => {
+  const showPreviewForTarget = (target, index) => {
     if (blurFrameRef.current !== null) {
       window.cancelAnimationFrame(blurFrameRef.current)
       blurFrameRef.current = null
     }
 
-    const rect = event.currentTarget.getBoundingClientRect()
+    const rect = target.getBoundingClientRect()
     setPreview({
       anchorY: rect.top + rect.height / 2,
       index
     })
+  }
+
+  const showPreview = (event, index) => {
+    showPreviewForTarget(event.currentTarget, index)
   }
 
   const hidePreviewAfterBlur = () => {
@@ -238,15 +270,95 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
     })
   }
 
+  const handlePointerDown = (event, index) => {
+    if (event.pointerType === `mouse`) return
+
+    touchInteractionRef.current = {
+      index,
+      moved: false,
+      previewWasActive: preview?.index === index,
+      startX: event.clientX,
+      startY: event.clientY
+    }
+
+    event.currentTarget.setPointerCapture?.(event.pointerId)
+    showPreviewForTarget(event.currentTarget, index)
+  }
+
+  const handlePointerMove = event => {
+    const interaction = touchInteractionRef.current
+    if (!interaction || event.pointerType === `mouse`) return
+
+    if (
+      Math.abs(event.clientX - interaction.startX) > 4 ||
+      Math.abs(event.clientY - interaction.startY) > 4
+    ) {
+      interaction.moved = true
+    }
+
+    const elementAtPointer = document.elementFromPoint(
+      event.clientX,
+      event.clientY
+    )
+    const buttonAtPointer = elementAtPointer?.closest(
+      `[data-article-contents-index]`
+    )
+
+    if (!buttonAtPointer || !railRef.current?.contains(buttonAtPointer)) return
+
+    const nextIndex = Number(buttonAtPointer.dataset.articleContentsIndex)
+    if (!Number.isInteger(nextIndex)) return
+
+    if (nextIndex !== interaction.index) {
+      interaction.index = nextIndex
+      interaction.moved = true
+    }
+
+    showPreviewForTarget(buttonAtPointer, nextIndex)
+  }
+
+  const handlePointerUp = event => {
+    if (event.pointerType === `mouse`) return
+
+    if (event.currentTarget.hasPointerCapture?.(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId)
+    }
+  }
+
+  const handlePointerCancel = () => {
+    touchInteractionRef.current = null
+    setPreview(null)
+  }
+
+  const handleItemClick = (item, index) => {
+    const touchInteraction = touchInteractionRef.current
+
+    if (touchInteraction) {
+      const shouldNavigate =
+        touchInteraction.previewWasActive &&
+        !touchInteraction.moved &&
+        touchInteraction.index === index
+
+      touchInteractionRef.current = null
+
+      if (!shouldNavigate) return
+    }
+
+    setPreview(null)
+    onItemSelect(item)
+  }
+
   const handleKeyDown = (event, item) => {
     if (event.key === `Escape`) {
       event.preventDefault()
+      touchInteractionRef.current = null
       setPreview(null)
       return
     }
 
     if (event.key === ` ` || event.key === `Enter`) {
       event.preventDefault()
+      touchInteractionRef.current = null
       setPreview(null)
       onItemSelect(item)
     }
@@ -261,7 +373,9 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
         as='nav'
         ref={railRef}
         aria-label='Yazı bölümleri'
-        onMouseLeave={() => setPreview(null)}
+        onPointerLeave={event => {
+          if (event.pointerType === `mouse`) setPreview(null)
+        }}
         sx={styles.rail}
       >
         <Box as='ol' sx={styles.list}>
@@ -277,15 +391,23 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
                   aria-describedby={
                     isActive ? `article-contents-preview` : undefined
                   }
-                  onClick={() => {
-                    setPreview(null)
-                    onItemSelect(item)
-                  }}
+                  data-article-contents-index={index}
+                  onClick={() => handleItemClick(item, index)}
                   onFocus={event => showPreview(event, index)}
                   onBlur={hidePreviewAfterBlur}
                   onKeyDown={event => handleKeyDown(event, item)}
-                  onMouseEnter={event => showPreview(event, index)}
-                  onMouseLeave={() => setPreview(null)}
+                  onPointerCancel={handlePointerCancel}
+                  onPointerDown={event => handlePointerDown(event, index)}
+                  onPointerEnter={event => {
+                    if (event.pointerType === `mouse`) {
+                      showPreview(event, index)
+                    }
+                  }}
+                  onPointerLeave={event => {
+                    if (event.pointerType === `mouse`) setPreview(null)
+                  }}
+                  onPointerMove={handlePointerMove}
+                  onPointerUp={handlePointerUp}
                   sx={styles.button}
                 >
                   <Box

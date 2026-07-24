@@ -63,8 +63,12 @@ contents control must complement it without competing for the same position.
     scroll-to-top control at the bottom-right. Keep the desktop and wide-tablet
     marks vertically centred on the left edge.
 11. Desktop and wide-tablet mark lengths use three title-length-based sizes and
-    expand to the longest size on hover or focus. Selecting a mark with mouse,
-    keyboard, or touch navigates immediately without opening a modal or drawer.
+    expand to the longest size on hover or focus. Mouse and keyboard selection
+    navigate immediately without opening a modal or drawer. On touch devices,
+    the first tap opens the selected mark's preview, dragging within the rail
+    moves the preview between marks without scrolling the page, and a second
+    tap on the selected mark navigates to the section. Tapping outside the rail
+    dismisses the preview.
 
 ## Non-Functional Requirements
 
@@ -101,7 +105,9 @@ contents control must complement it without competing for the same position.
    backdrop dismiss it; focus remains contained while open and returns to the
    invoking control after ordinary dismissal. Desktop previews open with hover
    or focus, close predictably, and mark selection navigates with mouse, Enter,
-   or Space.
+   or Space. On a touch-capable wide tablet, touching or dragging within the
+   rail opens and updates the preview without moving the page; a second tap on
+   the selected mark navigates, while tapping outside dismisses the preview.
 6. Selecting a section from either contents navigation changes the URL
    fragment, scrolls to the matching heading, and places keyboard focus on that
    heading without changing the contents order or destination. Sheet selection

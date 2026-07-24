@@ -59,8 +59,10 @@ than the multi-line Codex reference.
   `min-width: 0`, long headings do not overlap, and no horizontal overflow is
   introduced.
 - At 1280 pixels the wide-tablet rail is active regardless of hover or pointer
-  media capability. Touch selection updates the fragment, focuses the heading,
-  and scrolls it to the top.
+  media capability. Its touch gesture owns movement only inside the 64-pixel
+  rail: the first tap or drag opens and updates the preview, a second tap on
+  the selected mark navigates, and scrolling elsewhere on the page remains
+  unchanged.
 - Resizing an open tablet sheet to the desktop breakpoint closes the modal,
   restores scrolling, and switches to the desktop rail.
 
@@ -80,11 +82,21 @@ The post-fix 1280 × 894 comparison shows the rail in the available gutter, whil
 1024 and 390 pixels continue to use the pill and sheet without horizontal
 overflow.
 
+Touch QA then exposed that the newly visible wide-iPad rail still used only the
+mouse hover path, so dragging over its marks scrolled the article. The rail now
+suppresses the browser pan gesture only inside its own bounds and tracks pointer
+movement across marks. A first tap keeps the preview open, a glide changes the
+previewed section, a second tap selects it, and an outside tap clears the
+preview.
+
 ## Validation
 
 - `npm run build` from `site/`: passed
 - Prettier check for all changed implementation and specification files: passed
 - `git diff --check`: passed
+- At the 1280 × 894 browser viewport, the rail measured 64 pixels wide,
+  `touch-action: none` was active, and document width matched the viewport
+  without horizontal overflow.
 - Browser console checked: the production preview still reports the existing
   minified React hydration errors `#418`/`#423`; the responsive change adds no
   new error signature.
