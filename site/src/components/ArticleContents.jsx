@@ -5,6 +5,7 @@ import { Box, Heading } from 'theme-ui'
 import { FaListUl } from 'react-icons/fa'
 import { useLocation } from '@reach/router'
 import ArticleContentsList, { itemType } from './ArticleContentsList'
+import ArticleContentsRail from './ArticleContentsRail'
 import ArticleContentsSheet from './ArticleContentsSheet'
 
 const DESKTOP_NAVIGATION_MEDIA_QUERY = `(min-width: 1200px) and (hover: hover) and (pointer: fine)`
@@ -54,31 +55,6 @@ const styles = {
   pill: {
     left: `calc(1rem + env(safe-area-inset-left, 0px))`,
     bottom: `calc(1rem + env(safe-area-inset-bottom, 0px))`
-  },
-  rail: {
-    top: `50%`,
-    left: `env(safe-area-inset-left, 0px)`,
-    bottom: `auto`,
-    flexDirection: `column`,
-    gap: 2,
-    width: 48,
-    minWidth: 48,
-    height: `auto`,
-    minHeight: 132,
-    px: 0,
-    py: 3,
-    borderLeftWidth: 0,
-    borderRadius: `0 9999px 9999px 0`,
-    transform: `translateY(-50%)`,
-    '&:focus': {
-      outline: `3px solid`,
-      outlineColor: `alpha`,
-      outlineOffset: -4
-    }
-  },
-  railLabel: {
-    writingMode: `vertical-rl`,
-    transform: `rotate(180deg)`
   }
 }
 
@@ -229,6 +205,19 @@ const EligibleArticleContents = ({ items }) => {
     [cancelPendingFocus, cancelPendingNavigation, navigateToItem]
   )
 
+  const handleRailItemSelect = useCallback(
+    item => {
+      cancelPendingFocus()
+      cancelPendingNavigation()
+      invokingElementRef.current = null
+      navigationFrameRef.current = window.requestAnimationFrame(() => {
+        navigationFrameRef.current = null
+        navigateToItem(item)
+      })
+    },
+    [cancelPendingFocus, cancelPendingNavigation, navigateToItem]
+  )
+
   const handleAfterSheetUnlock = useCallback(() => {
     const pendingNavigation = pendingNavigationRef.current
 
@@ -298,6 +287,10 @@ const EligibleArticleContents = ({ items }) => {
   }, [])
 
   useEffect(() => {
+    if (isDesktopNavigation && isSheetOpen) forceCloseSheet()
+  }, [forceCloseSheet, isDesktopNavigation, isSheetOpen])
+
+  useEffect(() => {
     if (
       !navigationRef.current ||
       typeof window.IntersectionObserver !== `function`
@@ -342,37 +335,38 @@ const EligibleArticleContents = ({ items }) => {
       {portalHost &&
         (hasPassedViewport || isSheetOpen) &&
         createPortal(
-          <>
-            <Box
-              as='button'
-              type='button'
-              aria-hidden={isSheetOpen ? `true` : undefined}
-              tabIndex={isSheetOpen ? -1 : undefined}
-              onClick={handleOpenSheet}
-              sx={{
-                ...styles.trigger,
-                ...(isDesktopNavigation ? styles.rail : styles.pill),
-                visibility: isSheetOpen ? `hidden` : `visible`
-              }}
-            >
-              <FaListUl aria-hidden='true' focusable='false' />
+          isDesktopNavigation ? (
+            <ArticleContentsRail
+              items={items}
+              onItemSelect={handleRailItemSelect}
+            />
+          ) : (
+            <>
               <Box
-                as='span'
-                sx={isDesktopNavigation ? styles.railLabel : undefined}
+                as='button'
+                type='button'
+                aria-hidden={isSheetOpen ? `true` : undefined}
+                tabIndex={isSheetOpen ? -1 : undefined}
+                onClick={handleOpenSheet}
+                sx={{
+                  ...styles.trigger,
+                  ...styles.pill,
+                  visibility: isSheetOpen ? `hidden` : `visible`
+                }}
               >
+                <FaListUl aria-hidden='true' focusable='false' />
                 Bu yazıda
               </Box>
-            </Box>
-            {isSheetOpen && (
-              <ArticleContentsSheet
-                items={items}
-                mode={isDesktopNavigation ? `drawer` : `sheet`}
-                onAfterUnlock={handleAfterSheetUnlock}
-                onDismiss={handleDismissSheet}
-                onItemSelect={handleItemSelect}
-              />
-            )}
-          </>,
+              {isSheetOpen && (
+                <ArticleContentsSheet
+                  items={items}
+                  onAfterUnlock={handleAfterSheetUnlock}
+                  onDismiss={handleDismissSheet}
+                  onItemSelect={handleItemSelect}
+                />
+              )}
+            </>
+          ),
           portalHost
         )}
     </>

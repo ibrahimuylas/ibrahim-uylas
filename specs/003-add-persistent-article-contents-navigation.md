@@ -20,8 +20,8 @@ contents control must complement it without competing for the same position.
 
 - As a mobile or tablet reader, I want to reopen the article contents from a
   later section so that I can move directly to another section.
-- As a desktop reader, I want a compact edge control that opens the contents
-  without narrowing the article while I read.
+- As a desktop reader, I want a compact edge navigator that previews and opens
+  sections directly without interrupting the article while I read.
 - As a reader, I want the floating control to appear only after the original
   contents table is behind me so that the opening is not cluttered.
 - As a keyboard or assistive-technology user, I want the sheet and its section
@@ -38,13 +38,17 @@ contents control must complement it without competing for the same position.
    to or below the viewport.
 4. On phones and tablets, use the existing fixed bottom-left pill. On desktop
    devices with a viewport at least 1200 pixels wide, hover support, and a fine
-   pointer, use a 48-pixel-wide vertical edge tab centred on the left side.
-5. Activating the phone or tablet pill opens the existing modal sheet.
-   Activating the desktop edge tab opens a single-column overlay drawer from
-   the left without changing the article width.
+   pointer, use a vertically centred series of horizontal section marks on the
+   left edge.
+5. Activating the phone or tablet pill opens the existing modal sheet. Hovering
+   or focusing a desktop section mark shows a non-modal preview with the
+   section title and the first meaningful paragraph on one line. Leaving the
+   mark, moving focus outside the navigator, or pressing Escape hides it.
 6. Use a full-width sheet on phones and a centred, constrained-width sheet on
    tablets. Preserve the existing one-column phone and two-column tablet list
-   layout, and allow long entries to wrap without crossing columns.
+   layout, and allow long entries to wrap without crossing columns. Desktop
+   previews truncate long titles and details without causing horizontal
+   overflow.
 7. Provide a visible close button and support closing with Escape and the
    backdrop. Dim and blur the page behind the sheet, with a usable translucent
    fallback when backdrop blur is unavailable.
@@ -56,8 +60,11 @@ contents control must complement it without competing for the same position.
    article's current history entry so the browser Back action returns to the
    previous page instead of stepping through visited sections.
 10. Keep the phone and tablet pill at the bottom-left and the existing
-    scroll-to-top control at the bottom-right. Keep the desktop tab vertically
-    centred on the left edge.
+    scroll-to-top control at the bottom-right. Keep the desktop marks
+    vertically centred on the left edge.
+11. Desktop mark lengths use three title-length-based sizes and expand to the
+    longest size on hover or focus. Selecting a mark navigates immediately
+    without opening a modal or drawer.
 
 ## Non-Functional Requirements
 
@@ -69,11 +76,11 @@ contents control must complement it without competing for the same position.
 - Keep browser-global access out of Gatsby server rendering.
 - Use observation that cleans up after itself and does not introduce
   noticeable scroll performance degradation.
-- Give the pill, edge tab, sheet, and drawer controls at least 48 by 48 pixel
-  targets, visible keyboard focus, sufficient light/dark contrast, and
+- Give the phone and tablet pill and sheet controls at least 48 by 48 pixel
+  targets. Give fine-pointer desktop marks at least 24 pixels of clickable
+  height, visible keyboard focus, sufficient light/dark contrast, and
   appropriate safe-area spacing.
-- Prevent background interaction and scrolling while the modal sheet or drawer
-  is open.
+- Prevent background interaction and scrolling while the modal sheet is open.
 - Avoid new horizontal overflow at representative mobile, tablet, and desktop
   widths.
 
@@ -84,15 +91,17 @@ contents control must complement it without competing for the same position.
    control after it has passed, and hide it again when the table returns.
 2. Articles with fewer than two contents entries never expose a persistent
    contents control.
-3. The sheet and drawer present exactly the same ordered section links as the
-   inline table, using one column on phones and desktop, and two non-overlapping
+3. The sheet and desktop navigator present exactly the same ordered sections as
+   the inline table. The sheet uses one column on phones and two non-overlapping
    columns on tablets.
 4. The controls remain inside safe viewport bounds, use targets of at least 48
    by 48 pixels, support light and dark modes, and do not overlap the
    bottom-right scroll-to-top control.
-5. Mouse, touch, Enter, and Space open the sheet or drawer; its close button,
-   Escape, and backdrop dismiss it; focus remains contained while open and
-   returns to the invoking control after ordinary dismissal.
+5. Mouse, touch, Enter, and Space open the sheet; its close button, Escape, and
+   backdrop dismiss it; focus remains contained while open and returns to the
+   invoking control after ordinary dismissal. Desktop previews open with hover
+   or focus, close predictably, and mark selection navigates with mouse, Enter,
+   or Space.
 6. Selecting a section from either contents navigation changes the URL
    fragment, scrolls to the matching heading, and places keyboard focus on that
    heading without changing the contents order or destination. Sheet selection

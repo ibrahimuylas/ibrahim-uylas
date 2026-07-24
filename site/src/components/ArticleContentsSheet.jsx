@@ -28,12 +28,6 @@ const styles = {
     WebkitBackdropFilter: `blur(10px)`,
     touchAction: `none`
   },
-  drawerBackdrop: {
-    alignItems: `center`,
-    justifyContent: `flex-start`,
-    p: 3,
-    pl: `calc(1rem + env(safe-area-inset-left, 0px))`
-  },
   sheet: {
     boxSizing: `border-box`,
     width: [`100%`, `min(42rem, 100%)`],
@@ -61,15 +55,6 @@ const styles = {
         color: `alphaDark`
       }
     }
-  },
-  drawer: {
-    width: `min(26rem, calc(100vw - 2rem))`,
-    maxHeight: `calc(100vh - 2rem)`,
-    pt: 3,
-    pr: 3,
-    pb: 3,
-    pl: 3,
-    borderRadius: `default`
   },
   headingRow: {
     alignItems: `center`,
@@ -125,7 +110,6 @@ const restoreAttribute = (element, attribute, value) => {
 
 const ArticleContentsSheet = ({
   items,
-  mode,
   onAfterUnlock,
   onDismiss,
   onItemSelect
@@ -261,23 +245,14 @@ const ArticleContentsSheet = ({
   }
 
   return (
-    <Box
-      sx={{
-        ...styles.backdrop,
-        ...(mode === `drawer` ? styles.drawerBackdrop : {})
-      }}
-      onPointerDown={handleBackdropPointerDown}
-    >
+    <Box sx={styles.backdrop} onPointerDown={handleBackdropPointerDown}>
       <Box
         ref={dialogRef}
         role='dialog'
         aria-modal='true'
         aria-labelledby='article-contents-dialog-heading'
         tabIndex='-1'
-        sx={{
-          ...styles.sheet,
-          ...(mode === `drawer` ? styles.drawer : {})
-        }}
+        sx={styles.sheet}
       >
         <Flex sx={styles.headingRow}>
           <Heading
@@ -299,11 +274,7 @@ const ArticleContentsSheet = ({
             <FaTimes aria-hidden='true' focusable='false' />
           </Box>
         </Flex>
-        <ArticleContentsList
-          columns={mode === `drawer` ? 1 : [1, 2]}
-          items={items}
-          onItemClick={handleItemClick}
-        />
+        <ArticleContentsList items={items} onItemClick={handleItemClick} />
       </Box>
     </Box>
   )
@@ -311,7 +282,6 @@ const ArticleContentsSheet = ({
 
 ArticleContentsSheet.propTypes = {
   items: PropTypes.arrayOf(itemType).isRequired,
-  mode: PropTypes.oneOf([`drawer`, `sheet`]).isRequired,
   onAfterUnlock: PropTypes.func.isRequired,
   onDismiss: PropTypes.func.isRequired,
   onItemSelect: PropTypes.func.isRequired
