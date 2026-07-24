@@ -171,7 +171,7 @@ const EligibleArticleContents = ({ items }) => {
           // Gatsby fragments can already contain literal Unicode characters.
         }
 
-        window.history.pushState(window.history.state, ``, fragment)
+        window.history.replaceState(window.history.state, ``, fragment)
 
         const target = document.getElementById(targetId)
         if (!target) return
