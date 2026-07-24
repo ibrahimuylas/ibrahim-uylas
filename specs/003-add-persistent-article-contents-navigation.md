@@ -68,7 +68,8 @@ contents control must complement it without competing for the same position.
     the first tap opens the selected mark's preview, dragging within the rail
     moves the preview between marks without scrolling the page, and a second
     tap on the selected mark navigates to the section. Tapping outside the rail
-    dismisses the preview.
+    dismisses the preview. A hover-capable iPad pointer or stylus must open and
+    update previews on its first movement without requiring an activation tap.
 
 ## Non-Functional Requirements
 
@@ -108,6 +109,8 @@ contents control must complement it without competing for the same position.
    or Space. On a touch-capable wide tablet, touching or dragging within the
    rail opens and updates the preview without moving the page; a second tap on
    the selected mark navigates, while tapping outside dismisses the preview.
+   Hover-capable tablet pointers show previews on their first movement even
+   when the rail appeared beneath an already-positioned pointer.
 6. Selecting a section from either contents navigation changes the URL
    fragment, scrolls to the matching heading, and places keyboard focus on that
    heading without changing the contents order or destination. Sheet selection

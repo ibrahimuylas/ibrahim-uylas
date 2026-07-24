@@ -117,6 +117,10 @@ const getLineWidth = title => {
   return 40
 }
 
+const isHoverPointerEvent = event =>
+  event.pointerType === `mouse` ||
+  (event.pointerType !== `touch` && event.buttons === 0)
+
 const normalizeText = value => value.replace(/\s+/g, ` `).trim()
 
 const getSectionDetail = (item, sectionIds) => {
@@ -225,13 +229,29 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
       }
     }
 
+    const handleOutsidePointerMove = event => {
+      if (
+        isHoverPointerEvent(event) &&
+        !railRef.current?.contains(event.target)
+      ) {
+        setPreview(null)
+      }
+    }
+
     document.addEventListener(`pointerdown`, handleOutsidePointerDown, true)
-    return () =>
+    document.addEventListener(`pointermove`, handleOutsidePointerMove, true)
+    return () => {
       document.removeEventListener(
         `pointerdown`,
         handleOutsidePointerDown,
         true
       )
+      document.removeEventListener(
+        `pointermove`,
+        handleOutsidePointerMove,
+        true
+      )
+    }
   }, [preview])
 
   useEffect(
@@ -285,9 +305,27 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
     showPreviewForTarget(event.currentTarget, index)
   }
 
-  const handlePointerMove = event => {
-    const interaction = touchInteractionRef.current
-    if (!interaction || event.pointerType === `mouse`) return
+  const handlePointerMove = (event, index) => {
+    let interaction = touchInteractionRef.current
+
+    if (!interaction) {
+      if (isHoverPointerEvent(event)) {
+        if (preview?.index !== index) showPreview(event, index)
+        return
+      }
+
+      interaction = {
+        index,
+        moved: true,
+        previewWasActive: false,
+        startX: event.clientX,
+        startY: event.clientY
+      }
+      touchInteractionRef.current = interaction
+      showPreview(event, index)
+    }
+
+    if (event.pointerType === `mouse`) return
 
     if (
       Math.abs(event.clientX - interaction.startX) > 4 ||
@@ -309,11 +347,10 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
     const nextIndex = Number(buttonAtPointer.dataset.articleContentsIndex)
     if (!Number.isInteger(nextIndex)) return
 
-    if (nextIndex !== interaction.index) {
-      interaction.index = nextIndex
-      interaction.moved = true
-    }
+    if (nextIndex === interaction.index) return
 
+    interaction.index = nextIndex
+    interaction.moved = true
     showPreviewForTarget(buttonAtPointer, nextIndex)
   }
 
@@ -374,7 +411,7 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
         ref={railRef}
         aria-label='Yazı bölümleri'
         onPointerLeave={event => {
-          if (event.pointerType === `mouse`) setPreview(null)
+          if (isHoverPointerEvent(event)) setPreview(null)
         }}
         sx={styles.rail}
       >
@@ -399,14 +436,14 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
                   onPointerCancel={handlePointerCancel}
                   onPointerDown={event => handlePointerDown(event, index)}
                   onPointerEnter={event => {
-                    if (event.pointerType === `mouse`) {
+                    if (isHoverPointerEvent(event)) {
                       showPreview(event, index)
                     }
                   }}
                   onPointerLeave={event => {
-                    if (event.pointerType === `mouse`) setPreview(null)
+                    if (isHoverPointerEvent(event)) setPreview(null)
                   }}
-                  onPointerMove={handlePointerMove}
+                  onPointerMove={event => handlePointerMove(event, index)}
                   onPointerUp={handlePointerUp}
                   sx={styles.button}
                 >

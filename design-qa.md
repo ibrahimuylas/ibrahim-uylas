@@ -89,6 +89,14 @@ movement across marks. A first tap keeps the preview open, a glide changes the
 previewed section, a second tap selects it, and an outside tap clears the
 preview.
 
+A follow-up wide-iPad test exposed a second activation edge case. When the rail
+appeared beneath an already-positioned iPad pointer, Safari could emit movement
+without a new enter event. The movement handler previously required an active
+touch interaction, so clicking once was needed to focus and reveal the first
+preview. Pointer movement can now start the preview directly for mouse,
+hover-capable stylus, and missed-down touch paths. A document-level movement
+guard also closes the preview when Safari omits the corresponding leave event.
+
 ## Validation
 
 - `npm run build` from `site/`: passed
@@ -97,6 +105,10 @@ preview.
 - At the 1280 × 894 browser viewport, the rail measured 64 pixels wide,
   `touch-action: none` was active, and document width matched the viewport
   without horizontal overflow.
+- After the rail appeared through scrolling, moving onto its marks without any
+  prior click opened the first preview, moving to another mark updated it, and
+  moving outside the rail closed it. Direct selection still updated the
+  fragment and focused the destination heading.
 - Browser console checked: the production preview still reports the existing
   minified React hydration errors `#418`/`#423`; the responsive change adds no
   new error signature.
