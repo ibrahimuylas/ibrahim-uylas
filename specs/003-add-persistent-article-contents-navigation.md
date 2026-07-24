@@ -40,13 +40,15 @@ contents control must complement it without competing for the same position.
    tablets. Preserve the existing one-column phone and two-column tablet list
    layout.
 7. Provide a visible close button and support closing with Escape and the
-   backdrop.
+   backdrop. Dim and blur the page behind the sheet, with a usable translucent
+   fallback when backdrop blur is unavailable.
 8. Contain keyboard focus while the sheet is open. On ordinary dismissal,
    return focus to the invoking pill.
-9. Selecting a contents entry closes the sheet, updates the URL fragment,
-   scrolls to the target heading, and moves keyboard focus to that heading.
-   Replace the article's current history entry so the browser Back action
-   returns to the previous page instead of stepping through visited sections.
+9. Selecting a contents entry from either the inline navigation or the sheet
+   updates the URL fragment, scrolls to the target heading, and moves keyboard
+   focus to that heading. Sheet selection also closes the sheet. Replace the
+   article's current history entry so the browser Back action returns to the
+   previous page instead of stepping through visited sections.
 10. Keep the new pill at the bottom-left and the existing scroll-to-top control
     at the bottom-right.
 
@@ -81,11 +83,11 @@ contents control must complement it without competing for the same position.
 5. Mouse, touch, Enter, and Space open the sheet; its close button, Escape, and
    backdrop dismiss it; focus remains contained while open and returns to the
    pill after ordinary dismissal.
-6. Selecting a section closes the sheet, changes the URL fragment, scrolls to
-   the matching heading, and places keyboard focus on that heading without
-   changing the contents order or destination. Repeated section selections do
-   not add browser-history entries, so Back leaves the article for the
-   previously visited page.
+6. Selecting a section from either contents navigation changes the URL
+   fragment, scrolls to the matching heading, and places keyboard focus on that
+   heading without changing the contents order or destination. Sheet selection
+   closes the sheet. Repeated section selections do not add browser-history
+   entries, so Back leaves the article for the previously visited page.
 7. The Gatsby production build succeeds without hydration or browser-global
    errors, and focused mobile/tablet browser review finds no new horizontal
    overflow.

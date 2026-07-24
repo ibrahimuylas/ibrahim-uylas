@@ -23,7 +23,9 @@ const styles = {
     alignItems: [`flex-end`, `center`],
     justifyContent: `center`,
     p: [0, 4],
-    bg: `rgba(0, 0, 0, 0.65)`
+    bg: `rgba(0, 0, 0, 0.18)`,
+    backdropFilter: `blur(6px)`,
+    WebkitBackdropFilter: `blur(6px)`
   },
   sheet: {
     boxSizing: `border-box`,

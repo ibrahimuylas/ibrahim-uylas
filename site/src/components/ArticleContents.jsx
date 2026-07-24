@@ -140,6 +140,67 @@ const EligibleArticleContents = ({ items }) => {
     [cancelPendingFocus, cancelPendingNavigation]
   )
 
+  const navigateToItem = useCallback(
+    item => {
+      const fragmentStart = item.url.indexOf(`#`)
+      if (fragmentStart === -1) return
+
+      const fragment = item.url.slice(fragmentStart)
+      const encodedTargetId = fragment.slice(1)
+      let targetId = encodedTargetId
+
+      try {
+        targetId = decodeURIComponent(encodedTargetId)
+      } catch {
+        // Gatsby fragments can already contain literal Unicode characters.
+      }
+
+      window.history.replaceState(window.history.state, ``, fragment)
+
+      const target = document.getElementById(targetId)
+      if (!target) return
+
+      const needsTemporaryTabIndex = !target.hasAttribute(`tabindex`)
+
+      clearTemporaryFocusTarget()
+
+      if (needsTemporaryTabIndex) {
+        const removeTabIndex = () => {
+          if (
+            temporaryFocusTargetRef.current &&
+            temporaryFocusTargetRef.current.target === target
+          ) {
+            temporaryFocusTargetRef.current = null
+          }
+
+          target.removeAttribute(`tabindex`)
+        }
+
+        target.setAttribute(`tabindex`, `-1`)
+        target.addEventListener(`blur`, removeTabIndex, { once: true })
+        temporaryFocusTargetRef.current = { target, removeTabIndex }
+      }
+
+      target.scrollIntoView({ block: `start`, behavior: `instant` })
+      target.focus({ preventScroll: true })
+
+      if (document.activeElement !== target && needsTemporaryTabIndex) {
+        clearTemporaryFocusTarget()
+      }
+    },
+    [clearTemporaryFocusTarget]
+  )
+
+  const handleInlineItemClick = useCallback(
+    (event, item) => {
+      event.preventDefault()
+      cancelPendingFocus()
+      cancelPendingNavigation()
+      navigateToItem(item)
+    },
+    [cancelPendingFocus, cancelPendingNavigation, navigateToItem]
+  )
+
   const handleAfterSheetUnlock = useCallback(() => {
     const pendingNavigation = pendingNavigationRef.current
 
@@ -157,55 +218,10 @@ const EligibleArticleContents = ({ items }) => {
         }
 
         pendingNavigationRef.current = null
-
-        const fragmentStart = pendingNavigation.url.indexOf(`#`)
-        if (fragmentStart === -1) return
-
-        const fragment = pendingNavigation.url.slice(fragmentStart)
-        const encodedTargetId = fragment.slice(1)
-        let targetId = encodedTargetId
-
-        try {
-          targetId = decodeURIComponent(encodedTargetId)
-        } catch {
-          // Gatsby fragments can already contain literal Unicode characters.
-        }
-
-        window.history.replaceState(window.history.state, ``, fragment)
-
-        const target = document.getElementById(targetId)
-        if (!target) return
-
-        const needsTemporaryTabIndex = !target.hasAttribute(`tabindex`)
-
-        clearTemporaryFocusTarget()
-
-        if (needsTemporaryTabIndex) {
-          const removeTabIndex = () => {
-            if (
-              temporaryFocusTargetRef.current &&
-              temporaryFocusTargetRef.current.target === target
-            ) {
-              temporaryFocusTargetRef.current = null
-            }
-
-            target.removeAttribute(`tabindex`)
-          }
-
-          target.setAttribute(`tabindex`, `-1`)
-          target.addEventListener(`blur`, removeTabIndex, { once: true })
-          temporaryFocusTargetRef.current = { target, removeTabIndex }
-        }
-
-        target.scrollIntoView({ block: `start`, behavior: `instant` })
-        target.focus({ preventScroll: true })
-
-        if (document.activeElement !== target && needsTemporaryTabIndex) {
-          clearTemporaryFocusTarget()
-        }
+        navigateToItem(pendingNavigation)
       })
     })
-  }, [clearTemporaryFocusTarget])
+  }, [navigateToItem])
 
   useEffect(() => {
     const host = document.createElement(`div`)
@@ -302,7 +318,10 @@ const EligibleArticleContents = ({ items }) => {
         <Heading as='h2' variant='h4' sx={{ mb: 3 }}>
           Bu yazıda
         </Heading>
-        <ArticleContentsList items={items} />
+        <ArticleContentsList
+          items={items}
+          onItemClick={handleInlineItemClick}
+        />
       </Box>
       {portalHost &&
         (hasPassedViewport || isSheetOpen) &&
