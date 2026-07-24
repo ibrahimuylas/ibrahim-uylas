@@ -7,13 +7,11 @@ import { useLocation } from '@reach/router'
 import ArticleContentsList, { itemType } from './ArticleContentsList'
 import ArticleContentsSheet from './ArticleContentsSheet'
 
-const TABLET_MEDIA_QUERY = `(max-width: 1023px)`
+const DESKTOP_NAVIGATION_MEDIA_QUERY = `(min-width: 1200px) and (hover: hover) and (pointer: fine)`
 
 const styles = {
-  pill: {
+  trigger: {
     position: `fixed`,
-    left: `calc(1rem + env(safe-area-inset-left, 0px))`,
-    bottom: `calc(1rem + env(safe-area-inset-bottom, 0px))`,
     zIndex: 5,
     boxSizing: `border-box`,
     display: `flex`,
@@ -52,6 +50,35 @@ const styles = {
       width: 18,
       height: 18
     }
+  },
+  pill: {
+    left: `calc(1rem + env(safe-area-inset-left, 0px))`,
+    bottom: `calc(1rem + env(safe-area-inset-bottom, 0px))`
+  },
+  rail: {
+    top: `50%`,
+    left: `env(safe-area-inset-left, 0px)`,
+    bottom: `auto`,
+    flexDirection: `column`,
+    gap: 2,
+    width: 48,
+    minWidth: 48,
+    height: `auto`,
+    minHeight: 132,
+    px: 0,
+    py: 3,
+    borderLeftWidth: 0,
+    borderRadius: `0 9999px 9999px 0`,
+    transform: `translateY(-50%)`,
+    '&:focus': {
+      outline: `3px solid`,
+      outlineColor: `alpha`,
+      outlineOffset: -4
+    }
+  },
+  railLabel: {
+    writingMode: `vertical-rl`,
+    transform: `rotate(180deg)`
   }
 }
 
@@ -67,6 +94,7 @@ const EligibleArticleContents = ({ items }) => {
   const previousPathnameRef = useRef(pathname)
   const [portalHost, setPortalHost] = useState(null)
   const [hasPassedViewport, setHasPassedViewport] = useState(false)
+  const [isDesktopNavigation, setIsDesktopNavigation] = useState(false)
   const [isSheetOpen, setIsSheetOpen] = useState(false)
 
   const cancelPendingFocus = useCallback(() => {
@@ -246,60 +274,48 @@ const EligibleArticleContents = ({ items }) => {
   }, [forceCloseSheet, pathname])
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia(TABLET_MEDIA_QUERY)
-    let observer = null
+    const mediaQuery = window.matchMedia(DESKTOP_NAVIGATION_MEDIA_QUERY)
 
-    const stopObserving = () => {
-      if (observer) {
-        observer.disconnect()
-        observer = null
-      }
+    const updateNavigationMode = () => {
+      setIsDesktopNavigation(mediaQuery.matches)
     }
 
-    const startObserving = () => {
-      stopObserving()
-      setHasPassedViewport(false)
-
-      if (
-        !mediaQuery.matches ||
-        !navigationRef.current ||
-        typeof window.IntersectionObserver !== `function`
-      ) {
-        if (!mediaQuery.matches) forceCloseSheet()
-        return
-      }
-
-      const nextObserver = new window.IntersectionObserver(entries => {
-        if (observer !== nextObserver || !mediaQuery.matches) return
-
-        const entry = entries[entries.length - 1]
-        const rootTop = entry.rootBounds ? entry.rootBounds.top : 0
-
-        setHasPassedViewport(entry.boundingClientRect.bottom <= rootTop)
-      })
-
-      observer = nextObserver
-      observer.observe(navigationRef.current)
-    }
-
-    startObserving()
+    updateNavigationMode()
 
     if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener(`change`, startObserving)
+      mediaQuery.addEventListener(`change`, updateNavigationMode)
     } else {
-      mediaQuery.addListener(startObserving)
+      mediaQuery.addListener(updateNavigationMode)
     }
 
     return () => {
-      stopObserving()
-
       if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener(`change`, startObserving)
+        mediaQuery.removeEventListener(`change`, updateNavigationMode)
       } else {
-        mediaQuery.removeListener(startObserving)
+        mediaQuery.removeListener(updateNavigationMode)
       }
     }
-  }, [forceCloseSheet])
+  }, [])
+
+  useEffect(() => {
+    if (
+      !navigationRef.current ||
+      typeof window.IntersectionObserver !== `function`
+    ) {
+      return undefined
+    }
+
+    const observer = new window.IntersectionObserver(entries => {
+      const entry = entries[entries.length - 1]
+      const rootTop = entry.rootBounds ? entry.rootBounds.top : 0
+
+      setHasPassedViewport(entry.boundingClientRect.bottom <= rootTop)
+    })
+
+    observer.observe(navigationRef.current)
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <>
@@ -334,16 +350,23 @@ const EligibleArticleContents = ({ items }) => {
               tabIndex={isSheetOpen ? -1 : undefined}
               onClick={handleOpenSheet}
               sx={{
-                ...styles.pill,
+                ...styles.trigger,
+                ...(isDesktopNavigation ? styles.rail : styles.pill),
                 visibility: isSheetOpen ? `hidden` : `visible`
               }}
             >
               <FaListUl aria-hidden='true' focusable='false' />
-              Bu yazıda
+              <Box
+                as='span'
+                sx={isDesktopNavigation ? styles.railLabel : undefined}
+              >
+                Bu yazıda
+              </Box>
             </Box>
             {isSheetOpen && (
               <ArticleContentsSheet
                 items={items}
+                mode={isDesktopNavigation ? `drawer` : `sheet`}
                 onAfterUnlock={handleAfterSheetUnlock}
                 onDismiss={handleDismissSheet}
                 onItemSelect={handleItemSelect}

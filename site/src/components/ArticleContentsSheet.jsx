@@ -23,9 +23,16 @@ const styles = {
     alignItems: [`flex-end`, `center`],
     justifyContent: `center`,
     p: [0, 4],
-    bg: `rgba(0, 0, 0, 0.18)`,
-    backdropFilter: `blur(6px)`,
-    WebkitBackdropFilter: `blur(6px)`
+    bg: `rgba(0, 0, 0, 0.08)`,
+    backdropFilter: `blur(10px)`,
+    WebkitBackdropFilter: `blur(10px)`,
+    touchAction: `none`
+  },
+  drawerBackdrop: {
+    alignItems: `center`,
+    justifyContent: `flex-start`,
+    p: 3,
+    pl: `calc(1rem + env(safe-area-inset-left, 0px))`
   },
   sheet: {
     boxSizing: `border-box`,
@@ -33,6 +40,7 @@ const styles = {
     maxHeight: [`calc(100vh - 1rem)`, `min(80vh, 42rem)`],
     overflowY: `auto`,
     overscrollBehavior: `contain`,
+    touchAction: `pan-y`,
     pt: 3,
     pr: `calc(1rem + env(safe-area-inset-right, 0px))`,
     pb: `calc(1rem + env(safe-area-inset-bottom, 0px))`,
@@ -53,6 +61,15 @@ const styles = {
         color: `alphaDark`
       }
     }
+  },
+  drawer: {
+    width: `min(26rem, calc(100vw - 2rem))`,
+    maxHeight: `calc(100vh - 2rem)`,
+    pt: 3,
+    pr: 3,
+    pb: 3,
+    pl: 3,
+    borderRadius: `default`
   },
   headingRow: {
     alignItems: `center`,
@@ -108,6 +125,7 @@ const restoreAttribute = (element, attribute, value) => {
 
 const ArticleContentsSheet = ({
   items,
+  mode,
   onAfterUnlock,
   onDismiss,
   onItemSelect
@@ -123,6 +141,7 @@ const ArticleContentsSheet = ({
     const scrollY = window.scrollY
     const htmlStyleAttribute = document.documentElement.getAttribute(`style`)
     const bodyStyleAttribute = document.body.getAttribute(`style`)
+    const appRootStyleAttribute = appRoot ? appRoot.getAttribute(`style`) : null
     const hadInertAttribute = appRoot && appRoot.hasAttribute(`inert`)
     const inertAttributeValue = hadInertAttribute
       ? appRoot.getAttribute(`inert`)
@@ -130,15 +149,17 @@ const ArticleContentsSheet = ({
 
     document.documentElement.style.setProperty(`overflow`, `hidden`)
     document.documentElement.style.setProperty(`overscroll-behavior`, `none`)
-    document.body.style.setProperty(`position`, `fixed`)
-    document.body.style.setProperty(`top`, `${-scrollY}px`)
-    document.body.style.setProperty(`left`, `${-scrollX}px`)
-    document.body.style.setProperty(`right`, `0`)
-    document.body.style.setProperty(`width`, `100%`)
     document.body.style.setProperty(`overflow`, `hidden`)
     document.body.style.setProperty(`overscroll-behavior`, `none`)
 
-    if (appRoot) appRoot.setAttribute(`inert`, ``)
+    if (appRoot) {
+      appRoot.style.setProperty(
+        `transform`,
+        `translate3d(${-scrollX}px, ${-scrollY}px, 0)`
+      )
+      appRoot.style.setProperty(`transform-origin`, `top left`)
+      appRoot.setAttribute(`inert`, ``)
+    }
 
     const getFocusableElements = () =>
       Array.from(dialog.querySelectorAll(FOCUSABLE_SELECTOR)).filter(
@@ -193,6 +214,8 @@ const ArticleContentsSheet = ({
       document.removeEventListener(`focusin`, handleFocusIn)
 
       if (appRoot) {
+        restoreAttribute(appRoot, `style`, appRootStyleAttribute)
+
         if (hadInertAttribute) {
           appRoot.setAttribute(`inert`, inertAttributeValue)
         } else {
@@ -238,18 +261,27 @@ const ArticleContentsSheet = ({
   }
 
   return (
-    <Box sx={styles.backdrop} onPointerDown={handleBackdropPointerDown}>
+    <Box
+      sx={{
+        ...styles.backdrop,
+        ...(mode === `drawer` ? styles.drawerBackdrop : {})
+      }}
+      onPointerDown={handleBackdropPointerDown}
+    >
       <Box
         ref={dialogRef}
         role='dialog'
         aria-modal='true'
-        aria-labelledby='article-contents-sheet-heading'
+        aria-labelledby='article-contents-dialog-heading'
         tabIndex='-1'
-        sx={styles.sheet}
+        sx={{
+          ...styles.sheet,
+          ...(mode === `drawer` ? styles.drawer : {})
+        }}
       >
         <Flex sx={styles.headingRow}>
           <Heading
-            id='article-contents-sheet-heading'
+            id='article-contents-dialog-heading'
             as='h2'
             variant='h4'
             sx={styles.heading}
@@ -267,7 +299,11 @@ const ArticleContentsSheet = ({
             <FaTimes aria-hidden='true' focusable='false' />
           </Box>
         </Flex>
-        <ArticleContentsList items={items} onItemClick={handleItemClick} />
+        <ArticleContentsList
+          columns={mode === `drawer` ? 1 : [1, 2]}
+          items={items}
+          onItemClick={handleItemClick}
+        />
       </Box>
     </Box>
   )
@@ -275,6 +311,7 @@ const ArticleContentsSheet = ({
 
 ArticleContentsSheet.propTypes = {
   items: PropTypes.arrayOf(itemType).isRequired,
+  mode: PropTypes.oneOf([`drawer`, `sheet`]).isRequired,
   onAfterUnlock: PropTypes.func.isRequired,
   onDismiss: PropTypes.func.isRequired,
   onItemSelect: PropTypes.func.isRequired
