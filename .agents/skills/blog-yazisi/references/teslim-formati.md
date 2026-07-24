@@ -39,7 +39,7 @@ Giriş...
 
 Taslak aşamasında yayın tarihi bilinmiyorsa `date: YAYIN_TARIHI` yaz; tarih uydurma.
 
-Görsel yer tutucularını ilgili bölümün sonuna şu biçimde ekle:
+Görsel yer tutucularını, açıkladıkları fikrin ilk kez anlatıldığı paragrafın hemen arkasına şu biçimde ekle. Görselleri otomatik olarak bölüm sonuna yığma:
 
 ```md
 ![Görselde gerçekten görülecek içeriğin açıklaması](seo-uyumlu-dosya-adi.webp "Kısa görsel başlığı")
@@ -52,7 +52,7 @@ Görsel yer tutucularını ilgili bölümün sonuna şu biçimde ekle:
 | No | Yerleşim | Görsel | Dosya adı | Alt metin | Caption |
 |---|---|---|---|---|---|
 | Banner | Yazının üstü | Kullanıcının fotoğrafından hazırlanacak sahne | `...-banner.webp` | ... | — |
-| 1 | İlgili H2 sonrası | ... | `....webp` | ... | ... |
+| 1 | İlgili açıklayıcı paragrafın hemen sonrası | ... | `....webp` | ... | ... |
 
 Banner için kadraj ve boşluk yönünü belirt. Kullanıcı kendi fotoğrafını kullanacaksa yeni yüz veya yapay kişi üretme.
 
