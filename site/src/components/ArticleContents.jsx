@@ -8,7 +8,7 @@ import ArticleContentsList, { itemType } from './ArticleContentsList'
 import ArticleContentsRail from './ArticleContentsRail'
 import ArticleContentsSheet from './ArticleContentsSheet'
 
-const DESKTOP_NAVIGATION_MEDIA_QUERY = `(min-width: 1200px) and (hover: hover) and (pointer: fine)`
+const DESKTOP_NAVIGATION_MEDIA_QUERY = `(min-width: 1200px)`
 
 const styles = {
   trigger: {

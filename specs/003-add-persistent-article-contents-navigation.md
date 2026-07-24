@@ -36,14 +36,14 @@ contents control must complement it without competing for the same position.
 3. Show a persistent “Bu yazıda” control only after the inline navigation has
    passed above the viewport. Hide it again when the inline navigation returns
    to or below the viewport.
-4. On phones and tablets, use the existing fixed bottom-left pill. On desktop
-   devices with a viewport at least 1200 pixels wide, hover support, and a fine
-   pointer, use a vertically centred series of horizontal section marks on the
-   left edge.
-5. Activating the phone or tablet pill opens the existing modal sheet. Hovering
-   or focusing a desktop section mark shows a non-modal preview with the
-   section title and the first meaningful paragraph on one line. Leaving the
-   mark, moving focus outside the navigator, or pressing Escape hides it.
+4. On viewports below 1200 pixels, use the existing fixed bottom-left pill. On
+   desktop and wide tablet viewports at least 1200 pixels wide, use a vertically
+   centred series of horizontal section marks on the left edge.
+5. Activating the pill below 1200 pixels opens the existing modal sheet.
+   Hovering or focusing a desktop or wide-tablet section mark shows a non-modal
+   preview with the section title and the first meaningful paragraph on one
+   line. Leaving the mark, moving focus outside the navigator, or pressing
+   Escape hides it.
 6. Use a full-width sheet on phones and a centred, constrained-width sheet on
    tablets. Preserve the existing one-column phone and two-column tablet list
    layout, and allow long entries to wrap without crossing columns. Desktop
@@ -59,12 +59,12 @@ contents control must complement it without competing for the same position.
    focus to that heading. Sheet selection also closes the sheet. Replace the
    article's current history entry so the browser Back action returns to the
    previous page instead of stepping through visited sections.
-10. Keep the phone and tablet pill at the bottom-left and the existing
-    scroll-to-top control at the bottom-right. Keep the desktop marks
-    vertically centred on the left edge.
-11. Desktop mark lengths use three title-length-based sizes and expand to the
-    longest size on hover or focus. Selecting a mark navigates immediately
-    without opening a modal or drawer.
+10. Keep the sub-1200-pixel pill at the bottom-left and the existing
+    scroll-to-top control at the bottom-right. Keep the desktop and wide-tablet
+    marks vertically centred on the left edge.
+11. Desktop and wide-tablet mark lengths use three title-length-based sizes and
+    expand to the longest size on hover or focus. Selecting a mark with mouse,
+    keyboard, or touch navigates immediately without opening a modal or drawer.
 
 ## Non-Functional Requirements
 
@@ -76,8 +76,8 @@ contents control must complement it without competing for the same position.
 - Keep browser-global access out of Gatsby server rendering.
 - Use observation that cleans up after itself and does not introduce
   noticeable scroll performance degradation.
-- Give the phone and tablet pill and sheet controls at least 48 by 48 pixel
-  targets. Give fine-pointer desktop marks at least 24 pixels of clickable
+- Give the sub-1200-pixel pill and sheet controls at least 48 by 48 pixel
+  targets. Give desktop and wide-tablet marks at least 24 pixels of clickable
   height, visible keyboard focus, sufficient light/dark contrast, and
   appropriate safe-area spacing.
 - Prevent background interaction and scrolling while the modal sheet is open.
@@ -91,9 +91,9 @@ contents control must complement it without competing for the same position.
    control after it has passed, and hide it again when the table returns.
 2. Articles with fewer than two contents entries never expose a persistent
    contents control.
-3. The sheet and desktop navigator present exactly the same ordered sections as
+3. The sheet and edge navigator present exactly the same ordered sections as
    the inline table. The sheet uses one column on phones and two non-overlapping
-   columns on tablets.
+   columns below the wide-tablet breakpoint.
 4. The controls remain inside safe viewport bounds, use targets of at least 48
    by 48 pixels, support light and dark modes, and do not overlap the
    bottom-right scroll-to-top control.

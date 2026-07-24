@@ -8,8 +8,16 @@
   `/Users/uylas/.codex/visualizations/2026/07/24/019f9361-288d-70a1-b5ea-4148631e48be/article-contents-desktop-full.png`
 - Focused comparison:
   `/Users/uylas/.codex/visualizations/2026/07/24/019f9361-288d-70a1-b5ea-4148631e48be/article-contents-design-comparison.png`
+- Wide-iPad source:
+  `/tmp/codex-remote-attachments/019f9361-288d-70a1-b5ea-4148631e48be/4FE98FD8-C9D5-4F98-8846-105C2A4676B9/1-Pasted-Image-1.jpg`
+- Wide-iPad implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/24/019f9361-288d-70a1-b5ea-4148631e48be/article-contents-ipad-1280-light.png`
+- Wide-iPad comparison:
+  `/Users/uylas/.codex/visualizations/2026/07/24/019f9361-288d-70a1-b5ea-4148631e48be/article-contents-ipad-comparison.jpg`
 - Desktop viewport: 1440 × 900, dark theme
 - Comparison crop: 894 × 506
+- Wide-iPad viewport: 1280 × 894, light theme, 1:1 source and
+  implementation pixels
 
 The reference and implementation use different page content, so the comparison
 targets the navigator geometry, line hierarchy, card position, surface
@@ -29,6 +37,8 @@ than the multi-line Codex reference.
 - The preview title and extracted paragraph remain on one line with safe
   truncation.
 - No horizontal overflow occurs at 390, 768, 1024, or 1440 pixels.
+- At 1280 pixels the left gutter now contains the section rail instead of the
+  mobile-style pill.
 - Light and dark theme tokens are inherited from the existing site design
   system.
 
@@ -48,6 +58,9 @@ than the multi-line Codex reference.
 - At 768 and 1024 pixels the tablet sheet remains active. Its two columns have
   `min-width: 0`, long headings do not overlap, and no horizontal overflow is
   introduced.
+- At 1280 pixels the wide-tablet rail is active regardless of hover or pointer
+  media capability. Touch selection updates the fragment, focuses the heading,
+  and scrolls it to the top.
 - Resizing an open tablet sheet to the desktop breakpoint closes the modal,
   restores scrolling, and switches to the desktop rail.
 
@@ -59,11 +72,22 @@ animation frame. The retest placed each selected heading at the top of the
 viewport for click, Enter, and Space. Escape was also adjusted to close only the
 preview rather than discarding keyboard focus.
 
+The wide-iPad comparison then exposed a P1 responsive mismatch: the
+`(hover: hover)` and `(pointer: fine)` requirements forced a 1280-pixel iPad to
+show the mobile pill even though its left gutter could hold the rail. The
+desktop-navigation query now depends on the 1200-pixel layout breakpoint alone.
+The post-fix 1280 × 894 comparison shows the rail in the available gutter, while
+1024 and 390 pixels continue to use the pill and sheet without horizontal
+overflow.
+
 ## Validation
 
 - `npm run build` from `site/`: passed
 - Prettier check for all changed implementation and specification files: passed
 - `git diff --check`: passed
+- Browser console checked: the production preview still reports the existing
+  minified React hydration errors `#418`/`#423`; the responsive change adds no
+  new error signature.
 - Gatsby emitted existing dependency-compatibility and Browserslist warnings;
   no build failure was introduced.
 
