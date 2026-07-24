@@ -3,7 +3,7 @@ import { Link as GLink } from 'gatsby'
 import { Heading } from 'theme-ui'
 import rv from '@components/utils/buildResponsiveVariant'
 
-const CardBodyTitle = ({ variant, title, slug, link }) => {
+const CardBodyTitle = ({ variant, title, slug, link, onTitleClick }) => {
   const linkProps = link
     ? {
         as: 'a',
@@ -16,7 +16,11 @@ const CardBodyTitle = ({ variant, title, slug, link }) => {
         to: slug
       }
   return (
-    <Heading {...linkProps} sx={{ variant: rv(variant, 'title') }}>
+    <Heading
+      {...linkProps}
+      onClick={onTitleClick}
+      sx={{ variant: rv(variant, 'title') }}
+    >
       {title}
     </Heading>
   )

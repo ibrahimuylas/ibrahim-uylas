@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import SVG from 'react-inlinesvg'
 import { Button, Box, Heading } from 'theme-ui'
 
 const styles = {
@@ -15,13 +14,13 @@ const styles = {
       mb: 3,
       p: 0,
       pr: 2,
-      svg: {
+      'svg, img': {
         color: `omegaDark`,
         verticalAlign: `middle`,
         size: `icon.xs`
       },
       ':hover': {
-        svg: {
+        'svg, img': {
           color: `white`
         },
         'div:first-of-type': {
@@ -32,12 +31,12 @@ const styles = {
     horizontal: {
       variant: `cards.interactive`,
       p: 0,
-      svg: {
+      'svg, img': {
         color: `alpha`,
         size: `icon.sm`
       },
       ':hover': {
-        svg: {
+        'svg, img': {
           color: `omegaDark`
         }
       }
@@ -84,7 +83,7 @@ export const IconButton = ({
   <Button variant='none' as={to && Link} to={to} sx={styles.button[variant]}>
     {(Icon || iconPath) && (
       <Box sx={styles.icon[variant]}>
-        {iconPath && <SVG src={iconPath} />}
+        {iconPath && <Box as='img' src={iconPath} alt='' />}
         {Icon && <Icon color={iconColor} />}
       </Box>
     )}

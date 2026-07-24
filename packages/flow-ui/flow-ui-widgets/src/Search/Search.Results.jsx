@@ -3,22 +3,24 @@ import groupArray from 'group-array'
 import {
   Highlight,
   Snippet,
-  connectStateResults,
-  PoweredBy
-} from 'react-instantsearch-dom'
+  PoweredBy,
+  useInstantSearch
+} from 'react-instantsearch'
 import { Heading, Box, Spinner } from 'theme-ui'
 import Card from '@components/Card'
 import useScrollDisabler from '@components/useScrollDisabler'
 import styles from './Search.styles'
 
-const Hits = ({ searchState, searchResults }) => {
+const Hits = () => {
   useScrollDisabler()
+  const { indexUiState, results: searchResults, status } = useInstantSearch()
+  const query = indexUiState.query
 
-  if (!searchResults || !searchState.query) {
+  if (!searchResults || !query) {
     return 'What are you looking for?'
   }
 
-  if (searchResults.query !== searchState.query) {
+  if (status === 'loading' || status === 'stalled') {
     //Waiting for search request to return results from server
     return <Spinner strokeWidth={2} duration={700} sx={styles.spinner} />
   }
@@ -58,12 +60,10 @@ const Hits = ({ searchState, searchResults }) => {
   }
 }
 
-const ConnectedHits = connectStateResults(Hits)
-
 const Results = () => (
   <Box sx={styles.resultsWrapper}>
     <Box sx={styles.hitsWrapper}>
-      <ConnectedHits />
+      <Hits />
     </Box>
     <Box sx={styles.poweredBy}>
       <PoweredBy />

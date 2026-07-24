@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from 'theme-ui'
 
-const Divider = ({ space, line }) => (
+const Divider = ({ space = 4, line = false }) => (
   <Box
     sx={{
       minWidth: `auto`,
@@ -15,8 +15,3 @@ const Divider = ({ space, line }) => (
 )
 
 export default Divider
-
-Divider.defaultProps = {
-  space: 4,
-  line: false
-}

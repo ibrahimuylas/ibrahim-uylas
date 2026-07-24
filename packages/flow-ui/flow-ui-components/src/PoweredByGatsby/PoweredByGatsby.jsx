@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'theme-ui'
-import SVG from 'react-inlinesvg'
+import { Box, Link } from 'theme-ui'
 import gatsbySVG from '../../assets/Gatsby-Logo.svg'
 
 const styles = {
@@ -11,7 +10,7 @@ const styles = {
     ':visited': {
       color: `heading`
     },
-    svg: {
+    img: {
       fill: `omegaDarker`,
       height: 24,
       ml: 2
@@ -29,7 +28,7 @@ const PoweredByGatsby = () => (
     sx={styles.link}
   >
     Powered By
-    {gatsbySVG && <SVG src={gatsbySVG} />}
+    {gatsbySVG && <Box as='img' src={gatsbySVG} alt='Gatsby' />}
   </Link>
 )
 

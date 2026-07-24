@@ -18,7 +18,7 @@ const styles = {
   }
 }
 
-const Logo = ({ title, grayscale, image, to, ...props }) => (
+const Logo = ({ title, grayscale, image, to = '/', ...props }) => (
   <Heading
     as={Link}
     to={to}
@@ -46,10 +46,6 @@ const Logo = ({ title, grayscale, image, to, ...props }) => (
 )
 
 export default Logo
-
-Logo.defaultProps = {
-  to: '/'
-}
 
 Logo.propTypes = {
   title: PropTypes.string,

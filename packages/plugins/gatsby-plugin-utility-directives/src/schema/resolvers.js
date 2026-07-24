@@ -1,7 +1,6 @@
-const urljoin = require('url-join')
 const slugify = require('slugify')
-const toMarkdown = require('@sanity/block-content-to-markdown')
 const normalizeSlug = require('../utils/normalizeSlug')
+const joinPath = require('../utils/joinPath')
 const withDefaults = require('../utils/default.options')
 
 /**
@@ -40,7 +39,7 @@ const makeSlug =
     const pathPrefix = (sitePaths && sitePaths[source.internal.type]) || ''
 
     return normalizeSlug(
-      urljoin(
+      joinPath(
         basePath,
         pathPrefix,
         slugify(fromValue, {
@@ -83,19 +82,11 @@ const blockContentToMarkdown =
     const fieldValue = await resolver(source, args, context, info)
     if (fieldValue == null) return null
 
-    // Get gatsby-source-sanity options
-    const plugin = context.nodeModel
-      .findAll({ type: 'SitePlugin' })
-      .find(node => node.name === 'gatsby-source-sanity')
-
-    const { projectId, dataset } = plugin.pluginOptions
+    const { portableTextToMarkdown } = await import('@portabletext/markdown')
 
     return {
       ...source,
-      rawBody: toMarkdown(fieldValue, {
-        projectId,
-        dataset
-      })
+      rawBody: portableTextToMarkdown(fieldValue)
     }
   }
 

@@ -3,17 +3,17 @@ import PropTypes from 'prop-types'
 import rv from '@components/utils/buildResponsiveVariant'
 import Base from './Card.Base'
 
-const Card = ({ variantGroup, variant, aside, ...props }) => {
+const Card = ({
+  variantGroup = 'cards',
+  variant = 'vertical',
+  aside,
+  ...props
+}) => {
   const responsiveVariant = rv(variantGroup, variant)
   return <Base variant={responsiveVariant} {...props} />
 }
 
 export default Card
-
-Card.defaultProps = {
-  variantGroup: 'cards',
-  variant: 'vertical'
-}
 
 Card.propTypes = {
   variant: PropTypes.oneOfType([

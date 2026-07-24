@@ -1,4 +1,6 @@
 const withDefaults = require('./src/utils/default.options')
+const remarkGfm = require('remark-gfm')
+const rehypeSlug = require('./src/utils/rehypeSlug')
 
 module.exports = options => {
   options = withDefaults(options)
@@ -47,12 +49,18 @@ module.exports = options => {
               width: 800
             }
           },
+          {
+            resolve: '@elegantstack/gatsby-remark-unwrap-video'
+          },
           { resolve: 'gatsby-remark-responsive-iframe' },
           { resolve: 'gatsby-remark-copy-linked-files' },
           { resolve: 'gatsby-remark-smartypants' },
           ...options.gatsbyRemarkPlugins
         ],
-        remarkPlugins: [require('remark-slug'), ...options.remarkPlugins]
+        mdxOptions: {
+          remarkPlugins: [remarkGfm, ...options.remarkPlugins],
+          rehypePlugins: [rehypeSlug]
+        }
       }
     },
     'gatsby-plugin-catch-links',

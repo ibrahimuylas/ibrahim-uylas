@@ -17,18 +17,13 @@ const styles = {
   }
 }
 
-const TextList = ({ nowrap, separator, children }) => (
+const TextList = ({ nowrap = false, separator = '・', children }) => (
   <Box sx={{ ...(nowrap && styles.nowrap), ...styles.wrapper(separator) }}>
     {children}
   </Box>
 )
 
 export default TextList
-
-TextList.defaultProps = {
-  separator: '・',
-  nowrap: false
-}
 
 TextList.propTypes = {
   separator: PropTypes.string,

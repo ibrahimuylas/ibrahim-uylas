@@ -69,7 +69,7 @@ const NavigationItem = ({
 
 const Navigation = ({
   items,
-  variant,
+  variant = 'horizontal',
   headingProps,
   wrapperStyle,
   ...props
@@ -116,10 +116,6 @@ const Navigation = ({
 }
 
 export default Navigation
-
-Navigation.defaultProps = {
-  variant: 'horizontal'
-}
 
 const itemsShape = PropTypes.shape({
   name: PropTypes.string,

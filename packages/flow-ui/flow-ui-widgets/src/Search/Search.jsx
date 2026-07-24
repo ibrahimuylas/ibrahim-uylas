@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { InstantSearch, Configure } from 'react-instantsearch-dom'
-import algoliasearch from 'algoliasearch/lite'
+import React, { useMemo, useState } from 'react'
+import { InstantSearch, Configure } from 'react-instantsearch'
+import { liteClient } from 'algoliasearch/lite'
 import { Box, IconButton } from 'theme-ui'
 import { FaTimes } from 'react-icons/fa'
 import SearchBox from './Search.Box'
@@ -25,24 +25,26 @@ const Overlay = ({ onClick }) => (
 const Search = ({ isFocused = false }) => {
   const [focus, setFocus] = useState(isFocused)
 
-  const algoliaClient = algoliasearch(
-    process.env.GATSBY_ALGOLIA_APP_ID,
-    process.env.GATSBY_ALGOLIA_SEARCH_KEY
-  )
+  const searchClient = useMemo(() => {
+    const algoliaClient = liteClient(
+      process.env.GATSBY_ALGOLIA_APP_ID,
+      process.env.GATSBY_ALGOLIA_SEARCH_KEY
+    )
 
-  const searchClient = {
-    search(requests) {
-      const shouldSearch = requests.some(
-        ({ params: { query } }) => query !== ''
-      )
-      if (focus && shouldSearch) {
-        return algoliaClient.search(requests)
+    return {
+      search(requests) {
+        const shouldSearch = requests.some(
+          ({ params: { query } }) => query !== ''
+        )
+        if (focus && shouldSearch) {
+          return algoliaClient.search(requests)
+        }
+        return Promise.resolve({
+          results: requests.map(() => ({ hits: [] }))
+        })
       }
-      return Promise.resolve({
-        results: [{ hits: [] }]
-      })
     }
-  }
+  }, [focus])
 
   const handleClose = () => setFocus(false)
   const handleFocus = () => !focus && setFocus(true)

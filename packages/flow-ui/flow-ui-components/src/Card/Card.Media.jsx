@@ -20,7 +20,7 @@ const styles = {
 const CardMedia = ({
   imageVariant,
   omitMedia,
-  mediaType,
+  mediaType = 'image',
   title,
   slug,
   link,
@@ -66,10 +66,6 @@ const CardMedia = ({
       )}
     </Link>
   )
-}
-
-CardMedia.defaultProps = {
-  mediaType: 'image'
 }
 
 export default CardMedia

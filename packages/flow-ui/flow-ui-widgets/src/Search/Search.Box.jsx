@@ -1,16 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { connectSearchBox } from 'react-instantsearch-dom'
+import { useSearchBox } from 'react-instantsearch'
 import useDebounce from '@components/useDebounce'
 import SearchInput from './Search.Input'
 
-const SearchBox = ({
-  refine,
-  delay,
-  focus,
-  handleFocus,
-  handleClose,
-  ...rest
-}) => {
+const SearchBox = ({ focus, handleFocus, handleClose, ...rest }) => {
+  const { refine } = useSearchBox()
   const [searchTerm, setSearchTerm] = useState('')
   const debouncedSearchTerm = useDebounce(searchTerm, 500)
 
@@ -49,4 +43,4 @@ const SearchBox = ({
   )
 }
 
-export default connectSearchBox(SearchBox)
+export default SearchBox

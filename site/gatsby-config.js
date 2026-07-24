@@ -22,14 +22,8 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-netlify-cms',
+      resolve: 'gatsby-plugin-decap-cms',
       options: {}
-    },
-    {
-      resolve: 'gatsby-plugin-disqus',
-      options: {
-        shortname: 'ibrahim-uylas'
-      }
     },
     {
       resolve: '@elegantstack/gatsby-theme-flexiblog-agency',
@@ -37,7 +31,7 @@ module.exports = {
         // Add theme options here. Check documentation for available options.
         siteUrl,
         services: {
-          disqus: true,
+          disqus: 'ibrahim-uylas',
           facebookComment: true,
           mailchimp: true
         },

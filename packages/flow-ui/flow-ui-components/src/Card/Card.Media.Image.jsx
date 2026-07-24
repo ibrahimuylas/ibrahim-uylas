@@ -3,7 +3,7 @@ import { GatsbyImage as Img } from 'gatsby-plugin-image'
 import { css } from 'theme-ui'
 import rv from '@components/utils/buildResponsiveVariant'
 
-const CardMediaImage = ({ variant, loading, image, title }) => (
+const CardMediaImage = ({ variant, loading = 'lazy', image, title }) => (
   <Img
     image={image}
     loading={loading}
@@ -18,8 +18,4 @@ const CardMediaImage = ({ variant, loading, image, title }) => (
     })}
   />
 )
-CardMediaImage.defaultProps = {
-  loading: 'lazy'
-}
-
 export default CardMediaImage

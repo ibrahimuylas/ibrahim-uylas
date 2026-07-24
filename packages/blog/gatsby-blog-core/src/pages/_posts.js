@@ -1,4 +1,4 @@
-const urljoin = require('url-join')
+const joinPath = require('../utils/joinPath')
 const normalizeSlug = require('../utils/normalizeSlug')
 const queryMobileMenu = require('../utils/queryMobileMenu')
 
@@ -43,7 +43,8 @@ module.exports = async (
     const { pageInfo } = result.data.allArticle
 
     Array.from({ length: pageInfo.pageCount }, (_, i) => {
-      let path = i === 0 ? basePath : urljoin(basePath, pagingParam, `${i + 1}`)
+      let path =
+        i === 0 ? basePath : joinPath(basePath, pagingParam, `${i + 1}`)
       path = normalizeSlug(path)
 
       createPage({

@@ -1,4 +1,4 @@
-const urljoin = require('url-join')
+const joinPath = require('../utils/joinPath')
 const normalizeSlug = require('../utils/normalizeSlug')
 const queryMobileMenu = require('../utils/queryMobileMenu')
 
@@ -8,11 +8,8 @@ module.exports = async (
   { template, slugField }
 ) => {
   const { createPage } = actions
-  const {
-    collectionPostsPerPage,
-    pagingParam,
-    pageContextOptions
-  } = pluginOptions
+  const { collectionPostsPerPage, pagingParam, pageContextOptions } =
+    pluginOptions
 
   pageContextOptions.mobileMenu = await queryMobileMenu({ graphql })
 
@@ -43,7 +40,7 @@ module.exports = async (
 
   group.forEach(({ pageInfo, fieldValue: slug }) => {
     Array.from({ length: pageInfo.pageCount }, (_, i) => {
-      let path = i === 0 ? slug : urljoin(slug, pagingParam, `${i + 1}`)
+      let path = i === 0 ? slug : joinPath(slug, pagingParam, `${i + 1}`)
       path = normalizeSlug(path)
 
       createPage({

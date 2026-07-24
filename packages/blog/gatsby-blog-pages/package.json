@@ -6,6 +6,6 @@
   "author": "ElegantStack Team",
   "license": "",
   "dependencies": {
-    "theme-ui": "^0.3.4"
+    "theme-ui": "^0.17.4"
   }
 }

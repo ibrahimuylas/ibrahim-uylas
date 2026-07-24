@@ -8,22 +8,22 @@
     "build": "GATSBY_CPU_COUNT=1 gatsby build",
     "clean": "gatsby clean",
     "serve": "gatsby serve",
+    "validate:html": "node scripts/validate-generated-html.js",
     "validate:seo:likya": "node scripts/seo/validate-likya-canonicals.js",
     "validate:seo:likya:http": "node scripts/seo/check-likya-http.js"
   },
   "dependencies": {
     "@elegantstack/gatsby-theme-flexiblog-agency": "*",
-    "dotenv": "^16.3.1",
-    "gatsby": "5.6.0",
-    "gatsby-plugin-disqus": "^1.2.6",
-    "gatsby-plugin-google-gtag": "^5.11.0",
-    "gatsby-plugin-netlify-cms": "^7.11.0",
-    "gatsby-plugin-sitemap": "^6.11.0",
-    "netlify-cms-app": "^2.15.72",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@mdx-js/react": "^2.3.0",
+    "dotenv": "^17.4.2",
+    "gatsby": "^5.16.1",
+    "gatsby-plugin-decap-cms": "^4.0.4",
+    "gatsby-plugin-google-gtag": "^5.16.0",
+    "gatsby-plugin-sitemap": "^6.16.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "prettier": "^2.8.4"
+    "prettier": "^3.9.6"
   }
 }

@@ -1,19 +1,13 @@
 import React, { Suspense } from 'react'
-export { PostBody } from './Post.Body'
+export { PostBody, MdxContentProvider } from './Post.Body'
 export { PostFooter } from './Post.Footer'
 export { PostHead } from './Post.Head'
 export { PostImage } from './Post.Image'
 export { PostTagsShare } from './Post.Tags.Share'
+export { default as PostComments } from './Post.Comments'
 
-const PostCommentsLazy = React.lazy(() => import('./Post.Comments'))
-export const PostComments = props => (
-  <Suspense fallback={null}>
-    <PostCommentsLazy {...props} />
-  </Suspense>
-)
-
-const PostCommentsFacebookLazy = React.lazy(() =>
-  import('./Post.Comments.Facebook')
+const PostCommentsFacebookLazy = React.lazy(
+  () => import('./Post.Comments.Facebook')
 )
 export const PostCommentsFacebook = props => (
   <Suspense fallback={null}>

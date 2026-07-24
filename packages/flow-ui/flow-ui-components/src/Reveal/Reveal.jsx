@@ -1,27 +1,72 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import ReactReveal from 'react-reveal/Reveal'
 import './Reveal.styles.css'
 
-/**
- * react-reveal props:
- * https://www.react-reveal.com/docs/props/
- */
+const Reveal = ({
+  effect,
+  children,
+  collapse,
+  fraction,
+  duration,
+  delay,
+  className,
+  style
+}) => {
+  const elementRef = useRef(null)
+  const [visible, setVisible] = useState(false)
 
-const Reveal = ({ effect, children, ...props }) => (
-  <ReactReveal
-    duration={750}
-    effect={props.collapse ? null : effect}
-    {...props}
-  >
-    {children}
-  </ReactReveal>
-)
+  useEffect(() => {
+    const element = elementRef.current
+
+    if (!element || typeof IntersectionObserver === 'undefined') {
+      setVisible(true)
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          setVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: fraction }
+    )
+
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [fraction])
+
+  const animationClass = visible && !collapse ? effect : ''
+
+  return (
+    <div
+      ref={elementRef}
+      className={['react-reveal', animationClass, className]
+        .filter(Boolean)
+        .join(' ')}
+      style={{
+        animationDuration: `${duration}ms`,
+        animationDelay: `${delay}ms`,
+        animationFillMode: 'both',
+        ...style
+      }}
+    >
+      {children}
+    </div>
+  )
+}
 
 export default Reveal
 
 Reveal.defaultProps = {
-  effect: 'fadeInUp'
+  effect: 'fadeInUp',
+  collapse: false,
+  fraction: 0,
+  duration: 750,
+  delay: 0,
+  className: undefined,
+  style: undefined
 }
 
 Reveal.propTypes = {
@@ -31,5 +76,12 @@ Reveal.propTypes = {
     'fadeInDown',
     'fadeInRight',
     'fadeInLeft'
-  ])
+  ]),
+  children: PropTypes.node.isRequired,
+  collapse: PropTypes.bool,
+  fraction: PropTypes.number,
+  duration: PropTypes.number,
+  delay: PropTypes.number,
+  className: PropTypes.string,
+  style: PropTypes.object
 }

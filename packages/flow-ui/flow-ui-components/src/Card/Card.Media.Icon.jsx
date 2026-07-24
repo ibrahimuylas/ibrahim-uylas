@@ -1,6 +1,5 @@
 import React from 'react'
-import SVG from 'react-inlinesvg'
-import { Flex, Box, Text, css } from 'theme-ui'
+import { Flex, Box, Text } from 'theme-ui'
 import MemphisPattern from '@components/MemphisPattern'
 import rv from '@components/utils/buildResponsiveVariant'
 import getReadableColor from '@components/utils/getReadableColor'
@@ -20,7 +19,7 @@ const styles = {
     zIndex: 2,
     px: 2,
     lineHeight: 1.33,
-    svg: {
+    img: {
       pb: 2
     }
   },
@@ -41,7 +40,12 @@ const CardMediaIcon = ({ variant, thumbnailText, category }) =>
       }}
     >
       <Flex sx={styles.iconAndText}>
-        <SVG src={category.icon} css={css({ variant: rv(variant, 'icon') })} />
+        <Box
+          as='img'
+          src={category.icon}
+          alt=''
+          sx={{ variant: rv(variant, 'icon') }}
+        />
         <Text sx={{ variant: rv(variant, 'iconText') }}>
           {thumbnailText || category.name}
         </Text>

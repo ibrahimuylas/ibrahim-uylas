@@ -6,8 +6,7 @@
   "author": "ElegantStack Team",
   "license": "",
   "dependencies": {
-    "@sanity/block-content-to-markdown": "^0.0.5",
-    "slugify": "^1.6.5",
-    "url-join": "^4.0.1"
+    "@portabletext/markdown": "^1.4.4",
+    "slugify": "^1.6.5"
   }
 }

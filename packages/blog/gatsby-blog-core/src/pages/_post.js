@@ -22,6 +22,13 @@ module.exports = async (
             id
             slug
             link
+            parent {
+              ... on Mdx {
+                internal {
+                  contentFilePath
+                }
+              }
+            }
             category {
               id
             }
@@ -42,7 +49,7 @@ module.exports = async (
   const posts = allArticle.edges
 
   posts.forEach(({ node }, index) => {
-    const { id, slug, category, tags, link } = node
+    const { id, slug, category, tags, link, parent } = node
 
     if (link) return //skip creating pages for nodes linking to external sites
 
@@ -56,7 +63,9 @@ module.exports = async (
 
     createPage({
       path: slug,
-      component: template,
+      component: parent?.internal?.contentFilePath
+        ? `${template}?__contentFilePath=${parent.internal.contentFilePath}`
+        : template,
       context: {
         id,
         categoryId,

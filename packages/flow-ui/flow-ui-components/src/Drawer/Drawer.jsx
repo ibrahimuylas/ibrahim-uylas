@@ -55,7 +55,7 @@ const styles = {
   }
 }
 
-const Drawer = ({ container, width, ...props }) => {
+const Drawer = ({ container = null, width = 300, ...props }) => {
   const [open, setOpen] = useState(false)
 
   const handleSwitch = () => {
@@ -95,11 +95,6 @@ const Drawer = ({ container, width, ...props }) => {
 }
 
 export default Drawer
-
-Drawer.defaultProps = {
-  width: 300,
-  container: null
-}
 
 Drawer.propTypes = {
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

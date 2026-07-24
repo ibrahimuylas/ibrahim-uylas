@@ -51,22 +51,27 @@ const Post = ({
             <ArticleContents items={post.tableOfContents?.items} />
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
-            {services.disqus && <PostComments {...post} siteUrl={siteUrl} />}
+            {services.disqus && (
+              <PostComments
+                {...post}
+                siteUrl={siteUrl}
+                shortname={services.disqus}
+              />
+            )}
           </CardComponent>
           <Divider />
           {/* <AuthorExpanded author={post.author} /> */}
           <Divider />
           {post.category && (
-            <div onClick={handleRelatedPostClick}>
-              <CardList
-                title='İlgili Yazılar'
-                nodes={relatedPosts}
-                variant={['horizontal-md']}
-                columns={[1, 2, 2, 2]}
-                limit={6}
-                distinct
-              />
-            </div>
+            <CardList
+              title='İlgili Yazılar'
+              nodes={relatedPosts}
+              variant={['horizontal-md']}
+              columns={[1, 2, 2, 2]}
+              limit={6}
+              distinct
+              onTitleClick={handleRelatedPostClick}
+            />
           )}
         </Main>
       </Stack>

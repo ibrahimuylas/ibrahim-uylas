@@ -11,6 +11,7 @@ export const query = graphql`
     tableOfContents(maxDepth: 2) @include(if: $includeTableOfContents)
     timeToRead @include(if: $includeTimeToRead)
     featured
+    private
     protected
     thumbnailText
     date(formatString: "DD MMMM YYYY", locale: "tr")
@@ -23,7 +24,6 @@ export const query = graphql`
     author {
       ...ArticleAuthor
     }
-    body
     keywords
     tags {
       id

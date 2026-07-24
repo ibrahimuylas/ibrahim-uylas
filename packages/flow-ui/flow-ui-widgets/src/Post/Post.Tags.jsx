@@ -13,18 +13,22 @@ const styles = {
   }
 }
 
-export const PostTags = ({ tags }) =>
+export const PostTags = ({ tags, private: isPrivate }) =>
   tags && tags.length > 0 ? (
     <Flex sx={styles.wrapper}>
       <Heading variant='h5' sx={styles.heading}>
         Tags
       </Heading>
       <Box variant='lists.badges'>
-        {tags.map(({ id, name, slug }) => (
-          <Badge variant='tag' key={id} as={Link} to={slug}>
-            {name}
-          </Badge>
-        ))}
+        {tags.map(({ id, name, slug }) => {
+          const linkProps = isPrivate ? {} : { as: Link, to: slug }
+
+          return (
+            <Badge variant='tag' key={id} {...linkProps}>
+              {name}
+            </Badge>
+          )
+        })}
       </Box>
     </Flex>
   ) : null

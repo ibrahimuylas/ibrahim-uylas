@@ -42,7 +42,7 @@ const styles = {
   }
 }
 
-const NewsletterExpanded = ({ simple }) => {
+const NewsletterExpanded = ({ simple = false }) => {
   const { handleSubmit, canSubmit, submitting, message, success } =
     useMailChimp()
 
@@ -74,10 +74,6 @@ const NewsletterExpanded = ({ simple }) => {
       </Box>
     </Card>
   )
-}
-
-NewsletterExpanded.defaultProps = {
-  simple: false
 }
 
 export default NewsletterExpanded

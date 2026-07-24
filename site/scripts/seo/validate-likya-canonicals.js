@@ -62,9 +62,7 @@ const markdownSection = (contents, heading) => {
 
   const level = heading.match(/^#+/)?.[0].length || 6
   const end = lines.findIndex(
-    (line, index) =>
-      index > start &&
-      new RegExp(`^#{1,${level}}\\s`).test(line)
+    (line, index) => index > start && new RegExp(`^#{1,${level}}\\s`).test(line)
   )
 
   return lines.slice(start + 1, end === -1 ? lines.length : end).join('\n')
@@ -210,7 +208,7 @@ const decodeHtmlText = contents =>
   normalizeText(
     contents
       .replace(/<[^>]+>/g, '')
-      .replace(/&(?:#x27|apos);/gi, "'")
+      .replace(/&(?:#0*39|#x0*27|apos);/gi, "'")
       .replace(/&quot;/gi, '"')
       .replace(/&amp;/gi, '&')
       .replace(/&lt;/gi, '<')
@@ -978,21 +976,21 @@ if (!Array.isArray(inventory)) {
 
     ;[...expectedNavigation, ...expectedContinuationNavigation].forEach(
       ({ href }) => {
-      if (!canonicalPaths.has(href)) {
-        fail(
-          `Day ${journal.day} journal link is not a collection canonical: ${href}`
-        )
-      }
-      if (sourceRedirects.some(redirect => redirect.from === href)) {
-        fail(
-          `Day ${journal.day} journal link ends in a documented redirect: ${href}`
-        )
-      }
-      if (!fs.existsSync(htmlPathFor(href))) {
-        fail(
-          `Day ${journal.day} journal link has no generated canonical page: ${href}`
-        )
-      }
+        if (!canonicalPaths.has(href)) {
+          fail(
+            `Day ${journal.day} journal link is not a collection canonical: ${href}`
+          )
+        }
+        if (sourceRedirects.some(redirect => redirect.from === href)) {
+          fail(
+            `Day ${journal.day} journal link ends in a documented redirect: ${href}`
+          )
+        }
+        if (!fs.existsSync(htmlPathFor(href))) {
+          fail(
+            `Day ${journal.day} journal link has no generated canonical page: ${href}`
+          )
+        }
       }
     )
 
@@ -1508,6 +1506,17 @@ if (!Array.isArray(inventory)) {
     const expectedHubEntries = inventory.filter(entry =>
       ['itinerary', 'guide', 'journal', 'support'].includes(entry.kind)
     )
+    const normalizedHubRows = new Set(
+      hubContents
+        .split(/\r?\n/)
+        .filter(line => line.trim().startsWith('|'))
+        .map(line =>
+          line
+            .split('|')
+            .map(cell => cell.trim())
+            .join('|')
+        )
+    )
 
     expectedHubEntries.forEach(entry => {
       const occurrences = hubLinks.filter(
@@ -1542,7 +1551,12 @@ if (!Array.isArray(inventory)) {
         journal.canonical
       }) |`
 
-      if (!hubContents.includes(expectedRow)) {
+      const normalizedExpectedRow = expectedRow
+        .split('|')
+        .map(cell => cell.trim())
+        .join('|')
+
+      if (!normalizedHubRows.has(normalizedExpectedRow)) {
         fail(`Hub stage table row differs for day ${stage.day}`)
       }
     })

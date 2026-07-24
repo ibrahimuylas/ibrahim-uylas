@@ -7,6 +7,6 @@
   "license": "",
   "dependencies": {
     "@elegantstack/gatsby-plugin-alias-imports": "^3.0.0",
-    "dedupe": "^4.0.2"
+    "dedupe": "^4.0.3"
   }
 }

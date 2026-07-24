@@ -1,5 +1,8 @@
-const getValue = require('get-value')
+const { getValue: readValue } = require('get-value')
 const typesDefs = require('../types')
+
+const getValue = (target, path, fallback) =>
+  readValue(target, path, { default: fallback })
 
 module.exports = pluginOptions => {
   const services = {

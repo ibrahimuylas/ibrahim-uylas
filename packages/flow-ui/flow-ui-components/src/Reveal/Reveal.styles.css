@@ -66,6 +66,11 @@
     animation-name: fadeIn;
   }
 }
+@media (prefers-reduced-motion: reduce) {
+  .react-reveal {
+    animation: none !important;
+  }
+}
 @media not screen and (min-width: 768px) {
   /* Fix for small phones */
   .react-reveal {

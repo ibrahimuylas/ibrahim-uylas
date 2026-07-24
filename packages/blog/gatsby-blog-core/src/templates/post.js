@@ -1,7 +1,15 @@
+import React from 'react'
 import { graphql } from 'gatsby'
 import PostPage from '../containers/Post'
+import { MdxContentProvider } from '@widgets/Post'
 
-export default PostPage
+const PostTemplate = ({ children, ...props }) => (
+  <MdxContentProvider value={children}>
+    <PostPage {...props} />
+  </MdxContentProvider>
+)
+
+export default PostTemplate
 
 export const pageQuery = graphql`
   query PostPageQuery(
