@@ -78,7 +78,8 @@ export default {
       width: `auto`,
       top: [`auto`, 5],
       bottom: [3, `auto`],
-      left: [2, 4],
+      left: [`auto`, 4],
+      right: [4, `auto`],
       p: 0,
       ml: 3
     },
