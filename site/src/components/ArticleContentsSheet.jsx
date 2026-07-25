@@ -23,10 +23,22 @@ const styles = {
     alignItems: [`flex-end`, `center`],
     justifyContent: `center`,
     p: [0, 4],
-    bg: `rgba(0, 0, 0, 0.08)`,
-    backdropFilter: `blur(10px)`,
-    WebkitBackdropFilter: `blur(10px)`,
-    touchAction: `none`
+    bg: `rgba(0, 0, 0, 0.16)`,
+    backdropFilter: `blur(4px)`,
+    WebkitBackdropFilter: `blur(4px)`,
+    touchAction: `none`,
+    animation: `articleContentsBackdropIn 180ms ease-out both`,
+    '@keyframes articleContentsBackdropIn': {
+      from: {
+        opacity: 0
+      },
+      to: {
+        opacity: 1
+      }
+    },
+    '@media (prefers-reduced-motion: reduce)': {
+      animation: `none`
+    }
   },
   sheet: {
     boxSizing: `border-box`,
@@ -46,6 +58,21 @@ const styles = {
     bg: `contentBg`,
     color: `text`,
     boxShadow: `0 0 2rem rgba(0, 0, 0, 0.35)`,
+    animation: `articleContentsSheetIn 240ms cubic-bezier(0.22, 1, 0.36, 1) both`,
+    willChange: `transform, opacity`,
+    '@keyframes articleContentsSheetIn': {
+      from: {
+        opacity: 0,
+        transform: `translateY(2rem)`
+      },
+      to: {
+        opacity: 1,
+        transform: `translateY(0)`
+      }
+    },
+    '@media (prefers-reduced-motion: reduce)': {
+      animation: `none`
+    },
     a: {
       color: `alphaDarker`,
       '&:visited': {
@@ -100,14 +127,6 @@ const styles = {
   }
 }
 
-const restoreAttribute = (element, attribute, value) => {
-  if (value === null) {
-    element.removeAttribute(attribute)
-  } else {
-    element.setAttribute(attribute, value)
-  }
-}
-
 const ArticleContentsSheet = ({
   items,
   onAfterUnlock,
@@ -123,25 +142,12 @@ const ArticleContentsSheet = ({
     const appRoot = document.getElementById(`___gatsby`)
     const scrollX = window.scrollX
     const scrollY = window.scrollY
-    const htmlStyleAttribute = document.documentElement.getAttribute(`style`)
-    const bodyStyleAttribute = document.body.getAttribute(`style`)
-    const appRootStyleAttribute = appRoot ? appRoot.getAttribute(`style`) : null
     const hadInertAttribute = appRoot && appRoot.hasAttribute(`inert`)
     const inertAttributeValue = hadInertAttribute
       ? appRoot.getAttribute(`inert`)
       : null
 
-    document.documentElement.style.setProperty(`overflow`, `hidden`)
-    document.documentElement.style.setProperty(`overscroll-behavior`, `none`)
-    document.body.style.setProperty(`overflow`, `hidden`)
-    document.body.style.setProperty(`overscroll-behavior`, `none`)
-
     if (appRoot) {
-      appRoot.style.setProperty(
-        `transform`,
-        `translate3d(${-scrollX}px, ${-scrollY}px, 0)`
-      )
-      appRoot.style.setProperty(`transform-origin`, `top left`)
       appRoot.setAttribute(`inert`, ``)
     }
 
@@ -185,8 +191,19 @@ const ArticleContentsSheet = ({
       }
     }
 
+    const maintainPagePosition = () => {
+      if (window.scrollX === scrollX && window.scrollY === scrollY) return
+
+      window.scrollTo({
+        left: scrollX,
+        top: scrollY,
+        behavior: `instant`
+      })
+    }
+
     document.addEventListener(`keydown`, handleKeyDown)
     document.addEventListener(`focusin`, handleFocusIn)
+    window.addEventListener(`scroll`, maintainPagePosition, { passive: true })
 
     const focusFrame = window.requestAnimationFrame(() => {
       closeButton.focus({ preventScroll: true })
@@ -196,40 +213,16 @@ const ArticleContentsSheet = ({
       window.cancelAnimationFrame(focusFrame)
       document.removeEventListener(`keydown`, handleKeyDown)
       document.removeEventListener(`focusin`, handleFocusIn)
+      window.removeEventListener(`scroll`, maintainPagePosition)
+      maintainPagePosition()
 
       if (appRoot) {
-        restoreAttribute(appRoot, `style`, appRootStyleAttribute)
-
         if (hadInertAttribute) {
           appRoot.setAttribute(`inert`, inertAttributeValue)
         } else {
           appRoot.removeAttribute(`inert`)
         }
       }
-
-      restoreAttribute(document.documentElement, `style`, htmlStyleAttribute)
-      restoreAttribute(document.body, `style`, bodyStyleAttribute)
-      window.scrollTo({
-        left: scrollX,
-        top: scrollY,
-        behavior: `instant`
-      })
-
-      window.queueMicrotask(() => {
-        if (
-          htmlStyleAttribute === null &&
-          document.documentElement.getAttribute(`style`) === ``
-        ) {
-          document.documentElement.removeAttribute(`style`)
-        }
-
-        if (
-          bodyStyleAttribute === null &&
-          document.body.getAttribute(`style`) === ``
-        ) {
-          document.body.removeAttribute(`style`)
-        }
-      })
 
       onAfterUnlock()
     }
@@ -239,13 +232,21 @@ const ArticleContentsSheet = ({
     if (event.target === event.currentTarget) onDismiss()
   }
 
+  const handleBackdropWheel = event => {
+    if (!dialogRef.current?.contains(event.target)) event.preventDefault()
+  }
+
   const handleItemClick = (event, item) => {
     event.preventDefault()
     onItemSelect(item)
   }
 
   return (
-    <Box sx={styles.backdrop} onPointerDown={handleBackdropPointerDown}>
+    <Box
+      sx={styles.backdrop}
+      onPointerDown={handleBackdropPointerDown}
+      onWheel={handleBackdropWheel}
+    >
       <Box
         ref={dialogRef}
         role='dialog'
