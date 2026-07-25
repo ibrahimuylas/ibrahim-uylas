@@ -4,8 +4,10 @@ export default {
   ...common.badge,
   bg: `omegaLight`,
   color: `omegaDark`,
-  ':hover': {
-    color: `omegaLight`,
-    bg: `omegaDark`
+  '@media (hover: hover) and (pointer: fine)': {
+    ':hover': {
+      color: `omegaLight`,
+      bg: `omegaDark`
+    }
   }
 }

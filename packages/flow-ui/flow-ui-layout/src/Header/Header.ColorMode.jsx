@@ -52,8 +52,7 @@ export const HeaderColorMode = () => {
   const [colorMode, setColorMode] = useColorMode()
   const isDark = colorMode === `dark`
 
-  const handleChange = () =>
-    setColorMode(colorMode === 'default' ? 'dark' : 'default')
+  const handleChange = () => setColorMode(isDark ? `light` : `dark`)
 
   const label = `Toggle dark mode`
 
@@ -69,7 +68,6 @@ export const HeaderColorMode = () => {
       <Switch
         aria-label={label}
         onChange={handleChange}
-        onClick={handleChange}
         checked={isDark}
         checkedChildren={<FaMoon size={16} css={css(styles.icon)} />}
         unCheckedChildren={<FaSun size={16} css={css(styles.icon)} />}

@@ -19,12 +19,14 @@ const styles = {
         verticalAlign: `middle`,
         size: `icon.xs`
       },
-      ':hover': {
-        'svg, img': {
-          color: `white`
-        },
-        'div:first-of-type': {
-          bg: `alpha`
+      '@media (hover: hover) and (pointer: fine)': {
+        ':hover': {
+          'svg, img': {
+            color: `white`
+          },
+          'div:first-of-type': {
+            bg: `alpha`
+          }
         }
       }
     },
@@ -35,9 +37,11 @@ const styles = {
         color: `alpha`,
         size: `icon.sm`
       },
-      ':hover': {
-        'svg, img': {
-          color: `omegaDark`
+      '@media (hover: hover) and (pointer: fine)': {
+        ':hover': {
+          'svg, img': {
+            color: `omegaDark`
+          }
         }
       }
     }

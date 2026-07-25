@@ -5,7 +5,9 @@ export default {
   ':visited': {
     color: 'alpha'
   },
-  ':hover': {
-    color: 'alphaDark'
+  '@media (hover: hover) and (pointer: fine)': {
+    ':hover': {
+      color: 'alphaDark'
+    }
   }
 }

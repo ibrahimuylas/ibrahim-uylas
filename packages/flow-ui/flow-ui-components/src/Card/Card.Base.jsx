@@ -19,12 +19,12 @@ const styles = {
   }
 }
 
-const CardBase = ({ columns, onMouseOver, ...props }) => (
+const CardBase = ({ columns, onFocus, onMouseOver, ...props }) => (
   <Box
     className='blog_card'
     sx={columnSizeMatcher(columns)}
     onMouseOver={onMouseOver}
-    onFocus={onMouseOver}
+    onFocus={onFocus}
   >
     <Card
       variant='interactive'

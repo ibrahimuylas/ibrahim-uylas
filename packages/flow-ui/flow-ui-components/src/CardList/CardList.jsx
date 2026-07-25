@@ -55,18 +55,26 @@ const CardList = React.forwardRef((props, ref) => {
   }
 
   //Array of cards
-  const cards = reducedNodes.map((node, index) => (
-    <Card
-      key={node.id}
-      variant={variant}
-      onMouseOver={() => changeSlide(index)}
-      onFocus={() => changeSlide(index)}
-      //In sliders with fade effect apply loading to the first card only
-      loading={props.fade ? (index === 0 ? loading : undefined) : loading}
-      {...node}
-      {...rest}
-    />
-  ))
+  const cards = reducedNodes.map((node, index) => {
+    const navigationProps = asNavFor
+      ? {
+          onFocus: () => changeSlide(index),
+          onMouseOver: () => changeSlide(index)
+        }
+      : {}
+
+    return (
+      <Card
+        key={node.id}
+        variant={variant}
+        {...navigationProps}
+        //In sliders with fade effect apply loading to the first card only
+        loading={props.fade ? (index === 0 ? loading : undefined) : loading}
+        {...node}
+        {...rest}
+      />
+    )
+  })
 
   //Cards List (Fixed or Slider)
   const CardList = () => (
