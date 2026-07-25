@@ -41,10 +41,13 @@ const styles = {
       bg: `omegaLighter`,
       color: `heading`
     },
-    '&:focus': {
+    '&:focus-visible': {
       outline: `3px solid`,
       outlineColor: `alpha`,
       outlineOffset: 3
+    },
+    '&[data-suppress-focus-ring="true"]:focus': {
+      outline: `none`
     },
     svg: {
       flex: `0 0 auto`,
@@ -65,6 +68,7 @@ const EligibleArticleContents = ({ items }) => {
   const focusFrameRef = useRef(null)
   const navigationFrameRef = useRef(null)
   const pendingNavigationRef = useRef(null)
+  const suppressSheetFocusRingRef = useRef(true)
   const temporaryFocusTargetRef = useRef(null)
   const isMountedRef = useRef(false)
   const previousPathnameRef = useRef(pathname)
@@ -113,10 +117,11 @@ const EligibleArticleContents = ({ items }) => {
     cancelPendingFocus()
     cancelPendingNavigation()
     invokingElementRef.current = event.currentTarget
+    suppressSheetFocusRingRef.current = event.detail !== 0
     setIsSheetOpen(true)
   }
 
-  const handleDismissSheet = useCallback(() => {
+  const handleDismissSheet = useCallback(({ restoreFocusRing = false } = {}) => {
     const invokingElement = invokingElementRef.current
 
     setIsSheetOpen(false)
@@ -127,6 +132,19 @@ const EligibleArticleContents = ({ items }) => {
         focusFrameRef.current = null
 
         if (invokingElement && invokingElement.isConnected) {
+          if (restoreFocusRing) {
+            invokingElement.removeAttribute(`data-suppress-focus-ring`)
+          } else {
+            const clearFocusRingSuppression = () => {
+              invokingElement.removeAttribute(`data-suppress-focus-ring`)
+            }
+
+            invokingElement.setAttribute(`data-suppress-focus-ring`, `true`)
+            invokingElement.addEventListener(`blur`, clearFocusRingSuppression, {
+              once: true
+            })
+          }
+
           invokingElement.focus({ preventScroll: true })
         }
       })
@@ -363,6 +381,7 @@ const EligibleArticleContents = ({ items }) => {
                   onAfterUnlock={handleAfterSheetUnlock}
                   onDismiss={handleDismissSheet}
                   onItemSelect={handleItemSelect}
+                  suppressInitialFocusRing={suppressSheetFocusRingRef.current}
                 />
               )}
             </>

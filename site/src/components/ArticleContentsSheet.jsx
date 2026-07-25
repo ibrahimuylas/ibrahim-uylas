@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Box, Flex, Heading } from 'theme-ui'
 import { FaTimes } from 'react-icons/fa'
@@ -115,10 +115,13 @@ const styles = {
       bg: `omegaLight`,
       color: `heading`
     },
-    '&:focus': {
+    '&:focus-visible': {
       outline: `3px solid`,
       outlineColor: `alpha`,
       outlineOffset: 3
+    },
+    '&[data-suppress-focus-ring="true"]:focus': {
+      outline: `none`
     },
     svg: {
       width: 20,
@@ -131,10 +134,14 @@ const ArticleContentsSheet = ({
   items,
   onAfterUnlock,
   onDismiss,
-  onItemSelect
+  onItemSelect,
+  suppressInitialFocusRing
 }) => {
   const dialogRef = useRef(null)
   const closeButtonRef = useRef(null)
+  const [suppressCloseFocusRing, setSuppressCloseFocusRing] = useState(
+    suppressInitialFocusRing
+  )
 
   useEffect(() => {
     const dialog = dialogRef.current
@@ -159,7 +166,7 @@ const ArticleContentsSheet = ({
     const handleKeyDown = event => {
       if (event.key === `Escape`) {
         event.preventDefault()
-        onDismiss()
+        onDismiss({ restoreFocusRing: true })
         return
       }
 
@@ -229,7 +236,9 @@ const ArticleContentsSheet = ({
   }, [onAfterUnlock, onDismiss])
 
   const handleBackdropPointerDown = event => {
-    if (event.target === event.currentTarget) onDismiss()
+    if (event.target === event.currentTarget) {
+      onDismiss({ restoreFocusRing: false })
+    }
   }
 
   const handleBackdropWheel = event => {
@@ -269,7 +278,13 @@ const ArticleContentsSheet = ({
             as='button'
             type='button'
             aria-label='İçindekileri kapat'
-            onClick={onDismiss}
+            data-suppress-focus-ring={
+              suppressCloseFocusRing ? `true` : undefined
+            }
+            onBlur={() => setSuppressCloseFocusRing(false)}
+            onClick={event =>
+              onDismiss({ restoreFocusRing: event.detail === 0 })
+            }
             sx={styles.close}
           >
             <FaTimes aria-hidden='true' focusable='false' />
@@ -285,7 +300,8 @@ ArticleContentsSheet.propTypes = {
   items: PropTypes.arrayOf(itemType).isRequired,
   onAfterUnlock: PropTypes.func.isRequired,
   onDismiss: PropTypes.func.isRequired,
-  onItemSelect: PropTypes.func.isRequired
+  onItemSelect: PropTypes.func.isRequired,
+  suppressInitialFocusRing: PropTypes.bool.isRequired
 }
 
 export default ArticleContentsSheet
