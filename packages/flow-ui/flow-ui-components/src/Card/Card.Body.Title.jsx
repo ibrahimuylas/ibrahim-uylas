@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link as GLink } from 'gatsby'
 import { Heading } from 'theme-ui'
-import rv from '@components/utils/buildResponsiveVariant'
+import rv, {
+  responsiveVariantStyles
+} from '@components/utils/buildResponsiveVariant'
 
 const CardBodyTitle = ({ variant, title, slug, link, onTitleClick }) => {
   const linkProps = link
@@ -19,7 +21,7 @@ const CardBodyTitle = ({ variant, title, slug, link, onTitleClick }) => {
     <Heading
       {...linkProps}
       onClick={onTitleClick}
-      sx={{ variant: rv(variant, 'title') }}
+      sx={responsiveVariantStyles(rv(variant, 'title'))}
     >
       {title}
     </Heading>

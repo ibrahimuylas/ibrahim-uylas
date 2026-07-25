@@ -1,7 +1,9 @@
 import React from 'react'
 import { Flex, Box, Text } from 'theme-ui'
 import MemphisPattern from '@components/MemphisPattern'
-import rv from '@components/utils/buildResponsiveVariant'
+import rv, {
+  responsiveVariantStyles
+} from '@components/utils/buildResponsiveVariant'
 import getReadableColor from '@components/utils/getReadableColor'
 
 const styles = {
@@ -34,19 +36,16 @@ const CardMediaIcon = ({ variant, thumbnailText, category }) =>
     <Box
       bg={category.color || 'omegaDark'}
       color={category.color ? getReadableColor(category.color) : '#fff'}
-      sx={{
-        ...styles.iconBox,
-        variant: rv(variant, 'iconBox')
-      }}
+      sx={responsiveVariantStyles(rv(variant, 'iconBox'), styles.iconBox)}
     >
       <Flex sx={styles.iconAndText}>
         <Box
           as='img'
           src={category.icon}
           alt=''
-          sx={{ variant: rv(variant, 'icon') }}
+          sx={responsiveVariantStyles(rv(variant, 'icon'))}
         />
-        <Text sx={{ variant: rv(variant, 'iconText') }}>
+        <Text sx={responsiveVariantStyles(rv(variant, 'iconText'))}>
           {thumbnailText || category.name}
         </Text>
       </Flex>

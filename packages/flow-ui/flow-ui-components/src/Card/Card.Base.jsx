@@ -1,6 +1,8 @@
 import React from 'react'
 import { Box, Card, Flex } from 'theme-ui'
-import rv from '@components/utils/buildResponsiveVariant'
+import rv, {
+  responsiveVariantStyles
+} from '@components/utils/buildResponsiveVariant'
 import columnSizeMatcher from '@components/utils/columnSizeMatcher'
 import Body from './Card.Body'
 import Footer from './Card.Footer'
@@ -26,17 +28,14 @@ const CardBase = ({ columns, onMouseOver, ...props }) => (
   >
     <Card
       variant='interactive'
-      sx={{
-        ...styles.card,
-        variant: rv(props.variant, 'card')
-      }}
+      sx={responsiveVariantStyles(rv(props.variant, 'card'), styles.card)}
     >
       <Flex
         as='article'
-        sx={{
-          ...styles.content,
-          variant: rv(props.variant, 'content')
-        }}
+        sx={responsiveVariantStyles(
+          rv(props.variant, 'content'),
+          styles.content
+        )}
       >
         <Media {...props} />
         <Body {...props}>

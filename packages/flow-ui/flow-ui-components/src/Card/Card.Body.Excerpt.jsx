@@ -1,6 +1,8 @@
 import React from 'react'
 import { Text, useThemeUI, get } from 'theme-ui'
-import rv from '@components/utils/buildResponsiveVariant'
+import rv, {
+  responsiveVariantStyles
+} from '@components/utils/buildResponsiveVariant'
 
 const styles = {
   excerpt: {
@@ -26,10 +28,7 @@ const CardBodyExcerpt = ({ variant, excerpt, omitExcerpt }) => {
   return !omitExcerpt && visibility ? (
     <Text
       variant='small'
-      sx={{
-        ...styles.excerpt,
-        variant: responsiveVariant
-      }}
+      sx={responsiveVariantStyles(responsiveVariant, styles.excerpt)}
     >
       {excerpt}
     </Text>

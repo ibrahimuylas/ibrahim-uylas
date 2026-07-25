@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link as GLink } from 'gatsby'
 import { Link, useThemeUI, get } from 'theme-ui'
-import rv from '@components/utils/buildResponsiveVariant'
+import rv, {
+  responsiveVariantStyles
+} from '@components/utils/buildResponsiveVariant'
 import getImageVariant from '@components/utils/getImageVariant'
 import CardMediaIcon from './Card.Media.Icon'
 import CardMediaImage from './Card.Media.Image'
@@ -55,7 +57,7 @@ const CardMedia = ({
     <Link
       {...linkProps}
       css={styles.link}
-      sx={{ variant: rv(variant, 'media') }}
+      sx={responsiveVariantStyles(rv(variant, 'media'))}
       aria-label={title}
     >
       {mediaType === 'image' && image && (

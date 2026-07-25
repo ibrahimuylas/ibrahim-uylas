@@ -1,5 +1,33 @@
 import castArray from './castArray'
 
+const getThemeValue = (theme, path) =>
+  path.split('.').reduce((value, key) => value && value[key], theme)
+
+export const responsiveVariantStyles =
+  (variants, baseStyles = {}) =>
+  theme =>
+    castArray(variants).reduce((styles, variant, index) => {
+      const variantStyles = getThemeValue(theme, variant)
+
+      if (!variantStyles) return styles
+      if (index === 0) return { ...styles, ...variantStyles }
+
+      const breakpoint = theme.breakpoints[index - 1]
+      if (!breakpoint) return styles
+
+      const mediaQuery = breakpoint.includes('@media')
+        ? breakpoint
+        : `@media screen and (min-width: ${breakpoint})`
+
+      return {
+        ...styles,
+        [mediaQuery]: {
+          ...styles[mediaQuery],
+          ...variantStyles
+        }
+      }
+    }, baseStyles)
+
 //Builds theme-ui variant dynamically
 export default (a, b, c) => {
   //Responsive variant is passed

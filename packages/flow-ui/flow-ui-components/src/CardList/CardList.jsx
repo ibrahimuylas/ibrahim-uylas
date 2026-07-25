@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Box } from 'theme-ui'
-import buildResponsiveVariant from '@components/utils/buildResponsiveVariant'
+import buildResponsiveVariant, {
+  responsiveVariantStyles
+} from '@components/utils/buildResponsiveVariant'
 import hashCode from '@components/utils/hashCode'
 import reduceArray from '@components/utils/reduceArray'
 import Section from '@components/Section'
@@ -68,7 +70,7 @@ const CardList = React.forwardRef((props, ref) => {
 
   //Cards List (Fixed or Slider)
   const CardList = () => (
-    <Box sx={{ variant: cardListVariant }}>
+    <Box sx={responsiveVariantStyles(cardListVariant)}>
       {slider ? (
         <CardListSlider
           ref={ref}

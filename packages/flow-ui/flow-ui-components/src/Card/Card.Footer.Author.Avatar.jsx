@@ -2,7 +2,9 @@ import React from 'react'
 import { Link as GLink } from 'gatsby'
 import { Link, useThemeUI, get } from 'theme-ui'
 import AvatarSimple from '@components/AvatarSimple'
-import rv from '@components/utils/buildResponsiveVariant'
+import rv, {
+  responsiveVariantStyles
+} from '@components/utils/buildResponsiveVariant'
 
 const CardFooterAuthorAvatar = ({ variant, omitAuthor, author }) => {
   const context = useThemeUI()
@@ -26,7 +28,7 @@ const CardFooterAuthorAvatar = ({ variant, omitAuthor, author }) => {
         as={GLink}
         to={author.slug}
         aria-label={author.name}
-        sx={{ variant: responsiveVariant }}
+        sx={responsiveVariantStyles(responsiveVariant)}
       >
         <AvatarSimple
           avatar={author.thumbnail}

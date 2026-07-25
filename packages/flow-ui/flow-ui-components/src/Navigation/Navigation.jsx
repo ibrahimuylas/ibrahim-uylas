@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { Flex, NavLink, IconButton, Heading, Divider } from 'theme-ui'
 import hashCode from '@components/utils/hashCode'
-import buildResponsiveVariant from '@components/utils/buildResponsiveVariant'
+import buildResponsiveVariant, {
+  responsiveVariantStyles
+} from '@components/utils/buildResponsiveVariant'
 
 const styles = {
   divider: {
@@ -33,7 +35,7 @@ const NavigationItem = ({
   iconOnly
 }) => {
   let linkProps = {
-    sx: { variant: iconOnly ? 'icon' : variant }
+    sx: iconOnly ? { variant: 'icon' } : responsiveVariantStyles(variant)
   }
 
   //External link
@@ -84,7 +86,7 @@ const Navigation = ({
   )}-nav`
 
   const wrapperProps = {
-    sx: { variant: wrapperVariant, ...wrapperStyle },
+    sx: responsiveVariantStyles(wrapperVariant, wrapperStyle),
     key: navKey
   }
 
