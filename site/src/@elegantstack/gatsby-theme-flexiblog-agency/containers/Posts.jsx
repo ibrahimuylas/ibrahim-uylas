@@ -62,7 +62,6 @@ const Posts = ({
             limit={4}
             columns={[1, 2]}
             variant='horizontal-aside'
-            loading='eager'
           />
         </Main>
         <Sidebar sx={{ pl: `3`, flexBasis: `1/4` }}>
