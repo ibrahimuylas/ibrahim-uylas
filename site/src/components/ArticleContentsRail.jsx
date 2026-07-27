@@ -5,12 +5,13 @@ import { itemType } from './ArticleContentsList'
 
 const PREVIEW_GUTTER = 16
 const PREVIEW_FALLBACK_HEIGHT = 96
+const ACTIVE_LINE_WIDTH = 52
 
 const styles = {
   rail: {
     position: `fixed`,
     top: `50%`,
-    left: `calc(1.5rem + env(safe-area-inset-left, 0px))`,
+    left: `max(calc(1.5rem + env(safe-area-inset-left, 0px)), calc((100vw - 1140px) / 2 - 5rem))`,
     zIndex: 5,
     width: 64,
     maxHeight: `calc(100vh - 2rem)`,
@@ -58,15 +59,18 @@ const styles = {
   },
   line: {
     display: `block`,
-    height: 3,
+    width: ACTIVE_LINE_WIDTH,
+    height: 4,
     borderRadius: `full`,
     bg: `omegaDark`,
-    opacity: 0.72,
-    transition: `width 160ms ease, background-color 160ms ease, opacity 160ms ease`
+    opacity: 0.22,
+    transformOrigin: `left center`,
+    willChange: `transform`,
+    transition: `transform 160ms ease, background-color 120ms ease, opacity 120ms ease`
   },
   preview: {
     position: `fixed`,
-    left: `calc(6.75rem + env(safe-area-inset-left, 0px))`,
+    left: `max(calc(6.75rem + env(safe-area-inset-left, 0px)), calc((100vw - 1140px) / 2 + 0.25rem))`,
     zIndex: 6,
     boxSizing: `border-box`,
     width: `min(40rem, calc(100vw - 8rem))`,
@@ -112,8 +116,9 @@ const getTargetId = url => {
 }
 
 const getLineWidth = title => {
-  if (title.length <= 30) return 16
-  if (title.length <= 55) return 28
+  if (title.length <= 24) return 12
+  if (title.length <= 40) return 20
+  if (title.length <= 60) return 28
   return 40
 }
 
@@ -452,7 +457,11 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
                     aria-hidden='true'
                     sx={{
                       ...styles.line,
-                      width: isActive ? 52 : getLineWidth(item.title),
+                      transform: `scaleX(${
+                        (isActive
+                          ? ACTIVE_LINE_WIDTH
+                          : getLineWidth(item.title)) / ACTIVE_LINE_WIDTH
+                      })`,
                       bg: isActive ? `heading` : `omegaDark`,
                       opacity: isActive ? 1 : styles.line.opacity
                     }}

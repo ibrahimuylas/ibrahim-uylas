@@ -32,7 +32,7 @@ than the multi-line Codex reference.
 - The preview begins 108 pixels from the left edge, matching the reference's
   approximately 107-pixel offset.
 - The preview width is 640 pixels, matching the reference closely.
-- The 12 section marks use three title-based lengths; the focused mark expands
+- The 12 section marks use four title-based lengths; the focused mark expands
   to 52 pixels.
 - The preview title and extracted paragraph remain on one line with safe
   truncation.
@@ -338,5 +338,94 @@ partial-next-card affordance. No actionable P0, P1, or P2 mismatch remains.
 - Live Meta/Netlify delivery is still pending the required environment
   variables; the browser QA uses the contract-shaped local response and does
   not claim a production Instagram smoke test.
+
+final result: passed
+
+---
+
+# Codex-style article rail fidelity update — 2026-07-27
+
+## Comparison target
+
+- Source visual truth:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-9e31bd0b-fd33-4b6c-8cc1-4e084f77803a.png`
+- Browser-rendered implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa348-67fa-7fa1-a97a-d12716df54c9/article-contents-codex-hover-final.png`
+- Focused side-by-side comparison, source on the left and implementation on
+  the right:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa348-67fa-7fa1-a97a-d12716df54c9/article-contents-codex-rail-comparison-final.png`
+- Source pixels: 946 × 502. The source is a desktop Codex crop with unknown
+  capture density.
+- Implementation pixels and CSS viewport: 1330 × 900 at device scale 1.
+- Density normalization: the rail was compared with unscaled 100 × 320 pixel
+  crops from both images, combined into a single 200 × 320 comparison.
+- State: dark mode, 12 article marks visible, sixth mark hovered, preview open.
+
+## Full-view and focused evidence
+
+The full browser view confirms that the rail remains vertically centred, the
+hovered mark is the only bright 52-pixel mark, the article stays usable, and
+the preview does not create horizontal overflow. The focused comparison was
+required because the source and implementation contain different surrounding
+products and copy. At rail scale, both use a four-pixel stroke,
+low-contrast passive marks, and a single bright 52-pixel hovered mark. The
+implementation supports the source's four passive widths; this article's title
+lengths exercise the 20, 28, and 40-pixel widths.
+
+At a 1330-pixel viewport the rail ends 31.5 pixels before the article card. At
+1920 pixels it moves with the centred 1140-pixel content container and ends
+40.5 pixels before the card instead of remaining at the viewport edge.
+
+## Fidelity surfaces
+
+- Fonts and typography: the requested rail contains no visible text. Existing
+  preview typography remains unchanged and follows the site's Theme UI tokens.
+- Spacing and layout rhythm: the line lengths and active width match the source.
+  The implementation retains 24-pixel interactive rows rather than the
+  source's approximately 20-pixel visual rhythm to preserve the specified
+  minimum pointer target.
+- Colors and visual tokens: passive lines use the existing neutral token at
+  0.22 opacity; the active line uses the theme heading token at full opacity.
+  The focused comparison shows the same subdued-passive/bright-active
+  hierarchy as the source in dark mode.
+- Image quality and asset fidelity: the rail requires no raster, logo,
+  illustration, or icon asset. No placeholder or generated asset is used.
+- Copy and content: article titles and preview copy remain sourced from the
+  existing table of contents; the update does not change content.
+
+## Comparison history
+
+### Pass 1
+
+- [P2] Passive marks were substantially brighter than the Codex source.
+- [P2] Three-pixel marks landed on half pixels when vertically centred and
+  appeared softer than the four-pixel source marks.
+
+Fixes: reduced passive opacity from 0.72 to 0.22 and increased mark height from
+three to four pixels. The existing width animation was also replaced with a
+fixed 52-pixel layer animated by horizontal scale, eliminating stale painted
+tails when marks contract.
+
+### Pass 2
+
+The combined focused comparison shows no remaining actionable P0, P1, or P2
+difference in the requested rail. The 24-pixel row rhythm is an accepted P3
+accessibility trade-off.
+
+## Interaction and browser checks
+
+- Sweeping the pointer over all 12 marks and then leaving the rail produced
+  zero active marks, removed the tooltip, and restored every passive width.
+- A hovered mark measured 52 × 4 pixels; all other marks measured one of
+  20, 28, or 40 pixels for this article and retained passive opacity.
+- Browser console errors and warnings after the final interaction pass: none.
+- Gatsby production build: passed. Existing Gatsby dependency and Node
+  deprecation warnings remain non-blocking.
+- Prettier and `git diff --check`: passed.
+
+## Follow-up polish
+
+- P3: reduce row spacing only if the 24-pixel target requirement is explicitly
+  relaxed; no change is recommended for the current accessible implementation.
 
 final result: passed

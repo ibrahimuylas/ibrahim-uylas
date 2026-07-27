@@ -62,7 +62,7 @@ contents control must complement it without competing for the same position.
 10. Keep the sub-1200-pixel pill at the bottom-left and the existing
     scroll-to-top control at the bottom-right. Keep the desktop and wide-tablet
     marks vertically centred on the left edge.
-11. Desktop and wide-tablet mark lengths use three title-length-based sizes and
+11. Desktop and wide-tablet mark lengths use four title-length-based sizes and
     expand to the longest size on hover or focus. Mouse and keyboard selection
     navigate immediately without opening a modal or drawer. On touch devices,
     the first tap opens the selected mark's preview, dragging within the rail
