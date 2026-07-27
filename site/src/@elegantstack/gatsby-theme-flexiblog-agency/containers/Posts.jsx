@@ -5,9 +5,9 @@ import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
 import Categories from '@widgets/Categories'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
-import BannerHorizontal from '@widgets/BannerHorizontal'
 import BannerVertical from '@widgets/BannerVertical'
 import { useBlogCategories } from '@helpers-blog'
+import InstagramShowcase from '../../../components/InstagramShowcase'
 
 const Posts = ({
   data: { posts = {}, featuredPosts = {}, recentPosts = {} },
@@ -186,7 +186,7 @@ const Posts = ({
               <>
                 <Divider />
                 <Stack effectProps={{ effect: false }}>
-                  <BannerHorizontal />
+                  <InstagramShowcase />
                 </Stack>
               </>
             )}
