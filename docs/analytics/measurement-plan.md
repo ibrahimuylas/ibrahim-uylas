@@ -80,3 +80,43 @@ recently corrected, this is a directional baseline rather than a quality target.
 
 The findings and recommended follow-up are recorded in the
 [blog analytics review](./blog-analytics-review.md).
+
+## Organic landing-page report
+
+Configured in GA4 on 27 July 2026:
+
+- **Exploration:** [Organik Açılış Sayfaları ve Dönüşümler](https://analytics.google.com/analytics/web/#/analysis/a190518336p395807433/edit/lQ5XhUFTSjWG4_Z5Y1Ee5Q)
+- **Filter:** Session primary channel group exactly matches `Organic Search`
+- **Rows:** Landing page, then event name
+- **Values:** Sessions, engaged sessions, engagement rate, average engagement
+  time per session, event count, and key events
+- **Outcome events:** `related_article_click` and `newsletter_signup` are
+  visible as event-name rows; `newsletter_signup` was marked as a key event on
+  27 July 2026
+
+Key-event totals before 27 July remain zero because GA4 does not apply the
+designation retroactively.
+
+The event payload review on 27 July confirmed that
+`related_article_click` sends only `link_url` and `source_path`, while
+`newsletter_signup` sends only the constant `form_name` and the public
+`page_path`. Neither event sends an email address, name, form response, or other
+personal data.
+
+## Clean-window baseline and targets
+
+For 30 June–27 July 2026, GA4 reported 489 sessions. Organic Search produced
+388 sessions, 105 engaged sessions, a 27.1% engagement rate, 21 seconds of
+average engagement per session, six `related_article_click` events, and three
+`newsletter_signup` events.
+
+This window mixes tracking configurations and is directional only. Use the
+first clean post-configuration 28-day window ending around 20–21 August for the
+initial comparison, then the window ending around 18 September for decisions.
+
+Targets:
+
+- Organic engagement rate: at least 35%
+- Average organic engagement: at least 30 seconds per session
+- Related-article clicks: at least 3% of organic sessions
+- Newsletter signups: report as a key-event rate by organic landing page

@@ -1,5 +1,18 @@
 # Search Console indexing recovery — 21 July 2026
 
+## Status update — 27 July 2026
+
+Search Console now reports 84 excluded URLs: 40 discovered, 20 crawled, 19
+historical 5xx, three redirects, and two noindex pages. All 19 remaining 5xx
+examples were rechecked; 17 return 200 directly and two redirect once to a 200
+canonical URL. The validation started on 21 July remains active and has not
+been restarted.
+
+The current URL-by-URL disposition is maintained in
+[`indexing-inventory-2026-07-27.csv`](./indexing-inventory-2026-07-27.csv).
+That inventory supersedes the counts below while this document preserves the
+original recovery record.
+
 This document records the implementation and external validation state for the
 indexing-recovery work. Search Console's Page indexing report was last updated
 on 10 July 2026, so its totals do not yet reflect the changes deployed or

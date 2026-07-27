@@ -69,8 +69,8 @@ reflect the earlier tracking configuration as much as visitor behaviour.
 ## Next measurement cycle
 
 1. Verify the newsletter signup and `newsletter_signup` event after deployment.
-2. Mark `newsletter_signup` as a key event after GA4 receives it for the first
-   time.
+2. `newsletter_signup` was marked as a key event on 27 July 2026; confirm new
+   signups appear in the key-event column.
 3. Allow at least 28 days of clean data before treating engagement changes as a
    trend.
 4. Review landing pages by organic search traffic, engagement, related-article

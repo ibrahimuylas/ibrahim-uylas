@@ -1,0 +1,85 @@
+gsc_reason,url,live_result,disposition,action_window,notes
+Page with redirect,https://ibrahimuylas.com/,301 to 200,intentional redirect,complete,Canonical host redirect
+Page with redirect,http://www.ibrahimuylas.com/,301 to 200,intentional redirect,complete,HTTPS and canonical host redirect
+Page with redirect,http://ibrahimuylas.com/,301 to 200,intentional redirect,complete,HTTPS and canonical host redirect
+Excluded by noindex tag,https://www.ibrahimuylas.com/author/ibrahim-uylas/page/13/,200,"noindex,follow",complete,Author pagination is excluded from sitemap
+Excluded by noindex tag,https://www.ibrahimuylas.com/tag/kocaelikampyerleri/page/2/,200,"noindex,follow",complete,Tag pagination is excluded from sitemap
+Discovered currently not indexed,https://www.ibrahimuylas.com/32.km-ilk-maraton-kosusu/,200,retain,8 August recheck,Substantive first-person article
+Discovered currently not indexed,https://www.ibrahimuylas.com/authors/,200 planned 301,merge+301,next deployment,Duplicate single-author directory to biography
+Discovered currently not indexed,https://www.ibrahimuylas.com/avrupanin-en-kuzeyine-nordkappa/,200,retain,8 August recheck,First-person travel article
+Discovered currently not indexed,https://www.ibrahimuylas.com/bir-hayalin-pesinde-kosmaya-var-misin/,200,"noindex,follow",18 September review,Very short personal story; keep accessible and recheck 90-day signals
+Discovered currently not indexed,https://www.ibrahimuylas.com/borcka-karagol/,200,refresh,monthly refresh queue,Thin destination page with useful search intent
+Discovered currently not indexed,https://www.ibrahimuylas.com/botlarin-kiymeti-bilinmeli/,200,refresh,monthly refresh queue,Thin equipment story with useful intent
+Discovered currently not indexed,https://www.ibrahimuylas.com/bunun-adi-ask-likya-yolu/,200,retain,8 August recheck,Likya preparation cluster and first-person value
+Discovered currently not indexed,https://www.ibrahimuylas.com/category/rotalar/,200,retain,8 August recheck,Useful category hub
+Discovered currently not indexed,https://www.ibrahimuylas.com/contact/,200 planned 301,merge+301,next deployment,Duplicate contact route to Turkish contact page
+Discovered currently not indexed,https://www.ibrahimuylas.com/dagin-basinda-da-dunya-kucukmus/,200,retain,8 August recheck,Substantive first-person article
+Discovered currently not indexed,https://www.ibrahimuylas.com/doga-yuruyuslerinde-nasil-giyinilmelidir/,200,retain,8 August recheck,Evergreen informational guide
+Discovered currently not indexed,https://www.ibrahimuylas.com/dupnisa-magarasi/,200,refresh,monthly refresh queue,Thin destination guide
+Discovered currently not indexed,https://www.ibrahimuylas.com/endurocuyuz-biz-mi-acaba/,200,retain,8 August recheck,Substantive first-person article
+Discovered currently not indexed,https://www.ibrahimuylas.com/ercuva-yaylasi/,200,refresh,monthly refresh queue,Thin destination guide
+Discovered currently not indexed,https://www.ibrahimuylas.com/ferrino-lightent-2-kamp-cadiri/,200,retain,8 August recheck,Substantive equipment review
+Discovered currently not indexed,https://www.ibrahimuylas.com/gezgin-olmak/,200,retain,8 August recheck,First-person article
+Discovered currently not indexed,https://www.ibrahimuylas.com/guvenli-kamp-atesi-icin-en-iyi-10-ipucu/,200,retain,8 August recheck,Substantive safety guide
+Discovered currently not indexed,https://www.ibrahimuylas.com/hiking-ne-demek/,200,retain,8 August recheck,Evergreen informational guide
+Discovered currently not indexed,https://www.ibrahimuylas.com/iletisim/,200,retain,8 August recheck,Canonical Turkish contact page
+Discovered currently not indexed,https://www.ibrahimuylas.com/kamplarda-ve-doga-yuruyuslerinde-dji-pocket-2-incelemesi/,200,refresh,monthly refresh queue,Very thin equipment review
+Discovered currently not indexed,https://www.ibrahimuylas.com/kurumsal-hayat-mi-dogal-hayat-mi/,200,retain,8 August recheck,First-person article
+Discovered currently not indexed,https://www.ibrahimuylas.com/likya-yolu-10.-gun/,200,retain,8 August recheck,Daily log with Likya hub role
+Discovered currently not indexed,https://www.ibrahimuylas.com/likya-yolu-2.-gun/,200,retain,8 August recheck,Substantive daily log with hub role
+Discovered currently not indexed,https://www.ibrahimuylas.com/likya-yolu-5.-gun/,200,retain,8 August recheck,Daily log with Likya hub role
+Discovered currently not indexed,https://www.ibrahimuylas.com/likya-yolu-8.-gun/,200,retain,8 August recheck,Daily log with Likya hub role
+Discovered currently not indexed,https://www.ibrahimuylas.com/likya-yolu-9.-gun/,200,retain,8 August recheck,Daily log with Likya hub role
+Discovered currently not indexed,https://www.ibrahimuylas.com/likya-yolu-rotasi-saribelenden-gokceorene/,200,retain,8 August recheck,Canonical route stage linked from hub
+Discovered currently not indexed,https://www.ibrahimuylas.com/likya-yoluna-neden-tek-gidiyorsun/,200,retain,8 August recheck,First-person safety and planning value
+Discovered currently not indexed,https://www.ibrahimuylas.com/likyaya-1-kala/,200,retain,8 August recheck,Daily-log cluster role
+Discovered currently not indexed,https://www.ibrahimuylas.com/mahcup-saskin-ve-mutlu/,200,"noindex,follow",18 September review,Short personal story; keep accessible and recheck 90-day signals
+Discovered currently not indexed,https://www.ibrahimuylas.com/msr-pocket-rocket-kamp-ocagi/,200,refresh,monthly refresh queue,Thin equipment review
+Discovered currently not indexed,https://www.ibrahimuylas.com/r-degeri-nedir/,200,retain,8 August recheck,Substantive evergreen guide
+Discovered currently not indexed,https://www.ibrahimuylas.com/serindere-kanyonu/,200,retain,8 August recheck,Substantive first-person article
+Discovered currently not indexed,https://www.ibrahimuylas.com/suluklu-gol-azrail-teget-gecti/,200,retain,8 August recheck,Substantive first-person article
+Discovered currently not indexed,https://www.ibrahimuylas.com/tek-basina-doga-yuruyusu/,200,retain,8 August recheck,Evergreen informational article
+Discovered currently not indexed,https://www.ibrahimuylas.com/trangia-kamp-tencere-seti/,200,refresh,monthly refresh queue,Thin equipment review
+Discovered currently not indexed,https://www.ibrahimuylas.com/trekking-ile-hiking-arasindaki-farklar-nelerdir/,200,retain,8 August recheck,Evergreen informational guide
+Discovered currently not indexed,https://www.ibrahimuylas.com/uyku-tulumu-nasil-kullanilir/,200,retain,8 August recheck,Substantive evergreen guide
+Discovered currently not indexed,https://www.ibrahimuylas.com/yagmurluk-nasil-secilir/,200,retain,8 August recheck,Substantive evergreen guide
+Discovered currently not indexed,https://www.ibrahimuylas.com/yuvacik-iznik-trekking/,200,retain,8 August recheck,Substantive first-person route article
+Crawled currently not indexed,https://www.ibrahimuylas.com/kaputas-plaji/,200,refresh,monthly refresh queue,Thin destination guide
+Crawled currently not indexed,https://www.ibrahimuylas.com/likya-yolu-11-gunde-yurudugum-parkur/,200,retain,20 August review,Canonical multi-day route guide
+Crawled currently not indexed,https://www.ibrahimuylas.com/likya-yolu-oludenizden-ucagiza-11-gun-230km/,301 to 200,merge+301,complete,Retired duplicate redirects to canonical route guide
+Crawled currently not indexed,https://www.ibrahimuylas.com/tag/dogayuruyusleri/,200,"noindex,follow",complete,Tag archive excluded from sitemap
+Crawled currently not indexed,https://www.ibrahimuylas.com/tag/kitap/,200,"noindex,follow",complete,Tag archive excluded from sitemap
+Crawled currently not indexed,https://www.ibrahimuylas.com/hayalleri-olanlara-selam-olsun/,200,retain,20 August review,First-person article
+Crawled currently not indexed,https://www.ibrahimuylas.com/tag/batinkampyerleri/,200,"noindex,follow",complete,Tag archive excluded from sitemap
+Crawled currently not indexed,https://www.ibrahimuylas.com/author/ibrahim-uylas/page/3/,200,"noindex,follow",complete,Author pagination excluded from sitemap
+Crawled currently not indexed,https://www.ibrahimuylas.com/tag/kampyerleriverotalar/,200,"noindex,follow",complete,Tag archive excluded from sitemap
+Crawled currently not indexed,https://www.ibrahimuylas.com/iskoc-yaylalari-inverness-1.-bolum/,200,retain,20 August review,Substantive first-person travel article
+Crawled currently not indexed,https://www.ibrahimuylas.com/category/rotalar/page/9/,200,"noindex,follow",complete,Category pagination excluded from sitemap
+Crawled currently not indexed,https://www.ibrahimuylas.com/tag/yuruyusekipmanlari/page/2/,200,"noindex,follow",complete,Tag pagination excluded from sitemap
+Crawled currently not indexed,https://www.ibrahimuylas.com/trekking-ayakkabisi-nasil-olmali,301 to 200,intentional redirect,complete,Missing-trailing-slash alias
+Crawled currently not indexed,https://www.ibrahimuylas.com/kackar-daglari-anlik-bilinc-kaybi/,200,retain,20 August review,Substantive first-person mountain article
+Crawled currently not indexed,https://www.ibrahimuylas.com/lowa-zephyr-gtx-mid-bot-sage,301 to 200,intentional redirect,complete,Missing-trailing-slash alias
+Crawled currently not indexed,https://www.ibrahimuylas.com/yalova-fistikli-trekking,301 to 200,intentional redirect,complete,Missing-trailing-slash alias
+Crawled currently not indexed,https://www.ibrahimuylas.com/doga-yuruyusunun-faydalari-nelerdir,301 to 200,intentional redirect,complete,Missing-trailing-slash alias
+Crawled currently not indexed,https://www.ibrahimuylas.com/ya-kampta-biri-kaybolursa/,200,retain,20 August review,Substantive first-person safety article
+Crawled currently not indexed,https://www.ibrahimuylas.com/tag/sinopkampyerleri/,200,"noindex,follow",complete,Tag archive excluded from sitemap
+Crawled currently not indexed,https://www.ibrahimuylas.com/tag/yolhikayeleri/page/7/,200,"noindex,follow",complete,Tag pagination excluded from sitemap
+Server error 5xx,https://www.ibrahimuylas.com/menekse-subatimi-yaylasi-kampi/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/sile-sakligol/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/2-seconds-easy-3-kamp-cadiri/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/likya-parkuru-sirt-cantam/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/inonu-yaylasindan-aytepeye-trekking/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/likya-yolu-rotasi-kinikdan-uzumluye/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/serindere-kanyonu-kamp-alani/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/uyku-tulumu-alirken-nelere-dikkat-edilmelidir,301 to 200,historical error,validation active,Canonical trailing-slash redirect; do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/papaz-cayiri/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/category/diger-her-sey/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/iskoc-yaylalari-nc500-rotasi-4.-bolum/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/author/ibrahim-uylas/,200,historical error,validation active,Live noindex author page; do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/esenkoy-delmece-yaylasi-narli-trekking/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/likya-yolu-rotasi-gokceorenden-kasa/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/suluklu-gol-azrail-teget-gecti,301 to 200,historical error,validation active,Canonical trailing-slash redirect; do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/uyku-tulumu-alirken-nelere-dikkat-edilmelidir/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/likya-yolu-rotasi-kormen-adasindan-kaleucagiza/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/dag-basinda-bekle-geliyorum/,200,historical error,validation active,Do not restart validation
+Server error 5xx,https://www.ibrahimuylas.com/trabzon-uzungol/,200,historical error,validation active,Do not restart validation
