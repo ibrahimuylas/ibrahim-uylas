@@ -2,6 +2,7 @@ const test = require('node:test')
 const assert = require('node:assert/strict')
 const {
   boundedAlt,
+  createInstagramActivation,
   createRequestGuard,
   validateFeed
 } = require('./instagramShowcasePolicy')
@@ -90,4 +91,75 @@ test('prevents stale async work from committing after cancellation', () => {
     false
   )
   assert.equal(value, 'active')
+})
+
+test('builds allowlisted CTA analytics and remains inert without gtag', () => {
+  const calls = []
+  const track = (eventName, parameters) => calls.push([eventName, parameters])
+
+  createInstagramActivation({
+    action: 'profile',
+    sourcePath: '/',
+    track,
+    caption: 'private caption',
+    biography: 'private biography',
+    token: 'token-shaped-secret'
+  })()
+  createInstagramActivation({
+    action: 'message',
+    sourcePath: '/kampcilik/',
+    track,
+    username: 'uylasonwheels',
+    visitorId: 'visitor-secret'
+  })()
+  createInstagramActivation({
+    action: 'profile',
+    sourcePath: '/',
+    track: undefined
+  })()
+
+  assert.deepEqual(calls, [
+    ['instagram_profile_click', { source_path: '/' }],
+    ['instagram_message_click', { source_path: '/kampcilik/' }]
+  ])
+})
+
+test('builds allowlisted post analytics with normalized media values only', () => {
+  const calls = []
+  const sensitiveFixture = {
+    caption: 'caption-secret',
+    name: 'İbrahim Uylaş',
+    username: 'uylasonwheels',
+    biography: 'biography-secret',
+    visitorEmail: 'visitor@example.com',
+    imageUrl: 'https://cdn.example.com/token-shaped-secret.jpg',
+    permalink: 'https://www.instagram.com/p/private/'
+  }
+
+  ;['IMAGE', 'CAROUSEL_ALBUM', 'VIDEO'].forEach((mediaType, index) => {
+    createInstagramActivation({
+      action: 'post',
+      sourcePath: '/',
+      postPosition: index + 1,
+      mediaType,
+      track: (eventName, parameters) => calls.push([eventName, parameters]),
+      ...sensitiveFixture
+    })()
+  })
+
+  assert.deepEqual(calls, [
+    [
+      'instagram_post_click',
+      { source_path: '/', post_position: 1, media_type: 'image' }
+    ],
+    [
+      'instagram_post_click',
+      { source_path: '/', post_position: 2, media_type: 'carousel' }
+    ],
+    [
+      'instagram_post_click',
+      { source_path: '/', post_position: 3, media_type: 'video' }
+    ]
+  ])
+  assert.doesNotMatch(JSON.stringify(calls), /secret|uylasonwheels|İbrahim/)
 })

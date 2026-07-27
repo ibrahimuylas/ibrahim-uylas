@@ -1,6 +1,16 @@
 const EXPECTED_USERNAME = 'uylasonwheels'
 const POST_TYPES = new Set(['IMAGE', 'CAROUSEL_ALBUM', 'VIDEO'])
 const MAX_ALT_LENGTH = 120
+const ANALYTICS_EVENTS = Object.freeze({
+  profile: 'instagram_profile_click',
+  message: 'instagram_message_click',
+  post: 'instagram_post_click'
+})
+const ANALYTICS_MEDIA_TYPES = Object.freeze({
+  IMAGE: 'image',
+  CAROUSEL_ALBUM: 'carousel',
+  VIDEO: 'video'
+})
 
 const safeImageUrl = value => {
   try {
@@ -101,8 +111,42 @@ const createRequestGuard = () => {
   }
 }
 
+const createInstagramActivation = ({
+  action,
+  sourcePath,
+  track,
+  postPosition,
+  mediaType
+}) => {
+  const eventName = ANALYTICS_EVENTS[action]
+  const parameters = { source_path: sourcePath }
+
+  if (action === 'post') {
+    parameters.post_position = postPosition
+    parameters.media_type = ANALYTICS_MEDIA_TYPES[mediaType]
+  }
+
+  return () => {
+    if (
+      typeof track !== 'function' ||
+      !eventName ||
+      typeof sourcePath !== 'string' ||
+      !sourcePath.startsWith('/') ||
+      (action === 'post' &&
+        (!Number.isInteger(postPosition) ||
+          postPosition < 1 ||
+          !parameters.media_type))
+    ) {
+      return
+    }
+
+    track(eventName, parameters)
+  }
+}
+
 module.exports = {
   boundedAlt,
+  createInstagramActivation,
   createRequestGuard,
   validateFeed
 }
