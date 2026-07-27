@@ -54,13 +54,26 @@ const boundedAlt = (caption, position) => {
   return `${collapsed.slice(0, MAX_ALT_LENGTH - 1).trimEnd()}…`
 }
 
+const profileText = (value, maximum, required = true) => {
+  if (typeof value !== 'string') return null
+  const normalized = value.replace(/\s+/g, ' ').trim()
+  if ((required && !normalized) || normalized.length > maximum) return null
+  return normalized
+}
+
 const validateFeed = value => {
+  const profile = value?.profile
+  const name = profileText(profile?.name, 100)
+  const biography = profileText(profile?.biography, 500, false)
+
   if (
     !value ||
     value.ok !== true ||
-    !value.profile ||
-    value.profile.username !== EXPECTED_USERNAME ||
-    !safeImageUrl(value.profile.profileImageUrl) ||
+    !profile ||
+    profile.username !== EXPECTED_USERNAME ||
+    !name ||
+    biography === null ||
+    !safeImageUrl(profile.profileImageUrl) ||
     !Array.isArray(value.posts) ||
     value.posts.length !== 6
   ) {
@@ -91,7 +104,13 @@ const validateFeed = value => {
   if (posts.some(post => post === null)) return null
 
   return {
-    profileImageUrl: value.profile.profileImageUrl,
+    profileImageUrl: profile.profileImageUrl,
+    profile: {
+      name,
+      username: profile.username,
+      biography,
+      profileImageUrl: profile.profileImageUrl
+    },
     posts
   }
 }

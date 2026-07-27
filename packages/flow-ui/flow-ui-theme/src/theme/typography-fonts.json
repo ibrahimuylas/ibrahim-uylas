@@ -1,7 +1,10 @@
 {
   "fonts": {
     "google": {
-      "families": ["Inter:400,600,700,900&display=swap"]
+      "families": [
+        "Inter:400,600,700,900&display=swap",
+        "DM Serif Display:400&display=swap"
+      ]
     }
   },
   "theme": {

@@ -19,7 +19,9 @@ const post = (index, overrides = {}) => ({
 const response = overrides => ({
   ok: true,
   profile: {
+    name: 'İbrahim Uylaş',
     username: 'uylasonwheels',
+    biography: 'Londra’dan vahşi doğaya',
     profileImageUrl: 'https://cdn.example.com/profile.jpg'
   },
   posts: Array.from({ length: 6 }, (_, index) => post(index + 1)),
@@ -30,6 +32,12 @@ test('accepts only a complete expected-account feed', () => {
   const feed = validateFeed(response())
   assert.equal(feed.posts.length, 6)
   assert.equal(feed.posts[0].alt, 'Paylaşım 1')
+  assert.deepEqual(feed.profile, {
+    name: 'İbrahim Uylaş',
+    username: 'uylasonwheels',
+    biography: 'Londra’dan vahşi doğaya',
+    profileImageUrl: 'https://cdn.example.com/profile.jpg'
+  })
 
   assert.equal(
     validateFeed(response({ posts: response().posts.slice(0, 5) })),
@@ -39,7 +47,22 @@ test('accepts only a complete expected-account feed', () => {
     validateFeed(
       response({
         profile: {
+          name: 'Başka Hesap',
           username: 'another-account',
+          biography: 'Başka profil',
+          profileImageUrl: 'https://cdn.example.com/profile.jpg'
+        }
+      })
+    ),
+    null
+  )
+  assert.equal(
+    validateFeed(
+      response({
+        profile: {
+          name: '',
+          username: 'uylasonwheels',
+          biography: 'Eksik ad',
           profileImageUrl: 'https://cdn.example.com/profile.jpg'
         }
       })

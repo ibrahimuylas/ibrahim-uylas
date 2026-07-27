@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Flex, Heading, Image as ThemeImage, Link, Text } from 'theme-ui'
+import { FaClone, FaPlay } from 'react-icons/fa'
 import localPortrait from '../../content/authors/ibrahim-profil.jpg'
 import { currentPagePath, trackEvent } from '../utils/analytics'
 import policy from './instagramShowcasePolicy'
 
 const PROFILE_URL = 'https://www.instagram.com/uylasonwheels/'
 const MESSAGE_URL = 'https://ig.me/m/uylasonwheels'
+const FALLBACK_PROFILE = {
+  name: 'İbrahim Uylaş',
+  username: 'uylasonwheels',
+  biography: 'Londra’dan vahşi doğaya'
+}
 const focusStyle = {
   '&:focus-visible': {
     outline: `3px solid`,
@@ -15,22 +21,25 @@ const focusStyle = {
 }
 const railStyle = {
   display: `grid`,
-  gridAutoFlow: [`column`, `column`, `column`, `row`],
+  gridAutoFlow: `column`,
   gridAutoColumns: [
-    `calc((100% - 16px) / 2.4)`,
-    `calc((100% - 16px) / 2.4)`,
-    `calc((100% - 16px) / 2.4)`,
-    `auto`
+    `calc((100% - 16px) / 2.45)`,
+    `calc((100% - 32px) / 3.2)`,
+    `calc((100% - 48px) / 4.2)`,
+    `calc((100% - 64px) / 4.45)`
   ],
-  gridTemplateColumns: [null, null, null, `repeat(6, minmax(0, 1fr))`],
-  gap: 2,
+  gap: [2, 3],
   minWidth: 0,
   maxWidth: `100%`,
-  overflowX: [`auto`, `auto`, `auto`, `visible`],
+  overflowX: `auto`,
+  overflowY: `hidden`,
   overscrollBehaviorInline: `contain`,
-  scrollSnapType: [`x proximity`, `x proximity`, `x proximity`, `none`],
+  scrollSnapType: `x proximity`,
+  scrollbarWidth: `none`,
   WebkitOverflowScrolling: `touch`,
-  pb: [2, 2, 2, 0]
+  '&::-webkit-scrollbar': {
+    display: `none`
+  }
 }
 
 const InstagramShowcase = () => {
@@ -83,6 +92,7 @@ const InstagramShowcase = () => {
       mediaType,
       track: trackEvent
     })
+  const profile = feed?.profile || FALLBACK_PROFILE
 
   return (
     <Box
@@ -93,57 +103,132 @@ const InstagramShowcase = () => {
         minWidth: 0,
         maxWidth: `100%`,
         overflow: `hidden`,
-        bg: `alphaLighter`,
-        borderRadius: `default`,
-        px: [3, 4],
-        py: [3, 4]
+        bg: `contentBg`,
+        borderRadius: 0,
+        pt: [4, 5],
+        pb: [4, 6]
       }}
     >
-      <Heading
-        id='instagram-showcase-title'
-        as='h2'
+      <Box
         sx={{
-          borderLeft: t => `4px solid ${t.colors.alpha}`,
-          pl: 3,
-          mb: 3,
-          fontSize: [3, 4]
-        }}
-      >
-        Yolda beni takip et
-      </Heading>
-      <Flex
-        sx={{
+          display: `grid`,
+          gridTemplateAreas: [
+            `"title title"
+             "portrait identity"
+             "actions actions"`,
+            `"title title"
+             "portrait identity"
+             "actions actions"`,
+            `"portrait title actions"
+             "portrait identity actions"`
+          ],
+          gridTemplateColumns: [
+            `72px minmax(0, 1fr)`,
+            `88px minmax(0, 1fr)`,
+            `96px minmax(0, 1fr) auto`
+          ],
           alignItems: `center`,
-          gap: 3,
-          flexWrap: `wrap`,
+          columnGap: [3, 4],
+          rowGap: [3, 2],
+          px: [3, 4, 5],
           minWidth: 0
         }}
       >
+        <Heading
+          id='instagram-showcase-title'
+          as='h2'
+          sx={{
+            gridArea: `title`,
+            color: `heading`,
+            fontFamily: `'DM Serif Display', Georgia, serif`,
+            fontSize: [6, 6, 7],
+            fontWeight: 400,
+            lineHeight: 1.08,
+            letterSpacing: `-0.02em`,
+            m: 0
+          }}
+        >
+          Yolda beni takip et
+        </Heading>
         <ThemeImage
           src={portrait}
-          width='72'
-          height='72'
-          alt='İbrahim Uylaş'
+          width='96'
+          height='96'
+          alt={profile.name}
           onError={() => setPortrait(localPortrait)}
           sx={{
-            width: 72,
-            height: 72,
+            gridArea: `portrait`,
+            alignSelf: `end`,
+            width: [72, 88, 96],
+            height: [72, 88, 96],
+            p: `3px`,
             objectFit: `cover`,
-            borderRadius: `full`
+            bg: `contentBg`,
+            borderRadius: `14px`,
+            boxShadow: `0 0 0 2px #9333ea`
           }}
         />
-        <Box sx={{ flex: `1 1 12rem`, minWidth: 0 }}>
-          <Text as='p' sx={{ fontWeight: `bold`, m: 0 }}>
-            İbrahim Uylaş
-          </Text>
-          <Text as='p' sx={{ m: 0 }}>
-            @uylasonwheels
-          </Text>
-          <Text as='p' sx={{ m: 0 }}>
-            Londra’dan vahşi doğaya
-          </Text>
+        <Box sx={{ gridArea: `identity`, alignSelf: `start`, minWidth: 0 }}>
+          <Flex
+            sx={{
+              alignItems: [`flex-start`, `center`],
+              flexDirection: [`column`, `row`],
+              columnGap: 2,
+              rowGap: 0,
+              minWidth: 0
+            }}
+          >
+            <Text
+              as='p'
+              sx={{
+                color: `heading`,
+                fontSize: [2, 3],
+                fontWeight: `bold`,
+                lineHeight: `heading`,
+                whiteSpace: `nowrap`,
+                m: 0
+              }}
+            >
+              {profile.name}
+            </Text>
+            <Text
+              as='p'
+              sx={{
+                color: `omegaDark`,
+                fontSize: [1, 2],
+                lineHeight: `body`,
+                whiteSpace: `nowrap`,
+                m: 0
+              }}
+            >
+              @{profile.username}
+            </Text>
+          </Flex>
+          {profile.biography && (
+            <Text
+              as='p'
+              sx={{
+                color: `text`,
+                fontSize: [1, 2],
+                lineHeight: `body`,
+                mt: [0, 1],
+                mb: 0
+              }}
+            >
+              {profile.biography}
+            </Text>
+          )}
         </Box>
-        <Flex sx={{ gap: 2, flexWrap: `wrap`, minWidth: 0 }}>
+        <Flex
+          sx={{
+            gridArea: `actions`,
+            alignSelf: `end`,
+            justifyContent: `flex-end`,
+            gap: 2,
+            mt: [1, 2, 0],
+            minWidth: 0
+          }}
+        >
           <Link
             href={PROFILE_URL}
             aria-label='Instagram’da @uylasonwheels profilini aç'
@@ -153,15 +238,20 @@ const InstagramShowcase = () => {
               color: `contentBg`,
               bg: `heading`,
               borderColor: `heading`,
+              borderRadius: 0,
               display: `inline-flex`,
-              alignItems: `center`,
-              justifyContent: `center`,
-              minHeight: 44,
+              flex: [`1 1 0`, `0 0 auto`],
+              minWidth: [0, `9rem`],
+              minHeight: [44, 48],
+              px: [3, 4],
+              fontSize: 1,
+              fontWeight: `bold`,
+              letterSpacing: `0.08em`,
               textDecoration: `none`,
               '&:hover': {
-                color: `heading`,
-                bg: `contentBg`,
-                borderColor: `heading`
+                color: `contentBg`,
+                bg: `alpha`,
+                borderColor: `alpha`
               },
               ...focusStyle
             }}
@@ -176,11 +266,16 @@ const InstagramShowcase = () => {
               variant: `buttons.mute`,
               color: `heading`,
               bg: `transparent`,
-              borderColor: `heading`,
+              borderColor: `omegaDark`,
+              borderRadius: 0,
               display: `inline-flex`,
-              alignItems: `center`,
-              justifyContent: `center`,
-              minHeight: 44,
+              flex: [`1 1 0`, `0 0 auto`],
+              minWidth: [0, `9rem`],
+              minHeight: [44, 48],
+              px: [3, 4],
+              fontSize: 1,
+              fontWeight: `bold`,
+              letterSpacing: `0.08em`,
               textDecoration: `none`,
               '&:hover': {
                 color: `contentBg`,
@@ -193,28 +288,19 @@ const InstagramShowcase = () => {
             Mesaj at
           </Link>
         </Flex>
-      </Flex>
-      <Text
-        as='p'
-        sx={{
-          mt: 3,
-          mb: 2,
-          fontSize: 1,
-          fontWeight: `bold`,
-          color: `omegaDark`
-        }}
-      >
-        Son 6 paylaşım
-      </Text>
+      </Box>
       {status === 'loading' && (
-        <Box aria-label='Instagram paylaşımları yükleniyor' sx={railStyle}>
+        <Box
+          aria-label='Instagram paylaşımları yükleniyor'
+          sx={{ ...railStyle, mx: 0, mt: [4, 5] }}
+        >
           {Array.from({ length: 6 }, (_, index) => (
             <Box
               key={index}
               sx={{
-                aspectRatio: `1`,
+                aspectRatio: `5 / 6`,
                 bg: `omegaLight`,
-                borderRadius: `default`,
+                borderRadius: 0,
                 scrollSnapAlign: `start`
               }}
             />
@@ -222,7 +308,7 @@ const InstagramShowcase = () => {
         </Box>
       )}
       {status === 'ready' && feed && (
-        <Box sx={railStyle}>
+        <Box sx={{ ...railStyle, mx: 0, mt: [4, 5] }}>
           {feed.posts.map((post, index) => (
             <Link
               key={post.id}
@@ -230,13 +316,37 @@ const InstagramShowcase = () => {
               aria-label={post.alt}
               onClick={activation('post', index + 1, post.type)}
               sx={{
+                position: `relative`,
                 display: `block`,
                 minWidth: 0,
-                borderRadius: `default`,
+                borderRadius: 0,
+                overflow: `hidden`,
                 scrollSnapAlign: `start`,
+                '&:hover img': {
+                  transform: `scale(1.015)`
+                },
                 ...focusStyle
               }}
             >
+              {post.type !== 'IMAGE' && (
+                <Box
+                  aria-hidden='true'
+                  sx={{
+                    position: `absolute`,
+                    zIndex: 1,
+                    top: 2,
+                    right: 2,
+                    display: `grid`,
+                    placeItems: `center`,
+                    width: 28,
+                    height: 28,
+                    color: `white`,
+                    filter: `drop-shadow(0 1px 3px rgba(0, 0, 0, 0.6))`
+                  }}
+                >
+                  {post.type === 'VIDEO' ? <FaPlay /> : <FaClone />}
+                </Box>
+              )}
               <ThemeImage
                 src={post.imageUrl}
                 alt={post.alt}
@@ -247,9 +357,10 @@ const InstagramShowcase = () => {
                 sx={{
                   display: `block`,
                   width: `100%`,
-                  aspectRatio: `1`,
+                  aspectRatio: `5 / 6`,
                   objectFit: `cover`,
-                  borderRadius: `default`
+                  borderRadius: 0,
+                  transition: `transform 250ms ease`
                 }}
               />
             </Link>

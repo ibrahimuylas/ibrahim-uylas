@@ -117,6 +117,76 @@ guard also closes the preview when Safari omits the corresponding leave event.
 
 final result: passed
 
+# Homepage Instagram Showcase — Premium Option 2 Revision
+
+## Evidence and state
+
+- Selected visual:
+  `/Users/uylas/.codex/generated_images/019fa2d2-b491-7740-8616-1b139f757775/call_G9neHqcyJwRWL91SlgFHpFAm.png`
+- Final desktop implementation:
+  `/tmp/instagram-premium-implementation-final-1261x1247-dark.png`
+- Final same-viewport comparison:
+  `/tmp/instagram-premium-comparison-final.png`
+- Final mobile implementation:
+  `/tmp/instagram-premium-mobile-final-390x1100-dark.png`
+- Desktop comparison state: 1261 × 1247, DPR 1, dark theme, complete six-post
+  response.
+- Mobile state: 390 × 1100, dark theme, complete six-post response.
+
+The successful preview uses a contract-shaped local response because this
+checkout has no `INSTAGRAM_ACCESS_TOKEN`, `INSTAGRAM_USER_ID`, or
+`INSTAGRAM_API_VERSION` configured and is not linked to a Netlify site. Live
+Meta delivery is therefore an integration prerequisite, not a completed visual
+QA claim.
+
+## Iteration findings and resolution
+
+The first combined comparison showed the right surface direction but exposed
+three visible hierarchy mismatches: the heading and profile lockup were too
+small, the gallery felt compressed, and square media did not match the selected
+portrait-led direction. The final revision uses a 48-pixel desktop heading, a
+176-pixel portrait, 30-pixel profile name, 52-pixel compact actions, and 4:5
+media cards. The neutral page background, elevated identity band, indigo
+primary action, outlined secondary action, Instagram icon, hidden scrollbar,
+and partial next-card affordance now follow the selected option.
+
+Tablet QA exposed a second density issue before handoff: carrying the mobile
+2.4-card rail through 1023 pixels produced oversized 363 × 453 cards. The
+768–1023 range now shows approximately 3.2 cards, measuring 190 × 237 at 768
+pixels and 270 × 337 at 1023 pixels. At 1024 and 1440 pixels the desktop rail
+returns to its denser presentation.
+
+## Responsive, accessibility, and content QA
+
+- Document width matched client width at 390, 640, 768, 1023, 1024, 1261, and
+  1440 pixels; the gallery is the only horizontally scrolling region.
+- The native rail scrollbar is hidden while touch momentum, proximity snapping,
+  and keyboard scrolling remain available.
+- At 390 pixels the two actions remain on one row and each measures 44 pixels
+  high. Desktop actions measure 52 pixels high.
+- The profile name, username, biography, portrait alternative, post
+  alternatives, and exact Instagram actions come from the validated feed
+  contract; the local identity remains visible when the feed is unavailable.
+- Profile and media URLs remain restricted by the client policy, malformed
+  payloads fail closed, and a failed media image removes the gallery rather than
+  leaving a broken tile.
+- Light and dark surfaces inherit the existing theme tokens. The brand primary
+  remains white on `#434190`, with the established three-pixel focus-visible
+  outline.
+
+## Validation
+
+- Root `npm test`: passed, 16 of 16 tests.
+- Prettier check for all changed implementation and policy files: passed.
+- `git diff --check`: passed.
+- Gatsby production build under Node 18.20.4: passed, 330 pages.
+- Final same-viewport combined comparison: no remaining P0, P1, or P2 visual
+  mismatch.
+- Production Meta/Netlify smoke check: blocked until the required environment
+  variables are provisioned; live data has not been claimed as verified.
+
+final result: passed
+
 # Homepage Instagram Showcase — Design QA (27 July 2026)
 
 ## Reference and scope
@@ -175,5 +245,98 @@ links without a loading state.
   retained exact actions and document-width containment.
 - Production Meta/Netlify smoke check: pending the site owner provisioning
   credentials and deploying. It has not been claimed as run.
+
+final result: passed
+
+# Homepage Instagram Showcase — Stitch Revision
+
+## Source and rendered evidence
+
+- Source visual truth:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-0243d6d0-1351-4868-937d-f02f1ce21c40.png`
+- Source pixels: 2544 × 986 at 144 DPI. The source contains a desktop pane
+  and a separate mobile pane on one design canvas.
+- Desktop implementation:
+  `/tmp/stitch-instagram-desktop-section-final.png`
+- Desktop combined comparison:
+  `/tmp/stitch-instagram-desktop-comparison-final2.png`
+- Mobile implementation:
+  `/tmp/stitch-instagram-mobile-section-final.png`
+- Mobile combined comparison:
+  `/tmp/stitch-instagram-mobile-comparison-final2.png`
+- Dark-theme implementation:
+  `/tmp/stitch-instagram-desktop-dark-section.png`
+- Desktop CSS viewport: 1440 × 1000 at DPR 1; captured section:
+  1076 × 650 pixels.
+- Mobile CSS viewport: 390 × 900 at DPR 1; captured section:
+  348 × 424 pixels.
+- State: successful six-post response, light theme for source comparisons,
+  plus a focused dark-theme review.
+
+The two source panes were cropped from the supplied canvas and normalized to
+the exact rendered section dimensions before comparison. The Instagram images
+and portrait differ because the implementation intentionally uses the
+validated feed contract instead of copying the mockup's illustrative content.
+The verification badge was intentionally omitted because the live feed does
+not provide evidence that the account is verified.
+
+## Comparison history
+
+### Pass 1
+
+- P2: the mobile gallery retained an inset while the Stitch reference begins
+  at the section edge. The rail margin was removed.
+- P2: the mobile editorial title was visually weaker than the reference. The
+  responsive display size was increased while retaining the 48-pixel desktop
+  heading.
+- P2: desktop showed five complete cards while the source communicates
+  horizontal continuation with four complete cards and a partial fifth. The
+  desktop rail density was changed to approximately 4.45 cards.
+- P2: 4:5 cards were visibly taller than Stitch in both normalized
+  comparisons. Media and loading slots were changed to a 5:6 ratio.
+
+### Final pass
+
+The final combined comparisons show the same hierarchy, square purple portrait
+frame, editorial serif heading, compact identity copy, dark primary action,
+outlined secondary action, edge-to-edge media rail, hidden scrollbar, and
+partial-next-card affordance. No actionable P0, P1, or P2 mismatch remains.
+
+## Required fidelity surfaces
+
+- Fonts and typography: `DM Serif Display` is loaded for the section heading;
+  Inter remains the UI and identity typeface. Desktop heading is 48 pixels and
+  mobile resolves to 30.6 pixels in the existing fluid typography system.
+- Spacing and layout: desktop uses the Stitch side-by-side header and actions;
+  mobile reflows to title, profile, actions, then gallery. CTA heights are
+  44–48 pixels.
+- Colors and tokens: the light section is white with near-black actions. Dark
+  mode uses the existing content surface, light primary action, and high
+  contrast outlined secondary action. The portrait ring uses Stitch's purple
+  accent.
+- Image quality: all media remains sourced from the Instagram feed contract,
+  uses cover cropping, and preserves dedicated carousel/video icons from the
+  installed icon library.
+- Copy: the supplied Turkish title, profile identity, biography, `Takip et`,
+  and `Mesaj at` labels are preserved. The redundant gallery label was removed
+  to match Stitch.
+
+## Responsive, interaction, and build validation
+
+- Document width equals client width at 390, 640, 768, 1023, 1024, and 1440
+  pixels. Horizontal overflow remains contained inside the gallery.
+- The hidden-scrollbar rail measures 2.45 cards on mobile and approximately
+  4.45 cards on desktop, with touch momentum and proximity snapping.
+- Keyboard traversal reaches both actions and every post. The gallery focus
+  state renders a three-pixel outline with a two-pixel offset.
+- Exact profile, message, and post links remain functional and retain the
+  existing analytics activation handlers.
+- Browser console: no warnings or errors in the final served preview.
+- Root `npm test`: passed, 16 of 16 tests.
+- Prettier and `git diff --check`: passed.
+- Gatsby production build under Node 18.20.4: passed, 330 pages.
+- Live Meta/Netlify delivery is still pending the required environment
+  variables; the browser QA uses the contract-shaped local response and does
+  not claim a production Instagram smoke test.
 
 final result: passed
