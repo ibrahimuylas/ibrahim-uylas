@@ -30,6 +30,8 @@ module.exports = {
       options: {
         // Add theme options here. Check documentation for available options.
         siteUrl,
+        fonts: false,
+        homeCategoryPostsPerGroup: 6,
         services: {
           disqus: 'ibrahim-uylas',
           facebookComment: true,

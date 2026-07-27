@@ -18,7 +18,7 @@ const recentPostsQuery = graphql`
     ) {
       nodes {
         ...ArticlePreview
-        ...ArticleThumbnailRegular
+        ...ArticleThumbnailCard
       }
     }
   }

@@ -15,7 +15,7 @@ export const query = graphql`
       ...ArticleCategory
     }
     author {
-      ...ArticleAuthor
+      ...ArticleAuthorPreview
     }
   }
 `

@@ -26,7 +26,7 @@ export const pageQuery = graphql`
   ) {
     post: article(id: { eq: $id }) {
       ...ArticleInformation
-      ...ArticleThumbnailRegular
+      ...ArticleThumbnailHero
     }
     tagCategoryPosts: allArticle(
       filter: {
@@ -41,7 +41,7 @@ export const pageQuery = graphql`
     ) @include(if: $hasTags) {
       nodes {
         ...ArticlePreview
-        ...ArticleThumbnailRegular
+        ...ArticleThumbnailCard
       }
     }
     tagPosts: allArticle(
@@ -56,7 +56,7 @@ export const pageQuery = graphql`
     ) @include(if: $hasTags) {
       nodes {
         ...ArticlePreview
-        ...ArticleThumbnailRegular
+        ...ArticleThumbnailCard
       }
     }
     categoryPosts: allArticle(
@@ -71,7 +71,7 @@ export const pageQuery = graphql`
     ) {
       nodes {
         ...ArticlePreview
-        ...ArticleThumbnailRegular
+        ...ArticleThumbnailCard
       }
     }
     previous: article(id: { eq: $previousId }) {

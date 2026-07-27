@@ -1,20 +1,13 @@
 import { graphql } from 'gatsby'
 
 export const query = graphql`
-  fragment ArticleThumbnailRegular on Article {
+  fragment ArticleThumbnailCard on Article {
     thumbnail {
       __typename
       ... on ImageSharp {
         ImageSharp_vertical: gatsbyImageData(
           width: 380
           height: 290
-          transformOptions: { cropFocus: CENTER }
-          outputPixelDensities: [0.5, 1]
-          quality: $imageQuality
-        )
-        ImageSharp_hero: gatsbyImageData(
-          width: 1600
-          height: 650
           transformOptions: { cropFocus: CENTER }
           outputPixelDensities: [0.5, 1]
           quality: $imageQuality
@@ -29,6 +22,29 @@ export const query = graphql`
           quality: $imageQuality
           resizingBehavior: THUMB
         )
+      }
+      ... on SanityImageAsset {
+        SanityImageAsset_vertical: gatsbyImageData(
+          width: 380
+          height: 290
+          outputPixelDensities: [0.5, 1]
+        )
+      }
+    }
+  }
+  fragment ArticleThumbnailHero on Article {
+    thumbnail {
+      __typename
+      ... on ImageSharp {
+        ImageSharp_hero: gatsbyImageData(
+          width: 1600
+          height: 650
+          transformOptions: { cropFocus: CENTER }
+          outputPixelDensities: [0.5, 1]
+          quality: $imageQuality
+        )
+      }
+      ... on ContentfulAsset {
         ContentfulAsset_hero: gatsbyImageData(
           width: 1600
           height: 650
@@ -38,11 +54,6 @@ export const query = graphql`
         )
       }
       ... on SanityImageAsset {
-        SanityImageAsset_vertical: gatsbyImageData(
-          width: 380
-          height: 290
-          outputPixelDensities: [0.5, 1]
-        )
         SanityImageAsset_hero: gatsbyImageData(
           width: 1600
           height: 650
@@ -69,13 +80,6 @@ export const query = graphql`
           outputPixelDensities: [0.5, 1]
           quality: $imageQuality
         )
-        ImageSharp_hero: gatsbyImageData(
-          width: 1600
-          height: 650
-          transformOptions: { cropFocus: CENTER }
-          outputPixelDensities: [0.5, 1]
-          quality: $imageQuality
-        )
       }
       ... on ContentfulAsset {
         ContentfulAsset_vertical: gatsbyImageData(
@@ -94,13 +98,6 @@ export const query = graphql`
           quality: $imageQuality
           resizingBehavior: THUMB
         )
-        ContentfulAsset_hero: gatsbyImageData(
-          width: 1600
-          height: 650
-          formats: [JPG, WEBP]
-          quality: $imageQuality
-          resizingBehavior: THUMB
-        )
       }
       ... on SanityImageAsset {
         SanityImageAsset_vertical: gatsbyImageData(
@@ -111,11 +108,6 @@ export const query = graphql`
         SanityImageAsset_horizontal: gatsbyImageData(
           width: 807
           height: 400
-          outputPixelDensities: [0.5, 1]
-        )
-        SanityImageAsset_hero: gatsbyImageData(
-          width: 1600
-          height: 650
           outputPixelDensities: [0.5, 1]
         )
       }

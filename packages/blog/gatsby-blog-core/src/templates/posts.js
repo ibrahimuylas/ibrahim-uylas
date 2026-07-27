@@ -11,6 +11,7 @@ export const pageQuery = graphql`
     $includeExcerpt: Boolean!
     $includeTimeToRead: Boolean!
     $imageQuality: Int!
+    $homeCategoryPostsPerGroup: Int!
   ) {
     featuredPosts: allArticle(
       filter: {
@@ -33,7 +34,7 @@ export const pageQuery = graphql`
     ) {
       nodes {
         ...ArticlePreview
-        ...ArticleThumbnailRegular
+        ...ArticleThumbnailCard
       }
     }
     posts: allArticle(
@@ -41,11 +42,14 @@ export const pageQuery = graphql`
       sort: { date: DESC }
       limit: 1000
     ) @skip(if: $paginatePostsPage) {
-      group(field: { category: { name: SELECT } }, limit: 10) {
+      group(
+        field: { category: { name: SELECT } }
+        limit: $homeCategoryPostsPerGroup
+      ) {
         categoryName: fieldValue
         nodes {
           ...ArticlePreview
-          ...ArticleThumbnailRegular
+          ...ArticleThumbnailCard
         }
       }
     }
@@ -57,7 +61,7 @@ export const pageQuery = graphql`
     ) @include(if: $paginatePostsPage) {
       nodes {
         ...ArticlePreview
-        ...ArticleThumbnailRegular
+        ...ArticleThumbnailCard
       }
       ...ArticlePagination
     }

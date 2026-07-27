@@ -113,6 +113,8 @@ module.exports = pluginOptions => {
   const pagingParam = pluginOptions.pagingParam || 'page'
   const paginatePostsPage = pluginOptions.paginatePostsPage || false
   const homePostsPerPage = pluginOptions.homePostsPerPage || 6
+  const homeCategoryPostsPerGroup =
+    pluginOptions.homeCategoryPostsPerGroup || 10
   const collectionPostsPerPage = pluginOptions.collectionPostsPerPage || 6
 
   const mobileMenu = null // Will populate by: utils/queryMobileMenu.js
@@ -143,7 +145,8 @@ module.exports = pluginOptions => {
     includeExcerpt,
     includeTimeToRead,
     includeTableOfContents,
-    imageQuality
+    imageQuality,
+    homeCategoryPostsPerGroup
   }
 
   return {
@@ -156,6 +159,7 @@ module.exports = pluginOptions => {
     sitePaths,
     pagingParam,
     homePostsPerPage,
+    homeCategoryPostsPerGroup,
     paginatePostsPage,
     collectionPostsPerPage,
     slugSanitizeRegex,

@@ -30,7 +30,7 @@ export const pageQuery = graphql`
     ) {
       nodes {
         ...ArticlePreview
-        ...ArticleThumbnailRegular
+        ...ArticleThumbnailCard
       }
       ...ArticlePagination
     }

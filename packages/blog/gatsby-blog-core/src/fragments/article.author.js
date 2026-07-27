@@ -1,6 +1,43 @@
 import { graphql } from 'gatsby'
 
 export const query = graphql`
+  fragment ArticleAuthorPreview on ArticleAuthor {
+    id
+    name
+    slug
+    thumbnail {
+      __typename
+      ... on ImageSharp {
+        ImageSharp_small: gatsbyImageData(
+          width: 48
+          height: 48
+          layout: FIXED
+          transformOptions: { cropFocus: NORTH }
+          placeholder: BLURRED
+          quality: 75
+        )
+      }
+      ... on ContentfulAsset {
+        ContentfulAsset_small: gatsbyImageData(
+          width: 48
+          height: 48
+          layout: FIXED
+          cropFocus: TOP
+          resizingBehavior: THUMB
+          quality: 75
+        )
+      }
+      ... on SanityImageAsset {
+        SanityImageAsset_small: gatsbyImageData(
+          width: 48
+          height: 48
+          layout: FIXED
+          placeholder: NONE
+          fit: CLIP
+        )
+      }
+    }
+  }
   fragment ArticleAuthor on ArticleAuthor {
     id
     name
