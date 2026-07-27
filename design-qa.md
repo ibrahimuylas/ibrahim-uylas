@@ -116,3 +116,64 @@ guard also closes the preview when Safari omits the corresponding leave event.
   no build failure was introduced.
 
 final result: passed
+
+# Homepage Instagram Showcase — Design QA (27 July 2026)
+
+## Reference and scope
+
+- Selected reference: `specs/assets/004-instagram-showcase-selected.png`
+- Homepage placement: between `Kampçılık` and `Doğa Yürüyüşleri`
+- Target widths: 390, 640, 768, 1023, 1024, and 1440 pixels
+- Themes: light and dark
+
+The selected raster establishes the integrated pale-indigo band, left accent,
+compact profile/actions hierarchy, subordinate gallery label, and square-image
+rail. The specification's explicit six-across layout from 1024 pixels and
+approximately 2.4 visible tiles below 1024 pixels controls geometry where the
+directional raster differs.
+
+## Reviewed visual and interaction evidence
+
+The completed Item 22 served-browser matrix covered every target width in both
+themes with a controlled successful six-post response. At 390, 640, 768, and
+1023 pixels, 2.39–2.40 tiles were visible and horizontal movement remained
+inside the snapping rail. At 1024 and 1440 pixels, the rail rendered one equal
+six-tile row with matching client and scroll widths. In every case, document
+and section scroll widths matched their client widths.
+
+The implementation follows the reference hierarchy: one integrated
+pale-indigo section, the established left-accent heading, compact 72-pixel
+profile portrait and copy, emphasized `Takip et`, outlined `Mesaj at`, a
+subordinate `Son 6 paylaşım` label, and square thumbnails. CTA contrast measured
+11.99:1 and 10.80:1 in light mode and 10.64:1 and 7.78:1 in dark mode; both
+targets measured 44 pixels high. Keyboard focus showed the compiled three-pixel
+focus-visible outline, and native keyboard traversal scrolled the rail without
+widening the document.
+
+The controlled successful gallery rendered six lazy-loaded 320 × 320 images.
+Focused automated coverage passes for delayed request state, complete and
+malformed responses, failed requests, unsafe URLs, caption alternatives capped
+at 120 characters, caption-free fallback alternatives, analytics allowlisting,
+and stale asynchronous completion after cancellation. Source and SSR policy
+retain the local profile/actions during idle and failure states. Fresh served
+browser checks confirmed six reserved loading slots before a delayed success,
+then six lazy 320 × 320 images; malformed and 503 responses removed the rail
+without an error panel or broken image; and a script-free production-HTML route
+retained the local portrait, profile copy, gallery label, and both exact action
+links without a loading state.
+
+## Current validation outcome
+
+- Complete root `npm test`: passed, 16 of 16 tests.
+- Focused formatting, JavaScript syntax, and `git diff --check`: passed.
+- Clean Gatsby build: passed in the supported Node 18.20.4 environment with 330
+  pages and 1,072 Sharp jobs.
+- Generated homepage validation: passed after scoping category-order checks
+  around the unique showcase marker.
+- Fresh served-browser fallback state matrix: passed for delayed success,
+  malformed payload, upstream failure, and JavaScript-free SSR output; each
+  retained exact actions and document-width containment.
+- Production Meta/Netlify smoke check: pending the site owner provisioning
+  credentials and deploying. It has not been claimed as run.
+
+final result: passed
