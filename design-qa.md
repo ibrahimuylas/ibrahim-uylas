@@ -117,6 +117,119 @@ guard also closes the preview when Safari omits the corresponding leave event.
 
 final result: passed
 
+# Site Performance and Deferred Loading — Design QA (27 July 2026)
+
+## Evidence and state
+
+- Source visual truth:
+  `/Users/uylas/Projects/ibrahim-uylas/specs/assets/004-instagram-showcase-selected.png`
+- Browser-rendered desktop light homepage:
+  `/Users/uylas/Projects/ibrahim-uylas/artifacts/performance/home-desktop-light.png`
+- Browser-rendered desktop dark homepage:
+  `/Users/uylas/Projects/ibrahim-uylas/artifacts/performance/home-desktop-dark.png`
+- Browser-rendered mobile light homepage:
+  `/Users/uylas/Projects/ibrahim-uylas/artifacts/performance/home-mobile-light.png`
+- Browser-rendered mobile dark homepage:
+  `/Users/uylas/Projects/ibrahim-uylas/artifacts/performance/home-mobile-dark.png`
+- Loaded six-post showcase:
+  `/Users/uylas/Projects/ibrahim-uylas/artifacts/performance/instagram-desktop-loaded.png`
+- Combined source/loaded-state comparison:
+  `/Users/uylas/Projects/ibrahim-uylas/artifacts/performance/instagram-loaded-reference-comparison.png`
+- Mobile article:
+  `/Users/uylas/Projects/ibrahim-uylas/artifacts/performance/article-mobile-light.png`
+- Desktop CSS viewport: 1440 × 1000 at device scale 1.
+- Mobile CSS viewport: 390 × 844 at device scale 1; the browser content width
+  was 375 pixels.
+- Source pixels: 853 × 1844. Loaded implementation pixels: 1265 × 712.
+- Density normalization: both comparison inputs were scaled to 700 pixels high
+  and placed in one image. The source is a narrow full-page direction while
+  the implementation crop is the desktop section, so the comparison judges
+  hierarchy, controls, media treatment, and rail density rather than identical
+  breakpoint geometry.
+- State: light and dark fallback states, a controlled valid six-post response,
+  mobile and desktop layouts, deferred video before/after activation, route
+  embeds near and away from the viewport, and comments before activation.
+
+## Findings
+
+No actionable P0, P1, or P2 visual difference remains in the changed
+performance surfaces. The comparison preserves the source hierarchy, identity
+lockup, primary/secondary action contrast, portrait media treatment, partial
+next-card affordance, and placement between the Kampçılık and Doğa
+Yürüyüşleri sections. The responsive implementation intentionally uses a wider
+desktop editorial heading and approximately 4.45 visible cards, while the
+source image establishes the narrow-screen direction.
+
+## Fidelity surfaces
+
+- Fonts and typography: Inter and DM Serif Display render from four local
+  WOFF2 files with `font-display: swap`; generated HTML and JavaScript contain
+  no Google Fonts host. Heading weight, body hierarchy, wrapping, and control
+  letter spacing remain consistent in light and dark states.
+- Spacing and layout rhythm: the desktop identity/actions row, mobile stacked
+  structure, 5:6 gallery cards, and reserved embed heights prevent layout
+  collapse. At 375 CSS pixels the document scroll width exactly matched the
+  viewport.
+- Colors and visual tokens: all new placeholders, spinners, buttons, borders,
+  and surfaces use the existing Theme UI tokens. Light and dark screenshots
+  retain readable contrast without a new parallel palette.
+- Image quality and asset fidelity: the local fallback portrait is preserved;
+  the controlled successful state used six real raster images with cover
+  cropping and installed carousel/video icons. No CSS-drawn or placeholder
+  asset replaces visible source imagery.
+- Copy and content: the Turkish actions, loading labels, profile copy, and
+  `Son 6 paylaşım` accessibility contract remain intact. Deferred embeds retain
+  their exact source URLs in non-fetching data attributes for validation.
+
+## Interaction and responsive checks
+
+- A YouTube article rendered one deferred video and zero YouTube iframes before
+  activation. `Videoyu yükle` created exactly one iframe.
+- Aytepe rendered 14 reserved route containers, but only the first near-viewport
+  map activated on initial load; the other 13 remained request-free.
+- Disqus rendered zero iframes on initial article load while keeping a deferred
+  comments region and manual activation.
+- The controlled Instagram response rendered six lazy images and six outbound
+  post links; the loading skeleton was removed after success.
+- The 375-pixel mobile document had no page-level horizontal overflow.
+- Browser console errors and warnings after the final checks: none.
+
+## Comparison history
+
+### Pass 1
+
+The generated homepage validation exposed that the visually hidden
+`Son 6 paylaşım` contract only existed after hydration. It was moved to
+unconditional server-rendered content so script-free and loading states retain
+the gallery description.
+
+The existing SEO validator also treated an eager iframe as the only valid proof
+that a map or video survived rendering. Deferred containers now expose the
+exact source as `data-deferred-src`, and the validator accepts either an active
+iframe or the non-fetching deferred source. The post-fix validation retained
+all 13 checked maps and the checked video without restoring eager requests.
+
+### Final pass
+
+The combined source and loaded-state comparison plus mobile/desktop light/dark
+captures show no remaining actionable P0, P1, or P2 issue. No additional visual
+fix was required after the final comparison.
+
+## Validation
+
+- Production Gatsby build: passed, 330 pages.
+- Root tests: passed, 20 of 20.
+- Generated HTML validation: passed.
+- Likya canonical, crawl, structured-data, and retained-embed validation:
+  passed.
+- Dependency tree check: passed.
+- `git diff --check`: passed.
+- Production dependency audit still reports Gatsby/Sharp/Decap transitive
+  advisories; safe upstream-compatible fixes are not currently available
+  without a breaking React or Gatsby toolchain migration.
+
+final result: passed
+
 # Homepage Instagram Showcase — Premium Option 2 Revision
 
 ## Evidence and state
