@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { GatsbyImage as Img } from 'gatsby-plugin-image'
+import { GatsbyImage as Img, StaticImage } from 'gatsby-plugin-image'
+import { FaChevronDown, FaRegClock, FaSearch } from 'react-icons/fa'
 import {
   Box,
   Button,
@@ -16,6 +17,7 @@ import CardList from '@components/CardList'
 import getImageVariant from '@components/utils/getImageVariant'
 import campingGuide from '../content-guides/campingGuide'
 import { currentPagePath, trackEvent } from '../utils/analytics'
+import ArticleContents from './ArticleContents'
 import policy from './campingGuidePolicy'
 
 const focusStyle = {
@@ -41,9 +43,30 @@ const headingStyle = {
   letterSpacing: `-0.02em`
 }
 
+const heroAccent = `#1552d6`
+const heroDescription =
+  'İlk kampını planla, doğru uyku sistemini kur ve ekipmanını güvenle seç. İhtiyacın olan kampçılık rehberleriyle doğadaki maceranı adım adım hazırla.'
+
 const allCuratedSlugs = [
   ...campingGuide.readingPath.map(item => item.slug),
   ...campingGuide.sections.flatMap(section => section.slugs)
+]
+
+const guideTopicLinks = [
+  { id: 'baslangic', label: 'İlk kamp ve hazırlık' },
+  ...campingGuide.sections.map(section => ({
+    id: section.id,
+    label: section.title
+  }))
+]
+
+const guideContentsItems = [
+  ...guideTopicLinks.map(item => ({
+    title: item.label,
+    url: `#${item.id}`
+  })),
+  { title: 'Yeni eklenenler', url: '#yeni-eklenenler' },
+  { title: 'Tüm içerikler', url: '#tum-icerikler' }
 ]
 
 const displayDate = value => {
@@ -89,6 +112,8 @@ const ArticleMeta = ({ article }) => (
 
 const ArticleLinkCard = ({
   article,
+  desktopImageOnly = false,
+  editorial = false,
   featured,
   onActivate,
   summary,
@@ -106,7 +131,11 @@ const ArticleLinkCard = ({
         ...surfaceStyle,
         position: `relative`,
         minWidth: 0,
-        p: [3, 4],
+        height: `100%`,
+        display: editorial ? `flex` : `block`,
+        flexDirection: editorial ? `column` : `initial`,
+        overflow: `hidden`,
+        borderRadius: editorial ? `12px` : surfaceStyle.borderRadius,
         transition: `transform 180ms ease, border-color 180ms ease`,
         '@media (hover: hover) and (pointer: fine)': {
           '&:hover': {
@@ -116,7 +145,45 @@ const ArticleLinkCard = ({
         }
       }}
     >
-      <Flex sx={{ alignItems: `flex-start`, gap: 3 }}>
+      {(image || editorial) && (
+        <Box
+          data-guide-thumbnail
+          aria-hidden='true'
+          sx={{
+            display: desktopImageOnly
+              ? [`none`, `none`, `none`, `block`]
+              : `block`,
+            width: `100%`,
+            height: editorial ? [190, 200, 210] : [160, 180],
+            overflow: `hidden`,
+            bg: `omegaLighter`,
+            pointerEvents: `none`,
+            '& .gatsby-image-wrapper': {
+              width: `100%`,
+              height: `100%`
+            }
+          }}
+        >
+          {image && (
+            <Img
+              image={image}
+              alt=''
+              loading='lazy'
+              style={{ width: `100%`, height: `100%` }}
+              imgStyle={{ objectFit: `cover` }}
+            />
+          )}
+        </Box>
+      )}
+      <Flex
+        sx={{
+          alignItems: `flex-start`,
+          gap: 3,
+          flex: editorial ? 1 : `initial`,
+          minHeight: editorial ? [220, 230] : 0,
+          p: editorial ? [3, 4] : [3, 4]
+        }}
+      >
         {step && (
           <Flex
             aria-hidden='true'
@@ -139,18 +206,48 @@ const ArticleLinkCard = ({
           sx={{
             flex: 1,
             minWidth: 0,
-            gridTemplateColumns: image
-              ? [
-                  `minmax(0, 1fr) 72px`,
-                  `minmax(0, 1fr) 80px`,
-                  `minmax(0, 1fr) 88px`
-                ]
-              : `minmax(0, 1fr)`,
-            columnGap: [2, 3],
+            height: `100%`,
+            gridTemplateColumns: `minmax(0, 1fr)`,
+            gridTemplateRows: editorial ? `auto 1fr auto` : `auto auto`,
             alignItems: `start`
           }}
         >
-          <Box sx={{ minWidth: 0, gridColumn: image ? `1 / -1` : `auto` }}>
+          <Box sx={{ minWidth: 0 }}>
+            {editorial && (
+              <Flex
+                sx={{
+                  display: [`none`, `flex`],
+                  alignItems: `center`,
+                  flexWrap: `wrap`,
+                  gap: 2,
+                  color: `omegaDark`,
+                  fontSize: 0,
+                  mb: 2
+                }}
+              >
+                {article.category?.name && (
+                  <Text
+                    as='span'
+                    sx={{
+                      color: `alphaDark`,
+                      fontWeight: `bold`,
+                      letterSpacing: `0.04em`,
+                      textTransform: `uppercase`
+                    }}
+                  >
+                    {article.category.name}
+                  </Text>
+                )}
+                {article.timeToRead && (
+                  <>
+                    <Text as='span' aria-hidden='true'>
+                      •
+                    </Text>
+                    <Text as='span'>{article.timeToRead} dk</Text>
+                  </>
+                )}
+              </Flex>
+            )}
             {featured && (
               <Text
                 as='span'
@@ -172,7 +269,11 @@ const ArticleLinkCard = ({
             <Heading
               as='h3'
               sx={{
-                color: `heading`,
+                color: editorial ? [`alphaDark`, `heading`] : `heading`,
+                fontFamily: editorial
+                  ? `'DM Serif Display', Georgia, serif`
+                  : `inherit`,
+                fontWeight: editorial ? 400 : `bold`,
                 fontSize: [3, 4],
                 lineHeight: 1.25,
                 m: 0
@@ -185,6 +286,9 @@ const ArticleLinkCard = ({
                 sx={{
                   color: `inherit`,
                   textDecoration: `none`,
+                  '&:visited': {
+                    color: `inherit`
+                  },
                   '&::after': {
                     content: `""`,
                     position: `absolute`,
@@ -203,41 +307,40 @@ const ArticleLinkCard = ({
               sx={{
                 color: `text`,
                 fontSize: [1, 2],
-                lineHeight: 1.6,
+                lineHeight: editorial ? 1.5 : 1.6,
+                display: editorial ? `-webkit-box` : `block`,
+                WebkitBoxOrient: editorial ? `vertical` : `initial`,
+                WebkitLineClamp: editorial ? 2 : `initial`,
+                overflow: editorial ? `hidden` : `visible`,
                 mt: 2,
                 mb: 0
               }}
             >
               {summary || article.excerpt}
             </Text>
-            <ArticleMeta article={article} />
+            {!editorial && <ArticleMeta article={article} />}
           </Box>
-          {image && (
-            <Box
-              data-guide-thumbnail
-              aria-hidden='true'
-              sx={{
-                width: [72, 80, 88],
-                height: [54, 60, 66],
-                mt: 2,
-                overflow: `hidden`,
-                borderRadius: `10px`,
-                bg: `omegaLighter`,
-                pointerEvents: `none`,
-                '& .gatsby-image-wrapper': {
-                  width: `100%`,
-                  height: `100%`
-                }
-              }}
-            >
-              <Img
-                image={image}
-                alt=''
-                loading='lazy'
-                style={{ width: `100%`, height: `100%` }}
-                imgStyle={{ objectFit: `cover` }}
-              />
-            </Box>
+          {editorial && (
+            <>
+              <Text
+                as='span'
+                sx={{
+                  display: [`none`, `block`],
+                  alignSelf: `end`,
+                  color: `omegaDark`,
+                  borderTop: `1px solid`,
+                  borderColor: `omegaLight`,
+                  fontSize: 0,
+                  mt: 3,
+                  pt: 3
+                }}
+              >
+                {displayDate(article.date)}
+              </Text>
+              <Box sx={{ display: [`block`, `none`] }}>
+                <ArticleMeta article={article} />
+              </Box>
+            </>
           )}
         </Grid>
       </Flex>
@@ -245,33 +348,35 @@ const ArticleLinkCard = ({
   )
 }
 
-const TopicSection = ({ section, articles, featuredSlugs, trackLink }) => (
+const EquipmentSection = ({ section, articles, featuredSlugs, trackLink }) => (
   <Box
     as='section'
     id={section.id}
     aria-labelledby={`${section.id}-title`}
     sx={{
       scrollMarginTop: `96px`,
-      py: [4, 5],
+      py: [5, 6],
       borderTop: `1px solid`,
       borderColor: `omegaLight`
     }}
   >
-    <Grid
+    <Flex
       sx={{
-        gridTemplateColumns: [`1fr`, null, `minmax(220px, 0.7fr) 1.5fr`],
-        gap: [3, 4, 5],
-        alignItems: `start`
+        alignItems: [`flex-start`, `flex-end`],
+        flexDirection: [`column`, `row`],
+        justifyContent: `space-between`,
+        gap: 3,
+        mb: [4, 5]
       }}
     >
-      <Box>
+      <Box sx={{ maxWidth: 680 }}>
         <Heading
           id={`${section.id}-title`}
           as='h2'
           sx={{
             ...headingStyle,
-            fontSize: [5, 6],
-            lineHeight: 1.12,
+            fontSize: [5, 7],
+            lineHeight: 1.08,
             m: 0
           }}
         >
@@ -279,59 +384,174 @@ const TopicSection = ({ section, articles, featuredSlugs, trackLink }) => (
         </Heading>
         <Text
           as='p'
-          sx={{ color: `text`, fontSize: [2, 3], lineHeight: 1.6, mb: 0 }}
+          sx={{
+            color: `text`,
+            fontSize: [2, 3],
+            lineHeight: 1.55,
+            mt: 2,
+            mb: 0
+          }}
         >
           {section.description}
         </Text>
-        {section.moreLink && (
-          <Link
-            as={GatsbyLink}
-            to={section.moreLink.path}
-            onClick={trackLink(section.id, section.moreLink.path)}
-            sx={{
-              display: `inline-flex`,
-              alignItems: `center`,
-              minHeight: 44,
-              color: `alpha`,
-              fontWeight: `bold`,
-              mt: 3,
-              ...focusStyle
-            }}
-          >
-            {section.moreLink.label} →
-          </Link>
-        )}
       </Box>
-      <Grid
-        as='ul'
-        sx={{
-          gridTemplateColumns: [`1fr`, null, `repeat(2, minmax(0, 1fr))`],
-          gap: 3,
-          listStyle: `none`,
-          p: 0,
-          m: 0
-        }}
-      >
-        {articles.map(article => (
-          <ArticleLinkCard
-            key={article.id}
-            article={article}
-            featured={featuredSlugs.has(policy.articleKey(article.slug))}
-            withImage={
-              campingGuide.imageSectionIds.includes(section.id) ||
-              featuredSlugs.has(policy.articleKey(article.slug))
-            }
-            onActivate={trackLink(section.id, article.slug)}
-          />
-        ))}
-      </Grid>
+      {section.moreLink && (
+        <Link
+          as={GatsbyLink}
+          to={section.moreLink.path}
+          onClick={trackLink(section.id, section.moreLink.path)}
+          sx={{
+            display: `inline-flex`,
+            alignItems: `center`,
+            minHeight: 44,
+            color: `alphaDark`,
+            fontWeight: `bold`,
+            flexShrink: 0,
+            '&:visited': {
+              color: `alphaDark`
+            },
+            ...focusStyle
+          }}
+        >
+          {section.moreLink.label} →
+        </Link>
+      )}
+    </Flex>
+    <Grid
+      as='ul'
+      data-equipment-grid
+      sx={{
+        gridTemplateColumns: [
+          `minmax(0, 1fr)`,
+          `repeat(2, minmax(0, 1fr))`,
+          `repeat(3, minmax(0, 1fr))`
+        ],
+        gap: [3, 4],
+        listStyle: `none`,
+        p: 0,
+        m: 0
+      }}
+    >
+      {articles.map(article => (
+        <ArticleLinkCard
+          key={article.id}
+          article={article}
+          editorial
+          featured={featuredSlugs.has(policy.articleKey(article.slug))}
+          withImage={
+            !campingGuide.imageExcludedSlugs.includes(
+              policy.articleKey(article.slug)
+            )
+          }
+          onActivate={trackLink(section.id, article.slug)}
+        />
+      ))}
     </Grid>
   </Box>
 )
 
+const TopicSection = ({ section, articles, featuredSlugs, trackLink }) =>
+  section.id === 'ekipman' ? (
+    <EquipmentSection
+      section={section}
+      articles={articles}
+      featuredSlugs={featuredSlugs}
+      trackLink={trackLink}
+    />
+  ) : (
+    <Box
+      as='section'
+      id={section.id}
+      aria-labelledby={`${section.id}-title`}
+      sx={{
+        scrollMarginTop: `96px`,
+        py: [4, 5],
+        borderTop: `1px solid`,
+        borderColor: `omegaLight`
+      }}
+    >
+      <Grid
+        sx={{
+          gridTemplateColumns: [`1fr`, null, `minmax(220px, 0.7fr) 1.5fr`],
+          gap: [3, 4, 5],
+          alignItems: `start`
+        }}
+      >
+        <Box>
+          <Heading
+            id={`${section.id}-title`}
+            as='h2'
+            sx={{
+              ...headingStyle,
+              fontSize: [5, 6],
+              lineHeight: 1.12,
+              m: 0
+            }}
+          >
+            {section.title}
+          </Heading>
+          <Text
+            as='p'
+            sx={{ color: `text`, fontSize: [2, 3], lineHeight: 1.6, mb: 0 }}
+          >
+            {section.description}
+          </Text>
+          {section.moreLink && (
+            <Link
+              as={GatsbyLink}
+              to={section.moreLink.path}
+              onClick={trackLink(section.id, section.moreLink.path)}
+              sx={{
+                display: `inline-flex`,
+                alignItems: `center`,
+                minHeight: 44,
+                color: `alpha`,
+                fontWeight: `bold`,
+                mt: 3,
+                ...focusStyle
+              }}
+            >
+              {section.moreLink.label} →
+            </Link>
+          )}
+        </Box>
+        <Grid
+          as='ul'
+          sx={{
+            gridTemplateColumns: [`1fr`, null, `repeat(2, minmax(0, 1fr))`],
+            gap: 3,
+            listStyle: `none`,
+            p: 0,
+            m: 0
+          }}
+        >
+          {articles.map(article => (
+            <ArticleLinkCard
+              key={article.id}
+              article={article}
+              featured={featuredSlugs.has(policy.articleKey(article.slug))}
+              withImage={
+                !campingGuide.imageExcludedSlugs.includes(
+                  policy.articleKey(article.slug)
+                ) &&
+                (campingGuide.imageSectionIds.includes(section.id) ||
+                  featuredSlugs.has(policy.articleKey(article.slug)))
+              }
+              onActivate={trackLink(section.id, article.slug)}
+            />
+          ))}
+        </Grid>
+      </Grid>
+    </Box>
+  )
+
 const CampingGuide = ({ articles = [], latestArticles = [] }) => {
   const [query, setQuery] = useState('')
-  const [category, setCategory] = useState('Tümü')
+  const [visibleArticleCount, setVisibleArticleCount] = useState(6)
+  const visibleLatestArticles = useMemo(
+    () => latestArticles.slice(0, 3),
+    [latestArticles]
+  )
   const articleLookup = useMemo(
     () =>
       new Map(
@@ -348,24 +568,30 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
     [articles]
   )
   const filteredArticles = useMemo(
-    () => policy.filterArticles({ articles: guideArticles, query, category }),
-    [guideArticles, query, category]
+    () =>
+      policy.filterArticles({
+        articles: guideArticles,
+        query,
+        category: 'Tümü'
+      }),
+    [guideArticles, query]
   )
-  const categories = useMemo(
-    () => [
-      'Tümü',
-      ...Array.from(
-        new Set(
-          guideArticles.map(article => article.category?.name).filter(Boolean)
-        )
-      ).sort((a, b) => a.localeCompare(b, 'tr-TR'))
-    ],
+  const categoryLinks = useMemo(
+    () =>
+      Array.from(
+        new Map(
+          guideArticles
+            .filter(article => article.category?.name && article.category?.slug)
+            .map(article => [article.category.name, article.category])
+        ).values()
+      ).sort((a, b) => a.name.localeCompare(b.name, 'tr-TR')),
     [guideArticles]
   )
+  const visibleArticles = filteredArticles.slice(0, visibleArticleCount)
   const featuredSlugs = useMemo(() => new Set(campingGuide.featuredSlugs), [])
   const latestArticlePaths = useMemo(
-    () => new Set(latestArticles.map(article => article.slug)),
-    [latestArticles]
+    () => new Set(visibleLatestArticles.map(article => article.slug)),
+    [visibleLatestArticles]
   )
   const readingPath = campingGuide.readingPath
     .map(item => ({ ...item, article: articleLookup.get(item.slug) }))
@@ -393,44 +619,54 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
         as='header'
         sx={{
           ...surfaceStyle,
-          position: `relative`,
+          display: `grid`,
+          gridTemplateAreas: [
+            `"image" "content"`,
+            `"image" "content"`,
+            `"content image"`
+          ],
+          gridTemplateColumns: [
+            `minmax(0, 1fr)`,
+            `minmax(0, 1fr)`,
+            `minmax(0, 58fr) minmax(0, 42fr)`
+          ],
           overflow: `hidden`,
-          px: [3, 4, 5, 6],
-          py: [4, 5, 6],
-          '&::before': {
-            content: `""`,
-            position: `absolute`,
-            width: [180, 260, 360],
-            height: [180, 260, 360],
-            top: [-90, -130, -180],
-            right: [-90, -100, -120],
-            bg: `alphaLighter`,
-            borderRadius: `50%`,
-            opacity: 0.75
-          }
+          minHeight: [0, 0, 460]
         }}
       >
-        <Box sx={{ position: `relative`, maxWidth: 850 }}>
+        <Flex
+          sx={{
+            gridArea: `content`,
+            minWidth: 0,
+            flexDirection: `column`,
+            justifyContent: `center`,
+            px: [`32px`, `48px`, `64px`],
+            py: [`40px`, `56px`, `40px`]
+          }}
+        >
           <Text
             as='p'
             sx={{
-              color: `alpha`,
+              display: [`none`, `none`, `block`],
+              order: 1,
+              color: heroAccent,
               fontSize: 1,
               fontWeight: `bold`,
-              letterSpacing: `0.08em`,
+              letterSpacing: `0.12em`,
               textTransform: `uppercase`,
               mt: 0,
-              mb: 2
+              mb: 3
             }}
           >
-            Kampçılık içerik merkezi
+            Açık hava günlüğü
           </Text>
           <Heading
             as='h1'
             sx={{
               ...headingStyle,
-              fontSize: [7, 8, 9],
-              lineHeight: 1.02,
+              order: 2,
+              fontSize: [`32px`, `48px`, `56px`],
+              lineHeight: 1.05,
               m: 0
             }}
           >
@@ -439,37 +675,69 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
           <Text
             as='p'
             sx={{
+              order: 3,
               color: `text`,
-              fontSize: [3, 4],
-              lineHeight: 1.65,
-              maxWidth: 760,
-              mt: 3,
-              mb: 4
+              fontSize: [2, 3],
+              lineHeight: 1.7,
+              maxWidth: 650,
+              mt: [3, 3, 2],
+              mb: 0
             }}
           >
-            {campingGuide.description}
+            {heroDescription}
           </Text>
-          <Flex sx={{ flexWrap: `wrap`, gap: 3 }}>
+          <Flex
+            sx={{
+              order: [5, 5, 4],
+              flexDirection: [`column`, `row`],
+              flexWrap: `wrap`,
+              gap: 3,
+              mt: [4, 4, 3]
+            }}
+          >
             <Button
               as='a'
               href='#baslangic'
               sx={{
-                minHeight: 48,
+                justifyContent: `center`,
+                width: [`100%`, `auto`],
+                minWidth: [0, 180],
+                minHeight: 52,
                 display: `inline-flex`,
                 alignItems: `center`,
+                bg: heroAccent,
+                borderRadius: `8px`,
+                letterSpacing: `0.04em`,
+                '&:hover': {
+                  bg: `#0f43b4`
+                },
                 ...focusStyle
               }}
             >
-              İlk kampına buradan başla
+              İlk kampına başla
             </Button>
             <Button
               as='a'
               href='#tum-icerikler'
               variant='mute'
               sx={{
-                minHeight: 48,
+                justifyContent: `center`,
+                width: [`100%`, `auto`],
+                minWidth: [0, 180],
+                minHeight: 52,
                 display: `inline-flex`,
                 alignItems: `center`,
+                bg: `transparent`,
+                color: `heading`,
+                border: `1px solid`,
+                borderColor: `omega`,
+                borderRadius: `8px`,
+                letterSpacing: `0.04em`,
+                '&:hover': {
+                  color: heroAccent,
+                  borderColor: heroAccent,
+                  bg: `transparent`
+                },
                 ...focusStyle
               }}
             >
@@ -479,23 +747,154 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
           <Flex
             aria-label='Rehber özeti'
             sx={{
-              flexWrap: `wrap`,
-              gap: [3, 4],
+              order: [4, 4, 5],
+              display: `grid`,
+              gridTemplateColumns: `repeat(3, minmax(0, 1fr))`,
+              width: `100%`,
               color: `omegaDark`,
-              fontSize: [1, 2],
-              mt: 4
+              borderTop: `1px solid`,
+              borderBottom: [`1px solid`, `1px solid`, `none`],
+              borderColor: `omegaLight`,
+              mt: [4, 5, 4],
+              pt: [3, 4, 3],
+              pb: [3, 0],
+              '& > * + *': {
+                borderLeft: `1px solid`,
+                borderColor: `omegaLight`
+              }
             }}
           >
-            <Text as='span'>
-              <strong>{guideArticles.length}</strong> bağlantılı içerik
+            <Text
+              as='span'
+              sx={{
+                display: `flex`,
+                flexDirection: `column`,
+                alignItems: `center`,
+                minWidth: 0
+              }}
+            >
+              <Text
+                as='strong'
+                sx={{
+                  color: heroAccent,
+                  fontFamily: headingStyle.fontFamily,
+                  fontSize: [5, 6],
+                  fontWeight: 400,
+                  lineHeight: 1
+                }}
+              >
+                {guideArticles.length}
+              </Text>
+              <Text
+                as='small'
+                sx={{
+                  mt: 1,
+                  fontSize: 0,
+                  fontWeight: `bold`,
+                  letterSpacing: `0.08em`,
+                  textTransform: `uppercase`
+                }}
+              >
+                İçerik
+              </Text>
             </Text>
-            <Text as='span'>
-              <strong>6</strong> konu
+            <Text
+              as='span'
+              sx={{
+                display: `flex`,
+                flexDirection: `column`,
+                alignItems: `center`,
+                minWidth: 0
+              }}
+            >
+              <Text
+                as='strong'
+                sx={{
+                  color: heroAccent,
+                  fontFamily: headingStyle.fontFamily,
+                  fontSize: [5, 6],
+                  fontWeight: 400,
+                  lineHeight: 1
+                }}
+              >
+                6
+              </Text>
+              <Text
+                as='small'
+                sx={{
+                  mt: 1,
+                  fontSize: 0,
+                  fontWeight: `bold`,
+                  letterSpacing: `0.08em`,
+                  textTransform: `uppercase`
+                }}
+              >
+                Konu
+              </Text>
             </Text>
-            <Text as='span'>
-              <strong>{readingPath.length}</strong> adımlık başlangıç yolu
+            <Text
+              as='span'
+              sx={{
+                display: `flex`,
+                flexDirection: `column`,
+                alignItems: `center`,
+                minWidth: 0
+              }}
+            >
+              <Text
+                as='strong'
+                sx={{
+                  color: heroAccent,
+                  fontFamily: headingStyle.fontFamily,
+                  fontSize: [5, 6],
+                  fontWeight: 400,
+                  lineHeight: 1
+                }}
+              >
+                {readingPath.length}
+              </Text>
+              <Text
+                as='small'
+                sx={{
+                  mt: 1,
+                  fontSize: 0,
+                  fontWeight: `bold`,
+                  letterSpacing: `0.08em`,
+                  textTransform: `uppercase`
+                }}
+              >
+                Başlangıç
+              </Text>
             </Text>
           </Flex>
+        </Flex>
+        <Box
+          sx={{
+            gridArea: `image`,
+            minWidth: 0,
+            minHeight: [210, 300, 460],
+            bg: [`omegaLighter`, `omegaLighter`, `transparent`],
+            '& .gatsby-image-wrapper': {
+              width: `100%`,
+              height: `100%`,
+              '@media screen and (min-width: 64em)': {
+                WebkitMaskImage: `linear-gradient(to right, transparent 0%, transparent 16%, rgba(0, 0, 0, 0.22) 21%, rgba(0, 0, 0, 0.72) 29%, #000 36%, #000 100%)`,
+                maskImage: `linear-gradient(to right, transparent 0%, transparent 16%, rgba(0, 0, 0, 0.22) 21%, rgba(0, 0, 0, 0.72) 29%, #000 36%, #000 100%)`
+              }
+            }
+          }}
+        >
+          <StaticImage
+            src='../../content/assets/camping-guide-hero.png'
+            alt='Dağ yamacında gün batımında kurulu kamp çadırı'
+            layout='fullWidth'
+            loading='eager'
+            placeholder='blurred'
+            quality={90}
+            formats={['auto', 'webp', 'avif']}
+            style={{ width: `100%`, height: `100%` }}
+            imgStyle={{ objectFit: `cover`, objectPosition: `62% center` }}
+          />
         </Box>
       </Box>
 
@@ -504,13 +903,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
           as='ul'
           sx={{ flexWrap: `wrap`, gap: 2, listStyle: `none`, p: 0 }}
         >
-          {[
-            { id: 'baslangic', label: 'İlk kamp ve hazırlık' },
-            ...campingGuide.sections.map(section => ({
-              id: section.id,
-              label: section.title
-            }))
-          ].map(item => (
+          {guideTopicLinks.map(item => (
             <Box as='li' key={item.id}>
               <Link
                 href={`#${item.id}`}
@@ -528,6 +921,9 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
                   textDecoration: `none`,
                   px: 3,
                   py: 2,
+                  '&:visited': {
+                    color: `heading`
+                  },
                   '&:hover': {
                     borderColor: `alpha`,
                     color: `alpha`
@@ -541,6 +937,10 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
           ))}
         </Flex>
       </Box>
+      <ArticleContents
+        items={guideContentsItems}
+        showInlineNavigation={false}
+      />
 
       <Box
         as='section'
@@ -587,9 +987,15 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
         </Box>
         <Grid
           as='ol'
+          data-reading-path-grid
           sx={{
-            gridTemplateColumns: [`1fr`, null, `repeat(2, minmax(0, 1fr))`],
-            gap: 3,
+            gridTemplateColumns: [
+              `1fr`,
+              null,
+              `repeat(2, minmax(0, 1fr))`,
+              `repeat(3, minmax(0, 1fr))`
+            ],
+            gap: [3, 3, 3, 4],
             listStyle: `none`,
             p: 0,
             m: 0
@@ -599,8 +1005,9 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
             <ArticleLinkCard
               key={item.article.id}
               article={item.article}
+              desktopImageOnly={!featuredSlugs.has(item.slug)}
               featured={featuredSlugs.has(item.slug)}
-              withImage={featuredSlugs.has(item.slug)}
+              withImage
               onActivate={trackLink('baslangic', item.article.slug)}
               summary={item.summary}
               step={index + 1}
@@ -621,8 +1028,9 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
 
       <Box
         as='section'
+        id='yeni-eklenenler'
         aria-labelledby='yeniler-title'
-        sx={{ pt: [5, 6], pb: [4, 5] }}
+        sx={{ scrollMarginTop: `96px`, pt: [5, 6], pb: [4, 5] }}
       >
         <Heading
           id='yeniler-title'
@@ -645,9 +1053,9 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
           }}
         >
           <CardList
-            nodes={latestArticles}
+            nodes={visibleLatestArticles}
             variant={['horizontal-md', 'vertical']}
-            columns={[1, 2, 2, 4]}
+            columns={[1, 2, 2, 3]}
             omitCategory
           />
         </Box>
@@ -658,70 +1066,169 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
         id='tum-icerikler'
         aria-labelledby='tum-icerikler-title'
         sx={{
-          ...surfaceStyle,
           scrollMarginTop: `96px`,
-          px: [3, 4, 5],
-          py: [4, 5],
+          py: [4, 4, 5],
           my: [4, 5]
         }}
       >
-        <Heading
-          id='tum-icerikler-title'
-          as='h2'
+        <Grid
           sx={{
-            ...headingStyle,
-            fontSize: [6, 7],
-            lineHeight: 1.1,
-            m: 0
+            gridTemplateColumns: [
+              `1fr`,
+              null,
+              null,
+              `minmax(0, 1fr) minmax(280px, 360px)`
+            ],
+            alignItems: `end`,
+            gap: [4, 4, 5],
+            mb: [4, 5]
           }}
         >
-          Tüm kampçılık içerikleri
-        </Heading>
-        <Text
-          as='p'
-          sx={{ color: `text`, fontSize: [2, 3], lineHeight: 1.6, mb: 4 }}
-        >
-          Başlık veya açıklamada ara; dilersen kaynak kategoriye göre daralt.
-        </Text>
+          <Box>
+            <Heading
+              id='tum-icerikler-title'
+              as='h2'
+              sx={{
+                ...headingStyle,
+                fontSize: [6, 7],
+                lineHeight: 1.05,
+                m: 0
+              }}
+            >
+              Tüm içerikler
+            </Heading>
+            <Text
+              as='p'
+              sx={{
+                color: `text`,
+                fontSize: [2, 3],
+                lineHeight: 1.6,
+                maxWidth: 640,
+                mt: 2,
+                mb: 0
+              }}
+            >
+              Kampçılık rehberlerini, ekipman incelemelerini ve rota yazılarını
+              tek yerde keşfet.
+            </Text>
+          </Box>
 
-        <Box sx={{ maxWidth: 680 }}>
-          <Label htmlFor='camping-guide-search' sx={{ fontWeight: `bold` }}>
-            İçerik ara
-          </Label>
-          <Input
-            id='camping-guide-search'
-            type='search'
-            value={query}
-            onChange={event => setQuery(event.target.value)}
-            placeholder='Örneğin: uyku tulumu, çadır, kamp ateşi'
-            sx={{
-              minHeight: 48,
-              bg: `background`,
-              color: `heading`,
-              border: `1px solid`,
-              borderColor: `omegaLight`,
-              borderRadius: `10px`,
-              px: 3,
-              ...focusStyle
-            }}
-          />
-        </Box>
+          <Box sx={{ position: `relative`, width: `100%` }}>
+            <Label
+              htmlFor='camping-guide-search'
+              sx={{
+                position: `absolute`,
+                width: 1,
+                height: 1,
+                p: 0,
+                m: -1,
+                overflow: `hidden`,
+                clip: `rect(0, 0, 0, 0)`,
+                whiteSpace: `nowrap`,
+                border: 0
+              }}
+            >
+              İçeriklerde ara
+            </Label>
+            <Box
+              aria-hidden='true'
+              sx={{
+                position: `absolute`,
+                top: `50%`,
+                left: 3,
+                zIndex: 1,
+                color: `omegaDark`,
+                lineHeight: 0,
+                transform: `translateY(-50%)`,
+                pointerEvents: `none`
+              }}
+            >
+              <FaSearch />
+            </Box>
+            <Input
+              id='camping-guide-search'
+              type='search'
+              value={query}
+              onChange={event => {
+                setQuery(event.target.value)
+                setVisibleArticleCount(6)
+              }}
+              placeholder='İçeriklerde ara...'
+              sx={{
+                minHeight: 52,
+                bg: `contentBg`,
+                color: `heading`,
+                border: `1px solid`,
+                borderColor: `omegaLight`,
+                borderRadius: `10px`,
+                pl: `2.75rem`,
+                pr: 3,
+                boxShadow: `0 8px 24px rgba(31, 41, 55, 0.04)`,
+                ...focusStyle
+              }}
+            />
+          </Box>
+        </Grid>
 
         <Flex
-          aria-label='İçerikleri kategoriye göre filtrele'
-          sx={{ flexWrap: `wrap`, gap: 2, mt: 3 }}
+          as='nav'
+          aria-label='İçerik kategorileri'
+          sx={{ flexWrap: `wrap`, gap: 2, mb: [4, 5] }}
         >
-          {categories.map(item => (
-            <Button
-              key={item}
-              type='button'
-              variant={category === item ? 'primary' : 'mute'}
-              aria-pressed={category === item}
-              onClick={() => setCategory(item)}
-              sx={{ minHeight: 44, px: 3, py: 2, ...focusStyle }}
+          <Link
+            as={GatsbyLink}
+            to='/category/kampcilik/#tum-icerikler'
+            aria-current='page'
+            sx={{
+              display: `inline-flex`,
+              alignItems: `center`,
+              justifyContent: `center`,
+              minHeight: 40,
+              color: `white`,
+              bg: `alpha`,
+              borderRadius: `999px`,
+              fontSize: 1,
+              fontWeight: `bold`,
+              textDecoration: `none`,
+              px: 4,
+              py: 2,
+              ...focusStyle
+            }}
+          >
+            Tümü
+          </Link>
+          {categoryLinks.map(item => (
+            <Link
+              key={item.slug}
+              as={GatsbyLink}
+              to={item.slug}
+              onClick={trackLink('tum-icerikler', item.slug)}
+              sx={{
+                display: `inline-flex`,
+                alignItems: `center`,
+                justifyContent: `center`,
+                minHeight: 40,
+                color: `heading`,
+                bg: `omegaLighter`,
+                borderRadius: `999px`,
+                fontSize: 1,
+                fontWeight: `bold`,
+                textDecoration: `none`,
+                px: 4,
+                py: 2,
+                transition: `background-color 160ms ease, color 160ms ease`,
+                '&:hover': {
+                  color: `alphaDark`,
+                  bg: `omegaLight`
+                },
+                '&:visited': {
+                  color: `heading`
+                },
+                ...focusStyle
+              }}
             >
-              {item}
-            </Button>
+              {item.name}
+            </Link>
           ))}
         </Flex>
 
@@ -729,76 +1236,191 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
           as='p'
           role='status'
           aria-live='polite'
-          sx={{ color: `omegaDark`, fontSize: 1, mt: 3, mb: 2 }}
+          sx={{
+            position: `absolute`,
+            width: 1,
+            height: 1,
+            p: 0,
+            m: -1,
+            overflow: `hidden`,
+            clip: `rect(0, 0, 0, 0)`,
+            whiteSpace: `nowrap`,
+            border: 0
+          }}
         >
           {filteredArticles.length} içerik gösteriliyor
         </Text>
 
         {filteredArticles.length ? (
-          <Grid
-            as='ul'
-            sx={{
-              gridTemplateColumns: [`1fr`, null, `repeat(2, minmax(0, 1fr))`],
-              gap: 2,
-              listStyle: `none`,
-              p: 0,
-              m: 0
-            }}
-          >
-            {filteredArticles.map(article => (
-              <Box
-                as='li'
-                key={article.id}
-                sx={{
-                  borderTop: `1px solid`,
-                  borderColor: `omegaLight`
-                }}
-              >
-                <Link
-                  as={GatsbyLink}
-                  to={article.slug}
-                  onClick={trackLink('tum-icerikler', article.slug)}
+          <>
+            <Grid
+              as='ul'
+              data-all-content-grid
+              sx={{
+                gridTemplateColumns: [
+                  `1fr`,
+                  null,
+                  `repeat(2, minmax(0, 1fr))`,
+                  `repeat(3, minmax(0, 1fr))`
+                ],
+                gap: [3, 4],
+                listStyle: `none`,
+                p: 0,
+                m: 0
+              }}
+            >
+              {visibleArticles.map(article => {
+                const image = getImageVariant(article.thumbnail, 'vertical')
+
+                return (
+                  <Box as='li' key={article.id} sx={{ minWidth: 0 }}>
+                    <Link
+                      as={GatsbyLink}
+                      to={article.slug}
+                      onClick={trackLink('tum-icerikler', article.slug)}
+                      sx={{
+                        display: `flex`,
+                        height: `100%`,
+                        minHeight: [360, 400],
+                        flexDirection: `column`,
+                        color: `heading`,
+                        bg: `contentBg`,
+                        border: `1px solid`,
+                        borderColor: `omegaLight`,
+                        borderRadius: `10px`,
+                        boxShadow: `0 12px 30px rgba(31, 41, 55, 0.07)`,
+                        overflow: `hidden`,
+                        textDecoration: `none`,
+                        transition: `transform 180ms ease, box-shadow 180ms ease`,
+                        '@media (hover: hover) and (pointer: fine)': {
+                          '&:hover': {
+                            color: `heading`,
+                            transform: `translateY(-3px)`,
+                            boxShadow: `0 18px 36px rgba(31, 41, 55, 0.12)`
+                          }
+                        },
+                        '&:visited': { color: `heading` },
+                        ...focusStyle
+                      }}
+                    >
+                      {image && (
+                        <Box
+                          sx={{
+                            height: [190, 210, 220],
+                            overflow: `hidden`,
+                            bg: `omegaLighter`,
+                            '& .gatsby-image-wrapper': {
+                              width: `100%`,
+                              height: `100%`
+                            }
+                          }}
+                        >
+                          <Img
+                            image={image}
+                            alt={article.title}
+                            loading='lazy'
+                            style={{ width: `100%`, height: `100%` }}
+                            imgStyle={{ objectFit: `cover` }}
+                          />
+                        </Box>
+                      )}
+                      <Flex
+                        sx={{
+                          flex: 1,
+                          flexDirection: `column`,
+                          alignItems: `flex-start`,
+                          p: [3, 4]
+                        }}
+                      >
+                        {article.category?.name && (
+                          <Text
+                            as='span'
+                            sx={{
+                              color: `alphaDark`,
+                              fontSize: 0,
+                              fontWeight: `bold`,
+                              letterSpacing: `0.09em`,
+                              textTransform: `uppercase`,
+                              mb: 2
+                            }}
+                          >
+                            {article.category.name}
+                          </Text>
+                        )}
+                        <Heading
+                          as='h3'
+                          sx={{
+                            color: `heading`,
+                            fontFamily: `'DM Serif Display', Georgia, serif`,
+                            fontSize: [4, 5],
+                            fontWeight: 400,
+                            lineHeight: 1.12,
+                            m: 0
+                          }}
+                        >
+                          {article.title}
+                        </Heading>
+                        {article.timeToRead && (
+                          <Flex
+                            sx={{
+                              alignItems: `center`,
+                              gap: 2,
+                              color: `omegaDark`,
+                              fontSize: 1,
+                              mt: `auto`,
+                              pt: 3
+                            }}
+                          >
+                            <FaRegClock aria-hidden='true' />
+                            <Text as='span'>{article.timeToRead} dk okuma</Text>
+                          </Flex>
+                        )}
+                      </Flex>
+                    </Link>
+                  </Box>
+                )
+              })}
+            </Grid>
+
+            {visibleArticles.length < filteredArticles.length && (
+              <Flex sx={{ justifyContent: `center`, mt: [4, 5] }}>
+                <Button
+                  type='button'
+                  variant='outline'
+                  onClick={() =>
+                    setVisibleArticleCount(count =>
+                      Math.min(count + 6, filteredArticles.length)
+                    )
+                  }
                   sx={{
-                    display: `block`,
-                    minHeight: 72,
+                    display: `inline-flex`,
+                    alignItems: `center`,
+                    justifyContent: `center`,
+                    gap: 3,
+                    minHeight: 48,
                     color: `heading`,
-                    textDecoration: `none`,
-                    py: 3,
-                    '&:hover': { color: `alpha` },
+                    bg: `transparent`,
+                    border: `1px solid`,
+                    borderColor: `heading`,
+                    borderRadius: `6px`,
+                    fontSize: 1,
+                    fontWeight: `bold`,
+                    px: 5,
                     ...focusStyle
                   }}
                 >
-                  <Text
-                    as='span'
-                    sx={{
-                      display: `block`,
-                      fontSize: [2, 3],
-                      fontWeight: `bold`,
-                      lineHeight: 1.35
-                    }}
-                  >
-                    {article.title}
-                  </Text>
-                  <Text
-                    as='span'
-                    sx={{
-                      display: `block`,
-                      color: `omegaDark`,
-                      fontSize: 1,
-                      mt: 1
-                    }}
-                  >
-                    {article.category?.name}
-                    {article.timeToRead ? ` · ${article.timeToRead} dk` : ''}
-                  </Text>
-                </Link>
-              </Box>
-            ))}
-          </Grid>
+                  Daha fazla içerik yükle
+                  <FaChevronDown aria-hidden='true' />
+                </Button>
+              </Flex>
+            )}
+          </>
         ) : (
           <Box
             sx={{
-              bg: `background`,
+              bg: `contentBg`,
+              border: `1px solid`,
+              borderColor: `omegaLight`,
               borderRadius: `12px`,
               textAlign: `center`,
               px: 3,
@@ -810,19 +1432,18 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
               Aramana uygun içerik bulunamadı
             </Heading>
             <Text as='p' sx={{ color: `text`, mb: 3 }}>
-              Başka bir kelime deneyebilir veya tüm kategorileri
-              gösterebilirsin.
+              Başka bir kelime deneyebilir veya aramayı temizleyebilirsin.
             </Text>
             <Button
               type='button'
               variant='mute'
               onClick={() => {
                 setQuery('')
-                setCategory('Tümü')
+                setVisibleArticleCount(6)
               }}
               sx={{ minHeight: 44, ...focusStyle }}
             >
-              Filtreleri temizle
+              Aramayı temizle
             </Button>
           </Box>
         )}

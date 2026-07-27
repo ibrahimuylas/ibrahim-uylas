@@ -11,6 +11,14 @@ const {
 } = require('../site/src/components/campingGuidePolicy')
 
 const postsDirectory = path.resolve(__dirname, '../site/content/posts')
+const campingGuideComponent = fs.readFileSync(
+  path.resolve(__dirname, '../site/src/components/CampingGuide.jsx'),
+  'utf8'
+)
+const campingGuideHero = path.resolve(
+  __dirname,
+  '../site/content/assets/camping-guide-hero.png'
+)
 
 const findMdxFiles = directory =>
   fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
@@ -54,6 +62,86 @@ const configuredSlugs = [
   ...campingGuide.sections.flatMap(section => section.slugs)
 ]
 
+test('topic badges keep their default color after navigation and expose the scrolling contents control', () => {
+  assert.match(
+    campingGuideComponent,
+    /'&:visited':\s*\{\s*color: `heading`\s*\}/
+  )
+  assert.match(campingGuideComponent, /showInlineNavigation=\{false\}/)
+  assert.match(campingGuideComponent, /id='yeni-eklenenler'/)
+})
+
+test('camping guide hero uses the supplied responsive image asset', () => {
+  assert.ok(fs.existsSync(campingGuideHero))
+  assert.match(
+    campingGuideComponent,
+    /src='\.\.\/\.\.\/content\/assets\/camping-guide-hero\.png'/
+  )
+  assert.match(
+    campingGuideComponent,
+    /gridTemplateAreas:\s*\[\s*`"image" "content"`[\s\S]*`"content image"`/
+  )
+  assert.match(
+    campingGuideComponent,
+    /WebkitMaskImage:\s*`linear-gradient\(to right, transparent/
+  )
+})
+
+test('equipment section uses a responsive editorial card grid', () => {
+  assert.match(campingGuideComponent, /data-equipment-grid/)
+  assert.match(campingGuideComponent, /`repeat\(3, minmax\(0, 1fr\)\)`/)
+  assert.match(campingGuideComponent, /editorial/)
+})
+
+test('reading path uses three columns on desktop without changing mobile', () => {
+  assert.match(campingGuideComponent, /data-reading-path-grid/)
+  assert.match(
+    campingGuideComponent,
+    /`repeat\(2, minmax\(0, 1fr\)\)`,\s*`repeat\(3, minmax\(0, 1fr\)\)`/
+  )
+  assert.match(
+    campingGuideComponent,
+    /readingPath\.map[\s\S]*desktopImageOnly=\{!featuredSlugs\.has\(item\.slug\)\}[\s\S]*withImage/
+  )
+})
+
+test('new articles section shows only three cards', () => {
+  const campingCategoryTemplate = fs.readFileSync(
+    path.resolve(__dirname, '../site/src/templates/camping-category.js'),
+    'utf8'
+  )
+
+  assert.match(campingCategoryTemplate, /latestArticles:[\s\S]*limit: 3/)
+  assert.match(
+    campingGuideComponent,
+    /visibleLatestArticles = useMemo\([\s\S]*latestArticles\.slice\(0, 3\)/
+  )
+  assert.match(campingGuideComponent, /nodes=\{visibleLatestArticles\}/)
+  assert.match(campingGuideComponent, /columns=\{\[1, 2, 2, 3\]\}/)
+})
+
+test('all content uses an editorial grid and category navigation', () => {
+  assert.match(campingGuideComponent, /data-all-content-grid/)
+  assert.match(
+    campingGuideComponent,
+    /data-all-content-grid[\s\S]*`repeat\(3, minmax\(0, 1fr\)\)`/
+  )
+  assert.match(
+    campingGuideComponent,
+    /visibleArticleCount, setVisibleArticleCount/
+  )
+  assert.match(
+    campingGuideComponent,
+    /filteredArticles\.slice\(0, visibleArticleCount\)/
+  )
+  assert.match(campingGuideComponent, /aria-label='İçerik kategorileri'/)
+  assert.match(
+    campingGuideComponent,
+    /categoryLinks\.map[\s\S]*to=\{item\.slug\}/
+  )
+  assert.match(campingGuideComponent, /Daha fazla içerik yükle/)
+})
+
 test('camping guide config resolves to unique, published articles', () => {
   const articleBySlug = new Map(
     articles.map(article => [article.slug, article])
@@ -68,6 +156,12 @@ test('camping guide config resolves to unique, published articles', () => {
     assert.ok(
       sectionIds.includes(sectionId),
       `Image section is not displayed: ${sectionId}`
+    )
+  })
+  campingGuide.imageExcludedSlugs.forEach(slug => {
+    assert.ok(
+      uniqueSlugs.has(slug),
+      `Image exclusion is not displayed: ${slug}`
     )
   })
 

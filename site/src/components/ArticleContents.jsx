@@ -61,7 +61,7 @@ const styles = {
   }
 }
 
-const EligibleArticleContents = ({ items }) => {
+const EligibleArticleContents = ({ items, showInlineNavigation }) => {
   const { pathname } = useLocation()
   const navigationRef = useRef(null)
   const invokingElementRef = useRef(null)
@@ -121,35 +121,42 @@ const EligibleArticleContents = ({ items }) => {
     setIsSheetOpen(true)
   }
 
-  const handleDismissSheet = useCallback(({ restoreFocusRing = false } = {}) => {
-    const invokingElement = invokingElementRef.current
+  const handleDismissSheet = useCallback(
+    ({ restoreFocusRing = false } = {}) => {
+      const invokingElement = invokingElementRef.current
 
-    setIsSheetOpen(false)
-    cancelPendingFocus()
-    cancelPendingNavigation()
-    focusFrameRef.current = window.requestAnimationFrame(() => {
+      setIsSheetOpen(false)
+      cancelPendingFocus()
+      cancelPendingNavigation()
       focusFrameRef.current = window.requestAnimationFrame(() => {
-        focusFrameRef.current = null
+        focusFrameRef.current = window.requestAnimationFrame(() => {
+          focusFrameRef.current = null
 
-        if (invokingElement && invokingElement.isConnected) {
-          if (restoreFocusRing) {
-            invokingElement.removeAttribute(`data-suppress-focus-ring`)
-          } else {
-            const clearFocusRingSuppression = () => {
+          if (invokingElement && invokingElement.isConnected) {
+            if (restoreFocusRing) {
               invokingElement.removeAttribute(`data-suppress-focus-ring`)
+            } else {
+              const clearFocusRingSuppression = () => {
+                invokingElement.removeAttribute(`data-suppress-focus-ring`)
+              }
+
+              invokingElement.setAttribute(`data-suppress-focus-ring`, `true`)
+              invokingElement.addEventListener(
+                `blur`,
+                clearFocusRingSuppression,
+                {
+                  once: true
+                }
+              )
             }
 
-            invokingElement.setAttribute(`data-suppress-focus-ring`, `true`)
-            invokingElement.addEventListener(`blur`, clearFocusRingSuppression, {
-              once: true
-            })
+            invokingElement.focus({ preventScroll: true })
           }
-
-          invokingElement.focus({ preventScroll: true })
-        }
+        })
       })
-    })
-  }, [cancelPendingFocus, cancelPendingNavigation])
+    },
+    [cancelPendingFocus, cancelPendingNavigation]
+  )
 
   const handleItemSelect = useCallback(
     item => {
@@ -330,26 +337,34 @@ const EligibleArticleContents = ({ items }) => {
 
   return (
     <>
-      <Box
-        as='nav'
-        ref={navigationRef}
-        aria-label='İçindekiler'
-        sx={{
-          bg: 'omegaLighter',
-          borderRadius: 'default',
-          mb: 4,
-          px: [3, 4],
-          py: 3
-        }}
-      >
-        <Heading as='h2' variant='h4' sx={{ mb: 3 }}>
-          Bu yazıda
-        </Heading>
-        <ArticleContentsList
-          items={items}
-          onItemClick={handleInlineItemClick}
+      {showInlineNavigation ? (
+        <Box
+          as='nav'
+          ref={navigationRef}
+          aria-label='İçindekiler'
+          sx={{
+            bg: 'omegaLighter',
+            borderRadius: 'default',
+            mb: 4,
+            px: [3, 4],
+            py: 3
+          }}
+        >
+          <Heading as='h2' variant='h4' sx={{ mb: 3 }}>
+            Bu yazıda
+          </Heading>
+          <ArticleContentsList
+            items={items}
+            onItemClick={handleInlineItemClick}
+          />
+        </Box>
+      ) : (
+        <Box
+          ref={navigationRef}
+          aria-hidden='true'
+          sx={{ width: 1, height: 1, overflow: `hidden` }}
         />
-      </Box>
+      )}
       {portalHost &&
         (hasPassedViewport || isSheetOpen) &&
         createPortal(
@@ -393,14 +408,21 @@ const EligibleArticleContents = ({ items }) => {
 }
 
 EligibleArticleContents.propTypes = {
-  items: PropTypes.arrayOf(itemType).isRequired
+  items: PropTypes.arrayOf(itemType).isRequired,
+  showInlineNavigation: PropTypes.bool.isRequired
 }
 
-const ArticleContents = ({ items }) =>
-  items && items.length >= 2 ? <EligibleArticleContents items={items} /> : null
+const ArticleContents = ({ items, showInlineNavigation = true }) =>
+  items && items.length >= 2 ? (
+    <EligibleArticleContents
+      items={items}
+      showInlineNavigation={showInlineNavigation}
+    />
+  ) : null
 
 ArticleContents.propTypes = {
-  items: PropTypes.arrayOf(itemType)
+  items: PropTypes.arrayOf(itemType),
+  showInlineNavigation: PropTypes.bool
 }
 
 export default ArticleContents

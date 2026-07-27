@@ -98,7 +98,7 @@ if (!fs.existsSync(campingGuidePath)) {
     'Ekipman seçimi',
     'Kamp yerleri ve rotalar',
     'Terimler, kitaplar ve ilham',
-    'Tüm kampçılık içerikleri',
+    'Tüm içerikler',
     'CollectionPage',
     'ItemList',
     'rel="canonical" href="https://www.ibrahimuylas.com/category/kampcilik/"',

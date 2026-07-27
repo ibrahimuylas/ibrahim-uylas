@@ -105,7 +105,7 @@ export const pageQuery = graphql`
         category: { slug: { eq: $slug } }
       }
       sort: { date: DESC }
-      limit: 4
+      limit: 3
     ) {
       nodes {
         ...ArticlePreview

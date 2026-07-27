@@ -95,7 +95,8 @@ const campingGuide = {
     'r-degeri-nedir',
     'guvenli-kamp-atesi-icin-en-iyi-10-ipucu'
   ],
-  imageSectionIds: ['ekipman', 'kamp-yerleri']
+  imageSectionIds: ['ekipman', 'kamp-yerleri'],
+  imageExcludedSlugs: []
 }
 
 module.exports = campingGuide

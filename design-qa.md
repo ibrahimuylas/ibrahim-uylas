@@ -117,6 +117,178 @@ guard also closes the preview when Safari omits the corresponding leave event.
 
 final result: passed
 
+---
+
+# Camping Guide Equipment Editorial Grid Design QA — 2026-07-27
+
+## Comparison target
+
+- Source visual truth:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-608f0a9b-45da-4a56-924c-23d17960e513.png`
+- Desktop implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/equipment-desktop.png`
+- Mobile implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/equipment-mobile.png`
+- Mobile dark-theme implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/equipment-mobile-dark.png`
+- Combined source/implementation comparison:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/equipment-comparison.png`
+- Source pixels: 2292 × 1818.
+- Tested CSS viewports: 1280 × 1100 and 390 × 1000.
+- State: equipment section in light and dark themes.
+
+## Fidelity surfaces
+
+- Typography: the section and card headings use the site's existing DM Serif
+  Display family; card metadata and descriptions retain the existing Inter
+  system. The mobile title uses the reference's blue editorial treatment.
+- Spacing and layout: desktop uses a full-width section header followed by a
+  three-column, two-row grid. Mobile collapses to a single column with
+  image-first cards and full-width touch targets.
+- Colors and tokens: borders, shadows, backgrounds, and dark-mode surfaces use
+  existing Theme UI tokens. Link accents use the mode-aware `alphaDark` token
+  and preserve their color after a visited state.
+- Images: all six cards now have meaningful media. Five use their article
+  assets; the MSR article uses a project-local, generated editorial product
+  photograph because its previous thumbnail was the generic site banner.
+- Copy and metadata: the six configured article titles, excerpts, categories,
+  reading times, dates, URLs, and analytics handlers remain unchanged.
+
+## Comparison history
+
+### Pass 1
+
+- [P1] The MSR card had no meaningful image and would have required a blank
+  placeholder.
+- [P2] Mobile card links and the section CTA used a blue that was too subdued
+  against the dark content surface.
+
+Fixes: generated a realistic MSR-style backpacking stove photograph, promoted
+the 2 Seconds article's existing lead image to its thumbnail, and moved
+editorial accents to the mode-aware `alphaDark` token with explicit visited
+colors.
+
+### Pass 2
+
+The final combined comparison matches the Stitch structure while keeping the
+site's real content and brand system. No actionable P0, P1, or P2 differences
+remain.
+
+## Interaction and validation
+
+- All six article links are exposed in the equipment landmark and the first
+  card navigated to `/buff-nedir-ne-ise-yarar/` in browser testing.
+- The “Tüm ekipman yazılarını gör” link resolves to
+  `/category/ekipmanlar/`.
+- Mobile cards, floating contents navigation, and scroll-to-top control do not
+  create horizontal overflow.
+- Dark-theme title and CTA accents resolve to `rgb(163, 191, 250)` on the dark
+  content surface.
+- Root `npm test`: passed, 28 of 28 tests.
+- Prettier and `git diff --check`: passed.
+- Gatsby production build: passed, 333 pages.
+- Generated HTML validation: passed, including the camping guide SSR contract.
+
+final result: passed
+
+# Camping Guide Stitch Hero Design QA
+
+- Source visual truth:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-1377e05b-bdeb-47c1-8a8a-f52142a1901c.png`
+- Source hero asset:
+  `/Users/uylas/Downloads/premium_outdoor_editorial_photography_3_2_landscape._a_small_technical_trekking.png`
+- Desktop implementation:
+  `/var/tmp/ibrahim-uylas-design-qa/camping-hero-desktop-final.jpg`
+- Mobile implementation:
+  `/var/tmp/ibrahim-uylas-design-qa/camping-hero-mobile-final.jpg`
+- Desktop combined comparison:
+  `/var/tmp/ibrahim-uylas-design-qa/camping-hero-desktop-comparison-final.png`
+- Mobile combined comparison:
+  `/var/tmp/ibrahim-uylas-design-qa/camping-hero-mobile-comparison-final.png`
+- Source image: 2608 × 1556 px.
+- Desktop viewport: 1280 × 1000 CSS px; browser capture 1265 × 988 px.
+- Mobile viewport: 390 × 1000 CSS px; browser capture 375 × 962 px.
+- Density normalization: native browser density; source and implementation hero
+  crops were resized to equal comparison widths without changing aspect ratio.
+- State: light theme for source comparison; dark theme checked separately.
+
+## Full-view comparison evidence
+
+The final desktop comparison places the Stitch source on the left and the
+implementation on the right. Both use a compact editorial card, a roughly
+60/40 content-to-image split, a single-line serif title, two CTAs, and a
+three-column summary row. The final mobile comparison uses the same ordering
+as the source: image, title and description, summary row, then stacked CTAs.
+
+## Focused region evidence
+
+The hero itself was cropped from both source and implementation because the
+source board includes unrelated canvas and sample navigation. At desktop the
+implemented hero measures 1076 × 471 CSS px, close to the source hero's 2.36:1
+proportion. At mobile it measures about 348 × 702 CSS px, keeps the title on
+one line, and has no horizontal overflow.
+
+## Findings
+
+- Fonts and typography: the existing DM Serif Display heading closely matches
+  the source's editorial serif. The mobile title is 32 px on one line; the
+  desktop title is 56 px with a 58.8 px line height. UI copy retains the
+  site's existing sans-serif family and readable optical weights.
+- Spacing and layout rhythm: desktop uses the source's compact wide card and
+  mobile reorders the same content into an image-first stack. Padding, borders,
+  radii, summary dividers, and CTA spacing align with the selected design.
+- Colors and visual tokens: the source blue is represented by `#1552d6`;
+  neutral surfaces and text continue to use the site's theme tokens. Light and
+  dark themes both retain sufficient contrast.
+- Image quality and asset fidelity: the exact supplied 1264 × 848 raster is
+  served through Gatsby's responsive image pipeline with WebP/AVIF output,
+  eager loading, a blurred placeholder, and a focal crop that keeps the sun
+  and tent visible at both breakpoints.
+- Copy and content: invented route, community, and rating claims from the mock
+  were replaced with real hub values: 29 contents, 6 topics, and 5 starting
+  steps. Both CTAs preserve the guide's existing section targets.
+
+## Comparison history
+
+### Pass 1
+
+- [P2] The first desktop implementation expanded to 962 px tall instead of the
+  source's compact landscape proportion.
+- [P2] The first mobile title wrapped onto two lines.
+
+Fixes: replaced theme spacing indices with measured pixel padding, reduced the
+desktop minimum height to 460 px, tightened desktop vertical gaps, and reduced
+the mobile title to 32 px.
+
+### Pass 2
+
+The final combined comparisons show no remaining actionable P0, P1, or P2
+difference. The source's white feather at the desktop image boundary is not
+reproduced so the split remains correct in dark mode; this is accepted P3
+polish.
+
+## Interaction and browser checks
+
+- Primary CTA navigates to `#baslangic`.
+- Secondary CTA navigates to `#tum-icerikler`.
+- Final production page contains one H1 and the hero image loads successfully.
+- Desktop and mobile captures have zero horizontal overflow.
+- Dark mode resolves the hero surface, title, and body text to the existing
+  dark theme tokens without layout changes.
+- Console/error pass: the final browser interaction sequence surfaced no
+  uncaught page error. The development build retains one existing unrelated
+  iframe-title warning in `DeferredEmbed.jsx`.
+- `npm test`, Gatsby production build, generated HTML validation, Prettier,
+  and `git diff --check`: passed.
+
+## Follow-up polish
+
+- P3: add a theme-aware raster feather between text and image only if matching
+  the source's soft desktop transition becomes more important than preserving
+  the current clean dark-mode split.
+
+final result: passed
+
 # Site Performance and Deferred Loading — Design QA (27 July 2026)
 
 ## Evidence and state
@@ -540,5 +712,252 @@ accessibility trade-off.
 
 - P3: reduce row spacing only if the 24-pixel target requirement is explicitly
   relaxed; no change is recommended for the current accessible implementation.
+
+final result: passed
+
+# Camping Guide Card Layout Design QA
+
+- Source visual truth: `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-00092dff-c979-4af6-8b24-3eb86ebacbf5.png`
+- Desktop implementation: `/tmp/camping-guide-cards-final-desktop.png`
+- Mobile implementation: `/tmp/camping-guide-cards-final-mobile.png`
+- Combined comparison: `/tmp/camping-guide-cards-final-before-after.png`
+- Desktop viewport: 1280 × 1300 CSS px; implementation capture 1265 × 1288 px
+- Mobile viewport: 390 × 844 CSS px; implementation capture 375 × 832 px
+- Source image: 2490 × 2556 px, normalized to 1265 px wide for comparison
+- Device density: browser screenshots compared at their native capture density
+- State: equipment section, light theme
+
+## Full-view comparison evidence
+
+The source used small inline thumbnails beside constrained summary text. The
+implementation moves valid article photography into a consistent, full-width
+180 px media area above the card content. Titles, summaries, and metadata now
+use the full card width. Cards without a meaningful image remain text-only.
+
+## Focused region evidence
+
+The equipment card grid was inspected at desktop and mobile sizes. At desktop,
+image cards measure about 337 px wide with a 335 × 180 px media area. At mobile,
+the first image card measures about 348 px wide with a 346 × 160 px media area.
+No horizontal overflow was detected.
+
+## Findings
+
+- Fonts and typography: Existing families, weights, hierarchy, and copy are
+  preserved. Full-width text substantially improves wrapping.
+- Spacing and layout rhythm: Image and content regions are clearly separated;
+  row heights remain aligned within the two-column grid.
+- Colors and visual tokens: Existing light and dark theme surfaces, borders,
+  accents, and shadows are preserved.
+- Image quality and asset fidelity: Real article images use a consistent cover
+  crop. The default MSR placeholder and the image-less 2 Seconds article do not
+  create oversized empty media areas.
+- Copy and content: Titles, summaries, metadata, links, and tracking behavior
+  are unchanged.
+- Browser verification: Desktop and mobile layouts were checked; no console
+  errors or warnings were present.
+
+## Comparison history
+
+1. Initial implementation enlarged every available thumbnail.
+2. P2 finding: the MSR default placeholder became an oversized gray media
+   block.
+3. Fix: added an editorial image exclusion for the placeholder-backed article.
+4. Post-fix evidence confirms four real image cards and two clean text-only
+   cards in the equipment section.
+
+No actionable P0, P1, or P2 findings remain.
+
+final result: passed
+
+---
+
+# Camping Guide Hero Left Fade Design QA — 2026-07-27
+
+## Comparison target
+
+- Source visual truth:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-4013a914-5a44-478a-9328-9a305a1b2d05.png`
+- Desktop implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/hero-left-fade-desktop.png`
+- Mobile implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/hero-left-fade-mobile.png`
+- Desktop dark-theme implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/hero-left-fade-desktop-dark.png`
+- Focused source/implementation comparison:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/hero-left-fade-comparison.png`
+- Tested CSS viewports: 1280 × 850 and 390 × 900.
+
+## Fidelity review
+
+- The desktop image stays transparent through the first 16 percent, feathers
+  across the next 20 percent, and becomes fully opaque at 36 percent. The
+  focused comparison shows the same broad white margin and soft photographic
+  reveal as the source.
+- The fade reveals the hero's existing content surface, so it resolves to white
+  in light mode and the correct card surface in dark mode.
+- The effect starts only at the desktop breakpoint. Mobile retains the original
+  unmasked, full-width image.
+- The source image, crop, focal point, rounded container, content, interactions,
+  and responsive ordering remain unchanged.
+
+## Comparison history
+
+### Pass 1
+
+The first implementation matched the reference's fade length and softness. No
+actionable P0, P1, or P2 differences were found. Mobile and dark-mode checks
+also passed without overflow or hard image seams.
+
+## Validation
+
+- Root `npm test`: passed, 28 of 28 tests.
+- Prettier and `git diff --check`: passed.
+- Gatsby production build: passed, 333 pages.
+- Generated HTML validation: passed, including the camping guide SSR contract.
+
+final result: passed
+
+---
+
+# Camping Guide Reading Path Three-Column Design QA — 2026-07-27
+
+## Comparison target
+
+- Source visual truth:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-91244c3f-3c37-44c3-87b1-31f8bc6f8e7f.png`
+- Desktop implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/reading-path-three-column-desktop-tall.png`
+- Mobile implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/reading-path-three-column-mobile.png`
+- Desktop dark-theme implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/reading-path-three-column-desktop-dark.png`
+- Source/implementation comparison:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/reading-path-three-column-comparison.png`
+- Tested CSS viewports: 1280 × 1600 and 390 × 900.
+
+## Fidelity review
+
+- The reading path becomes a three-column grid from the 1024 px desktop
+  breakpoint while retaining one column on mobile and two columns on tablet.
+- The five-step reading order remains unchanged: cards 1–3 form the first row
+  and cards 4–5 form the second.
+- All five cards use their real article thumbnails on desktop, producing a
+  consistent editorial rhythm and removing the tall empty text-only cards.
+- The two previously text-only cards keep their original image-free treatment
+  on tablet and mobile, so the existing narrow-screen content density is
+  preserved.
+- Card surfaces, borders, radii, typography, metadata, badges, hover behavior,
+  links, and tracking remain consistent with the existing guide.
+- The layout was verified in light and dark themes with no horizontal overflow,
+  cropped text, or broken card alignment.
+
+## Comparison history
+
+1. P1 finding: the two-column desktop grid mixed image and text-only cards,
+   creating large empty areas and an unnecessarily tall reading path.
+2. Fix: changed the desktop breakpoint to three columns and exposed each
+   article's existing thumbnail on desktop.
+3. Post-fix comparison confirms a shorter, balanced 3+2 composition without
+   changing the mobile and tablet layouts.
+
+No actionable P0, P1, or P2 findings remain.
+
+## Validation
+
+- Root `npm test`: passed, 29 of 29 tests.
+- Prettier and `git diff --check`: passed.
+- Gatsby production build: passed, 333 pages.
+- Generated HTML validation: passed, including the camping guide SSR contract.
+
+final result: passed
+
+---
+
+# Camping Guide Newest Articles Three-Card Design QA — 2026-07-27
+
+## Comparison target
+
+- Existing production section:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/newest-cards-before-four.png`
+- Updated production section:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/newest-cards-after-three.png`
+- Combined comparison:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/newest-cards-three-comparison.png`
+- Tested CSS viewport: 1280 × 1600.
+
+## Fidelity review
+
+- The section now receives and renders exactly the three newest Kampçılık
+  articles.
+- The desktop grid uses three columns, so the three cards fill one balanced row.
+- Card imagery, typography, spacing, metadata, hover behavior, links, and
+  tracking are unchanged.
+- Browser semantic inspection confirmed three `article` elements inside the
+  “Yeni eklenenler” region.
+
+No actionable P0, P1, or P2 findings remain.
+
+## Validation
+
+- Root `npm test`: passed, 30 of 30 tests.
+- Prettier and `git diff --check`: passed.
+- Gatsby production build: passed, 332 pages.
+- Generated HTML validation: passed, including the camping guide SSR contract.
+
+final result: passed
+
+---
+
+# Camping Guide All Content Editorial Grid Design QA — 2026-07-27
+
+## Comparison target
+
+- Stitch source:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-82d61290-3a79-4b77-a9b6-23a497ffbbd9.png`
+- Previous list implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/all-content-before-list.png`
+- Final desktop implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/all-content-editorial-desktop.png`
+- Final card-detail implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/all-content-editorial-cards.png`
+- Final dark-theme implementation:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/all-content-editorial-dark.png`
+- Source/implementation comparison:
+  `/Users/uylas/.codex/visualizations/2026/07/27/019fa4ba-40cf-7760-a78a-7751048434fb/all-content-editorial-comparison.png`
+- Tested CSS viewport: 1265 × 720.
+
+## Fidelity review
+
+- The heading, supporting copy, right-aligned search field, category pills,
+  three-column cards, and centered progressive-load action follow the Stitch
+  composition.
+- Real article thumbnails, category labels, editorial serif titles, and reading
+  times replace the former compact text list.
+- The responsive grid is one column on mobile, two on tablet, and three on
+  desktop.
+- The search input, empty state, card links, and “Daha fazla içerik yükle”
+  interaction remain functional.
+- Category pills are navigation links. Browser verification confirmed that
+  “Rotalar” opens `/category/rotalar/`.
+- Light and dark theme surfaces preserve the existing site tokens.
+
+## Comparison history
+
+1. P1 finding: the previous two-column compact link list did not match the
+   selected editorial card design.
+2. Fix: replaced it with image-led cards and a 6-item progressive grid.
+3. P2 finding: the search icon overlapped the placeholder text.
+4. Fix: reserved explicit left padding for the icon and recaptured the final
+   comparison.
+
+No actionable P0, P1, or P2 findings remain.
+
+## Validation
+
+- Root `npm test`: passed, 31 of 31 tests.
+- Prettier and `git diff --check`: passed.
+- Gatsby production build: passed.
+- Generated HTML validation: passed, including the camping guide SSR contract.
 
 final result: passed
