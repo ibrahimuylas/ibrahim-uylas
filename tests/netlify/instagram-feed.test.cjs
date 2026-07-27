@@ -1,6 +1,9 @@
 const assert = require('node:assert/strict')
 const { test } = require('node:test')
-const { createHandler, normalizePost } = require('./instagram-feed.js')
+const {
+  createHandler,
+  normalizePost
+} = require('../../netlify/functions/instagram-feed.js')
 
 const secret = 'fixture-secret-token'
 const env = {
