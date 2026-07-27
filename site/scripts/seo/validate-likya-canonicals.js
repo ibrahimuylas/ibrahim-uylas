@@ -231,9 +231,13 @@ const htmlLinkEntries = contents => {
 const htmlIframeSources = contents => {
   const sources = []
   const iframePattern = /<iframe\b[^>]*?\bsrc=["']([^"']+)["'][^>]*>/gi
+  const deferredPattern = /\bdata-deferred-src=["']([^"']+)["']/gi
   let match
 
   while ((match = iframePattern.exec(contents))) {
+    sources.push(match[1].replace(/&amp;/gi, '&'))
+  }
+  while ((match = deferredPattern.exec(contents))) {
     sources.push(match[1].replace(/&amp;/gi, '&'))
   }
 

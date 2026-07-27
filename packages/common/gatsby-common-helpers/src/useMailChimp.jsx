@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 const successMessage =
   'Kaydınız alındı. Lütfen e-posta kutunuzdaki onay bağlantısını kontrol edin.'
+const requestTimeoutMs = 10000
 
 const useMailChimp = () => {
   const [result, setResult] = useState()
@@ -10,6 +11,11 @@ const useMailChimp = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     setSubmitting(true)
+    const controller = new AbortController()
+    const timeout = window.setTimeout(
+      () => controller.abort(),
+      requestTimeoutMs
+    )
 
     try {
       const data = new FormData(e.target)
@@ -19,7 +25,8 @@ const useMailChimp = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email })
+        body: JSON.stringify({ email }),
+        signal: controller.signal
       })
 
       if (!response.ok) throw new Error('Newsletter subscription failed')
@@ -34,6 +41,7 @@ const useMailChimp = () => {
         msg: 'Kayıt şu anda tamamlanamadı. Lütfen biraz sonra tekrar deneyin.'
       })
     } finally {
+      window.clearTimeout(timeout)
       setSubmitting(false)
     }
   }

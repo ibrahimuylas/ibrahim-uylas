@@ -6,15 +6,10 @@ import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
 import ArticleContents from '../../../components/ArticleContents'
+import DeferredComments from '../../../components/DeferredComments'
 import { trackEvent } from '../../../utils/analytics'
 // import AuthorExpanded from '@widgets/AuthorExpanded'
-import {
-  PostHead,
-  PostImage,
-  PostBody,
-  PostComments,
-  PostTagsShare
-} from '@widgets/Post'
+import { PostHead, PostImage, PostBody, PostTagsShare } from '@widgets/Post'
 
 const Post = ({
   data: { post, tagCategoryPosts, tagPosts, categoryPosts, previous, next },
@@ -52,7 +47,7 @@ const Post = ({
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
             {services.disqus && (
-              <PostComments
+              <DeferredComments
                 {...post}
                 siteUrl={siteUrl}
                 shortname={services.disqus}

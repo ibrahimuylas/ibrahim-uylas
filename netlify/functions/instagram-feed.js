@@ -1,6 +1,6 @@
 const API_ORIGIN = 'https://graph.instagram.com'
 const SUCCESS_CACHE = 'public, max-age=300, stale-while-revalidate=86400'
-const CDN_CACHE = 'public, max-age=3600, stale-while-revalidate=86400'
+const CDN_CACHE = 'public, durable, max-age=3600, stale-while-revalidate=86400'
 const NO_STORE = 'no-store'
 const POST_COUNT = 6
 const MAX_MEDIA_PAGES = 3

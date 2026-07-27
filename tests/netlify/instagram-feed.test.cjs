@@ -80,7 +80,7 @@ test('returns six newest sanitized posts using fixed requests and bearer auth', 
   )
   assert.equal(
     result.headers['Netlify-CDN-Cache-Control'],
-    'public, max-age=3600, stale-while-revalidate=86400'
+    'public, durable, max-age=3600, stale-while-revalidate=86400'
   )
   assert.deepEqual(body.profile, {
     name: profile.name,

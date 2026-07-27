@@ -4,7 +4,13 @@ export { PostFooter } from './Post.Footer'
 export { PostHead } from './Post.Head'
 export { PostImage } from './Post.Image'
 export { PostTagsShare } from './Post.Tags.Share'
-export { default as PostComments } from './Post.Comments'
+
+const PostCommentsLazy = React.lazy(() => import('./Post.Comments'))
+export const PostComments = ({ fallback = null, ...props }) => (
+  <Suspense fallback={fallback}>
+    <PostCommentsLazy {...props} />
+  </Suspense>
+)
 
 const PostCommentsFacebookLazy = React.lazy(
   () => import('./Post.Comments.Facebook')
