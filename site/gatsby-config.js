@@ -18,7 +18,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        excludes: ['/admin/**', '/author/**', '/tag/**', '/**/page/**']
+        excludes: [
+          '/admin/**',
+          '/author/**',
+          '/tag/**',
+          '/**/page/**',
+          '/authors/',
+          '/contact/'
+        ]
       }
     },
     {

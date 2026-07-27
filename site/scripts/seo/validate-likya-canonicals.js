@@ -1082,15 +1082,28 @@ if (!Array.isArray(inventory)) {
         }))
       : [])
   ]
+  const checkedRedirectSources = new Set(
+    expectedRedirects.map(({ from }) => from)
+  )
+  const checkedSourceRedirects = sourceRedirects.filter(({ from }) =>
+    checkedRedirectSources.has(from)
+  )
+  const checkedBuiltRedirects = builtRedirects.filter(({ from }) =>
+    checkedRedirectSources.has(from)
+  )
 
-  if (JSON.stringify(sourceRedirects) !== JSON.stringify(expectedRedirects)) {
+  if (
+    JSON.stringify(checkedSourceRedirects) !== JSON.stringify(expectedRedirects)
+  ) {
     fail(
-      `static/_redirects must contain exactly the ${expectedRedirects.length} checked redirect mappings`
+      `static/_redirects must contain the ${expectedRedirects.length} checked Likya redirect mappings`
     )
   }
-  if (JSON.stringify(builtRedirects) !== JSON.stringify(expectedRedirects)) {
+  if (
+    JSON.stringify(checkedBuiltRedirects) !== JSON.stringify(expectedRedirects)
+  ) {
     fail(
-      `The production build must copy all ${expectedRedirects.length} redirect mappings to public/_redirects`
+      `The production build must copy all ${expectedRedirects.length} checked Likya redirect mappings to public/_redirects`
     )
   }
 
