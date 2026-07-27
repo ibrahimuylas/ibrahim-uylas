@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
+import { GatsbyImage as Img } from 'gatsby-plugin-image'
 import {
   Box,
   Button,
@@ -12,6 +13,7 @@ import {
   Text
 } from 'theme-ui'
 import CardList from '@components/CardList'
+import getImageVariant from '@components/utils/getImageVariant'
 import campingGuide from '../content-guides/campingGuide'
 import { currentPagePath, trackEvent } from '../utils/analytics'
 import policy from './campingGuidePolicy'
@@ -85,105 +87,163 @@ const ArticleMeta = ({ article }) => (
   </Flex>
 )
 
-const ArticleLinkCard = ({ article, featured, onActivate, summary, step }) => (
-  <Box
-    as='li'
-    sx={{
-      ...surfaceStyle,
-      position: `relative`,
-      minWidth: 0,
-      p: [3, 4],
-      transition: `transform 180ms ease, border-color 180ms ease`,
-      '@media (hover: hover) and (pointer: fine)': {
-        '&:hover': {
-          borderColor: `alpha`,
-          transform: `translateY(-2px)`
+const ArticleLinkCard = ({
+  article,
+  featured,
+  onActivate,
+  summary,
+  step,
+  withImage
+}) => {
+  const image = withImage
+    ? getImageVariant(article.thumbnail, 'vertical')
+    : null
+
+  return (
+    <Box
+      as='li'
+      sx={{
+        ...surfaceStyle,
+        position: `relative`,
+        minWidth: 0,
+        p: [3, 4],
+        transition: `transform 180ms ease, border-color 180ms ease`,
+        '@media (hover: hover) and (pointer: fine)': {
+          '&:hover': {
+            borderColor: `alpha`,
+            transform: `translateY(-2px)`
+          }
         }
-      }
-    }}
-  >
-    <Flex sx={{ alignItems: `flex-start`, gap: 3 }}>
-      {step && (
-        <Flex
-          aria-hidden='true'
-          sx={{
-            alignItems: `center`,
-            justifyContent: `center`,
-            flex: `0 0 auto`,
-            width: 40,
-            height: 40,
-            bg: `alpha`,
-            color: `white`,
-            borderRadius: `50%`,
-            fontWeight: `bold`
-          }}
-        >
-          {step}
-        </Flex>
-      )}
-      <Box sx={{ minWidth: 0 }}>
-        {featured && (
-          <Text
-            as='span'
+      }}
+    >
+      <Flex sx={{ alignItems: `flex-start`, gap: 3 }}>
+        {step && (
+          <Flex
+            aria-hidden='true'
             sx={{
-              display: `inline-block`,
-              bg: `alphaLighter`,
-              color: `alphaDarker`,
-              borderRadius: `999px`,
-              fontSize: 0,
-              fontWeight: `bold`,
-              px: 2,
-              py: 1,
-              mb: 2
+              alignItems: `center`,
+              justifyContent: `center`,
+              flex: `0 0 auto`,
+              width: 40,
+              height: 40,
+              bg: `alpha`,
+              color: `white`,
+              borderRadius: `50%`,
+              fontWeight: `bold`
             }}
           >
-            Öne çıkan
-          </Text>
+            {step}
+          </Flex>
         )}
-        <Heading
-          as='h3'
+        <Grid
           sx={{
-            color: `heading`,
-            fontSize: [3, 4],
-            lineHeight: 1.25,
-            m: 0
+            flex: 1,
+            minWidth: 0,
+            gridTemplateColumns: image
+              ? [
+                  `minmax(0, 1fr) 72px`,
+                  `minmax(0, 1fr) 80px`,
+                  `minmax(0, 1fr) 88px`
+                ]
+              : `minmax(0, 1fr)`,
+            columnGap: [2, 3],
+            alignItems: `start`
           }}
         >
-          <Link
-            as={GatsbyLink}
-            to={article.slug}
-            onClick={onActivate}
-            sx={{
-              color: `inherit`,
-              textDecoration: `none`,
-              '&::after': {
-                content: `""`,
-                position: `absolute`,
-                inset: 0
-              },
-              ...focusStyle
-            }}
-          >
-            {article.title}
-          </Link>
-        </Heading>
-        <Text
-          as='p'
-          sx={{
-            color: `text`,
-            fontSize: [1, 2],
-            lineHeight: 1.6,
-            mt: 2,
-            mb: 0
-          }}
-        >
-          {summary || article.excerpt}
-        </Text>
-        <ArticleMeta article={article} />
-      </Box>
-    </Flex>
-  </Box>
-)
+          <Box sx={{ minWidth: 0, gridColumn: image ? `1 / -1` : `auto` }}>
+            {featured && (
+              <Text
+                as='span'
+                sx={{
+                  display: `inline-block`,
+                  bg: `alphaLighter`,
+                  color: `alphaDarker`,
+                  borderRadius: `999px`,
+                  fontSize: 0,
+                  fontWeight: `bold`,
+                  px: 2,
+                  py: 1,
+                  mb: 2
+                }}
+              >
+                Öne çıkan
+              </Text>
+            )}
+            <Heading
+              as='h3'
+              sx={{
+                color: `heading`,
+                fontSize: [3, 4],
+                lineHeight: 1.25,
+                m: 0
+              }}
+            >
+              <Link
+                as={GatsbyLink}
+                to={article.slug}
+                onClick={onActivate}
+                sx={{
+                  color: `inherit`,
+                  textDecoration: `none`,
+                  '&::after': {
+                    content: `""`,
+                    position: `absolute`,
+                    inset: 0
+                  },
+                  ...focusStyle
+                }}
+              >
+                {article.title}
+              </Link>
+            </Heading>
+          </Box>
+          <Box sx={{ minWidth: 0 }}>
+            <Text
+              as='p'
+              sx={{
+                color: `text`,
+                fontSize: [1, 2],
+                lineHeight: 1.6,
+                mt: 2,
+                mb: 0
+              }}
+            >
+              {summary || article.excerpt}
+            </Text>
+            <ArticleMeta article={article} />
+          </Box>
+          {image && (
+            <Box
+              data-guide-thumbnail
+              aria-hidden='true'
+              sx={{
+                width: [72, 80, 88],
+                height: [54, 60, 66],
+                mt: 2,
+                overflow: `hidden`,
+                borderRadius: `10px`,
+                bg: `omegaLighter`,
+                pointerEvents: `none`,
+                '& .gatsby-image-wrapper': {
+                  width: `100%`,
+                  height: `100%`
+                }
+              }}
+            >
+              <Img
+                image={image}
+                alt=''
+                loading='lazy'
+                style={{ width: `100%`, height: `100%` }}
+                imgStyle={{ objectFit: `cover` }}
+              />
+            </Box>
+          )}
+        </Grid>
+      </Flex>
+    </Box>
+  )
+}
 
 const TopicSection = ({ section, articles, featuredSlugs, trackLink }) => (
   <Box
@@ -257,6 +317,10 @@ const TopicSection = ({ section, articles, featuredSlugs, trackLink }) => (
             key={article.id}
             article={article}
             featured={featuredSlugs.has(policy.articleKey(article.slug))}
+            withImage={
+              campingGuide.imageSectionIds.includes(section.id) ||
+              featuredSlugs.has(policy.articleKey(article.slug))
+            }
             onActivate={trackLink(section.id, article.slug)}
           />
         ))}
@@ -536,6 +600,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
               key={item.article.id}
               article={item.article}
               featured={featuredSlugs.has(item.slug)}
+              withImage={featuredSlugs.has(item.slug)}
               onActivate={trackLink('baslangic', item.article.slug)}
               summary={item.summary}
               step={index + 1}

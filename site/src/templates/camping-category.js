@@ -95,6 +95,7 @@ export const pageQuery = graphql`
         tags {
           name
         }
+        ...ArticleThumbnailCard
       }
     }
     latestArticles: allArticle(

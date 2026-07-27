@@ -63,6 +63,13 @@ test('camping guide config resolves to unique, published articles', () => {
 
   assert.equal(uniqueSlugs.size, configuredSlugs.length)
   assert.equal(new Set(sectionIds).size, sectionIds.length)
+  assert.deepEqual(campingGuide.imageSectionIds, ['ekipman', 'kamp-yerleri'])
+  campingGuide.imageSectionIds.forEach(sectionId => {
+    assert.ok(
+      sectionIds.includes(sectionId),
+      `Image section is not displayed: ${sectionId}`
+    )
+  })
 
   configuredSlugs.forEach(slug => {
     const article = articleBySlug.get(slug)

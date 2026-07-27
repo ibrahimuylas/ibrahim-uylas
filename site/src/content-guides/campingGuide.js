@@ -94,7 +94,8 @@ const campingGuide = {
     'uyku-tulumu-nasil-kullanilir',
     'r-degeri-nedir',
     'guvenli-kamp-atesi-icin-en-iyi-10-ipucu'
-  ]
+  ],
+  imageSectionIds: ['ekipman', 'kamp-yerleri']
 }
 
 module.exports = campingGuide
