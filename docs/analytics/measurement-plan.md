@@ -15,18 +15,19 @@ The implementation should answer four questions:
 
 ## Events
 
-| Event                     | Source                         | Parameters                                   | Key event |
-| ------------------------- | ------------------------------ | -------------------------------------------- | --------- |
-| `page_view`               | GA4/Gatsby                     | GA4 defaults                                 | No        |
-| `user_engagement`         | GA4 enhanced measurement       | GA4 defaults                                 | No        |
-| `scroll`                  | GA4 enhanced measurement       | GA4 defaults                                 | No        |
-| `click`                   | GA4 enhanced measurement       | GA4 defaults                                 | No        |
-| `file_download`           | GA4 enhanced measurement       | GA4 defaults                                 | No        |
-| `related_article_click`   | Related-post section           | `link_url`, `source_path`                    | No        |
-| `newsletter_signup`       | Successful newsletter function | `form_name`, `page_path`                     | Yes       |
-| `instagram_profile_click` | Homepage Instagram profile CTA | `source_path`                                | No        |
-| `instagram_message_click` | Homepage Instagram message CTA | `source_path`                                | No        |
-| `instagram_post_click`    | Homepage Instagram post tile   | `source_path`, `post_position`, `media_type` | No        |
+| Event                     | Source                         | Parameters                                     | Key event |
+| ------------------------- | ------------------------------ | ---------------------------------------------- | --------- |
+| `page_view`               | GA4/Gatsby                     | GA4 defaults                                   | No        |
+| `user_engagement`         | GA4 enhanced measurement       | GA4 defaults                                   | No        |
+| `scroll`                  | GA4 enhanced measurement       | GA4 defaults                                   | No        |
+| `click`                   | GA4 enhanced measurement       | GA4 defaults                                   | No        |
+| `file_download`           | GA4 enhanced measurement       | GA4 defaults                                   | No        |
+| `related_article_click`   | Related-post section           | `link_url`, `source_path`                      | No        |
+| `category_hub_click`      | Category guide article links   | `hub`, `section_id`, `link_url`, `source_path` | No        |
+| `newsletter_signup`       | Successful newsletter function | `form_name`, `page_path`                       | Yes       |
+| `instagram_profile_click` | Homepage Instagram profile CTA | `source_path`                                  | No        |
+| `instagram_message_click` | Homepage Instagram message CTA | `source_path`                                  | No        |
+| `instagram_post_click`    | Homepage Instagram post tile   | `source_path`, `post_position`, `media_type`   | No        |
 
 `contact_submit` remains reserved for a future working contact form. The current
 contact form is a disabled demonstration and must not emit a successful outcome.
@@ -37,6 +38,8 @@ contact form is a disabled demonstration and must not emit a successful outcome.
   text to GA4.
 - URL parameters must contain only public page paths or public destination URLs.
 - Event parameters describe the UI interaction, not the visitor.
+- Category-guide events contain only the public hub name, section identifier,
+  destination path, and source path.
 - Instagram events must not include captions, visitor identifiers or
   attributes, access-token data, image URLs, permalinks, or profile data.
   `post_position` is the one-based displayed position and `media_type` is only
@@ -51,19 +54,21 @@ For every deployment:
 
 1. Confirm one `page_view` per route in GA4 DebugView or Realtime.
 2. Follow a related-post link and confirm one `related_article_click`.
-3. Complete a test newsletter subscription and confirm one
+3. Follow one Kampçılık guide link and confirm one `category_hub_click` with
+   only `hub`, `section_id`, `link_url`, and `source_path`.
+4. Complete a test newsletter subscription and confirm one
    `newsletter_signup` without personal information in its parameters.
-4. Confirm GA4 enhanced measurement supplies engagement, scroll, outbound-click,
+5. Confirm GA4 enhanced measurement supplies engagement, scroll, outbound-click,
    and download events where applicable.
-5. On the deployed homepage, enable GA4 DebugView for the test device. Activate
+6. On the deployed homepage, enable GA4 DebugView for the test device. Activate
    `Takip et`, `Mesaj at`, and one post once each. Confirm exactly one
    `instagram_profile_click`, one `instagram_message_click`, and one
    `instagram_post_click`.
-6. In each DebugView event, confirm `source_path` is the public page path.
+7. In each DebugView event, confirm `source_path` is the public page path.
    Confirm only the post event also has a one-based `post_position` and a
    normalized `media_type`; verify that no caption, visitor, profile, URL, or
    token data is present.
-7. Check that development and preview traffic is excluded from reporting when
+8. Check that development and preview traffic is excluded from reporting when
    validating production trends.
 
 ## Initial reporting baseline

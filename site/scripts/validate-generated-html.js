@@ -5,6 +5,12 @@ const publicDirectory = path.resolve(__dirname, '..', 'public')
 const invalidParagraphChildren = /<(?:div|pre)\b/i
 const paragraph = /<p\b[^>]*>[\s\S]*?<\/p>/gi
 const homepagePath = path.join(publicDirectory, 'index.html')
+const campingGuidePath = path.join(
+  publicDirectory,
+  'category',
+  'kampcilik',
+  'index.html'
+)
 
 const findHtmlFiles = directory =>
   fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
@@ -76,5 +82,55 @@ if (!fs.existsSync(homepagePath)) {
     process.exitCode = 1
   } else {
     console.log('Generated homepage Instagram SSR contract is valid.')
+  }
+}
+
+if (!fs.existsSync(campingGuidePath)) {
+  console.error('Generated camping guide HTML is missing.')
+  process.exitCode = 1
+} else {
+  const campingGuide = fs.readFileSync(campingGuidePath, 'utf8')
+  const requiredCampingGuideContent = [
+    'Kampçılık Rehberi',
+    'İlk kampını adım adım planla',
+    'Uyku sistemi ve sıcak kalmak',
+    'Güvenlik ve kamp ateşi',
+    'Ekipman seçimi',
+    'Kamp yerleri ve rotalar',
+    'Terimler, kitaplar ve ilham',
+    'Tüm kampçılık içerikleri',
+    'CollectionPage',
+    'ItemList',
+    'rel="canonical" href="https://www.ibrahimuylas.com/category/kampcilik/"',
+    'href="/buff-nedir-ne-ise-yarar/"',
+    'href="/cliff-jacobson-ile-kampcilik/"',
+    'href="/dogada-kamp-yapmak-guvenli-midir/"',
+    'href="/gtx-ayakkabi-ne-demek/"',
+    'href="/guvenli-kamp-atesi-icin-en-iyi-10-ipucu/"',
+    'href="/iki-kisilik-uyku-tulumu-hakkinda/"',
+    'href="/kamp-hayatina-bulasmak-ister-misiniz/"',
+    'href="/outdoor-ne-demek/"',
+    'href="/r-degeri-nedir/"',
+    'href="/uyku-tulumu-alirken-nelere-dikkat-edilmelidir/"',
+    'href="/uyku-tulumu-nasil-kullanilir/"',
+    'href="/uyku-tulumu-yetersiz-kalirsa-ne-yapilmalidir/"',
+    'href="/carsak-ne-demek/"'
+  ]
+  const missingCampingGuideContent = requiredCampingGuideContent.filter(
+    value => !campingGuide.includes(value)
+  )
+  const h1Count = (campingGuide.match(/<h1\b/gi) || []).length
+
+  if (missingCampingGuideContent.length || h1Count !== 1) {
+    console.error('Generated camping guide SSR contract is invalid:')
+    missingCampingGuideContent.forEach(value =>
+      console.error(`- Missing: ${value}`)
+    )
+    if (h1Count !== 1) {
+      console.error(`- Expected one h1, found ${h1Count}`)
+    }
+    process.exitCode = 1
+  } else {
+    console.log('Generated camping guide SSR contract is valid.')
   }
 }
