@@ -119,6 +119,157 @@ final result: passed
 
 ---
 
+# İletişim Formu Türkçe Doğrulama ve Footer — 2026-07-28
+
+## Kanıtlar
+
+- Türkçe doğrulama görünümü:
+  `/Users/uylas/.codex/visualizations/2026/07/28/019fa7e6-f296-73e3-aa35-fb8a1116dd0c/contact-page/contact-validation-tr.png`
+- Gatsby imzası kaldırılmış mobil footer:
+  `/Users/uylas/.codex/visualizations/2026/07/28/019fa7e6-f296-73e3-aa35-fb8a1116dd0c/contact-page/contact-footer-without-gatsby.png`
+- Test viewport: 390 × 844.
+
+## Doğrulama sonuçları
+
+- Boş ad: `Lütfen adını yaz.`
+- Boş e-posta: `Lütfen e-posta adresini yaz.`
+- Geçersiz e-posta biçimi: `Lütfen geçerli bir e-posta adresi yaz.`
+- Seçilmemiş konu: `Lütfen bir konu seç.`
+- Boş mesaj: `Lütfen mesajını yaz.`
+- Kısa mesaj: `Mesajın en az 10 karakter olmalı.`
+- Footer erişilebilirlik ağacında ve görünür metinde `Powered By Gatsby` yoktur;
+  `gatsbyjs.org` footer bağlantı sayısı sıfırdır.
+- Temiz Gatsby üretim derlemesi geçti. Kök test paketi 54/54 geçti.
+- Mobil footer’da yatay taşma ve tarayıcı konsolunda yeni hata veya uyarı yoktur.
+
+Eyleme dönük P0, P1 veya P2 bulgu kalmadı.
+
+final result: passed
+
+---
+
+# İletişim Sayfası Yerleşim Sıkılaştırması — 2026-07-28
+
+## Kanıtlar
+
+- Önceki/yeni masaüstü karşılaştırması:
+  `/Users/uylas/.codex/visualizations/2026/07/28/019fa7e6-f296-73e3-aa35-fb8a1116dd0c/contact-page/contact-spacing-comparison.png`
+- Yeni masaüstü görünüm:
+  `/Users/uylas/.codex/visualizations/2026/07/28/019fa7e6-f296-73e3-aa35-fb8a1116dd0c/contact-page/contact-desktop-revised.png`
+- Yeni mobil görünüm:
+  `/Users/uylas/.codex/visualizations/2026/07/28/019fa7e6-f296-73e3-aa35-fb8a1116dd0c/contact-page/contact-mobile-revised.png`
+- Masaüstü CSS viewport: 1440 × 1000.
+- Mobil CSS viewport: 390 × 844.
+
+## Sonuçlar
+
+- “Başka yollar da var” kartı, görünür e-posta metni ve tüm `mailto:`
+  bağlantıları kaldırıldı.
+- Masaüstü başlık 651 piksel genişliğe açıldı ve üç satırdan iki satıra indi.
+- Formun masaüstü başlangıcı 524 piksele, Instagram başlangıcı 1135 piksele
+  çekildi. Belge yüksekliği 2468 pikselden 1942 piksele düştü.
+- Mobilde başlık 348 piksel genişliğinde iki satırdır; form 527 pikselde,
+  Instagram 1154 pikselde başlar. Belge yüksekliği 1930 pikseldir.
+- Form kartı 529 piksele sıkılaştırıldı; alan ve buton dokunma hedefleri
+  korunurken textarea 160 piksele indirildi.
+- Açık ve karanlık temada yatay taşma yoktur. Tarayıcı konsolunda yeni hata veya
+  uyarı görülmedi.
+
+Önceki/yeni birleşik karşılaştırma; üst boşluğun, ikinci bölüm boşluğunun ve
+form içi boşlukların azaldığını, başlığın sağa doğru genişlediğini ve formun ilk
+ekranda daha belirgin hale geldiğini doğruluyor. Eyleme dönük P0, P1 veya P2
+bulgu kalmadı.
+
+final result: passed
+
+---
+
+# İletişim Sayfası Yeniden Tasarımı — 2026-07-28
+
+## Karşılaştırma hedefi ve kanıtlar
+
+- Kaynak görsel:
+  `/Users/uylas/Desktop/Screenshot 2026-07-28 at 09.44.38.png`
+- Masaüstü uygulama:
+  `/Users/uylas/.codex/visualizations/2026/07/28/019fa7e6-f296-73e3-aa35-fb8a1116dd0c/contact-page/contact-desktop-viewport-final.png`
+- Birleşik eski/yeni karşılaştırma:
+  `/Users/uylas/.codex/visualizations/2026/07/28/019fa7e6-f296-73e3-aa35-fb8a1116dd0c/contact-page/contact-comparison.png`
+- Masaüstü form odak görünümü:
+  `/Users/uylas/.codex/visualizations/2026/07/28/019fa7e6-f296-73e3-aa35-fb8a1116dd0c/contact-page/contact-desktop-form-final.png`
+- Mobil üst alan:
+  `/Users/uylas/.codex/visualizations/2026/07/28/019fa7e6-f296-73e3-aa35-fb8a1116dd0c/contact-page/contact-mobile-viewport.png`
+- Mobil form:
+  `/Users/uylas/.codex/visualizations/2026/07/28/019fa7e6-f296-73e3-aa35-fb8a1116dd0c/contact-page/contact-mobile-form.png`
+- Mobil karanlık tema:
+  `/Users/uylas/.codex/visualizations/2026/07/28/019fa7e6-f296-73e3-aa35-fb8a1116dd0c/contact-page/contact-mobile-dark.png`
+- Kaynak piksel boyutu: 2390 × 2970.
+- Masaüstü CSS viewport: 1440 × 1000; tarayıcı görüntüsü: 1425 × 990.
+- Mobil CSS viewport: 390 × 844; tarayıcı görüntüsü: 390 × 844.
+- Yoğunluk normalizasyonu: kaynak ve masaüstü uygulama üst alanları birleşik
+  karşılaştırmada eşit 700 piksel genişliğe indirildi.
+- Durum: açık tema kaynak karşılaştırması; açık/karanlık tema ve form
+  etkileşimleri ayrıca kontrol edildi.
+
+Kaynak görsel mevcut sayfanın başlangıç durumudur; yeniden tasarım birebir
+kopya değildir. Karşılaştırma, talep edilen form ve Instagram taşımasının
+hiyerarşi, okunabilirlik ve görsel bütünlük üzerindeki etkisini değerlendirir.
+
+## Görsel ve işlevsel bulgular
+
+- Tipografi: yeni DM Serif Display başlıkları kişisel/editorial tonu güçlendirir;
+  alan etiketleri ve gövde metni sitenin Inter sistemini korur. Mobil başlık
+  40,8 piksel ve kontrollü üç satırdır.
+- Yerleşim ve ritim: masaüstü üst alanı ana mesaj ve alternatif iletişim kartı
+  olarak ikiye ayrılır; form açıklaması ve form ikinci dengeli gridde yer alır.
+  Mobilde tüm bölümler tek kolona iner ve yatay taşma oluşmaz.
+- Renk ve tokenlar: yüzeyler, sınırlar, gölgeler, odak halkaları ve durum
+  mesajları mevcut Theme UI tokenlarını kullanır. Açık ve karanlık temada metin
+  ve alan kontrastı korunur.
+- Görsel varlıklar: mevcut logo, portre ve Instagram bileşeni yeniden
+  kullanıldı; kaynak marka varlıkları yerine yaklaşık çizim veya yer tutucu
+  eklenmedi.
+- Metin ve içerik: doğrudan e-posta ve Instagram yolları korunurken yanıt süresi,
+  veri kullanım notu ve rota soruları için faydalı bağlam önerisi eklendi.
+- Form: ad, e-posta, konu ve mesaj alanları zorunludur; mesaj için minimum 10
+  karakter, Netlify honeypot alanı, gönderim kilidi ve başarı/hata durumları
+  vardır. Mobilde alanlar ve buton 52 piksel yüksekliğinde, tam genişliktedir.
+- Instagram vitrini `/` rotasından kaldırılıp `/iletisim/` rotasına taşındı.
+
+## Karşılaştırma geçmişi
+
+### İlk geçiş
+
+- [P2] Masaüstü form gönderme metni dar buton genişliğinde iki satıra
+  kırılıyordu.
+
+Düzeltme: butona `white-space: nowrap` eklendi. Son ölçümde buton 192 × 52
+piksel ve metin tek satırdır.
+
+### Son geçiş
+
+Birleşik eski/yeni karşılaştırma, yeni üst alanın daha belirgin bir kişisel
+mesaj, alternatif iletişim yolları ve doğrudan form başlangıcı sunduğunu
+gösteriyor. Masaüstü form odak görünümü ile mobil açık/karanlık ekranlarda
+eyleme dönük P0, P1 veya P2 bulgu kalmadı.
+
+## Doğrulama
+
+- Kök `npm test`: geçti, 53/53.
+- Prettier ve `git diff --check`: geçti.
+- Gatsby üretim derlemesi: geçti, 332 sayfa.
+- Üretilen `/iletisim/` HTML’inde `iletisim` adlı form, `data-netlify="true"`,
+  `form-name=iletisim` ve `bot-field` honeypot sözleşmesi doğrulandı.
+- Tarayıcıda ad, e-posta, konu ve mesaj alanları dolduruldu; statik Gatsby
+  sunucusunda beklenen Netlify uç noktası bulunmadığı için kontrollü hata durumu
+  gösterildi. Üretim Netlify gönderimi yalnızca deploy sonrasında doğrulanabilir.
+- Mobil ve masaüstünde belge genişliği viewport genişliğini aşmadı.
+- Açık ve karanlık tema kontrol edildi; tarayıcı konsolunda hata veya uyarı
+  görülmedi.
+
+final result: passed
+
+---
+
 # Camping Guide Equipment Editorial Grid Design QA — 2026-07-27
 
 ## Comparison target
@@ -959,5 +1110,128 @@ No actionable P0, P1, or P2 findings remain.
 - Prettier and `git diff --check`: passed.
 - Gatsby production build: passed.
 - Generated HTML validation: passed, including the camping guide SSR contract.
+
+final result: passed
+
+---
+
+# Turkish Blog Search Design QA — 2026-07-28
+
+## Evidence
+
+- 767 px light trigger:
+  `/Users/uylas/.codex/visualizations/2026/07/28/blog-search-qa/trigger-767-light.png`
+- 768 px light trigger:
+  `/Users/uylas/.codex/visualizations/2026/07/28/blog-search-qa/trigger-768-light.png`
+- 390 px light results:
+  `/Users/uylas/.codex/visualizations/2026/07/28/blog-search-qa/search-390-light.png`
+- 390 px dark results:
+  `/Users/uylas/.codex/visualizations/2026/07/28/blog-search-qa/search-390-dark.png`
+- 1440 px dark results:
+  `/Users/uylas/.codex/visualizations/2026/07/28/blog-search-qa/search-1440-dark.png`
+- Tested CSS viewports: 390, 640, 767, 768, 1024, and 1440 px, each in
+  light mode and after explicitly activating the site's dark mode.
+
+## Responsive and visual review
+
+- Through 767 px the header exposes one 48 × 48 px icon trigger. At 768 px it
+  switches to one 206.4 × 48 px field-shaped trigger; at 1024 and 1440 px it is
+  288 × 48 px. The close control remains 48 × 48 px.
+- Document client and scroll widths matched at every width in both modes. The
+  dialog, status, cards, categories, excerpts, highlights, and pagination stay
+  readable without horizontal overflow.
+- Light and dark surfaces, borders, focus outlines, subdued metadata, and mark
+  highlights remain legible. The desktop dialog stays visually above the
+  blurred page; the mobile dialog uses the full viewport without clipping its
+  internal scroll area.
+
+## Accessibility and interaction
+
+- The accessibility tree exposes one modal dialog named `Yazılarda ara`, a
+  level-two heading, labelled searchbox `Arama`, close button
+  `Aramayı kapat`, polite status, result list with local links and category
+  paragraphs, highlighted marks, and `Daha fazla göster`.
+- Activation passed with native pointer, Enter, Space, and a touch-enabled
+  390 px context. Focus moves to the searchbox. Shift+Tab from the input moves
+  to close and Tab returns to the input, proving focus containment.
+- Escape, backdrop, close, result navigation, Gatsby route transition, and the
+  767/768 boundary change remove the dialog and portal. Ordinary dismissal
+  returns focus; forced cleanup does not. Every path restored absent raw
+  `html`/`body` style attributes, absent inert state, and the observed
+  240-pixel scroll position exactly.
+
+## Search, network, and privacy
+
+- The production homepage made zero `/pagefind/` requests before activation.
+  Activation loaded the browser module and entry metadata once; later openings
+  reused the successful module. Missing-module recovery requested the canonical
+  URL once and then the bounded `?retry=1` URL.
+- One character produced the minimum-length guidance and no query. A valid
+  query still showed loading at 200 ms and completed after 424 ms, consistent
+  with the 300 ms debounce plus search/detail work.
+- `uyku tulumu`, `Likya`, and `çadır` returned 20, 42, and 159 results. Exact
+  title matches led all three rankings, categories were present, highlights
+  were mark-only, and the first 10 cards expanded in stable ten-item pages by
+  keyboard and pointer.
+- A filter-only Pagefind runtime inventory returned exactly 171 URLs. None of
+  the three private routes, homepage, category pages, or contact routes were
+  present.
+- A `gtag` spy received one normalized `search` event per term per opening and
+  one native `search_result_click`, with exactly the approved fields and
+  one-based rank. With `gtag` absent, search and result navigation completed
+  without a page error.
+- Missing-module and rejected-query fixtures showed the contained unavailable
+  state and preserved cleanup/navigation. The served homepage's only 404 was
+  the existing `/.netlify/functions/instagram-feed` request because a static
+  Gatsby server does not execute Netlify functions; it is unrelated to search.
+
+## Outcome
+
+No feature-attributable P0, P1, or P2 defect remains. Production deployment
+network smoke and GA4 DebugView verification were not performed locally and
+remain pending site-owner actions.
+
+final result: passed
+
+## Responsive drawer follow-up — 2026-07-28
+
+The approved follow-up keeps the full-screen search surface below 768 px and
+uses a full-viewport-height right drawer at 768 px and wider. The drawer width
+scales between the tablet and desktop layouts; its heading, input, and status
+remain fixed while only the result list scrolls.
+
+- At 390 × 844 px the surface measured exactly 390 × 844 px.
+- At 768 × 1024 px the right drawer measured 456 × 1024 px.
+- At 1440 × 900 px the right drawer measured 604.8 × 900 px.
+- Before and after 159 `çadır` results loaded, the outer drawer retained the
+  same geometry. The result viewport changed to 2,773 px of scroll content
+  inside a 679 px visible region at the tablet size.
+- Document client and scroll widths remained equal at all three sizes. Focus,
+  background lock, the 300 ms search debounce, ten-result initial page, safe
+  highlights, and the mobile full-screen behavior remained unchanged.
+
+final result: passed
+
+---
+
+# Contact page layout follow-up — 2026-07-28
+
+## Changes reviewed
+
+- Expanded the contact introduction and form to the full 1,076 px content width.
+- Removed the secondary “Mesaj bırak / Sözü sana bırakayım” introduction.
+- Kept the main heading and supporting sentence on one line at the 1,280 px
+  desktop viewport while preserving natural wrapping below the desktop
+  breakpoint.
+- Updated the failed-submission guidance with the direct e-mail address.
+
+## Browser verification
+
+- The heading and supporting sentence each measured one rendered line.
+- The form and its parent both measured 1,076 px.
+- The removed copy was absent and the document had no horizontal overflow.
+- A local form submission produced exactly:
+  `Mesaj gönderilemedi. Lütfen tekrar dene veya doğrudan
+  ibrahim@uylas.net'e e-posta gönder.`
 
 final result: passed
