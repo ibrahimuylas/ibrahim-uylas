@@ -148,7 +148,7 @@ const InstagramShowcase = () => {
             m: 0
           }}
         >
-          Yolda beni takip et
+          Yoldaki hikâyeleri kaçırma
         </Heading>
         <ThemeImage
           src={portrait}
