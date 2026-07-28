@@ -32,6 +32,32 @@ export const query = graphql`
       }
     }
   }
+  fragment ArticleThumbnailNatural on Article {
+    thumbnail {
+      __typename
+      ... on ImageSharp {
+        ImageSharp_natural: gatsbyImageData(
+          width: 380
+          outputPixelDensities: [0.5, 1]
+          quality: $imageQuality
+        )
+      }
+      ... on ContentfulAsset {
+        ContentfulAsset_natural: gatsbyImageData(
+          width: 380
+          formats: [JPG, WEBP]
+          quality: $imageQuality
+          resizingBehavior: THUMB
+        )
+      }
+      ... on SanityImageAsset {
+        SanityImageAsset_natural: gatsbyImageData(
+          width: 380
+          outputPixelDensities: [0.5, 1]
+        )
+      }
+    }
+  }
   fragment ArticleThumbnailHero on Article {
     thumbnail {
       __typename

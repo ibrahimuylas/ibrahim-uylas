@@ -95,6 +95,7 @@ export const pageQuery = graphql`
           name
         }
         ...ArticleThumbnailCard
+        ...ArticleThumbnailNatural
       }
     }
     latestArticles: allArticle(
@@ -109,6 +110,7 @@ export const pageQuery = graphql`
       nodes {
         ...ArticlePreview
         ...ArticleThumbnailCard
+        ...ArticleThumbnailNatural
       }
     }
   }

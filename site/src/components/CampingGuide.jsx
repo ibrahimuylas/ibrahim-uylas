@@ -120,9 +120,11 @@ const ArticleLinkCard = ({
   step,
   withImage
 }) => {
-  const image = withImage
-    ? getImageVariant(article.thumbnail, 'vertical')
-    : null
+  const image = withImage ? getImageVariant(article.thumbnail, 'natural') : null
+  const imageAspectRatio =
+    image && image.width && image.height
+      ? `${image.width} / ${image.height}`
+      : null
 
   return (
     <Box
@@ -154,7 +156,9 @@ const ArticleLinkCard = ({
               ? [`none`, `none`, `none`, `block`]
               : `block`,
             width: `100%`,
-            height: editorial ? [190, 200, 210] : [160, 180],
+            ...(imageAspectRatio
+              ? { aspectRatio: imageAspectRatio }
+              : { height: editorial ? [190, 200, 210] : [160, 180] }),
             overflow: `hidden`,
             bg: `omegaLighter`,
             pointerEvents: `none`,
@@ -1300,7 +1304,11 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
               }}
             >
               {visibleArticles.map(article => {
-                const image = getImageVariant(article.thumbnail, 'vertical')
+                const image = getImageVariant(article.thumbnail, 'natural')
+                const imageAspectRatio =
+                  image && image.width && image.height
+                    ? `${image.width} / ${image.height}`
+                    : null
 
                 return (
                   <Box as='li' key={article.id} sx={{ minWidth: 0 }}>
@@ -1336,7 +1344,9 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
                       {image && (
                         <Box
                           sx={{
-                            height: [190, 210, 220],
+                            ...(imageAspectRatio
+                              ? { aspectRatio: imageAspectRatio }
+                              : { height: [190, 210, 220] }),
                             overflow: `hidden`,
                             bg: `omegaLighter`,
                             '& .gatsby-image-wrapper': {
