@@ -33,7 +33,8 @@ Eksik ama engelleyici olmayan ayrıntıları makul biçimde belirle. Kişisel de
 5. İlk bölümde okuyucunun sorusuna hızlı cevap ver; kişisel hikâyeyi yalnızca kullanıcı sağladıysa anlatıya yedir.
 6. Teknik bilgiyi günlük kullanım senaryolarına çevir. Kesin olmayan değerleri mutlak kural gibi sunma.
 7. Yalnızca repoda gerçekten bulunan ve metne doğal oturan 2-4 iç bağlantı öner veya ekle. Yayımlanmamış yazılara bağlantı verme.
-8. Son bölümde okuyucunun kendi deneyimini somut ayrıntılarla paylaşmasını isteyen tek bir doğal yorum çağrısı kullan.
+8. Araştırma kaynaklarını yalnızca bilgileri doğrulamak için kullan. Kullanıcı özellikle istemedikçe yazı gövdesine kaynak listesi, dipnot, atıf cümlesi veya kaynak niteliğinde dış bağlantı ekleme.
+9. Son bölümde okuyucunun kendi deneyimini somut ayrıntılarla paylaşmasını isteyen tek bir doğal yorum çağrısı kullan.
 
 ## Görselleri planla
 
@@ -63,6 +64,7 @@ Eksik ama engelleyici olmayan ayrıntıları makul biçimde belirle. Kişisel de
 - Kullanıcı repo değişikliği istemediyse dosya oluşturma veya değiştirme; tek bir kopyalanabilir Markdown paketinde teslim et.
 - Kullanıcı yalnızca ilk taslağı istiyorsa banner üretme veya görselleri dönüştürme. Banner ve WebP işlemlerini görseller seçildikten sonraki aşamaya bırak.
 - Kaynak yazıdan uzun veya yakın bir çeviri yapma; özgün anlatım kullan.
+- Kullanıcı özellikle istemedikçe araştırma kaynaklarını veya bunlara ait dış bağlantıları teslim paketinde görünür hâle getirme.
 - SEO adına anahtar kelime doldurma, gereksiz SSS bölümü veya sahte uzmanlık ekleme.
 - Kullanıcının sesi ile doğrulanabilir teknik bilgiyi birbirine karıştırma.
 - Teslimden önce tarihleri, sayıları, iç bağlantıları, görsel sayısını ve Markdown yapısını kontrol et.
