@@ -21,7 +21,7 @@ export const PostHead = ({
   const info = (
     <TextList>
       {author && author.slug && (
-        <Text sx={styles.item}>
+        <Text data-pagefind-ignore='index' sx={styles.item}>
           {`Yazan `}
           <Link variant='mute' as={GLink} to={author.slug}>
             <strong>{author.name}</strong>
@@ -29,22 +29,35 @@ export const PostHead = ({
         </Text>
       )}
       {category && category.slug && (
-        <Text sx={styles.item}>
+        <Text data-pagefind-ignore='index' sx={styles.item}>
           {`Kategori `}
           <Link variant='mute' as={GLink} to={category.slug}>
-            <strong>{category.name}</strong>
+            <strong data-pagefind-meta='category'>{category.name}</strong>
           </Link>
         </Text>
       )}
-      {date && <Text sx={styles.item}>{`Yayımlandı: ${date}`}</Text>}
-      {modified && <Text sx={styles.item}>{`Güncellendi: ${modified}`}</Text>}
+      {date && (
+        <Text data-pagefind-ignore='index' sx={styles.item}>
+          {`Yayımlandı: ${date}`}
+        </Text>
+      )}
+      {modified && (
+        <Text data-pagefind-ignore='index' sx={styles.item}>
+          {`Güncellendi: ${modified}`}
+        </Text>
+      )}
       {timeToRead && (
-        <Text sx={{ ...styles.item, color: `error` }}>
+        <Text
+          data-pagefind-ignore='index'
+          sx={{ ...styles.item, color: `error` }}
+        >
           <strong>{timeToRead} dk</strong>
         </Text>
       )}
     </TextList>
   )
 
-  return <PageTitle header={title} running={info} />
+  const heading = <span data-pagefind-meta='title'>{title}</span>
+
+  return <PageTitle header={heading} running={info} />
 }

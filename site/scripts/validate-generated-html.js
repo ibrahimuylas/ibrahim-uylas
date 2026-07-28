@@ -1,5 +1,14 @@
 const fs = require('node:fs')
 const path = require('node:path')
+const {
+  countMatches,
+  decodeHtmlText,
+  extractElement,
+  extractPagefindMeta,
+  removeIgnoredElements,
+  routeToHtmlPath,
+  validatePagefindEntry
+} = require('./pagefind-validation')
 
 const publicDirectory = path.resolve(__dirname, '..', 'public')
 const invalidParagraphChildren = /<(?:div|pre)\b/i
@@ -11,6 +20,8 @@ const campingGuidePath = path.join(
   'kampcilik',
   'index.html'
 )
+const pageDataDirectory = path.join(publicDirectory, 'page-data')
+const pagefindDirectory = path.join(publicDirectory, 'pagefind')
 
 const findHtmlFiles = directory =>
   fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
@@ -18,6 +29,14 @@ const findHtmlFiles = directory =>
 
     if (entry.isDirectory()) return findHtmlFiles(entryPath)
     return entry.name.endsWith('.html') ? [entryPath] : []
+  })
+
+const findPageDataFiles = directory =>
+  fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
+    const entryPath = path.join(directory, entry.name)
+
+    if (entry.isDirectory()) return findPageDataFiles(entryPath)
+    return entry.name === 'page-data.json' ? [entryPath] : []
   })
 
 if (!fs.existsSync(publicDirectory)) {
@@ -133,4 +152,159 @@ if (!fs.existsSync(campingGuidePath)) {
   } else {
     console.log('Generated camping guide SSR contract is valid.')
   }
+}
+
+const pagefindFailures = []
+const articlePages = findPageDataFiles(pageDataDirectory).flatMap(file => {
+  const pageData = JSON.parse(fs.readFileSync(file, 'utf8'))
+  const post = pageData.result?.data?.post
+
+  return post ? [{ route: pageData.path, post }] : []
+})
+const eligibleArticleFiles = new Set()
+
+articlePages.forEach(({ route, post }) => {
+  const articlePath = routeToHtmlPath(publicDirectory, route)
+
+  if (!fs.existsSync(articlePath)) {
+    pagefindFailures.push(`${route}: generated article HTML is missing`)
+    return
+  }
+
+  const html = fs.readFileSync(articlePath, 'utf8')
+  const bodyCount = countMatches(html, /\bdata-pagefind-body(?:=""|(?=[\s>]))/g)
+
+  if (post.private === true) {
+    if (bodyCount !== 0) {
+      pagefindFailures.push(`${route}: private article has a body marker`)
+    }
+    return
+  }
+
+  eligibleArticleFiles.add(articlePath)
+
+  if (bodyCount !== 1) {
+    pagefindFailures.push(
+      `${route}: expected one Pagefind body marker, found ${bodyCount}`
+    )
+  }
+
+  const scope = extractElement(html, 'data-pagefind-body(?:=""|(?=[\\s>]))')
+  const title = extractPagefindMeta(scope || '', 'title')
+  const category = extractPagefindMeta(scope || '', 'category')
+
+  if (title.count !== 1 || title.value !== decodeHtmlText(post.title)) {
+    pagefindFailures.push(`${route}: title metadata does not match page data`)
+  }
+  if (
+    category.count !== 1 ||
+    category.value !== decodeHtmlText(post.category?.name || '')
+  ) {
+    pagefindFailures.push(
+      `${route}: category metadata does not match page data`
+    )
+  }
+  if (!/<html\b[^>]*\blang="tr"/i.test(html)) {
+    pagefindFailures.push(
+      `${route}: generated document language is not Turkish`
+    )
+  }
+  if (!html.includes('data-pagefind-ignore="index"')) {
+    pagefindFailures.push(`${route}: running-head metadata is not ignored`)
+  }
+  if (!html.includes('data-pagefind-ignore="all"')) {
+    pagefindFailures.push(`${route}: article contents are not fully ignored`)
+  }
+
+  const deferredEmbedCount = countMatches(html, /\bdata-deferred-embed=/g)
+  const fullyIgnoredCount = countMatches(html, /\bdata-pagefind-ignore="all"/g)
+
+  if (fullyIgnoredCount < deferredEmbedCount + 1) {
+    pagefindFailures.push(`${route}: a deferred embed is not fully ignored`)
+  }
+
+  const searchableScope = scope && removeIgnoredElements(scope)
+
+  if (searchableScope === null) {
+    pagefindFailures.push(`${route}: Pagefind ignore markup is unbalanced`)
+  } else {
+    const scopedText = decodeHtmlText(scope || '')
+    const searchableText = decodeHtmlText(searchableScope || '')
+    const runningHeadLabels = [
+      `Yazan ${post.author?.name || ''}`.trim(),
+      `Kategori ${post.category?.name || ''}`.trim(),
+      post.date ? `Yayımlandı: ${post.date}` : null,
+      post.modified ? `Güncellendi: ${post.modified}` : null,
+      post.timeToRead ? `${post.timeToRead} dk` : null
+    ].filter(Boolean)
+    const conditionalChromeLabels = [
+      'İçindekiler',
+      'Haritayı yükle',
+      'Videoyu yükle'
+    ]
+    const countText = (text, label) => text.split(label).length - 1
+    const leakedChrome = runningHeadLabels.filter(
+      label => countText(scopedText, label) <= countText(searchableText, label)
+    )
+    leakedChrome.push(
+      ...conditionalChromeLabels.filter(
+        label =>
+          scopedText.includes(label) &&
+          countText(scopedText, label) <= countText(searchableText, label)
+      )
+    )
+
+    if (leakedChrome.length) {
+      pagefindFailures.push(
+        `${route}: repeated chrome remains searchable (${leakedChrome.join(', ')})`
+      )
+    }
+  }
+})
+
+findHtmlFiles(publicDirectory).forEach(file => {
+  const html = fs.readFileSync(file, 'utf8')
+  const isMarked = /\bdata-pagefind-body(?:=""|(?=[\s>]))/.test(html)
+  const shouldBeMarked = eligibleArticleFiles.has(file)
+
+  if (isMarked !== shouldBeMarked) {
+    pagefindFailures.push(
+      `${path.relative(publicDirectory, file)}: Pagefind eligibility mismatch`
+    )
+  }
+})
+
+const pagefindEntryPath = path.join(pagefindDirectory, 'pagefind-entry.json')
+const pagefindArtifactsExist =
+  fs.existsSync(pagefindDirectory) &&
+  fs.existsSync(path.join(pagefindDirectory, 'pagefind.js')) &&
+  fs.existsSync(pagefindEntryPath) &&
+  fs.existsSync(path.join(pagefindDirectory, 'wasm.tr.pagefind')) &&
+  fs
+    .readdirSync(pagefindDirectory)
+    .some(file => /^pagefind\.tr_.+\.pf_meta$/.test(file)) &&
+  fs.existsSync(path.join(pagefindDirectory, 'index')) &&
+  fs
+    .readdirSync(path.join(pagefindDirectory, 'index'))
+    .some(file => /^tr_.+\.pf_index$/.test(file))
+
+if (!pagefindArtifactsExist) {
+  pagefindFailures.push(
+    'Turkish Pagefind runtime or index artifacts are missing'
+  )
+} else {
+  const pagefindEntry = JSON.parse(fs.readFileSync(pagefindEntryPath, 'utf8'))
+  pagefindFailures.push(
+    ...validatePagefindEntry(pagefindEntry, eligibleArticleFiles.size)
+  )
+}
+
+if (pagefindFailures.length) {
+  console.error('Generated Pagefind article contract is invalid:')
+  pagefindFailures.forEach(failure => console.error(`- ${failure}`))
+  process.exitCode = 1
+} else {
+  console.log(
+    `Generated Pagefind article contract is valid (${eligibleArticleFiles.size} eligible, ${articlePages.length - eligibleArticleFiles.size} private).`
+  )
 }

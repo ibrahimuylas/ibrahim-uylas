@@ -15,19 +15,21 @@ The implementation should answer four questions:
 
 ## Events
 
-| Event                     | Source                         | Parameters                                     | Key event |
-| ------------------------- | ------------------------------ | ---------------------------------------------- | --------- |
-| `page_view`               | GA4/Gatsby                     | GA4 defaults                                   | No        |
-| `user_engagement`         | GA4 enhanced measurement       | GA4 defaults                                   | No        |
-| `scroll`                  | GA4 enhanced measurement       | GA4 defaults                                   | No        |
-| `click`                   | GA4 enhanced measurement       | GA4 defaults                                   | No        |
-| `file_download`           | GA4 enhanced measurement       | GA4 defaults                                   | No        |
-| `related_article_click`   | Related-post section           | `link_url`, `source_path`                      | No        |
-| `category_hub_click`      | Category guide article links   | `hub`, `section_id`, `link_url`, `source_path` | No        |
-| `newsletter_signup`       | Successful newsletter function | `form_name`, `page_path`                       | Yes       |
-| `instagram_profile_click` | Homepage Instagram profile CTA | `source_path`                                  | No        |
-| `instagram_message_click` | Homepage Instagram message CTA | `source_path`                                  | No        |
-| `instagram_post_click`    | Homepage Instagram post tile   | `source_path`, `post_position`, `media_type`   | No        |
+| Event                     | Source                         | Parameters                                                                       | Key event |
+| ------------------------- | ------------------------------ | -------------------------------------------------------------------------------- | --------- |
+| `page_view`               | GA4/Gatsby                     | GA4 defaults                                                                     | No        |
+| `user_engagement`         | GA4 enhanced measurement       | GA4 defaults                                                                     | No        |
+| `scroll`                  | GA4 enhanced measurement       | GA4 defaults                                                                     | No        |
+| `click`                   | GA4 enhanced measurement       | GA4 defaults                                                                     | No        |
+| `file_download`           | GA4 enhanced measurement       | GA4 defaults                                                                     | No        |
+| `related_article_click`   | Related-post section           | `link_url`, `source_path`                                                        | No        |
+| `category_hub_click`      | Category guide article links   | `hub`, `section_id`, `link_url`, `source_path`                                   | No        |
+| `newsletter_signup`       | Successful newsletter function | `form_name`, `page_path`                                                         | Yes       |
+| `instagram_profile_click` | Homepage Instagram profile CTA | `source_path`                                                                    | No        |
+| `instagram_message_click` | Homepage Instagram message CTA | `source_path`                                                                    | No        |
+| `instagram_post_click`    | Homepage Instagram post tile   | `source_path`, `post_position`, `media_type`                                     | No        |
+| `search`                  | Completed blog search          | `search_term`, `result_count`, `source_path`                                     | No        |
+| `search_result_click`     | Blog search result link        | `search_term`, `result_url`, `result_position`, `result_category`, `source_path` | No        |
 
 `contact_submit` remains reserved for a future working contact form. The current
 contact form is a disabled demonstration and must not emit a successful outcome.
@@ -44,6 +46,14 @@ contact form is a disabled demonstration and must not emit a successful outcome.
   attributes, access-token data, image URLs, permalinks, or profile data.
   `post_position` is the one-based displayed position and `media_type` is only
   `image`, `carousel`, or `video`.
+- Blog-search identity trims the term, collapses internal whitespace, and uses
+  Turkish locale lowercase. Emit `search` at most once for each normalized term
+  during one dialog opening, after a valid query completes. A new opening
+  starts a new deduplication session.
+- `result_position` is the one-based Pagefind ranking position. Search events
+  may contain only the parameters listed in the table. Never send excerpts,
+  article bodies, result titles, arbitrary result content or metadata, visitor
+  identifiers, or additional parameters.
 - The Mailchimp API key must remain in Netlify and must never be bundled into the
   browser application.
 - The GA4 build plugin must run only when Netlify sets `CONTEXT=production`.
@@ -70,6 +80,20 @@ For every deployment:
    token data is present.
 8. Check that development and preview traffic is excluded from reporting when
    validating production trends.
+9. In production DebugView, open blog search on a known `source_path`, submit
+   `ÇADIR   seçimi` twice, and confirm one `search` event with normalized
+   `search_term` `çadır seçimi`, a non-negative integer `result_count`, and
+   only `source_path` in addition.
+10. Select one result and confirm exactly one `search_result_click` with the
+    normalized `search_term`, root-relative `result_url`, one-based
+    `result_position`, displayed `result_category`, and captured
+    `source_path`. Confirm neither search event contains excerpts, bodies,
+    titles, arbitrary metadata/content, visitor identifiers, or unapproved
+    parameters.
+11. Open search again and confirm the same completed term can emit one new
+    `search` event for the new session. Repeat with `window.gtag` unavailable
+    or blocked and confirm searching and result navigation still work without
+    an exception or queued substitute event.
 
 ## Initial reporting baseline
 

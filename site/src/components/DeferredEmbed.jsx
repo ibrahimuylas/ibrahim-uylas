@@ -70,6 +70,7 @@ const DeferredEmbed = ({ src, provider = 'route', title, width, height }) => {
       ref={containerRef}
       data-deferred-embed={provider}
       data-deferred-src={src}
+      data-pagefind-ignore='all'
       sx={{
         position: `relative`,
         overflow: `hidden`,

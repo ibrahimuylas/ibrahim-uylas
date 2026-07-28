@@ -41,10 +41,16 @@ const Post = ({
         <Main>
           <CardComponent variant='paper-lg'>
             <PostImage {...post} inCardLarge />
-            <PostHead {...post} />
-            <Divider line />
-            <ArticleContents items={post.tableOfContents?.items} />
-            <PostBody {...post} />
+            <div
+              {...(post.private === true ? {} : { 'data-pagefind-body': '' })}
+            >
+              <PostHead {...post} />
+              <Divider line />
+              <div data-pagefind-ignore='all'>
+                <ArticleContents items={post.tableOfContents?.items} />
+              </div>
+              <PostBody {...post} />
+            </div>
             <PostTagsShare {...post} location={props.location} />
             {services.disqus && (
               <DeferredComments
