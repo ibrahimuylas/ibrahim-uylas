@@ -50,7 +50,7 @@
     U+2215, U+feff, U+fffd;
 }
 
-.tent-comparison-table {
+.comparison-table {
   width: 100%;
   margin: 1.5rem 0 2rem;
   overflow-x: auto;
@@ -60,7 +60,7 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.tent-comparison-table table {
+.comparison-table table {
   width: 100%;
   min-width: 42rem;
   margin: 0;
@@ -68,8 +68,8 @@
   table-layout: fixed;
 }
 
-.tent-comparison-table th,
-.tent-comparison-table td {
+.comparison-table th,
+.comparison-table td {
   padding: 0.9rem 1rem;
   text-align: left;
   vertical-align: top;
@@ -77,32 +77,32 @@
   overflow-wrap: anywhere;
 }
 
-.tent-comparison-table th {
+.comparison-table th {
   color: var(--theme-ui-colors-omegaLighter);
   background: var(--theme-ui-colors-omegaDarker);
   font-weight: 700;
 }
 
-.tent-comparison-table th:first-child,
-.tent-comparison-table td:first-child {
+.comparison-table th:first-child,
+.comparison-table td:first-child {
   width: 32%;
   font-weight: 600;
 }
 
-.tent-comparison-table th:not(:first-child),
-.tent-comparison-table td:not(:first-child) {
+.comparison-table th:not(:first-child),
+.comparison-table td:not(:first-child) {
   width: 34%;
 }
 
-.tent-comparison-table tbody tr:nth-child(even) {
+.comparison-table tbody tr:nth-child(even) {
   background: var(--theme-ui-colors-omegaLighter);
 }
 
-.tent-comparison-table tbody tr:not(:last-child) td {
+.comparison-table tbody tr:not(:last-child) td {
   border-bottom: 1px solid var(--theme-ui-colors-omegaLight);
 }
 
-.tent-comparison-table:focus {
+.comparison-table:focus {
   outline: 2px solid var(--theme-ui-colors-alpha);
   outline-offset: 3px;
 }
