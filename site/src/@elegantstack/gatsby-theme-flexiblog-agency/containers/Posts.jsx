@@ -7,7 +7,6 @@ import Categories from '@widgets/Categories'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
 import BannerVertical from '@widgets/BannerVertical'
 import { useBlogCategories } from '@helpers-blog'
-import InstagramShowcase from '../../../components/InstagramShowcase'
 
 const Posts = ({
   data: { posts = {}, featuredPosts = {}, recentPosts = {} },
@@ -181,14 +180,6 @@ const Posts = ({
                   />
                 </Sidebar>
               </Stack>
-            )}
-            {index === 0 && (
-              <>
-                <Divider />
-                <Stack effectProps={{ effect: false }}>
-                  <InstagramShowcase />
-                </Stack>
-              </>
             )}
             {index !== posts.group.length - 1 && <Divider />}
           </React.Fragment>
