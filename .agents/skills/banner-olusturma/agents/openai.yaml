@@ -1,0 +1,4 @@
+interface:
+  display_name: "Banner Oluşturma"
+  short_description: "Kadrajı koruyan blog bannerları hazırla"
+  default_prompt: "Use $banner-olusturma to prepare a blog banner brief with safe responsive cropping and delivery checks."

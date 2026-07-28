@@ -37,6 +37,7 @@ Eksik ama engelleyici olmayan ayrıntıları makul biçimde belirle. Kişisel de
 
 ## Görselleri planla
 
+- Banner üretilecek, düzenlenecek veya kullanıcı fotoğrafından hazırlanacaksa `.agents/skills/banner-olusturma/SKILL.md` talimatlarını da oku ve uygula.
 - Kullanıcının fotoğrafından hazırlanacak 1 banner öner.
 - Yazının uzunluğuna göre 4-5 AI görseli planla.
 - Her görsel için yerleşim, amaç, SEO uyumlu ASCII dosya adı, gerçek içeriği tarif eden alt metin ve gerekiyorsa kısa caption ver.
