@@ -55,7 +55,6 @@ const CampingCategoryPage = ({
           />
         </Main>
       </Stack>
-      <Divider />
     </Layout>
   )
 }

@@ -355,7 +355,7 @@ const EquipmentSection = ({ section, articles, featuredSlugs, trackLink }) => (
     aria-labelledby={`${section.id}-title`}
     sx={{
       scrollMarginTop: `96px`,
-      py: [5, 6],
+      py: [4, 5],
       borderTop: `1px solid`,
       borderColor: `omegaLight`
     }}
@@ -465,7 +465,7 @@ const TopicSection = ({ section, articles, featuredSlugs, trackLink }) =>
       aria-labelledby={`${section.id}-title`}
       sx={{
         scrollMarginTop: `96px`,
-        py: [4, 5],
+        py: [3, 4],
         borderTop: `1px solid`,
         borderColor: `omegaLight`
       }}
@@ -994,7 +994,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
         aria-labelledby='baslangic-title'
         sx={{
           scrollMarginTop: `96px`,
-          pb: [5, 6]
+          pb: [4, 5]
         }}
       >
         <Box sx={{ maxWidth: 760, mb: 4 }}>
@@ -1076,7 +1076,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
         as='section'
         id='yeni-eklenenler'
         aria-labelledby='yeniler-title'
-        sx={{ scrollMarginTop: `96px`, pt: [5, 6], pb: [4, 5] }}
+        sx={{ scrollMarginTop: `96px`, pt: [4, 5], pb: [3, 4] }}
       >
         <Heading
           id='yeniler-title'
@@ -1113,8 +1113,10 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
         aria-labelledby='tum-icerikler-title'
         sx={{
           scrollMarginTop: `96px`,
-          py: [4, 4, 5],
-          my: [4, 5]
+          pt: [3, 4],
+          pb: 0,
+          mt: [3, 4],
+          mb: 0
         }}
       >
         <Grid

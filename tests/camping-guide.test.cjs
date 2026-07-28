@@ -182,6 +182,29 @@ test('terms, books and inspiration section shows four cards', () => {
   assert.ok(termsSection.slugs.includes('hiking-ne-demek'))
 })
 
+test('camping guide uses a compact section rhythm and footer handoff', () => {
+  const campingCategoryTemplate = fs.readFileSync(
+    path.resolve(__dirname, '../site/src/templates/camping-category.js'),
+    'utf8'
+  )
+
+  assert.match(
+    campingGuideComponent,
+    /const EquipmentSection[\s\S]*?py: \[4, 5\]/
+  )
+  assert.match(campingGuideComponent, /const TopicSection[\s\S]*?py: \[3, 4\]/)
+  assert.match(campingGuideComponent, /id='baslangic'[\s\S]*?pb: \[4, 5\]/)
+  assert.match(
+    campingGuideComponent,
+    /id='yeni-eklenenler'[\s\S]*?pt: \[4, 5\],[\s\S]*?pb: \[3, 4\]/
+  )
+  assert.match(
+    campingGuideComponent,
+    /id='tum-icerikler'[\s\S]*?pt: \[3, 4\],[\s\S]*?pb: 0,[\s\S]*?mb: 0/
+  )
+  assert.equal((campingCategoryTemplate.match(/<Divider \/>/g) || []).length, 1)
+})
+
 test('camping guide config resolves to unique, published articles', () => {
   const articleBySlug = new Map(
     articles.map(article => [article.slug, article])
