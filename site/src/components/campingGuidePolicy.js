@@ -56,6 +56,29 @@ const selectGuideArticles = ({ articles = [], curatedSlugs = [] }) => {
   })
 }
 
+const selectRandomArticles = ({
+  articles = [],
+  count = 0,
+  random = Math.random
+}) => {
+  const uniqueArticles = Array.from(
+    new Map(
+      articles
+        .filter(article => articleKey(article?.slug))
+        .map(article => [articleKey(article.slug), article])
+    ).values()
+  )
+
+  for (let index = uniqueArticles.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(random() * (index + 1))
+    const currentArticle = uniqueArticles[index]
+    uniqueArticles[index] = uniqueArticles[randomIndex]
+    uniqueArticles[randomIndex] = currentArticle
+  }
+
+  return uniqueArticles.slice(0, Math.max(0, count))
+}
+
 const createCategoryHubActivation =
   ({ hub, sectionId, linkUrl, sourcePath, track }) =>
   () => {
@@ -84,5 +107,6 @@ module.exports = {
   filterArticles,
   isCampingArticle,
   normalizeSearchText,
+  selectRandomArticles,
   selectGuideArticles
 }

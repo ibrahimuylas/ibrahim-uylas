@@ -7,6 +7,7 @@ const {
   createCategoryHubActivation,
   filterArticles,
   isCampingArticle,
+  selectRandomArticles,
   selectGuideArticles
 } = require('../site/src/components/campingGuidePolicy')
 
@@ -120,7 +121,7 @@ test('new articles section shows only three cards', () => {
   assert.match(campingGuideComponent, /columns=\{\[1, 2, 2, 3\]\}/)
 })
 
-test('all content uses an editorial grid and category navigation', () => {
+test('all content uses an editorial grid and local category filters', () => {
   assert.match(campingGuideComponent, /data-all-content-grid/)
   assert.match(
     campingGuideComponent,
@@ -134,12 +135,51 @@ test('all content uses an editorial grid and category navigation', () => {
     campingGuideComponent,
     /filteredArticles\.slice\(0, visibleArticleCount\)/
   )
-  assert.match(campingGuideComponent, /aria-label='İçerik kategorileri'/)
   assert.match(
     campingGuideComponent,
-    /categoryLinks\.map[\s\S]*to=\{item\.slug\}/
+    /aria-label='İçerikleri kategoriye göre filtrele'/
   )
+  assert.match(
+    campingGuideComponent,
+    /categories\.map[\s\S]*setCategory\(item\)/
+  )
+  assert.match(campingGuideComponent, /color: selected \? `white` : `heading`/)
+  assert.doesNotMatch(campingGuideComponent, /categoryLinks\.map/)
   assert.match(campingGuideComponent, /Daha fazla içerik yükle/)
+})
+
+test('route section keeps Likya Yolu and adds three unique random routes', () => {
+  const routeSection = campingGuide.sections.find(
+    section => section.id === 'kamp-yerleri'
+  )
+  const routeArticles = [
+    { slug: '/rota-a/' },
+    { slug: '/rota-b/' },
+    { slug: '/rota-c/' },
+    { slug: '/rota-d/' },
+    { slug: '/rota-a/' }
+  ]
+  const selectedRoutes = selectRandomArticles({
+    articles: routeArticles,
+    count: routeSection.randomCount,
+    random: () => 0.25
+  })
+
+  assert.deepEqual(routeSection.slugs, ['likya-yolu-rotasi'])
+  assert.equal(routeSection.randomCategory, 'Rotalar')
+  assert.equal(routeSection.randomCount, 3)
+  assert.equal(selectedRoutes.length, 3)
+  assert.equal(new Set(selectedRoutes.map(article => article.slug)).size, 3)
+  assert.match(campingGuideComponent, /setRandomRouteSlugs/)
+})
+
+test('terms, books and inspiration section shows four cards', () => {
+  const termsSection = campingGuide.sections.find(
+    section => section.id === 'terimler'
+  )
+
+  assert.equal(termsSection.slugs.length, 4)
+  assert.ok(termsSection.slugs.includes('hiking-ne-demek'))
 })
 
 test('camping guide config resolves to unique, published articles', () => {

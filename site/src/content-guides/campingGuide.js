@@ -71,7 +71,9 @@ const campingGuide = {
       title: 'Kamp yerleri ve rotalar',
       description:
         'Camping alanlarını, yaylaları ve doğada kamp yapabileceğin rotaları incele.',
-      slugs: ['acelle-yaylasi', 'aktur-camping', 'karaaslan-kamping'],
+      slugs: ['likya-yolu-rotasi'],
+      randomCategory: 'Rotalar',
+      randomCount: 3,
       moreLink: {
         label: 'Tüm rota ve kamp yerlerini gör',
         path: '/category/rotalar/'
@@ -85,7 +87,8 @@ const campingGuide = {
       slugs: [
         'outdoor-ne-demek',
         'carsak-ne-demek',
-        'cliff-jacobson-ile-kampcilik'
+        'cliff-jacobson-ile-kampcilik',
+        'hiking-ne-demek'
       ]
     }
   ],

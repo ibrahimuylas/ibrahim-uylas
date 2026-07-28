@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { GatsbyImage as Img, StaticImage } from 'gatsby-plugin-image'
 import { FaChevronDown, FaRegClock, FaSearch } from 'react-icons/fa'
@@ -547,6 +547,8 @@ const TopicSection = ({ section, articles, featuredSlugs, trackLink }) =>
 
 const CampingGuide = ({ articles = [], latestArticles = [] }) => {
   const [query, setQuery] = useState('')
+  const [category, setCategory] = useState('Tümü')
+  const [randomRouteSlugs, setRandomRouteSlugs] = useState([])
   const [visibleArticleCount, setVisibleArticleCount] = useState(6)
   const visibleLatestArticles = useMemo(
     () => latestArticles.slice(0, 3),
@@ -572,21 +574,49 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
       policy.filterArticles({
         articles: guideArticles,
         query,
-        category: 'Tümü'
+        category
       }),
-    [guideArticles, query]
+    [category, guideArticles, query]
   )
-  const categoryLinks = useMemo(
-    () =>
-      Array.from(
-        new Map(
-          guideArticles
-            .filter(article => article.category?.name && article.category?.slug)
-            .map(article => [article.category.name, article.category])
-        ).values()
-      ).sort((a, b) => a.name.localeCompare(b.name, 'tr-TR')),
+  const categories = useMemo(
+    () => [
+      'Tümü',
+      ...Array.from(
+        new Set(
+          guideArticles.map(article => article.category?.name).filter(Boolean)
+        )
+      ).sort((a, b) => a.localeCompare(b, 'tr-TR'))
+    ],
     [guideArticles]
   )
+  const routeSection = campingGuide.sections.find(
+    section => section.id === 'kamp-yerleri'
+  )
+  const fixedRouteSlugs = useMemo(
+    () => new Set(routeSection?.slugs || []),
+    [routeSection]
+  )
+  const randomRouteCandidates = useMemo(
+    () =>
+      articles.filter(
+        article =>
+          article.category?.name === routeSection?.randomCategory &&
+          !fixedRouteSlugs.has(policy.articleKey(article.slug))
+      ),
+    [articles, fixedRouteSlugs, routeSection]
+  )
+
+  useEffect(() => {
+    setRandomRouteSlugs(
+      policy
+        .selectRandomArticles({
+          articles: randomRouteCandidates,
+          count: routeSection?.randomCount || 0
+        })
+        .map(article => policy.articleKey(article.slug))
+    )
+  }, [randomRouteCandidates, routeSection])
+
   const visibleArticles = filteredArticles.slice(0, visibleArticleCount)
   const featuredSlugs = useMemo(() => new Set(campingGuide.featuredSlugs), [])
   const latestArticlePaths = useMemo(
@@ -596,10 +626,26 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
   const readingPath = campingGuide.readingPath
     .map(item => ({ ...item, article: articleLookup.get(item.slug) }))
     .filter(item => item.article)
-  const topicSections = campingGuide.sections.map(section => ({
-    ...section,
-    articles: section.slugs.map(slug => articleLookup.get(slug)).filter(Boolean)
-  }))
+  const topicSections = campingGuide.sections.map(section => {
+    const configuredArticles = section.slugs
+      .map(slug => articleLookup.get(slug))
+      .filter(Boolean)
+
+    if (section.id !== routeSection?.id) {
+      return { ...section, articles: configuredArticles }
+    }
+
+    const selectedRandomRoutes = (
+      randomRouteSlugs.length
+        ? randomRouteSlugs.map(slug => articleLookup.get(slug)).filter(Boolean)
+        : randomRouteCandidates.slice(0, section.randomCount)
+    ).slice(0, section.randomCount)
+
+    return {
+      ...section,
+      articles: [...configuredArticles, ...selectedRandomRoutes]
+    }
+  })
 
   const trackLink = (sectionId, linkUrl) =>
     policy.createCategoryHubActivation({
@@ -1171,65 +1217,47 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
         </Grid>
 
         <Flex
-          as='nav'
-          aria-label='İçerik kategorileri'
+          role='group'
+          aria-label='İçerikleri kategoriye göre filtrele'
           sx={{ flexWrap: `wrap`, gap: 2, mb: [4, 5] }}
         >
-          <Link
-            as={GatsbyLink}
-            to='/category/kampcilik/#tum-icerikler'
-            aria-current='page'
-            sx={{
-              display: `inline-flex`,
-              alignItems: `center`,
-              justifyContent: `center`,
-              minHeight: 40,
-              color: `white`,
-              bg: `alpha`,
-              borderRadius: `999px`,
-              fontSize: 1,
-              fontWeight: `bold`,
-              textDecoration: `none`,
-              px: 4,
-              py: 2,
-              ...focusStyle
-            }}
-          >
-            Tümü
-          </Link>
-          {categoryLinks.map(item => (
-            <Link
-              key={item.slug}
-              as={GatsbyLink}
-              to={item.slug}
-              onClick={trackLink('tum-icerikler', item.slug)}
-              sx={{
-                display: `inline-flex`,
-                alignItems: `center`,
-                justifyContent: `center`,
-                minHeight: 40,
-                color: `heading`,
-                bg: `omegaLighter`,
-                borderRadius: `999px`,
-                fontSize: 1,
-                fontWeight: `bold`,
-                textDecoration: `none`,
-                px: 4,
-                py: 2,
-                transition: `background-color 160ms ease, color 160ms ease`,
-                '&:hover': {
-                  color: `alphaDark`,
-                  bg: `omegaLight`
-                },
-                '&:visited': {
-                  color: `heading`
-                },
-                ...focusStyle
-              }}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {categories.map(item => {
+            const selected = category === item
+
+            return (
+              <Button
+                key={item}
+                type='button'
+                aria-pressed={selected}
+                onClick={() => {
+                  setCategory(item)
+                  setVisibleArticleCount(6)
+                }}
+                variant='none'
+                sx={{
+                  display: `inline-flex`,
+                  alignItems: `center`,
+                  justifyContent: `center`,
+                  minHeight: 40,
+                  color: selected ? `white` : `heading`,
+                  bg: selected ? `alpha` : `omegaLighter`,
+                  borderRadius: `999px`,
+                  fontSize: 1,
+                  fontWeight: `bold`,
+                  px: 4,
+                  py: 2,
+                  transition: `background-color 160ms ease, color 160ms ease`,
+                  '&:hover': {
+                    color: selected ? `white` : `alphaDark`,
+                    bg: selected ? `alpha` : `omegaLight`
+                  },
+                  ...focusStyle
+                }}
+              >
+                {item}
+              </Button>
+            )
+          })}
         </Flex>
 
         <Text
@@ -1439,6 +1467,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
               variant='mute'
               onClick={() => {
                 setQuery('')
+                setCategory('Tümü')
                 setVisibleArticleCount(6)
               }}
               sx={{ minHeight: 44, ...focusStyle }}
