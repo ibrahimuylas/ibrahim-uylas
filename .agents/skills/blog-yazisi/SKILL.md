@@ -36,6 +36,12 @@ Eksik ama engelleyici olmayan ayrıntıları makul biçimde belirle. Kişisel de
 8. Araştırma kaynaklarını yalnızca bilgileri doğrulamak için kullan. Kullanıcı özellikle istemedikçe yazı gövdesine kaynak listesi, dipnot, atıf cümlesi veya kaynak niteliğinde dış bağlantı ekleme.
 9. Son bölümde okuyucunun kendi deneyimini somut ayrıntılarla paylaşmasını isteyen tek bir doğal yorum çağrısı kullan.
 
+## Tablolar
+
+- Yazıda Markdown veya HTML tablosu varsa `.agents/skills/blog-tablosu/SKILL.md` dosyasını oku ve uygula.
+- Çıplak Markdown tablosu kullanma; her tabloyu sitenin `comparison-table` responsive sarmalayıcısı içine al.
+- Teslimden önce repo içinde sarmalayıcısız tablo kalmadığını kontrol et.
+
 ## Görselleri planla
 
 - Banner üretilecek, düzenlenecek veya kullanıcı fotoğrafından hazırlanacaksa `.agents/skills/banner-olusturma/SKILL.md` talimatlarını da oku ve uygula.

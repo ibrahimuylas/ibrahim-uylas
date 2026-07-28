@@ -68,6 +68,11 @@
   table-layout: fixed;
 }
 
+.comparison-table--wide table {
+  min-width: 64rem;
+  table-layout: auto;
+}
+
 .comparison-table th,
 .comparison-table td {
   padding: 0.9rem 1rem;
@@ -105,4 +110,21 @@
 .comparison-table:focus {
   outline: 2px solid var(--theme-ui-colors-alpha);
   outline-offset: 3px;
+}
+
+.comparison-table--wide th:first-child,
+.comparison-table--wide td:first-child,
+.comparison-table--wide th:not(:first-child),
+.comparison-table--wide td:not(:first-child) {
+  width: auto;
+}
+
+.comparison-table--two-column th:first-child,
+.comparison-table--two-column td:first-child {
+  width: 32%;
+}
+
+.comparison-table--two-column th:not(:first-child),
+.comparison-table--two-column td:not(:first-child) {
+  width: 68%;
 }
