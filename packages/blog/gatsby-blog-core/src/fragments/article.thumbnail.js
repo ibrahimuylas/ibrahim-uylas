@@ -36,10 +36,10 @@ export const query = graphql`
     thumbnail {
       __typename
       ... on ImageSharp {
+        # Keep the source aspect ratio so tall 3:2 banners are not cropped to
+        # the legacy 1600x650 hero shape.
         ImageSharp_hero: gatsbyImageData(
           width: 1600
-          height: 650
-          transformOptions: { cropFocus: CENTER }
           outputPixelDensities: [0.5, 1]
           quality: $imageQuality
         )
@@ -47,7 +47,6 @@ export const query = graphql`
       ... on ContentfulAsset {
         ContentfulAsset_hero: gatsbyImageData(
           width: 1600
-          height: 650
           formats: [JPG, WEBP]
           quality: $imageQuality
           resizingBehavior: THUMB
@@ -56,7 +55,6 @@ export const query = graphql`
       ... on SanityImageAsset {
         SanityImageAsset_hero: gatsbyImageData(
           width: 1600
-          height: 650
           outputPixelDensities: [0.5, 1]
         )
       }
