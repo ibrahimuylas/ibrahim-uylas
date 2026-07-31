@@ -75,7 +75,12 @@ DeferredComments.propTypes = {
   title: PropTypes.string,
   slug: PropTypes.string,
   siteUrl: PropTypes.string,
-  shortname: PropTypes.string
+  giscus: PropTypes.shape({
+    repo: PropTypes.string.isRequired,
+    repoId: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    categoryId: PropTypes.string.isRequired
+  })
 }
 
 export default DeferredComments

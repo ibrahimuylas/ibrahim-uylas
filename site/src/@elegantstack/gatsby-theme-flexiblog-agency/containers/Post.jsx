@@ -52,11 +52,11 @@ const Post = ({
               <PostBody {...post} />
             </div>
             <PostTagsShare {...post} location={props.location} />
-            {services.disqus && (
+            {services.giscus?.repoId && services.giscus?.categoryId && (
               <DeferredComments
                 {...post}
                 siteUrl={siteUrl}
-                shortname={services.disqus}
+                giscus={services.giscus}
               />
             )}
           </CardComponent>
