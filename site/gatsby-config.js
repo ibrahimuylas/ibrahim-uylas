@@ -41,7 +41,6 @@ module.exports = {
         homeCategoryPostsPerGroup: 6,
         services: {
           disqus: 'ibrahim-uylas',
-          facebookComment: true,
           mailchimp: true
         },
         sources: {

@@ -2,7 +2,7 @@ const campingGuide = {
   id: 'kampcilik',
   title: 'Kampçılık Rehberi',
   description:
-    'İlk kampını planlamaktan doğru uyku sistemini kurmaya, güvenlikten ekipman seçimine kadar ihtiyaç duyduğun kampçılık içeriklerini tek yerde keşfet.',
+    'İlk kamp alanını seçmekten doğru uyku sistemini kurmaya, güvenlikten ekipman seçimine kadar ihtiyaç duyduğun kampçılık içeriklerini tek yerde keşfet.',
   readingPath: [
     {
       slug: 'kamp-hayatina-bulasmak-ister-misiniz',
@@ -10,24 +10,29 @@ const campingGuide = {
       summary: 'İlk kamp fikrini gözünde büyütmeden temel ihtiyaçları öğren.'
     },
     {
+      slug: 'ilk-kamp-nerede-yapilir',
+      label: 'İlk kamp yerini seç',
+      summary: 'Ulaşım, hava, izinler ve temel ihtiyaçlara göre kamp alanını değerlendir.'
+    },
+    {
+      slug: 'ilk-kamp-icin-gerekli-malzemeler',
+      label: 'Çantanı gereği kadar hazırla',
+      summary: 'Barınma, uyku, su ve güvenlik için gerçekten gerekenleri ayır.'
+    },
+    {
+      slug: 'cadir-alirken-nelere-dikkat-edilmeli',
+      label: 'Çadırını doğru seç',
+      summary: 'Taşıma biçimine, kişi sayısına ve hava koşullarına uygun çadırı bul.'
+    },
+    {
       slug: 'dogada-kamp-yapmak-guvenli-midir',
       label: 'Güvenli bir başlangıç yap',
       summary: 'Kamp yeri ve çevre koşullarını güvenlik açısından değerlendir.'
     },
     {
-      slug: 'uyku-tulumu-alirken-nelere-dikkat-edilmelidir',
-      label: 'Uyku tulumunu seç',
-      summary: 'Konfor değerlerini ve ihtiyacına uygun tulumu karşılaştır.'
-    },
-    {
       slug: 'uyku-tulumu-nasil-kullanilir',
       label: 'Uyku sistemini doğru kullan',
       summary: 'Mat, kıyafet ve tulumu birlikte kullanarak sıcak kal.'
-    },
-    {
-      slug: 'r-degeri-nedir',
-      label: 'Zemin yalıtımını tamamla',
-      summary: 'Kamp matındaki R değerini ve gerçek kullanım karşılığını öğren.'
     }
   ],
   sections: [
@@ -37,6 +42,8 @@ const campingGuide = {
       description:
         'Soğuk zeminden korun, uyku tulumunu doğru kullan ve geceyi daha rahat geçir.',
       slugs: [
+        'uyku-tulumu-alirken-nelere-dikkat-edilmelidir',
+        'r-degeri-nedir',
         'uyku-tulumu-yetersiz-kalirsa-ne-yapilmalidir',
         'iki-kisilik-uyku-tulumu-hakkinda'
       ]
@@ -52,7 +59,7 @@ const campingGuide = {
       id: 'ekipman',
       title: 'Ekipman seçimi',
       description:
-        'Kamp malzemelerini kullanım amacına, ağırlığına ve hava koşullarına göre değerlendir.',
+        'Kamp malzemelerini kullanım amacına, ağırlığına ve hava koşullarına göre değerlendir; alışverişten önce sistemi kur.',
       slugs: [
         'buff-nedir-ne-ise-yarar',
         'gtx-ayakkabi-ne-demek',
@@ -94,8 +101,8 @@ const campingGuide = {
   ],
   featuredSlugs: [
     'kamp-hayatina-bulasmak-ister-misiniz',
+    'ilk-kamp-icin-gerekli-malzemeler',
     'uyku-tulumu-nasil-kullanilir',
-    'r-degeri-nedir',
     'guvenli-kamp-atesi-icin-en-iyi-10-ipucu'
   ],
   imageSectionIds: ['ekipman', 'kamp-yerleri'],

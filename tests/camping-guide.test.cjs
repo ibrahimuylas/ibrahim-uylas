@@ -106,6 +106,21 @@ test('reading path uses three columns on desktop without changing mobile', () =>
   )
 })
 
+test('reading path presents a balanced six-step beginner journey', () => {
+  assert.deepEqual(
+    campingGuide.readingPath.map(item => item.slug),
+    [
+      'kamp-hayatina-bulasmak-ister-misiniz',
+      'ilk-kamp-nerede-yapilir',
+      'ilk-kamp-icin-gerekli-malzemeler',
+      'cadir-alirken-nelere-dikkat-edilmeli',
+      'dogada-kamp-yapmak-guvenli-midir',
+      'uyku-tulumu-nasil-kullanilir'
+    ]
+  )
+  assert.equal(campingGuide.readingPath.length, 6)
+})
+
 test('new articles section shows only three cards', () => {
   const campingCategoryTemplate = fs.readFileSync(
     path.resolve(__dirname, '../site/src/templates/camping-category.js'),
@@ -247,13 +262,13 @@ test('camping guide config resolves to unique, published articles', () => {
   })
 })
 
-test('all thirteen camping category articles are curated on the hub', () => {
+test('all fifteen camping category articles are curated on the hub', () => {
   const campingArticles = articles.filter(
     article =>
       article.category === 'Kampçılık' && !article.private && !article.draft
   )
 
-  assert.equal(campingArticles.length, 13)
+  assert.equal(campingArticles.length, 15)
   campingArticles.forEach(article => {
     assert.ok(
       configuredSlugs.includes(article.slug),
