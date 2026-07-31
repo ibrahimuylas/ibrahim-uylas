@@ -5,7 +5,7 @@ export { PostHead } from './Post.Head'
 export { PostImage } from './Post.Image'
 export { PostTagsShare } from './Post.Tags.Share'
 
-const PostCommentsLazy = React.lazy(() => import('./Post.Comments'))
+const PostCommentsLazy = React.lazy(() => import('./Post.Comments.Giscus'))
 export const PostComments = ({ fallback = null, ...props }) => (
   <Suspense fallback={fallback}>
     <PostCommentsLazy {...props} />

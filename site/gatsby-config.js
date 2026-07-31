@@ -2,6 +2,14 @@ const googleAnalyticsMeasurementId = process.env.GATSBY_GA_MEASUREMENT_ID
 const siteUrl = 'https://www.ibrahimuylas.com'
 const isProductionDeploy = process.env.CONTEXT === 'production'
 
+const giscus = {
+  repo: process.env.GATSBY_GISCUS_REPO || 'ibrahimuylas/ibrahim-uylas',
+  repoId:
+    process.env.GATSBY_GISCUS_REPO_ID || 'MDEwOlJlcG9zaXRvcnkzMzAyODIzNzg=',
+  category: process.env.GATSBY_GISCUS_CATEGORY || 'Blog Comments',
+  categoryId: process.env.GATSBY_GISCUS_CATEGORY_ID || 'DIC_kwDOE6-1is4DCaw9'
+}
+
 const googleAnalyticsPlugin =
   googleAnalyticsMeasurementId && isProductionDeploy
     ? {
@@ -40,7 +48,7 @@ module.exports = {
         fonts: false,
         homeCategoryPostsPerGroup: 6,
         services: {
-          disqus: 'ibrahim-uylas',
+          giscus,
           mailchimp: true
         },
         sources: {
