@@ -8,6 +8,7 @@ module.exports = pluginOptions => {
   const services = {
     algolia: getValue(pluginOptions, 'services.algolia', false),
     mailchimp: getValue(pluginOptions, 'services.mailchimp', false),
+    giscus: getValue(pluginOptions, 'services.giscus', false),
     disqus: getValue(pluginOptions, 'services.disqus', false),
     graphComment: getValue(pluginOptions, 'services.graphComment', false),
     facebookComment: getValue(pluginOptions, 'services.facebookComment', false)
