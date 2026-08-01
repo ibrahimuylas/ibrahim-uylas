@@ -19,6 +19,14 @@ const giscusComments = fs.readFileSync(
   ),
   'utf8'
 )
+const deferredComments = fs.readFileSync(
+  path.join(projectRoot, 'site/src/components/DeferredComments.jsx'),
+  'utf8'
+)
+const emailCommentForm = fs.readFileSync(
+  path.join(projectRoot, 'site/src/components/EmailCommentForm.jsx'),
+  'utf8'
+)
 
 test('the site configures Giscus for the existing public repository', () => {
   const themePlugin = gatsbyConfig.plugins.find(
@@ -32,6 +40,7 @@ test('the site configures Giscus for the existing public repository', () => {
     'ibrahimuylas/ibrahim-uylas'
   )
   assert.equal(themePlugin.options.services.giscus.category, 'Blog Comments')
+  assert.equal(themePlugin.options.services.giscus.theme, 'light')
 })
 
 test('the article template only mounts deferred Giscus comments when configured', () => {
@@ -43,9 +52,20 @@ test('the article template only mounts deferred Giscus comments when configured'
 
 test('Giscus uses strict pathname mapping and does not load during SSR', () => {
   assert.match(giscusComments, /typeof window === 'undefined'/)
-  assert.match(giscusComments, /data-mapping': 'pathname'/)
+  assert.match(giscusComments, /data-mapping': 'specific'/)
+  assert.match(giscusComments, /data-term.*pathname\.replace/)
   assert.match(giscusComments, /data-strict': '1'/)
-  assert.match(giscusComments, /data-reactions-enabled': '1'/)
+  assert.match(giscusComments, /data-reactions-enabled': '0'/)
+  assert.match(giscusComments, /data-theme': giscus\.theme \|\| 'light'/)
   assert.match(giscusComments, /data-lang': 'tr'/)
   assert.match(giscusComments, /data-loading': 'lazy'/)
+})
+
+test('comments offer an accessible moderated email path alongside Giscus', () => {
+  assert.match(deferredComments, /GitHub hesabın yok mu\?/)
+  assert.match(deferredComments, /E-posta ile yorum yap/)
+  assert.match(emailCommentForm, /data-netlify='true'/)
+  assert.match(emailCommentForm, /name={FORM_NAME}/)
+  assert.match(emailCommentForm, /name='email'/)
+  assert.match(emailCommentForm, /name='message'/)
 })

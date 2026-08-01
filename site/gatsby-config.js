@@ -7,7 +7,9 @@ const giscus = {
   repoId:
     process.env.GATSBY_GISCUS_REPO_ID || 'MDEwOlJlcG9zaXRvcnkzMzAyODIzNzg=',
   category: process.env.GATSBY_GISCUS_CATEGORY || 'Blog Comments',
-  categoryId: process.env.GATSBY_GISCUS_CATEGORY_ID || 'DIC_kwDOE6-1is4DCaw9'
+  categoryId: process.env.GATSBY_GISCUS_CATEGORY_ID || 'DIC_kwDOE6-1is4DCaw9',
+  theme:
+    process.env.GATSBY_GISCUS_THEME || 'light'
 }
 
 const googleAnalyticsPlugin =

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { Box, Divider } from 'theme-ui'
+import { Box } from 'theme-ui'
 
 const GISCUS_CLIENT_URL = 'https://giscus.app/client.js'
 
@@ -36,13 +36,13 @@ const PostCommentsGiscus = ({ slug, giscus }) => {
       'data-repo-id': giscus.repoId,
       'data-category': giscus.category,
       'data-category-id': giscus.categoryId,
-      'data-mapping': 'pathname',
-      'data-term': pathname,
+      'data-mapping': 'specific',
+      'data-term': `/${pathname.replace(/^\/+/, ``)}`,
       'data-strict': '1',
-      'data-reactions-enabled': '1',
+      'data-reactions-enabled': '0',
       'data-emit-metadata': '0',
       'data-input-position': 'bottom',
-      'data-theme': 'preferred_color_scheme',
+      'data-theme': giscus.theme || 'light',
       'data-lang': 'tr',
       'data-loading': 'lazy'
     }
@@ -59,8 +59,17 @@ const PostCommentsGiscus = ({ slug, giscus }) => {
   }, [giscus, pathname])
 
   return (
-    <Box>
-      <Divider />
+    <Box
+      sx={{
+        width: `100%`,
+        '.giscus': { width: `100%` },
+        '.giscus-frame': {
+          width: `100%`,
+          maxWidth: `100%`,
+          border: 0
+        }
+      }}
+    >
       <div ref={containerRef} className='giscus' data-giscus-embed />
     </Box>
   )
@@ -72,7 +81,8 @@ PostCommentsGiscus.propTypes = {
     repo: PropTypes.string.isRequired,
     repoId: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
-    categoryId: PropTypes.string.isRequired
+    categoryId: PropTypes.string.isRequired,
+    theme: PropTypes.string
   }).isRequired
 }
 
