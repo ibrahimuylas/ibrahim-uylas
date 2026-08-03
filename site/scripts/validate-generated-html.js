@@ -20,6 +20,12 @@ const campingGuidePath = path.join(
   'kampcilik',
   'index.html'
 )
+const hikingGuidePath = path.join(
+  publicDirectory,
+  'category',
+  'doga-yuruyusleri',
+  'index.html'
+)
 const pageDataDirectory = path.join(publicDirectory, 'page-data')
 const pagefindDirectory = path.join(publicDirectory, 'pagefind')
 
@@ -154,6 +160,44 @@ if (!fs.existsSync(campingGuidePath)) {
     process.exitCode = 1
   } else {
     console.log('Generated camping guide SSR contract is valid.')
+  }
+}
+
+if (!fs.existsSync(hikingGuidePath)) {
+  console.error('Generated hiking guide HTML is missing.')
+  process.exitCode = 1
+} else {
+  const hikingGuide = fs.readFileSync(hikingGuidePath, 'utf8')
+  const requiredHikingGuideContent = [
+    'Doğa Yürüyüşleri Rehberi',
+    'Doğa yürüyüşüne adım adım hazırlan',
+    'Hazırlık ve güvenlik',
+    'Giyim ve ekipman seçimi',
+    'Rotalar ve ilham',
+    'Tüm içerikler',
+    'CollectionPage',
+    'ItemList',
+    'rel="canonical" href="https://www.ibrahimuylas.com/category/doga-yuruyusleri/"',
+    'href="/doga-yuruyusleri-icin-gerekli-ekipmanlar/"',
+    'href="/doga-yuruyuslerinde-corap-tercihi/"',
+    'href="/trekking-ayakkabisi-nasil-olmali/"'
+  ]
+  const missingHikingGuideContent = requiredHikingGuideContent.filter(
+    value => !hikingGuide.includes(value)
+  )
+  const h1Count = (hikingGuide.match(/<h1\b/gi) || []).length
+
+  if (missingHikingGuideContent.length || h1Count !== 1) {
+    console.error('Generated hiking guide SSR contract is invalid:')
+    missingHikingGuideContent.forEach(value =>
+      console.error(`- Missing: ${value}`)
+    )
+    if (h1Count !== 1) {
+      console.error(`- Expected one h1, found ${h1Count}`)
+    }
+    process.exitCode = 1
+  } else {
+    console.log('Generated hiking guide SSR contract is valid.')
   }
 }
 

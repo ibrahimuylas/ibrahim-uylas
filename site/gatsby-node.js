@@ -1,12 +1,14 @@
 const path = require('node:path')
 
-const CAMPING_CATEGORY_PATH = '/category/kampcilik/'
+const GUIDE_ROUTES = {
+  '/category/kampcilik/': 'kampcilik',
+  '/category/doga-yuruyusleri/': 'doga-yuruyusleri'
+}
 
 exports.onCreatePage = ({ page, actions }) => {
-  if (
-    page.path !== CAMPING_CATEGORY_PATH ||
-    page.context?.campingGuide === true
-  ) {
+  const guideId = GUIDE_ROUTES[page.path]
+
+  if (!guideId || page.context?.guideId === guideId) {
     return
   }
 
@@ -16,7 +18,7 @@ exports.onCreatePage = ({ page, actions }) => {
     component: path.resolve('./src/templates/camping-category.js'),
     context: {
       ...page.context,
-      campingGuide: true
+      guideId
     }
   })
 }

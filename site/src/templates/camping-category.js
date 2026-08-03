@@ -3,26 +3,36 @@ import { graphql } from 'gatsby'
 import { Layout, Main, Stack } from '@layout'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
-import CampingGuide, { allCuratedSlugs } from '../components/CampingGuide'
-import campingGuidePolicy from '../components/campingGuidePolicy'
+import GuideCategory, { getAllCuratedSlugs } from '../components/CampingGuide'
+import categoryGuidePolicy from '../components/categoryGuidePolicy'
 import campingGuide from '../content-guides/campingGuide'
+import hikingGuide from '../content-guides/hikingGuide'
+
+const guides = {
+  kampcilik: campingGuide,
+  'doga-yuruyusleri': hikingGuide
+}
 
 const CampingCategoryPage = ({
   data: { hubArticles, latestArticles },
   pageContext,
   ...props
 }) => {
+  const guide = guides[pageContext.guideId] || campingGuide
   const siteUrl = (pageContext.siteUrl || '').replace(/\/$/, '')
-  const guideArticles = campingGuidePolicy.selectGuideArticles({
+  const guideArticles = categoryGuidePolicy.selectGuideArticles({
     articles: hubArticles.nodes,
-    curatedSlugs: allCuratedSlugs
+    curatedSlugs: getAllCuratedSlugs(guide),
+    primaryCategory: guide.primaryCategory,
+    categories: guide.hubCategories,
+    tagNames: guide.tagNames
   })
   const collectionPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: campingGuide.title,
-    description: campingGuide.description,
-    url: `${siteUrl}/category/kampcilik/`,
+    name: guide.title,
+    description: guide.description,
+    url: `${siteUrl}${guide.path}`,
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: guideArticles.length,
@@ -38,8 +48,8 @@ const CampingCategoryPage = ({
   return (
     <Layout pageContext={pageContext} {...props}>
       <Seo
-        title={campingGuide.title}
-        description={campingGuide.description}
+        title={guide.title}
+        description={guide.description}
         siteUrl={siteUrl}
       >
         <script type='application/ld+json'>
@@ -49,9 +59,11 @@ const CampingCategoryPage = ({
       <Divider />
       <Stack effectProps={{ effect: false }}>
         <Main>
-          <CampingGuide
+          <GuideCategory
             articles={hubArticles.nodes}
             latestArticles={latestArticles.nodes}
+            guide={guide}
+            policy={categoryGuidePolicy}
           />
         </Main>
       </Stack>

@@ -1,8 +1,29 @@
 const campingGuide = {
   id: 'kampcilik',
+  path: '/category/kampcilik/',
+  primaryCategory: 'Kampçılık',
+  hubCategories: ['Kampçılık', 'Ekipmanlar', 'Rotalar', 'Doğa Yürüyüşleri'],
+  tagNames: ['#kampçılık'],
+  contentCountScope: 'hub',
   title: 'Kampçılık Rehberi',
   description:
     'İlk kamp alanını seçmekten doğru uyku sistemini kurmaya, güvenlikten ekipman seçimine kadar ihtiyaç duyduğun kampçılık içeriklerini tek yerde keşfet.',
+  hero: {
+    eyebrow: 'Açık hava günlüğü',
+    ctaLabel: 'İlk kampına başla',
+    image: '../../content/assets/camping-guide-hero.png',
+    imageAlt: 'Dağ yamacında gün batımında kurulu kamp çadırı',
+    imageType: 'static'
+  },
+  beginner: {
+    navLabel: 'İlk kamp ve hazırlık',
+    eyebrow: 'Yeni başlayanlar için okuma yolu',
+    title: 'İlk kampını adım adım planla',
+    description:
+      'Bu sırayı takip ederek kamp hayatını tanıyabilir, temel güvenlik kararlarını verebilir ve sıcak bir uyku sistemi kurabilirsin.'
+  },
+  allContentDescription:
+    'Kampçılık rehberlerini, ekipman incelemelerini ve rota yazılarını tek yerde keşfet.',
   readingPath: [
     {
       slug: 'kamp-hayatina-bulasmak-ister-misiniz',
@@ -12,7 +33,8 @@ const campingGuide = {
     {
       slug: 'ilk-kamp-nerede-yapilir',
       label: 'İlk kamp yerini seç',
-      summary: 'Ulaşım, hava, izinler ve temel ihtiyaçlara göre kamp alanını değerlendir.'
+      summary:
+        'Ulaşım, hava, izinler ve temel ihtiyaçlara göre kamp alanını değerlendir.'
     },
     {
       slug: 'ilk-kamp-icin-gerekli-malzemeler',
@@ -22,7 +44,8 @@ const campingGuide = {
     {
       slug: 'cadir-alirken-nelere-dikkat-edilmeli',
       label: 'Çadırını doğru seç',
-      summary: 'Taşıma biçimine, kişi sayısına ve hava koşullarına uygun çadırı bul.'
+      summary:
+        'Taşıma biçimine, kişi sayısına ve hava koşullarına uygun çadırı bul.'
     },
     {
       slug: 'dogada-kamp-yapmak-guvenli-midir',
@@ -60,6 +83,7 @@ const campingGuide = {
       title: 'Ekipman seçimi',
       description:
         'Kamp malzemelerini kullanım amacına, ağırlığına ve hava koşullarına göre değerlendir; alışverişten önce sistemi kur.',
+      layout: 'editorial',
       slugs: [
         'buff-nedir-ne-ise-yarar',
         'gtx-ayakkabi-ne-demek',

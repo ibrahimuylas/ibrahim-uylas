@@ -15,10 +15,10 @@ import {
 } from 'theme-ui'
 import CardList from '@components/CardList'
 import getImageVariant from '@components/utils/getImageVariant'
-import campingGuide from '../content-guides/campingGuide'
+import defaultGuide from '../content-guides/campingGuide'
 import { currentPagePath, trackEvent } from '../utils/analytics'
 import ArticleContents from './ArticleContents'
-import policy from './campingGuidePolicy'
+import defaultPolicy from './categoryGuidePolicy'
 
 const focusStyle = {
   '&:focus-visible': {
@@ -44,24 +44,22 @@ const headingStyle = {
 }
 
 const heroAccent = `#1552d6`
-const heroDescription =
-  'İlk kampını planla, doğru uyku sistemini kur ve ekipmanını güvenle seç. İhtiyacın olan kampçılık rehberleriyle doğadaki maceranı adım adım hazırla.'
 
-const allCuratedSlugs = [
-  ...campingGuide.readingPath.map(item => item.slug),
-  ...campingGuide.sections.flatMap(section => section.slugs)
+const getAllCuratedSlugs = guide => [
+  ...guide.readingPath.map(item => item.slug),
+  ...guide.sections.flatMap(section => section.slugs)
 ]
 
-const guideTopicLinks = [
-  { id: 'baslangic', label: 'İlk kamp ve hazırlık' },
-  ...campingGuide.sections.map(section => ({
+const getGuideTopicLinks = guide => [
+  { id: 'baslangic', label: guide.beginner.navLabel },
+  ...guide.sections.map(section => ({
     id: section.id,
     label: section.title
   }))
 ]
 
-const guideContentsItems = [
-  ...guideTopicLinks.map(item => ({
+const getGuideContentsItems = guide => [
+  ...getGuideTopicLinks(guide).map(item => ({
     title: item.label,
     url: `#${item.id}`
   })),
@@ -352,7 +350,14 @@ const ArticleLinkCard = ({
   )
 }
 
-const EquipmentSection = ({ section, articles, featuredSlugs, trackLink }) => (
+const EquipmentSection = ({
+  guide,
+  policy,
+  section,
+  articles,
+  featuredSlugs,
+  trackLink
+}) => (
   <Box
     as='section'
     id={section.id}
@@ -443,9 +448,7 @@ const EquipmentSection = ({ section, articles, featuredSlugs, trackLink }) => (
           editorial
           featured={featuredSlugs.has(policy.articleKey(article.slug))}
           withImage={
-            !campingGuide.imageExcludedSlugs.includes(
-              policy.articleKey(article.slug)
-            )
+            !guide.imageExcludedSlugs.includes(policy.articleKey(article.slug))
           }
           onActivate={trackLink(section.id, article.slug)}
         />
@@ -454,9 +457,18 @@ const EquipmentSection = ({ section, articles, featuredSlugs, trackLink }) => (
   </Box>
 )
 
-const TopicSection = ({ section, articles, featuredSlugs, trackLink }) =>
-  section.id === 'ekipman' ? (
+const TopicSection = ({
+  guide,
+  policy,
+  section,
+  articles,
+  featuredSlugs,
+  trackLink
+}) =>
+  section.layout === 'editorial' ? (
     <EquipmentSection
+      guide={guide}
+      policy={policy}
       section={section}
       articles={articles}
       featuredSlugs={featuredSlugs}
@@ -535,10 +547,10 @@ const TopicSection = ({ section, articles, featuredSlugs, trackLink }) =>
               article={article}
               featured={featuredSlugs.has(policy.articleKey(article.slug))}
               withImage={
-                !campingGuide.imageExcludedSlugs.includes(
+                !guide.imageExcludedSlugs.includes(
                   policy.articleKey(article.slug)
                 ) &&
-                (campingGuide.imageSectionIds.includes(section.id) ||
+                (guide.imageSectionIds.includes(section.id) ||
                   featuredSlugs.has(policy.articleKey(article.slug)))
               }
               onActivate={trackLink(section.id, article.slug)}
@@ -549,7 +561,49 @@ const TopicSection = ({ section, articles, featuredSlugs, trackLink }) =>
     </Box>
   )
 
-const CampingGuide = ({ articles = [], latestArticles = [] }) => {
+const GuideHeroImage = ({ guide, heroArticle }) =>
+  guide.hero.imageType === 'static' ? (
+    guide.id === 'doga-yuruyusleri' ? (
+      <StaticImage
+        src='../../content/assets/doga-yuruyusleri-guide-hero.png'
+        alt={guide.hero.imageAlt}
+        layout='fullWidth'
+        loading='eager'
+        placeholder='blurred'
+        quality={90}
+        formats={['auto', 'webp', 'avif']}
+        style={{ width: `100%`, height: `100%` }}
+        imgStyle={{ objectFit: `cover`, objectPosition: `center` }}
+      />
+    ) : (
+      <StaticImage
+        src='../../content/assets/camping-guide-hero.png'
+        alt={guide.hero.imageAlt}
+        layout='fullWidth'
+        loading='eager'
+        placeholder='blurred'
+        quality={90}
+        formats={['auto', 'webp', 'avif']}
+        style={{ width: `100%`, height: `100%` }}
+        imgStyle={{ objectFit: `cover`, objectPosition: `62% center` }}
+      />
+    )
+  ) : heroArticle ? (
+    <Img
+      image={getImageVariant(heroArticle.thumbnail, 'natural')}
+      alt={guide.hero.imageAlt}
+      loading='eager'
+      style={{ width: `100%`, height: `100%` }}
+      imgStyle={{ objectFit: `cover`, objectPosition: `center` }}
+    />
+  ) : null
+
+const GuideCategory = ({
+  articles = [],
+  latestArticles = [],
+  guide = defaultGuide,
+  policy = defaultPolicy
+}) => {
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('Tümü')
   const [randomRouteSlugs, setRandomRouteSlugs] = useState([])
@@ -569,9 +623,12 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
     () =>
       policy.selectGuideArticles({
         articles,
-        curatedSlugs: allCuratedSlugs
+        curatedSlugs: getAllCuratedSlugs(guide),
+        primaryCategory: guide.primaryCategory,
+        categories: guide.hubCategories,
+        tagNames: guide.tagNames
       }),
-    [articles]
+    [articles, guide, policy]
   )
   const filteredArticles = useMemo(
     () =>
@@ -593,9 +650,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
     ],
     [guideArticles]
   )
-  const routeSection = campingGuide.sections.find(
-    section => section.id === 'kamp-yerleri'
-  )
+  const routeSection = guide.sections.find(section => section.randomCategory)
   const fixedRouteSlugs = useMemo(
     () => new Set(routeSection?.slugs || []),
     [routeSection]
@@ -622,15 +677,15 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
   }, [randomRouteCandidates, routeSection])
 
   const visibleArticles = filteredArticles.slice(0, visibleArticleCount)
-  const featuredSlugs = useMemo(() => new Set(campingGuide.featuredSlugs), [])
+  const featuredSlugs = useMemo(() => new Set(guide.featuredSlugs), [guide])
   const latestArticlePaths = useMemo(
     () => new Set(visibleLatestArticles.map(article => article.slug)),
     [visibleLatestArticles]
   )
-  const readingPath = campingGuide.readingPath
+  const readingPath = guide.readingPath
     .map(item => ({ ...item, article: articleLookup.get(item.slug) }))
     .filter(item => item.article)
-  const topicSections = campingGuide.sections.map(section => {
+  const topicSections = guide.sections.map(section => {
     const configuredArticles = section.slugs
       .map(slug => articleLookup.get(slug))
       .filter(Boolean)
@@ -651,9 +706,21 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
     }
   })
 
+  const guideTopicLinks = getGuideTopicLinks(guide)
+  const guideContentsItems = getGuideContentsItems(guide)
+  const contentCount =
+    guide.contentCountScope === 'primary'
+      ? articles.filter(
+          article => article.category?.name === guide.primaryCategory
+        ).length
+      : guideArticles.length
+  const heroArticle = guide.hero.imageSlug
+    ? articleLookup.get(guide.hero.imageSlug)
+    : null
+
   const trackLink = (sectionId, linkUrl) =>
     policy.createCategoryHubActivation({
-      hub: campingGuide.id,
+      hub: guide.id,
       sectionId,
       linkUrl:
         linkUrl.startsWith('/') && linkUrl.endsWith('/')
@@ -708,7 +775,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
               mb: 3
             }}
           >
-            Açık hava günlüğü
+            {guide.hero.eyebrow}
           </Text>
           <Heading
             as='h1'
@@ -720,7 +787,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
               m: 0
             }}
           >
-            {campingGuide.title}
+            {guide.title}
           </Heading>
           <Text
             as='p'
@@ -734,7 +801,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
               mb: 0
             }}
           >
-            {heroDescription}
+            {guide.description}
           </Text>
           <Flex
             sx={{
@@ -764,7 +831,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
                 ...focusStyle
               }}
             >
-              İlk kampına başla
+              {guide.hero.ctaLabel}
             </Button>
             <Button
               as='a'
@@ -833,7 +900,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
                   lineHeight: 1
                 }}
               >
-                {guideArticles.length}
+                {contentCount}
               </Text>
               <Text
                 as='small'
@@ -867,7 +934,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
                   lineHeight: 1
                 }}
               >
-                6
+                {guide.sections.length + 1}
               </Text>
               <Text
                 as='small'
@@ -934,21 +1001,11 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
             }
           }}
         >
-          <StaticImage
-            src='../../content/assets/camping-guide-hero.png'
-            alt='Dağ yamacında gün batımında kurulu kamp çadırı'
-            layout='fullWidth'
-            loading='eager'
-            placeholder='blurred'
-            quality={90}
-            formats={['auto', 'webp', 'avif']}
-            style={{ width: `100%`, height: `100%` }}
-            imgStyle={{ objectFit: `cover`, objectPosition: `62% center` }}
-          />
+          <GuideHeroImage guide={guide} heroArticle={heroArticle} />
         </Box>
       </Box>
 
-      <Box as='nav' aria-label='Kampçılık rehberi konuları' sx={{ py: [4, 5] }}>
+      <Box as='nav' aria-label={`${guide.title} konuları`} sx={{ py: [4, 5] }}>
         <Flex
           as='ul'
           sx={{ flexWrap: `wrap`, gap: 2, listStyle: `none`, p: 0 }}
@@ -1013,7 +1070,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
               mb: 2
             }}
           >
-            Yeni başlayanlar için okuma yolu
+            {guide.beginner.eyebrow}
           </Text>
           <Heading
             id='baslangic-title'
@@ -1025,14 +1082,13 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
               m: 0
             }}
           >
-            İlk kampını adım adım planla
+            {guide.beginner.title}
           </Heading>
           <Text
             as='p'
             sx={{ color: `text`, fontSize: [2, 3], lineHeight: 1.65 }}
           >
-            Bu sırayı takip ederek kamp hayatını tanıyabilir, temel güvenlik
-            kararlarını verebilir ve sıcak bir uyku sistemi kurabilirsin.
+            {guide.beginner.description}
           </Text>
         </Box>
         <Grid
@@ -1071,6 +1127,8 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
           key={section.id}
           section={section}
           articles={section.articles}
+          guide={guide}
+          policy={policy}
           featuredSlugs={featuredSlugs}
           trackLink={trackLink}
         />
@@ -1160,14 +1218,13 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
                 mb: 0
               }}
             >
-              Kampçılık rehberlerini, ekipman incelemelerini ve rota yazılarını
-              tek yerde keşfet.
+              {guide.allContentDescription}
             </Text>
           </Box>
 
           <Box sx={{ position: `relative`, width: `100%` }}>
             <Label
-              htmlFor='camping-guide-search'
+              htmlFor={`${guide.id}-guide-search`}
               sx={{
                 position: `absolute`,
                 width: 1,
@@ -1198,7 +1255,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
               <FaSearch />
             </Box>
             <Input
-              id='camping-guide-search'
+              id={`${guide.id}-guide-search`}
               type='search'
               value={query}
               onChange={event => {
@@ -1493,5 +1550,7 @@ const CampingGuide = ({ articles = [], latestArticles = [] }) => {
   )
 }
 
-export { allCuratedSlugs }
-export default CampingGuide
+const allCuratedSlugs = getAllCuratedSlugs(defaultGuide)
+
+export { allCuratedSlugs, getAllCuratedSlugs, GuideCategory }
+export default GuideCategory
