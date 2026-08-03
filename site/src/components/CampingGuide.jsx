@@ -182,7 +182,7 @@ const ArticleLinkCard = ({
           alignItems: `flex-start`,
           gap: 3,
           flex: editorial ? 1 : `initial`,
-          minHeight: editorial ? [220, 230] : 0,
+          minHeight: editorial ? [0, 230] : 0,
           p: editorial ? [3, 4] : [3, 4]
         }}
       >
@@ -208,9 +208,11 @@ const ArticleLinkCard = ({
           sx={{
             flex: 1,
             minWidth: 0,
-            height: `100%`,
+            height: editorial ? [`auto`, `100%`] : `auto`,
             gridTemplateColumns: `minmax(0, 1fr)`,
-            gridTemplateRows: editorial ? `auto 1fr auto` : `auto auto`,
+            gridTemplateRows: editorial
+              ? [`auto auto`, `auto 1fr auto`]
+              : `auto auto`,
             alignItems: `start`
           }}
         >
