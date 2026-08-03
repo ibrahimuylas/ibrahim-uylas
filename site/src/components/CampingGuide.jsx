@@ -1058,7 +1058,12 @@ const GuideCategory = ({
           pb: [4, 5]
         }}
       >
-        <Box sx={{ maxWidth: 760, mb: 4 }}>
+        <Box
+          sx={{
+            maxWidth: [760, 760, `none`],
+            mb: 4
+          }}
+        >
           <Text
             as='p'
             sx={{
@@ -1079,14 +1084,24 @@ const GuideCategory = ({
               ...headingStyle,
               fontSize: [6, 7],
               lineHeight: 1.1,
-              m: 0
+              m: 0,
+              '@media screen and (min-width: 64em)': {
+                whiteSpace: `nowrap`
+              }
             }}
           >
             {guide.beginner.title}
           </Heading>
           <Text
             as='p'
-            sx={{ color: `text`, fontSize: [2, 3], lineHeight: 1.65 }}
+            sx={{
+              color: `text`,
+              fontSize: [2, 3],
+              lineHeight: 1.65,
+              '@media screen and (min-width: 64em)': {
+                whiteSpace: `nowrap`
+              }
+            }}
           >
             {guide.beginner.description}
           </Text>
