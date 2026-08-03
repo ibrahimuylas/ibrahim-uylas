@@ -17,7 +17,7 @@ const createVideoAst = iframe => ({
   ]
 })
 
-test('replaces generated YouTube embeds with a click-to-load component', () => {
+test('replaces generated YouTube embeds with a deferred component', () => {
   const markdownAST = createVideoAst(
     '<iframe src="https://www.youtube.com/embed/HuMmBjTpc0k?rel=0" width="800" height="450"></iframe>'
   )

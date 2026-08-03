@@ -31,7 +31,6 @@ const DeferredEmbed = ({ src, provider = 'route', title, width, height }) => {
 
   useEffect(() => {
     if (
-      provider === 'youtube' ||
       active ||
       typeof window === 'undefined' ||
       typeof window.IntersectionObserver !== 'function'
