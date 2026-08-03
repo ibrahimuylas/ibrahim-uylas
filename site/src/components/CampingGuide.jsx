@@ -1100,9 +1100,7 @@ const GuideCategory = ({
               color: `text`,
               fontSize: [2, 3],
               lineHeight: 1.65,
-              '@media screen and (min-width: 64em)': {
-                whiteSpace: `nowrap`
-              }
+              maxWidth: `100%`
             }}
           >
             {guide.beginner.description}
