@@ -738,7 +738,7 @@ const EquipmentSection = ({
   trackLink
 }) => {
   const splitFirstRow =
-    guide.editorialLayout === 'split-first-row' && articles.length > 2
+    guide.editorialLayout === 'split-first-row' && articles.length > 4
 
   const renderArticleCard = article => (
     <ArticleLinkCard
@@ -847,7 +847,7 @@ const EquipmentSection = ({
                 `1fr`,
                 null,
                 null,
-                `minmax(0, 0.7fr) repeat(2, minmax(0, 1fr))`
+                `repeat(3, minmax(0, 1fr))`
               ],
               gap: [3, 4],
               alignItems: `start`

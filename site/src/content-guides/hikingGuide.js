@@ -5,6 +5,7 @@ const hikingGuide = {
   hubCategories: ['Doğa Yürüyüşleri', 'Ekipmanlar', 'Rotalar'],
   tagNames: ['#doğayürüyüşleri'],
   contentCountScope: 'primary',
+  editorialLayout: 'split-first-row',
   title: 'Doğa Yürüyüşleri Rehberi',
   description:
     'Hiking ve trekking’e başlarken doğru yürüyüş türünü seç, ekipmanını hazırla ve rotaya daha güvenli çık.',

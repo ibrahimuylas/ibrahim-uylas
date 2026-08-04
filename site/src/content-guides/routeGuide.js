@@ -260,6 +260,7 @@ const routeGuide = {
       title: 'Yaylalar ve ormanlar',
       description:
         'Yayla havası, orman patikaları ve şehirden uzaklaşmak için rota önerilerine göz at.',
+      layout: 'editorial',
       slugs: routeGroups['yaylalar-ormanlar']
     },
     {
@@ -267,6 +268,7 @@ const routeGuide = {
       title: 'Kanyonlar ve şelaleler',
       description:
         'Su, kaya ve patika deneyimini bir araya getiren doğa noktalarını incele.',
+      layout: 'editorial',
       slugs: routeGroups['kanyonlar-selaleler']
     },
     {
@@ -274,6 +276,7 @@ const routeGuide = {
       title: 'Kıyılar, koylar ve plajlar',
       description:
         'Deniz kenarında yürüyüş, kamp ve kısa kaçamak için farklı rotaları bul.',
+      layout: 'editorial',
       slugs: routeGroups['kiyilar-koylar']
     }
   ],

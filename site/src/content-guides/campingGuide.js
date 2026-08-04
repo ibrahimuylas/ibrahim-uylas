@@ -5,6 +5,7 @@ const campingGuide = {
   hubCategories: ['Kampçılık', 'Ekipmanlar', 'Rotalar', 'Doğa Yürüyüşleri'],
   tagNames: ['#kampçılık'],
   contentCountScope: 'hub',
+  editorialLayout: 'split-first-row',
   title: 'Kampçılık Rehberi',
   description:
     'İlk kamp alanını seçmekten doğru uyku sistemini kurmaya, güvenlikten ekipman seçimine kadar ihtiyaç duyduğun kampçılık içeriklerini tek yerde keşfet.',

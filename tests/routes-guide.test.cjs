@@ -105,6 +105,15 @@ test('route guide adds a route research step and compact spacing mode', () => {
   assert.match(routeGuide.research.title, /Rota nasıl bulunur/)
 })
 
+test('all non-Likya route groups use the editorial split layout', () => {
+  assert.deepEqual(
+    routeGuide.sections
+      .filter(section => section.id !== 'likya-yolu')
+      .map(section => section.layout),
+    ['editorial', 'editorial', 'editorial', 'editorial']
+  )
+})
+
 test('rotalar route is wired to the shared guide template', () => {
   const gatsbyNode = fs.readFileSync(
     path.resolve(__dirname, '../site/gatsby-node.js'),

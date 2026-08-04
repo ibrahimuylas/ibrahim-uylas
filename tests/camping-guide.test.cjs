@@ -3,6 +3,7 @@ const assert = require('node:assert/strict')
 const fs = require('node:fs')
 const path = require('node:path')
 const campingGuide = require('../site/src/content-guides/campingGuide')
+const hikingGuide = require('../site/src/content-guides/hikingGuide')
 const {
   createCategoryHubActivation,
   filterArticles,
@@ -92,6 +93,19 @@ test('equipment section uses a responsive editorial card grid', () => {
   assert.match(campingGuideComponent, /data-equipment-grid/)
   assert.match(campingGuideComponent, /`repeat\(3, minmax\(0, 1fr\)\)`/)
   assert.match(campingGuideComponent, /editorial/)
+})
+
+test('editorial guide sections use the shared split-first-row layout', () => {
+  assert.equal(campingGuide.editorialLayout, 'split-first-row')
+  assert.equal(hikingGuide.editorialLayout, 'split-first-row')
+  assert.match(
+    campingGuideComponent,
+    /guide\.editorialLayout === 'split-first-row' && articles\.length > 4/
+  )
+  assert.match(
+    campingGuideComponent,
+    /gridTemplateColumns:[\s\S]*`repeat\(3, minmax\(0, 1fr\)\)`/
+  )
 })
 
 test('reading path uses three columns on desktop without changing mobile', () => {
