@@ -46,12 +46,17 @@ const headingStyle = {
 const heroAccent = `#1552d6`
 
 const getAllCuratedSlugs = guide => [
-  ...guide.readingPath.map(item => item.slug),
-  ...guide.sections.flatMap(section => section.slugs)
+  ...guide.readingPath.map(item => item.slug).filter(Boolean),
+  ...guide.sections.flatMap(section =>
+    section.items ? section.items.map(item => item.slug) : section.slugs
+  )
 ]
 
 const getGuideTopicLinks = guide => [
   { id: 'baslangic', label: guide.beginner.navLabel },
+  ...(guide.research
+    ? [{ id: guide.research.id, label: guide.research.navLabel }]
+    : []),
   ...guide.sections.map(section => ({
     id: section.id,
     label: section.title
@@ -110,6 +115,7 @@ const ArticleMeta = ({ article }) => (
 
 const ArticleLinkCard = ({
   article,
+  context,
   desktopImageOnly = false,
   editorial = false,
   featured,
@@ -304,6 +310,20 @@ const ArticleLinkCard = ({
                 {article.title}
               </Link>
             </Heading>
+            {context && (
+              <Text
+                as='p'
+                sx={{
+                  color: `alphaDark`,
+                  fontSize: 1,
+                  fontWeight: `bold`,
+                  mt: 2,
+                  mb: 0
+                }}
+              >
+                {context}
+              </Text>
+            )}
           </Box>
           <Box sx={{ minWidth: 0 }}>
             <Text
@@ -352,6 +372,363 @@ const ArticleLinkCard = ({
   )
 }
 
+const RouteArticleCard = ({ item, policy, trackLink }) => {
+  const { article } = item
+  const image = getImageVariant(article.thumbnail, 'natural')
+
+  return (
+    <Box
+      as='li'
+      sx={{
+        ...surfaceStyle,
+        minWidth: 0,
+        overflow: `hidden`,
+        transition: `transform 180ms ease, border-color 180ms ease`,
+        '@media (hover: hover) and (pointer: fine)': {
+          '&:hover': {
+            borderColor: `alpha`,
+            transform: `translateY(-2px)`
+          }
+        }
+      }}
+    >
+      {image && (
+        <Box
+          aria-hidden='true'
+          sx={{
+            aspectRatio:
+              image.width && image.height
+                ? `${image.width} / ${image.height}`
+                : `16 / 9`,
+            overflow: `hidden`,
+            bg: `omegaLighter`,
+            '& .gatsby-image-wrapper': {
+              width: `100%`,
+              height: `100%`
+            }
+          }}
+        >
+          <Img
+            image={image}
+            alt=''
+            loading='lazy'
+            style={{ width: `100%`, height: `100%` }}
+            imgStyle={{ objectFit: `cover` }}
+          />
+        </Box>
+      )}
+      <Box sx={{ p: [3, 4] }}>
+        {item.context && (
+          <Text
+            as='p'
+            sx={{
+              color: `alphaDark`,
+              fontSize: 1,
+              fontWeight: `bold`,
+              letterSpacing: `0.04em`,
+              m: 0,
+              textTransform: `uppercase`
+            }}
+          >
+            {item.context}
+          </Text>
+        )}
+        <Heading
+          as='h3'
+          sx={{
+            color: `heading`,
+            fontSize: [3, 4],
+            lineHeight: 1.25,
+            mt: 2,
+            mb: 0
+          }}
+        >
+          <Link
+            as={GatsbyLink}
+            to={article.slug}
+            onClick={trackLink(item.sectionId, article.slug)}
+            sx={{ color: `inherit`, ...focusStyle }}
+          >
+            {article.title}
+          </Link>
+        </Heading>
+        <Text
+          as='p'
+          sx={{ color: `text`, fontSize: [1, 2], lineHeight: 1.6, mb: 0 }}
+        >
+          {article.excerpt}
+        </Text>
+        <ArticleMeta article={article} />
+        {item.journalSlug && (
+          <Link
+            as={GatsbyLink}
+            to={policy.articlePath(item.journalSlug)}
+            onClick={trackLink(item.sectionId, item.journalSlug)}
+            sx={{
+              display: `inline-flex`,
+              minHeight: 44,
+              alignItems: `center`,
+              color: `alphaDark`,
+              fontWeight: `bold`,
+              mt: 2,
+              ...focusStyle
+            }}
+          >
+            {item.journalLabel || 'Yürüyüş günlüğünü oku'} →
+          </Link>
+        )}
+      </Box>
+    </Box>
+  )
+}
+
+const RouteResearchSection = ({ guide, research }) => (
+  <Box
+    as='section'
+    id={research.id}
+    aria-labelledby={`${research.id}-title`}
+    sx={{
+      scrollMarginTop: `96px`,
+      mt: guide.compactSpacing ? [3, 4] : [4, 5],
+      px: [3, 4],
+      py: [3, 4],
+      bg: `alphaLighter`,
+      border: `1px solid`,
+      borderColor: `alphaLight`,
+      borderRadius: `16px`
+    }}
+  >
+    <Grid
+      sx={{
+        gridTemplateColumns: [
+          `1fr`,
+          null,
+          null,
+          `minmax(220px, 0.75fr) minmax(0, 1.5fr)`
+        ],
+        gap: [3, 4],
+        alignItems: `start`
+      }}
+    >
+      <Box>
+        <Text
+          as='p'
+          sx={{
+            color: `alpha`,
+            fontSize: 1,
+            fontWeight: `bold`,
+            letterSpacing: `0.08em`,
+            textTransform: `uppercase`,
+            mb: 2
+          }}
+        >
+          {research.eyebrow}
+        </Text>
+        <Heading
+          id={`${research.id}-title`}
+          as='h2'
+          sx={{ ...headingStyle, fontSize: [5, 6], lineHeight: 1.08, m: 0 }}
+        >
+          {research.title}
+        </Heading>
+        <Text
+          as='p'
+          sx={{
+            color: `text`,
+            fontSize: [1, 2],
+            lineHeight: 1.6,
+            mt: 2,
+            mb: 0
+          }}
+        >
+          {research.description}
+        </Text>
+      </Box>
+      <Grid
+        as='ol'
+        sx={{
+          gridTemplateColumns: [`1fr`, null, `repeat(2, minmax(0, 1fr))`],
+          gap: 2,
+          listStyle: `none`,
+          p: 0,
+          m: 0
+        }}
+      >
+        {research.steps.map((step, index) => (
+          <Box
+            as='li'
+            key={step.title}
+            sx={{
+              ...surfaceStyle,
+              height: `100%`,
+              bg: `contentBg`,
+              p: [3, 4]
+            }}
+          >
+            <Flex
+              aria-hidden='true'
+              sx={{
+                alignItems: `center`,
+                justifyContent: `center`,
+                width: 36,
+                height: 36,
+                bg: `alphaLighter`,
+                color: `alphaDark`,
+                borderRadius: `50%`,
+                fontWeight: `bold`,
+                mb: 3
+              }}
+            >
+              {index + 1}
+            </Flex>
+            <Heading
+              as='h3'
+              sx={{
+                color: `heading`,
+                fontSize: [3, 4],
+                lineHeight: 1.25,
+                m: 0
+              }}
+            >
+              {step.title}
+            </Heading>
+            <Text
+              as='p'
+              sx={{ color: `text`, fontSize: [1, 2], lineHeight: 1.6, mb: 0 }}
+            >
+              {step.description}
+            </Text>
+          </Box>
+        ))}
+      </Grid>
+    </Grid>
+  </Box>
+)
+
+const RouteSection = ({ guide, section, policy, featuredSlugs, trackLink }) => {
+  const featuredArticle = section.featuredArticle
+  const compactSpacing = guide.compactSpacing
+
+  return (
+    <Box
+      as='section'
+      id={section.id}
+      aria-labelledby={`${section.id}-title`}
+      sx={{
+        scrollMarginTop: `96px`,
+        py: compactSpacing ? [3, 4] : [4, 5],
+        borderTop: `1px solid`,
+        borderColor: `omegaLight`
+      }}
+    >
+      <Flex
+        sx={{
+          alignItems: [`flex-start`, `flex-end`],
+          flexDirection: [`column`, `row`],
+          justifyContent: `space-between`,
+          gap: 3,
+          mb: compactSpacing ? [3, 4] : [4, 5]
+        }}
+      >
+        <Box sx={{ maxWidth: 760 }}>
+          <Heading
+            id={`${section.id}-title`}
+            as='h2'
+            sx={{ ...headingStyle, fontSize: [5, 7], lineHeight: 1.08, m: 0 }}
+          >
+            {section.title}
+          </Heading>
+          <Text
+            as='p'
+            sx={{
+              color: `text`,
+              fontSize: [2, 3],
+              lineHeight: 1.55,
+              mt: 2,
+              mb: 0
+            }}
+          >
+            {section.description}
+          </Text>
+        </Box>
+      </Flex>
+
+      {featuredArticle && (
+        <Box sx={{ mb: compactSpacing ? 3 : 4 }}>
+          <ArticleLinkCard
+            article={featuredArticle}
+            editorial
+            featured={featuredSlugs.has(
+              policy.articleKey(featuredArticle.slug)
+            )}
+            withImage
+            onActivate={trackLink(section.id, featuredArticle.slug)}
+          />
+        </Box>
+      )}
+
+      {section.links && (
+        <Flex
+          sx={{
+            flexWrap: `wrap`,
+            gap: 2,
+            mb: compactSpacing ? 3 : 4
+          }}
+        >
+          {section.links.map(link => (
+            <Link
+              key={link.path}
+              as={link.path.startsWith('/') ? GatsbyLink : undefined}
+              to={link.path.startsWith('/') ? link.path : undefined}
+              href={link.path.startsWith('/') ? undefined : link.path}
+              onClick={
+                link.path.startsWith('/')
+                  ? trackLink(section.id, link.path)
+                  : undefined
+              }
+              sx={{
+                display: `inline-flex`,
+                alignItems: `center`,
+                minHeight: 44,
+                color: `alphaDark`,
+                fontWeight: `bold`,
+                ...focusStyle
+              }}
+            >
+              {link.label} →
+            </Link>
+          ))}
+        </Flex>
+      )}
+
+      <Grid
+        as='ol'
+        sx={{
+          gridTemplateColumns: [
+            `1fr`,
+            null,
+            `repeat(2, minmax(0, 1fr))`,
+            `repeat(3, minmax(0, 1fr))`
+          ],
+          gap: compactSpacing ? [2, 3] : [3, 4],
+          listStyle: `none`,
+          p: 0,
+          m: 0
+        }}
+      >
+        {section.items.map(item => (
+          <RouteArticleCard
+            key={item.article.id}
+            item={{ ...item, sectionId: section.id }}
+            policy={policy}
+            trackLink={trackLink}
+          />
+        ))}
+      </Grid>
+    </Box>
+  )
+}
+
 const EquipmentSection = ({
   guide,
   policy,
@@ -359,75 +736,76 @@ const EquipmentSection = ({
   articles,
   featuredSlugs,
   trackLink
-}) => (
-  <Box
-    as='section'
-    id={section.id}
-    aria-labelledby={`${section.id}-title`}
-    sx={{
-      scrollMarginTop: `96px`,
-      py: [4, 5],
-      borderTop: `1px solid`,
-      borderColor: `omegaLight`
-    }}
-  >
-    <Flex
+}) => {
+  const splitFirstRow =
+    guide.editorialLayout === 'split-first-row' && articles.length > 2
+
+  const renderArticleCard = article => (
+    <ArticleLinkCard
+      key={article.id}
+      article={article}
+      editorial
+      featured={featuredSlugs.has(policy.articleKey(article.slug))}
+      withImage={
+        !guide.imageExcludedSlugs.includes(policy.articleKey(article.slug))
+      }
+      onActivate={trackLink(section.id, article.slug)}
+    />
+  )
+
+  const intro = (
+    <Box sx={{ maxWidth: 680 }}>
+      <Heading
+        id={`${section.id}-title`}
+        as='h2'
+        sx={{
+          ...headingStyle,
+          fontSize: [5, 7],
+          lineHeight: 1.08,
+          m: 0
+        }}
+      >
+        {section.title}
+      </Heading>
+      <Text
+        as='p'
+        sx={{
+          color: `text`,
+          fontSize: [2, 3],
+          lineHeight: 1.55,
+          mt: 2,
+          mb: 0
+        }}
+      >
+        {section.description}
+      </Text>
+    </Box>
+  )
+
+  const moreLink = section.moreLink && (
+    <Link
+      as={GatsbyLink}
+      to={section.moreLink.path}
+      onClick={trackLink(section.id, section.moreLink.path)}
       sx={{
-        alignItems: [`flex-start`, `flex-end`],
-        flexDirection: [`column`, `row`],
-        justifyContent: `space-between`,
-        gap: 3,
-        mb: [4, 5]
+        display: `inline-flex`,
+        alignItems: `center`,
+        minHeight: 44,
+        color: `alphaDark`,
+        fontWeight: `bold`,
+        flexShrink: 0,
+        ...(splitFirstRow ? { mt: 3 } : {}),
+        '&:visited': {
+          color: `alphaDark`
+        },
+        ...focusStyle
       }}
     >
-      <Box sx={{ maxWidth: 680 }}>
-        <Heading
-          id={`${section.id}-title`}
-          as='h2'
-          sx={{
-            ...headingStyle,
-            fontSize: [5, 7],
-            lineHeight: 1.08,
-            m: 0
-          }}
-        >
-          {section.title}
-        </Heading>
-        <Text
-          as='p'
-          sx={{
-            color: `text`,
-            fontSize: [2, 3],
-            lineHeight: 1.55,
-            mt: 2,
-            mb: 0
-          }}
-        >
-          {section.description}
-        </Text>
-      </Box>
-      {section.moreLink && (
-        <Link
-          as={GatsbyLink}
-          to={section.moreLink.path}
-          onClick={trackLink(section.id, section.moreLink.path)}
-          sx={{
-            display: `inline-flex`,
-            alignItems: `center`,
-            minHeight: 44,
-            color: `alphaDark`,
-            fontWeight: `bold`,
-            flexShrink: 0,
-            '&:visited': {
-              color: `alphaDark`
-            },
-            ...focusStyle
-          }}
-        >
-          {section.moreLink.label} →
-        </Link>
-      )}
-    </Flex>
+      {section.moreLink.label} →
+    </Link>
+  )
+
+  const renderGrid = (items, sx = {}) => (
     <Grid
       as='ul'
       data-equipment-grid
@@ -440,24 +818,73 @@ const EquipmentSection = ({
         gap: [3, 4],
         listStyle: `none`,
         p: 0,
-        m: 0
+        m: 0,
+        ...sx
       }}
     >
-      {articles.map(article => (
-        <ArticleLinkCard
-          key={article.id}
-          article={article}
-          editorial
-          featured={featuredSlugs.has(policy.articleKey(article.slug))}
-          withImage={
-            !guide.imageExcludedSlugs.includes(policy.articleKey(article.slug))
-          }
-          onActivate={trackLink(section.id, article.slug)}
-        />
-      ))}
+      {items.map(renderArticleCard)}
     </Grid>
-  </Box>
-)
+  )
+
+  return (
+    <Box
+      as='section'
+      id={section.id}
+      aria-labelledby={`${section.id}-title`}
+      sx={{
+        scrollMarginTop: `96px`,
+        py: [4, 5],
+        ...(guide.compactSpacing ? { py: [3, 4] } : {}),
+        borderTop: `1px solid`,
+        borderColor: `omegaLight`
+      }}
+    >
+      {splitFirstRow ? (
+        <>
+          <Grid
+            sx={{
+              gridTemplateColumns: [
+                `1fr`,
+                null,
+                null,
+                `minmax(0, 0.7fr) repeat(2, minmax(0, 1fr))`
+              ],
+              gap: [3, 4],
+              alignItems: `start`
+            }}
+          >
+            <Box>
+              {intro}
+              {moreLink}
+            </Box>
+            {renderGrid(articles.slice(0, 2), {
+              gridColumn: [1, 1, 1, `2 / -1`],
+              gridTemplateColumns: [`1fr`, `repeat(2, minmax(0, 1fr))`]
+            })}
+          </Grid>
+          {renderGrid(articles.slice(2), { mt: [3, 4] })}
+        </>
+      ) : (
+        <>
+          <Flex
+            sx={{
+              alignItems: [`flex-start`, `flex-end`],
+              flexDirection: [`column`, `row`],
+              justifyContent: `space-between`,
+              gap: 3,
+              mb: [4, 5],
+              ...(guide.compactSpacing ? { mb: [3, 4] } : {})
+            }}
+          >
+            {intro}
+            {moreLink}
+          </Flex>
+          {renderGrid(articles)}
+        </>
+      )}
+    </Box>
+  )
+}
 
 const TopicSection = ({
   guide,
@@ -467,7 +894,15 @@ const TopicSection = ({
   featuredSlugs,
   trackLink
 }) =>
-  section.layout === 'editorial' ? (
+  section.layout === 'route' ? (
+    <RouteSection
+      guide={guide}
+      section={section}
+      policy={policy}
+      featuredSlugs={featuredSlugs}
+      trackLink={trackLink}
+    />
+  ) : section.layout === 'editorial' ? (
     <EquipmentSection
       guide={guide}
       policy={policy}
@@ -484,6 +919,7 @@ const TopicSection = ({
       sx={{
         scrollMarginTop: `96px`,
         py: [3, 4],
+        ...(guide.compactSpacing ? { py: [2, 3] } : {}),
         borderTop: `1px solid`,
         borderColor: `omegaLight`
       }}
@@ -565,7 +1001,19 @@ const TopicSection = ({
 
 const GuideHeroImage = ({ guide, heroArticle }) =>
   guide.hero.imageType === 'static' ? (
-    guide.id === 'doga-yuruyusleri' ? (
+    guide.id === 'rotalar' ? (
+      <StaticImage
+        src='../../content/assets/rotalar-guide-hero.png'
+        alt={guide.hero.imageAlt}
+        layout='fullWidth'
+        loading='eager'
+        placeholder='blurred'
+        quality={90}
+        formats={['auto', 'webp', 'avif']}
+        style={{ width: `100%`, height: `100%` }}
+        imgStyle={{ objectFit: `cover`, objectPosition: `center` }}
+      />
+    ) : guide.id === 'doga-yuruyusleri' ? (
       <StaticImage
         src='../../content/assets/doga-yuruyusleri-guide-hero.png'
         alt={guide.hero.imageAlt}
@@ -637,20 +1085,26 @@ const GuideCategory = ({
       policy.filterArticles({
         articles: guideArticles,
         query,
-        category
+        category,
+        groupBySlug: guide.articleGroups
       }),
-    [category, guideArticles, query]
+    [category, guide.articleGroups, guideArticles, query]
   )
   const categories = useMemo(
-    () => [
-      'Tümü',
-      ...Array.from(
-        new Set(
-          guideArticles.map(article => article.category?.name).filter(Boolean)
-        )
-      ).sort((a, b) => a.localeCompare(b, 'tr-TR'))
-    ],
-    [guideArticles]
+    () =>
+      guide.groupFilters?.length
+        ? ['Tümü', ...guide.groupFilters.map(item => item.id)]
+        : [
+            'Tümü',
+            ...Array.from(
+              new Set(
+                guideArticles
+                  .map(article => article.category?.name)
+                  .filter(Boolean)
+              )
+            ).sort((a, b) => a.localeCompare(b, 'tr-TR'))
+          ],
+    [guide, guideArticles]
   )
   const routeSection = guide.sections.find(section => section.randomCategory)
   const fixedRouteSlugs = useMemo(
@@ -688,12 +1142,22 @@ const GuideCategory = ({
     .map(item => ({ ...item, article: articleLookup.get(item.slug) }))
     .filter(item => item.article)
   const topicSections = guide.sections.map(section => {
-    const configuredArticles = section.slugs
-      .map(slug => articleLookup.get(slug))
-      .filter(Boolean)
+    const configuredItems = (
+      section.items || section.slugs.map(slug => ({ slug }))
+    )
+      .map(item => ({ ...item, article: articleLookup.get(item.slug) }))
+      .filter(item => item.article)
+    const configuredArticles = configuredItems.map(item => item.article)
 
     if (section.id !== routeSection?.id) {
-      return { ...section, articles: configuredArticles }
+      return {
+        ...section,
+        articles: configuredArticles,
+        items: configuredItems,
+        featuredArticle: section.featuredSlug
+          ? articleLookup.get(section.featuredSlug)
+          : null
+      }
     }
 
     const selectedRandomRoutes = (
@@ -704,7 +1168,11 @@ const GuideCategory = ({
 
     return {
       ...section,
-      articles: [...configuredArticles, ...selectedRandomRoutes]
+      articles: [...configuredArticles, ...selectedRandomRoutes],
+      items: configuredItems,
+      featuredArticle: section.featuredSlug
+        ? articleLookup.get(section.featuredSlug)
+        : null
     }
   })
 
@@ -716,6 +1184,23 @@ const GuideCategory = ({
           article => article.category?.name === guide.primaryCategory
         ).length
       : guideArticles.length
+  const likyaCount = guide.likyaSlugs
+    ? guideArticles.filter(article =>
+        guide.likyaSlugs.includes(policy.articleKey(article.slug))
+      ).length
+    : 0
+  const statValues = {
+    content: contentCount,
+    topics: guide.sections.length + 1,
+    beginning: readingPath.length,
+    likya: likyaCount,
+    other: Math.max(0, contentCount - likyaCount)
+  }
+  const stats = guide.hero.stats || [
+    { key: 'content', label: 'İçerik' },
+    { key: 'topics', label: 'Konu' },
+    { key: 'beginning', label: 'Başlangıç' }
+  ]
   const heroArticle = guide.hero.imageSlug
     ? articleLookup.get(guide.hero.imageSlug)
     : null
@@ -816,7 +1301,7 @@ const GuideCategory = ({
           >
             <Button
               as='a'
-              href='#baslangic'
+              href={guide.hero.ctaHref || '#baslangic'}
               sx={{
                 justifyContent: `center`,
                 width: [`100%`, `auto`],
@@ -860,7 +1345,7 @@ const GuideCategory = ({
                 ...focusStyle
               }}
             >
-              Tüm içeriklerde ara
+              {guide.hero.secondaryCtaLabel || 'Tüm içeriklerde ara'}
             </Button>
           </Flex>
           <Flex
@@ -883,108 +1368,43 @@ const GuideCategory = ({
               }
             }}
           >
-            <Text
-              as='span'
-              sx={{
-                display: `flex`,
-                flexDirection: `column`,
-                alignItems: `center`,
-                minWidth: 0
-              }}
-            >
+            {stats.map(stat => (
               <Text
-                as='strong'
+                as='span'
+                key={stat.key}
                 sx={{
-                  color: heroAccent,
-                  fontFamily: headingStyle.fontFamily,
-                  fontSize: [5, 6],
-                  fontWeight: 400,
-                  lineHeight: 1
+                  display: `flex`,
+                  flexDirection: `column`,
+                  alignItems: `center`,
+                  minWidth: 0
                 }}
               >
-                {contentCount}
+                <Text
+                  as='strong'
+                  sx={{
+                    color: heroAccent,
+                    fontFamily: headingStyle.fontFamily,
+                    fontSize: [5, 6],
+                    fontWeight: 400,
+                    lineHeight: 1
+                  }}
+                >
+                  {statValues[stat.key]}
+                </Text>
+                <Text
+                  as='small'
+                  sx={{
+                    mt: 1,
+                    fontSize: 0,
+                    fontWeight: `bold`,
+                    letterSpacing: `0.08em`,
+                    textTransform: `uppercase`
+                  }}
+                >
+                  {stat.label}
+                </Text>
               </Text>
-              <Text
-                as='small'
-                sx={{
-                  mt: 1,
-                  fontSize: 0,
-                  fontWeight: `bold`,
-                  letterSpacing: `0.08em`,
-                  textTransform: `uppercase`
-                }}
-              >
-                İçerik
-              </Text>
-            </Text>
-            <Text
-              as='span'
-              sx={{
-                display: `flex`,
-                flexDirection: `column`,
-                alignItems: `center`,
-                minWidth: 0
-              }}
-            >
-              <Text
-                as='strong'
-                sx={{
-                  color: heroAccent,
-                  fontFamily: headingStyle.fontFamily,
-                  fontSize: [5, 6],
-                  fontWeight: 400,
-                  lineHeight: 1
-                }}
-              >
-                {guide.sections.length + 1}
-              </Text>
-              <Text
-                as='small'
-                sx={{
-                  mt: 1,
-                  fontSize: 0,
-                  fontWeight: `bold`,
-                  letterSpacing: `0.08em`,
-                  textTransform: `uppercase`
-                }}
-              >
-                Konu
-              </Text>
-            </Text>
-            <Text
-              as='span'
-              sx={{
-                display: `flex`,
-                flexDirection: `column`,
-                alignItems: `center`,
-                minWidth: 0
-              }}
-            >
-              <Text
-                as='strong'
-                sx={{
-                  color: heroAccent,
-                  fontFamily: headingStyle.fontFamily,
-                  fontSize: [5, 6],
-                  fontWeight: 400,
-                  lineHeight: 1
-                }}
-              >
-                {readingPath.length}
-              </Text>
-              <Text
-                as='small'
-                sx={{
-                  mt: 1,
-                  fontSize: 0,
-                  fontWeight: `bold`,
-                  letterSpacing: `0.08em`,
-                  textTransform: `uppercase`
-                }}
-              >
-                Başlangıç
-              </Text>
-            </Text>
+            ))}
           </Flex>
         </Flex>
         <Box
@@ -1007,7 +1427,11 @@ const GuideCategory = ({
         </Box>
       </Box>
 
-      <Box as='nav' aria-label={`${guide.title} konuları`} sx={{ py: [4, 5] }}>
+      <Box
+        as='nav'
+        aria-label={`${guide.title} konuları`}
+        sx={{ py: guide.compactSpacing ? [2, 3] : [4, 5] }}
+      >
         <Flex
           as='ul'
           sx={{ flexWrap: `wrap`, gap: 2, listStyle: `none`, p: 0 }}
@@ -1046,6 +1470,28 @@ const GuideCategory = ({
           ))}
         </Flex>
       </Box>
+      {guide.notice && (
+        <Box
+          role='note'
+          sx={{
+            bg: `alphaLighter`,
+            border: `1px solid`,
+            borderColor: `alphaLight`,
+            borderRadius: `12px`,
+            color: `heading`,
+            px: [3, 4],
+            py: 3,
+            mb: guide.compactSpacing ? [2, 3] : [4, 5]
+          }}
+        >
+          <Text as='strong' sx={{ display: `block`, mb: 1 }}>
+            {guide.notice.label}
+          </Text>
+          <Text as='span' sx={{ color: `text`, lineHeight: 1.6 }}>
+            {guide.notice.text}
+          </Text>
+        </Box>
+      )}
       <ArticleContents
         items={guideContentsItems}
         showInlineNavigation={false}
@@ -1057,13 +1503,14 @@ const GuideCategory = ({
         aria-labelledby='baslangic-title'
         sx={{
           scrollMarginTop: `96px`,
-          pb: [4, 5]
+          pb: [4, 5],
+          ...(guide.compactSpacing ? { pb: [2, 3] } : {})
         }}
       >
         <Box
           sx={{
             maxWidth: [760, 760, `none`],
-            mb: 4
+            mb: guide.compactSpacing ? 3 : 4
           }}
         >
           <Text
@@ -1116,7 +1563,7 @@ const GuideCategory = ({
               `repeat(2, minmax(0, 1fr))`,
               `repeat(3, minmax(0, 1fr))`
             ],
-            gap: [3, 3, 3, 4],
+            gap: guide.compactSpacing ? [2, 2, 3, 3] : [3, 3, 3, 4],
             listStyle: `none`,
             p: 0,
             m: 0
@@ -1136,6 +1583,10 @@ const GuideCategory = ({
           ))}
         </Grid>
       </Box>
+
+      {guide.research && (
+        <RouteResearchSection guide={guide} research={guide.research} />
+      )}
 
       {topicSections.map(section => (
         <TopicSection
@@ -1301,6 +1752,9 @@ const GuideCategory = ({
         >
           {categories.map(item => {
             const selected = category === item
+            const label =
+              guide.groupFilters?.find(filter => filter.id === item)?.label ||
+              item
 
             return (
               <Button
@@ -1332,7 +1786,7 @@ const GuideCategory = ({
                   ...focusStyle
                 }}
               >
-                {item}
+                {label}
               </Button>
             )
           })}

@@ -2,7 +2,8 @@ const path = require('node:path')
 
 const GUIDE_ROUTES = {
   '/category/kampcilik/': 'kampcilik',
-  '/category/doga-yuruyusleri/': 'doga-yuruyusleri'
+  '/category/doga-yuruyusleri/': 'doga-yuruyusleri',
+  '/category/rotalar/': 'rotalar'
 }
 
 exports.onCreatePage = ({ page, actions }) => {

@@ -7,10 +7,12 @@ import GuideCategory, { getAllCuratedSlugs } from '../components/CampingGuide'
 import categoryGuidePolicy from '../components/categoryGuidePolicy'
 import campingGuide from '../content-guides/campingGuide'
 import hikingGuide from '../content-guides/hikingGuide'
+import routeGuide from '../content-guides/routeGuide'
 
 const guides = {
   kampcilik: campingGuide,
-  'doga-yuruyusleri': hikingGuide
+  'doga-yuruyusleri': hikingGuide,
+  rotalar: routeGuide
 }
 
 const CampingCategoryPage = ({

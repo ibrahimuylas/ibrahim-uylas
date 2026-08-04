@@ -36,12 +36,21 @@ const isGuideArticle = (
   )
 }
 
-const filterArticles = ({ articles = [], query = '', category = 'Tümü' }) => {
+const filterArticles = ({
+  articles = [],
+  query = '',
+  category = 'Tümü',
+  groupBySlug = null
+}) => {
   const normalizedQuery = normalizeSearchText(query)
+  const hasGroups = groupBySlug && Object.keys(groupBySlug).length > 0
 
   return articles.filter(article => {
     const categoryMatches =
-      category === 'Tümü' || article?.category?.name === category
+      category === 'Tümü' ||
+      (hasGroups
+        ? groupBySlug[articleKey(article?.slug)] === category
+        : article?.category?.name === category)
     const haystack = normalizeSearchText(
       `${article?.title || ''} ${article?.excerpt || ''}`
     )
