@@ -3,7 +3,8 @@ const path = require('node:path')
 const GUIDE_ROUTES = {
   '/category/kampcilik/': 'kampcilik',
   '/category/doga-yuruyusleri/': 'doga-yuruyusleri',
-  '/category/rotalar/': 'rotalar'
+  '/category/rotalar/': 'rotalar',
+  '/category/doga-yuruyusleri-ve-kamp-ekipmanlari/': 'ekipmanlar'
 }
 
 exports.onCreatePage = ({ page, actions }) => {

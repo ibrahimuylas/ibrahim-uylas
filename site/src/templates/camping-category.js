@@ -6,13 +6,15 @@ import Seo from '@widgets/Seo'
 import GuideCategory, { getAllCuratedSlugs } from '../components/CampingGuide'
 import categoryGuidePolicy from '../components/categoryGuidePolicy'
 import campingGuide from '../content-guides/campingGuide'
+import equipmentGuide from '../content-guides/equipmentGuide'
 import hikingGuide from '../content-guides/hikingGuide'
 import routeGuide from '../content-guides/routeGuide'
 
 const guides = {
   kampcilik: campingGuide,
   'doga-yuruyusleri': hikingGuide,
-  rotalar: routeGuide
+  rotalar: routeGuide,
+  ekipmanlar: equipmentGuide
 }
 
 const CampingCategoryPage = ({

@@ -26,6 +26,12 @@ const hikingGuidePath = path.join(
   'doga-yuruyusleri',
   'index.html'
 )
+const equipmentGuidePath = path.join(
+  publicDirectory,
+  'category',
+  'doga-yuruyusleri-ve-kamp-ekipmanlari',
+  'index.html'
+)
 const pageDataDirectory = path.join(publicDirectory, 'page-data')
 const pagefindDirectory = path.join(publicDirectory, 'pagefind')
 
@@ -198,6 +204,47 @@ if (!fs.existsSync(hikingGuidePath)) {
     process.exitCode = 1
   } else {
     console.log('Generated hiking guide SSR contract is valid.')
+  }
+}
+
+if (!fs.existsSync(equipmentGuidePath)) {
+  console.error('Generated equipment guide HTML is missing.')
+  process.exitCode = 1
+} else {
+  const equipmentGuide = fs.readFileSync(equipmentGuidePath, 'utf8')
+  const requiredEquipmentGuideContent = [
+    'Ekipmanlar Rehberi',
+    'Ekipmanını kullanımına göre seç',
+    'Barınma ve uyku sistemi',
+    'Giyim ve yürüyüş ekipmanları',
+    'Kamp mutfağı ve küçük ekipmanlar',
+    'Tüm içerikler',
+    'CollectionPage',
+    'ItemList',
+    'rel="canonical" href="https://www.ibrahimuylas.com/category/doga-yuruyusleri-ve-kamp-ekipmanlari/"',
+    'href="/doga-yuruyusleri-icin-gerekli-ekipmanlar/"',
+    'href="/yagmurluk-nasil-secilir/"',
+    'href="/cadir-alirken-nelere-dikkat-edilmeli/"',
+    'href="/ferrino-lightent-2-kamp-cadiri/"',
+    'href="/trangia-kamp-tencere-seti/"',
+    'href="/xiaomi-mi-arac-sarji/"'
+  ]
+  const missingEquipmentGuideContent = requiredEquipmentGuideContent.filter(
+    value => !equipmentGuide.includes(value)
+  )
+  const h1Count = (equipmentGuide.match(/<h1\b/gi) || []).length
+
+  if (missingEquipmentGuideContent.length || h1Count !== 1) {
+    console.error('Generated equipment guide SSR contract is invalid:')
+    missingEquipmentGuideContent.forEach(value =>
+      console.error(`- Missing: ${value}`)
+    )
+    if (h1Count !== 1) {
+      console.error(`- Expected one h1, found ${h1Count}`)
+    }
+    process.exitCode = 1
+  } else {
+    console.log('Generated equipment guide SSR contract is valid.')
   }
 }
 

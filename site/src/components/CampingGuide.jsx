@@ -1025,6 +1025,18 @@ const GuideHeroImage = ({ guide, heroArticle }) =>
         style={{ width: `100%`, height: `100%` }}
         imgStyle={{ objectFit: `cover`, objectPosition: `center` }}
       />
+    ) : guide.id === 'ekipmanlar' ? (
+      <StaticImage
+        src='../../content/assets/ekipmanlar-guide-flatlay.webp'
+        alt={guide.hero.imageAlt}
+        layout='fullWidth'
+        loading='eager'
+        placeholder='blurred'
+        quality={90}
+        formats={['auto', 'webp', 'avif']}
+        style={{ width: `100%`, height: `100%` }}
+        imgStyle={{ objectFit: `cover`, objectPosition: `center` }}
+      />
     ) : (
       <StaticImage
         src='../../content/assets/camping-guide-hero.png'
