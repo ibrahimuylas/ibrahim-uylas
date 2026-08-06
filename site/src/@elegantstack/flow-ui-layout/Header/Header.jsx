@@ -22,10 +22,7 @@ const styles = {
     flexBasis: [`auto`, null, `1/3`],
     minWidth: `auto`,
     order: [3, null, `unset`],
-    mx: 3,
-    '@media (max-width: 767px)': {
-      display: `none`
-    }
+    mx: 3
   },
   menuContainer: {
     flexBasis: [`auto`, null, `1/3`],

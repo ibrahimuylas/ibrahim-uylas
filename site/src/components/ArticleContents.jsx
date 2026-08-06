@@ -80,6 +80,7 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
   const [isDesktopNavigation, setIsDesktopNavigation] = useState(false)
   const [isMobileDock, setIsMobileDock] = useState(false)
   const [isSheetOpen, setIsSheetOpen] = useState(false)
+  const navigationLabel = showInlineNavigation ? `Bu yazıda` : `Bu sayfada`
 
   const cancelPendingFocus = useCallback(() => {
     if (focusFrameRef.current !== null) {
@@ -400,7 +401,7 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
           }}
         >
           <Heading as='h2' variant='h4' sx={{ mb: 3 }}>
-            Bu yazıda
+            {navigationLabel}
           </Heading>
           <ArticleContentsList
             items={items}
@@ -427,7 +428,7 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
               <Box
                 as='button'
                 type='button'
-                aria-label='Bu yazıda'
+                aria-label={navigationLabel}
                 aria-hidden={isSheetOpen ? `true` : undefined}
                 tabIndex={isSheetOpen ? -1 : undefined}
                 onClick={handleOpenSheet}
@@ -458,7 +459,7 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
                 }
               >
                 <FaListUl aria-hidden='true' focusable='false' />
-                {!isMobileDock && `Bu yazıda`}
+                {!isMobileDock && navigationLabel}
               </Box>
             </>
           ),
@@ -470,6 +471,7 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
         createPortal(
           <ArticleContentsSheet
             items={items}
+            label={navigationLabel}
             onAfterUnlock={handleAfterSheetUnlock}
             onDismiss={handleDismissSheet}
             onItemSelect={handleItemSelect}

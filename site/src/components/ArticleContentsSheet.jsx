@@ -132,6 +132,7 @@ const styles = {
 
 const ArticleContentsSheet = ({
   items,
+  label,
   onAfterUnlock,
   onDismiss,
   onItemSelect,
@@ -271,7 +272,7 @@ const ArticleContentsSheet = ({
             variant='h4'
             sx={styles.heading}
           >
-            Bu yazıda
+            {label}
           </Heading>
           <Box
             ref={closeButtonRef}
@@ -298,6 +299,7 @@ const ArticleContentsSheet = ({
 
 ArticleContentsSheet.propTypes = {
   items: PropTypes.arrayOf(itemType).isRequired,
+  label: PropTypes.string.isRequired,
   onAfterUnlock: PropTypes.func.isRequired,
   onDismiss: PropTypes.func.isRequired,
   onItemSelect: PropTypes.func.isRequired,

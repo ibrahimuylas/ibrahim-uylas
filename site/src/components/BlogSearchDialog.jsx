@@ -78,7 +78,9 @@ const styles = {
     bg: `rgba(0, 0, 0, 0.42)`,
     backdropFilter: `blur(5px)`,
     WebkitBackdropFilter: `blur(5px)`,
-    touchAction: `none`,
+    // Keep the backdrop from scrolling through the fixed document lock, but
+    // leave touch handling available for controls inside the dialog on iOS.
+    touchAction: `auto`,
     animation: `blogSearchBackdropIn 160ms ease-out both`,
     '@keyframes blogSearchBackdropIn': {
       from: { opacity: 0 },
@@ -99,7 +101,7 @@ const styles = {
     m: 0,
     overflow: `hidden`,
     overscrollBehavior: `contain`,
-    touchAction: `none`,
+    touchAction: `auto`,
     px: [`calc(1rem + env(safe-area-inset-left, 0px))`, 4, 5],
     pt: [`calc(1rem + env(safe-area-inset-top, 0px))`, 4, 5],
     pr: [`calc(1rem + env(safe-area-inset-right, 0px))`, 4, 5],
@@ -235,7 +237,8 @@ const styles = {
     overflowX: `hidden`,
     overflowY: `auto`,
     overscrollBehavior: `contain`,
-    touchAction: `pan-y`
+    touchAction: `pan-y`,
+    WebkitOverflowScrolling: `touch`
   },
   results: {
     display: `grid`,
@@ -535,12 +538,7 @@ const BlogSearchDialog = ({
     document.addEventListener(`focusin`, handleFocusIn)
     window.addEventListener(`scroll`, maintainPagePosition, { passive: true })
 
-    const focusFrame = window.requestAnimationFrame(() => {
-      input.focus({ preventScroll: true })
-    })
-
     return () => {
-      window.cancelAnimationFrame(focusFrame)
       document.removeEventListener(`keydown`, handleKeyDown)
       document.removeEventListener(`focusin`, handleFocusIn)
       window.removeEventListener(`scroll`, maintainPagePosition)
@@ -662,6 +660,7 @@ const BlogSearchDialog = ({
             id='blog-search-query'
             name='blog-search-query'
             type='search'
+            autoFocus
             autoComplete='off'
             spellCheck='false'
             value={query}
