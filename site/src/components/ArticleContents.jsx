@@ -9,6 +9,8 @@ import ArticleContentsRail from './ArticleContentsRail'
 import ArticleContentsSheet from './ArticleContentsSheet'
 
 const DESKTOP_NAVIGATION_MEDIA_QUERY = `(min-width: 1200px)`
+const MOBILE_DOCK_MEDIA_QUERY = `(max-width: 767px)`
+const SECTION_SCROLL_OFFSET = 24
 
 const styles = {
   trigger: {
@@ -72,9 +74,11 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
   const temporaryFocusTargetRef = useRef(null)
   const isMountedRef = useRef(false)
   const previousPathnameRef = useRef(pathname)
-  const [portalHost, setPortalHost] = useState(null)
+  const [triggerPortalHost, setTriggerPortalHost] = useState(null)
+  const [sheetPortalHost, setSheetPortalHost] = useState(null)
   const [hasPassedViewport, setHasPassedViewport] = useState(false)
   const [isDesktopNavigation, setIsDesktopNavigation] = useState(false)
+  const [isMobileDock, setIsMobileDock] = useState(false)
   const [isSheetOpen, setIsSheetOpen] = useState(false)
 
   const cancelPendingFocus = useCallback(() => {
@@ -210,7 +214,14 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
         temporaryFocusTargetRef.current = { target, removeTabIndex }
       }
 
-      target.scrollIntoView({ block: `start`, behavior: `instant` })
+      const targetTop = Math.max(
+        0,
+        target.getBoundingClientRect().top +
+          window.scrollY -
+          SECTION_SCROLL_OFFSET
+      )
+
+      window.scrollTo({ top: targetTop, behavior: `instant` })
       target.focus({ preventScroll: true })
 
       if (document.activeElement !== target && needsTemporaryTabIndex) {
@@ -266,19 +277,33 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
   }, [navigateToItem])
 
   useEffect(() => {
-    const host = document.createElement(`div`)
-    host.setAttribute(`data-article-contents-portal`, ``)
-    document.body.appendChild(host)
+    const mobileDockHost = isMobileDock
+      ? document.querySelector(`[data-mobile-contents-dock-slot]`)
+      : null
+    const triggerHost = mobileDockHost || document.createElement(`div`)
+    const sheetHost = document.createElement(`div`)
+    const ownsTriggerHost = triggerHost !== mobileDockHost
+
+    if (ownsTriggerHost) {
+      triggerHost.setAttribute(`data-article-contents-portal`, ``)
+      document.body.appendChild(triggerHost)
+    }
+
+    sheetHost.setAttribute(`data-article-contents-sheet-portal`, ``)
+    document.body.appendChild(sheetHost)
+
     isMountedRef.current = true
-    setPortalHost(host)
+    setTriggerPortalHost(triggerHost)
+    setSheetPortalHost(sheetHost)
 
     return () => {
       isMountedRef.current = false
       cancelPendingFocus()
       cancelPendingNavigation()
-      host.remove()
+      if (ownsTriggerHost) triggerHost.remove()
+      sheetHost.remove()
     }
-  }, [cancelPendingFocus, cancelPendingNavigation])
+  }, [cancelPendingFocus, cancelPendingNavigation, isMobileDock])
 
   useEffect(() => {
     if (previousPathnameRef.current !== pathname) {
@@ -307,6 +332,30 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
         mediaQuery.removeEventListener(`change`, updateNavigationMode)
       } else {
         mediaQuery.removeListener(updateNavigationMode)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(MOBILE_DOCK_MEDIA_QUERY)
+
+    const updateMobileDockMode = () => {
+      setIsMobileDock(mediaQuery.matches)
+    }
+
+    updateMobileDockMode()
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener(`change`, updateMobileDockMode)
+    } else {
+      mediaQuery.addListener(updateMobileDockMode)
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener(`change`, updateMobileDockMode)
+      } else {
+        mediaQuery.removeListener(updateMobileDockMode)
       }
     }
   }, [])
@@ -365,8 +414,8 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
           sx={{ width: 1, height: 1, overflow: `hidden` }}
         />
       )}
-      {portalHost &&
-        (hasPassedViewport || isSheetOpen) &&
+      {triggerPortalHost &&
+        (isMobileDock || hasPassedViewport || isSheetOpen) &&
         createPortal(
           isDesktopNavigation ? (
             <ArticleContentsRail
@@ -378,30 +427,55 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
               <Box
                 as='button'
                 type='button'
+                aria-label='Bu yazıda'
                 aria-hidden={isSheetOpen ? `true` : undefined}
                 tabIndex={isSheetOpen ? -1 : undefined}
                 onClick={handleOpenSheet}
-                sx={{
-                  ...styles.trigger,
-                  ...styles.pill,
-                  visibility: isSheetOpen ? `hidden` : `visible`
-                }}
+                sx={
+                  isMobileDock
+                    ? {
+                        ...styles.trigger,
+                        position: `static`,
+                        width: 48,
+                        minWidth: 48,
+                        height: 48,
+                        minHeight: 48,
+                        p: 0,
+                        border: 0,
+                        bg: `transparent`,
+                        boxShadow: `none`,
+                        visibility: isSheetOpen ? `hidden` : `visible`,
+                        '&:hover': {
+                          bg: `omegaLighter`,
+                          color: `heading`
+                        }
+                      }
+                    : {
+                        ...styles.trigger,
+                        ...styles.pill,
+                        visibility: isSheetOpen ? `hidden` : `visible`
+                      }
+                }
               >
                 <FaListUl aria-hidden='true' focusable='false' />
-                Bu yazıda
+                {!isMobileDock && `Bu yazıda`}
               </Box>
-              {isSheetOpen && (
-                <ArticleContentsSheet
-                  items={items}
-                  onAfterUnlock={handleAfterSheetUnlock}
-                  onDismiss={handleDismissSheet}
-                  onItemSelect={handleItemSelect}
-                  suppressInitialFocusRing={suppressSheetFocusRingRef.current}
-                />
-              )}
             </>
           ),
-          portalHost
+          triggerPortalHost
+        )}
+      {sheetPortalHost &&
+        isSheetOpen &&
+        !isDesktopNavigation &&
+        createPortal(
+          <ArticleContentsSheet
+            items={items}
+            onAfterUnlock={handleAfterSheetUnlock}
+            onDismiss={handleDismissSheet}
+            onItemSelect={handleItemSelect}
+            suppressInitialFocusRing={suppressSheetFocusRingRef.current}
+          />,
+          sheetPortalHost
         )}
     </>
   )

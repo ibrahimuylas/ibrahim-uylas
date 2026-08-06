@@ -1,4 +1,5 @@
 import React from 'react'
+import { Box } from 'theme-ui'
 import { Layout, Stack, Main, Sidebar } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
@@ -7,6 +8,7 @@ import Categories from '@widgets/Categories'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
 import BannerVertical from '@widgets/BannerVertical'
 import { useBlogCategories } from '@helpers-blog'
+import ArticleContents from '../../../components/ArticleContents'
 
 const Posts = ({
   data: { posts = {}, featuredPosts = {}, recentPosts = {} },
@@ -35,6 +37,14 @@ const Posts = ({
 
   categories = sortedCategories
 
+  const homeContentsItems = [
+    { title: 'Öne çıkanlar ve son yazılar', url: '#one-cikanlar' },
+    ...sortedPostGroup.filter(Boolean).map(group => ({
+      title: group.categoryName,
+      url: `#ana-${group.nodes[0].category.slug}`
+    }))
+  ]
+
   return (
     <Layout {...props}>
       <Seo title='Ana Sayfa' />
@@ -43,39 +53,42 @@ const Posts = ({
         <Categories categories={categories} variant='horizontal' omitTitle />
       </Stack>
       <Divider />
-      <Stack
-        direction={['column', 'column', 'column', 'row']}
-        effectProps={{ effect: false }}
-      >
-        <Main>
-          <CardList
-            nodes={featuredPosts.nodes}
-            limit={3}
-            variant='horizontal-cover'
-            slider
-            fade
-            controlPosition='over'
-            loading='eager'
-            omitCategory
-          />
-          <Divider space={2} />
-          <CardList
-            nodes={recentPosts.nodes}
-            limit={4}
-            columns={[1, 2]}
-            variant='horizontal-aside'
-          />
-        </Main>
-        <Sidebar
-          sx={{
-            pl: [0, null, null, `3`],
-            mt: [4, null, 4, 0],
-            flexBasis: `1/4`
-          }}
+      <ArticleContents items={homeContentsItems} showInlineNavigation={false} />
+      <Box id='one-cikanlar' sx={{ scrollMarginTop: `24px` }}>
+        <Stack
+          direction={['column', 'column', 'column', 'row']}
+          effectProps={{ effect: false }}
         >
-          <BannerVertical />
-        </Sidebar>
-      </Stack>
+          <Main>
+            <CardList
+              nodes={featuredPosts.nodes}
+              limit={3}
+              variant='horizontal-cover'
+              slider
+              fade
+              controlPosition='over'
+              loading='eager'
+              omitCategory
+            />
+            <Divider space={2} />
+            <CardList
+              nodes={recentPosts.nodes}
+              limit={4}
+              columns={[1, 2]}
+              variant='horizontal-aside'
+            />
+          </Main>
+          <Sidebar
+            sx={{
+              pl: [0, null, null, `3`],
+              mt: [4, null, 4, 0],
+              flexBasis: `1/4`
+            }}
+          >
+            <BannerVertical />
+          </Sidebar>
+        </Stack>
+      </Box>
       <Stack>
         <Main>
           {services.mailchimp && (
@@ -89,7 +102,11 @@ const Posts = ({
       <Divider space={4} />
       {posts.group.length &&
         posts.group.map((group, index) => (
-          <React.Fragment key={`${group.categoryName}.list`}>
+          <Box
+            key={`${group.categoryName}.list`}
+            id={`ana-${group.nodes[0].category.slug}`}
+            sx={{ scrollMarginTop: `24px` }}
+          >
             {index % 2 === 0 ? (
               <Stack
                 title={group.categoryName}
@@ -191,7 +208,7 @@ const Posts = ({
               </Stack>
             )}
             {index !== posts.group.length - 1 && <Divider />}
-          </React.Fragment>
+          </Box>
         ))}
     </Layout>
   )

@@ -5,6 +5,7 @@ import theme from '@elegantstack/flow-ui-theme/src/theme'
 import pageContextProvider from '@helpers/pageContextProvider'
 import { Header } from '@layout/Header/Header'
 import { Footer } from '@layout/Footer/Footer'
+import MobileActionDock from '../../../components/MobileActionDock'
 import ScrollToTop from '../../../components/ScrollToTop'
 
 export const Layout = ({ children, pageContext, location }) => (
@@ -15,6 +16,7 @@ export const Layout = ({ children, pageContext, location }) => (
         <Header />
         <Box variant='layout.body'>{children}</Box>
         <ScrollToTop />
+        <MobileActionDock location={location} />
         <Footer />
       </Flex>
     </pageContextProvider.Provider>

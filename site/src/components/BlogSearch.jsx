@@ -64,7 +64,7 @@ const styles = {
   }
 }
 
-const BlogSearch = ({ loadPagefind, location }) => {
+const BlogSearch = ({ loadPagefind, location, variant }) => {
   const invokingElementRef = useRef(null)
   const portalHostRef = useRef(null)
   const focusFrameRef = useRef(null)
@@ -198,7 +198,28 @@ const BlogSearch = ({ loadPagefind, location }) => {
         aria-haspopup='dialog'
         aria-expanded={isOpen}
         onClick={handleOpen}
-        sx={styles.trigger}
+        sx={
+          variant === `mobileDock`
+            ? {
+                ...styles.trigger,
+                width: 48,
+                minWidth: 48,
+                height: 48,
+                minHeight: 48,
+                p: 0,
+                border: 0,
+                bg: `transparent`,
+                color: `heading`,
+                '&:hover': {
+                  bg: `omegaLighter`,
+                  color: `heading`
+                },
+                prompt: {
+                  display: `none`
+                }
+              }
+            : styles.trigger
+        }
       >
         <FaSearch aria-hidden='true' focusable='false' />
         <Box as='span' sx={styles.prompt}>
@@ -224,13 +245,15 @@ const BlogSearch = ({ loadPagefind, location }) => {
 
 BlogSearch.propTypes = {
   loadPagefind: PropTypes.func,
+  variant: PropTypes.oneOf([`header`, `mobileDock`]),
   location: PropTypes.shape({
     pathname: PropTypes.string
   })
 }
 
 BlogSearch.defaultProps = {
-  loadPagefind: loadPagefindBrowser
+  loadPagefind: loadPagefindBrowser,
+  variant: `header`
 }
 
 export default BlogSearch

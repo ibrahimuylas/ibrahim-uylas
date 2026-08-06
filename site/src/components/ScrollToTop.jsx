@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import PropTypes from 'prop-types'
 import { IconButton } from 'theme-ui'
 import { FaArrowUp } from 'react-icons/fa'
 
@@ -36,11 +37,14 @@ const styles = {
     svg: {
       width: 20,
       height: 20
+    },
+    '@media (max-width: 767px)': {
+      display: `none`
     }
   }
 }
 
-const ScrollToTop = () => {
+const ScrollToTop = ({ variant }) => {
   const [isVisible, setIsVisible] = useState(false)
   const visibleState = useRef(false)
   const animationFrame = useRef(null)
@@ -90,16 +94,46 @@ const ScrollToTop = () => {
 
   if (!isVisible) return null
 
+  const isDockButton = variant === `mobileDock`
+
   return (
     <IconButton
       type='button'
       aria-label='Sayfanın başına dön'
       onClick={handleClick}
-      sx={styles.button}
+      sx={
+        isDockButton
+          ? {
+              ...styles.button,
+              position: `static`,
+              width: 48,
+              minWidth: 48,
+              height: 48,
+              minHeight: 48,
+              border: 0,
+              bg: `transparent`,
+              boxShadow: `none`,
+              '&:hover': {
+                bg: `omegaLighter`
+              },
+              '@media (max-width: 767px)': {
+                display: `flex`
+              }
+            }
+          : styles.button
+      }
     >
       <FaArrowUp aria-hidden='true' focusable='false' />
     </IconButton>
   )
+}
+
+ScrollToTop.propTypes = {
+  variant: PropTypes.oneOf([`default`, `mobileDock`])
+}
+
+ScrollToTop.defaultProps = {
+  variant: `default`
 }
 
 export default ScrollToTop
