@@ -7,8 +7,10 @@ const readSource = relativePath =>
   fs.readFileSync(path.resolve(__dirname, '..', relativePath), 'utf8')
 
 test('mobile search keeps iOS controls tappable and focuses the query input', () => {
+  const trigger = readSource('site/src/components/BlogSearch.jsx')
   const dialog = readSource('site/src/components/BlogSearchDialog.jsx')
 
+  assert.match(trigger, /document\.documentElement\.appendChild\(host\)/)
   assert.match(dialog, /touchAction: `auto`/)
   assert.match(dialog, /fontSize: `16px`/)
   assert.match(dialog, /type='search'[\s\S]*autoFocus/)

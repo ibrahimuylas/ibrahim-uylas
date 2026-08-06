@@ -109,7 +109,10 @@ const BlogSearch = ({ loadPagefind, location, variant }) => {
 
     const host = document.createElement(`div`)
     host.setAttribute(`data-blog-search-portal`, ``)
-    document.body.appendChild(host)
+    // Keep the modal outside the fixed body used to preserve scroll position
+    // while it is open. iOS Safari can offset fixed descendants of that body
+    // when the search is launched after scrolling.
+    document.documentElement.appendChild(host)
 
     invokingElementRef.current = event.currentTarget
     portalHostRef.current = host
