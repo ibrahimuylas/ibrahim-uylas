@@ -216,7 +216,8 @@ const styles = {
     bg: `background`,
     color: `text`,
     fontFamily: `body`,
-    fontSize: 2,
+    // Keep iOS Safari from zooming the page when the input receives focus.
+    fontSize: `16px`,
     '&:focus': {
       borderColor: `alpha`,
       outline: `3px solid`,

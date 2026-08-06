@@ -10,6 +10,7 @@ test('mobile search keeps iOS controls tappable and focuses the query input', ()
   const dialog = readSource('site/src/components/BlogSearchDialog.jsx')
 
   assert.match(dialog, /touchAction: `auto`/)
+  assert.match(dialog, /fontSize: `16px`/)
   assert.match(dialog, /type='search'[\s\S]*autoFocus/)
   assert.match(dialog, /WebkitOverflowScrolling: `touch`/)
 })
