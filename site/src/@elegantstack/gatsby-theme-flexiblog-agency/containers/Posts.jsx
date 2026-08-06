@@ -43,7 +43,10 @@ const Posts = ({
         <Categories categories={categories} variant='horizontal' omitTitle />
       </Stack>
       <Divider />
-      <Stack effectProps={{ effect: false }}>
+      <Stack
+        direction={['column', 'column', 'column', 'row']}
+        effectProps={{ effect: false }}
+      >
         <Main>
           <CardList
             nodes={featuredPosts.nodes}
@@ -63,7 +66,13 @@ const Posts = ({
             variant='horizontal-aside'
           />
         </Main>
-        <Sidebar sx={{ pl: `3`, flexBasis: `1/4` }}>
+        <Sidebar
+          sx={{
+            pl: [0, null, null, `3`],
+            mt: [4, null, 4, 0],
+            flexBasis: `1/4`
+          }}
+        >
           <BannerVertical />
         </Sidebar>
       </Stack>

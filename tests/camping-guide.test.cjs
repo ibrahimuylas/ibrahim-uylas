@@ -73,6 +73,14 @@ test('topic badges keep their default color after navigation and expose the scro
   assert.match(campingGuideComponent, /id='yeni-eklenenler'/)
 })
 
+test('category hero stays stacked on smaller tablet widths', () => {
+  assert.match(
+    campingGuideComponent,
+    /gridTemplateAreas:\s*\[\s*`"image" "content"`,\s*`"image" "content"`,\s*`"image" "content"`,\s*`"content image"`/
+  )
+  assert.match(campingGuideComponent, /minHeight: \[0, 0, 0, 460\]/)
+})
+
 test('camping guide hero uses the supplied responsive image asset', () => {
   assert.ok(fs.existsSync(campingGuideHero))
   assert.match(
@@ -162,7 +170,15 @@ test('all content uses an editorial grid and local category filters', () => {
   )
   assert.match(
     campingGuideComponent,
-    /filteredArticles\.slice\(0, visibleArticleCount\)/
+    /selectRandomArticles[\s\S]*count: filteredArticles\.length/
+  )
+  assert.match(
+    campingGuideComponent,
+    /randomContentSlugs, setRandomContentSlugs/
+  )
+  assert.match(
+    campingGuideComponent,
+    /allContentArticles\.slice\(0, visibleArticleCount\)/
   )
   assert.match(
     campingGuideComponent,

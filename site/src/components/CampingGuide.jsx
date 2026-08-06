@@ -53,7 +53,9 @@ const getAllCuratedSlugs = guide => [
 ]
 
 const getGuideTopicLinks = guide => [
-  { id: 'baslangic', label: guide.beginner.navLabel },
+  ...(guide.beginner
+    ? [{ id: 'baslangic', label: guide.beginner.navLabel }]
+    : []),
   ...(guide.research
     ? [{ id: guide.research.id, label: guide.research.navLabel }]
     : []),
@@ -1037,6 +1039,18 @@ const GuideHeroImage = ({ guide, heroArticle }) =>
         style={{ width: `100%`, height: `100%` }}
         imgStyle={{ objectFit: `cover`, objectPosition: `center` }}
       />
+    ) : guide.id === 'diger' ? (
+      <StaticImage
+        src='../../content/assets/diger-jeep-kamp-hero.webp'
+        alt={guide.hero.imageAlt}
+        layout='fullWidth'
+        loading='eager'
+        placeholder='blurred'
+        quality={90}
+        formats={['auto', 'webp', 'avif']}
+        style={{ width: `100%`, height: `100%` }}
+        imgStyle={{ objectFit: `cover`, objectPosition: `center` }}
+      />
     ) : (
       <StaticImage
         src='../../content/assets/camping-guide-hero.png'
@@ -1069,6 +1083,7 @@ const GuideCategory = ({
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('Tümü')
   const [randomRouteSlugs, setRandomRouteSlugs] = useState([])
+  const [randomContentSlugs, setRandomContentSlugs] = useState([])
   const [visibleArticleCount, setVisibleArticleCount] = useState(6)
   const visibleLatestArticles = useMemo(
     () => latestArticles.slice(0, 3),
@@ -1144,7 +1159,35 @@ const GuideCategory = ({
     )
   }, [randomRouteCandidates, routeSection])
 
-  const visibleArticles = filteredArticles.slice(0, visibleArticleCount)
+  useEffect(() => {
+    setRandomContentSlugs(
+      policy
+        .selectRandomArticles({
+          articles: filteredArticles,
+          count: filteredArticles.length
+        })
+        .map(article => policy.articleKey(article.slug))
+    )
+  }, [filteredArticles, policy])
+
+  const randomizedContentArticles = useMemo(() => {
+    if (!randomContentSlugs.length) return []
+
+    const filteredArticleLookup = new Map(
+      filteredArticles.map(article => [
+        policy.articleKey(article.slug),
+        article
+      ])
+    )
+
+    return randomContentSlugs
+      .map(slug => filteredArticleLookup.get(slug))
+      .filter(Boolean)
+  }, [filteredArticles, policy, randomContentSlugs])
+  const allContentArticles = randomizedContentArticles.length
+    ? randomizedContentArticles
+    : filteredArticles
+  const visibleArticles = allContentArticles.slice(0, visibleArticleCount)
   const featuredSlugs = useMemo(() => new Set(guide.featuredSlugs), [guide])
   const latestArticlePaths = useMemo(
     () => new Set(visibleLatestArticles.map(article => article.slug)),
@@ -1203,7 +1246,7 @@ const GuideCategory = ({
     : 0
   const statValues = {
     content: contentCount,
-    topics: guide.sections.length + 1,
+    topics: guide.sections.length + (guide.beginner ? 1 : 0),
     beginning: readingPath.length,
     likya: likyaCount,
     other: Math.max(0, contentCount - likyaCount)
@@ -1239,15 +1282,17 @@ const GuideCategory = ({
           gridTemplateAreas: [
             `"image" "content"`,
             `"image" "content"`,
+            `"image" "content"`,
             `"content image"`
           ],
           gridTemplateColumns: [
             `minmax(0, 1fr)`,
             `minmax(0, 1fr)`,
+            `minmax(0, 1fr)`,
             `minmax(0, 58fr) minmax(0, 42fr)`
           ],
           overflow: `hidden`,
-          minHeight: [0, 0, 460]
+          minHeight: [0, 0, 0, 460]
         }}
       >
         <Flex
@@ -1509,92 +1554,94 @@ const GuideCategory = ({
         showInlineNavigation={false}
       />
 
-      <Box
-        as='section'
-        id='baslangic'
-        aria-labelledby='baslangic-title'
-        sx={{
-          scrollMarginTop: `96px`,
-          pb: [4, 5],
-          ...(guide.compactSpacing ? { pb: [2, 3] } : {})
-        }}
-      >
+      {guide.beginner && (
         <Box
+          as='section'
+          id='baslangic'
+          aria-labelledby='baslangic-title'
           sx={{
-            maxWidth: [760, 760, `none`],
-            mb: guide.compactSpacing ? 3 : 4
+            scrollMarginTop: `96px`,
+            pb: [4, 5],
+            ...(guide.compactSpacing ? { pb: [2, 3] } : {})
           }}
         >
-          <Text
-            as='p'
+          <Box
             sx={{
-              color: `alpha`,
-              fontSize: 1,
-              fontWeight: `bold`,
-              letterSpacing: `0.08em`,
-              textTransform: `uppercase`,
-              mb: 2
+              maxWidth: [760, 760, `none`],
+              mb: guide.compactSpacing ? 3 : 4
             }}
           >
-            {guide.beginner.eyebrow}
-          </Text>
-          <Heading
-            id='baslangic-title'
-            as='h2'
+            <Text
+              as='p'
+              sx={{
+                color: `alpha`,
+                fontSize: 1,
+                fontWeight: `bold`,
+                letterSpacing: `0.08em`,
+                textTransform: `uppercase`,
+                mb: 2
+              }}
+            >
+              {guide.beginner.eyebrow}
+            </Text>
+            <Heading
+              id='baslangic-title'
+              as='h2'
+              sx={{
+                ...headingStyle,
+                fontSize: [6, 7],
+                lineHeight: 1.1,
+                m: 0,
+                '@media screen and (min-width: 64em)': {
+                  whiteSpace: `nowrap`
+                }
+              }}
+            >
+              {guide.beginner.title}
+            </Heading>
+            <Text
+              as='p'
+              sx={{
+                color: `text`,
+                fontSize: [2, 3],
+                lineHeight: 1.65,
+                maxWidth: `100%`
+              }}
+            >
+              {guide.beginner.description}
+            </Text>
+          </Box>
+          <Grid
+            as='ol'
+            data-reading-path-grid
             sx={{
-              ...headingStyle,
-              fontSize: [6, 7],
-              lineHeight: 1.1,
-              m: 0,
-              '@media screen and (min-width: 64em)': {
-                whiteSpace: `nowrap`
-              }
+              gridTemplateColumns: [
+                `1fr`,
+                null,
+                `repeat(2, minmax(0, 1fr))`,
+                `repeat(3, minmax(0, 1fr))`
+              ],
+              gap: guide.compactSpacing ? [2, 2, 3, 3] : [3, 3, 3, 4],
+              listStyle: `none`,
+              p: 0,
+              m: 0
             }}
           >
-            {guide.beginner.title}
-          </Heading>
-          <Text
-            as='p'
-            sx={{
-              color: `text`,
-              fontSize: [2, 3],
-              lineHeight: 1.65,
-              maxWidth: `100%`
-            }}
-          >
-            {guide.beginner.description}
-          </Text>
+            {readingPath.map((item, index) => (
+              <ArticleLinkCard
+                key={item.article.id}
+                article={item.article}
+                desktopImageOnly={!featuredSlugs.has(item.slug)}
+                featured={featuredSlugs.has(item.slug)}
+                withImage
+                onActivate={trackLink('baslangic', item.article.slug)}
+                summary={item.summary}
+                step={index + 1}
+              />
+            ))}
+          </Grid>
         </Box>
-        <Grid
-          as='ol'
-          data-reading-path-grid
-          sx={{
-            gridTemplateColumns: [
-              `1fr`,
-              null,
-              `repeat(2, minmax(0, 1fr))`,
-              `repeat(3, minmax(0, 1fr))`
-            ],
-            gap: guide.compactSpacing ? [2, 2, 3, 3] : [3, 3, 3, 4],
-            listStyle: `none`,
-            p: 0,
-            m: 0
-          }}
-        >
-          {readingPath.map((item, index) => (
-            <ArticleLinkCard
-              key={item.article.id}
-              article={item.article}
-              desktopImageOnly={!featuredSlugs.has(item.slug)}
-              featured={featuredSlugs.has(item.slug)}
-              withImage
-              onActivate={trackLink('baslangic', item.article.slug)}
-              summary={item.summary}
-              step={index + 1}
-            />
-          ))}
-        </Grid>
-      </Box>
+      )}
 
       {guide.research && (
         <RouteResearchSection guide={guide} research={guide.research} />
@@ -1960,14 +2007,14 @@ const GuideCategory = ({
               })}
             </Grid>
 
-            {visibleArticles.length < filteredArticles.length && (
+            {visibleArticles.length < allContentArticles.length && (
               <Flex sx={{ justifyContent: `center`, mt: [4, 5] }}>
                 <Button
                   type='button'
                   variant='outline'
                   onClick={() =>
                     setVisibleArticleCount(count =>
-                      Math.min(count + 6, filteredArticles.length)
+                      Math.min(count + 6, allContentArticles.length)
                     )
                   }
                   sx={{

@@ -8,13 +8,15 @@ import categoryGuidePolicy from '../components/categoryGuidePolicy'
 import campingGuide from '../content-guides/campingGuide'
 import equipmentGuide from '../content-guides/equipmentGuide'
 import hikingGuide from '../content-guides/hikingGuide'
+import otherGuide from '../content-guides/otherGuide'
 import routeGuide from '../content-guides/routeGuide'
 
 const guides = {
   kampcilik: campingGuide,
   'doga-yuruyusleri': hikingGuide,
   rotalar: routeGuide,
-  ekipmanlar: equipmentGuide
+  ekipmanlar: equipmentGuide,
+  diger: otherGuide
 }
 
 const CampingCategoryPage = ({
@@ -90,7 +92,13 @@ export const pageQuery = graphql`
         draft: { ne: true }
         category: {
           name: {
-            in: ["Kampçılık", "Ekipmanlar", "Rotalar", "Doğa Yürüyüşleri"]
+            in: [
+              "Kampçılık"
+              "Ekipmanlar"
+              "Rotalar"
+              "Doğa Yürüyüşleri"
+              "Diğer"
+            ]
           }
         }
       }

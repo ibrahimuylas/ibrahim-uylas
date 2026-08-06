@@ -4,7 +4,8 @@ const GUIDE_ROUTES = {
   '/category/kampcilik/': 'kampcilik',
   '/category/doga-yuruyusleri/': 'doga-yuruyusleri',
   '/category/rotalar/': 'rotalar',
-  '/category/doga-yuruyusleri-ve-kamp-ekipmanlari/': 'ekipmanlar'
+  '/category/doga-yuruyusleri-ve-kamp-ekipmanlari/': 'ekipmanlar',
+  '/category/diger-her-sey/': 'diger'
 }
 
 exports.onCreatePage = ({ page, actions }) => {

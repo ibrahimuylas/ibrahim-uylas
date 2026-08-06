@@ -18,18 +18,18 @@ const styles = {
   icons: {
     display: [`none`, null, `block`],
     position: `absolute`,
-    top: `-3rem`,
-    left: `5rem`,
+    top: [null, null, `1rem`, `-3rem`],
+    left: [null, null, `1rem`, `5rem`],
     svg: {
       display: `block`
     }
   },
   plane: {
-    fontSize: `9rem`,
+    fontSize: [null, null, `6rem`, `9rem`],
     color: `beta`
   },
   wind: {
-    fontSize: `7rem`,
+    fontSize: [null, null, `5rem`, `7rem`],
     color: `omegaLight`,
     transform: `rotate(120deg)`,
     mt: `0.5rem`,
