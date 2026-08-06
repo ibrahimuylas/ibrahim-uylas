@@ -77,6 +77,17 @@ test('other guide keeps the named travel series separate', () => {
   )
 })
 
+test('other guide presents Scotland before Likya stories', () => {
+  assert.deepEqual(
+    otherGuide.sections.slice(0, 2).map(section => section.id),
+    ['iskocya-gezisi', 'likya-yolu-anilari']
+  )
+  assert.deepEqual(
+    otherGuide.groupFilters.slice(0, 2).map(filter => filter.id),
+    ['iskocya-gezisi', 'likya-yolu-anilari']
+  )
+})
+
 test('other category is wired to the shared guide page', () => {
   const gatsbyNode = fs.readFileSync(
     path.resolve(__dirname, '../site/gatsby-node.js'),

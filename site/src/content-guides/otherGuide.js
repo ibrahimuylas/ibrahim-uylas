@@ -105,7 +105,7 @@ const otherGuide = {
   hero: {
     eyebrow: 'Yolun ve hayatın notları',
     ctaLabel: 'Bir hikâyeyle başla',
-    ctaHref: '#likya-yolu-anilari',
+    ctaHref: '#iskocya-gezisi',
     secondaryCtaLabel: 'Tüm yazıları gör',
     imageType: 'static',
     imageAlt: 'Sisli dağ manzarasında çatı çadırlı bir kamp aracı ve gezgin'
@@ -147,20 +147,20 @@ const otherGuide = {
   ],
   sections: [
     {
-      id: 'likya-yolu-anilari',
-      title: 'Likya Yolu anıları',
-      description:
-        'Hazırlıklardan 11 günlük yürüyüş günlüğüne ve parkurun genel planına kadar Likya Yolu serisini tek akışta oku.',
-      layout: 'editorial',
-      slugs: storyGroups['likya-yolu-anilari']
-    },
-    {
       id: 'iskocya-gezisi',
       title: 'İskoçya Gezisi',
       description:
         'İskoç yaylalarında motosikletle geçen yolculuğu Inverness’ten Ben Nevis’e ve NC500 rotasına kadar takip et.',
       layout: 'editorial',
       slugs: storyGroups['iskocya-gezisi']
+    },
+    {
+      id: 'likya-yolu-anilari',
+      title: 'Likya Yolu anıları',
+      description:
+        'Hazırlıklardan 11 günlük yürüyüş günlüğüne ve parkurun genel planına kadar Likya Yolu serisini tek akışta oku.',
+      layout: 'editorial',
+      slugs: storyGroups['likya-yolu-anilari']
     },
     {
       id: 'kackarlar-dogu-karadeniz',
@@ -212,8 +212,8 @@ const otherGuide = {
     }
   ],
   groupFilters: [
-    { id: 'likya-yolu-anilari', label: 'Likya Yolu anıları' },
     { id: 'iskocya-gezisi', label: 'İskoçya Gezisi' },
+    { id: 'likya-yolu-anilari', label: 'Likya Yolu anıları' },
     { id: 'kackarlar-dogu-karadeniz', label: 'Kaçkarlar ve Doğu Karadeniz' },
     { id: 'turkiye-kamp-trekking', label: 'Türkiye kamp ve trekking' },
     { id: 'kamp-kulturu-ekipman', label: 'Kamp kültürü ve ekipman' },
@@ -229,8 +229,8 @@ const otherGuide = {
     'yedigoller-trekking-tek-basima-ilk-yolculuk'
   ],
   imageSectionIds: [
-    'likya-yolu-anilari',
     'iskocya-gezisi',
+    'likya-yolu-anilari',
     'turkiye-kamp-trekking',
     'hayat-yol-ilham'
   ],
