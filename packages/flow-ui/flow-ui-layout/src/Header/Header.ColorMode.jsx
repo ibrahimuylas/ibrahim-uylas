@@ -31,12 +31,27 @@ const styles = {
     },
     // Switch Icons
     '.rc-switch-inner': {
+      position: `absolute`,
       fontSize: `unset`,
-      top: `1px`,
-      left: `26px`
+      top: 0,
+      left: 0,
+      width: `100%`,
+      height: `100%`,
+      pointerEvents: `none`
     },
-    '&.rc-switch-checked .rc-switch-inner': {
-      left: `7px`
+    '.rc-switch-inner-checked': {
+      top: 0,
+      left: `-14px`
+    },
+    '.rc-switch-inner-unchecked': {
+      top: 0,
+      left: `30px`
+    },
+    '&.rc-switch-checked .rc-switch-inner-checked': {
+      left: `3px`
+    },
+    '&.rc-switch-checked .rc-switch-inner-unchecked': {
+      left: `30px`
     }
   },
   icon: {

@@ -14,7 +14,11 @@
     "validate:seo": "npm run validate:seo:likya -w site",
     "check:deps": "npm ls --depth=0",
     "check:deps:all": "npm ls --all",
-    "audit:prod": "npm audit --omit=dev"
+    "audit:prod": "npm audit --omit=dev",
+    "docker:up": "docker compose down && npm run clean --workspace site && npm run build && docker compose up --build -d --force-recreate",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f site",
+    "docker:status": "docker compose ps"
   },
   "engines": {
     "node": ">=24.0.0 <25"

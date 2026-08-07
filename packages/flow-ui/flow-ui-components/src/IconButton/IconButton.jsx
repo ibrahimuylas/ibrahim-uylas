@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import { Button, Box, Heading } from 'theme-ui'
+import { Button, Box, Heading, Text } from 'theme-ui'
 
 const styles = {
   button: {
@@ -32,9 +32,11 @@ const styles = {
     },
     horizontal: {
       variant: `cards.interactive`,
+      display: `flex`,
+      flexDirection: `column`,
+      alignItems: `stretch`,
       p: 0,
       'svg, img': {
-        color: `alpha`,
         size: `icon.sm`
       },
       '@media (hover: hover) and (pointer: fine)': {
@@ -70,15 +72,24 @@ const styles = {
   text: {
     flex: `auto`,
     color: `omegaDark`,
-    whiteSpace: `nowrap`,
+    whiteSpace: `normal`,
     p: 3,
     m: 0
+  },
+  description: {
+    display: `block`,
+    color: `text`,
+    fontSize: 1,
+    fontWeight: `body`,
+    lineHeight: 1.4,
+    mt: 1
   }
 }
 
 export const IconButton = ({
   variant,
   name,
+  description,
   Icon,
   iconPath,
   iconColor,
@@ -87,13 +98,44 @@ export const IconButton = ({
   <Button variant='none' as={to && Link} to={to} sx={styles.button[variant]}>
     {(Icon || iconPath) && (
       <Box sx={styles.icon[variant]}>
-        {iconPath && <Box as='img' src={iconPath} alt='' />}
-        {Icon && <Icon color={iconColor} />}
+        {iconPath &&
+          (iconColor ? (
+            <Box
+              as='span'
+              aria-hidden='true'
+              sx={{
+                display: `block`,
+                width: `icon.sm`,
+                height: `icon.sm`,
+                mx: `auto`,
+                bg: iconColor,
+                WebkitMaskImage: `url(${iconPath})`,
+                maskImage: `url(${iconPath})`,
+                WebkitMaskPosition: `center`,
+                maskPosition: `center`,
+                WebkitMaskRepeat: `no-repeat`,
+                maskRepeat: `no-repeat`,
+                WebkitMaskSize: `contain`,
+                maskSize: `contain`
+              }}
+            />
+          ) : (
+            <Box as='img' src={iconPath} alt='' />
+          ))}
+        {Icon && (
+          <Icon
+            color={iconColor}
+            style={iconColor ? { color: iconColor } : undefined}
+          />
+        )}
       </Box>
     )}
-    <Heading variant='h4' as='span' sx={styles.text}>
-      {name}
-    </Heading>
+    <Box sx={styles.text}>
+      <Heading variant='h4' as='span'>
+        {name}
+      </Heading>
+      {description && <Text sx={styles.description}>{description}</Text>}
+    </Box>
   </Button>
 )
 
@@ -107,8 +149,10 @@ IconButton.defaultProps = {
 IconButton.propTypes = {
   variant: PropTypes.oneOf(['horizontal', 'vertical']),
   name: PropTypes.string,
+  description: PropTypes.string,
   number: PropTypes.number,
   Icon: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   iconPath: PropTypes.string,
+  iconColor: PropTypes.string,
   to: PropTypes.string
 }

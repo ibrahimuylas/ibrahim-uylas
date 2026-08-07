@@ -26,6 +26,8 @@ const CardList = React.forwardRef((props, ref) => {
     aside,
     asNavFor,
     loading,
+    accentColor,
+    accentColorByCategory,
     ...rest
   } = props
 
@@ -72,6 +74,11 @@ const CardList = React.forwardRef((props, ref) => {
         loading={props.fade ? (index === 0 ? loading : undefined) : loading}
         {...node}
         {...rest}
+        accentColor={
+          accentColorByCategory?.[node.category?.name] ||
+          accentColor ||
+          node.accentColor
+        }
       />
     )
   })
@@ -135,5 +142,9 @@ CardList.propTypes = {
   distinct: PropTypes.bool,
   limit: PropTypes.number,
   skip: PropTypes.number,
+  showMediaOnMobile: PropTypes.bool,
+  mobileMediaType: PropTypes.oneOf(['icon', 'image']),
+  accentColor: PropTypes.string,
+  accentColorByCategory: PropTypes.objectOf(PropTypes.string),
   aside: PropTypes.bool
 }

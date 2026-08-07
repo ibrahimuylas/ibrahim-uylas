@@ -60,14 +60,13 @@ export default {
     `,
     color: `white`,
     width: `full`,
-    mt: `auto`
+    mt: 0
   },
   excerpt: {
     display: `none`
   },
   footer: {
-    mt: `auto`,
-    pb: 6
+    display: `none`
   },
   authorPhoto: {
     display: [`none`, `block`]

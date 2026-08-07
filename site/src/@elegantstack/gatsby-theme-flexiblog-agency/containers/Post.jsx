@@ -1,5 +1,6 @@
 import React from 'react'
-import { Card as CardComponent } from 'theme-ui'
+import { Link } from 'gatsby'
+import { Box, Card as CardComponent, Heading, Text } from 'theme-ui'
 import { Layout, Stack, Main } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
@@ -8,6 +9,7 @@ import NewsletterExpanded from '@widgets/NewsletterExpanded'
 import ArticleContents from '../../../components/ArticleContents'
 import DeferredComments from '../../../components/DeferredComments'
 import { trackEvent } from '../../../utils/analytics'
+import categoryGuideLinks from '../../../content-guides/categoryGuideLinks'
 // import AuthorExpanded from '@widgets/AuthorExpanded'
 import { PostHead, PostImage, PostBody, PostTagsShare } from '@widgets/Post'
 
@@ -21,6 +23,9 @@ const Post = ({
     ...(categoryPosts ? categoryPosts.nodes : [])
   ]
   const { pageContext: { services = {}, siteUrl } = {} } = props
+  const categoryGuide = post.category
+    ? categoryGuideLinks[post.category.name]
+    : null
 
   const handleRelatedPostClick = event => {
     const link = event.target.closest && event.target.closest('a')
@@ -60,6 +65,37 @@ const Post = ({
               />
             )}
           </CardComponent>
+          {categoryGuide && (
+            <Box
+              as='aside'
+              aria-labelledby='category-guide-title'
+              sx={{
+                mt: 4,
+                p: [3, 4],
+                bg: `alphaLighter`,
+                border: `1px solid`,
+                borderColor: `alphaLight`,
+                borderRadius: `lg`
+              }}
+            >
+              <Heading
+                id='category-guide-title'
+                as='h2'
+                sx={{ fontSize: [3, 4], lineHeight: 1.25, m: 0 }}
+              >
+                {categoryGuide.title}
+              </Heading>
+              <Text as='p' sx={{ color: `text`, mt: 2, mb: 2 }}>
+                {categoryGuide.description}
+              </Text>
+              <Link
+                to={categoryGuide.path}
+                sx={{ color: `heading`, fontWeight: `bold` }}
+              >
+                Ana rehbere git →
+              </Link>
+            </Box>
+          )}
           <Divider />
           {/* <AuthorExpanded author={post.author} /> */}
           <Divider />

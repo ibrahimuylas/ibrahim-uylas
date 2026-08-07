@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link as GLink } from 'gatsby'
-import { Link, useThemeUI, get } from 'theme-ui'
+import { Link, Box, useThemeUI, get } from 'theme-ui'
 import rv, {
   responsiveVariantStyles
 } from '@components/utils/buildResponsiveVariant'
@@ -23,6 +23,8 @@ const CardMedia = ({
   imageVariant,
   omitMedia,
   mediaType = 'image',
+  mobileMediaType,
+  showMediaOnMobile,
   title,
   slug,
   link,
@@ -30,9 +32,12 @@ const CardMedia = ({
 }) => {
   const context = useThemeUI()
 
-  if (omitMedia) return null
+  if (omitMedia && !showMediaOnMobile) return null
 
   const { variant, thumbnail, thumbnailText } = props
+  const mediaOnlyOnMobile = omitMedia && showMediaOnMobile
+  const imageOnlyOnMobile = mobileMediaType === 'image'
+  const iconOnlyOnDesktop = mobileMediaType === 'image'
 
   const imageVar =
     imageVariant ||
@@ -57,14 +62,32 @@ const CardMedia = ({
     <Link
       {...linkProps}
       css={styles.link}
-      sx={responsiveVariantStyles(rv(variant, 'media'))}
+      sx={theme => ({
+        ...responsiveVariantStyles(rv(variant, 'media'))(theme),
+        ...(mediaOnlyOnMobile && { display: [`block`, `none`, `none`] })
+      })}
       aria-label={title}
     >
-      {mediaType === 'image' && image && (
-        <CardMediaImage image={image} title={title} {...props} />
-      )}
-      {(mediaType === 'icon' || (!image && thumbnailText)) && (
-        <CardMediaIcon {...props} />
+      {mediaType === 'image' &&
+        image &&
+        !imageOnlyOnMobile &&
+        (mediaOnlyOnMobile ? (
+          <Box sx={{ display: [`block`, `none`, `none`] }}>
+            <CardMediaImage image={image} title={title} {...props} />
+          </Box>
+        ) : (
+          <CardMediaImage image={image} title={title} {...props} />
+        ))}
+      {(mediaType === 'icon' || (!image && thumbnailText)) &&
+        (iconOnlyOnDesktop ? (
+          <CardMediaIcon hideOnMobile {...props} />
+        ) : (
+          <CardMediaIcon {...props} />
+        ))}
+      {imageOnlyOnMobile && image && (
+        <Box sx={{ display: [`block`, `none`, `none`] }}>
+          <CardMediaImage image={image} title={title} {...props} />
+        </Box>
       )}
     </Link>
   )

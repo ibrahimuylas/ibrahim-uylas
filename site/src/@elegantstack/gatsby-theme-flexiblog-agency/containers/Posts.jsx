@@ -4,11 +4,20 @@ import { Layout, Stack, Main, Sidebar } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
-import Categories from '@widgets/Categories'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
 import BannerVertical from '@widgets/BannerVertical'
 import { useBlogCategories } from '@helpers-blog'
 import ArticleContents from '../../../components/ArticleContents'
+import HomepageCategories from '../../../components/HomepageCategories'
+import categoryColors from '../../../components/categoryColors'
+
+const categoryDescriptions = {
+  Kampçılık: 'Kamp hazırlığı, güvenlik ve temel kamp deneyimleri.',
+  'Doğa Yürüyüşleri': 'Hiking, trekking, giyim ve yürüyüşe hazırlık.',
+  Rotalar: 'Günübirlik parkurlar, kamp alanları ve uzun rota rehberleri.',
+  Ekipmanlar: 'Çadır, ayakkabı, ocak ve outdoor ekipmanı seçimleri.',
+  Diğer: 'Yol hikâyeleri, kişisel notlar ve farklı açık hava deneyimleri.'
+}
 
 const Posts = ({
   data: {
@@ -21,24 +30,61 @@ const Posts = ({
 }) => {
   const { pageContext: { services = {} } = {} } = props
   let categories = useBlogCategories()
-
-  let sortedPostGroup = []
-  sortedPostGroup.push(posts.group.find(_ => _.categoryName === 'Kampçılık'))
-  sortedPostGroup.push(
-    posts.group.find(_ => _.categoryName === 'Doğa Yürüyüşleri')
+  const featuredSlugs = new Set(
+    (featuredPosts.nodes || []).map(post => post.slug).filter(Boolean)
   )
-  sortedPostGroup.push(posts.group.find(_ => _.categoryName === 'Rotalar'))
-  sortedPostGroup.push(posts.group.find(_ => _.categoryName === 'Ekipmanlar'))
-  sortedPostGroup.push(posts.group.find(_ => _.categoryName === 'Diğer'))
+  const withCategoryColors = nodes =>
+    (nodes || []).map(post => {
+      const categoryColor = categoryColors[post.category?.name]
 
-  posts.group = sortedPostGroup
+      return categoryColor
+        ? {
+            ...post,
+            category: {
+              ...post.category,
+              color: categoryColor
+            },
+            accentColor: categoryColor
+          }
+        : post
+    })
 
-  let sortedCategories = []
-  sortedCategories.push(categories.find(_ => _.name === 'Kampçılık'))
-  sortedCategories.push(categories.find(_ => _.name === 'Doğa Yürüyüşleri'))
-  sortedCategories.push(categories.find(_ => _.name === 'Rotalar'))
-  sortedCategories.push(categories.find(_ => _.name === 'Ekipmanlar'))
-  sortedCategories.push(categories.find(_ => _.name === 'Diğer'))
+  const featuredNodes = withCategoryColors(featuredPosts.nodes)
+  const recentNodes = withCategoryColors(recentPosts.nodes)
+
+  const sortedPostGroup = [
+    'Kampçılık',
+    'Doğa Yürüyüşleri',
+    'Rotalar',
+    'Ekipmanlar',
+    'Diğer'
+  ]
+    .map(categoryName =>
+      (posts.group || []).find(_ => _.categoryName === categoryName)
+    )
+    .filter(Boolean)
+    .map(group => ({
+      ...group,
+      nodes: withCategoryColors(
+        group.nodes.filter(post => !featuredSlugs.has(post.slug))
+      )
+    }))
+    .filter(group => group.nodes.length > 0)
+
+  const sortedCategories = [
+    'Kampçılık',
+    'Doğa Yürüyüşleri',
+    'Rotalar',
+    'Ekipmanlar',
+    'Diğer'
+  ]
+    .map(categoryName => (categories || []).find(_ => _.name === categoryName))
+    .filter(Boolean)
+    .map(category => ({
+      ...category,
+      color: categoryColors[category.name] || category.color,
+      description: categoryDescriptions[category.name]
+    }))
 
   categories = sortedCategories
 
@@ -70,10 +116,20 @@ const Posts = ({
         </Box>
       </Stack>
       <Divider space={2} />
-      <Stack effectProps={{ effect: false }}>
-        <Categories categories={categories} variant='horizontal' omitTitle />
+      <Stack direction={['column']} effectProps={{ effect: false }}>
+        <Heading
+          as='h2'
+          sx={{ fontSize: [4, 5], lineHeight: 1.2, mb: 3, mt: 0 }}
+        >
+          Doğaya çıkmaya buradan başla
+        </Heading>
+        <HomepageCategories
+          categories={categories}
+          variant='horizontal'
+          omitTitle
+        />
       </Stack>
-      <Divider />
+      <Divider space={3} />
       <ArticleContents items={homeContentsItems} showInlineNavigation={false} />
       <Box id='one-cikanlar' sx={{ scrollMarginTop: `24px` }}>
         <Stack
@@ -82,21 +138,24 @@ const Posts = ({
         >
           <Main>
             <CardList
-              nodes={featuredPosts.nodes}
+              nodes={featuredNodes}
               limit={3}
               variant='horizontal-cover'
               slider
               fade
               controlPosition='over'
               loading='eager'
+              accentColorByCategory={categoryColors}
               omitCategory
+              omitFooter
             />
             <Divider space={2} />
             <CardList
-              nodes={recentPosts.nodes}
+              nodes={recentNodes}
               limit={4}
               columns={[1, 2]}
               variant='horizontal-aside'
+              accentColorByCategory={categoryColors}
             />
           </Main>
           <Sidebar
@@ -121,8 +180,8 @@ const Posts = ({
         </Main>
       </Stack>
       <Divider space={4} />
-      {posts.group.length &&
-        posts.group.map((group, index) => (
+      {sortedPostGroup.length > 0 &&
+        sortedPostGroup.map((group, index) => (
           <Box
             key={`${group.categoryName}.list`}
             id={`ana-${group.nodes[0].category.slug}`}
@@ -132,6 +191,7 @@ const Posts = ({
               <Stack
                 title={group.categoryName}
                 titleLink={group.nodes[0].category.slug}
+                titleColor={categoryColors[group.categoryName]}
               >
                 <Main>
                   <CardList
@@ -144,6 +204,7 @@ const Posts = ({
                       'horizontal',
                       'vertical'
                     ]}
+                    accentColor={categoryColors[group.categoryName]}
                   />
                   <Divider space={2} />
                   <CardList
@@ -152,6 +213,8 @@ const Posts = ({
                     skip={3}
                     columns={[1, 2, 3, 3]}
                     variant={['horizontal-md', 'horizontal-aside']}
+                    accentColor={categoryColors[group.categoryName]}
+                    showMediaOnMobile
                     omitMedia
                   />
                 </Main>
@@ -160,6 +223,7 @@ const Posts = ({
               <Stack
                 title={group.categoryName}
                 titleLink={group.nodes[0].category.slug}
+                titleColor={categoryColors[group.categoryName]}
                 direction={['column', 'column', 'column', 'row']}
               >
                 <Sidebar
@@ -180,6 +244,7 @@ const Posts = ({
                       'horizontal',
                       'vertical'
                     ]}
+                    accentColor={categoryColors[group.categoryName]}
                     omitCategory
                   />
                 </Sidebar>
@@ -192,7 +257,7 @@ const Posts = ({
                   <Divider space={2} />
                   <CardList
                     nodes={group.nodes}
-                    limit={3}
+                    limit={group.nodes.length === 4 ? 2 : 3}
                     skip={1}
                     columns={[1, 1, 3, 1]}
                     variant={[
@@ -201,34 +266,40 @@ const Posts = ({
                       'horizontal-aside'
                     ]}
                     mediaType='icon'
+                    mobileMediaType='image'
+                    thumbnailText={null}
+                    accentColor={categoryColors[group.categoryName]}
                     omitCategory
                   />
                   <Divider space={2} />
                 </Main>
-                <Sidebar
-                  sx={{
-                    pl: [0, null, null, 3],
-                    display: [null, `flex`],
-                    flexDirection: [`column`, null, null, `row`]
-                  }}
-                >
-                  <CardList
-                    nodes={group.nodes}
-                    limit={1}
-                    skip={4}
-                    columns={[1]}
-                    variant={[
-                      'horizontal-md',
-                      'horizontal',
-                      'horizontal',
-                      'vertical'
-                    ]}
-                    omitCategory
-                  />
-                </Sidebar>
+                {group.nodes.length >= 4 && (
+                  <Sidebar
+                    sx={{
+                      pl: [0, null, null, 3],
+                      display: [null, `flex`],
+                      flexDirection: [`column`, null, null, `row`]
+                    }}
+                  >
+                    <CardList
+                      nodes={group.nodes}
+                      limit={1}
+                      skip={group.nodes.length === 4 ? 3 : 4}
+                      columns={[1]}
+                      variant={[
+                        'horizontal-md',
+                        'horizontal',
+                        'horizontal',
+                        'vertical'
+                      ]}
+                      accentColor={categoryColors[group.categoryName]}
+                      omitCategory
+                    />
+                  </Sidebar>
+                )}
               </Stack>
             )}
-            {index !== posts.group.length - 1 && <Divider />}
+            {index !== sortedPostGroup.length - 1 && <Divider />}
           </Box>
         ))}
     </Layout>

@@ -31,12 +31,18 @@ const styles = {
   }
 }
 
-const CardMediaIcon = ({ variant, thumbnailText, category }) =>
+const CardMediaIcon = ({ variant, thumbnailText, category, hideOnMobile }) =>
   category && category.icon && category.name ? (
     <Box
       bg={category.color || 'omegaDark'}
       color={category.color ? getReadableColor(category.color) : '#fff'}
-      sx={responsiveVariantStyles(rv(variant, 'iconBox'), styles.iconBox)}
+      sx={theme => ({
+        ...responsiveVariantStyles(
+          rv(variant, 'iconBox'),
+          styles.iconBox
+        )(theme),
+        ...(hideOnMobile && { display: [`none`, `block`, `block`] })
+      })}
     >
       <Flex sx={styles.iconAndText}>
         <Box

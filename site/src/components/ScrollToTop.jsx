@@ -9,7 +9,9 @@ const styles = {
   button: {
     position: `fixed`,
     right: `calc(1rem + env(safe-area-inset-right, 0px))`,
-    bottom: `calc(1rem + env(safe-area-inset-bottom, 0px))`,
+    top: `50%`,
+    bottom: `auto`,
+    transform: `translateY(-50%)`,
     zIndex: 5,
     boxSizing: `border-box`,
     width: 48,
@@ -106,6 +108,10 @@ const ScrollToTop = ({ variant }) => {
           ? {
               ...styles.button,
               position: `static`,
+              top: `auto`,
+              right: `auto`,
+              bottom: `auto`,
+              transform: `none`,
               width: 48,
               minWidth: 48,
               height: 48,

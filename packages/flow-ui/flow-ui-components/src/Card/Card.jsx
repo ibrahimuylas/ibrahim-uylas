@@ -44,6 +44,9 @@ Card.propTypes = {
     PropTypes.bool,
     PropTypes.oneOf(['icon', 'image'])
   ]),
+  mobileMediaType: PropTypes.oneOf(['icon', 'image']),
+  showMediaOnMobile: PropTypes.bool,
+  accentColor: PropTypes.string,
   imageVariant: PropTypes.string,
   loading: PropTypes.oneOf(['lazy', 'auto', 'eager']),
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),

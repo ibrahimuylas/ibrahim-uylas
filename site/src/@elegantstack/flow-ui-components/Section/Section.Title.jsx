@@ -12,7 +12,7 @@ const styles = {
   section: {
     position: `relative`,
     pl: [0, 4],
-    mx: [`auto`, 0],
+    mx: [0, 0],
     mb: 0,
     '::before': {
       display: [`none`, `block`],
@@ -33,12 +33,12 @@ const styles = {
     mb: 0
   },
   badge: {
-    display: [`none`, `block`],
+    display: [`block`, `block`],
     mb: 0
   }
 }
 
-const SectionTitle = ({ title, titleLink, omitTitle, variant }) => {
+const SectionTitle = ({ title, titleLink, titleColor, omitTitle, variant }) => {
   const linkProps = titleLink && {
     as: Link,
     to: titleLink
@@ -48,7 +48,17 @@ const SectionTitle = ({ title, titleLink, omitTitle, variant }) => {
     <>
       <Flex sx={styles.wrapper}>
         {title && (
-          <Heading variant='h2' sx={styles[variant]} {...linkProps}>
+          <Heading
+            variant='h2'
+            sx={{
+              ...styles[variant],
+              '::before': {
+                ...styles[variant]['::before'],
+                ...(titleColor && { bg: titleColor })
+              }
+            }}
+            {...linkProps}
+          >
             {title}
           </Heading>
         )}

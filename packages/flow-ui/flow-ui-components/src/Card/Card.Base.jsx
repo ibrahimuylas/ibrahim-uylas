@@ -19,31 +19,40 @@ const styles = {
   }
 }
 
-const CardBase = ({ columns, onFocus, onMouseOver, ...props }) => (
-  <Box
-    className='blog_card'
-    sx={columnSizeMatcher(columns)}
-    onMouseOver={onMouseOver}
-    onFocus={onFocus}
-  >
-    <Card
-      variant='interactive'
-      sx={responsiveVariantStyles(rv(props.variant, 'card'), styles.card)}
+const CardBase = ({ columns, onFocus, onMouseOver, accentColor, ...props }) => {
+  const resolvedAccentColor = accentColor || props.category?.color
+
+  return (
+    <Box
+      className='blog_card'
+      sx={columnSizeMatcher(columns)}
+      onMouseOver={onMouseOver}
+      onFocus={onFocus}
     >
-      <Flex
-        as='article'
-        sx={responsiveVariantStyles(
-          rv(props.variant, 'content'),
-          styles.content
-        )}
+      <Card
+        variant='interactive'
+        sx={responsiveVariantStyles(rv(props.variant, 'card'), styles.card)}
       >
-        <Media {...props} />
-        <Body {...props}>
-          <Footer {...props} />
-        </Body>
-      </Flex>
-    </Card>
-  </Box>
-)
+        <Flex
+          as='article'
+          style={
+            resolvedAccentColor
+              ? { borderLeftColor: resolvedAccentColor }
+              : undefined
+          }
+          sx={responsiveVariantStyles(
+            rv(props.variant, 'content'),
+            styles.content
+          )}
+        >
+          <Media {...props} />
+          <Body {...props}>
+            <Footer {...props} />
+          </Body>
+        </Flex>
+      </Card>
+    </Box>
+  )
+}
 
 export default CardBase
