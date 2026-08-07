@@ -485,21 +485,6 @@ const BlogSearchDialog = ({
 
     lockDocumentState(documentState)
 
-    const maintainPagePosition = () => {
-      if (
-        window.scrollX === documentState.scrollX &&
-        window.scrollY === documentState.scrollY
-      ) {
-        return
-      }
-
-      window.scrollTo({
-        left: documentState.scrollX,
-        top: documentState.scrollY,
-        behavior: `instant`
-      })
-    }
-
     const handleKeyDown = event => {
       if (event.key === `Escape`) {
         event.preventDefault()
@@ -537,12 +522,10 @@ const BlogSearchDialog = ({
 
     document.addEventListener(`keydown`, handleKeyDown)
     document.addEventListener(`focusin`, handleFocusIn)
-    window.addEventListener(`scroll`, maintainPagePosition, { passive: true })
 
     return () => {
       document.removeEventListener(`keydown`, handleKeyDown)
       document.removeEventListener(`focusin`, handleFocusIn)
-      window.removeEventListener(`scroll`, maintainPagePosition)
       restoreDocumentState(documentState, window)
       onAfterUnlock()
     }

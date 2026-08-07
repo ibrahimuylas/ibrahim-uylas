@@ -15,6 +15,10 @@ test('mobile search keeps iOS controls tappable and focuses the query input', ()
   assert.match(dialog, /fontSize: `16px`/)
   assert.match(dialog, /type='search'[\s\S]*autoFocus/)
   assert.match(dialog, /WebkitOverflowScrolling: `touch`/)
+  assert.doesNotMatch(
+    dialog,
+    /addEventListener\(`scroll`, maintainPagePosition/
+  )
 })
 
 test('page contents navigation uses page wording outside article contents', () => {
