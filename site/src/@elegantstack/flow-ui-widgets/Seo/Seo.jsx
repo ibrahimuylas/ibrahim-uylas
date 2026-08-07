@@ -20,6 +20,7 @@ const Seo = ({
   timeToRead,
   children,
   thumbnail,
+  imageData,
   siteUrl,
   locale
 }) => {
@@ -37,7 +38,8 @@ const Seo = ({
 
   description = description || excerpt || site.description
 
-  const imageSrc = getSrc(getImageVariant(thumbnail, 'hero'))
+  const imageSrc =
+    getSrc(getImageVariant(thumbnail, 'hero')) || getSrc(imageData)
   const imageUrl =
     imageSrc &&
     (imageSrc.startsWith('//')
@@ -149,6 +151,33 @@ const Seo = ({
       ]
     })
     scripts.push(breadcrumbJsonLd)
+  }
+
+  // Homepage entity context
+  if (pathname === '/') {
+    const personId = `${resolvedSiteUrl}/ibrahim-uylas-kimdir/#person`
+    scripts.push(
+      helmetJsonLdProp({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'WebSite',
+            '@id': `${resolvedSiteUrl}/#website`,
+            url: resolvedSiteUrl,
+            name: site.title,
+            description,
+            publisher: { '@id': personId }
+          },
+          {
+            '@type': 'Person',
+            '@id': personId,
+            name: site.title,
+            url: `${resolvedSiteUrl}/ibrahim-uylas-kimdir/`,
+            sameAs: (site.social || []).map(socialLink => socialLink.url)
+          }
+        ]
+      })
+    )
   }
 
   return (

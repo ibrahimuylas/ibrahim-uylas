@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from 'theme-ui'
+import { Box, Heading, Text } from 'theme-ui'
 import { Layout, Stack, Main, Sidebar } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
@@ -11,7 +11,12 @@ import { useBlogCategories } from '@helpers-blog'
 import ArticleContents from '../../../components/ArticleContents'
 
 const Posts = ({
-  data: { posts = {}, featuredPosts = {}, recentPosts = {} },
+  data: {
+    posts = {},
+    featuredPosts = {},
+    recentPosts = {},
+    homeOgImage = null
+  },
   ...props
 }) => {
   const { pageContext: { services = {} } = {} } = props
@@ -47,8 +52,24 @@ const Posts = ({
 
   return (
     <Layout {...props}>
-      <Seo title='Ana Sayfa' />
-      <Divider />
+      <Seo
+        title='Kampçılık, Doğa Yürüyüşü ve Rota Rehberleri'
+        description='Kampçılık, doğa yürüyüşü, trekking, rota ve kamp ekipmanı rehberleri. Kişisel deneyimler, hazırlık notları ve yol hikâyeleri.'
+        imageData={homeOgImage?.childImageSharp?.gatsbyImageData}
+      />
+      <Divider space={2} />
+      <Stack effectProps={{ effect: false }}>
+        <Box sx={{ py: [2, 3], width: `100%`, maxWidth: `none` }}>
+          <Heading as='h1' variant='h1'>
+            Kampçılık, doğa yürüyüşü ve rota rehberleri
+          </Heading>
+          <Text sx={{ display: `block`, width: `100%` }}>
+            Kamp hazırlığı, rota seçimi, ekipman kullanımı ve yol hikâyeleri;
+            gerçek deneyimlerden süzülen pratik rehberler.
+          </Text>
+        </Box>
+      </Stack>
+      <Divider space={2} />
       <Stack effectProps={{ effect: false }}>
         <Categories categories={categories} variant='horizontal' omitTitle />
       </Stack>

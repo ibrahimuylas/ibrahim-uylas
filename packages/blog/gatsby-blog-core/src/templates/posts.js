@@ -13,6 +13,14 @@ export const pageQuery = graphql`
     $imageQuality: Int!
     $homeCategoryPostsPerGroup: Int!
   ) {
+    homeOgImage: file(
+      name: { eq: "default-banner-image" }
+      sourceInstanceName: { eq: "asset" }
+    ) {
+      childImageSharp {
+        gatsbyImageData(width: 1600, quality: 80)
+      }
+    }
     featuredPosts: allArticle(
       filter: {
         private: { ne: true }

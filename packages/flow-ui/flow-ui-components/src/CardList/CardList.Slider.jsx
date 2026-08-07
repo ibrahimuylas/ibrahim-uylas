@@ -79,14 +79,29 @@ const CardListSlider = React.forwardRef((props, ref) => {
       ...(controlPosition === 'over' && styles.controlOver)
     }),
     prevArrow: (
-      <IconButton sx={styles.arrowPrev}>
+      <IconButton
+        sx={styles.arrowPrev}
+        aria-label='Önceki slayta git'
+        title='Önceki slayta git'
+      >
         <FaChevronLeft />
       </IconButton>
     ),
     nextArrow: (
-      <IconButton sx={styles.arrowNext}>
+      <IconButton
+        sx={styles.arrowNext}
+        aria-label='Sonraki slayta git'
+        title='Sonraki slayta git'
+      >
         <FaChevronRight />
       </IconButton>
+    ),
+    customPaging: index => (
+      <button
+        type='button'
+        aria-label={`${index + 1}. slayta git`}
+        title={`${index + 1}. slayta git`}
+      />
     )
   }
 

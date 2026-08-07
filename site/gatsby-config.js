@@ -66,7 +66,7 @@ module.exports = {
     title: 'İbrahim Uylaş',
     name: 'IbrahimUylas',
     description:
-      'Kampçılık ve doğa yürüyüşleriyle ilgili ne ararsan var, ne vereyim abime!',
+      'Kampçılık, doğa yürüyüşü, trekking, rota ve kamp ekipmanı rehberleri. Kişisel deneyimler, hazırlık notları ve yol hikâyeleri.',
     address: 'An itibariyle Londra',
     email: 'ibrahim@uylas.net',
     phone: '',
