@@ -567,33 +567,37 @@ const RouteResearchSection = ({ guide, research }) => (
               p: [3, 4]
             }}
           >
-            <Flex
-              aria-hidden='true'
-              sx={{
-                alignItems: `center`,
-                justifyContent: `center`,
-                width: 36,
-                height: 36,
-                bg: `alphaLighter`,
-                color: `alphaDark`,
-                borderRadius: `50%`,
-                fontWeight: `bold`,
-                mb: 3
-              }}
-            >
-              {index + 1}
+            <Flex sx={{ alignItems: `center`, gap: 3, mb: 3 }}>
+              <Flex
+                aria-hidden='true'
+                sx={{
+                  alignItems: `center`,
+                  justifyContent: `center`,
+                  flexShrink: 0,
+                  width: 36,
+                  height: 36,
+                  bg: `alphaLighter`,
+                  color: `alphaDark`,
+                  borderRadius: `50%`,
+                  fontWeight: `bold`
+                }}
+              >
+                {index + 1}
+              </Flex>
+              <Heading
+                as='h3'
+                sx={{
+                  color: `heading`,
+                  flex: 1,
+                  minWidth: 0,
+                  fontSize: [3, 4],
+                  lineHeight: 1.25,
+                  m: 0
+                }}
+              >
+                {step.title}
+              </Heading>
             </Flex>
-            <Heading
-              as='h3'
-              sx={{
-                color: `heading`,
-                fontSize: [3, 4],
-                lineHeight: 1.25,
-                m: 0
-              }}
-            >
-              {step.title}
-            </Heading>
             <Text
               as='p'
               sx={{ color: `text`, fontSize: [1, 2], lineHeight: 1.6, mb: 0 }}

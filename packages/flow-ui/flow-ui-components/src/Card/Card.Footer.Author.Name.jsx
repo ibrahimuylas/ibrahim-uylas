@@ -11,7 +11,7 @@ const styles = {
   }
 }
 
-const CardFooterAuthorName = ({ variant, omitAuthor, author }) =>
+const CardFooterAuthorName = ({ variant, omitAuthor = true, author }) =>
   !omitAuthor && author && author.slug ? (
     <Text sx={responsiveVariantStyles(rv(variant, 'author'), styles.author)}>
       <Link variant='mute' as={GLink} to={author.slug}>

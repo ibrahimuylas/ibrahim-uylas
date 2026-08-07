@@ -103,7 +103,7 @@ const Posts = ({
         description='Kampçılık, doğa yürüyüşü, trekking, rota ve kamp ekipmanı rehberleri. Kişisel deneyimler, hazırlık notları ve yol hikâyeleri.'
         imageData={homeOgImage?.childImageSharp?.gatsbyImageData}
       />
-      <Divider space={2} />
+      <Divider space={[3, 2]} />
       <Stack effectProps={{ effect: false }}>
         <Box sx={{ py: [2, 3], width: `100%`, maxWidth: `none` }}>
           <Heading as='h1' variant='h1'>
@@ -115,7 +115,7 @@ const Posts = ({
           </Text>
         </Box>
       </Stack>
-      <Divider space={2} />
+      <Divider space={[3, 2]} />
       <Stack direction={['column']} effectProps={{ effect: false }}>
         <Heading
           as='h2'
@@ -129,7 +129,7 @@ const Posts = ({
           omitTitle
         />
       </Stack>
-      <Divider space={3} />
+      <Divider space={[4, 3]} />
       <ArticleContents items={homeContentsItems} showInlineNavigation={false} />
       <Box id='one-cikanlar' sx={{ scrollMarginTop: `24px` }}>
         <Stack
@@ -147,9 +147,9 @@ const Posts = ({
               loading='eager'
               accentColorByCategory={categoryColors}
               omitCategory
-              omitFooter
+              omitAuthor
             />
-            <Divider space={2} />
+            <Divider space={[3, 2]} />
             <CardList
               nodes={recentNodes}
               limit={4}
@@ -173,13 +173,13 @@ const Posts = ({
         <Main>
           {services.mailchimp && (
             <>
-              <Divider space={4} />
+              <Divider space={[5, 4]} />
               <NewsletterExpanded />
             </>
           )}
         </Main>
       </Stack>
-      <Divider space={4} />
+      <Divider space={[5, 4]} />
       {sortedPostGroup.length > 0 &&
         sortedPostGroup.map((group, index) => (
           <Box
@@ -206,7 +206,7 @@ const Posts = ({
                     ]}
                     accentColor={categoryColors[group.categoryName]}
                   />
-                  <Divider space={2} />
+                  <Divider space={[3, 2]} />
                   <CardList
                     nodes={group.nodes}
                     limit={3}
@@ -254,7 +254,7 @@ const Posts = ({
                     flexDirection: [`column`, null, null, `row`]
                   }}
                 >
-                  <Divider space={2} />
+                  <Divider space={[3, 2]} />
                   <CardList
                     nodes={group.nodes}
                     limit={group.nodes.length === 4 ? 2 : 3}
@@ -271,7 +271,7 @@ const Posts = ({
                     accentColor={categoryColors[group.categoryName]}
                     omitCategory
                   />
-                  <Divider space={2} />
+                  <Divider space={[3, 2]} />
                 </Main>
                 {group.nodes.length >= 4 && (
                   <Sidebar
@@ -299,7 +299,7 @@ const Posts = ({
                 )}
               </Stack>
             )}
-            {index !== sortedPostGroup.length - 1 && <Divider />}
+            {index !== sortedPostGroup.length - 1 && <Divider space={[5, 4]} />}
           </Box>
         ))}
     </Layout>

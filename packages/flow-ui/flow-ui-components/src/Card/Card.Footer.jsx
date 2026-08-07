@@ -14,7 +14,7 @@ const styles = {
   postInfo: {
     flex: 1,
     flexWrap: `wrap`,
-    justifyContent: `space-between`,
+    justifyContent: `flex-end`,
     color: `omega`
   }
 }

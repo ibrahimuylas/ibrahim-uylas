@@ -1,6 +1,13 @@
 import React from 'react'
 import { Box } from 'theme-ui'
 
+const getSpacing = space =>
+  Array.isArray(space)
+    ? space.map((value, index) =>
+        value == null ? value : index === 0 ? value - 1 : value
+      )
+    : [space - 1, space]
+
 const Divider = ({ space = 4, line = false }) => (
   <Box
     sx={{
@@ -9,7 +16,7 @@ const Divider = ({ space = 4, line = false }) => (
       borderTopColor: line ? `omegaLighter` : `transparent`,
       borderTopWidth: 2,
       height: 0,
-      my: [space - 1, space]
+      my: getSpacing(space)
     }}
   />
 )

@@ -47,7 +47,7 @@ export default {
     zIndex: 3,
     p: 0,
     pt: [4, `2rem`],
-    pl: [4, `5rem`],
+    pl: [4, `2rem`],
     pr: 4
   },
   category: {
@@ -66,7 +66,13 @@ export default {
     display: `none`
   },
   footer: {
-    display: `none`
+    display: [`none`, `flex`],
+    position: `absolute`,
+    right: `2rem`,
+    bottom: `2rem`,
+    alignItems: `center`,
+    mt: 0,
+    pb: 0
   },
   authorPhoto: {
     display: [`none`, `block`]

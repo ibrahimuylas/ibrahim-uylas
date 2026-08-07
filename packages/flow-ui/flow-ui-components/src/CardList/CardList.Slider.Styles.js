@@ -76,15 +76,16 @@ export default {
     '.slick-dots': {
       textAlign: `center`,
       width: `auto`,
-      top: [`auto`, `3.25rem`],
-      bottom: [3, `auto`],
-      left: [`auto`, `2rem`],
+      top: [`auto`, `auto`],
+      bottom: [3, `4rem`],
+      left: [`auto`, `2.5rem`],
       right: [4, `auto`],
       p: 0,
-      ml: [3, 0]
+      ml: [3, 0],
+      transform: [null, `translateY(-100%)`]
     },
     '.slick-dots li': {
-      display: [`inline-block`, `block`]
+      display: [`inline-block`, `inline-block`]
     },
     '.slick-dots li.slick-active button': {
       bg: `alpha`
