@@ -68,7 +68,7 @@ export default {
     '.slick-prev, .slick-next': {
       top: `auto`,
       bottom: [-2, 3],
-      left: [4, 6]
+      left: [4, `2rem`]
     },
     '.slick-next': {
       ml: 5
@@ -76,17 +76,15 @@ export default {
     '.slick-dots': {
       textAlign: `center`,
       width: `auto`,
-      top: [`auto`, `auto`],
-      bottom: [3, `47px`],
-      left: [`auto`, `272px`],
+      top: [`auto`, `3.25rem`],
+      bottom: [3, `auto`],
+      left: [`auto`, `2rem`],
       right: [4, `auto`],
       p: 0,
-      ml: [3, 0],
-      display: [`block`, `flex`],
-      alignItems: `center`
+      ml: [3, 0]
     },
     '.slick-dots li': {
-      display: [`inline-block`, `inline-block`]
+      display: [`inline-block`, `block`]
     },
     '.slick-dots li.slick-active button': {
       bg: `alpha`

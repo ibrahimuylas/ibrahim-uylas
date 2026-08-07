@@ -46,8 +46,8 @@ export default {
     position: `absolute`,
     zIndex: 3,
     p: 0,
-    pt: [4, 5],
-    pl: [4, 6],
+    pt: [4, `2rem`],
+    pl: [4, `5rem`],
     pr: 4
   },
   category: {
