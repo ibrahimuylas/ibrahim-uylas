@@ -14,7 +14,7 @@ export const pageQuery = graphql`
     $homeCategoryPostsPerGroup: Int!
   ) {
     homeOgImage: file(
-      name: { eq: "default-banner-image" }
+      name: { eq: "diger-jeep-kamp-hero" }
       sourceInstanceName: { eq: "asset" }
     ) {
       childImageSharp {

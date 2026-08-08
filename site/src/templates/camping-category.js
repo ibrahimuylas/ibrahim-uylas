@@ -20,11 +20,26 @@ const guides = {
 }
 
 const CampingCategoryPage = ({
-  data: { hubArticles, latestArticles },
+  data: {
+    hubArticles,
+    latestArticles,
+    campingOgImage,
+    hikingOgImage,
+    routeOgImage,
+    equipmentOgImage,
+    otherOgImage
+  },
   pageContext,
   ...props
 }) => {
   const guide = guides[pageContext.guideId] || campingGuide
+  const ogImages = {
+    kampcilik: campingOgImage,
+    'doga-yuruyusleri': hikingOgImage,
+    rotalar: routeOgImage,
+    ekipmanlar: equipmentOgImage,
+    diger: otherOgImage
+  }
   const siteUrl = (pageContext.siteUrl || '').replace(/\/$/, '')
   const guideArticles = categoryGuidePolicy.selectGuideArticles({
     articles: hubArticles.nodes,
@@ -56,6 +71,7 @@ const CampingCategoryPage = ({
       <Seo
         title={guide.title}
         description={guide.description}
+        imageData={ogImages[guide.id]?.childImageSharp?.gatsbyImageData}
         siteUrl={siteUrl}
       >
         <script type='application/ld+json'>
@@ -86,6 +102,46 @@ export const pageQuery = graphql`
     $includeTimeToRead: Boolean!
     $imageQuality: Int!
   ) {
+    campingOgImage: file(
+      name: { eq: "camping-guide-hero" }
+      sourceInstanceName: { eq: "asset" }
+    ) {
+      childImageSharp {
+        gatsbyImageData(width: 1600, quality: 80)
+      }
+    }
+    hikingOgImage: file(
+      name: { eq: "doga-yuruyusleri-guide-hero" }
+      sourceInstanceName: { eq: "asset" }
+    ) {
+      childImageSharp {
+        gatsbyImageData(width: 1600, quality: 80)
+      }
+    }
+    routeOgImage: file(
+      name: { eq: "rotalar-guide-hero" }
+      sourceInstanceName: { eq: "asset" }
+    ) {
+      childImageSharp {
+        gatsbyImageData(width: 1600, quality: 80)
+      }
+    }
+    equipmentOgImage: file(
+      name: { eq: "ekipmanlar-guide-flatlay" }
+      sourceInstanceName: { eq: "asset" }
+    ) {
+      childImageSharp {
+        gatsbyImageData(width: 1600, quality: 80)
+      }
+    }
+    otherOgImage: file(
+      name: { eq: "diger-jeep-kamp-hero" }
+      sourceInstanceName: { eq: "asset" }
+    ) {
+      childImageSharp {
+        gatsbyImageData(width: 1600, quality: 80)
+      }
+    }
     hubArticles: allArticle(
       filter: {
         private: { ne: true }
