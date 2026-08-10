@@ -1,4 +1,7 @@
 {
+  # Uses the local Decap proxy on localhost only; production keeps GitHub OAuth.
+  local_backend: true,
+
   #########################################################################
   #
   #   For a complete list of available configuration options see:

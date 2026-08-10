@@ -1,0 +1,286 @@
+{
+  "version": "5",
+  "remote": {
+    "https://edge.netlify.com/": "fd941d61d88673d5f28aab283fb86fcc50f08a3bc80ee5470498fcfa88c65cfb",
+    "https://edge.netlify.com/bootstrap/config.ts": "6a2ce0e544e15e8f8883a5c18da5948e37fd0f2619f68cb31f3af53c51817025",
+    "https://edge.netlify.com/bootstrap/context.ts": "e97240232121e2f369f6546ce961490f34d961ea1ea54be3ff09633e3f08373f",
+    "https://edge.netlify.com/bootstrap/cookie.ts": "8b0baae708989ca183c6f3b4ab3d029e6abcbc2e43f93edeb0ff447b3bbc3a05",
+    "https://edge.netlify.com/bootstrap/edge_function.ts": "b8253e86aa83c67341f5cfedeba5049d77fbf84dcab7eceff7566b7728ae9b39",
+    "https://edge.netlify.com/bootstrap/globals/types.ts": "eaa6148ded3121d8dee62dd91c86e7fe76601df0f3ca8d7962243a30f4c8935f"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@netlify/functions@5.3.0",
+        "npm:decap-cms-app@3.6.3",
+        "npm:react-dom@18.3.1",
+        "npm:react@18.3.1",
+        "npm:supabase@2.113.0"
+      ]
+    },
+    "members": {
+      "packages/blog/gatsby-blog-core": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/gatsby-plugin-mkdir@3",
+            "npm:@elegantstack/gatsby-plugin-proxy-directives@4",
+            "npm:@elegantstack/gatsby-plugin-proxy-schema@^3.1.0",
+            "npm:@elegantstack/gatsby-plugin-utility-directives@4",
+            "npm:@elegantstack/gatsby-remark-unwrap-video@1",
+            "npm:@mdx-js/react@^2.3.0",
+            "npm:gatsby-plugin-catch-links@^5.16.0",
+            "npm:gatsby-plugin-image@^3.16.0",
+            "npm:gatsby-plugin-mdx@^5.16.0",
+            "npm:gatsby-plugin-sharp@^5.16.0",
+            "npm:gatsby-remark-copy-linked-files@^6.16.0",
+            "npm:gatsby-remark-embed-video@^3.2.1",
+            "npm:gatsby-remark-images@^7.16.0",
+            "npm:gatsby-remark-responsive-iframe@^6.16.0",
+            "npm:gatsby-remark-smartypants@^6.16.0",
+            "npm:gatsby-source-filesystem@^5.16.0",
+            "npm:gatsby-transformer-json@^5.16.0",
+            "npm:gatsby-transformer-sharp@^5.16.0",
+            "npm:get-value@^4.1.0",
+            "npm:rehype-slug@6",
+            "npm:remark-gfm@1.0.0"
+          ]
+        }
+      },
+      "packages/blog/gatsby-blog-helpers": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/gatsby-plugin-alias-imports@3",
+            "npm:dedupe@^4.0.3"
+          ]
+        }
+      },
+      "packages/blog/gatsby-blog-pages": {
+        "packageJson": {
+          "dependencies": [
+            "npm:theme-ui@~0.17.4"
+          ]
+        }
+      },
+      "packages/common/gatsby-common-helpers": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/gatsby-plugin-alias-imports@3",
+            "npm:react-icons@^5.7.0"
+          ]
+        }
+      },
+      "packages/flow-ui/flow-ui-components": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/gatsby-plugin-alias-imports@3",
+            "npm:@theme-ui/mdx@~0.17.4",
+            "npm:@theme-ui/prism@~0.17.4",
+            "npm:dedupe@^4.0.3",
+            "npm:prop-types@^15.8.1",
+            "npm:react-icons@^5.7.0",
+            "npm:react-slick@0.31",
+            "npm:slick-carousel@^1.8.1",
+            "npm:theme-ui@~0.17.4"
+          ]
+        }
+      },
+      "packages/flow-ui/flow-ui-layout": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@emotion/react@^11.14.0",
+            "npm:rc-switch@^4.1.0",
+            "npm:theme-ui@~0.17.4"
+          ]
+        }
+      },
+      "packages/flow-ui/flow-ui-theme": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@emotion/react@^11.14.0",
+            "npm:@theme-ui/prism@~0.17.4",
+            "npm:@theme-ui/typography@~0.17.4",
+            "npm:gatsby-plugin-emotion@^8.16.0",
+            "npm:gatsby-plugin-preconnect@1.4.0",
+            "npm:gatsby-plugin-web-font-loader@^1.0.4",
+            "npm:prop-types@^15.8.1",
+            "npm:theme-ui@~0.17.4"
+          ]
+        }
+      },
+      "packages/flow-ui/flow-ui-widgets": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/gatsby-blog-helpers@4",
+            "npm:@elegantstack/gatsby-plugin-alias-imports@3",
+            "npm:@mdx-js/react@^2.3.0",
+            "npm:algoliasearch@^5.56.0",
+            "npm:gatsby-plugin-react-helmet@^6.16.0",
+            "npm:group-array@1",
+            "npm:prop-types@^15.8.1",
+            "npm:react-helmet@^6.1.0",
+            "npm:react-icons@^5.7.0",
+            "npm:react-instantsearch@^7.41.0",
+            "npm:react-schemaorg@^2.0.1",
+            "npm:react-share@^5.3.0",
+            "npm:theme-ui@~0.17.4"
+          ]
+        }
+      },
+      "packages/plugins/gatsby-plugin-utility-directives": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@portabletext/markdown@^1.4.4",
+            "npm:slugify@^1.6.5"
+          ]
+        }
+      },
+      "packages/themes/gatsby-theme-flexiblog-agency": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/flow-ui-components@4",
+            "npm:@elegantstack/flow-ui-layout@4",
+            "npm:@elegantstack/flow-ui-theme@4",
+            "npm:@elegantstack/flow-ui-widgets@4",
+            "npm:@elegantstack/gatsby-blog-core@4",
+            "npm:@elegantstack/gatsby-blog-helpers@4",
+            "npm:@elegantstack/gatsby-blog-pages@^3.2.0",
+            "npm:@elegantstack/gatsby-common-helpers@4"
+          ]
+        }
+      },
+      "packages/themes/gatsby-theme-flexiblog-beauty": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/flow-ui-components@4",
+            "npm:@elegantstack/flow-ui-layout@4",
+            "npm:@elegantstack/flow-ui-theme@4",
+            "npm:@elegantstack/flow-ui-widgets@4",
+            "npm:@elegantstack/gatsby-blog-core@4",
+            "npm:@elegantstack/gatsby-blog-helpers@4",
+            "npm:@elegantstack/gatsby-blog-pages@^3.2.0",
+            "npm:@elegantstack/gatsby-common-helpers@4"
+          ]
+        }
+      },
+      "packages/themes/gatsby-theme-flexiblog-education": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/flow-ui-components@4",
+            "npm:@elegantstack/flow-ui-layout@4",
+            "npm:@elegantstack/flow-ui-theme@4",
+            "npm:@elegantstack/flow-ui-widgets@4",
+            "npm:@elegantstack/gatsby-blog-core@4",
+            "npm:@elegantstack/gatsby-blog-helpers@4",
+            "npm:@elegantstack/gatsby-blog-pages@^3.2.0",
+            "npm:@elegantstack/gatsby-common-helpers@4"
+          ]
+        }
+      },
+      "packages/themes/gatsby-theme-flexiblog-medical": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/flow-ui-components@4",
+            "npm:@elegantstack/flow-ui-layout@4",
+            "npm:@elegantstack/flow-ui-theme@4",
+            "npm:@elegantstack/flow-ui-widgets@4",
+            "npm:@elegantstack/gatsby-blog-core@4",
+            "npm:@elegantstack/gatsby-blog-helpers@4",
+            "npm:@elegantstack/gatsby-blog-pages@^3.2.0",
+            "npm:@elegantstack/gatsby-common-helpers@4"
+          ]
+        }
+      },
+      "packages/themes/gatsby-theme-flexiblog-minimal": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/flow-ui-components@4",
+            "npm:@elegantstack/flow-ui-layout@4",
+            "npm:@elegantstack/flow-ui-theme@4",
+            "npm:@elegantstack/flow-ui-widgets@4",
+            "npm:@elegantstack/gatsby-blog-core@4",
+            "npm:@elegantstack/gatsby-blog-helpers@4",
+            "npm:@elegantstack/gatsby-blog-pages@^3.2.0",
+            "npm:@elegantstack/gatsby-common-helpers@4"
+          ]
+        }
+      },
+      "packages/themes/gatsby-theme-flexiblog-minimal-v2": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/flow-ui-components@4",
+            "npm:@elegantstack/flow-ui-layout@4",
+            "npm:@elegantstack/flow-ui-theme@4",
+            "npm:@elegantstack/flow-ui-widgets@4",
+            "npm:@elegantstack/gatsby-blog-core@4",
+            "npm:@elegantstack/gatsby-blog-helpers@4",
+            "npm:@elegantstack/gatsby-blog-pages@^3.2.0",
+            "npm:@elegantstack/gatsby-common-helpers@4"
+          ]
+        }
+      },
+      "packages/themes/gatsby-theme-flexiblog-news": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/flow-ui-components@4",
+            "npm:@elegantstack/flow-ui-layout@4",
+            "npm:@elegantstack/flow-ui-theme@4",
+            "npm:@elegantstack/flow-ui-widgets@4",
+            "npm:@elegantstack/gatsby-blog-core@4",
+            "npm:@elegantstack/gatsby-blog-helpers@4",
+            "npm:@elegantstack/gatsby-blog-pages@^3.2.0",
+            "npm:@elegantstack/gatsby-common-helpers@4"
+          ]
+        }
+      },
+      "packages/themes/gatsby-theme-flexiblog-personal": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/flow-ui-components@4",
+            "npm:@elegantstack/flow-ui-layout@4",
+            "npm:@elegantstack/flow-ui-theme@4",
+            "npm:@elegantstack/flow-ui-widgets@4",
+            "npm:@elegantstack/gatsby-blog-core@4",
+            "npm:@elegantstack/gatsby-blog-helpers@4",
+            "npm:@elegantstack/gatsby-blog-pages@^3.2.0",
+            "npm:@elegantstack/gatsby-common-helpers@4"
+          ]
+        }
+      },
+      "packages/themes/gatsby-theme-flexiblog-science": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/flow-ui-components@4",
+            "npm:@elegantstack/flow-ui-layout@4",
+            "npm:@elegantstack/flow-ui-theme@4",
+            "npm:@elegantstack/flow-ui-widgets@4",
+            "npm:@elegantstack/gatsby-blog-core@4",
+            "npm:@elegantstack/gatsby-blog-helpers@4",
+            "npm:@elegantstack/gatsby-blog-pages@^3.2.0",
+            "npm:@elegantstack/gatsby-common-helpers@4"
+          ]
+        }
+      },
+      "site": {
+        "packageJson": {
+          "dependencies": [
+            "npm:@elegantstack/gatsby-theme-flexiblog-agency@*",
+            "npm:@fontsource-variable/inter@5.3.0",
+            "npm:@fontsource/dm-serif-display@5.3.0",
+            "npm:@marsidev/react-turnstile@1.5.5",
+            "npm:@mdx-js/react@^2.3.0",
+            "npm:@supabase/supabase-js@2.112.2",
+            "npm:dotenv@^17.4.2",
+            "npm:gatsby-plugin-decap-cms@^4.0.4",
+            "npm:gatsby-plugin-google-gtag@^5.16.0",
+            "npm:gatsby-plugin-sitemap@^6.16.0",
+            "npm:gatsby@^5.16.1",
+            "npm:pagefind@1.5.2",
+            "npm:prettier@^3.9.6",
+            "npm:react-dom@18.3.1",
+            "npm:react@18.3.1"
+          ]
+        }
+      }
+    }
+  }
+}

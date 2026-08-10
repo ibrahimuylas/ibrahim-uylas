@@ -23,10 +23,6 @@ const deferredComments = fs.readFileSync(
   path.join(projectRoot, 'site/src/components/DeferredComments.jsx'),
   'utf8'
 )
-const emailCommentForm = fs.readFileSync(
-  path.join(projectRoot, 'site/src/components/EmailCommentForm.jsx'),
-  'utf8'
-)
 
 test('the site configures Giscus for the existing public repository', () => {
   const themePlugin = gatsbyConfig.plugins.find(
@@ -43,7 +39,8 @@ test('the site configures Giscus for the existing public repository', () => {
   assert.equal(themePlugin.options.services.giscus.theme, 'light')
 })
 
-test('the article template only mounts deferred Giscus comments when configured', () => {
+test('the article template retains deferred Giscus as the production fallback', () => {
+  assert.match(postContainer, /services\.comments\?\.enabled/)
   assert.match(postContainer, /services\.giscus\?\.repoId/)
   assert.match(postContainer, /services\.giscus\?\.categoryId/)
   assert.match(postContainer, /<DeferredComments/)
@@ -61,11 +58,8 @@ test('Giscus uses strict pathname mapping and does not load during SSR', () => {
   assert.match(giscusComments, /data-loading': 'lazy'/)
 })
 
-test('comments offer an accessible moderated email path alongside Giscus', () => {
-  assert.match(deferredComments, /GitHub hesabın yok mu\?/)
-  assert.match(deferredComments, /E-posta ile yorum yap/)
-  assert.match(emailCommentForm, /data-netlify='true'/)
-  assert.match(emailCommentForm, /name={FORM_NAME}/)
-  assert.match(emailCommentForm, /name='email'/)
-  assert.match(emailCommentForm, /name='message'/)
+test('deferred comments select native comments only when the flag is enabled', () => {
+  assert.match(deferredComments, /props\.comments\?\.enabled === true/)
+  assert.match(deferredComments, /<Comments/)
+  assert.match(deferredComments, /<PostComments/)
 })

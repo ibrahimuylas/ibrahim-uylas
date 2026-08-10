@@ -57,11 +57,13 @@ const Post = ({
               <PostBody {...post} />
             </div>
             <PostTagsShare {...post} location={props.location} />
-            {services.giscus?.repoId && services.giscus?.categoryId && (
+            {(services.comments?.enabled ||
+              (services.giscus?.repoId && services.giscus?.categoryId)) && (
               <DeferredComments
                 {...post}
                 siteUrl={siteUrl}
                 giscus={services.giscus}
+                comments={services.comments}
               />
             )}
           </CardComponent>

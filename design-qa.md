@@ -1235,3 +1235,93 @@ final result: passed
   ibrahim@uylas.net'e e-posta gönder.`
 
 final result: passed
+
+---
+
+# Comments management design QA
+
+- Source visual truth: `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-d6e8ec63-3e0f-4c62-8d00-c22f174b9a05.png`
+- Normalized source: `/Users/uylas/Projects/ibrahim-uylas/design-qa-comments-source.png`
+- Implementation screenshot: `/Users/uylas/Projects/ibrahim-uylas/design-qa-comments-implementation.png`
+- Full comparison: `/Users/uylas/Projects/ibrahim-uylas/design-qa-comments-comparison.png`
+- Focused header comparison: `/Users/uylas/Projects/ibrahim-uylas/design-qa-comments-comparison-header.png`
+- State: authenticated Decap local-backend session, `/admin/#/comments-management`, empty comment list
+- Viewport: implementation 1762 × 1280 CSS px at 1× density
+- Source dimensions: 3514 × 2672 px at 2× density; normalized to 1757 × 1336 px and cropped below the 110 px browser chrome region
+- Implementation dimensions: 1762 × 1280 px at 1× density
+
+## Findings
+
+No actionable P0, P1, or P2 visual differences remain.
+
+- Fonts and typography: the custom view uses Decap's system UI stack, weights, sizes, and compact hierarchy. The Comments navigation label matches Contents and Media.
+- Spacing and layout rhythm: the 1440-ish centered content width, 20–28 px card spacing, square 3–4 px radii, and restrained shadow match the source admin surface.
+- Colors and visual tokens: foreground cards, gray workspace, blue active state, borders, and status colors remain consistent with Decap.
+- Image and icon fidelity: the navigation icon is cloned from Decap's own page icon; action icons come from the project's existing React Icons library. No placeholder or handcrafted icon assets are used.
+- Copy and content: the screen is concise, Turkish operational copy is clear, and email addresses appear only in the authenticated management view.
+
+## Interaction evidence
+
+- Contents → Comments navigation round-trip passed.
+- Tümü, Yayında, and Gizli filter states respond correctly.
+- The refresh action called `/api/comments/admin` and received HTTP 200.
+- The browser console contained no error-level entries after the final production-build preview loaded and refreshed.
+- The empty state rendered without the Decap `Not Found` route or a second login screen.
+
+## Comparison history
+
+1. Initial comparison found a P1 issue: Decap's fallback `Not Found` route remained visible above the custom management view.
+2. The route container lookup was changed to hide the fallback content only while the Comments route is active.
+3. The revised production-build screenshot shows the Decap header followed directly by the Comments management surface, with no fallback heading or extra login UI.
+
+## Follow-up polish
+
+None required for the current empty-state scope. A populated-list screenshot can be added after the first real comment exists.
+
+final result: passed
+
+---
+
+# Native comments visual and interaction QA — 2026-08-11
+
+## Visual target and comparison
+
+- Source visual truth: the live `/iletisim/` form, using the site's established
+  DM Serif Display + Inter typography, dark/light theme tokens, 8–12 px radii,
+  quiet borders, and indigo primary actions.
+- Source screenshot:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/comments-design-source-contact.png`
+- Final comments screenshot:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/comments-design-final.png`
+- Side-by-side comparison:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/comments-design-side-by-side.jpg`
+- Both source and implementation were captured at 1265 × 712 px.
+
+## Findings
+
+No actionable P0, P1, or P2 visual difference remains.
+
+- Typography, form labels, controls, focus treatment, borders, and primary CTA
+  now reuse the contact form's visual language.
+- The section preserves the article's editorial hierarchy through the existing
+  “Sohbet” eyebrow and DM Serif Display heading.
+- Light and dark themes both retain readable contrast and clear component
+  boundaries; the Cloudflare widget remains visibly grouped with its label.
+- Empty, loading, success, error, conversation, nested reply, and sorting
+  states use the site's existing theme tokens and React Icons assets.
+- The Decap management page remains inside the authenticated admin shell and
+  matches its Contents/Media navigation, cards, filters, and action controls.
+
+## Interaction and data evidence
+
+- Public comment submission passed with the Cloudflare test widget.
+- The new comment appeared immediately without exposing its email address.
+- Admin reply passed without a configured owner-email override or Resend key.
+- The reply appeared as a nested public comment.
+- Hiding the root conversation removed both the root and its reply from the
+  public API while preserving both records in the admin view.
+- The public and admin tabs reported no browser error or warning logs.
+- The repository test suite passed 94/94 and the production Gatsby build
+  completed successfully.
+
+final result: passed
