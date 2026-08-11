@@ -124,6 +124,20 @@ test('public UI collects required identity privately and supports replies/order'
   assert.match(comments, /!result\?\.ok/)
 })
 
+test('public comments stay flat, responsive, and avoid iOS focus zoom', () => {
+  assert.match(comments, /const fieldStyle = \{[\s\S]*fontSize: '16px'/)
+  assert.match(comments, /data-comment-form/)
+  assert.match(comments, /p: 0,[\s\S]*bg: 'transparent',[\s\S]*border: 0/)
+  assert.match(
+    comments,
+    /options=\{\{[\s\S]*appearance: 'always',[\s\S]*size: 'flexible'/
+  )
+  assert.match(
+    comments,
+    /id='comment-sort'[\s\S]*fontSize: '16px'/
+  )
+})
+
 test('comments management extends Decap and reuses its GitHub session', () => {
   assert.match(
     config,

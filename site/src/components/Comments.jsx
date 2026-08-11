@@ -32,7 +32,8 @@ const fieldStyle = {
   border: '1px solid',
   borderColor: 'omegaLight',
   borderRadius: '8px',
-  fontSize: 2,
+  // iOS Safari zooms focused form controls whose computed size is below 16px.
+  fontSize: '16px',
   transition: 'border-color 160ms ease, box-shadow 160ms ease',
   '&:hover': { borderColor: 'omega' },
   '&:focus': {
@@ -134,15 +135,14 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
   return (
     <Box
       as='form'
+      data-comment-form
       onSubmit={submit}
       sx={{
         display: 'grid',
         gap: 3,
-        p: [3, 4],
-        bg: 'omegaLighter',
-        border: '1px solid',
-        borderColor: 'omegaLight',
-        borderRadius: '12px'
+        p: 0,
+        bg: 'transparent',
+        border: 0
       }}
     >
       {replyTo && (
@@ -312,11 +312,15 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
             </Text>
           </Flex>
           {siteKey ? (
-            <Box sx={{ minHeight: 65, maxWidth: '100%', overflow: 'hidden' }}>
+            <Box sx={{ minHeight: 65, width: '100%', minWidth: 0 }}>
               <Turnstile
                 ref={turnstileRef}
                 siteKey={siteKey}
-                options={{ language: 'tr', appearance: 'always' }}
+                options={{
+                  language: 'tr',
+                  appearance: 'always',
+                  size: 'flexible'
+                }}
                 onSuccess={setToken}
                 onExpire={() => setToken('')}
                 onError={() => setToken('')}
@@ -616,7 +620,8 @@ const Comments = ({ title, slug, comments }) => {
               color: 'heading',
               bg: 'contentBg',
               borderColor: 'omegaLight',
-              borderRadius: '8px'
+              borderRadius: '8px',
+              fontSize: '16px'
             }}
           >
             <option value='newest'>En yeni</option>

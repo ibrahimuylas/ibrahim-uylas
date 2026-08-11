@@ -40,12 +40,12 @@ const DeferredComments = props => {
       sx={{
         minHeight: 160,
         mt: 4,
-        p: [3, 4, 5],
-        bg: `contentBg`,
-        border: `1px solid`,
+        p: [0, 4, 5],
+        bg: [`transparent`, `contentBg`],
+        borderStyle: `solid`,
+        borderWidth: [0, `1px`],
         borderColor: `omegaLight`,
-        borderRadius: `18px`,
-        boxShadow: theme => `0 24px 70px -48px ${theme.colors.omegaDarker}`
+        borderRadius: [0, `18px`]
       }}
     >
       <Flex
