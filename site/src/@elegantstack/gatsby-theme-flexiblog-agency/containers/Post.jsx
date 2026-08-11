@@ -8,6 +8,7 @@ import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
 import NewsletterExpanded from '@widgets/NewsletterExpanded'
 import ArticleContents from '../../../components/ArticleContents'
+import ArticleReactions from '../../../components/ArticleReactions'
 import DeferredComments from '../../../components/DeferredComments'
 import { trackEvent } from '../../../utils/analytics'
 import categoryGuideLinks from '../../../content-guides/categoryGuideLinks'
@@ -58,6 +59,7 @@ const Post = ({
               <PostBody {...post} />
             </div>
             <PostTagsShare {...post} location={props.location} />
+            {services.reactions?.enabled && <ArticleReactions {...post} />}
             {services.comments?.enabled && (
               <DeferredComments
                 {...post}

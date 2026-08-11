@@ -48,6 +48,9 @@ module.exports = {
             enabled: nativeCommentsEnabled,
             turnstileSiteKey: process.env.GATSBY_TURNSTILE_SITE_KEY || ''
           },
+          reactions: {
+            enabled: nativeCommentsEnabled
+          },
           mailchimp: true
         },
         sources: {

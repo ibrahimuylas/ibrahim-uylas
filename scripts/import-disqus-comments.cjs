@@ -439,7 +439,12 @@ if (require.main === module) {
 }
 
 module.exports = {
+  childNode,
+  childNodes,
+  childText,
   commentText,
+  nodeAttribute,
   normalizePath,
+  parseXml,
   prepareDisqusImport
 }

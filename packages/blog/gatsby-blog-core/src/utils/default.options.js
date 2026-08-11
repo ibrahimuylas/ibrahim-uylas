@@ -9,6 +9,7 @@ module.exports = pluginOptions => {
     algolia: getValue(pluginOptions, 'services.algolia', false),
     mailchimp: getValue(pluginOptions, 'services.mailchimp', false),
     comments: getValue(pluginOptions, 'services.comments', false),
+    reactions: getValue(pluginOptions, 'services.reactions', false),
     disqus: getValue(pluginOptions, 'services.disqus', false),
     graphComment: getValue(pluginOptions, 'services.graphComment', false),
     facebookComment: getValue(pluginOptions, 'services.facebookComment', false)
