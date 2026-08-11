@@ -6,7 +6,8 @@ import {
   FaExternalLinkAlt,
   FaPen,
   FaReply,
-  FaSyncAlt
+  FaSyncAlt,
+  FaTrashAlt
 } from 'react-icons/fa'
 
 const COMMENTS_ROUTE = '/comments-management'
@@ -23,6 +24,9 @@ const styles = `
 
   #${COMMENTS_ROOT_ID}[hidden] { display: none; }
   #${COMMENTS_ROOT_ID} * { box-sizing: border-box; }
+
+  .comments-management-route-header > div,
+  .comments-management-route-header nav { min-width: 0; }
 
   .comments-management-page {
     width: min(1180px, calc(100% - 40px));
@@ -137,14 +141,68 @@ const styles = `
   .comments-management-button.primary:focus-visible { background: #315eb4; }
   .comments-management-button:disabled { opacity: .55; cursor: wait; }
 
+  .comments-management-button.icon-only {
+    width: 38px;
+    min-width: 38px;
+    padding: 0;
+  }
+
+  .comments-management-button.danger { color: #a63636; }
+  .comments-management-button.danger:hover,
+  .comments-management-button.danger:focus-visible {
+    color: #8f2929;
+    border-color: #a63636;
+    background: #fff3f3;
+  }
+
   .comments-management-list {
     display: grid;
-    gap: 14px;
+    gap: 20px;
+  }
+
+  .comments-management-thread { overflow: hidden; }
+
+  .comments-management-thread-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px 20px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e4e6e9;
+  }
+
+  .comments-management-thread-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    color: #315eb4;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+
+  .comments-management-thread-link:hover { text-decoration: underline; }
+
+  .comments-management-thread-count {
+    flex: 0 0 auto;
+    color: #7b8290;
+    font-size: 12px;
+  }
+
+  .comments-management-thread-comments {
+    display: grid;
   }
 
   .comments-management-comment {
     padding: 20px 22px;
     border-left: 3px solid #3a69c7;
+  }
+
+  .comments-management-comment + .comments-management-comment {
+    border-top: 1px solid #e4e6e9;
   }
 
   .comments-management-comment.is-hidden {
@@ -166,23 +224,11 @@ const styles = `
     font-weight: 600;
   }
 
-  .comments-management-meta,
-  .comments-management-post-link {
+  .comments-management-meta {
     color: #7b8290;
     font-size: 13px;
     line-height: 1.5;
   }
-
-  .comments-management-post-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 5px;
-    color: #3a69c7;
-    text-decoration: none;
-  }
-
-  .comments-management-post-link:hover { text-decoration: underline; }
 
   .comments-management-status {
     display: inline-flex;
@@ -267,14 +313,35 @@ const styles = `
   }
 
   @media (max-width: 700px) {
+    .comments-management-route-header > div { padding-inline: 8px !important; }
+    .comments-management-route-header nav {
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .comments-management-route-header nav::-webkit-scrollbar { display: none; }
+    .comments-management-route-header nav ul {
+      min-width: max-content;
+      justify-content: flex-start !important;
+    }
+    .comments-management-route-header nav a,
+    .comments-management-route-header nav button {
+      min-height: 44px;
+      padding: 10px 12px !important;
+    }
     .comments-management-page { width: min(100% - 24px, 1180px); padding-top: 16px; }
     .comments-management-toolbar,
     .comments-management-controls,
     .comments-management-comment-header { align-items: stretch; flex-direction: column; }
+    .comments-management-toolbar { padding: 17px; margin-bottom: 16px; }
+    .comments-management-toolbar .comments-management-button { align-self: flex-start; }
+    .comments-management-title { font-size: 21px; }
     .comments-management-filter { flex: 1; }
     .comments-management-filters { display: flex; width: 100%; }
     .comments-management-count { padding-left: 3px; }
+    .comments-management-thread-header { align-items: flex-start; padding: 13px 16px; }
     .comments-management-comment { padding: 17px; }
+    .comments-management-status { align-self: flex-start; }
   }
 `
 
@@ -321,7 +388,10 @@ const parseResponse = async response => {
 
 const CommentForm = ({ busy, label, onCancel, onSubmit, setValue, value }) => (
   <form className='comments-management-form' onSubmit={onSubmit}>
-    <label className='comments-management-form-label' htmlFor='comment-management-body'>
+    <label
+      className='comments-management-form-label'
+      htmlFor='comment-management-body'
+    >
       {label}
     </label>
     <textarea
@@ -333,10 +403,19 @@ const CommentForm = ({ busy, label, onCancel, onSubmit, setValue, value }) => (
       required
     />
     <div className='comments-management-form-actions'>
-      <button className='comments-management-button primary' type='submit' disabled={busy}>
+      <button
+        className='comments-management-button primary'
+        type='submit'
+        disabled={busy}
+      >
         Kaydet
       </button>
-      <button className='comments-management-button' type='button' onClick={onCancel} disabled={busy}>
+      <button
+        className='comments-management-button'
+        type='button'
+        onClick={onCancel}
+        disabled={busy}
+      >
         Vazgeç
       </button>
     </div>
@@ -357,7 +436,9 @@ const CommentsManagement = () => {
   const request = useCallback(async (method = 'GET', body) => {
     const token = getDecapToken()
     if (!token) {
-      throw new Error('Decap CMS GitHub oturumu bulunamadı. Admin paneline yeniden giriş yap.')
+      throw new Error(
+        'Decap CMS GitHub oturumu bulunamadı. Admin paneline yeniden giriş yap.'
+      )
     }
 
     const response = await fetch('/api/comments/admin', {
@@ -405,9 +486,27 @@ const CommentsManagement = () => {
   }, [load])
 
   const visibleComments = useMemo(
-    () => comments.filter(comment => filter === 'all' || comment.status === filter),
+    () =>
+      comments.filter(comment => filter === 'all' || comment.status === filter),
     [comments, filter]
   )
+
+  const groupedComments = useMemo(() => {
+    const groups = new Map()
+
+    visibleComments.forEach(comment => {
+      if (!groups.has(comment.path)) {
+        groups.set(comment.path, {
+          path: comment.path,
+          title: comment.title,
+          comments: []
+        })
+      }
+      groups.get(comment.path).comments.push(comment)
+    })
+
+    return [...groups.values()]
+  }, [visibleComments])
 
   const moderate = async (comment, action, body = '') => {
     setActionId(comment.id)
@@ -448,20 +547,50 @@ const CommentsManagement = () => {
     }
   }
 
+  const remove = async comment => {
+    const confirmed = window.confirm(
+      `“${comment.author_name}” yorumunu kalıcı olarak silmek istiyor musun? Bu yoruma bağlı yanıtlar da silinecek.`
+    )
+    if (!confirmed) return
+
+    setActionId(comment.id)
+    setError('')
+    try {
+      await request('DELETE', { id: comment.id })
+      setEditing(null)
+      setReplying(null)
+      await load()
+    } catch (deleteError) {
+      setError(deleteError.message)
+    } finally {
+      setActionId(null)
+    }
+  }
+
   return (
     <main className='comments-management-page'>
       <section className='comments-management-card comments-management-toolbar'>
         <div>
           <h1 className='comments-management-title'>Comments</h1>
-          <p className='comments-management-subtitle'>Yorumları yanıtla, düzenle veya görünürlüklerini değiştir.</p>
+          <p className='comments-management-subtitle'>
+            Yorumları yanıtla, düzenle veya görünürlüklerini değiştir.
+          </p>
         </div>
-        <button className='comments-management-button' type='button' onClick={load} disabled={loading}>
+        <button
+          className='comments-management-button'
+          type='button'
+          onClick={load}
+          disabled={loading}
+        >
           <FaSyncAlt aria-hidden='true' size={12} /> Yenile
         </button>
       </section>
 
       <div className='comments-management-controls'>
-        <div className='comments-management-filters' aria-label='Yorum filtresi'>
+        <div
+          className='comments-management-filters'
+          aria-label='Yorum filtresi'
+        >
           {[
             ['all', 'Tümü'],
             ['published', 'Yayında'],
@@ -478,13 +607,22 @@ const CommentsManagement = () => {
             </button>
           ))}
         </div>
-        <span className='comments-management-count'>{visibleComments.length} yorum</span>
+        <span className='comments-management-count'>
+          {visibleComments.length} yorum
+        </span>
       </div>
 
-      {error && <div className='comments-management-error' role='alert'>{error}</div>}
+      {error && (
+        <div className='comments-management-error' role='alert'>
+          {error}
+        </div>
+      )}
 
       {loading && (
-        <div className='comments-management-card comments-management-message' role='status'>
+        <div
+          className='comments-management-card comments-management-message'
+          role='status'
+        >
           Yorumlar yükleniyor…
         </div>
       )}
@@ -497,98 +635,151 @@ const CommentsManagement = () => {
 
       {!loading && visibleComments.length > 0 && (
         <section className='comments-management-list' aria-label='Yorumlar'>
-          {visibleComments.map(comment => {
-            const isHidden = comment.status === 'hidden'
-            const isBusy = actionId === comment.id
-            const isEditing = editing?.id === comment.id
-            const isReplying = replying?.id === comment.id
+          {groupedComments.map(group => (
+            <section
+              key={group.path}
+              className='comments-management-card comments-management-thread'
+              aria-labelledby={`managed-thread-${group.comments[0].id}`}
+            >
+              <header className='comments-management-thread-header'>
+                <a
+                  id={`managed-thread-${group.comments[0].id}`}
+                  className='comments-management-thread-link'
+                  href={group.path}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  {group.title}
+                  <FaExternalLinkAlt aria-hidden='true' size={10} />
+                </a>
+                <span className='comments-management-thread-count'>
+                  {group.comments.length} yorum
+                </span>
+              </header>
 
-            return (
-              <article
-                key={comment.id}
-                id={`managed-comment-${comment.id}`}
-                className={`comments-management-card comments-management-comment${isHidden ? ' is-hidden' : ''}`}
-              >
-                <header className='comments-management-comment-header'>
-                  <div>
-                    <h2 className='comments-management-author'>{comment.author_name}</h2>
-                    <div className='comments-management-meta'>
-                      {comment.email} · {new Date(comment.created_at).toLocaleString('tr-TR')}
-                    </div>
-                    <a className='comments-management-post-link' href={comment.path} target='_blank' rel='noreferrer'>
-                      {comment.title} <FaExternalLinkAlt aria-hidden='true' size={10} />
-                    </a>
-                  </div>
-                  <span className={`comments-management-status${isHidden ? ' is-hidden' : ''}`}>
-                    {isHidden ? 'Gizli' : 'Yayında'}
-                  </span>
-                </header>
+              <div className='comments-management-thread-comments'>
+                {group.comments.map(comment => {
+                  const isHidden = comment.status === 'hidden'
+                  const isBusy = actionId === comment.id
+                  const isEditing = editing?.id === comment.id
+                  const isReplying = replying?.id === comment.id
+                  const visibilityLabel = isHidden ? 'Yeniden yayınla' : 'Gizle'
 
-                <p className='comments-management-body'>{comment.body}</p>
+                  return (
+                    <article
+                      key={comment.id}
+                      id={`managed-comment-${comment.id}`}
+                      className={`comments-management-comment${isHidden ? ' is-hidden' : ''}`}
+                    >
+                      <header className='comments-management-comment-header'>
+                        <div>
+                          <h3 className='comments-management-author'>
+                            {comment.author_name}
+                          </h3>
+                          <div className='comments-management-meta'>
+                            {comment.email} ·{' '}
+                            {new Date(comment.created_at).toLocaleString(
+                              'tr-TR'
+                            )}
+                          </div>
+                        </div>
+                        <span
+                          className={`comments-management-status${isHidden ? ' is-hidden' : ''}`}
+                        >
+                          {isHidden ? 'Gizli' : 'Yayında'}
+                        </span>
+                      </header>
 
-                <div className='comments-management-actions'>
-                  <button
-                    className='comments-management-button'
-                    type='button'
-                    disabled={isBusy}
-                    onClick={() => moderate(comment, isHidden ? 'restore' : 'hide')}
-                  >
-                    {isHidden ? <FaEye aria-hidden='true' size={13} /> : <FaEyeSlash aria-hidden='true' size={13} />}
-                    {isHidden ? 'Yeniden yayınla' : 'Gizle'}
-                  </button>
-                  <button
-                    className='comments-management-button'
-                    type='button'
-                    disabled={isBusy}
-                    onClick={() => {
-                      setReplying(null)
-                      setEditing(comment)
-                      setEditBody(comment.body)
-                    }}
-                  >
-                    <FaPen aria-hidden='true' size={11} /> Düzenle
-                  </button>
-                  <button
-                    className='comments-management-button'
-                    type='button'
-                    disabled={isBusy}
-                    onClick={() => {
-                      setEditing(null)
-                      setReplying(comment)
-                      setReplyBody('')
-                    }}
-                  >
-                    <FaReply aria-hidden='true' size={12} /> Yanıtla
-                  </button>
-                </div>
+                      <p className='comments-management-body'>{comment.body}</p>
 
-                {isEditing && (
-                  <CommentForm
-                    busy={isBusy}
-                    label='Yorumu düzenle'
-                    value={editBody}
-                    setValue={setEditBody}
-                    onCancel={() => setEditing(null)}
-                    onSubmit={event => {
-                      event.preventDefault()
-                      if (editBody.trim()) moderate(comment, 'edit', editBody.trim())
-                    }}
-                  />
-                )}
+                      <div className='comments-management-actions'>
+                        <button
+                          className='comments-management-button icon-only'
+                          type='button'
+                          aria-label={visibilityLabel}
+                          title={visibilityLabel}
+                          disabled={isBusy}
+                          onClick={() =>
+                            moderate(comment, isHidden ? 'restore' : 'hide')
+                          }
+                        >
+                          {isHidden ? (
+                            <FaEye aria-hidden='true' size={13} />
+                          ) : (
+                            <FaEyeSlash aria-hidden='true' size={13} />
+                          )}
+                        </button>
+                        <button
+                          className='comments-management-button icon-only'
+                          type='button'
+                          aria-label='Düzenle'
+                          title='Düzenle'
+                          disabled={isBusy}
+                          onClick={() => {
+                            setReplying(null)
+                            setEditing(comment)
+                            setEditBody(comment.body)
+                          }}
+                        >
+                          <FaPen aria-hidden='true' size={11} />
+                        </button>
+                        <button
+                          className='comments-management-button icon-only'
+                          type='button'
+                          aria-label='Yanıtla'
+                          title='Yanıtla'
+                          disabled={isBusy}
+                          onClick={() => {
+                            setEditing(null)
+                            setReplying(comment)
+                            setReplyBody('')
+                          }}
+                        >
+                          <FaReply aria-hidden='true' size={12} />
+                        </button>
+                        <button
+                          className='comments-management-button icon-only danger'
+                          type='button'
+                          aria-label='Sil'
+                          title='Sil'
+                          disabled={isBusy}
+                          onClick={() => remove(comment)}
+                        >
+                          <FaTrashAlt aria-hidden='true' size={12} />
+                        </button>
+                      </div>
 
-                {isReplying && (
-                  <CommentForm
-                    busy={isBusy}
-                    label='Herkese açık yanıt'
-                    value={replyBody}
-                    setValue={setReplyBody}
-                    onCancel={() => setReplying(null)}
-                    onSubmit={reply}
-                  />
-                )}
-              </article>
-            )
-          })}
+                      {isEditing && (
+                        <CommentForm
+                          busy={isBusy}
+                          label='Yorumu düzenle'
+                          value={editBody}
+                          setValue={setEditBody}
+                          onCancel={() => setEditing(null)}
+                          onSubmit={event => {
+                            event.preventDefault()
+                            if (editBody.trim())
+                              moderate(comment, 'edit', editBody.trim())
+                          }}
+                        />
+                      )}
+
+                      {isReplying && (
+                        <CommentForm
+                          busy={isBusy}
+                          label='Herkese açık yanıt'
+                          value={replyBody}
+                          setValue={setReplyBody}
+                          onCancel={() => setReplying(null)}
+                          onSubmit={reply}
+                        />
+                      )}
+                    </article>
+                  )
+                })}
+              </div>
+            </section>
+          ))}
         </section>
       )}
     </main>
@@ -634,6 +825,7 @@ const updateRoute = () => {
   updateNav(header)
   const active = isCommentsRoute()
   const root = document.getElementById(COMMENTS_ROOT_ID)
+  header.classList.toggle('comments-management-route-header', active)
 
   if (!root) return
   root.hidden = !active
@@ -643,7 +835,10 @@ const updateRoute = () => {
       heading => heading.textContent.trim() === 'Not Found'
     )
     let routeContainer = notFoundHeading
-    while (routeContainer && routeContainer.parentElement !== header.parentElement) {
+    while (
+      routeContainer &&
+      routeContainer.parentElement !== header.parentElement
+    ) {
       routeContainer = routeContainer.parentElement
     }
     hiddenMain = routeContainer || null
@@ -668,7 +863,10 @@ const initialize = () => {
   }
 
   const observer = new MutationObserver(updateRoute)
-  observer.observe(document.getElementById('nc-root'), { childList: true, subtree: true })
+  observer.observe(document.getElementById('nc-root'), {
+    childList: true,
+    subtree: true
+  })
   window.addEventListener('hashchange', updateRoute)
   updateRoute()
 }

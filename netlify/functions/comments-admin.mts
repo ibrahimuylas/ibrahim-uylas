@@ -21,10 +21,29 @@ export default async (request: Request, context: Context) => {
       return json({ ok: true, comments })
     }
 
-    if (request.method !== 'PATCH' && request.method !== 'POST') {
+    if (
+      request.method !== 'PATCH' &&
+      request.method !== 'POST' &&
+      request.method !== 'DELETE'
+    ) {
       return json({ ok: false }, 405)
     }
     const input = (await request.json()) as Record<string, unknown>
+
+    if (request.method === 'DELETE') {
+      const id = Number(input.id)
+      if (!Number.isSafeInteger(id)) {
+        return json({ ok: false, error: 'Geçersiz yorum.' }, 400)
+      }
+
+      const ok = await supabaseRpc<boolean>(env, 'delete_comment_internal', {
+        p_comment_id: id,
+        p_admin_user_id: user.id
+      })
+      return ok
+        ? json({ ok: true })
+        : json({ ok: false, error: 'Yorum bulunamadı.' }, 404)
+    }
 
     if (input.action === 'reply') {
       const prepared = publicCommentPayload(

@@ -18,6 +18,13 @@ const visibilityFix = fs.readFileSync(
     .map(file => path.join(root, 'supabase/migrations', file))[0],
   'utf8'
 )
+const deletionMigration = fs.readFileSync(
+  fs
+    .readdirSync(path.join(root, 'supabase/migrations'))
+    .filter(file => file.endsWith('_add_admin_comment_deletion.sql'))
+    .map(file => path.join(root, 'supabase/migrations', file))[0],
+  'utf8'
+)
 const config = fs.readFileSync(path.join(root, 'site/gatsby-config.js'), 'utf8')
 const defaultOptions = fs.readFileSync(
   path.join(
@@ -159,9 +166,49 @@ test('comments management extends Decap and reuses its GitHub session', () => {
   assert.match(admin, /'restore'/)
   assert.match(admin, /'edit'/)
   assert.match(admin, /action: 'reply'/)
+  assert.match(admin, /groupedComments\.map/)
+  assert.match(admin, /request\('DELETE', \{ id: comment\.id \}\)/)
+  assert.match(admin, /window\.confirm/)
+  assert.match(admin, /aria-label='Sil'/)
+  assert.match(admin, /comments-management-route-header/)
+  assert.match(admin, /nav::-webkit-scrollbar \{ display: none; \}/)
+  assert.match(adminFunction, /request\.method === 'DELETE'/)
+  assert.match(adminFunction, /'delete_comment_internal'/)
   assert.match(
     adminFunction,
     /env\.COMMENTS_OWNER_EMAIL \|\| 'ibrahim@uylas\.net'/
   )
   assert.match(adminFunction, /context\.waitUntil\(drainEmailOutbox/)
+})
+
+test('admin deletion cascades replies and remains restricted to service_role', () => {
+  assert.match(
+    deletionMigration,
+    /comments_root_comment_id_fkey[\s\S]+on delete cascade/
+  )
+  assert.match(
+    deletionMigration,
+    /comments_reply_to_comment_id_fkey[\s\S]+on delete cascade/
+  )
+  assert.match(
+    deletionMigration,
+    /comment_moderation_events_comment_id_fkey[\s\S]+on delete set null/
+  )
+  assert.match(deletionMigration, /'delete'/)
+  assert.match(
+    deletionMigration,
+    /grant delete on table public\.comments to service_role/
+  )
+  assert.match(
+    deletionMigration,
+    /create or replace function public\.delete_comment_internal/
+  )
+  assert.match(
+    deletionMigration,
+    /revoke all on function public\.delete_comment_internal\(bigint,uuid\)[\s\S]+from public, anon, authenticated/
+  )
+  assert.match(
+    deletionMigration,
+    /grant execute on function public\.delete_comment_internal\(bigint,uuid\)[\s\S]+to service_role/
+  )
 })
