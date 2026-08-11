@@ -1,30 +1,30 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { Flex, Button, Heading, Text } from 'theme-ui'
-import { FaMountain } from 'react-icons/fa'
+import { StaticImage } from 'gatsby-plugin-image'
+import { Flex, Box, Button, Text } from 'theme-ui'
 import Divider from '@components/Divider'
 
 const styles = {
   wrapper: {
-    alignItems: `center`,
+    alignItems: `stretch`,
     flexDirection: `column`,
     bg: `omegaLighter`,
     borderRadius: `lg`,
     size: `full`,
+    overflow: `hidden`
+  },
+  image: {
+    flex: `0 0 auto`,
+    width: `full`,
+    height: [`250px`, `320px`, null, `260px`],
+    lineHeight: 0,
+    overflow: `hidden`
+  },
+  content: {
+    alignItems: `stretch`,
+    flex: `1 1 auto`,
+    flexDirection: `column`,
     p: 4
-  },
-  heading: {
-    color: `omegaDark`,
-    svg: {
-      color: `beta`,
-      size: `icon.lg`,
-      display: `block`,
-      mb: 3
-    }
-  },
-  subheading: {
-    color: `omegaDark`,
-    fontWeight: `normal`
   },
   list: {
     color: `omegaDark`,
@@ -47,37 +47,47 @@ const styles = {
   },
   button: {
     display: `block`,
+    alignSelf: `center`,
     mt: `auto`
   }
 }
 
 const BannerVertical = () => (
   <Flex sx={styles.wrapper}>
-    <Heading variant='h5' sx={styles.heading}>
-      <FaMountain />
-      Merhaba,
-    </Heading>
-    <Text variant='small'>
-      Ben İbrahim Uylaş. Kampçı, doğa yürüyüşçüsü, maceracı, motosiklet tutkunu,
-      yol yapmayı seven, yolda olan ve yolda yaşayan bir bilgisayar
-      mühendisiyim.
-    </Text>
-    <Divider space={3} />
+    <Box sx={styles.image}>
+      <StaticImage
+        src='../../../../content/assets/bu-adam-kim.jpeg'
+        alt='İbrahim Uylaş doğa yürüyüşünde'
+        layout='fullWidth'
+        placeholder='blurred'
+        quality={92}
+        style={{ width: `100%`, height: `100%` }}
+        imgStyle={{ objectFit: `cover`, objectPosition: `50% 38%` }}
+      />
+    </Box>
+    <Flex sx={styles.content}>
+      <Text variant='small'>
+        Ben İbrahim Uylaş. Kampçı, doğa yürüyüşçüsü, maceracı, motosiklet
+        tutkunu, yol yapmayı seven, yolda olan ve yolda yaşayan bir bilgisayar
+        mühendisiyim.
+      </Text>
+      <Divider space={3} />
 
-    <Text variant='small' sx={styles.list}>
-      Şu aralar Londra'da yaşamaktayım ve kampçılık, doğa yürüyüşleri,
-      ekipmanlar, rotalar ve yol anılarımı sizinle paylaşıyorum. Sende
-      tecrübelerini yorum olarak ekleyip katkıda bulunabilirsin.
-    </Text>
-    <Button
-      variant='primary'
-      as={Link}
-      to='/ibrahim-uylas-kimdir/'
-      sx={styles.button}
-      aria-label='ibrahim uylaş kimdir'
-    >
-      Bu adam kim?
-    </Button>
+      <Text variant='small' sx={styles.list}>
+        Şu aralar Londra'da yaşamaktayım ve kampçılık, doğa yürüyüşleri,
+        ekipmanlar, rotalar ve yol anılarımı sizinle paylaşıyorum. Sende
+        tecrübelerini yorum olarak ekleyip katkıda bulunabilirsin.
+      </Text>
+      <Button
+        variant='primary'
+        as={Link}
+        to='/ibrahim-uylas-kimdir/'
+        sx={styles.button}
+        aria-label='ibrahim uylaş kimdir'
+      >
+        Bu adam kim?
+      </Button>
+    </Flex>
   </Flex>
 )
 

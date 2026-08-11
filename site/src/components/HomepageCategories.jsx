@@ -12,6 +12,10 @@ const styles = {
     overflowX: `auto`,
     width: `auto`,
     scrollBehavior: `smooth`,
+    scrollbarWidth: `none`,
+    '&::-webkit-scrollbar': {
+      display: `none`
+    },
     m: -2,
     a: {
       flex: 1,

@@ -5,6 +5,7 @@ import { helmetJsonLdProp } from 'react-schemaorg'
 import { getSrc } from 'gatsby-plugin-image'
 import useSiteMetadata from '@helpers-blog/useSiteMetadata'
 import getImageVariant from '@components/utils/getImageVariant'
+import favicon from '../../../../content/assets/favicon.png'
 
 const Seo = ({
   title,
@@ -190,6 +191,7 @@ const Seo = ({
       meta={metaTags}
       script={scripts}
     >
+      <link rel='icon' type='image/png' href={favicon} />
       {canonicalUrl && <link rel='canonical' href={canonicalUrl} />}
       {children}
     </Helmet>
