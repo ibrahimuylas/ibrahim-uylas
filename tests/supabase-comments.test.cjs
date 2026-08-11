@@ -32,6 +32,15 @@ const sourceCleanupMigration = fs.readFileSync(
     .map(file => path.join(root, 'supabase/migrations', file))[0],
   'utf8'
 )
+const contactlessAdminMigration = fs.readFileSync(
+  fs
+    .readdirSync(path.join(root, 'supabase/migrations'))
+    .filter(file =>
+      file.endsWith('_include_contactless_comments_in_admin.sql')
+    )
+    .map(file => path.join(root, 'supabase/migrations', file))[0],
+  'utf8'
+)
 const config = fs.readFileSync(path.join(root, 'site/gatsby-config.js'), 'utf8')
 const defaultOptions = fs.readFileSync(
   path.join(
@@ -98,6 +107,25 @@ test('comment sources exclude the removed discussion integration', () => {
   assert.match(
     sourceCleanupMigration,
     /drop constraint comments_source_check[\s\S]+check \(source in \('native', 'disqus'\)\)/
+  )
+})
+
+test('admin comment listing includes imported comments without contact data', () => {
+  assert.match(
+    contactlessAdminMigration,
+    /left join public\.comment_contacts cc on cc\.comment_id = c\.id/
+  )
+  assert.match(
+    contactlessAdminMigration,
+    /coalesce\(cc\.notify_replies, false\)/
+  )
+  assert.match(
+    contactlessAdminMigration,
+    /revoke all on function public\.list_comments_admin_internal\(integer\)[\s\S]+from public, anon, authenticated/
+  )
+  assert.match(
+    contactlessAdminMigration,
+    /grant execute on function public\.list_comments_admin_internal\(integer\)[\s\S]+to service_role/
   )
 })
 
