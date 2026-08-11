@@ -12,16 +12,26 @@ import {
   Select,
   Spinner,
   Text,
-  Textarea
+  Textarea,
+  useColorMode
 } from 'theme-ui'
 import {
   FaCheckCircle,
+  FaExclamationCircle,
   FaLock,
   FaPaperPlane,
   FaRegCommentDots,
   FaReply,
   FaTimes
 } from 'react-icons/fa'
+
+const initialForm = {
+  name: '',
+  email: '',
+  comment: '',
+  notifyReplies: false,
+  website: ''
+}
 
 const fieldStyle = {
   width: '100%',
@@ -53,6 +63,35 @@ const labelStyle = {
   mb: 2
 }
 
+const secondaryActionStyle = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: 2,
+  minWidth: 'auto',
+  minHeight: 36,
+  py: 1,
+  px: 2,
+  color: 'heading',
+  bg: 'transparent',
+  border: '1px solid',
+  borderColor: 'omegaLight',
+  borderRadius: '999px',
+  fontSize: 0,
+  fontWeight: 'bold',
+  transition: 'background-color 160ms ease, border-color 160ms ease',
+  '&:hover': {
+    color: 'heading',
+    bg: 'alphaLighter',
+    borderColor: 'alphaLight'
+  },
+  '&:focus-visible': {
+    outline: '3px solid',
+    outlineColor: 'alphaLight',
+    outlineOffset: 2
+  }
+}
+
 const formatDate = value =>
   new Intl.DateTimeFormat('tr-TR', {
     dateStyle: 'medium',
@@ -60,17 +99,23 @@ const formatDate = value =>
   }).format(new Date(value))
 
 const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    comment: '',
-    notifyReplies: false,
-    website: ''
-  })
+  const [colorMode] = useColorMode()
+  const [form, setForm] = useState(initialForm)
   const [token, setToken] = useState('')
   const [state, setState] = useState('idle')
   const [message, setMessage] = useState('')
   const turnstileRef = useRef(null)
+
+  useEffect(() => {
+    if (state !== 'saved') return undefined
+
+    const timeout = window.setTimeout(() => {
+      setState('idle')
+      setMessage('')
+    }, 7000)
+
+    return () => window.clearTimeout(timeout)
+  }, [state])
 
   const update = event => {
     const { name, type, checked, value } = event.target
@@ -112,7 +157,7 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
         throw new Error(
           result?.error || 'Yorum kaydedilemedi. Lütfen tekrar dene.'
         )
-      setForm(current => ({ ...current, comment: '', website: '' }))
+      setForm(initialForm)
       setState('saved')
       setMessage(
         form.notifyReplies
@@ -148,13 +193,13 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
       {replyTo && (
         <Flex
           sx={{
-            alignItems: ['flex-start', 'center'],
+            alignItems: 'center',
             justifyContent: 'space-between',
-            flexDirection: ['column', 'row'],
+            flexWrap: 'wrap',
             gap: 2,
-            pb: 3,
-            borderBottom: '1px solid',
-            borderColor: 'omegaLight'
+            p: 3,
+            bg: 'alphaLighter',
+            borderRadius: '12px'
           }}
         >
           <Flex sx={{ alignItems: 'center', gap: 2 }}>
@@ -167,16 +212,9 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
           </Flex>
           <Button
             type='button'
-            variant='secondary'
+            variant='mute'
             onClick={onCancel}
-            sx={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 2,
-              py: 2,
-              px: 3,
-              borderRadius: '8px'
-            }}
+            sx={secondaryActionStyle}
           >
             <FaTimes aria-hidden='true' /> Vazgeç
           </Button>
@@ -314,12 +352,14 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
           {siteKey ? (
             <Box sx={{ minHeight: 65, width: '100%', minWidth: 0 }}>
               <Turnstile
+                key={colorMode}
                 ref={turnstileRef}
                 siteKey={siteKey}
                 options={{
                   language: 'tr',
                   appearance: 'always',
-                  size: 'flexible'
+                  size: 'flexible',
+                  theme: colorMode === 'dark' ? 'dark' : 'light'
                 }}
                 onSuccess={setToken}
                 onExpire={() => setToken('')}
@@ -374,16 +414,35 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
           aria-live='polite'
           sx={{
             display: 'flex',
-            alignItems: 'center',
+            alignItems: 'flex-start',
             gap: 2,
-            color: state === 'error' ? 'error' : 'heading',
-            bg: state === 'error' ? 'errorLight' : 'successLight',
+            p: 3,
+            color: 'heading',
+            bg: 'contentBg',
+            border: '1px solid',
+            borderLeft: '4px solid',
             borderColor: state === 'error' ? 'error' : 'success',
             borderRadius: '8px',
+            fontSize: 1,
+            lineHeight: 1.55,
+            textAlign: 'left',
             m: 0
           }}
         >
-          {state !== 'error' && <FaCheckCircle aria-hidden='true' />}
+          <Box
+            sx={{
+              flex: '0 0 auto',
+              color: state === 'error' ? 'error' : 'success',
+              lineHeight: 0,
+              mt: '3px'
+            }}
+          >
+            {state === 'error' ? (
+              <FaExclamationCircle aria-hidden='true' />
+            ) : (
+              <FaCheckCircle aria-hidden='true' />
+            )}
+          </Box>
           {message}
         </Message>
       )}
@@ -421,51 +480,46 @@ const CommentCard = ({ comment, onReply, nested = false }) => (
     id={`yorum-${comment.id}`}
     as='article'
     sx={{
-      position: 'relative',
-      ml: nested ? [3, 5] : 0,
-      mt: nested ? 2 : 3,
-      p: [3, 4],
-      bg: nested ? 'omegaLighter' : 'contentBg',
-      border: '1px solid',
-      borderColor: 'omegaLight',
-      borderRadius: '12px',
-      boxShadow: nested
-        ? 'none'
-        : theme => `0 16px 40px -36px ${theme.colors.omegaDarker}`,
-      '&::before': nested
+      p: nested ? [2, 3] : 3,
+      bg: nested ? 'omegaLighter' : 'transparent',
+      '& + article': nested
         ? {
-            content: '""',
-            position: 'absolute',
-            top: -10,
-            left: [-14, -22],
-            width: [10, 18],
-            height: 28,
-            borderLeft: '2px solid',
-            borderBottom: '2px solid',
-            borderColor: 'alphaLight',
-            borderBottomLeftRadius: '8px'
+            borderTop: '1px solid',
+            borderColor: 'omegaLight'
           }
         : undefined
     }}
   >
-    <Flex
-      sx={{
-        alignItems: ['flex-start', 'baseline'],
-        justifyContent: 'space-between',
-        flexDirection: ['column', 'row'],
-        gap: 1
-      }}
-    >
-      <Text as='strong' sx={{ color: 'heading', fontSize: 2 }}>
-        {comment.authorName}
-      </Text>
-      <Text
-        as='time'
-        dateTime={comment.createdAt}
-        sx={{ color: 'omegaDark', fontSize: 0 }}
+    <Flex sx={{ alignItems: 'flex-start', justifyContent: 'space-between' }}>
+      <Flex
+        sx={{
+          alignItems: 'baseline',
+          flexWrap: 'wrap',
+          columnGap: 2,
+          rowGap: 1,
+          minWidth: 0
+        }}
       >
-        {formatDate(comment.createdAt)}
-      </Text>
+        <Text as='strong' sx={{ color: 'heading', fontSize: nested ? 1 : 2 }}>
+          {comment.authorName}
+        </Text>
+        <Text
+          as='time'
+          dateTime={comment.createdAt}
+          sx={{ color: 'omegaDark', fontSize: 0 }}
+        >
+          {formatDate(comment.createdAt)}
+          {comment.editedAt ? ' · Düzenlendi' : ''}
+        </Text>
+      </Flex>
+      <Button
+        type='button'
+        variant='mute'
+        onClick={() => onReply(comment)}
+        sx={{ ...secondaryActionStyle, flex: '0 0 auto', ml: 2 }}
+      >
+        <FaReply aria-hidden='true' /> Yanıtla
+      </Button>
     </Flex>
     <Text
       as='p'
@@ -473,36 +527,14 @@ const CommentCard = ({ comment, onReply, nested = false }) => (
         color: 'article',
         whiteSpace: 'pre-wrap',
         overflowWrap: 'anywhere',
-        lineHeight: 1.75,
-        my: 3
+        fontSize: nested ? 1 : 2,
+        lineHeight: 1.55,
+        mt: 2,
+        mb: 0
       }}
     >
       {comment.body}
     </Text>
-    <Flex
-      sx={{ alignItems: 'center', justifyContent: 'space-between', gap: 2 }}
-    >
-      <Text sx={{ color: 'omegaDark', fontSize: 0 }}>
-        {comment.editedAt ? 'Düzenlendi' : ''}
-      </Text>
-      <Button
-        type='button'
-        variant='secondary'
-        onClick={() => onReply(comment)}
-        sx={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 2,
-          py: 2,
-          px: 3,
-          borderRadius: '8px',
-          fontSize: 0,
-          fontWeight: 'bold'
-        }}
-      >
-        <FaReply aria-hidden='true' /> Yanıtla
-      </Button>
-    </Flex>
   </Box>
 )
 
@@ -575,10 +607,9 @@ const Comments = ({ title, slug, comments }) => {
 
       <Flex
         sx={{
-          alignItems: ['flex-start', 'center'],
+          alignItems: ['flex-end', 'center'],
           justifyContent: 'space-between',
-          flexDirection: ['column', 'row'],
-          gap: 3,
+          gap: 2,
           mt: [4, 5],
           pt: [4, 5],
           borderTop: '1px solid',
@@ -602,20 +633,35 @@ const Comments = ({ title, slug, comments }) => {
           htmlFor='comment-sort'
           sx={{
             alignItems: 'center',
-            width: ['100%', 'auto'],
+            width: 'auto',
             gap: 2,
             color: 'omegaDark',
             fontSize: 1
           }}
         >
-          Sıralama
+          <Box
+            as='span'
+            sx={{
+              position: 'absolute',
+              width: 1,
+              height: 1,
+              p: 0,
+              m: -1,
+              overflow: 'hidden',
+              clip: 'rect(0, 0, 0, 0)',
+              whiteSpace: 'nowrap',
+              border: 0
+            }}
+          >
+            Sıralama
+          </Box>
           <Select
             id='comment-sort'
             value={sort}
             onChange={event => setSort(event.target.value)}
             sx={{
-              width: ['100%', 'auto'],
-              minWidth: 130,
+              width: 'auto',
+              minWidth: 124,
               minHeight: 44,
               color: 'heading',
               bg: 'contentBg',
@@ -675,25 +721,52 @@ const Comments = ({ title, slug, comments }) => {
         </Flex>
       )}
       {items.map(root => (
-        <Box key={root.id}>
+        <Box
+          key={root.id}
+          data-comment-thread
+          sx={{
+            mt: 3,
+            overflow: 'hidden',
+            bg: 'contentBg',
+            border: '1px solid',
+            borderColor: 'omegaLight',
+            borderRadius: '14px',
+            boxShadow: theme => `0 16px 42px -40px ${theme.colors.omegaDarker}`
+          }}
+        >
           <CommentCard comment={root} onReply={setReplyTo} />
-          {(root.replies || []).map(reply => (
-            <CommentCard
-              key={reply.id}
-              comment={reply}
-              onReply={setReplyTo}
-              nested
-            />
-          ))}
+          {Boolean(root.replies?.length) && (
+            <Box
+              data-comment-replies
+              aria-label={`${root.authorName} yorumuna verilen yanıtlar`}
+              sx={{
+                mx: [2, 3],
+                mb: [2, 3],
+                overflow: 'hidden',
+                borderLeft: '3px solid',
+                borderLeftColor: 'alphaLight',
+                borderRadius: '0 10px 10px 0'
+              }}
+            >
+              {root.replies.map(reply => (
+                <CommentCard
+                  key={reply.id}
+                  comment={reply}
+                  onReply={setReplyTo}
+                  nested
+                />
+              ))}
+            </Box>
+          )}
         </Box>
       ))}
       {cursor && (
         <Button
           type='button'
-          variant='secondary'
+          variant='mute'
           disabled={status === 'loading'}
           onClick={() => load({ append: true, nextCursor: cursor })}
-          sx={{ mt: 3, borderRadius: '8px' }}
+          sx={{ ...secondaryActionStyle, mt: 3 }}
         >
           {status === 'loading' ? 'Yükleniyor…' : 'Daha fazla yorum göster'}
         </Button>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { Box, Card as CardComponent, Heading, Text } from 'theme-ui'
+import { Box, Button, Card as CardComponent, Heading, Text } from 'theme-ui'
+import { FaArrowRight } from 'react-icons/fa'
 import { Layout, Stack, Main } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
@@ -73,29 +74,85 @@ const Post = ({
               aria-labelledby='category-guide-title'
               sx={{
                 mt: 4,
+                display: `grid`,
+                gridTemplateColumns: [`1fr`, `minmax(0, 1fr) auto`],
+                alignItems: `center`,
+                gap: [3, 4],
                 p: [3, 4],
-                bg: `alphaLighter`,
+                bg: `contentBg`,
                 border: `1px solid`,
-                borderColor: `alphaLight`,
-                borderRadius: `lg`
+                borderLeft: `4px solid`,
+                borderColor: `omegaLight`,
+                borderLeftColor: `alpha`,
+                borderRadius: `lg`,
+                boxShadow: theme =>
+                  `0 18px 50px -42px ${theme.colors.omegaDarker}`
               }}
             >
-              <Heading
-                id='category-guide-title'
-                as='h2'
-                sx={{ fontSize: [3, 4], lineHeight: 1.25, m: 0 }}
-              >
-                {categoryGuide.title}
-              </Heading>
-              <Text as='p' sx={{ color: `text`, mt: 2, mb: 2 }}>
-                {categoryGuide.description}
-              </Text>
-              <Link
+              <Box>
+                <Heading
+                  id='category-guide-title'
+                  as='h2'
+                  sx={{
+                    color: `heading`,
+                    fontFamily: `'DM Serif Display', Georgia, serif`,
+                    fontSize: [3, 4],
+                    fontWeight: 400,
+                    lineHeight: 1.15,
+                    m: 0
+                  }}
+                >
+                  {categoryGuide.title}
+                </Heading>
+                <Text
+                  as='p'
+                  sx={{
+                    color: `article`,
+                    fontSize: [1, 2],
+                    lineHeight: 1.65,
+                    mt: 2,
+                    mb: 0,
+                    maxWidth: `38rem`
+                  }}
+                >
+                  {categoryGuide.description}
+                </Text>
+              </Box>
+              <Button
+                as={Link}
                 to={categoryGuide.path}
-                sx={{ color: `heading`, fontWeight: `bold` }}
+                sx={{
+                  display: `inline-flex`,
+                  alignItems: `center`,
+                  justifyContent: `center`,
+                  justifySelf: [`start`, `end`],
+                  gap: 2,
+                  minHeight: 44,
+                  px: 3,
+                  py: 2,
+                  color: `white`,
+                  bg: `alpha`,
+                  borderRadius: `full`,
+                  fontSize: 1,
+                  fontWeight: `bold`,
+                  lineHeight: 1.2,
+                  textDecoration: `none`,
+                  whiteSpace: `nowrap`,
+                  transition: `background-color 160ms ease, transform 160ms ease`,
+                  '&:hover': {
+                    color: `white`,
+                    bg: `alphaDark`,
+                    transform: `translateY(-1px)`
+                  },
+                  '&:focus-visible': {
+                    outline: `3px solid`,
+                    outlineColor: `alphaLight`,
+                    outlineOffset: 2
+                  }
+                }}
               >
-                Ana rehbere git →
-              </Link>
+                Ana rehbere git <FaArrowRight size={13} aria-hidden='true' />
+              </Button>
             </Box>
           )}
           <Divider />
