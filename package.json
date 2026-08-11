@@ -8,7 +8,8 @@
     "site"
   ],
   "scripts": {
-    "test": "node --test packages/plugins/gatsby-remark-unwrap-video/index.test.cjs tests/camping-guide.test.cjs tests/hiking-guide.test.cjs tests/routes-guide.test.cjs tests/other-guide.test.cjs tests/supabase-comments.test.cjs tests/netlify/comments.test.cjs tests/netlify/instagram-feed.test.cjs site/scripts/pagefind-validation.test.cjs site/scripts/sanitize-generated-html.test.cjs site/src/components/blogSearchPolicy.test.cjs site/src/components/instagramShowcasePolicy.test.cjs tests/netlify/newsletter.test.cjs tests/mobile-interactions.test.cjs",
+    "test": "node --test packages/plugins/gatsby-remark-unwrap-video/index.test.cjs tests/camping-guide.test.cjs tests/hiking-guide.test.cjs tests/routes-guide.test.cjs tests/other-guide.test.cjs tests/disqus-import.test.cjs tests/supabase-comments.test.cjs tests/netlify/comments.test.cjs tests/netlify/instagram-feed.test.cjs site/scripts/pagefind-validation.test.cjs site/scripts/sanitize-generated-html.test.cjs site/src/components/blogSearchPolicy.test.cjs site/src/components/instagramShowcasePolicy.test.cjs tests/netlify/newsletter.test.cjs tests/mobile-interactions.test.cjs",
+    "comments:import-disqus": "node scripts/import-disqus-comments.cjs",
     "build": "npm run build -w site",
     "validate:html": "npm run validate:html -w site",
     "validate:seo": "npm run validate:seo:likya -w site",
@@ -28,6 +29,7 @@
     "decap-cms-app": "3.6.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "sax": "1.6.1",
     "supabase": "2.113.0"
   }
 }

@@ -81,6 +81,23 @@ every 15 minutes on published Netlify deploys to retry due jobs. Resend receives
 the outbox idempotency key. Jobs use exponential backoff, stop after eight
 attempts, and are no longer claimed after 24 hours.
 
+## Historical Disqus import
+
+Request the forum backup from Disqus Admin → Tools → Export. Keep the resulting
+XML or XML.GZ file outside the repository because it can contain private account
+data. Preview the import without database writes:
+
+```bash
+npm run comments:import-disqus -- --input /absolute/path/to/disqus-export.xml.gz
+```
+
+Apply the reviewed import with `SUPABASE_URL` and `SUPABASE_SECRET_KEY` in the
+process environment and add `--apply`. The importer stores only public comment
+content and display names; it does not copy author email addresses or enqueue
+mail. Deleted and spam comments are skipped. `source=disqus` and the original
+Disqus post ID make reruns idempotent, while reply and original timestamp data
+are retained.
+
 ## Moderation and privacy
 
 The owner view is `/admin/#/comments-management`, beside Decap's Contents and
