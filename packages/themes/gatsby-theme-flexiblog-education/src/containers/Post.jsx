@@ -11,7 +11,6 @@ import TableOfContentsExpanded from '@widgets/TableOfContentsExpanded'
 import {
   PostImage,
   PostBody,
-  PostComments,
   PostCommentsFacebook,
   PostCommentsGraph,
   PostTagsShare
@@ -55,13 +54,6 @@ const Post = ({
             <PostImage {...post} inCard />
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
-            {services.disqus && (
-              <PostComments
-                {...post}
-                siteUrl={siteUrl}
-                shortname={services.disqus}
-              />
-            )}
             {services.graphComment && <PostCommentsGraph {...post} />}
             {services.facebookComment && (
               <PostCommentsFacebook {...post} siteUrl={siteUrl} />

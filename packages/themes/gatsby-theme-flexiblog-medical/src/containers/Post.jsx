@@ -9,7 +9,6 @@ import {
   PostHead,
   PostImage,
   PostBody,
-  PostComments,
   PostCommentsFacebook,
   PostCommentsGraph,
   PostTagsShare
@@ -38,13 +37,6 @@ const Post = ({
             <Divider line />
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
-            {services.disqus && (
-              <PostComments
-                {...post}
-                siteUrl={siteUrl}
-                shortname={services.disqus}
-              />
-            )}
             {services.graphComment && <PostCommentsGraph {...post} />}
             {services.facebookComment && (
               <PostCommentsFacebook {...post} siteUrl={siteUrl} />

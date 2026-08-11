@@ -4,15 +4,6 @@ const isProductionDeploy = process.env.CONTEXT === 'production'
 const nativeCommentsEnabled =
   process.env.GATSBY_NATIVE_COMMENTS_ENABLED === 'true'
 
-const giscus = {
-  repo: process.env.GATSBY_GISCUS_REPO || 'ibrahimuylas/ibrahim-uylas',
-  repoId:
-    process.env.GATSBY_GISCUS_REPO_ID || 'MDEwOlJlcG9zaXRvcnkzMzAyODIzNzg=',
-  category: process.env.GATSBY_GISCUS_CATEGORY || 'Blog Comments',
-  categoryId: process.env.GATSBY_GISCUS_CATEGORY_ID || 'DIC_kwDOE6-1is4DCaw9',
-  theme: process.env.GATSBY_GISCUS_THEME || 'light'
-}
-
 const googleAnalyticsPlugin =
   googleAnalyticsMeasurementId && isProductionDeploy
     ? {
@@ -53,7 +44,6 @@ module.exports = {
         fonts: false,
         homeCategoryPostsPerGroup: 6,
         services: {
-          giscus,
           comments: {
             enabled: nativeCommentsEnabled,
             turnstileSiteKey: process.env.GATSBY_TURNSTILE_SITE_KEY || ''

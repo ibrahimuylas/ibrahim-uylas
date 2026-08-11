@@ -1,13 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Box, Button, Flex, Heading, Spinner, Text } from 'theme-ui'
-import { PostComments } from '@widgets/Post'
+import { Box, Button, Flex, Heading, Text } from 'theme-ui'
 import Comments from './Comments'
 
 const DeferredComments = props => {
   const containerRef = useRef(null)
   const [active, setActive] = useState(false)
-  const nativeEnabled = props.comments?.enabled === true
 
   useEffect(() => {
     if (
@@ -102,29 +100,7 @@ const DeferredComments = props => {
         )}
       </Flex>
       {active ? (
-        nativeEnabled ? (
-          <Comments {...props} comments={props.comments} />
-        ) : (
-          <>
-            <PostComments
-              {...props}
-              fallback={
-                <Flex
-                  role='status'
-                  aria-live='polite'
-                  sx={{
-                    alignItems: `center`,
-                    justifyContent: `center`,
-                    gap: 2
-                  }}
-                >
-                  <Spinner size={20} />
-                  <Text>Yorumlar yükleniyor</Text>
-                </Flex>
-              }
-            />
-          </>
-        )
+        <Comments {...props} comments={props.comments} />
       ) : (
         <Box sx={{ mt: 3 }}>
           <Text as='p' sx={{ color: `text`, lineHeight: 1.7, m: 0, mb: 3 }}>
@@ -156,12 +132,6 @@ DeferredComments.propTypes = {
   title: PropTypes.string,
   slug: PropTypes.string,
   siteUrl: PropTypes.string,
-  giscus: PropTypes.shape({
-    repo: PropTypes.string.isRequired,
-    repoId: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
-    categoryId: PropTypes.string.isRequired
-  }),
   comments: PropTypes.shape({
     enabled: PropTypes.bool,
     turnstileSiteKey: PropTypes.string

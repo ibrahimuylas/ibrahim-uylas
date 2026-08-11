@@ -25,6 +25,13 @@ const deletionMigration = fs.readFileSync(
     .map(file => path.join(root, 'supabase/migrations', file))[0],
   'utf8'
 )
+const sourceCleanupMigration = fs.readFileSync(
+  fs
+    .readdirSync(path.join(root, 'supabase/migrations'))
+    .filter(file => file.endsWith('_remove_third_party_comment_source.sql'))
+    .map(file => path.join(root, 'supabase/migrations', file))[0],
+  'utf8'
+)
 const config = fs.readFileSync(path.join(root, 'site/gatsby-config.js'), 'utf8')
 const defaultOptions = fs.readFileSync(
   path.join(
@@ -80,7 +87,18 @@ test('comments schema enables RLS and reserves access for service_role', () => {
     migration,
     /grant execute on function public\.submit_comment_internal[\s\S]+to service_role/
   )
+  assert.match(
+    migration,
+    /source text not null default 'native' check \(source in \('native', 'disqus'\)\)/
+  )
   assert.doesNotMatch(migration, /create policy/i)
+})
+
+test('comment sources exclude the removed discussion integration', () => {
+  assert.match(
+    sourceCleanupMigration,
+    /drop constraint comments_source_check[\s\S]+check \(source in \('native', 'disqus'\)\)/
+  )
 })
 
 test('public comment listing excludes hidden conversations and outbox claims recover', () => {
@@ -99,13 +117,11 @@ test('public comment listing excludes hidden conversations and outbox claims rec
   )
 })
 
-test('native comments are feature-flagged while Giscus remains configured', () => {
+test('native comments are the only article comment integration', () => {
   assert.match(config, /GATSBY_NATIVE_COMMENTS_ENABLED === 'true'/)
-  assert.match(config, /giscus,/)
   assert.match(config, /turnstileSiteKey/)
   assert.match(defaultOptions, /services\.comments/)
   assert.match(post, /services\.comments\?\.enabled/)
-  assert.match(post, /services\.giscus\?\.repoId/)
 })
 
 test('comment submission route uses Netlify-readable typed config', () => {

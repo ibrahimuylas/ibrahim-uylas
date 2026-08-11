@@ -10,7 +10,6 @@ import AuthorCompact from '@widgets/AuthorCompact'
 import TableOfContentsCompact from '@widgets/TableOfContentsCompact'
 import {
   PostBody,
-  PostComments,
   PostCommentsFacebook,
   PostCommentsGraph,
   PostTagsShare,
@@ -40,13 +39,6 @@ const Post = ({
           <CardComponent variant='paper'>
             <PostBody {...post} />
             <PostTagsShare {...post} location={props.location} />
-            {services.disqus && (
-              <PostComments
-                {...post}
-                siteUrl={siteUrl}
-                shortname={services.disqus}
-              />
-            )}
             {services.graphComment && <PostCommentsGraph {...post} />}
             {services.facebookComment && (
               <PostCommentsFacebook {...post} siteUrl={siteUrl} />

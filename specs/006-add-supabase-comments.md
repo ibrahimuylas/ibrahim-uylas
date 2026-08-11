@@ -2,17 +2,17 @@
 
 ## Goal
 
-Replace the long-term dependency on Giscus with a first-party comment system
-that auto-publishes valid reader comments, keeps email addresses private,
-supports reversible moderation, and sends reply notifications.
+Use a first-party comment system that auto-publishes valid reader comments,
+keeps email addresses private, supports reversible moderation, and sends reply
+notifications.
 
 ## Rollout
 
 The implementation is controlled by `GATSBY_NATIVE_COMMENTS_ENABLED`.
 Production enables the native system after the empty-state, submission,
 moderation, notification, and rollback paths have been verified. Historical
-Disqus/Giscus data can be imported afterward; setting the flag to `false`
-restores Giscus as the operational fallback.
+Disqus data can be imported afterward; setting the flag to `false` hides the
+comment UI without removing native comment data.
 
 ## Functional requirements
 
@@ -66,9 +66,8 @@ restores Giscus as the operational fallback.
 - `comment_email_outbox`: retryable owner, verification, and reply mail jobs.
 - `comment_moderation_events`: append-only administrative audit trail.
 
-The schema reserves `source` and `source_id` for a later idempotent Disqus and
-Giscus import. Reactions and historical import are intentionally outside this
-phase.
+The schema reserves `source` and `source_id` for a later idempotent Disqus
+import. Reactions and historical import are intentionally outside this phase.
 
 ## External configuration
 
@@ -94,11 +93,11 @@ phase.
    after eight attempts or 24 hours.
 6. RLS, grants, focused tests, the root test suite, and the Gatsby production
    build pass. Production configuration includes matching Supabase, Resend,
-   and Turnstile values and retains the Giscus feature-flag fallback.
+   and Turnstile values, with no third-party comment fallback.
 
 ## Out of scope
 
-- Importing historical Disqus or Giscus comments and reactions.
+- Importing historical Disqus comments and reactions.
 - Public reactions, commenter accounts, rich text, Markdown, image uploads,
   comment editing by readers, and permanent deletion.
 - Importing historical data as a prerequisite for enabling the native system.

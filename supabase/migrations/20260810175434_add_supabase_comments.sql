@@ -16,7 +16,7 @@ create table public.comments (
   author_name text not null check (length(author_name) between 1 and 80),
   body text not null check (length(body) between 1 and 5000),
   status text not null default 'published' check (status in ('published', 'hidden')),
-  source text not null default 'native' check (source in ('native', 'disqus', 'giscus')),
+  source text not null default 'native' check (source in ('native', 'disqus')),
   source_id text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),

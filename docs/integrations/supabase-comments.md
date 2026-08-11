@@ -1,8 +1,9 @@
 # Supabase comments operations
 
 The native comments implementation is controlled by
-`GATSBY_NATIVE_COMMENTS_ENABLED`. Production currently enables it; set the flag
-to `false` and rebuild to fall back to Giscus without removing comment data.
+`GATSBY_NATIVE_COMMENTS_ENABLED`. Production currently enables it. Setting the
+flag to `false` and rebuilding hides the comment UI without removing comment
+data; there is no third-party comment fallback.
 
 ## Services
 
