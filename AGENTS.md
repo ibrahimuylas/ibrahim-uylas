@@ -1,5 +1,11 @@
 # Project guidance
 
+## Browser account safety
+
+- Never use the Chrome profile named `ibrahimuylas - EE` for work in this repository.
+- Never access or operate any company-managed Google, email, calendar, Atlassian, or other corporate account while working on this repository.
+- For browser tasks, use only İbrahim's personal Chrome profile and personal accounts. If the personal profile or required personal account is not clearly available, stop and ask the user instead of switching to a company profile or account.
+
 ## Blog article workflow
 
 When a request asks to create, adapt, translate, or package a blog article from a source link, or refers to the project's blog template, read and follow `.agents/skills/blog-yazisi/SKILL.md`.
