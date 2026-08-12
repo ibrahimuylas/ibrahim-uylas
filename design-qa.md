@@ -148,6 +148,23 @@ No actionable P0, P1, or P2 visual differences remain.
 
 final result: passed
 
+## Premium gallery refinement — 2026-08-12
+
+- Source reference: `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-14cbe1be-edc7-4b36-ba63-125e1b8b56d2.png`.
+- Final implementation capture: `/tmp/instagram-premium-final.png`.
+- Viewports checked: 1536 × 1000 and 390 × 844 CSS px.
+
+No actionable P0, P1, or P2 visual differences remain.
+
+- The large empty area after the media rail was removed; the section now ends at the gallery edge.
+- The section heading starts 16 px from the top on desktop and 14 px on mobile.
+- Newsletter separation is exactly 10 px at both checked breakpoints.
+- Media uses a square Instagram-style crop, 12–16 px responsive radii, a subtle border/shadow, and refined video/carousel badges.
+- Mobile horizontal scrolling, one-line heading, 16 px email input, and page overflow checks all passed.
+- Production build, generated HTML validation, the full 111-test suite, and browser console checks passed.
+
+final result: passed
+
 ---
 
 # İletişim Formu Türkçe Doğrulama ve Footer — 2026-07-28

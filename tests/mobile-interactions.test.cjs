@@ -73,6 +73,7 @@ test('Instagram and newsletter share a compact responsive homepage section', () 
   const homepage = readSource(
     'site/src/@elegantstack/gatsby-theme-flexiblog-agency/containers/Posts.jsx'
   )
+  const showcase = readSource('site/src/components/InstagramShowcase.jsx')
   const newsletter = readSource('site/src/components/InstagramNewsletter.jsx')
   const form = readSource(
     'site/src/@elegantstack/flow-ui-components/NewsletterForm/NewsletterForm.jsx'
@@ -84,12 +85,16 @@ test('Instagram and newsletter share a compact responsive homepage section', () 
   )
   assert.doesNotMatch(homepage, /NewsletterExpanded/)
   assert.match(newsletter, /data-instagram-newsletter/)
+  assert.match(newsletter, /mt: `10px`/)
   assert.match(newsletter, /width: 36/)
   assert.match(newsletter, /height: 36/)
   assert.match(newsletter, /<NewsletterForm[\s\S]*compact/)
   assert.match(form, /fontSize: `16px`/)
   assert.match(form, /gridTemplateColumns: \[`1fr`, `minmax\(0, 1fr\) auto`\]/)
   assert.match(form, /minWidth: \[`100%`, `7\.5rem`\]/)
+  assert.match(showcase, /aspectRatio: `1 \/ 1`/)
+  assert.match(showcase, /borderRadius: \[`12px`, `16px`\]/)
+  assert.match(showcase, /transform: `translateY\(-3px\)`/)
 })
 
 test('homepage chrome includes the favicon and hides the category scrollbar', () => {

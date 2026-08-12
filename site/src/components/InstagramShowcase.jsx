@@ -25,11 +25,14 @@ const railStyle = {
     `calc((100% - 64px) / 4.45)`
   ],
   gap: [2, 3],
+  px: [3, 4, 5],
+  pb: 1,
   minWidth: 0,
   maxWidth: `100%`,
   overflowX: `auto`,
   overflowY: `hidden`,
   overscrollBehaviorInline: `contain`,
+  scrollPaddingInline: [3, 4, 5],
   scrollSnapType: `x proximity`,
   scrollbarWidth: `none`,
   WebkitOverflowScrolling: `touch`,
@@ -44,12 +47,12 @@ const sectionStyle = {
   overflow: `hidden`,
   bg: `contentBg`,
   borderRadius: 0,
-  pt: [4, 5],
-  pb: [4, 6]
+  pt: 3,
+  pb: 0
 }
 const skeletonStyle = {
   bg: `omegaLight`,
-  borderRadius: 0
+  borderRadius: [`12px`, `16px`]
 }
 
 const InstagramSkeleton = () => (
@@ -134,13 +137,13 @@ const InstagramSkeleton = () => (
         <Box sx={{ ...skeletonStyle, width: [`50%`, 144], height: 48 }} />
       </Flex>
     </Box>
-    <Box aria-hidden='true' sx={{ ...railStyle, mx: 0, mt: [4, 5] }}>
+    <Box aria-hidden='true' sx={{ ...railStyle, mt: [3, 4] }}>
       {Array.from({ length: 6 }, (_, index) => (
         <Box
           key={index}
           sx={{
             ...skeletonStyle,
-            aspectRatio: `5 / 6`,
+            aspectRatio: `1 / 1`,
             scrollSnapAlign: `start`
           }}
         />
@@ -412,7 +415,7 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
         >
           Son 6 paylaşım
         </Text>
-        <Box sx={{ ...railStyle, mx: 0, mt: [4, 5] }}>
+        <Box sx={{ ...railStyle, mt: [3, 4] }}>
           {feed.posts.map((post, index) => (
             <Link
               key={post.id}
@@ -423,11 +426,22 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
                 position: `relative`,
                 display: `block`,
                 minWidth: 0,
-                borderRadius: 0,
+                p: `3px`,
+                bg: `contentBg`,
+                borderWidth: 1,
+                borderStyle: `solid`,
+                borderColor: `omegaLight`,
+                borderRadius: [`12px`, `16px`],
+                boxShadow: `0 8px 24px rgba(31, 42, 68, 0.08)`,
                 overflow: `hidden`,
                 scrollSnapAlign: `start`,
+                transition: `transform 250ms ease, box-shadow 250ms ease`,
+                '&:hover': {
+                  transform: `translateY(-3px)`,
+                  boxShadow: `0 14px 32px rgba(31, 42, 68, 0.14)`
+                },
                 '&:hover img': {
-                  transform: `scale(1.015)`
+                  transform: `scale(1.035)`
                 },
                 ...focusStyle
               }}
@@ -442,10 +456,14 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
                     right: 2,
                     display: `grid`,
                     placeItems: `center`,
-                    width: 28,
-                    height: 28,
+                    width: 30,
+                    height: 30,
                     color: `white`,
-                    filter: `drop-shadow(0 1px 3px rgba(0, 0, 0, 0.6))`
+                    bg: `rgba(31, 42, 68, 0.76)`,
+                    borderRadius: `full`,
+                    boxShadow: `0 3px 10px rgba(0, 0, 0, 0.22)`,
+                    backdropFilter: `blur(6px)`,
+                    svg: { width: 12, height: 12 }
                   }}
                 >
                   {post.type === 'VIDEO' ? <FaPlay /> : <FaClone />}
@@ -461,9 +479,9 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
                 sx={{
                   display: `block`,
                   width: `100%`,
-                  aspectRatio: `5 / 6`,
+                  aspectRatio: `1 / 1`,
                   objectFit: `cover`,
-                  borderRadius: 0,
+                  borderRadius: [`9px`, `13px`],
                   transition: `transform 250ms ease`
                 }}
               />

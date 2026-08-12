@@ -15,7 +15,7 @@ const InstagramNewsletter = () => {
       data-instagram-newsletter
       sx={{
         mx: [3, 4, 5],
-        mt: 0,
+        mt: `10px`,
         px: [3, 4],
         py: 3,
         borderTopWidth: 1,
