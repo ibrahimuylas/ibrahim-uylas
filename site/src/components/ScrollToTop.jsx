@@ -8,7 +8,7 @@ const SCROLL_THRESHOLD = 400
 const styles = {
   button: {
     position: `fixed`,
-    right: `calc(1rem + env(safe-area-inset-right, 0px))`,
+    right: `max(calc(1.5rem + env(safe-area-inset-right, 0px)), calc((100vw - 1140px) / 2 - 5rem))`,
     top: `50%`,
     bottom: `auto`,
     transform: `translateY(-50%)`,

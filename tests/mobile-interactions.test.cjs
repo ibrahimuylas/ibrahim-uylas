@@ -34,6 +34,64 @@ test('page contents navigation uses page wording outside article contents', () =
   assert.match(sheet, /\{label\}/)
 })
 
+test('scroll-to-top aligns with the desktop body without changing the mobile dock', () => {
+  const scrollToTop = readSource('site/src/components/ScrollToTop.jsx')
+
+  assert.match(
+    scrollToTop,
+    /right: `max\(calc\(1\.5rem \+ env\(safe-area-inset-right, 0px\)\), calc\(\(100vw - 1140px\) \/ 2 - 5rem\)\)`/
+  )
+  assert.match(
+    scrollToTop,
+    /'@media \(max-width: 767px\)': \{\s*display: `none`/
+  )
+  assert.match(
+    scrollToTop,
+    /position: `static`,[\s\S]*'@media \(max-width: 767px\)': \{\s*display: `flex`/
+  )
+})
+
+test('Instagram waits for live data and keeps its heading on one line', () => {
+  const showcase = readSource('site/src/components/InstagramShowcase.jsx')
+
+  assert.match(showcase, /useState\('loading'\)/)
+  assert.match(showcase, /status === 'loading'/)
+  assert.match(showcase, /<InstagramSkeleton \/>/)
+  assert.match(showcase, /<Box sx=\{\{ width: `100%`, minWidth: 0 \}\}>/)
+  assert.match(
+    showcase,
+    /status !== 'ready' \|\| !feed[\s\S]*<InstagramNewsletter \/>/
+  )
+  assert.match(showcase, /data-instagram-state='loading'/)
+  assert.match(showcase, /aria-label='Instagram bölümü yükleniyor'/)
+  assert.match(showcase, /Yoldaki hikâyeleri kaçırma/)
+  assert.match(showcase, /whiteSpace: `nowrap`/)
+  assert.doesNotMatch(showcase, /FALLBACK_PROFILE|localPortrait/)
+})
+
+test('Instagram and newsletter share a compact responsive homepage section', () => {
+  const homepage = readSource(
+    'site/src/@elegantstack/gatsby-theme-flexiblog-agency/containers/Posts.jsx'
+  )
+  const newsletter = readSource('site/src/components/InstagramNewsletter.jsx')
+  const form = readSource(
+    'site/src/@elegantstack/flow-ui-components/NewsletterForm/NewsletterForm.jsx'
+  )
+
+  assert.match(
+    homepage,
+    /<InstagramShowcase showNewsletter=\{services\.mailchimp\} \/>/
+  )
+  assert.doesNotMatch(homepage, /NewsletterExpanded/)
+  assert.match(newsletter, /data-instagram-newsletter/)
+  assert.match(newsletter, /width: 36/)
+  assert.match(newsletter, /height: 36/)
+  assert.match(newsletter, /<NewsletterForm[\s\S]*compact/)
+  assert.match(form, /fontSize: `16px`/)
+  assert.match(form, /gridTemplateColumns: \[`1fr`, `minmax\(0, 1fr\) auto`\]/)
+  assert.match(form, /minWidth: \[`100%`, `7\.5rem`\]/)
+})
+
 test('homepage chrome includes the favicon and hides the category scrollbar', () => {
   const seo = readSource('site/src/@elegantstack/flow-ui-widgets/Seo/Seo.jsx')
   const categories = readSource('site/src/components/HomepageCategories.jsx')

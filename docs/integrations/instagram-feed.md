@@ -1,9 +1,9 @@
 # Instagram feed provisioning and production smoke check
 
-The homepage feed uses the official Instagram API with **Instagram Login** for
-the approved `@uylasonwheels` Creator or Business account. Provisioning and
-deployment are owner-run operations; no production credential is stored in this
-repository.
+The homepage and contact-page feeds use the official Instagram API with
+**Instagram Login** for the approved `@uylasonwheels` Creator or Business
+account. Provisioning and deployment are owner-run operations; no production
+credential is stored in this repository.
 
 ## Meta and Netlify setup
 
@@ -23,6 +23,20 @@ The site owner is responsible for monitoring expiry and manually renewing the
 long-lived token before it expires. Automatic token storage or rotation is not
 part of this integration. Never paste the token into source files, browser
 tools, screenshots, support messages, command history, URLs, or logs.
+
+## Local development
+
+`gatsby serve` only serves the generated `site/public` directory. It does not
+run the Netlify Functions in `netlify/functions`, so
+`/.netlify/functions/instagram-feed` returns the Gatsby 404 HTML and the live
+Instagram details stay hidden by design. The newsletter strip remains visible.
+
+Use Netlify Dev from the linked project when testing the real feed locally, and
+make the three `INSTAGRAM_*` variables above available to that local Netlify
+environment. Do not copy the access token into Gatsby client variables or any
+checked-in file. The newsletter submission endpoint follows the same rule:
+`gatsby serve` can render its form, but a real local submission also requires
+the Netlify function runtime and its server-only Mailchimp variables.
 
 ## Public function contract
 
@@ -47,7 +61,8 @@ Perform these checks without printing the access token or copying raw response
 captions:
 
 1. Open the deployed homepage in a private browser session. Confirm the
-   Instagram section sits between `Kampçılık` and `Doğa Yürüyüşleri`, and that
+   Instagram section and compact newsletter strip appear after the featured
+   articles, and that
    `Takip et` opens `https://www.instagram.com/uylasonwheels/` while `Mesaj at`
    opens `https://ig.me/m/uylasonwheels`.
 2. Inspect the feed request in the browser Network panel. Confirm `GET` returns
@@ -57,8 +72,9 @@ captions:
    Send a credential-free `POST` request from the browser tooling and confirm
    `405`, `Allow: GET`, `{ "ok": false }`, and `Cache-Control: no-store`.
 4. Temporarily test a controlled preview with the function unavailable or its
-   response blocked. Confirm placeholders disappear while the local portrait,
-   profile copy, and both actions remain, with no broken gallery or error panel.
+   response blocked. Confirm the skeleton disappears, no default Instagram
+   profile data is exposed, and the compact newsletter strip remains available
+   without a broken gallery or error panel.
 5. With GA4 DebugView enabled for the smoke session, activate the profile,
    message, and one post link once each. Confirm exactly one
    `instagram_profile_click`, `instagram_message_click`, and

@@ -119,6 +119,37 @@ final result: passed
 
 ---
 
+# Instagram + newsletter visual QA — 2026-08-12
+
+## Visual target and comparison
+
+- Source reference: the previous large standalone newsletter card supplied by the user.
+- Final implementation: the existing Instagram profile/feed followed by a compact, single-row newsletter strip on desktop and a stacked form on mobile.
+- Final desktop capture: `/tmp/instagram-newsletter-final.png`.
+- Viewports checked: 1280 × 720, 1280 × 1000, and 390 × 844 CSS px.
+
+## Findings
+
+No actionable P0, P1, or P2 visual differences remain.
+
+- The oversized illustration and tall standalone card were removed from the homepage flow.
+- The newsletter now uses a 36 px circular icon, compact copy, a 44 px input, and a 44 px action button.
+- Instagram and newsletter are grouped in one full-width component; the newsletter begins immediately below the media rail.
+- The Instagram title remains on one line at the tested mobile width.
+- The mobile form stacks without horizontal overflow, and the 16 px input avoids iOS focus zoom.
+- If the Instagram function is unavailable, the page exposes no default Instagram profile data and keeps only the newsletter action visible.
+
+## Interaction and runtime evidence
+
+- Live-data, loading, and failed-feed rendering paths were checked.
+- The combined desktop and mobile layouts have no horizontal page overflow.
+- Browser console verification reported no warnings or errors in the mocked live-feed path.
+- Production build, generated-HTML validation, and the full 111-test suite passed.
+
+final result: passed
+
+---
+
 # İletişim Formu Türkçe Doğrulama ve Footer — 2026-07-28
 
 ## Kanıtlar

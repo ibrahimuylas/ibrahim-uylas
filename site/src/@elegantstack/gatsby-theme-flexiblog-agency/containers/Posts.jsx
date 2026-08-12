@@ -4,12 +4,12 @@ import { Layout, Stack, Main, Sidebar } from '@layout'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
-import NewsletterExpanded from '@widgets/NewsletterExpanded'
 import BannerVertical from '@widgets/BannerVertical'
 import { useBlogCategories } from '@helpers-blog'
 import ArticleContents from '../../../components/ArticleContents'
 import HomepageCategories from '../../../components/HomepageCategories'
 import categoryColors from '../../../components/categoryColors'
+import InstagramShowcase from '../../../components/InstagramShowcase'
 
 const categoryDescriptions = {
   Kampçılık: 'Kamp hazırlığı, güvenlik ve temel kamp deneyimleri.',
@@ -169,15 +169,9 @@ const Posts = ({
           </Sidebar>
         </Stack>
       </Box>
-      <Stack>
-        <Main>
-          {services.mailchimp && (
-            <>
-              <Divider space={[5, 4]} />
-              <NewsletterExpanded />
-            </>
-          )}
-        </Main>
+      <Divider space={[5, 4]} />
+      <Stack effectProps={{ effect: false }}>
+        <InstagramShowcase showNewsletter={services.mailchimp} />
       </Stack>
       <Divider space={[5, 4]} />
       {sortedPostGroup.length > 0 &&
