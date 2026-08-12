@@ -1,6 +1,7 @@
 [build]
-  command = "npm run clean --workspace site && npm run build"
+  command = "npm run build"
   publish = "site/public"
+  ignore = "node ./scripts/netlify-ignore-build.cjs"
 
 [functions]
   directory = "netlify/functions"

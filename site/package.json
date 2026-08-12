@@ -6,7 +6,7 @@
     "develop": "gatsby develop",
     "start": "gatsby clean && gatsby develop",
     "build": "npm run build:gatsby && npm run build:sanitize && npm run build:index",
-    "build:gatsby": "GATSBY_CPU_COUNT=2 gatsby build",
+    "build:gatsby": "GATSBY_CPU_COUNT=${GATSBY_CPU_COUNT:-2} gatsby build",
     "build:sanitize": "node scripts/sanitize-generated-html.js",
     "build:index": "pagefind --site public",
     "clean": "gatsby clean",

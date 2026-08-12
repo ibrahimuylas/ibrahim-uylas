@@ -20,18 +20,29 @@ index chunks, and result fragments are written under `site/public/pagefind`.
 The repository's `public` ignore rule keeps all of these build artifacts out of
 Git.
 
-Netlify uses the same path. Its build command cleans the site and calls the
-root build before publishing `site/public`; there is no separate hosted-index
-job.
+Netlify uses the same path. Its build command calls the root build without
+deleting Gatsby's restored `.cache` and `public` directories, then publishes
+`site/public`; there is no separate hosted-index job. A custom ignore policy
+skips Netlify builds when a commit changes only non-deploy inputs such as
+documentation, tests, specifications, or Supabase project files. Changes under
+`site`, shared `packages`, Netlify Functions, dependency manifests, and build
+configuration always continue to a build. The policy fails open when commit
+comparison is unavailable, so uncertain cases build rather than publish stale
+output.
 
 For a repeatable local production check:
 
 ```sh
-npm run clean --workspace site
-npm run build
+npm run build:local
 npm run validate:html
 npm run serve --workspace site
 ```
+
+On the ten-core local development machine, `build:local` uses the measured
+four-worker configuration. Netlify retains the conservative two-worker default
+unless `GATSBY_CPU_COUNT` is explicitly overridden. Use `gatsby clean` only for
+troubleshooting a suspected stale or corrupt cache or for an explicitly
+requested cold-cache validation, not before every deployment.
 
 The generated-output validator derives the current article inventory from
 fresh Gatsby `page-data.json` files. It verifies public/private eligibility,
