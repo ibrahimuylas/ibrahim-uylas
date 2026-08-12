@@ -24,8 +24,6 @@ const styles = {
     borderRadius: `full`,
     bg: `contentBg`,
     boxShadow: `0 0.5rem 1.5rem rgba(0, 0, 0, 0.22)`,
-    backdropFilter: `blur(12px)`,
-    WebkitBackdropFilter: `blur(12px)`,
     transition: `opacity 160ms ease, visibility 160ms ease`,
     '@media (min-width: 768px)': {
       display: `none`

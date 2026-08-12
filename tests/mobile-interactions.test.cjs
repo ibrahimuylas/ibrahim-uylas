@@ -51,6 +51,21 @@ test('scroll-to-top aligns with the desktop body without changing the mobile doc
   )
 })
 
+test('mobile action dock avoids Safari filter artifacts without changing its surface', () => {
+  const dock = readSource('site/src/components/MobileActionDock.jsx')
+
+  assert.doesNotMatch(dock, /(?:Webkit)?BackdropFilter/)
+  assert.match(dock, /borderWidth: 1/)
+  assert.match(dock, /borderStyle: `solid`/)
+  assert.match(dock, /borderColor: `omegaLight`/)
+  assert.match(dock, /borderRadius: `full`/)
+  assert.match(dock, /bg: `contentBg`/)
+  assert.match(
+    dock,
+    /boxShadow: `0 0\.5rem 1\.5rem rgba\(0, 0, 0, 0\.22\)`/
+  )
+})
+
 test('Instagram waits for live data and keeps its heading on one line', () => {
   const showcase = readSource('site/src/components/InstagramShowcase.jsx')
 
