@@ -55,7 +55,7 @@ test('scroll-to-top uses opposite bottom corners on tablet without changing the 
   )
 })
 
-test('mobile action dock uses a compact dark surface without Safari artifacts', () => {
+test('mobile action dock uses a compact translucent surface without Safari artifacts', () => {
   const dock = readSource('site/src/components/MobileActionDock.jsx')
   const contents = readSource('site/src/components/ArticleContents.jsx')
   const search = readSource('site/src/components/BlogSearch.jsx')
@@ -66,10 +66,13 @@ test('mobile action dock uses a compact dark surface without Safari artifacts', 
   assert.match(dock, /maxWidth: `calc\(100vw - 2rem\)`/)
   assert.match(dock, /borderWidth: 1/)
   assert.match(dock, /borderStyle: `solid`/)
-  assert.match(dock, /borderColor: `rgba\(255, 255, 255, 0\.14\)`/)
+  assert.match(dock, /borderColor: `rgba\(255, 255, 255, 0\.18\)`/)
   assert.match(dock, /borderRadius: `full`/)
-  assert.match(dock, /bg: `#0d1117`/)
-  assert.match(dock, /boxShadow: `none`/)
+  assert.match(dock, /bg: `rgba\(29, 37, 51, 0\.68\)`/)
+  assert.match(
+    dock,
+    /boxShadow: `0 8px 24px rgba\(0, 0, 0, 0\.18\), inset 0 1px 0 rgba\(255, 255, 255, 0\.14\)`/
+  )
 
   for (const action of [contents, search, scrollToTop]) {
     assert.match(action, /color: `white`/)

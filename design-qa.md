@@ -119,6 +119,74 @@ final result: passed
 
 ---
 
+# Translucent mobile action dock QA — 2026-08-13
+
+## Visual target and evidence
+
+- Reported opaque state:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-bc727361-a474-4a23-9aab-42eb26136abb.png`
+- Instagram material reference:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-77b3c65a-c072-4017-aec7-2d0b9d8cad9d.png`
+- Dark-theme implementation:
+  `/tmp/mobile-action-dock-glass-dark-390.png`
+- Light-theme implementation:
+  `/tmp/mobile-action-dock-glass-light-390.png`
+- Focused opaque/dark/light comparison:
+  `/tmp/mobile-dock-opacity-comparison.png`
+- Implementation viewport: 390 × 844 CSS px at 1× density.
+- Reported source: 1290 × 1186 px, cropped mobile capture. The source crop
+  does not represent a full matching viewport, so the focused comparison was
+  normalized around the dock instead of using full-page pixel matching.
+- State: homepage scrolled beyond the 400 px visibility threshold, with the
+  dock rendered over live page content in both themes.
+
+## Findings
+
+No actionable P0, P1, or P2 visual differences remain.
+
+- Fonts and typography: the dock intentionally contains icons only; accessible
+  Turkish labels remain unchanged.
+- Spacing and layout rhythm: the compact 153 × 64 px capsule and three 48 px
+  actions remain unchanged, preserving the user's earlier width direction.
+- Colors and visual tokens: the opaque `#0d1117` surface is replaced by
+  `rgba(29, 37, 51, 0.68)`. Page imagery, cards, text, and the newsletter CTA
+  visibly influence the composed surface in both themes without reducing icon
+  clarity. A quiet 18% border, 14% inset highlight, and soft 18% shadow supply
+  the Instagram-like floating material edge.
+- Image quality and asset fidelity: no raster asset was introduced. Existing
+  React Icons vectors remain sharp at the tested density.
+- Copy and content: action meaning and labels are unchanged.
+- Safari constraint: no backdrop-filter is used, so the previously reported
+  filter/edge artefact is not reintroduced.
+
+## Interaction evidence
+
+- The dock appeared after scrolling and remained anchored above the safe-area
+  inset in both themes.
+- The dock search action opened its dialog and Escape restored the page at the
+  same scroll position.
+- Browser logs contained 18 pre-existing React development warnings and zero
+  non-warning runtime errors.
+- The focused mobile interaction suite passed 8/8.
+
+## Comparison history
+
+1. The reported implementation used a fully opaque black capsule and read as a
+   dominant block over both themes (P2).
+2. The surface changed to a 68% smoky blue-black composite with a restrained
+   edge highlight and shadow while preserving the compact geometry.
+3. The focused comparison shows underlying dark cards and light-theme CTA color
+   passing through the capsule. No further P0/P1/P2 adjustment is required.
+
+## Follow-up polish
+
+The opacity can be tuned a few points after device review without changing the
+component structure.
+
+final result: passed
+
+---
+
 # Newsletter dark-theme input QA — 2026-08-13
 
 - Source visual truth: `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-d81f9871-c5a5-4c7a-8a6e-3fe6f7ae163d.png`

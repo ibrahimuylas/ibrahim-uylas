@@ -20,11 +20,11 @@ const styles = {
     transform: `translateX(-50%)`,
     borderWidth: 1,
     borderStyle: `solid`,
-    borderColor: `rgba(255, 255, 255, 0.14)`,
+    borderColor: `rgba(255, 255, 255, 0.18)`,
     borderRadius: `full`,
-    bg: `#0d1117`,
+    bg: `rgba(29, 37, 51, 0.68)`,
     color: `white`,
-    boxShadow: `none`,
+    boxShadow: `0 8px 24px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.14)`,
     transition: `opacity 160ms ease, visibility 160ms ease`,
     '@media (min-width: 768px)': {
       display: `none`
