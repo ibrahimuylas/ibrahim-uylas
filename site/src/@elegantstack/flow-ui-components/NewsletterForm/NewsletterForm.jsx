@@ -74,7 +74,22 @@ const NewsletterForm = ({
                   ? {
                       minHeight: 44,
                       fontSize: `16px`,
-                      bg: `contentBg`
+                      borderWidth: 1,
+                      borderStyle: `solid`,
+                      borderColor: `omega`,
+                      bg: `contentBg`,
+                      color: `heading`,
+                      boxShadow: `inset 0 1px 2px rgba(0, 0, 0, 0.08)`,
+                      '&::placeholder': {
+                        color: `text`,
+                        opacity: 1
+                      },
+                      '&:focus': {
+                        borderColor: `alpha`,
+                        outline: `3px solid`,
+                        outlineColor: `alphaLight`,
+                        outlineOffset: 1
+                      }
                     }
                   : undefined
               }

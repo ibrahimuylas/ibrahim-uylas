@@ -27,9 +27,13 @@ const InstagramNewsletter = () => {
       <Box
         sx={{
           display: `grid`,
-          gridTemplateColumns: [`1fr`, `minmax(0, 1fr) minmax(22rem, 0.8fr)`],
+          gridTemplateColumns: `1fr`,
           alignItems: `center`,
-          gap: [3, 4]
+          gap: 3,
+          '@media screen and (min-width: 1200px)': {
+            gridTemplateColumns: `minmax(0, 1fr) minmax(22rem, 0.8fr)`,
+            gap: 4
+          }
         }}
       >
         <Flex sx={{ alignItems: `center`, gap: 3, minWidth: 0 }}>

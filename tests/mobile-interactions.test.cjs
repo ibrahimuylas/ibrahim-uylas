@@ -34,7 +34,7 @@ test('page contents navigation uses page wording outside article contents', () =
   assert.match(sheet, /\{label\}/)
 })
 
-test('scroll-to-top aligns with the desktop body without changing the mobile dock', () => {
+test('scroll-to-top uses opposite bottom corners on tablet without changing the mobile dock', () => {
   const scrollToTop = readSource('site/src/components/ScrollToTop.jsx')
 
   assert.match(
@@ -47,23 +47,35 @@ test('scroll-to-top aligns with the desktop body without changing the mobile doc
   )
   assert.match(
     scrollToTop,
+    /'@media \(min-width: 768px\) and \(max-width: 1199px\)': \{[\s\S]*right: `calc\(1rem \+ env\(safe-area-inset-right, 0px\)\)`[\s\S]*top: `auto`[\s\S]*bottom: `calc\(1rem \+ env\(safe-area-inset-bottom, 0px\)\)`[\s\S]*transform: `none`/
+  )
+  assert.match(
+    scrollToTop,
     /position: `static`,[\s\S]*'@media \(max-width: 767px\)': \{\s*display: `flex`/
   )
 })
 
-test('mobile action dock avoids Safari filter artifacts without changing its surface', () => {
+test('mobile action dock uses a compact dark surface without Safari artifacts', () => {
   const dock = readSource('site/src/components/MobileActionDock.jsx')
+  const contents = readSource('site/src/components/ArticleContents.jsx')
+  const search = readSource('site/src/components/BlogSearch.jsx')
+  const scrollToTop = readSource('site/src/components/ScrollToTop.jsx')
 
   assert.doesNotMatch(dock, /(?:Webkit)?BackdropFilter/)
+  assert.match(dock, /width: `max-content`/)
+  assert.match(dock, /maxWidth: `calc\(100vw - 2rem\)`/)
   assert.match(dock, /borderWidth: 1/)
   assert.match(dock, /borderStyle: `solid`/)
-  assert.match(dock, /borderColor: `omegaLight`/)
+  assert.match(dock, /borderColor: `rgba\(255, 255, 255, 0\.14\)`/)
   assert.match(dock, /borderRadius: `full`/)
-  assert.match(dock, /bg: `contentBg`/)
-  assert.match(
-    dock,
-    /boxShadow: `0 0\.5rem 1\.5rem rgba\(0, 0, 0, 0\.22\)`/
-  )
+  assert.match(dock, /bg: `#0d1117`/)
+  assert.match(dock, /boxShadow: `none`/)
+
+  for (const action of [contents, search, scrollToTop]) {
+    assert.match(action, /color: `white`/)
+    assert.match(action, /'&:active': \{[\s\S]*transform: `scale\(0\.92\)`/)
+    assert.match(action, /svg: \{\s*width: 24,\s*height: 24/)
+  }
 })
 
 test('Instagram waits for live data and keeps its heading on one line', () => {
@@ -103,8 +115,19 @@ test('Instagram and newsletter share a compact responsive homepage section', () 
   assert.match(newsletter, /mt: `10px`/)
   assert.match(newsletter, /width: 36/)
   assert.match(newsletter, /height: 36/)
+  assert.match(newsletter, /gridTemplateColumns: `1fr`/)
+  assert.match(
+    newsletter,
+    /min-width: 1200px[\s\S]*gridTemplateColumns: `minmax\(0, 1fr\) minmax\(22rem, 0\.8fr\)`/
+  )
   assert.match(newsletter, /<NewsletterForm[\s\S]*compact/)
   assert.match(form, /fontSize: `16px`/)
+  assert.match(form, /borderWidth: 1/)
+  assert.match(form, /borderColor: `omega`/)
+  assert.match(form, /bg: `contentBg`/)
+  assert.match(form, /color: `heading`/)
+  assert.match(form, /'&::placeholder': \{[\s\S]*color: `text`/)
+  assert.match(form, /'&:focus': \{[\s\S]*borderColor: `alpha`/)
   assert.match(form, /gridTemplateColumns: \[`1fr`, `minmax\(0, 1fr\) auto`\]/)
   assert.match(form, /minWidth: \[`100%`, `7\.5rem`\]/)
   assert.match(showcase, /aspectRatio: `1 \/ 1`/)
@@ -123,9 +146,13 @@ test('homepage chrome includes the favicon and hides the category scrollbar', ()
 })
 
 test('homepage profile card uses the responsive portrait instead of the greeting icon', () => {
+  const homepage = readSource(
+    'site/src/@elegantstack/gatsby-theme-flexiblog-agency/containers/Posts.jsx'
+  )
   const profileCard = readSource(
     'site/src/@elegantstack/flow-ui-widgets/BannerVertical/BannerVertical.jsx'
   )
+  const stack = readSource('packages/flow-ui/flow-ui-layout/src/Stack/Stack.jsx')
   const portrait = path.resolve(
     __dirname,
     '..',
@@ -133,6 +160,12 @@ test('homepage profile card uses the responsive portrait instead of the greeting
   )
 
   assert.equal(fs.existsSync(portrait), true)
+  assert.match(stack, /contentSx/)
+  assert.match(homepage, /direction='column'/)
+  assert.match(
+    homepage,
+    /contentSx=\{\{[\s\S]*min-width: 1200px[\s\S]*flexDirection: `row`/
+  )
   assert.match(
     profileCard,
     /import \{ StaticImage \} from 'gatsby-plugin-image'/
@@ -142,7 +175,13 @@ test('homepage profile card uses the responsive portrait instead of the greeting
     /src='\.\.\/\.\.\/\.\.\/\.\.\/content\/assets\/bu-adam-kim\.jpeg'/
   )
   assert.match(profileCard, /alt='İbrahim Uylaş doğa yürüyüşünde'/)
-  assert.match(profileCard, /height: \[`250px`, `320px`, null, `260px`\]/)
+  assert.match(
+    profileCard,
+    /min-width: 768px\) and \(max-width: 1199px\)[\s\S]*flexDirection: `row`/
+  )
+  assert.match(profileCard, /flex: `0 0 42%`/)
+  assert.match(profileCard, /width: `42%`/)
+  assert.match(profileCard, /height: `360px`/)
   assert.match(profileCard, /objectFit: `cover`, objectPosition: `50% 38%`/)
   assert.doesNotMatch(profileCard, /FaMountain|Merhaba,/)
 })

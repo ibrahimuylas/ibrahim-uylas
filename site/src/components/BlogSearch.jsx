@@ -211,11 +211,25 @@ const BlogSearch = ({ loadPagefind, location, variant }) => {
                 minHeight: 48,
                 p: 0,
                 border: 0,
+                borderRadius: `full`,
                 bg: `transparent`,
-                color: `heading`,
+                color: `white`,
+                transition: `background-color 140ms ease, transform 140ms ease`,
                 '&:hover': {
-                  bg: `omegaLighter`,
-                  color: `heading`
+                  bg: `rgba(255, 255, 255, 0.12)`,
+                  color: `white`
+                },
+                '&:active': {
+                  bg: `rgba(255, 255, 255, 0.2)`,
+                  transform: `scale(0.92)`
+                },
+                '&:focus-visible': {
+                  outlineColor: `white`,
+                  outlineOffset: 2
+                },
+                svg: {
+                  width: 24,
+                  height: 24
                 },
                 prompt: {
                   display: `none`

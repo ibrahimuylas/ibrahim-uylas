@@ -20,10 +20,11 @@ const styles = {
     transform: `translateX(-50%)`,
     borderWidth: 1,
     borderStyle: `solid`,
-    borderColor: `omegaLight`,
+    borderColor: `rgba(255, 255, 255, 0.14)`,
     borderRadius: `full`,
-    bg: `contentBg`,
-    boxShadow: `0 0.5rem 1.5rem rgba(0, 0, 0, 0.22)`,
+    bg: `#0d1117`,
+    color: `white`,
+    boxShadow: `none`,
     transition: `opacity 160ms ease, visibility 160ms ease`,
     '@media (min-width: 768px)': {
       display: `none`
@@ -37,7 +38,10 @@ const styles = {
     width: 48,
     minWidth: 48,
     height: 48,
-    minHeight: 48
+    minHeight: 48,
+    display: `flex`,
+    alignItems: `center`,
+    justifyContent: `center`
   },
   contentsSlot: {
     display: `flex`,

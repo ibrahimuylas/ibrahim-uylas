@@ -133,7 +133,12 @@ const Posts = ({
       <ArticleContents items={homeContentsItems} showInlineNavigation={false} />
       <Box id='one-cikanlar' sx={{ scrollMarginTop: `24px` }}>
         <Stack
-          direction={['column', 'column', 'column', 'row']}
+          direction='column'
+          contentSx={{
+            '@media screen and (min-width: 1200px)': {
+              flexDirection: `row`
+            }
+          }}
           effectProps={{ effect: false }}
         >
           <Main>
@@ -160,9 +165,16 @@ const Posts = ({
           </Main>
           <Sidebar
             sx={{
-              pl: [0, null, null, `3`],
-              mt: [4, null, 4, 0],
-              flexBasis: `1/4`
+              pl: 0,
+              mt: 4,
+              flexBasis: `auto`,
+              width: `full`,
+              '@media screen and (min-width: 1200px)': {
+                pl: 3,
+                mt: 0,
+                flexBasis: `1/4`,
+                width: `auto`
+              }
             }}
           >
             <BannerVertical />

@@ -119,6 +119,161 @@ final result: passed
 
 ---
 
+# Newsletter dark-theme input QA — 2026-08-13
+
+- Source visual truth: `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-d81f9871-c5a5-4c7a-8a6e-3fe6f7ae163d.png`
+- Implementation screenshot: `/tmp/newsletter-dark-input-final-768.png`
+- Viewport: 768 × 1024 CSS px, dark theme
+
+## Findings
+
+No actionable visual issue remains. The email field now has a distinct themed
+surface, a persistent one-pixel boundary, readable placeholder and input text,
+and a high-visibility indigo focus ring. The field remains 46 px tall, clearing
+the 44 px touch-target threshold without changing the newsletter layout.
+
+## Verification
+
+- Background: `rgb(45, 55, 72)`
+- Default boundary: theme `omega`; focused boundary: `rgb(102, 126, 234)`
+- Placeholder: `rgb(203, 213, 224)`
+- Focus outline: 3 px indigo
+- Repository tests: 116/116 passed
+
+final result: passed
+
+---
+
+# Homepage profile card and tablet navigation QA — 2026-08-13
+
+## Visual target and comparison
+
+- Reported source screenshot:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-da0b3812-9a3a-4bdf-bbf5-eb6ed3830d15.png`
+- Final 768 × 1024 browser render:
+  `/tmp/home-tablet-profile-final-768.png`
+- Final 1024 × 1366 profile render:
+  `/tmp/home-tablet-profile-final-1024.png`
+- Combined visual comparison:
+  `/tmp/home-tablet-profile-comparison.png`
+- State: dark homepage after the profile card and inline homepage contents
+  navigation have passed the viewport.
+- Source dimensions: 1906 × 2056 px, consistent with a 2× tablet capture.
+- Implementation dimensions: 768 × 1024 px and 1024 × 1366 px at 1× browser
+  density. The combined board normalizes the reported source to half-size.
+
+## Findings
+
+No actionable P0, P1, or P2 differences remain.
+
+- Fonts and typography: the card preserves the site's Inter hierarchy and
+  readable line lengths. Text no longer spans the full tablet width.
+- Spacing and layout rhythm: from 768 through 1199 px the profile card uses a
+  compact 42/58 horizontal split and a 360 px height. At 1200 px the existing
+  desktop main/sidebar layout resumes.
+- Colors and visual tokens: existing dark/light theme surfaces, border radii,
+  primary button, and muted body copy remain unchanged.
+- Image quality and asset fidelity: the existing responsive portrait remains
+  the source asset. The tablet crop now shows the person and gesture rather
+  than enlarging the face across a wide banner.
+- Copy and content: both profile paragraphs and the “Bu adam kim?” action are
+  unchanged and fully visible.
+
+## Interaction and responsive evidence
+
+- At 768 × 1024 the contents trigger measured 15.2 px from the left and 15.2 px
+  from the bottom; scroll-to-top measured 15.2 px from the right and the same
+  bottom edge.
+- The paired corner placement applies from 768 through 1199 px. Mobile retains
+  its compact action dock; the 1200 px desktop navigation and centered-edge
+  scroll control remain unchanged.
+- Browser checks passed at 768, 820, 1024, and the 1200 px desktop boundary.
+- The targeted interaction suite passed 8/8.
+
+## Comparison history
+
+1. The reported view showed the vertical portrait stretched into a wide,
+   face-heavy tablet banner while scroll-to-top remained halfway down the
+   right edge.
+2. The first revision introduced the horizontal profile layout and matching
+   bottom corners.
+3. A 1024 px check exposed the old early desktop sidebar breakpoint and a
+   stretched sidebar height. The main/sidebar transition moved to 1200 px and
+   the profile wrapper was changed from full size to full width.
+4. Final renders show a 360 px card at all tested tablet widths with no blank
+   expansion and both navigation controls aligned to opposite bottom corners.
+
+## Follow-up polish
+
+None required for the requested tablet scope.
+
+final result: passed
+
+---
+
+# Compact mobile action dock QA — 2026-08-13
+
+## Visual target and comparison
+
+- Source visual truth:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-77b3c65a-c072-4017-aec7-2d0b9d8cad9d.png`
+- Browser-rendered implementation screenshot:
+  `/tmp/mobile-action-dock-compact-dark.png`
+- Focused comparison:
+  `/tmp/mobile-dock-reference-vs-implementation.png`
+- State: mobile homepage after scrolling beyond the 400 px dock threshold.
+- Viewport: 390 × 844 CSS px at 1× density.
+- Source dimensions: 1290 × 414 px. The source is a cropped Instagram app
+  reference rather than the same page viewport, so QA treats its dark surface,
+  white icons, rounded geometry, and interaction emphasis as visual direction.
+- Implementation dimensions: 390 × 844 px. The focused implementation region
+  was enlarged in the combined comparison only to make icon and surface details
+  readable; layout measurements came from the unscaled browser render.
+
+## Findings
+
+No actionable P0, P1, or P2 differences remain.
+
+- Fonts and typography: the dock contains no visible text; accessible Turkish
+  action labels remain available to assistive technology.
+- Spacing and layout rhythm: the rendered dock is 152.8 × 64 px rather than
+  full-width, with three equal 48 × 48 px targets and 24 × 24 px centered icons.
+  This is the intentional compact deviation requested after reviewing the
+  Instagram reference.
+- Colors and visual tokens: the surface renders as `rgb(13, 17, 23)`, icons as
+  white, and the quiet translucent border separates the capsule from both light
+  and dark page backgrounds. The previous broad shadow is absent.
+- Image quality and asset fidelity: no raster asset is required inside this UI
+  control. Existing React Icons vectors remain sharp at the tested density; no
+  placeholder, handcrafted SVG, or screenshot-derived icon was introduced.
+- Copy and content: the actions remain “Bu sayfada”, “Arama”, and “Sayfanın
+  başına dön”; the visual redesign does not change their meaning.
+
+## Interaction evidence
+
+- The compact dock appears after the existing scroll threshold.
+- Search opened its mobile dialog, accepted focus, and closed back to the same
+  scroll position.
+- “Sayfanın başına dön” returned the page to `scrollY: 0`.
+- Browser logs contain pre-existing development React warnings about
+  `defaultProps` and `currentSlide`; no dock interaction produced a runtime
+  exception.
+
+## Comparison history
+
+The first post-implementation comparison found no actionable P0, P1, or P2
+issue. The deliberate differences from the reference are the compact width and
+the absence of a persistent selected tab, because these controls are actions
+rather than app-navigation destinations.
+
+## Follow-up polish
+
+No follow-up is required for the selected direction.
+
+final result: passed
+
+---
+
 # Instagram + newsletter visual QA — 2026-08-12
 
 ## Visual target and comparison

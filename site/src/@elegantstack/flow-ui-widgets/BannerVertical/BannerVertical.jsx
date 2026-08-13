@@ -10,21 +10,32 @@ const styles = {
     flexDirection: `column`,
     bg: `omegaLighter`,
     borderRadius: `lg`,
-    size: `full`,
-    overflow: `hidden`
+    width: `full`,
+    overflow: `hidden`,
+    '@media screen and (min-width: 768px) and (max-width: 1199px)': {
+      flexDirection: `row`
+    }
   },
   image: {
     flex: `0 0 auto`,
     width: `full`,
     height: [`250px`, `320px`, null, `260px`],
     lineHeight: 0,
-    overflow: `hidden`
+    overflow: `hidden`,
+    '@media screen and (min-width: 768px) and (max-width: 1199px)': {
+      flex: `0 0 42%`,
+      width: `42%`,
+      height: `360px`
+    }
   },
   content: {
     alignItems: `stretch`,
     flex: `1 1 auto`,
     flexDirection: `column`,
-    p: 4
+    p: 4,
+    '@media screen and (min-width: 768px) and (max-width: 1199px)': {
+      p: 3
+    }
   },
   list: {
     color: `omegaDark`,

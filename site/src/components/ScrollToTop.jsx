@@ -42,6 +42,12 @@ const styles = {
     },
     '@media (max-width: 767px)': {
       display: `none`
+    },
+    '@media (min-width: 768px) and (max-width: 1199px)': {
+      right: `calc(1rem + env(safe-area-inset-right, 0px))`,
+      top: `auto`,
+      bottom: `calc(1rem + env(safe-area-inset-bottom, 0px))`,
+      transform: `none`
     }
   }
 }
@@ -117,10 +123,26 @@ const ScrollToTop = ({ variant }) => {
               height: 48,
               minHeight: 48,
               border: 0,
+              borderRadius: `full`,
               bg: `transparent`,
+              color: `white`,
               boxShadow: `none`,
+              transition: `background-color 140ms ease, transform 140ms ease`,
               '&:hover': {
-                bg: `omegaLighter`
+                bg: `rgba(255, 255, 255, 0.12)`,
+                color: `white`
+              },
+              '&:active': {
+                bg: `rgba(255, 255, 255, 0.2)`,
+                transform: `scale(0.92)`
+              },
+              '&:focus-visible': {
+                outlineColor: `white`,
+                outlineOffset: 2
+              },
+              svg: {
+                width: 24,
+                height: 24
               },
               '@media (max-width: 767px)': {
                 display: `flex`
