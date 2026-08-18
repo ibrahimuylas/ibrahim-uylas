@@ -175,6 +175,7 @@ export const pageQuery = graphql`
           name
         }
         ...ArticleThumbnailCard
+        ...ArticleThumbnailGuideCard
         ...ArticleThumbnailNatural
       }
     }
@@ -190,6 +191,7 @@ export const pageQuery = graphql`
       nodes {
         ...ArticlePreview
         ...ArticleThumbnailCard
+        ...ArticleThumbnailGuideCard
         ...ArticleThumbnailNatural
       }
     }

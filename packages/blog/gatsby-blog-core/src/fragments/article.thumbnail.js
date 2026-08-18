@@ -58,6 +58,37 @@ export const query = graphql`
       }
     }
   }
+  fragment ArticleThumbnailGuideCard on Article {
+    thumbnail {
+      __typename
+      ... on ImageSharp {
+        ImageSharp_guideCard: gatsbyImageData(
+          width: 640
+          height: 360
+          transformOptions: { cropFocus: CENTER }
+          outputPixelDensities: [0.5, 1]
+          quality: $imageQuality
+        )
+      }
+      ... on ContentfulAsset {
+        ContentfulAsset_guideCard: gatsbyImageData(
+          width: 640
+          height: 360
+          cropFocus: CENTER
+          formats: [JPG, WEBP]
+          quality: $imageQuality
+          resizingBehavior: THUMB
+        )
+      }
+      ... on SanityImageAsset {
+        SanityImageAsset_guideCard: gatsbyImageData(
+          width: 640
+          height: 360
+          outputPixelDensities: [0.5, 1]
+        )
+      }
+    }
+  }
   fragment ArticleThumbnailHero on Article {
     thumbnail {
       __typename

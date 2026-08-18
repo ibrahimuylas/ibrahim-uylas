@@ -69,6 +69,12 @@ test('mobile action dock uses a compact translucent surface without Safari artif
   assert.match(dock, /borderColor: `rgba\(255, 255, 255, 0\.18\)`/)
   assert.match(dock, /borderRadius: `full`/)
   assert.match(dock, /bg: `rgba\(29, 37, 51, 0\.68\)`/)
+  assert.match(dock, /location\?\.pathname && location\.pathname !== `\/`/)
+  assert.match(
+    dock,
+    /showHomeAction[\s\S]*as=\{GatsbyLink\}[\s\S]*to='\/'[\s\S]*aria-label='Ana sayfaya dön'/
+  )
+  assert.match(dock, /<FaHome aria-hidden='true' focusable='false' \/>/)
   assert.match(
     dock,
     /boxShadow: `0 8px 24px rgba\(0, 0, 0, 0\.18\), inset 0 1px 0 rgba\(255, 255, 255, 0\.14\)`/
@@ -146,6 +152,57 @@ test('homepage chrome includes the favicon and hides the category scrollbar', ()
   assert.match(seo, /<link rel='icon' type='image\/png' href=\{favicon\} \/>/)
   assert.match(categories, /scrollbarWidth: `none`/)
   assert.match(categories, /'&::\-webkit-scrollbar': \{[\s\S]*display: `none`/)
+})
+
+test('desktop header centers search and reuses the mobile theme icon button', () => {
+  const header = readSource(
+    'site/src/@elegantstack/flow-ui-layout/Header/Header.jsx'
+  )
+  const colorMode = readSource(
+    'packages/flow-ui/flow-ui-layout/src/Header/Header.ColorMode.jsx'
+  )
+
+  assert.match(header, /position: \[`static`, null, `absolute`\]/)
+  assert.match(header, /left: \[`auto`, null, `50%`\]/)
+  assert.match(header, /transform: \[`none`, null, `translate\(-50%, -50%\)`\]/)
+  assert.match(header, /ml: \[0, null, `auto`\]/)
+  assert.match(header, /mr: \[`auto`, null, 0\]/)
+  assert.match(header, /width: \[`120px !important`, `150px !important`\]/)
+  assert.doesNotMatch(colorMode, /rc-switch|<Switch/)
+  assert.match(colorMode, /width: 48/)
+  assert.match(colorMode, /height: 48/)
+  assert.match(colorMode, /boxSizing: `border-box`/)
+  assert.match(colorMode, /<FaMoon aria-hidden='true' focusable='false' \/>/)
+  assert.match(colorMode, /<FaSun aria-hidden='true' focusable='false' \/>/)
+})
+
+test('article links use dark-mode contrast without changing global links', () => {
+  const styles = readSource(
+    'packages/flow-ui/flow-ui-theme/src/theme/styles.js'
+  )
+  const postBody = readSource(
+    'site/src/@elegantstack/flow-ui-widgets/Post/Post.Body.jsx'
+  )
+  const [rootStyles] = styles.split('/** MDX articles */')
+
+  assert.doesNotMatch(rootStyles, /\ba:\s*\{/)
+  assert.match(
+    postBody,
+    /const ArticleLink = props => <Link \{\.\.\.props\} sx=\{articleLinkStyles\} \/>/
+  )
+  assert.match(
+    postBody,
+    /components=\{\{ \.\.\.components, DeferredEmbed, a: ArticleLink \}\}/
+  )
+  assert.match(postBody, /color: `alphaDark`/)
+  assert.match(
+    postBody,
+    /':visited': \{[\s\S]*color: `alphaDark`/
+  )
+  assert.match(
+    postBody,
+    /':hover': \{[\s\S]*color: `alphaDarker`/
+  )
 })
 
 test('homepage profile card uses the responsive portrait instead of the greeting icon', () => {

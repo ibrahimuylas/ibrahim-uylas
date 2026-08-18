@@ -44,6 +44,7 @@ const headingStyle = {
 }
 
 const heroAccent = `#1552d6`
+const guideCardAspectRatio = `16 / 9`
 
 const getAllCuratedSlugs = guide => [
   ...guide.readingPath.map(item => item.slug).filter(Boolean),
@@ -118,7 +119,7 @@ const ArticleMeta = ({ article }) => (
 const ArticleLinkCard = ({
   article,
   context,
-  desktopImageOnly = false,
+  hideImageOnMobile = false,
   editorial = false,
   featured,
   onActivate,
@@ -126,11 +127,10 @@ const ArticleLinkCard = ({
   step,
   withImage
 }) => {
-  const image = withImage ? getImageVariant(article.thumbnail, 'natural') : null
-  const imageAspectRatio =
-    image && image.width && image.height
-      ? `${image.width} / ${image.height}`
-      : null
+  const image = withImage
+    ? getImageVariant(article.thumbnail, 'guideCard')
+    : null
+  const badgeInMedia = featured && (image || editorial)
 
   return (
     <Box
@@ -140,8 +140,8 @@ const ArticleLinkCard = ({
         position: `relative`,
         minWidth: 0,
         height: `100%`,
-        display: editorial ? `flex` : `block`,
-        flexDirection: editorial ? `column` : `initial`,
+        display: `flex`,
+        flexDirection: `column`,
         overflow: `hidden`,
         borderRadius: editorial ? `12px` : surfaceStyle.borderRadius,
         transition: `transform 180ms ease, border-color 180ms ease`,
@@ -156,15 +156,13 @@ const ArticleLinkCard = ({
       {(image || editorial) && (
         <Box
           data-guide-thumbnail
-          aria-hidden='true'
           sx={{
-            display: desktopImageOnly
-              ? [`none`, `none`, `none`, `block`]
+            display: hideImageOnMobile
+              ? [`none`, `none`, `block`]
               : `block`,
+            position: `relative`,
             width: `100%`,
-            ...(imageAspectRatio
-              ? { aspectRatio: imageAspectRatio }
-              : { height: editorial ? [190, 200, 210] : [160, 180] }),
+            aspectRatio: guideCardAspectRatio,
             overflow: `hidden`,
             bg: `omegaLighter`,
             pointerEvents: `none`,
@@ -183,13 +181,35 @@ const ArticleLinkCard = ({
               imgStyle={{ objectFit: `cover` }}
             />
           )}
+          {badgeInMedia && (
+            <Text
+              as='span'
+              sx={{
+                position: `absolute`,
+                top: 3,
+                left: 3,
+                zIndex: 1,
+                display: `inline-block`,
+                bg: `alphaLighter`,
+                color: `alphaDarker`,
+                borderRadius: `999px`,
+                boxShadow: `0 4px 12px rgba(31, 41, 55, 0.12)`,
+                fontSize: 0,
+                fontWeight: `bold`,
+                px: 2,
+                py: 1
+              }}
+            >
+              Öne çıkan
+            </Text>
+          )}
         </Box>
       )}
       <Flex
         sx={{
           alignItems: `flex-start`,
           gap: 3,
-          flex: editorial ? 1 : `initial`,
+          flex: 1,
           minHeight: editorial ? [0, 230] : 0,
           p: editorial ? [3, 4] : [3, 4]
         }}
@@ -216,11 +236,11 @@ const ArticleLinkCard = ({
           sx={{
             flex: 1,
             minWidth: 0,
-            height: editorial ? [`auto`, `100%`] : `auto`,
+            height: `100%`,
             gridTemplateColumns: `minmax(0, 1fr)`,
             gridTemplateRows: editorial
               ? [`auto auto`, `auto 1fr auto`]
-              : `auto auto`,
+              : `auto 1fr`,
             alignItems: `start`
           }}
         >
@@ -260,7 +280,7 @@ const ArticleLinkCard = ({
                 )}
               </Flex>
             )}
-            {featured && (
+            {featured && !badgeInMedia && (
               <Text
                 as='span'
                 sx={{
@@ -288,6 +308,15 @@ const ArticleLinkCard = ({
                 fontWeight: editorial ? 400 : `bold`,
                 fontSize: [3, 4],
                 lineHeight: 1.25,
+                display: editorial
+                  ? [`block`, `-webkit-box`]
+                  : [`block`, null, `-webkit-box`],
+                minHeight: editorial
+                  ? [`auto`, `3.75em`]
+                  : [`auto`, null, `5em`],
+                WebkitBoxOrient: `vertical`,
+                WebkitLineClamp: editorial ? [null, 3] : [null, null, 4],
+                overflow: `hidden`,
                 m: 0
               }}
             >
@@ -327,7 +356,14 @@ const ArticleLinkCard = ({
               </Text>
             )}
           </Box>
-          <Box sx={{ minWidth: 0 }}>
+          <Box
+            sx={{
+              display: `flex`,
+              flexDirection: `column`,
+              minWidth: 0,
+              height: `100%`
+            }}
+          >
             <Text
               as='p'
               sx={{
@@ -344,7 +380,11 @@ const ArticleLinkCard = ({
             >
               {summary || article.excerpt}
             </Text>
-            {!editorial && <ArticleMeta article={article} />}
+            {!editorial && (
+              <Box sx={{ mt: `auto`, pt: 2 }}>
+                <ArticleMeta article={article} />
+              </Box>
+            )}
           </Box>
           {editorial && (
             <>
@@ -376,7 +416,7 @@ const ArticleLinkCard = ({
 
 const RouteArticleCard = ({ item, policy, trackLink }) => {
   const { article } = item
-  const image = getImageVariant(article.thumbnail, 'natural')
+  const image = getImageVariant(article.thumbnail, 'guideCard')
 
   return (
     <Box
@@ -398,10 +438,7 @@ const RouteArticleCard = ({ item, policy, trackLink }) => {
         <Box
           aria-hidden='true'
           sx={{
-            aspectRatio:
-              image.width && image.height
-                ? `${image.width} / ${image.height}`
-                : `16 / 9`,
+            aspectRatio: guideCardAspectRatio,
             overflow: `hidden`,
             bg: `omegaLighter`,
             '& .gatsby-image-wrapper': {
@@ -1635,7 +1672,7 @@ const GuideCategory = ({
               <ArticleLinkCard
                 key={item.article.id}
                 article={item.article}
-                desktopImageOnly={!featuredSlugs.has(item.slug)}
+                hideImageOnMobile={!featuredSlugs.has(item.slug)}
                 featured={featuredSlugs.has(item.slug)}
                 withImage
                 onActivate={trackLink('baslangic', item.article.slug)}
@@ -1893,11 +1930,7 @@ const GuideCategory = ({
               }}
             >
               {visibleArticles.map(article => {
-                const image = getImageVariant(article.thumbnail, 'natural')
-                const imageAspectRatio =
-                  image && image.width && image.height
-                    ? `${image.width} / ${image.height}`
-                    : null
+                const image = getImageVariant(article.thumbnail, 'guideCard')
 
                 return (
                   <Box as='li' key={article.id} sx={{ minWidth: 0 }}>
@@ -1933,9 +1966,7 @@ const GuideCategory = ({
                       {image && (
                         <Box
                           sx={{
-                            ...(imageAspectRatio
-                              ? { aspectRatio: imageAspectRatio }
-                              : { height: [190, 210, 220] }),
+                            aspectRatio: guideCardAspectRatio,
                             overflow: `hidden`,
                             bg: `omegaLighter`,
                             '& .gatsby-image-wrapper': {

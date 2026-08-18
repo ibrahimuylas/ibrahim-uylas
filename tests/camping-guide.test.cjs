@@ -103,6 +103,34 @@ test('equipment section uses a responsive editorial card grid', () => {
   assert.match(campingGuideComponent, /editorial/)
 })
 
+test('guide cards use a dedicated 16:9 thumbnail crop and aligned text rhythm', () => {
+  const thumbnailFragments = fs.readFileSync(
+    path.resolve(
+      __dirname,
+      '../packages/blog/gatsby-blog-core/src/fragments/article.thumbnail.js'
+    ),
+    'utf8'
+  )
+  const campingCategoryTemplate = fs.readFileSync(
+    path.resolve(__dirname, '../site/src/templates/camping-category.js'),
+    'utf8'
+  )
+
+  assert.match(thumbnailFragments, /fragment ArticleThumbnailGuideCard/)
+  assert.match(
+    thumbnailFragments,
+    /ImageSharp_guideCard: gatsbyImageData\([\s\S]*width: 640[\s\S]*height: 360/
+  )
+  assert.match(campingCategoryTemplate, /\.\.\.ArticleThumbnailGuideCard/)
+  assert.match(campingGuideComponent, /const guideCardAspectRatio = `16 \/ 9`/)
+  assert.match(
+    campingGuideComponent,
+    /getImageVariant\(article\.thumbnail, 'guideCard'\)/
+  )
+  assert.match(campingGuideComponent, /WebkitLineClamp: editorial/)
+  assert.match(campingGuideComponent, /badgeInMedia/)
+})
+
 test('editorial guide sections use the shared split-first-row layout', () => {
   assert.equal(campingGuide.editorialLayout, 'split-first-row')
   assert.equal(hikingGuide.editorialLayout, 'split-first-row')
@@ -116,7 +144,7 @@ test('editorial guide sections use the shared split-first-row layout', () => {
   )
 })
 
-test('reading path uses three columns on desktop without changing mobile', () => {
+test('reading path shows images in two-column layouts without changing mobile', () => {
   assert.match(campingGuideComponent, /data-reading-path-grid/)
   assert.match(
     campingGuideComponent,
@@ -124,7 +152,11 @@ test('reading path uses three columns on desktop without changing mobile', () =>
   )
   assert.match(
     campingGuideComponent,
-    /readingPath\.map[\s\S]*desktopImageOnly=\{!featuredSlugs\.has\(item\.slug\)\}[\s\S]*withImage/
+    /readingPath\.map[\s\S]*hideImageOnMobile=\{!featuredSlugs\.has\(item\.slug\)\}[\s\S]*withImage/
+  )
+  assert.match(
+    campingGuideComponent,
+    /display: hideImageOnMobile[\s\S]*\[`none`, `none`, `block`\]/
   )
 })
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
+import { Link as GatsbyLink } from 'gatsby'
 import { Box, Flex } from 'theme-ui'
+import { FaHome } from 'react-icons/fa'
 import BlogSearch from './BlogSearch'
 import ScrollToTop from './ScrollToTop'
 
@@ -43,6 +45,32 @@ const styles = {
     alignItems: `center`,
     justifyContent: `center`
   },
+  homeAction: {
+    p: 0,
+    borderRadius: `full`,
+    color: `white`,
+    textDecoration: `none`,
+    transition: `background-color 140ms ease, transform 140ms ease`,
+    '&:visited': {
+      color: `white`
+    },
+    '&:hover': {
+      bg: `rgba(255, 255, 255, 0.12)`,
+      color: `white`
+    },
+    '&:active': {
+      bg: `rgba(255, 255, 255, 0.2)`,
+      transform: `scale(0.92)`
+    },
+    '&:focus-visible': {
+      outline: `3px solid white`,
+      outlineOffset: 2
+    },
+    svg: {
+      width: 24,
+      height: 24
+    }
+  },
   contentsSlot: {
     display: `flex`,
     alignItems: `center`
@@ -53,6 +81,9 @@ const MobileActionDock = ({ location }) => {
   const [isVisible, setIsVisible] = useState(false)
   const visibleState = useRef(false)
   const animationFrame = useRef(null)
+  const showHomeAction = Boolean(
+    location?.pathname && location.pathname !== `/`
+  )
 
   useEffect(() => {
     const updateVisibility = () => {
@@ -96,6 +127,17 @@ const MobileActionDock = ({ location }) => {
         pointerEvents: isVisible ? `auto` : `none`
       }}
     >
+      {showHomeAction && (
+        <Box
+          as={GatsbyLink}
+          to='/'
+          aria-label='Ana sayfaya dön'
+          data-mobile-home-action
+          sx={{ ...styles.action, ...styles.homeAction }}
+        >
+          <FaHome aria-hidden='true' focusable='false' />
+        </Box>
+      )}
       <Box sx={styles.contentsSlot} data-mobile-contents-dock-slot />
       <Box sx={styles.action}>
         <BlogSearch location={location} variant='mobileDock' />

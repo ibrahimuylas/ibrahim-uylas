@@ -119,6 +119,196 @@ final result: passed
 
 ---
 
+# Header alignment and theme control QA — 2026-08-18
+
+## Visual target and comparison
+
+- Source screenshot:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-d36313fa-e090-40f1-874c-00e1f9418131.png`
+- Final desktop implementation:
+  `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/header-desktop-final-v2.png`
+- Final 320 px mobile implementation:
+  `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/header-mobile-320-final.png`
+- Final side-by-side comparison:
+  `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/header-comparison-final.png`
+- Source dimensions: 1968 × 288 px at 2× density, normalized to 984 × 144 CSS px.
+- Desktop implementation viewport: 984 × 600 CSS px at 1× density.
+- Mobile implementation viewport: 320 × 700 CSS px at 1× density.
+- State: light theme, `/category/kampcilik/`, page scrolled to the top.
+
+## Findings
+
+No actionable P0, P1, or P2 visual differences remain.
+
+- Typography: the existing site font stack and header weights are preserved.
+- Spacing and layout: the desktop search center is exactly aligned with the
+  page center (484.5 px, measured delta 0). Ana Sayfa and İletişim sit farther
+  right while retaining clear separation from the theme control.
+- Theme control: the desktop switch was removed and replaced with the same
+  circular sun/moon icon-button pattern used on mobile. The control remains
+  48 × 48 px with visible hover and keyboard focus treatments.
+- Responsive behavior: at 320 px the logo, theme, search, and menu controls all
+  fit in one row. The document client width and scroll width both measure 305 px,
+  so there is no horizontal overflow.
+- Colors and tokens: the control uses the existing theme border, surface, and
+  foreground tokens in both light and dark modes.
+- Assets and copy: the existing logo and React Icons assets are reused; the
+  Turkish navigation and accessible labels remain unchanged.
+
+## Interaction evidence
+
+- The header search button opened one search dialog; Escape closed it.
+- The theme button changed from “Koyu temaya geç” to “Açık temaya geç” and back.
+- The final browser console contained no error-level entries.
+- The focused mobile interaction tests passed 10/10.
+- The full repository test suite passed 119/119.
+- The production Gatsby build completed successfully.
+
+## Comparison history
+
+1. The first desktop pass centered the search and replaced the switch, but the
+   fixed-width logo container introduced horizontal overflow on mobile.
+2. Responsive logo sizing and tighter mobile spacing removed the overflow at
+   390 px.
+3. A final 320 px check found 5 px of residual overflow because Gatsby's inline
+   image dimensions overrode the responsive rule.
+4. The responsive logo dimensions were made authoritative at the mobile
+   breakpoint; the final 320 px viewport has no overflow and all controls remain
+   visible.
+
+final result: passed
+
+---
+
+# Category cards and mobile home action QA — 2026-08-18
+
+## Visual target and comparison
+
+- Source visual truth: `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-341e1bd0-55ee-4adf-a0e5-957fe3f33f8f.png`
+- Two-column implementation: `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/category-cards-two-column-final-light.png`
+- Side-by-side comparison: `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/category-cards-comparison.png`
+- Mobile dock implementation: `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/mobile-dock-home-action.png`
+- Verified local preview: `http://localhost:4174/category/kampcilik/#baslangic`
+
+## Findings
+
+No actionable P0, P1, or P2 visual differences remain.
+
+- All six reading-path cards expose a visible, consistently cropped 16:9 image at the two-column breakpoint.
+- Titles, summaries, and metadata retain the aligned card rhythm from the earlier card-layout pass.
+- The one-column mobile treatment remains compact: non-featured images stay hidden while featured images remain visible.
+- The mobile action dock keeps 48 px touch targets and adds the home icon without overflowing a 390 px viewport.
+
+## Interaction and validation evidence
+
+- At a 957 px CSS viewport, the reading path rendered two columns and 6/6 card media regions were visible.
+- At a 390 × 844 px viewport, the mobile dock, home action, contents action, search action, and scroll-to-top action were all visible after the scroll threshold.
+- The home action navigated from `/category/kampcilik/#baslangic` to `/`.
+- The home action was absent on `/`, preventing a redundant control on the homepage.
+- The final production preview reported no browser console errors.
+- Repository tests passed 118/118 and the production Gatsby build completed successfully.
+
+final result: passed
+
+---
+
+# Category guide card alignment QA — 2026-08-18
+
+## Visual target and evidence
+
+- Source visual truth — reading path:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-e63710c7-70e5-4135-8f66-549a180c6cff.png`
+- Source visual truth — equipment section:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-787b6547-f0a1-49cd-89fc-00957791a8a1.png`
+- Desktop implementation — reading path:
+  `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/category-cards-reading-desktop.png`
+- Desktop implementation — equipment section:
+  `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/category-cards-equipment-desktop.png`
+- Mobile implementation — reading path:
+  `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/category-cards-reading-mobile.png`
+- Mobile implementation — equipment section:
+  `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/category-cards-equipment-mobile.png`
+- Focused side-by-side comparisons:
+  `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/category-cards-reading-comparison.png`
+  and
+  `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/category-cards-equipment-comparison.png`
+- Desktop CSS viewport: 1714 × 1500; captured page area: 1699 × 1487 at
+  1× density, light theme.
+- Mobile CSS viewport: 390 × 844; captured page area: 375 × 812 at 1×
+  density, light theme.
+- Source pixels: 1714 × 2044 and 1738 × 2410. The comparisons normalize
+  each source and implementation region to 900 px width because the source
+  screenshots are section crops rather than matching browser viewports.
+- State: `/category/kampcilik/`, reading-path and equipment-section anchors.
+
+## Findings
+
+No actionable P0, P1, or P2 difference remains for the requested alignment
+scope.
+
+- Fonts and typography: existing Inter and DM Serif Display families, sizes,
+  weights, and colors are preserved. Desktop reading-path titles reserve four
+  lines and editorial titles reserve three lines; the full accessible link
+  names remain in the DOM while visual overflow is clamped.
+- Spacing and layout rhythm: all six reading-path cards measured 550 px high,
+  with 189 px media, a 222 px heading offset, and a 366 px summary offset. All
+  six equipment cards measured 517 px high, with 189 px media, a 251 px
+  heading offset, and a 365 px summary offset. The first six all-content media
+  wrappers also measured 189 px high.
+- Colors and visual tokens: existing content surfaces, borders, shadows,
+  category colors, and the indigo featured treatment remain unchanged. The
+  featured badge now overlays the image and no longer shifts the heading.
+- Image quality and asset fidelity: the original article assets remain the
+  source. Gatsby now produces a dedicated 640 × 360 card crop, so the browser
+  receives an actual 16:9 thumbnail rather than stretching a lower-resolution
+  natural-ratio image into the slot. Article and guide hero images continue to
+  use their natural aspect ratio.
+- Copy and content: article titles, summaries, metadata, links, and dates are
+  unchanged. CSS-only clamping affects desktop presentation, not the link's
+  accessible name.
+- Responsive behavior: desktop and tablet grids use the aligned media and text
+  rhythm. The single-column mobile layout keeps natural title height and does
+  not introduce unnecessary blank title rows.
+
+The full-section comparisons were readable enough to judge typography,
+spacing, crop, card geometry, and metadata placement directly; separate
+micro-crops were not needed. Browser-computed offsets provide the focused
+alignment evidence.
+
+## Interaction and runtime evidence
+
+- The GTX card link navigated to `/gtx-ayakkabi-ne-demek/` and browser Back
+  restored the category guide.
+- Browser error-level console log: empty.
+- Repository tests: 118/118 passed.
+- Production Gatsby build: passed. Gatsby reported existing slow-query,
+  dependency-expression, npm config, and Pagefind warnings; none blocked the
+  build or originated from the card layout change.
+- `git diff --check`: passed.
+
+## Comparison history
+
+1. The source showed a P1 layout inconsistency: natural image ratios from
+   1600×650 through 800×600 produced different media heights inside the same
+   grid row.
+2. Conditional featured badges and unbounded desktop titles added P2 vertical
+   drift after the image boundary.
+3. The implementation introduced a dedicated 16:9 Gatsby crop, moved the
+   featured badge into the media layer, reserved bounded desktop title rows,
+   and pinned non-editorial metadata to the card bottom.
+4. Post-fix browser measurements show identical media, heading, summary, and
+   card offsets across every compared sibling card. No further P0/P1/P2 fix is
+   required.
+
+## Follow-up polish
+
+Individual focal-point overrides can be added later for rare thumbnails whose
+subject is not well served by the default centered crop.
+
+final result: passed
+
+---
+
 # Translucent mobile action dock QA — 2026-08-13
 
 ## Visual target and evidence
@@ -1594,5 +1784,65 @@ No actionable P0, P1, or P2 visual difference remains.
 - The public and admin tabs reported no browser error or warning logs.
 - The repository test suite passed 94/94 and the production Gatsby build
   completed successfully.
+
+final result: passed
+
+---
+
+# Mobile header right-group alignment QA — 2026-08-18
+
+## Visual target and comparison
+
+- Source visual truth:
+  `/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-6b3b5592-db24-445a-adc9-f23049068c49.png`
+- Final implementation screenshot:
+  `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/header-mobile-grouped-light-final.png`
+- Final 320 px screenshot:
+  `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/header-mobile-320-grouped-final.png`
+- Side-by-side comparison:
+  `/Users/uylas/.codex/visualizations/2026/08/18/01a014f8-d022-7ae0-b1de-1e674afe8bba/header-mobile-spacing-comparison.png`
+- Source dimensions: 1360 × 696 px at 2× density, representing an approximately
+  680 × 348 CSS px mobile/tablet viewport.
+- Implementation viewport: 684 × 700 CSS px at 1× density; browser content
+  capture is 669 × 685 px after scrollbar allocation.
+- Additional narrow viewport: 320 × 700 CSS px at 1× density.
+- State: `/category/kampcilik/`, header at page top, mobile navigation closed.
+
+## Findings
+
+No actionable P0, P1, or P2 visual differences remain for the requested scope.
+
+- Spacing and layout rhythm: the logo now owns the flexible space through a
+  mobile-only auto right margin. Theme, search, and menu therefore remain a
+  compact right-aligned group instead of being distributed across the header.
+- Responsive behavior: the grouped controls remain fully visible at 320 px;
+  the previous no-overflow behavior is preserved.
+- Fonts and typography: existing logo artwork and icon sizing are unchanged.
+- Colors and visual tokens: existing header, border, foreground, hover, and
+  focus tokens are unchanged.
+- Image quality and assets: the original logo, hero image, and React Icons
+  controls are reused without scaling or asset substitutions.
+- Copy and content: navigation text and accessible Turkish control labels are
+  unchanged.
+- A focused header-region comparison was used because the requested change is
+  limited to horizontal control spacing; the rest of the page is intentionally
+  outside the comparison scope.
+
+## Interaction evidence
+
+- The mobile menu opened and closed from the grouped menu button.
+- The search dialog opened and closed from the grouped search button.
+- The final browser console contained no error-level entries.
+- The focused mobile interaction tests passed 10/10.
+- The production Gatsby build completed successfully.
+
+## Comparison history
+
+1. The source screenshot showed the theme, search, and menu controls distributed
+   across all remaining header width, creating large inconsistent gaps.
+2. A mobile-only automatic right margin was added to the logo container, moving
+   all flexible space between the logo and controls.
+3. The final 684 px and 320 px captures show the three controls grouped at the
+   right edge with the existing compact spacing and no clipped controls.
 
 final result: passed

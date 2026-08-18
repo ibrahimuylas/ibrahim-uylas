@@ -1,65 +1,34 @@
 import React from 'react'
-import { Box, IconButton, css, useColorMode } from 'theme-ui'
-import Switch from 'rc-switch'
-import 'rc-switch/assets/index.css'
+import { IconButton, useColorMode } from 'theme-ui'
 import { FaMoon, FaSun } from 'react-icons/fa'
 
 const styles = {
-  switch: {
-    display: [`none`, null, `block`],
-    // Switch Body
-    '&.rc-switch': {
-      background: `linear-gradient(45deg, #FF7D6B, #FFD64C)`,
-      border: 0,
-      width: 50,
-      height: 24,
-      '&:focus': {
-        boxShadow: `none`
-      }
+  trigger: {
+    display: `flex`,
+    alignItems: `center`,
+    justifyContent: `center`,
+    width: 48,
+    minWidth: 48,
+    height: 48,
+    minHeight: 48,
+    boxSizing: `border-box`,
+    p: 0,
+    borderRadius: `full`,
+    color: `omegaDark`,
+    cursor: `pointer`,
+    '&:hover': {
+      bg: `omegaLighter`,
+      color: `heading`
     },
-    '&.rc-switch-checked': {
-      background: `linear-gradient(45deg, #3366FF, #AC15B8)`,
-      border: 0
+    '&:focus-visible': {
+      outline: `3px solid`,
+      outlineColor: `alpha`,
+      outlineOffset: 2
     },
-    // Switch Handle
-    '&.rc-switch:after': {
-      size: `21px`
-    },
-    '&.rc-switch-checked:after': {
-      left: `auto`,
-      right: `2px`
-    },
-    // Switch Icons
-    '.rc-switch-inner': {
-      position: `absolute`,
-      fontSize: `unset`,
-      top: 0,
-      left: 0,
-      width: `100%`,
-      height: `100%`,
-      pointerEvents: `none`
-    },
-    '.rc-switch-inner-checked': {
-      top: 0,
-      left: `-14px`
-    },
-    '.rc-switch-inner-unchecked': {
-      top: 0,
-      left: `30px`
-    },
-    '&.rc-switch-checked .rc-switch-inner-checked': {
-      left: `3px`
-    },
-    '&.rc-switch-checked .rc-switch-inner-unchecked': {
-      left: `30px`
+    svg: {
+      width: 20,
+      height: 20
     }
-  },
-  icon: {
-    verticalAlign: `middle`
-  },
-  //Mobile
-  mobileTrigger: {
-    display: [`block`, null, `none`]
   }
 }
 
@@ -69,25 +38,15 @@ export const HeaderColorMode = () => {
 
   const handleChange = () => setColorMode(isDark ? `light` : `dark`)
 
-  const label = `Toggle dark mode`
+  const label = isDark ? `Açık temaya geç` : `Koyu temaya geç`
 
   return (
-    <Box>
-      <IconButton
-        aria-label={label}
-        onClick={handleChange}
-        sx={styles.mobileTrigger}
-      >
-        {isDark ? <FaMoon /> : <FaSun />}
-      </IconButton>
-      <Switch
-        aria-label={label}
-        onChange={handleChange}
-        checked={isDark}
-        checkedChildren={<FaMoon size={16} css={css(styles.icon)} />}
-        unCheckedChildren={<FaSun size={16} css={css(styles.icon)} />}
-        css={css(styles.switch)}
-      />
-    </Box>
+    <IconButton aria-label={label} onClick={handleChange} sx={styles.trigger}>
+      {isDark ? (
+        <FaMoon aria-hidden='true' focusable='false' />
+      ) : (
+        <FaSun aria-hidden='true' focusable='false' />
+      )}
+    </IconButton>
   )
 }

@@ -16,20 +16,36 @@ const styles = {
     zIndex: 10
   },
   logoContainer: {
-    flexBasis: [`full`, null, `1/3`]
+    flexBasis: `auto`,
+    flexShrink: 0,
+    mr: [`auto`, null, 0],
+    '& .gatsby-image-wrapper': {
+      width: [`120px !important`, `150px !important`],
+      height: [`60px !important`, `75px !important`]
+    }
   },
   searchContainer: {
-    flexBasis: [`auto`, null, `1/3`],
+    position: [`static`, null, `absolute`],
+    top: [`auto`, null, `50%`],
+    left: [`auto`, null, `50%`],
+    flexBasis: `auto`,
+    width: [`auto`, null, `18rem`],
     minWidth: `auto`,
     order: [3, null, `unset`],
-    mx: 3
+    mx: [1, null, 0],
+    transform: [`none`, null, `translate(-50%, -50%)`]
   },
   menuContainer: {
-    flexBasis: [`auto`, null, `1/3`],
+    flexBasis: `auto`,
     minWidth: `auto`,
-    order: [4, null, `unset`]
+    order: [4, null, `unset`],
+    ml: [0, null, `auto`],
+    mr: [0, null, 2]
   },
   colorModeContainer: {
+    display: `flex`,
+    alignItems: `center`,
+    flexShrink: 0,
     minWidth: `auto`,
     order: [2, null, `unset`]
   }
