@@ -1,4 +1,5 @@
 import React from 'react'
+import { useColorMode } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import { getImage } from 'gatsby-plugin-image'
 import Logo from '@components/Logo'
@@ -7,21 +8,20 @@ import useSiteMetadata from '@helpers-blog/useSiteMetadata'
 export const HeaderLogo = ({ ...props }) => {
   const { title } = useSiteMetadata()
 
+  const [colorMode] = useColorMode()
+  const isDark = colorMode === `dark`
+
   const { logo, logoDark } = useStaticQuery(logoQuery)
 
   const logoNormal = getImage(logo)
-  const logoDarkImage = getImage(logoDark)
+  const LogoDark = getImage(logoDark)
 
   if (!logoNormal) return null
 
-  return (
-    <Logo
-      image={logoNormal}
-      imageDark={logoDarkImage}
-      title={title}
-      alt={title}
-      {...props}
-    />
+  return isDark && LogoDark ? (
+    <Logo image={LogoDark} title={title} alt={title} {...props} />
+  ) : (
+    <Logo image={logoNormal} title={title} alt={title} {...props} />
   )
 }
 

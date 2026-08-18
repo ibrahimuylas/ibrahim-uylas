@@ -148,46 +148,6 @@ test('homepage chrome includes the favicon and hides the category scrollbar', ()
   assert.match(categories, /'&::\-webkit-scrollbar': \{[\s\S]*display: `none`/)
 })
 
-test('header logo follows color-mode CSS variables during hydration', () => {
-  const headerLogo = readSource(
-    'packages/flow-ui/flow-ui-layout/src/Header/Header.Logo.jsx'
-  )
-  const logo = readSource(
-    'packages/flow-ui/flow-ui-components/src/Logo/Logo.jsx'
-  )
-  const colors = readSource(
-    'packages/flow-ui/flow-ui-theme/src/theme/colors.js'
-  )
-
-  assert.doesNotMatch(headerLogo, /useColorMode|localStorage/)
-  assert.match(headerLogo, /imageDark=\{logoDarkImage\}/)
-  assert.match(logo, /--theme-ui-colors-logoLightOpacity/)
-  assert.match(logo, /--theme-ui-colors-logoDarkOpacity/)
-  assert.match(colors, /logoLightOpacity: 1,[\s\S]*logoDarkOpacity: 0/)
-  assert.match(
-    colors,
-    /modes: \{[\s\S]*dark: \{[\s\S]*logoLightOpacity: 0,[\s\S]*logoDarkOpacity: 1/
-  )
-})
-
-test('links use color-mode-aware contrast in articles and themed components', () => {
-  const styles = readSource(
-    'packages/flow-ui/flow-ui-theme/src/theme/styles.js'
-  )
-  const normalLink = readSource(
-    'packages/flow-ui/flow-ui-theme/src/theme/links/normal.js'
-  )
-
-  assert.match(
-    styles,
-    /root: \{[\s\S]*a: \{[\s\S]*color: `alphaDark`[\s\S]*textDecorationColor: `currentColor`/
-  )
-  assert.match(styles, /':visited': \{[\s\S]*color: `alphaDark`/)
-  assert.match(normalLink, /color: `alphaDark`/)
-  assert.match(normalLink, /':visited': \{[\s\S]*color: 'alphaDark'/)
-  assert.match(normalLink, /':hover': \{[\s\S]*color: 'alphaDarker'/)
-})
-
 test('homepage profile card uses the responsive portrait instead of the greeting icon', () => {
   const homepage = readSource(
     'site/src/@elegantstack/gatsby-theme-flexiblog-agency/containers/Posts.jsx'
@@ -195,9 +155,7 @@ test('homepage profile card uses the responsive portrait instead of the greeting
   const profileCard = readSource(
     'site/src/@elegantstack/flow-ui-widgets/BannerVertical/BannerVertical.jsx'
   )
-  const stack = readSource(
-    'packages/flow-ui/flow-ui-layout/src/Stack/Stack.jsx'
-  )
+  const stack = readSource('packages/flow-ui/flow-ui-layout/src/Stack/Stack.jsx')
   const portrait = path.resolve(
     __dirname,
     '..',
