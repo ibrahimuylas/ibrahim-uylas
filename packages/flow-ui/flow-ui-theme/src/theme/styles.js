@@ -2,7 +2,19 @@ export default {
   /** Root (body tag) */
   root: {
     WebkitFontSmoothing: `antialiased`,
-    textDecoration: `none`
+    textDecoration: `none`,
+    a: {
+      color: `alphaDark`,
+      textDecorationColor: `currentColor`,
+      ':visited': {
+        color: `alphaDark`
+      },
+      '@media (hover: hover) and (pointer: fine)': {
+        ':hover': {
+          color: `alphaDarker`
+        }
+      }
+    }
   },
 
   /** MDX articles */

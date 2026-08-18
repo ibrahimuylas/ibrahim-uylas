@@ -1,13 +1,13 @@
 export default {
-  color: `alpha`,
+  color: `alphaDark`,
   textDecoration: `none`,
   userSelect: `none`,
   ':visited': {
-    color: 'alpha'
+    color: 'alphaDark'
   },
   '@media (hover: hover) and (pointer: fine)': {
     ':hover': {
-      color: 'alphaDark'
+      color: 'alphaDarker'
     }
   }
 }
