@@ -87,6 +87,9 @@ export default {
   headerBg: white,
   footerBg: white,
 
+  logoLightOpacity: 1,
+  logoDarkOpacity: 0,
+
   mute: gray[300],
   highlight: gray[200],
 
@@ -118,6 +121,9 @@ export default {
       contentBg: gray[800],
       headerBg: gray[800],
       footerBg: gray[800],
+
+      logoLightOpacity: 0,
+      logoDarkOpacity: 1,
 
       mute: gray[600]
     }

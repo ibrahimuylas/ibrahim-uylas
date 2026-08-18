@@ -8,7 +8,7 @@
     "site"
   ],
   "scripts": {
-    "test": "node --test packages/plugins/gatsby-remark-unwrap-video/index.test.cjs tests/camping-guide.test.cjs tests/hiking-guide.test.cjs tests/routes-guide.test.cjs tests/other-guide.test.cjs tests/disqus-import.test.cjs tests/disqus-reactions-import.test.cjs tests/supabase-comments.test.cjs tests/supabase-reactions.test.cjs tests/netlify/build-config.test.cjs tests/netlify/comments.test.cjs tests/netlify/reactions.test.cjs tests/netlify/instagram-feed.test.cjs site/scripts/pagefind-validation.test.cjs site/scripts/sanitize-generated-html.test.cjs site/src/components/blogSearchPolicy.test.cjs site/src/components/instagramShowcasePolicy.test.cjs tests/netlify/newsletter.test.cjs tests/mobile-interactions.test.cjs",
+    "test": "node --test packages/plugins/gatsby-remark-unwrap-video/index.test.cjs tests/camping-guide.test.cjs tests/hiking-guide.test.cjs tests/routes-guide.test.cjs tests/other-guide.test.cjs tests/disqus-import.test.cjs tests/disqus-reactions-import.test.cjs tests/supabase-comments.test.cjs tests/supabase-reactions.test.cjs tests/netlify/build-config.test.cjs tests/netlify/comments.test.cjs tests/netlify/reactions.test.cjs tests/netlify/instagram-feed.test.cjs site/scripts/pagefind-validation.test.cjs site/scripts/sanitize-generated-html.test.cjs site/src/components/blogSearchPolicy.test.cjs site/src/components/instagramShowcasePolicy.test.cjs tests/netlify/newsletter.test.cjs tests/header-logo-theme.test.cjs tests/mobile-interactions.test.cjs",
     "comments:import-disqus": "node scripts/import-disqus-comments.cjs",
     "reactions:import-disqus": "node scripts/import-disqus-reactions.cjs",
     "build": "npm run build -w site",
