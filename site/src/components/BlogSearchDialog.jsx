@@ -170,9 +170,11 @@ const styles = {
     bg: `omegaLighter`,
     color: `heading`,
     cursor: `pointer`,
-    '&:hover': {
-      bg: `omegaLight`,
-      color: `heading`
+    '@media (hover: hover) and (pointer: fine)': {
+      '&:hover': {
+        bg: `omegaLight`,
+        color: `heading`
+      }
     },
     '&:focus-visible': {
       outline: `3px solid`,
@@ -265,16 +267,18 @@ const styles = {
     '&:visited': {
       color: `text`
     },
-    '&:hover': {
-      borderColor: `alpha`
+    '@media (hover: hover) and (pointer: fine)': {
+      '&:hover': {
+        borderColor: `alpha`
+      },
+      '&:hover [data-blog-search-result-title]': {
+        color: `alpha`
+      }
     },
     '&:focus-visible': {
       outline: `3px solid`,
       outlineColor: `alpha`,
       outlineOffset: 3
-    },
-    '&:hover [data-blog-search-result-title]': {
-      color: `alpha`
     }
   },
   resultTitle: {
@@ -316,8 +320,10 @@ const styles = {
     cursor: `pointer`,
     fontFamily: `body`,
     fontWeight: `bold`,
-    '&:hover': {
-      bg: `omegaLighter`
+    '@media (hover: hover) and (pointer: fine)': {
+      '&:hover': {
+        bg: `omegaLighter`
+      }
     },
     '&:focus-visible': {
       outline: `3px solid`,

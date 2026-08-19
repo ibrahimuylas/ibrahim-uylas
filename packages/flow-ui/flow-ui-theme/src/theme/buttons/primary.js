@@ -5,9 +5,11 @@ export default {
   color: `white`,
   bg: `alpha`,
   borderColor: `alpha`,
-  ':hover': {
-    color: `omegaLighter`,
-    bg: `omegaDark`,
-    borderColor: `omegaDark`
+  '@media (hover: hover) and (pointer: fine)': {
+    ':hover': {
+      color: `omegaLighter`,
+      bg: `omegaDark`,
+      borderColor: `omegaDark`
+    }
   }
 }

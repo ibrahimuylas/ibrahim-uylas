@@ -39,10 +39,12 @@ const styles = {
       },
       '@media (prefers-reduced-motion: reduce)': {
         transition: `none`,
-        ':hover': {
-          transform: `none`,
-          '> div:first-of-type': {
-            transform: `none`
+        '@media (hover: hover) and (pointer: fine)': {
+          ':hover': {
+            transform: `none`,
+            '> div:first-of-type': {
+              transform: `none`
+            }
           }
         }
       }

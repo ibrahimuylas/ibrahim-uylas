@@ -16,9 +16,11 @@ const styles = {
     borderRadius: `full`,
     color: `omegaDark`,
     cursor: `pointer`,
-    '&:hover': {
-      bg: `omegaLighter`,
-      color: `heading`
+    '@media (hover: hover) and (pointer: fine)': {
+      '&:hover': {
+        bg: `omegaLighter`,
+        color: `heading`
+      }
     },
     '&:focus-visible': {
       outline: `3px solid`,

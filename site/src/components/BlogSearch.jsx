@@ -41,9 +41,11 @@ const styles = {
     fontFamily: `body`,
     fontSize: 1,
     textAlign: `left`,
-    '&:hover': {
-      borderColor: `alpha`,
-      color: `heading`
+    '@media (hover: hover) and (pointer: fine)': {
+      '&:hover': {
+        borderColor: `alpha`,
+        color: `heading`
+      }
     },
     '&:focus-visible': {
       outline: `3px solid`,
@@ -215,9 +217,11 @@ const BlogSearch = ({ loadPagefind, location, variant }) => {
                 bg: `transparent`,
                 color: `white`,
                 transition: `background-color 140ms ease, transform 140ms ease`,
-                '&:hover': {
-                  bg: `rgba(255, 255, 255, 0.12)`,
-                  color: `white`
+                '@media (hover: hover) and (pointer: fine)': {
+                  '&:hover': {
+                    bg: `rgba(255, 255, 255, 0.12)`,
+                    color: `white`
+                  }
                 },
                 '&:active': {
                   bg: `rgba(255, 255, 255, 0.2)`,

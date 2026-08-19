@@ -2,9 +2,11 @@ export default {
   imageVariant: `horizontal`,
 
   card: {
-    ':hover': {
-      transform: `none`,
-      boxShadow: `none`
+    '@media (hover: hover) and (pointer: fine)': {
+      ':hover': {
+        transform: `none`,
+        boxShadow: `none`
+      }
     }
   },
   content: {

@@ -5,7 +5,9 @@ export default {
   color: `omegaDark`,
   bg: `omegaLighter`,
   borderColor: `omega`,
-  ':hover': {
-    borderColor: `alpha`,
-  },
+  '@media (hover: hover) and (pointer: fine)': {
+    ':hover': {
+      borderColor: `alpha`
+    }
+  }
 }

@@ -24,7 +24,9 @@ const fieldStyle = {
   borderRadius: `8px`,
   fontSize: 1,
   transition: `border-color 160ms ease, box-shadow 160ms ease`,
-  '&:hover': { borderColor: `omega` },
+  '@media (hover: hover) and (pointer: fine)': {
+    '&:hover': { borderColor: `omega` }
+  },
   '&:focus': {
     borderColor: `alpha`,
     boxShadow: theme => `0 0 0 3px ${theme.colors.alphaLighter}`,

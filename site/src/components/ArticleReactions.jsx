@@ -217,11 +217,13 @@ const ArticleReactions = ({ title, slug }) => {
                   : 'none',
                 transition:
                   'transform 160ms ease, border-color 160ms ease, background-color 160ms ease',
-                '&:hover:not(:disabled)': {
-                  color: 'alpha',
-                  bg: 'alphaLighter',
-                  borderColor: 'alphaLight',
-                  transform: 'translateY(-2px)'
+                '@media (hover: hover) and (pointer: fine)': {
+                  '&:hover:not(:disabled)': {
+                    color: 'alpha',
+                    bg: 'alphaLighter',
+                    borderColor: 'alphaLight',
+                    transform: 'translateY(-2px)'
+                  }
                 },
                 '&:focus-visible': {
                   outline: '3px solid',

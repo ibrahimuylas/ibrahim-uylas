@@ -54,9 +54,11 @@ const styles = {
     '&:visited': {
       color: `white`
     },
-    '&:hover': {
-      bg: `rgba(255, 255, 255, 0.12)`,
-      color: `white`
+    '@media (hover: hover) and (pointer: fine)': {
+      '&:hover': {
+        bg: `rgba(255, 255, 255, 0.12)`,
+        color: `white`
+      }
     },
     '&:active': {
       bg: `rgba(255, 255, 255, 0.2)`,

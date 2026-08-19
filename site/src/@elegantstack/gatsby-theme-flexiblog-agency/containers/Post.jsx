@@ -139,10 +139,12 @@ const Post = ({
                   textDecoration: `none`,
                   whiteSpace: `nowrap`,
                   transition: `background-color 160ms ease, transform 160ms ease`,
-                  '&:hover': {
-                    color: `white`,
-                    bg: `alphaDark`,
-                    transform: `translateY(-1px)`
+                  '@media (hover: hover) and (pointer: fine)': {
+                    '&:hover': {
+                      color: `white`,
+                      bg: `alphaDark`,
+                      transform: `translateY(-1px)`
+                    }
                   },
                   '&:focus-visible': {
                     outline: `3px solid`,

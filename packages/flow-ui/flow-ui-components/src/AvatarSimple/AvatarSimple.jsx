@@ -19,8 +19,10 @@ const styles = {
     img: {
       borderRadius: `full`
     },
-    ':hover': {
-      opacity: 1
+    '@media (hover: hover) and (pointer: fine)': {
+      ':hover': {
+        opacity: 1
+      }
     },
     '> div': {
       borderRadius: `full`

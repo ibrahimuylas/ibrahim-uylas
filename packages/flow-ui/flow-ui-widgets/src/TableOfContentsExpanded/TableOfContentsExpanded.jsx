@@ -12,8 +12,10 @@ const styles = {
   },
   text: {
     flex: `1`,
-    ':hover': {
-      color: 'alphaDark'
+    '@media (hover: hover) and (pointer: fine)': {
+      ':hover': {
+        color: 'alphaDark'
+      }
     },
     mb: 0
   }

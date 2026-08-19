@@ -27,9 +27,11 @@ const styles = {
     color: `heading`,
     boxShadow: `0 0.25rem 0.75rem rgba(0, 0, 0, 0.2)`,
     cursor: `pointer`,
-    '&:hover': {
-      bg: `omegaLighter`,
-      color: `heading`
+    '@media (hover: hover) and (pointer: fine)': {
+      '&:hover': {
+        bg: `omegaLighter`,
+        color: `heading`
+      }
     },
     '&:focus': {
       outline: `3px solid`,
@@ -128,9 +130,11 @@ const ScrollToTop = ({ variant }) => {
               color: `white`,
               boxShadow: `none`,
               transition: `background-color 140ms ease, transform 140ms ease`,
-              '&:hover': {
-                bg: `rgba(255, 255, 255, 0.12)`,
-                color: `white`
+              '@media (hover: hover) and (pointer: fine)': {
+                '&:hover': {
+                  bg: `rgba(255, 255, 255, 0.12)`,
+                  color: `white`
+                }
               },
               '&:active': {
                 bg: `rgba(255, 255, 255, 0.2)`,

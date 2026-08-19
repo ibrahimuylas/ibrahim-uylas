@@ -3,9 +3,11 @@ export default {
 
   card: {
     borderRadius: `none`,
-    ':hover': {
-      transform: `none`,
-      boxShadow: `none`
+    '@media (hover: hover) and (pointer: fine)': {
+      ':hover': {
+        transform: `none`,
+        boxShadow: `none`
+      }
     }
   },
   content: {

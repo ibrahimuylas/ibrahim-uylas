@@ -157,9 +157,7 @@ const ArticleLinkCard = ({
         <Box
           data-guide-thumbnail
           sx={{
-            display: hideImageOnMobile
-              ? [`none`, `none`, `block`]
-              : `block`,
+            display: hideImageOnMobile ? [`none`, `none`, `block`] : `block`,
             position: `relative`,
             width: `100%`,
             aspectRatio: guideCardAspectRatio,
@@ -1410,8 +1408,10 @@ const GuideCategory = ({
                 bg: heroAccent,
                 borderRadius: `8px`,
                 letterSpacing: `0.04em`,
-                '&:hover': {
-                  bg: `#0f43b4`
+                '@media (hover: hover) and (pointer: fine)': {
+                  '&:hover': {
+                    bg: `#0f43b4`
+                  }
                 },
                 ...focusStyle
               }}
@@ -1435,10 +1435,12 @@ const GuideCategory = ({
                 borderColor: `omega`,
                 borderRadius: `8px`,
                 letterSpacing: `0.04em`,
-                '&:hover': {
-                  color: heroAccent,
-                  borderColor: heroAccent,
-                  bg: `transparent`
+                '@media (hover: hover) and (pointer: fine)': {
+                  '&:hover': {
+                    color: heroAccent,
+                    borderColor: heroAccent,
+                    bg: `transparent`
+                  }
                 },
                 ...focusStyle
               }}
@@ -1555,9 +1557,11 @@ const GuideCategory = ({
                   '&:visited': {
                     color: `heading`
                   },
-                  '&:hover': {
-                    borderColor: `alpha`,
-                    color: `alpha`
+                  '@media (hover: hover) and (pointer: fine)': {
+                    '&:hover': {
+                      borderColor: `alpha`,
+                      color: `alpha`
+                    }
                   },
                   ...focusStyle
                 }}
@@ -1879,9 +1883,11 @@ const GuideCategory = ({
                   px: 4,
                   py: 2,
                   transition: `background-color 160ms ease, color 160ms ease`,
-                  '&:hover': {
-                    color: selected ? `white` : `alphaDark`,
-                    bg: selected ? `alpha` : `omegaLight`
+                  '@media (hover: hover) and (pointer: fine)': {
+                    '&:hover': {
+                      color: selected ? `white` : `alphaDark`,
+                      bg: selected ? `alpha` : `omegaLight`
+                    }
                   },
                   ...focusStyle
                 }}

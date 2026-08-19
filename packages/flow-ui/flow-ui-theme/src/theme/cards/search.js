@@ -3,9 +3,11 @@ export default {
     borderRadius: `none`,
     boxShadow: `none`,
     bg: `transparent`,
-    ':hover': {
-      transform: `none`,
-      boxShadow: `none`
+    '@media (hover: hover) and (pointer: fine)': {
+      ':hover': {
+        transform: `none`,
+        boxShadow: `none`
+      }
     }
   },
   content: {
@@ -25,8 +27,10 @@ export default {
     variant: `text.h4`,
     color: `alpha`,
     mb: 2,
-    ':hover': {
-      color: `alphaDark`
+    '@media (hover: hover) and (pointer: fine)': {
+      ':hover': {
+        color: `alphaDark`
+      }
     }
   },
   excerpt: {

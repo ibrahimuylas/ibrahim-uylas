@@ -359,10 +359,12 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
                 fontWeight: `bold`,
                 letterSpacing: `0.08em`,
                 textDecoration: `none`,
-                '&:hover': {
-                  color: `contentBg`,
-                  bg: `alpha`,
-                  borderColor: `alpha`
+                '@media (hover: hover) and (pointer: fine)': {
+                  '&:hover': {
+                    color: `contentBg`,
+                    bg: `alpha`,
+                    borderColor: `alpha`
+                  }
                 },
                 ...focusStyle
               }}
@@ -388,10 +390,12 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
                 fontWeight: `bold`,
                 letterSpacing: `0.08em`,
                 textDecoration: `none`,
-                '&:hover': {
-                  color: `contentBg`,
-                  bg: `heading`,
-                  borderColor: `heading`
+                '@media (hover: hover) and (pointer: fine)': {
+                  '&:hover': {
+                    color: `contentBg`,
+                    bg: `heading`,
+                    borderColor: `heading`
+                  }
                 },
                 ...focusStyle
               }}
@@ -436,12 +440,14 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
                 overflow: `hidden`,
                 scrollSnapAlign: `start`,
                 transition: `transform 250ms ease, box-shadow 250ms ease`,
-                '&:hover': {
-                  transform: `translateY(-3px)`,
-                  boxShadow: `0 14px 32px rgba(31, 42, 68, 0.14)`
-                },
-                '&:hover img': {
-                  transform: `scale(1.035)`
+                '@media (hover: hover) and (pointer: fine)': {
+                  '&:hover': {
+                    transform: `translateY(-3px)`,
+                    boxShadow: `0 14px 32px rgba(31, 42, 68, 0.14)`
+                  },
+                  '&:hover img': {
+                    transform: `scale(1.035)`
+                  }
                 },
                 ...focusStyle
               }}

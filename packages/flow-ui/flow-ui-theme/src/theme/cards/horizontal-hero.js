@@ -3,9 +3,11 @@ export default {
     borderRadius: `none`,
     boxShadow: `none`,
     bg: `transparent`,
-    ':hover': {
-      transform: `none`,
-      boxShadow: `none`
+    '@media (hover: hover) and (pointer: fine)': {
+      ':hover': {
+        transform: `none`,
+        boxShadow: `none`
+      }
     }
   },
   content: {

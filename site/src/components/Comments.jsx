@@ -45,7 +45,9 @@ const fieldStyle = {
   // iOS Safari zooms focused form controls whose computed size is below 16px.
   fontSize: '16px',
   transition: 'border-color 160ms ease, box-shadow 160ms ease',
-  '&:hover': { borderColor: 'omega' },
+  '@media (hover: hover) and (pointer: fine)': {
+    '&:hover': { borderColor: 'omega' }
+  },
   '&:focus': {
     borderColor: 'alpha',
     boxShadow: theme => `0 0 0 3px ${theme.colors.alphaLighter}`,
@@ -80,10 +82,12 @@ const secondaryActionStyle = {
   fontSize: 0,
   fontWeight: 'bold',
   transition: 'background-color 160ms ease, border-color 160ms ease',
-  '&:hover': {
-    color: 'heading',
-    bg: 'alphaLighter',
-    borderColor: 'alphaLight'
+  '@media (hover: hover) and (pointer: fine)': {
+    '&:hover': {
+      color: 'heading',
+      bg: 'alphaLighter',
+      borderColor: 'alphaLight'
+    }
   },
   '&:focus-visible': {
     outline: '3px solid',

@@ -13,8 +13,10 @@ const styles = {
       transform: `translate(0,-50%)`,
       pl: 2
     },
-    ':hover svg': {
-      visibility: `visible`
+    '@media (hover: hover) and (pointer: fine)': {
+      ':hover svg': {
+        visibility: `visible`
+      }
     },
     pointerEvents: `painted`
   },

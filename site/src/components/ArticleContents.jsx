@@ -39,9 +39,11 @@ const styles = {
     fontSize: 1,
     fontWeight: `bold`,
     lineHeight: `body`,
-    '&:hover': {
-      bg: `omegaLighter`,
-      color: `heading`
+    '@media (hover: hover) and (pointer: fine)': {
+      '&:hover': {
+        bg: `omegaLighter`,
+        color: `heading`
+      }
     },
     '&:focus-visible': {
       outline: `3px solid`,
@@ -449,9 +451,11 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
                         boxShadow: `none`,
                         transition: `background-color 140ms ease, transform 140ms ease`,
                         visibility: isSheetOpen ? `hidden` : `visible`,
-                        '&:hover': {
-                          bg: `rgba(255, 255, 255, 0.12)`,
-                          color: `white`
+                        '@media (hover: hover) and (pointer: fine)': {
+                          '&:hover': {
+                            bg: `rgba(255, 255, 255, 0.12)`,
+                            color: `white`
+                          }
                         },
                         '&:active': {
                           bg: `rgba(255, 255, 255, 0.2)`,

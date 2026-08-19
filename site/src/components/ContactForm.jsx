@@ -26,8 +26,10 @@ const fieldStyle = {
   borderRadius: `8px`,
   fontSize: 2,
   transition: `border-color 160ms ease, box-shadow 160ms ease`,
-  '&:hover': {
-    borderColor: `omega`
+  '@media (hover: hover) and (pointer: fine)': {
+    '&:hover': {
+      borderColor: `omega`
+    }
   },
   '&:focus': {
     borderColor: `alpha`,

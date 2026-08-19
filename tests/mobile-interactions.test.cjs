@@ -2,9 +2,99 @@ const test = require('node:test')
 const assert = require('node:assert/strict')
 const fs = require('node:fs')
 const path = require('node:path')
+const parser = require('@babel/parser')
 
 const readSource = relativePath =>
   fs.readFileSync(path.resolve(__dirname, '..', relativePath), 'utf8')
+
+const getObjectKey = node => {
+  if (node?.type === 'StringLiteral') return node.value
+  if (node?.type === 'Identifier') return node.name
+  return null
+}
+
+const findUngatedHoverStyles = (
+  node,
+  file,
+  ancestors = [],
+  violations = []
+) => {
+  if (!node || typeof node !== 'object') return violations
+
+  if (node.type === 'ObjectProperty' || node.type === 'ObjectMethod') {
+    const key = getObjectKey(node.key)
+    const nextAncestors = key ? [...ancestors, key] : ancestors
+
+    if (
+      key?.includes(':hover') &&
+      !ancestors.some(
+        ancestor =>
+          ancestor.includes('(hover: hover)') &&
+          ancestor.includes('(pointer: fine)')
+      )
+    ) {
+      violations.push(`${file}:${node.loc.start.line}:${key}`)
+    }
+
+    for (const [property, value] of Object.entries(node)) {
+      if (['key', 'loc', 'start', 'end'].includes(property)) continue
+
+      if (Array.isArray(value)) {
+        value.forEach(child =>
+          findUngatedHoverStyles(child, file, nextAncestors, violations)
+        )
+      } else {
+        findUngatedHoverStyles(value, file, nextAncestors, violations)
+      }
+    }
+
+    return violations
+  }
+
+  for (const [property, value] of Object.entries(node)) {
+    if (['loc', 'start', 'end'].includes(property)) continue
+
+    if (Array.isArray(value)) {
+      value.forEach(child =>
+        findUngatedHoverStyles(child, file, ancestors, violations)
+      )
+    } else {
+      findUngatedHoverStyles(value, file, ancestors, violations)
+    }
+  }
+
+  return violations
+}
+
+const listJavaScriptFiles = relativeDirectory => {
+  const directory = path.resolve(__dirname, '..', relativeDirectory)
+
+  return fs
+    .readdirSync(directory, { recursive: true, withFileTypes: true })
+    .filter(entry => entry.isFile() && /\.jsx?$/.test(entry.name))
+    .map(entry =>
+      path
+        .join(entry.parentPath || entry.path, entry.name)
+        .replace(`${path.resolve(__dirname, '..')}${path.sep}`, '')
+    )
+}
+
+test('interactive hover styles are limited to hover-capable fine pointers', () => {
+  const files = [
+    ...listJavaScriptFiles('site/src'),
+    ...listJavaScriptFiles('packages/flow-ui')
+  ]
+  const violations = files.flatMap(file => {
+    const ast = parser.parse(readSource(file), {
+      plugins: ['jsx'],
+      sourceType: 'module'
+    })
+
+    return findUngatedHoverStyles(ast, file)
+  })
+
+  assert.deepEqual(violations, [])
+})
 
 test('mobile search keeps iOS controls tappable and focuses the query input', () => {
   const trigger = readSource('site/src/components/BlogSearch.jsx')

@@ -78,8 +78,10 @@ const styles = {
       '&:visited': {
         color: `alphaDarker`
       },
-      '&:hover': {
-        color: `alphaDark`
+      '@media (hover: hover) and (pointer: fine)': {
+        '&:hover': {
+          color: `alphaDark`
+        }
       }
     }
   },
@@ -111,9 +113,11 @@ const styles = {
     bg: `omegaLighter`,
     color: `heading`,
     cursor: `pointer`,
-    '&:hover': {
-      bg: `omegaLight`,
-      color: `heading`
+    '@media (hover: hover) and (pointer: fine)': {
+      '&:hover': {
+        bg: `omegaLight`,
+        color: `heading`
+      }
     },
     '&:focus-visible': {
       outline: `3px solid`,
