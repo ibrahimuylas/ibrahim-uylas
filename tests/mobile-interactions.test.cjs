@@ -154,6 +154,9 @@ test('mobile action dock uses a compact translucent surface without Safari artif
   assert.doesNotMatch(dock, /(?:Webkit)?BackdropFilter/)
   assert.match(dock, /width: `max-content`/)
   assert.match(dock, /maxWidth: `calc\(100vw - 2rem\)`/)
+  assert.match(dock, /minHeight: 56/)
+  assert.match(dock, /px: 2/)
+  assert.match(dock, /py: 1/)
   assert.match(dock, /borderWidth: 1/)
   assert.match(dock, /borderStyle: `solid`/)
   assert.match(dock, /borderColor: `rgba\(255, 255, 255, 0\.18\)`/)
@@ -167,8 +170,9 @@ test('mobile action dock uses a compact translucent surface without Safari artif
   assert.match(dock, /<FaHome aria-hidden='true' focusable='false' \/>/)
   assert.match(
     dock,
-    /boxShadow: `0 8px 24px rgba\(0, 0, 0, 0\.18\), inset 0 1px 0 rgba\(255, 255, 255, 0\.14\)`/
+    /boxShadow: `inset 0 1px 0 rgba\(255, 255, 255, 0\.14\)`/
   )
+  assert.doesNotMatch(dock, /boxShadow: `0 [^`]+rgba\(0, 0, 0/)
 
   for (const action of [contents, search, scrollToTop]) {
     assert.match(action, /color: `white`/)
