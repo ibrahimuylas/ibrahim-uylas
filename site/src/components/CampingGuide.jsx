@@ -1420,7 +1420,7 @@ const GuideCategory = ({
             </Button>
             <Button
               as='a'
-              href='#tum-icerikler'
+              href={guide.hero.secondaryCtaHref || '#tum-icerikler'}
               variant='mute'
               sx={{
                 justifyContent: `center`,

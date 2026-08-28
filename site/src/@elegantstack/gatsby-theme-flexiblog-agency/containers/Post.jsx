@@ -10,8 +10,16 @@ import NewsletterExpanded from '@widgets/NewsletterExpanded'
 import ArticleContents from '../../../components/ArticleContents'
 import ArticleReactions from '../../../components/ArticleReactions'
 import DeferredComments from '../../../components/DeferredComments'
+import LikyaGuidePage from '../../../components/LikyaGuidePage'
+import LikyaStagePage from '../../../components/LikyaStagePage'
+import {
+  isLikyaGuideShellEnabled,
+  isLikyaStageGuideEnabled
+} from '../../../components/likyaGuideShellPolicy'
 import { trackEvent } from '../../../utils/analytics'
 import categoryGuideLinks from '../../../content-guides/categoryGuideLinks'
+import guideMeta from '../../../content-guides/likya/guide-meta'
+import { stageGuideByArticleSlug } from '../../../content-guides/likya/stage-guides'
 // import AuthorExpanded from '@widgets/AuthorExpanded'
 import { PostHead, PostImage, PostBody, PostTagsShare } from '@widgets/Post'
 
@@ -28,6 +36,47 @@ const Post = ({
   const categoryGuide = post.category
     ? categoryGuideLinks[post.category.name]
     : null
+  const isLikyaPreview = process.env.GATSBY_LIKYA_GUIDE_PREVIEW === 'true'
+
+  if (
+    isLikyaGuideShellEnabled({
+      path: props.location?.pathname,
+      slug: post.slug,
+      guideMeta,
+      preview: isLikyaPreview
+    })
+  ) {
+    return (
+      <LikyaGuidePage
+        {...props}
+        post={post}
+        location={props.location}
+        services={services}
+        siteUrl={siteUrl}
+        relatedPosts={relatedPosts}
+      />
+    )
+  }
+
+  if (
+    isLikyaStageGuideEnabled({
+      slug: post.slug,
+      stageGuideByArticleSlug,
+      guideMeta,
+      preview: isLikyaPreview
+    })
+  ) {
+    return (
+      <LikyaStagePage
+        {...props}
+        post={post}
+        location={props.location}
+        services={services}
+        siteUrl={siteUrl}
+        relatedPosts={relatedPosts}
+      />
+    )
+  }
 
   const handleRelatedPostClick = event => {
     const link = event.target.closest && event.target.closest('a')
