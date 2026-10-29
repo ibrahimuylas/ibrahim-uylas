@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-27",
+  "language": "tr",
+  "target": "kira.uylas.net",
+  "repo": "/Users/uylas/Projects/ibrahim-uylas",
+  "nameTemporary": true,
+  "puppyNotSelected": true,
+  "parents": {
+    "mother": "Billie / Basileas Journey Continues",
+    "father": "Zane / Basileas Lil Bit N Zane"
+  },
+  "grandparents": {
+    "maternalGrandmother": "Basileas Epic Journey",
+    "maternalGrandfather": "Ryder",
+    "paternalGrandmother": "Cross L's Halsey Valley of Blues",
+    "paternalGrandfather": "Cross L's Not An Illusion"
+  },
+  "designDirections": [
+    "Hatıra Defteri — warm editorial family archive, three equal candidate photographs then parent profiles",
+    "Soy Ağacı — light interactive genealogy canvas with source-backed selected profile inspector",
+    "Fotoğraf Günlüğü — charcoal photographic archive, original vs AI comparison and dated source history"
+  ],
+  "sourceCaveats": [
+    "Kira henüz seçilmedi; isim geçici.",
+    "AI yetişkin görselleri temsili; göz rengi ve desen öngörüsü değildir.",
+    "Tarihler arşiv tarihleridir; doğum veya test tarihleri değildir.",
+    "Kaynakta Billie NAD +/- taşıyıcı, HD A/A; Zane NAD +/+, HD B/C.",
+    "Görsel mockuplardaki fotoğraflar yeniden çizilmiştir. Uygulamada orijinal dosyalar kullanılmalı; özellikle ilk mockuptaki Billie görseli adayın AI görünümüyle karışmıştır.",
+    "Üçüncü mockup Billie NAD satırını yanlış +/+ (taşıyıcı) yazmıştır; doğru kaynak sonucu +/- taşıyıcıdır. Mockup test kanıtı değildir.",
+    "Jay ve Ryder ayrı kaynak sayfaları arşivlendi; baba tarafı büyükanne/büyükbaba için test bilgisi bulunmadı."
+  ],
+  "artifactsOnly": true,
+  "sources": [
+    {
+      "url": "https://www.basileas-minis.com/billie123.html",
+      "captured": "2026-10-27",
+      "local": "references/billie123.html"
+    },
+    {
+      "url": "https://www.basileas-minis.com/zane.html",
+      "captured": "2026-10-27",
+      "local": "references/zane.html"
+    },
+    {
+      "url": "https://www.basileas-minis.com/jay123.html",
+      "captured": "2026-10-27",
+      "local": "references/jay123.html"
+    },
+    {
+      "url": "https://www.basileas-minis.com/ryder.html",
+      "captured": "2026-10-27",
+      "local": "references/ryder.html"
+    },
+    {
+      "url": "https://www.basileas-minis.com/puppies.html",
+      "captured": "2026-10-27",
+      "local": "references/puppies.html"
+    }
+  ],
+  "displayOrder": [
+    {
+      "option": 1,
+      "name": "Hatıra Defteri",
+      "path": "mockups/01-hatira-defteri.png"
+    },
+    {
+      "option": 2,
+      "name": "Soy Ağacı",
+      "path": "mockups/02-soy-agaci.png"
+    },
+    {
+      "option": 3,
+      "name": "Fotoğraf Günlüğü",
+      "path": "mockups/03-fotograf-gunlugu.png"
+    }
+  ],
+  "generator": "Built-in image_gen",
+  "implementationStarted": false
+}

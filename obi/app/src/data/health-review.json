@@ -1,0 +1,8 @@
+{
+  "checkedAt": "2026-10-27",
+  "basis": "Public breeder profile text; not independently verified laboratory certificates.",
+  "profiles": {
+    "billie": {"sourceUrl":"https://www.basileas-minis.com/billie123.html","tests":["Hips (HD)","Elbows (ED)","Patella","LSTV","Eyes","MDR1","HSF4","PRA","DM","CEA","NAD"]},
+    "zane": {"sourceUrl":"https://www.basileas-minis.com/zane.html","tests":["Hips (HD)","Elbows (ED)","LTV","Eyes","MDR1","DM/SOD1","HSF4","PRCD-PRA","CEA","NAD","CDDY/IVDD"]}
+  }
+}

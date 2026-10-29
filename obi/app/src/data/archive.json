@@ -1,0 +1,1537 @@
+{
+  "dogs": [
+    {
+      "id": "billie",
+      "name": "Billie",
+      "formalName": "Basileas Journey Continues",
+      "role": "Mother",
+      "sourceId": "billie123",
+      "facts": {
+        "Height": "39 cm (KC Medium)",
+        "Coat": "Blue merle c/w",
+        "Tail": "Long"
+      },
+      "parents": [
+        "jay",
+        "ryder"
+      ],
+      "tests": [
+        {
+          "name": "Hips (HD)",
+          "result": "A/A (Prof Dr Flückiger, FCI)",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "Elbows (ED)",
+          "result": "0:0 (Prof Dr Flückiger, FCI)",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "Patella",
+          "result": "Normal (OFA)",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "LSTV",
+          "result": "Clear (Prof Dr Flückiger, FCI)",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "Eyes",
+          "result": "Clear",
+          "carrier": false,
+          "category": "Eye examination",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "MDR1",
+          "result": "+/+ (clear)",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "HSF4",
+          "result": "+/+ (clear)",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "PRA",
+          "result": "+/+ (clear)",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "DM",
+          "result": "+/+ (clear)",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "CEA",
+          "result": "+/+ (clear)",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "NAD",
+          "result": "+/− (carrier)",
+          "carrier": true,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "capturedAt": "2026-10-27"
+        }
+      ],
+      "overview": [
+        "An outgoing, happy and bouncy dog who enjoys meeting people and other dogs.",
+        "Billie earned the Swiss Junior Beauty Champion title and has begun agility foundation training."
+      ],
+      "overviewLabel": "From the breeder’s notes",
+      "photos": [
+        {
+          "id": "364e14912a06",
+          "src": "/media/115cedffef-279704891-7565709423469161-2808504298445008533-n_orig.webp",
+          "original": "/archive/photos/115cedffef-279704891-7565709423469161-2808504298445008533-n_orig.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/279704891-7565709423469161-2808504298445008533-n_orig.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/billie123.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "115cedffef-279704891-7565709423469161-2808504298445008533-n_orig.jpg"
+        },
+        {
+          "id": "16ae7d1b4494",
+          "src": "/media/1ab63a263c-305315130-417053560415713-2118717840512241871-n_orig.webp",
+          "original": "/archive/photos/1ab63a263c-305315130-417053560415713-2118717840512241871-n_orig.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/305315130-417053560415713-2118717840512241871-n_orig.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/billie123.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "1ab63a263c-305315130-417053560415713-2118717840512241871-n_orig.jpg"
+        },
+        {
+          "id": "cef9b7890e00",
+          "src": "/media/43a4675fc7-305471149-417053573749045-7158030675752225291-n_orig.webp",
+          "original": "/archive/photos/43a4675fc7-305471149-417053573749045-7158030675752225291-n_orig.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/305471149-417053573749045-7158030675752225291-n_orig.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/billie123.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "43a4675fc7-305471149-417053573749045-7158030675752225291-n_orig.jpg"
+        },
+        {
+          "id": "a36f8da95a5e",
+          "src": "/media/a812742e24-359783313-597762659011468-8960801699412467734-n_orig.webp",
+          "original": "/archive/photos/a812742e24-359783313-597762659011468-8960801699412467734-n_orig.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/359783313-597762659011468-8960801699412467734-n_orig.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/billie123.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "a812742e24-359783313-597762659011468-8960801699412467734-n_orig.jpg"
+        },
+        {
+          "id": "9048c398485e",
+          "src": "/media/3f98391af3-billie_orig.webp",
+          "original": "/archive/photos/3f98391af3-billie_orig.jpeg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/billie_orig.jpeg",
+          "sourcePageUrl": "https://www.basileas-minis.com/agility.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/agility.html",
+            "https://www.basileas-minis.com/past-litters.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "3f98391af3-billie_orig.jpeg"
+        }
+      ],
+      "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+      "capturedAt": "2026-10-27",
+      "sourceKind": "profile"
+    },
+    {
+      "id": "zane",
+      "name": "Zane",
+      "formalName": "Basileas Lil Bit N Zane",
+      "role": "Father",
+      "sourceId": "zane",
+      "facts": {
+        "Height": "40 cm",
+        "Coat": "Black, copper & white",
+        "Eye colour": "Blue"
+      },
+      "parents": [
+        "halsey",
+        "not-an-illusion"
+      ],
+      "tests": [
+        {
+          "name": "Hips (HD)",
+          "result": "B/C (FCI)",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "Elbows (ED)",
+          "result": "Normal (FCI)",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "LTV",
+          "result": "Normal (FCI)",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "Eyes",
+          "result": "Clear",
+          "carrier": false,
+          "category": "Eye examination",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "MDR1",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "DM/SOD1",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "HSF4",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "PRCD-PRA",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "CEA",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "NAD",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "CDDY/IVDD",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "capturedAt": "2026-10-27"
+        }
+      ],
+      "overview": [
+        "Zane’s breeder profile records blue eyes, a black, copper and white coat, and a height of 40 cm."
+      ],
+      "overviewLabel": "Profile notes",
+      "photos": [
+        {
+          "id": "294cf51b745a",
+          "src": "/media/dba8f1294a-dsc6706_orig.webp",
+          "original": "/archive/photos/dba8f1294a-dsc6706_orig.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/dsc6706_orig.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/zane.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "dba8f1294a-dsc6706_orig.jpg"
+        },
+        {
+          "id": "631404f6b709",
+          "src": "/media/dff9231309-dsc6695_orig.webp",
+          "original": "/archive/photos/dff9231309-dsc6695_orig.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/dsc6695_orig.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/zane.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "dff9231309-dsc6695_orig.jpg"
+        },
+        {
+          "id": "7b7e9c43b755",
+          "src": "/media/5795a05a43-dsc6758_orig.webp",
+          "original": "/archive/photos/5795a05a43-dsc6758_orig.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/dsc6758_orig.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/zane.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "5795a05a43-dsc6758_orig.jpg"
+        },
+        {
+          "id": "f1cd6aa6d94b",
+          "src": "/media/db5c43419b-dsc6788_orig.webp",
+          "original": "/archive/photos/db5c43419b-dsc6788_orig.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/dsc6788_orig.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/zane.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "db5c43419b-dsc6788_orig.jpg"
+        },
+        {
+          "id": "71defb639e61",
+          "src": "/media/98107822a3-dsc6753_orig.webp",
+          "original": "/archive/photos/98107822a3-dsc6753_orig.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/dsc6753_orig.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/zane.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "98107822a3-dsc6753_orig.jpg"
+        },
+        {
+          "id": "c6b2b565a278",
+          "src": "/media/dde2a9baa3-zane-stack_orig.webp",
+          "original": "/archive/photos/dde2a9baa3-zane-stack_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/zane-stack_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/males.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/males.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "dde2a9baa3-zane-stack_orig.png"
+        }
+      ],
+      "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+      "capturedAt": "2026-10-27",
+      "sourceKind": "profile"
+    },
+    {
+      "id": "jay",
+      "name": "Jay",
+      "formalName": "Basileas Epic Journey",
+      "role": "Maternal grandmother",
+      "sourceId": "jay123",
+      "facts": {
+        "Height": "36 cm",
+        "Coat": "Blue merle",
+        "Eye colour": "Brown (both eyes)"
+      },
+      "parents": [
+        "basileas-american-journey",
+        "gordonview-all-my-exs-live-in-texas"
+      ],
+      "tests": [
+        {
+          "name": "Hips (HD)",
+          "result": "A/A",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "Elbows (ED)",
+          "result": "0/0",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "Patella (PL)",
+          "result": "Normal",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "Eyes",
+          "result": "Clear",
+          "carrier": false,
+          "category": "Eye examination",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "MDR1",
+          "result": "+/+ (clear)",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "HSF4",
+          "result": "+/+ (clear)",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "PRA",
+          "result": "+/+ (clear)",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "DM",
+          "result": "+/+ (clear)",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "CEA",
+          "result": "+/+ (clear)",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "NAD",
+          "result": "+/− (carrier)",
+          "carrier": true,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "capturedAt": "2026-10-27"
+        }
+      ],
+      "overview": [
+        "Billie’s mother, recorded as Basileas Epic Journey. Her profile includes her health results and her parents."
+      ],
+      "overviewLabel": "Profile notes",
+      "photos": [
+        {
+          "id": "a5313bdb35ef",
+          "src": "/media/3bbf7fa063-jay_orig.webp",
+          "original": "/archive/photos/3bbf7fa063-jay_orig.jpeg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/jay_orig.jpeg",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/billie123.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "3bbf7fa063-jay_orig.jpeg"
+        },
+        {
+          "id": "4e8bd978fcdb",
+          "src": "/media/6ce4185353-dsc9953_3.webp",
+          "original": "/archive/photos/6ce4185353-dsc9953_3.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/dsc9953_3.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/jay123.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "6ce4185353-dsc9953_3.jpg"
+        }
+      ],
+      "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+      "capturedAt": "2026-10-27",
+      "sourceKind": "profile"
+    },
+    {
+      "id": "ryder",
+      "name": "Ryder",
+      "formalName": "Ryder",
+      "role": "Maternal grandfather",
+      "sourceId": "ryder",
+      "facts": {
+        "Height": "42 cm",
+        "Colour profile": "Bb awat Kk EE DD",
+        "Tail": "Long/docked (by DNA test)"
+      },
+      "parents": [
+        "timberlines-different-dimension",
+        "timberlines-fenaz"
+      ],
+      "tests": [
+        {
+          "name": "Hips (HD)",
+          "result": "A1 (Dr Viefhues, FCI)",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "Elbows (ED)",
+          "result": "0:0 (Dr Viefhues, FCI)",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "OCD",
+          "result": "Normal (Dr Viefhues, FCI)",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "LTV",
+          "result": "Clear (Dr Viefhues, FCI)",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "Patella (PL)",
+          "result": "Normal (Dr Viefhues, FCI)",
+          "carrier": false,
+          "category": "Orthopaedic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "Eyes",
+          "result": "Cleared annually",
+          "carrier": false,
+          "category": "Eye examination",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "MDR1",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "DM/SOD1",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "HSF4",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "PRCD-PRA",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "CEA",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "CM",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "CMR1",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "NCL",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "CDDY/IVDD",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        },
+        {
+          "name": "NAD",
+          "result": "+/+",
+          "carrier": false,
+          "category": "Genetic",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "capturedAt": "2026-10-27"
+        }
+      ],
+      "overview": [
+        "Friendly with people and dogs, fond of children and cuddles, and comfortable travelling and hiking.",
+        "The breeder describes a Swiss mountain holiday just after he arrived at nine months old, including trains, buses, cable cars and a chair lift. Ryder is co-owned with Just Gorgeous Minis."
+      ],
+      "overviewLabel": "From the breeder’s notes",
+      "photos": [
+        {
+          "id": "3fae457d40c2",
+          "src": "/media/c889a407c9-178355829-5568116383228485-2084347039683760786-n_3.webp",
+          "original": "/archive/photos/c889a407c9-178355829-5568116383228485-2084347039683760786-n_3.jpeg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/178355829-5568116383228485-2084347039683760786-n_3.jpeg",
+          "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/billie123.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "c889a407c9-178355829-5568116383228485-2084347039683760786-n_3.jpeg"
+        },
+        {
+          "id": "af3bba64c4f6",
+          "src": "/media/8111b188d9-dsc3248-1_1_orig.webp",
+          "original": "/archive/photos/8111b188d9-dsc3248-1_1_orig.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/dsc3248-1_1_orig.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "8111b188d9-dsc3248-1_1_orig.jpg"
+        },
+        {
+          "id": "d3af06b4e108",
+          "src": "/media/5032187773-dsc1711_1_orig.webp",
+          "original": "/archive/photos/5032187773-dsc1711_1_orig.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/dsc1711_1_orig.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "5032187773-dsc1711_1_orig.jpg"
+        },
+        {
+          "id": "101aa384e5eb",
+          "src": "/media/f0277fd02d-dsc4663v2-small_1_orig.webp",
+          "original": "/archive/photos/f0277fd02d-dsc4663v2-small_1_orig.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/dsc4663v2-small_1_orig.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "f0277fd02d-dsc4663v2-small_1_orig.jpg"
+        },
+        {
+          "id": "b8f5faacd75f",
+          "src": "/media/6579bc0a7c-dsc1691-2_3.webp",
+          "original": "/archive/photos/6579bc0a7c-dsc1691-2_3.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/dsc1691-2_3.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "6579bc0a7c-dsc1691-2_3.jpg"
+        },
+        {
+          "id": "c93a7324a7d7",
+          "src": "/media/9f540c8807-screenshot-2021-06-07-at-18-36-09_1_orig.webp",
+          "original": "/archive/photos/9f540c8807-screenshot-2021-06-07-at-18-36-09_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-07-at-18-36-09_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "9f540c8807-screenshot-2021-06-07-at-18-36-09_1_orig.png"
+        },
+        {
+          "id": "dbeba8e7d573",
+          "src": "/media/54be8ef62e-screenshot-2021-06-07-at-18-36-19_1_orig.webp",
+          "original": "/archive/photos/54be8ef62e-screenshot-2021-06-07-at-18-36-19_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-07-at-18-36-19_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "54be8ef62e-screenshot-2021-06-07-at-18-36-19_1_orig.png"
+        },
+        {
+          "id": "f950e82f7b94",
+          "src": "/media/f2737a7bd9-screenshot-2021-06-07-at-18-36-48_1_orig.webp",
+          "original": "/archive/photos/f2737a7bd9-screenshot-2021-06-07-at-18-36-48_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-07-at-18-36-48_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "f2737a7bd9-screenshot-2021-06-07-at-18-36-48_1_orig.png"
+        },
+        {
+          "id": "9c2e13e2cd3d",
+          "src": "/media/2feb911eea-screenshot-2021-06-16-at-15-46-44_1_orig.webp",
+          "original": "/archive/photos/2feb911eea-screenshot-2021-06-16-at-15-46-44_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-46-44_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "2feb911eea-screenshot-2021-06-16-at-15-46-44_1_orig.png"
+        },
+        {
+          "id": "29c2a99bc70d",
+          "src": "/media/80eb33ba76-screenshot-2021-06-16-at-15-46-55_1_orig.webp",
+          "original": "/archive/photos/80eb33ba76-screenshot-2021-06-16-at-15-46-55_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-46-55_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "80eb33ba76-screenshot-2021-06-16-at-15-46-55_1_orig.png"
+        },
+        {
+          "id": "5308f3cee5c4",
+          "src": "/media/78256e81ee-screenshot-2021-06-16-at-15-47-06_1_orig.webp",
+          "original": "/archive/photos/78256e81ee-screenshot-2021-06-16-at-15-47-06_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-47-06_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "78256e81ee-screenshot-2021-06-16-at-15-47-06_1_orig.png"
+        },
+        {
+          "id": "37571634a6ae",
+          "src": "/media/f49c237357-screenshot-2021-06-16-at-15-47-23_1_orig.webp",
+          "original": "/archive/photos/f49c237357-screenshot-2021-06-16-at-15-47-23_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-47-23_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "f49c237357-screenshot-2021-06-16-at-15-47-23_1_orig.png"
+        },
+        {
+          "id": "a0c9ef69e691",
+          "src": "/media/d8855d6ce9-screenshot-2021-06-16-at-15-47-33_1_orig.webp",
+          "original": "/archive/photos/d8855d6ce9-screenshot-2021-06-16-at-15-47-33_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-47-33_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "d8855d6ce9-screenshot-2021-06-16-at-15-47-33_1_orig.png"
+        },
+        {
+          "id": "68548d0ce8e1",
+          "src": "/media/7d845cc022-screenshot-2021-06-16-at-15-49-55_1_orig.webp",
+          "original": "/archive/photos/7d845cc022-screenshot-2021-06-16-at-15-49-55_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-49-55_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "7d845cc022-screenshot-2021-06-16-at-15-49-55_1_orig.png"
+        },
+        {
+          "id": "133ae94c98d5",
+          "src": "/media/5ab27c92b9-screenshot-2021-06-16-at-15-49-04_1_orig.webp",
+          "original": "/archive/photos/5ab27c92b9-screenshot-2021-06-16-at-15-49-04_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-49-04_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "5ab27c92b9-screenshot-2021-06-16-at-15-49-04_1_orig.png"
+        },
+        {
+          "id": "047d76616b50",
+          "src": "/media/d922b6ac95-screenshot-2021-06-16-at-15-48-54_1_orig.webp",
+          "original": "/archive/photos/d922b6ac95-screenshot-2021-06-16-at-15-48-54_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-48-54_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "d922b6ac95-screenshot-2021-06-16-at-15-48-54_1_orig.png"
+        },
+        {
+          "id": "ac10219baae4",
+          "src": "/media/daed971bba-screenshot-2021-06-16-at-15-48-38_1_orig.webp",
+          "original": "/archive/photos/daed971bba-screenshot-2021-06-16-at-15-48-38_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-48-38_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "daed971bba-screenshot-2021-06-16-at-15-48-38_1_orig.png"
+        },
+        {
+          "id": "a3d9c4a6a134",
+          "src": "/media/d1229233ec-screenshot-2021-06-16-at-15-48-27_1_orig.webp",
+          "original": "/archive/photos/d1229233ec-screenshot-2021-06-16-at-15-48-27_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-48-27_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "d1229233ec-screenshot-2021-06-16-at-15-48-27_1_orig.png"
+        },
+        {
+          "id": "1c3e5d208242",
+          "src": "/media/bb3abcfaf1-screenshot-2021-06-16-at-15-48-18_1_orig.webp",
+          "original": "/archive/photos/bb3abcfaf1-screenshot-2021-06-16-at-15-48-18_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-48-18_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "bb3abcfaf1-screenshot-2021-06-16-at-15-48-18_1_orig.png"
+        },
+        {
+          "id": "c66136c2b323",
+          "src": "/media/629d65e591-screenshot-2021-06-16-at-15-48-05_1_orig.webp",
+          "original": "/archive/photos/629d65e591-screenshot-2021-06-16-at-15-48-05_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-48-05_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "629d65e591-screenshot-2021-06-16-at-15-48-05_1_orig.png"
+        },
+        {
+          "id": "b5f1654ab618",
+          "src": "/media/675f97aceb-screenshot-2021-06-16-at-15-47-54_1_orig.webp",
+          "original": "/archive/photos/675f97aceb-screenshot-2021-06-16-at-15-47-54_1_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2021-06-16-at-15-47-54_1_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "675f97aceb-screenshot-2021-06-16-at-15-47-54_1_orig.png"
+        }
+      ],
+      "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+      "capturedAt": "2026-10-27",
+      "sourceKind": "profile"
+    },
+    {
+      "id": "halsey",
+      "name": "Halsey",
+      "formalName": "Cross L’s Halsey Valley of Blues",
+      "role": "Paternal grandmother",
+      "sourceId": "zane",
+      "facts": {},
+      "parents": [],
+      "tests": [],
+      "overview": [
+        "Identified as Zane’s mother on his breeder profile. No separate health results are recorded in the archived source."
+      ],
+      "photos": [
+        {
+          "id": "12773a2f5791",
+          "src": "/media/3643eeaaf7-screenshot-2026-08-01-at-13-37-02_orig.webp",
+          "original": "/archive/photos/3643eeaaf7-screenshot-2026-08-01-at-13-37-02_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2026-08-01-at-13-37-02_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/zane.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "3643eeaaf7-screenshot-2026-08-01-at-13-37-02_orig.png"
+        }
+      ],
+      "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+      "capturedAt": "2026-10-27",
+      "sourceKind": "family-reference",
+      "sourceContext": "Zane"
+    },
+    {
+      "id": "not-an-illusion",
+      "name": "Not An Illusion",
+      "formalName": "Cross L’s Not An Illusion",
+      "role": "Paternal grandfather",
+      "sourceId": "zane",
+      "facts": {},
+      "parents": [],
+      "tests": [],
+      "overview": [
+        "Identified as Zane’s father on his breeder profile. No separate health results are recorded in the archived source."
+      ],
+      "photos": [
+        {
+          "id": "a6e1b5f5db84",
+          "src": "/media/bdbc7e7530-screenshot-2026-08-01-at-13-37-29_orig.webp",
+          "original": "/archive/photos/bdbc7e7530-screenshot-2026-08-01-at-13-37-29_orig.png",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/screenshot-2026-08-01-at-13-37-29_orig.png",
+          "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/zane.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "bdbc7e7530-screenshot-2026-08-01-at-13-37-29_orig.png"
+        }
+      ],
+      "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+      "capturedAt": "2026-10-27",
+      "sourceKind": "family-reference",
+      "sourceContext": "Zane"
+    },
+    {
+      "id": "basileas-american-journey",
+      "name": "Basileas American Journey",
+      "formalName": "Basileas American Journey",
+      "role": "Great-grandparent",
+      "sourceId": "jay123",
+      "facts": {},
+      "parents": [],
+      "tests": [],
+      "overview": [
+        "Family relationship and photograph recorded on the linked breeder profile."
+      ],
+      "photos": [
+        {
+          "id": "9070baffe040",
+          "src": "/media/52c5f9029b-y6a4399-1-lina_3.webp",
+          "original": "/archive/photos/52c5f9029b-y6a4399-1-lina_3.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/y6a4399-1-lina_3.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/jay123.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "52c5f9029b-y6a4399-1-lina_3.jpg"
+        }
+      ],
+      "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+      "capturedAt": "2026-10-27",
+      "sourceKind": "family-reference",
+      "sourceContext": "Jay"
+    },
+    {
+      "id": "gordonview-all-my-exs-live-in-texas",
+      "name": "Gordonview All My Ex’s Live In Texas",
+      "formalName": "Gordonview All My Ex’s Live In Texas",
+      "role": "Great-grandparent",
+      "sourceId": "jay123",
+      "facts": {},
+      "parents": [],
+      "tests": [],
+      "overview": [
+        "Family relationship and photograph recorded on the linked breeder profile."
+      ],
+      "photos": [
+        {
+          "id": "89050ee07fb8",
+          "src": "/media/14eee2fecb-y6a1322-1-small_3.webp",
+          "original": "/archive/photos/14eee2fecb-y6a1322-1-small_3.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/y6a1322-1-small_3.jpg",
+          "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/jay123.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "14eee2fecb-y6a1322-1-small_3.jpg"
+        }
+      ],
+      "sourcePageUrl": "https://www.basileas-minis.com/jay123.html",
+      "capturedAt": "2026-10-27",
+      "sourceKind": "family-reference",
+      "sourceContext": "Jay"
+    },
+    {
+      "id": "timberlines-different-dimension",
+      "name": "Timberlines Different Dimension",
+      "formalName": "Timberlines Different Dimension",
+      "role": "Great-grandparent",
+      "sourceId": "ryder",
+      "facts": {},
+      "parents": [],
+      "tests": [],
+      "overview": [
+        "Family relationship and photograph recorded on the linked breeder profile."
+      ],
+      "photos": [
+        {
+          "id": "2bd527c258ae",
+          "src": "/media/8eec26d342-mum-demi_1.webp",
+          "original": "/archive/photos/8eec26d342-mum-demi_1.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/published/mum-demi_1.jpg?1639868292",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "8eec26d342-mum-demi_1.jpg"
+        }
+      ],
+      "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+      "capturedAt": "2026-10-27",
+      "sourceKind": "family-reference",
+      "sourceContext": "Ryder"
+    },
+    {
+      "id": "timberlines-fenaz",
+      "name": "Timberlines Fenaz",
+      "formalName": "Timberlines Fenaz",
+      "role": "Great-grandparent",
+      "sourceId": "ryder",
+      "facts": {},
+      "parents": [],
+      "tests": [],
+      "overview": [
+        "Family relationship and photograph recorded on the linked breeder profile."
+      ],
+      "photos": [
+        {
+          "id": "3282097f4497",
+          "src": "/media/49cda22775-timberlines-fenaz_1.webp",
+          "original": "/archive/photos/49cda22775-timberlines-fenaz_1.jpg",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/published/timberlines-fenaz_1.jpg?1639868286",
+          "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+          "sourcePages": [
+            "https://www.basileas-minis.com/ryder.html"
+          ],
+          "capturedAt": "2026-10-27",
+          "kind": "photo",
+          "sourceFile": "49cda22775-timberlines-fenaz_1.jpg"
+        }
+      ],
+      "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+      "capturedAt": "2026-10-27",
+      "sourceKind": "family-reference",
+      "sourceContext": "Ryder"
+    },
+    {
+      "id": "puppy-01",
+      "name": "Puppy 01",
+      "formalName": "Copper face",
+      "role": "Candidate",
+      "descriptor": "Copper face",
+      "sourceId": "puppies",
+      "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+      "capturedAt": "2026-10-25",
+      "facts": {
+        "Parents": "Billie × Zane"
+      },
+      "parents": [
+        "billie",
+        "zane"
+      ],
+      "tests": [],
+      "photos": [
+        {
+          "id": "puppy-01",
+          "src": "/media/puppy-01.webp",
+          "original": "/archive/photos/whatsapp-image-2026-10-25-at-11-41-56.jpeg",
+          "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/whatsapp-image-2026-10-25-at-11-41-56.jpeg",
+          "capturedAt": "2026-10-25",
+          "kind": "photo"
+        }
+      ],
+      "concept": "/media/ai-puppy-01-2026-10-29.webp",
+      "overview": [
+        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "No individual test results or confirmed future eye colour are recorded."
+      ],
+      "concepts": [
+        {
+          "id": "ai-01-2026-10-29",
+          "src": "/media/ai-puppy-01-2026-10-29.webp",
+          "original": "/media/ai-puppy-01-2026-10-29.webp",
+          "kind": "ai-concept",
+          "variant": "updated",
+          "label": "AI concept",
+          "createdAt": "2026-10-29"
+        }
+      ],
+      "sourceKind": "litter"
+    },
+    {
+      "id": "puppy-02",
+      "name": "Puppy 02",
+      "formalName": "Wide white blaze",
+      "role": "Candidate",
+      "descriptor": "Wide white blaze",
+      "sourceId": "puppies",
+      "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+      "capturedAt": "2026-10-25",
+      "facts": {
+        "Parents": "Billie × Zane"
+      },
+      "parents": [
+        "billie",
+        "zane"
+      ],
+      "tests": [],
+      "photos": [
+        {
+          "id": "puppy-02",
+          "src": "/media/puppy-02.webp",
+          "original": "/archive/photos/whatsapp-image-2026-10-25-at-11-29-15.jpeg",
+          "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/whatsapp-image-2026-10-25-at-11-29-15.jpeg",
+          "capturedAt": "2026-10-25",
+          "kind": "photo"
+        }
+      ],
+      "concept": "/media/ai-puppy-02-2026-10-29.webp",
+      "overview": [
+        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "No individual test results or confirmed future eye colour are recorded."
+      ],
+      "concepts": [
+        {
+          "id": "ai-02-2026-10-29",
+          "src": "/media/ai-puppy-02-2026-10-29.webp",
+          "original": "/media/ai-puppy-02-2026-10-29.webp",
+          "kind": "ai-concept",
+          "variant": "updated",
+          "label": "AI concept",
+          "createdAt": "2026-10-29"
+        }
+      ],
+      "sourceKind": "litter"
+    },
+    {
+      "id": "puppy-03",
+      "name": "Puppy 03",
+      "formalName": "Small white marking",
+      "role": "Candidate",
+      "descriptor": "Small white marking",
+      "sourceId": "puppies",
+      "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+      "capturedAt": "2026-10-25",
+      "facts": {
+        "Parents": "Billie × Zane"
+      },
+      "parents": [
+        "billie",
+        "zane"
+      ],
+      "tests": [],
+      "photos": [
+        {
+          "id": "puppy-03",
+          "src": "/media/puppy-03.webp",
+          "original": "/archive/photos/whatsapp-image-2026-10-25-at-11-32-06.jpeg",
+          "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/whatsapp-image-2026-10-25-at-11-32-06.jpeg",
+          "capturedAt": "2026-10-25",
+          "kind": "photo"
+        }
+      ],
+      "concept": "/media/ai-puppy-03-2026-10-29.webp",
+      "overview": [
+        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "No individual test results or confirmed future eye colour are recorded."
+      ],
+      "concepts": [
+        {
+          "id": "ai-03-2026-10-29",
+          "src": "/media/ai-puppy-03-2026-10-29.webp",
+          "original": "/media/ai-puppy-03-2026-10-29.webp",
+          "kind": "ai-concept",
+          "variant": "updated",
+          "label": "AI concept",
+          "createdAt": "2026-10-29"
+        }
+      ],
+      "sourceKind": "litter"
+    },
+    {
+      "id": "puppy-04",
+      "name": "Puppy 04",
+      "formalName": "Sibling",
+      "role": "Sibling",
+      "descriptor": "Sibling",
+      "sourceId": "puppies",
+      "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+      "capturedAt": "2026-10-25",
+      "facts": {
+        "Parents": "Billie × Zane"
+      },
+      "parents": [
+        "billie",
+        "zane"
+      ],
+      "tests": [],
+      "photos": [
+        {
+          "id": "puppy-04",
+          "src": "/media/puppy-04.webp",
+          "original": "/archive/photos/whatsapp-image-2026-10-25-at-11-30-38.jpeg",
+          "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/whatsapp-image-2026-10-25-at-11-30-38.jpeg",
+          "capturedAt": "2026-10-25",
+          "kind": "photo"
+        }
+      ],
+      "concept": null,
+      "overview": [
+        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "No individual test results or confirmed future eye colour are recorded."
+      ],
+      "sourceKind": "litter"
+    },
+    {
+      "id": "puppy-05",
+      "name": "Puppy 05",
+      "formalName": "Sibling",
+      "role": "Sibling",
+      "descriptor": "Sibling",
+      "sourceId": "puppies",
+      "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+      "capturedAt": "2026-10-25",
+      "facts": {
+        "Parents": "Billie × Zane"
+      },
+      "parents": [
+        "billie",
+        "zane"
+      ],
+      "tests": [],
+      "photos": [
+        {
+          "id": "puppy-05",
+          "src": "/media/puppy-05.webp",
+          "original": "/archive/photos/whatsapp-image-2026-10-25-at-11-43-22.jpeg",
+          "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/whatsapp-image-2026-10-25-at-11-43-22.jpeg",
+          "capturedAt": "2026-10-25",
+          "kind": "photo"
+        }
+      ],
+      "concept": null,
+      "overview": [
+        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "No individual test results or confirmed future eye colour are recorded."
+      ],
+      "sourceKind": "litter"
+    },
+    {
+      "id": "puppy-06",
+      "name": "Puppy 06",
+      "formalName": "Sibling",
+      "role": "Sibling",
+      "descriptor": "Sibling",
+      "sourceId": "puppies",
+      "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+      "capturedAt": "2026-10-25",
+      "facts": {
+        "Parents": "Billie × Zane"
+      },
+      "parents": [
+        "billie",
+        "zane"
+      ],
+      "tests": [],
+      "photos": [
+        {
+          "id": "puppy-06",
+          "src": "/media/puppy-06.webp",
+          "original": "/archive/photos/whatsapp-image-2026-10-25-at-11-38-48.jpeg",
+          "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/whatsapp-image-2026-10-25-at-11-38-48.jpeg",
+          "capturedAt": "2026-10-25",
+          "kind": "photo"
+        }
+      ],
+      "concept": null,
+      "overview": [
+        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "No individual test results or confirmed future eye colour are recorded."
+      ],
+      "sourceKind": "litter"
+    },
+    {
+      "id": "puppy-07",
+      "name": "Puppy 07",
+      "formalName": "Sibling",
+      "role": "Sibling",
+      "descriptor": "Sibling",
+      "sourceId": "puppies",
+      "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+      "capturedAt": "2026-10-25",
+      "facts": {
+        "Parents": "Billie × Zane"
+      },
+      "parents": [
+        "billie",
+        "zane"
+      ],
+      "tests": [],
+      "photos": [
+        {
+          "id": "puppy-07",
+          "src": "/media/puppy-07.webp",
+          "original": "/archive/photos/whatsapp-image-2026-10-25-at-11-40-29.jpeg",
+          "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+          "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/whatsapp-image-2026-10-25-at-11-40-29.jpeg",
+          "capturedAt": "2026-10-25",
+          "kind": "photo"
+        }
+      ],
+      "concept": null,
+      "overview": [
+        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "No individual test results or confirmed future eye colour are recorded."
+      ],
+      "sourceKind": "litter"
+    }
+  ],
+  "sources": [
+    {
+      "id": "females",
+      "url": "https://www.basileas-minis.com/females.html",
+      "capturedAt": "2026-10-27",
+      "title": "Basileas Minis Females - Basileas Miniature American Shepherds",
+      "text": "The ladies at Basileas Minis\nAll of our girls are fully health tested prior to breeding which includes a full DNA breed panel, hips & elbows xrayed, patellas checked and cleared of LTV.\nWe are lucky to work with great placement families so not all of our girls live with us but are placed in their own families where they enjoy individual attention and training without ever being held in kennels. This helps us maintain a big and healthy gene pool.\nVelvet\nBasileas Shiny Seashell\nBasileas Journey Continues\n\"Velvet\"\n\"Nori\"\n\"Billie\"\n​Demicle's Made For Basilea\nGerman VDH Ch\nBasileas Squirrel Whisperer\n​Basileas Livin Under The Sea\n\"Akira\"\n\"Hazel\"\n\"Liv\"\nBasileas B Ready Nutella\nBasileas Defying All Odds\nBasileas Red Hot Revenge\n\"Bella\"\n\"Looney\"\nBasileas Ripple Effect\nBasileas Made Ya Look\n."
+    },
+    {
+      "id": "males",
+      "url": "https://www.basileas-minis.com/males.html",
+      "capturedAt": "2026-10-27",
+      "title": "Males at Basileas Minis - Basileas Miniature American Shepherds",
+      "text": "The Gentlemen at Basileas Minis\nOur boys do not live with us but are placed in loving family homes where they get to live as part of the family without the stress of girls in season and being kept separate during that time. They are all available to our breeding and for a very limited amount of outside females by prior arrangement only.\nOur boys are registered with ASDR and/or AKC as Miniature American Shepherds.\nOur merle boys:\nCross L's Major Quinn\nRocket\nCrazy Acres Smokin Gun\n\"Quinn\" (based in Devon)\n\"Rocket\" (based in East Sussex)\n\"Pistol\"\nBasileas\nDressed In Diamonds\nBasileas Nothing To Lose\nBasileas Let's Get Fizzical\n\"Ludo\" (Based in London)\n\"Ziggy\" (based in London)\n\"Fizz\" (based near Eastbourne)\nTreasures This Is It\nAmerican Hills Ice Cream\nBasileas Sweet Blueberry\n\"Jackson\" (based in East Sussex)\n\"Pacey\"\n\"Blueberry\" (based in Oxford)\nBasileas Heads I Win Tails You Lose\n.\n.\n\"Casper\" (based in Cambridge)\nour solid boys:\nTreasures N Abington Surprise\nBasileas Little Suessbert\nTreasures Let It Rip\n\"Marty\" (based in Kent)\n\"Teddy\" (based in Newport)\n\"Vince\"\nOut Of This World\nBasileas Lil Bit N Zane\nTreasures Red Hurricane\n\"ET\"\n\"Zane\"\n\"Disney\" (Based in Kent)\nH3 Eat My Dust\nBasileas Code Blue\nBasileas Life Is Beautiful\n\"Sooty\" (based in East Sussex)\n\"Cody\" (based in Tunbridge)\n\"Matheo\"\nBasileas The Spy Well Dressed\nBasileas Nico\n.\n\"Salvador\" (based in Oxford)\n\"Nico\" (based in Devon)"
+    },
+    {
+      "id": "photos",
+      "url": "https://www.basileas-minis.com/photos.html",
+      "capturedAt": "2026-10-27",
+      "title": "Photos - Basileas Miniature American Shepherds",
+      "text": "Fun photos of our dogs on their adventures\nHiking\nDisc Dog\nBeach, lakes & SUP\nHerding\nRunning & playing\nPosing"
+    },
+    {
+      "id": "agility",
+      "url": "https://www.basileas-minis.com/agility.html",
+      "capturedAt": "2026-10-27",
+      "title": "BasileasAgilityDogs - Basileas Miniature American Shepherds",
+      "text": "Basileas General Lucius\n(KC Medium)\n\"Bodie\"\nChosen as Team GB Member for IFCS 2020\nWon his second CC (May 2019)\nQualified for Olympia Finals (December 2018)\nWon his first CC qualifying him for Crufts 2019 (October 2018)\nQualified for Crufts ABC Semi Finals at Discover Dogs (October 2018)\nWon his second Reserve CC (July 2018)\nQualified for Olympia Semis (June 2018)\nFinalist at Crufts ABC Medium Stakes (March 2018)\nFinalist at Crufts Singles (March 2018)\nWinner of Crufts ABC Agility round at Discover Dogs (November 2017)\n2nd place at Crufts ABC Jumping round at Discover Dogs (November 2017)\nFinalist at Crufts ABC Agility & Jumping (March 2017)\nTeam GB Squad Member 2017\nQualified for the ABC Finals held at Crufts 2017 (October 2016)\nQualified for Crufts ABC Semi-Finals at Discover Dogs (August 2016)\nWon the Reserve CC in his first ever Championship Final (June 2016) (\nvideo\n)\nWon the Champi Agility round at his first ever Champ class (April 2016) (\nvideo\n)\nQualified for Olympia Semis 2016\n​Team GB Squad Member 2016\n​Qualified for Olympia Semis 2015\nQualified for Crufts ABC Semis 2015\nBasileas Little Bing\n(KC Medium)\nQualified for Olympia Semis (April 2018)\n​Won the Reserve CC at Lune Valley (June 2017) (\nvideo\n)\nTeam GB Squad Member 2017\nQualified for Dog Central Finals held at UKA Grand Finals 2016\nQualified for Olympia Finals 2016 (\nvideo\n)\n​​Qualified for Olympia Semis 2016\nWON UKA Beginners Steeplechase 2015 (\nvideo\n)\nQualified for UKA Beginners Steeplechase 2015\nWon the Jumping round at Crufts ABC Semis 2015 (\nvideo\n)\nQualified for Olympia Finals 2015\n​Team GB Squad Member 2016\n​Qualified for Olympia Semis 2015\nQualified for Crufts ABC Semis 2015\nAg Ch. Basileas Hear Me Roar\n(KC Small)\n3rd place at Olympia Finals at Excel London (December 2022)\n(video)\nWON the Agility Championship CC qualifying for CRUFTS (April 2022)\n​Qualified for CRUFTS Finals (March 2020)\n(video)\n(video2)\nWinning the Championship CC Small (October 2019)\nQualified for Olympia Finals (August 2019)\nWinning the Reserve CC at Thames DTC (June 2019)\nWinning the Agility CC at Nottingham (May 2019)\nQualified for Olympia Semis (May 2019)\nWinner of Olympia Jumping (December 2018)\nQualified for Olympia Final (August 2018)\nTeam GB member for EOs 2018\n​Qualified for Olympia Semis (March 2018)\nWon her 4th CC (May 2018)\n​Qualified for Olympia Semi Finals (May 2018)\n​Won her 3rd CC becoming the first MAS in the UK to gain the title of AGILITY CHAMPION (May 2018)\n2nd place at EO Jumping round in Italy (July 2017)\nMember of Team GB Small for EO 2017\n​Reserve CC Winner at Crufts Agility Chamionship (March 2017)\n(video)\nTeam GB Squad Member 2017\n​Won her second Agility CC at only 29 months (September 2016) (\nvideo\n)\nQualified for Olympia Finals 2016 (\nvideo\n)\nWon her first Agility CC at her very first Championship as the youngest dog ever in the UK, May 2016 (\nvideo\n)\n​Qualified for Olympia Semis (May 2016)\nBasilea Sent A Dream\n(FCI Small)\nQualified for FCI WORLD CHAMPIONSHIPS as the FIRST MAS team (May 2022)\nQualified for Agility European Open representing Portugal (May 2022)\n2nd (TAÇA) Portugal Agility Cup Individual (2021)\nRepresented Portugal in Team and Individual at EO (July 2019)\nWinner of (TAÇA) Portugal Agility Cup Individual (June 2019)\nKCIAF: Nations Cup Jumping 2nd, Nations Cup Agility 6th, Nations Cup Final 4th International Agility 4th (August 2019)\nWon 4x classes at two competitions when visiting the UK. Won into Grade 7 (Aug 18)\n​\nQualified and invited to represent Portugal at EO 2019\n​Invited to represent Portugal at WAO\nWon into Grade 3 under FCI (2017)\nQualified for Olympia Semis in Small (May 2017)\nWon four classes at two competitions when visiting the UK (May 2017)\nWon into Grade 2 in Portugal (April 2016)\nWon two classes at\nNational Championship Finals in Portugal (April 2016)\nATCH Basileas Dart To Da Heart\nGS-N JS-O RS-N\n(FCI Large)\nASCA Agility Trial Champion (April 2019)\nWon the Regular Novice, Gambler Novice and Jumpers Open title at ASCA Trial in Germany (August 2016)\nWon the Novice Jumpers Title at his first ASCA Show in Holland (June 2016) (\nvideo\n)\nBasileas Red Arrow\n(KC Small)\nQualified for UKA Grand Finals 2019\nQualified for UKA Games Semis 2016\n​Qualified for UKA Beginners Steeplechase Final 2016\nBasileas American Journey\nBasileas Alpine Rose\n(KC Small)\nQualified for Crufts 2020\n​Won into Grade 7\nQualified for Team Agility Finals at Crufts 2020 (May 2019)\nWon into Grade 5\nBasileas Buzz In Around\n(KC Medium)\nWon into Grade 7\n​Qualified for SWAG Beginners Steeplechase Finals at UKA Grand Finals (2017)\nBasileas Bright Moon\n(KC small)\n1st in Beginners Agility, 2nd in Steeplechase and 1st in Snooker (August 2016)\nWinning G3 Jumping, Agility and 2nd in G3 Agility at one of her very first shows.\nBasileas Dash In Around\n(KC Medium)\nQualified for ABC Crufts Semi Finals at Discover Dogs (October 2021)\nBasileas In Motion\nAD\n(AKC 16inch jump height)\nWINNER of Agility Breed Top Ten Stats in the USA for years 2022/2021/2020/2019/2018\nQualified for \"Agility Dog\" title under USDAA (April 2018)\nWins 1st place, fastest of all dogs, all heights. First excellent level (June 2017)\nBasileas Pixie Power\n(KC Small)\nQualified for Olympia Semi Finals at KC International Agility Festival\nWON the Novice Cup Agility, Jumping and Final at Crufts Main Arena (March 2018)\n(video)\nQualified for Novice Cup Semis at the Kennel Club International Festival (August 2017)\nQualified for CSJ Agility Grand Prix Finals (June 2017)\nQualified for UKA Beginner Steeplechase Final at UKA Grand Finals (May 2017)\nBasileas Watch Me Shine\n(South Africa)\nBasileas American Dream\n(KC Large)\nQualified for Crufts ABC Semi Finals (June 2019)\nQualified for Olympia ABC Semi Finals (June 2018)\n​Won into Grade 4 (June 2017)\nBasileas Yabba Dabba Doo\n(KC large)\nQualified for ABC Olympia Semi-Finals (August 2021)\nQualified for ABC Olympia Finals (August 2019)\nQualified for her first Champ Final making her the first MAS to do so in Large\nCrufts Large Novice Cup coming 2nd out of almost 500 dogs (March 2019)\nCrufts Large ABC Final coming 2nd overall (March 2019)\nQualified for Crufts ABC Finals (October 2018)\nQualified for Crufts ABC Semi Finals at Discover Dogs (October 2018)\nQualified for OLYMPIA ABC Semi Finals 2019 (October 2018)\nQualified for CRUFTS Novice Cup Finals in Large\nQualified for Novice Cup Semi Finals at KC International Agility Festival (August 2018)\nQualified for ABC Finals at Crufts (October 2017)\nQualified for ABC Semi Finals at Discover Dogs (August 2017)\nBasileas Little Lion Heart\nBRONZE medal overall in the The CSJ Agility Open Biathlon as well as SILVER medal in the Games Final!! (June 2022)\n3rd place in Intermediate Champ Finals (June 2022)\nFinallist at British Agility Championships winning multiple places\n​Chosen to represent Wales for WAO 2020/2022/2023/2024\nMember of Team Wales at WAO in the Netherland (May 2019)\n​Qualified for Cruft Novice Cup Finals\nQualified for Crufts ABC Semi Finals at Discover Dogs (October 2018)\nWon into G7 in only her second season out competing\n​Qualified for Novice Cup Semi Final at the Kennel Club International Agility Festival (August 2017)\nQualified for UKA Grand Finals 2017\nTDGCH\n. Basileas Super Mini Cooper\n(KC Medium)\nSecond ever Champ made Finals with double clear (December 21)\nAchieved Double clear in Discover Dogs pairs overall 4th place (October 21)\nQualified for Discover Dogs Mini Mixi Pairs (September 21)\nRunner up in Pure Finals (August 21)\nQualified for the DINAS Finals (August 21)\nWon the LAE Senior Cup qualifier winning into Grade 7 & qualifying for the Finals (August 21)\nQualified to Pure Finals (June 21)\n*Became Grand Champion Trick Dog (January 21)*\nAchieved Gold Online Good Hooper's (September 20)\nBecame Champion Trick Dog (June 20)\nAchieved Silver Good Hooper's (June 20)\nWon Crufts Novice Agility (March 20)\n​Winning GOLD at British Agility Championships (October 2019)\n3rd place at Agility Secrets Jumping Cup Finals (September 2019)\nQualified for Dog Vegas Finals (September 2019)\nQualified for QME Finals (September 2019)\nQualified for DINAS Finals (August 2019)\nQualified for CRUFTS 2020 Novice Cup Finals (August 2019)\nQualified for Animal Health Finals (May 2019)\n​WINNER of the LAE Novice Cup Medium (April 2019)\nWon out of G1 at the Kennel Club International Agility Festival (August 2018)\nBasileas Believe In Fairies\n(KC Medium)\nQualified for Medium ABC Crufts Semi-Finals at Discover Dogs (2021)\n​Qualified for Olympia Semi Finals at KCI (2021)\nBasileas Heart Of A Lion\n(KC Medium)\nQualified for Medium ABC Crufts Semi-Finals at Discover Dogs (2021)\n​WINNER of DINAS G6 Finals (August 2019)\nWon into Grade 7 exactly 1 year after his first KC show\nWon into G6 (May 2019)\nBasileas More Of A Chaser\n(KC Medium)\nWON her first Agility Championship Final getting her first CC (2023)\n​Chosen for TEAM GB to represent Great Britain at EOs (2023)\nQualified for Olympia Semi Finals (December 2021)\n​Chosen as member of Team Scotland for WAO 2020\nBasileas American Classic\n(KC Medium)\nWINNER of the\nAgility\n,\nJumping\nand FINAL in Medium ABC sat CRUFTS!!! (March 2023)\n(video)\nQualified for Olympia Finals at the Excel in London (December 2022)\nWINNING their THIRD Agility CC (September 2022)\n​WON her second CC (May 2022) (video)\nWON the Olympia Finals Jumping at the Excel in London (December 2021)\n(video)\nWON her first CC qualifying her for Crufts Championship 2022 (October 2021)\n3rd place in her first Championship Final getting her KC Stud Book number\nQualified for Olympia Semi Finals (2019)\nBasileas Finnegans Mini Me\n(KC Medium)\nFinnish Agility Champion Basileas Dont't Stop Me Now\n(FCI Medium)\nWINNING their third CC becoming a Finnish Agility Champion (July 2023)\n(video)\nWinning their first CC (November 2022)\n(video)\nMACH Basileas You Aint Seen Nothing Yet\n(AKC 16inch)\nAGILITY CHAMPION title in UKI - USA (October 2023)\nAGILITY CHAMPION title IWAC - USA (October 2023)\nAGILITY CHAMPION title IAC - USA (October 2023)\nQualified for AKC Nationals (February 2023)\nBasileas I Am Legend\n(KC Small)\nQualified for Olympia semi finals (August 2023)\nWon into Grade 7 (2021)\nAgility Champion Cross My Heart - TIGER (KC Medium)\nWINNING THE MEDIUM CHAMPIONSHIP FINAL AT CRUFTS making Tiger an AGILITY CHAMPION (March 2023)\n(video)\nFinishing 3rd place in Medium Championship Jumping round at CRUFTS (March 2023)\n(video)\n2nd place at Medium SINGLES at CRUFTS (March 2023)\n(video)\nQualified for Olympia FINALS (December 2022)\nWinning her first CC (May 2022)\nQualified for Olympia Semis (August 2021)\n​Winning the Medium ABC Jumping round at CRUFTS (March 2020)\n(video)\nQualified for Olympia Finals at Excel London (December 2019)\nWinning the ABC Jumping at Discover Dogs (October 2019)\n(video)\nWINNING the Medium Novice Cup at CRUFTS (March 2019)\nBasileas Shadow Of Lionheart\nWINNING Iconix by Night Medium 1-3 Champions!! (August 2022)\nBasileas Beautemps Diva\n(KC Small)\nBasileas Shine On Me\n(KC Medium)\nBasileas Bing Me Sunshine\n(KC Intermediate)\nFinished 2nd at CSJ National Finals Intermediate (June 2023)\nQualified for Olympia Semi-Finals (September 2022)\nReserve CC in the Intermediate Champ Final (August 2022)\nWinning the Reserve CC in the Intermediate Champ Final (May 2022)\n(video)\n3rd place at Intermediate Champ Final (April 2022)\nQualified for ABC Crufts Semi Finals at Discover Dogs (November 2021)\nQualified for Olympia Semi-Finals (September 2921)\n​Basileas Time To Fly\nBasileas Lady Liberty\nQualified for UKA Grand Finals (October 2019)\nBasileas Nyssa\n(France)\nClick here to edit.\nBah. Ch. Basileas Light My Fire TKP AX AXJ OF RN\n(The Bahamas)\nReceived Novice FAST title,\nReceived Open Jumpers title\nReceived Open Standard Agility title\nBecomes BAHAMIAN SHOW CHAMPION making him the first ever UK bred show champion\nRecieved his Advanced Trick Dog title\nReceived his Novice Trick Dog title\nBasileas Koyo\n(Spain Medium)\nBasileas Absolutely Fabulous\nBasileas A Little Bit More\nBasileas Bright Future\n(KC Small)\nBasileas Journey Continues\n(KC Medium)\nBasileas Flying Finch\n(KC Intermediate)\nBasileas Rio In Overdrive\n(KC Intermediate)\nBasileas Little Tyke Tylor\n(KC Intermediate)\nBasileas Special Edition Twix\nBasileas Time To Shine\n(KC Small)\nQualified for UKA Grand Finals (October 2019)\nFollow Delta on her own Facebook age:\nhttps://www.facebook.com/Deltas-Diary-224861328133467/"
+    },
+    {
+      "id": "jay123",
+      "url": "https://www.basileas-minis.com/jay123.html",
+      "capturedAt": "2026-10-27",
+      "title": "Jay123 - Basileas Miniature American Shepherds",
+      "text": "Basileas Epic Journey\nblue merle\neyes: left brown, right brown\nsize: 36cm\nHD: A/A\nED: 0/0\n​PL: Normal\neyes: clear\nMDR1: +/+ (clear)\nHSF4: +/+ (clear)\nPRA: +/+ (clear)\nDM: +/+ (clear)\nCEA: +/+ (clear)\nNAD: +/- (carrier)\nJays mum: Basileas American Journey\n​Jays dad:\nGordonview All My Ex's Live In Texas"
+    },
+    {
+      "id": "billie123",
+      "url": "https://www.basileas-minis.com/billie123.html",
+      "capturedAt": "2026-10-27",
+      "title": "Billie123 - Basileas Miniature American Shepherds",
+      "text": "Basileas Journey Continues\nBlue merle c/w\nsize: 39cm (KC Medium)\ntail: long\nHD: A/A\n(Prof Dr Flückiger, FCI)\nED: 0:0\n(Prof Dr Flückiger, FCI)\nPatella: NORMAL\n(OFA)\nLSTV: clear\n(Prof Dr Flückiger, FCI)\nEyes: clear\nMDR1: +/+ (clear)\nHSF4: +/+ (clear)\nPRA: +/+ (clear)\nDM: +/+ (clear)\nCEA: +/+ (clear)\nNAD: +/- (carrier)\nBillie is just like her mother, super outgoing, always happy, bouncy and an all-round little social butterfly. She loves meeting new people and dogs.\nWe have attended a weekend of conformation shows in Switzerland where Billie gained the\nSwiss Junior Beauty Champion\ntitle!!\nBillie has also started her Agility foundation training where she is showing great promise.\nBillies mum: Basileas Epic Journey\nBillies dad: Ryder"
+    },
+    {
+      "id": "past-litters",
+      "url": "https://www.basileas-minis.com/past-litters.html",
+      "capturedAt": "2026-10-27",
+      "title": "Past Litters - Basileas Miniature American Shepherds",
+      "text": "Little stars we have raised here at Basileas Minis\nMinnow & Esra\nHazel & Pino\nMouse & Esra\nMylah & Genesis\nNiki & Finn\nJay & Sooty\nShelley & Sooty\nHazel & Bing\nNiki & Beamer\nJay & Ryder\nShine & Tweed\nBliss & Ryder\nDyna & Bond\nPolly & Bond\nPenny & Tex\nPearl & Squiz\nPearl & Bond\nPenny & Caspar\nKefira & Brannigan\nLina & Tex\nAimee & Disney\nShine & Bing\nFancy & Mac\nAimee & Dapper\nQuick & Red\nVipsy & Rex\nBliss & Rex\nYana & Eze\nSummer & Rex\nBliss & Mac\nMiley & Casi\nVipsy & Casi\nYana & Mac"
+    },
+    {
+      "id": "zane",
+      "url": "https://www.basileas-minis.com/zane.html",
+      "capturedAt": "2026-10-27",
+      "title": "Zane - Basileas Miniature American Shepherds",
+      "text": "Basileas Lil Bit N Zane\n**available at stud**\nColour: black, copper & white\nEyes: blue\nSize: 40cm\n​\nMDR1: +/+\nDM/SOD1: +/+\nHSF4: +/+\nPRCD-PRA: +/+\nCEA: +/+\nNAD: +/+\n​CDDY/IVDD: +/+\nhips: B/C (\nFCI)\nelbows: normal\n(FCI)\nLTV: normal\n(FCI)\n​eyes: clear\n​\nClick here to edit.\nZanes mum: Cross L's Halsey Valley of Blues\nZanes dad: Cross L's Not An Illusion"
+    },
+    {
+      "id": "ryder",
+      "url": "https://www.basileas-minis.com/ryder.html",
+      "capturedAt": "2026-10-27",
+      "title": "Basileas Minis Ryder - Basileas Miniature American Shepherds",
+      "text": "Ryder\ncolour profile: Bb awat Kk EE DD\nSize: 42cm\n​tail: long/docked (by DNA test)\nMDR1: +/+\nDM/SOD1: +/+\nHSF4: +/+\nPRCD-PRA: +/+\nCEA: +/+\nCM: +/+\nCMR1: +/+\nNCL:+/+\n​CDDY/IVDD: +/+\nNAD: +/+\nHD: A1\n(Dr. Viefhues, FCI)\nED: 0:0\n(\nDr. Viefhues\n,\nFCI)\nOCD: normal\n((\nDr. Viefhues\n,\nFCI)\nLTV: clear\n(\nDr. Viefhues\n,\nFCI)\nPL: normal\n(\nDr. Viefhues\n,\nFCI\n)\neyes: cleared annually\n(Ryder is co-owned with\nJust Gorgeous Minis)\nRyder is a super cool little boy. He joined us at 9 months of age and was home right away. He knows no stranger, has the biggest wiggle bum and greets everyone in a very sweet manner whether two or four legged. He loves kids and cuddles in general.\nThe day after he arrived in Germany we took him on a week long holiday hiking in the Swiss mountains. This little dude loved it all and wasnt phased by anything. He came on train, car, bus, cable car and even a chair lift. He loves all the attention, walks nicely on a lead and loves to carry things around in his mouth. When he found a hat on one of our hikes he carried it all the way down the mountain!\nRyder is only available to females with a full AKC/FCI pedigree.\n​**FROZEN SEMEN ONLY**\nmum: Timberlines Different Dimension\ndad: Timberlines Fenaz"
+    },
+    {
+      "id": "puppies",
+      "url": "https://www.basileas-minis.com/puppies.html",
+      "capturedAt": "2026-10-27",
+      "title": "Puppies · Basileas Minis",
+      "text": "We welcomed a beautiful litter from Billie & Zane\n**2x black tri girls with blue eyes AVAILABLE**\n​ready for new homes end of November\n(this litter is based in Scotland, transport will be offered)\nImportant, please read:\nAlthough we will always keep in mind the colour, markings and gender preferences of our puppy buyers, we do not place our pups based solely on colour, markings or gender.  We evaluate the pups temperament, structure and toy drive and puppies are matched with their new owners.  The selection is determined by 6-7 weeks of age.  Reservations are honoured and based upon suitability of each pup to each individual home.\n​\nAny payments made to reserve a puppy are non-refundable.\n​\nAlso please remember we do NOT guarantee a pups height once fully grown. We are dealing with mother nature and although we can give a good estimate at 8 weeks this can never be guaranteed and should not be the deciding factor when getting a MAS.\nWe do not have any kennels and each litter is born in our bedroom before they are moved to the living room at around 3-4 weeks of age into a large puppy play pen. They will be exposed to a variety of different environments, toys, & surfaces (including a wobble board and wobble cushion). They will be given \"\nearly neurological stimulation\n\".  They regularly go in our garden in a large \"puppy kindergarden\" with even more wobble cushions and a large wobble bridge. All of our puppies will be litter box and crate trained and they will travel in a vehicle.  Our litters are registered with AKC and will be legible for registration with The Kennel Clubs Activity Register as a Miniature American Shepherd .\nFor more information on puppy buyer etiquette please take the time to read the following:\nhttps://rufflyspeaking.wordpress.com/2009/04/26/puppy-buyer-ettiquette/\nSome of our previous puppies:",
+      "note": "The seven puppy photographs were archived on 25 October 2026. The page snapshot was saved on 27 October 2026, after some photographs had been removed. It does not prove their earlier placement."
+    }
+  ],
+  "documents": [
+    {
+      "id": "3767255026b5",
+      "src": "/media/b705f6a593-beep-pedigree_orig.webp",
+      "original": "/archive/photos/b705f6a593-beep-pedigree_orig.png",
+      "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/beep-pedigree_orig.png",
+      "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+      "sourcePages": [
+        "https://www.basileas-minis.com/billie123.html"
+      ],
+      "capturedAt": "2026-10-27",
+      "kind": "pedigree",
+      "sourceFile": "b705f6a593-beep-pedigree_orig.png"
+    },
+    {
+      "id": "09641dd851de",
+      "src": "/media/ef7ad4d3ef-zane-pedigree_orig.webp",
+      "original": "/archive/photos/ef7ad4d3ef-zane-pedigree_orig.png",
+      "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/zane-pedigree_orig.png",
+      "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+      "sourcePages": [
+        "https://www.basileas-minis.com/zane.html"
+      ],
+      "capturedAt": "2026-10-27",
+      "kind": "pedigree",
+      "sourceFile": "ef7ad4d3ef-zane-pedigree_orig.png"
+    },
+    {
+      "id": "d9c14b8ffaee",
+      "src": "/media/4233d8418c-pedigree-simple_3.webp",
+      "original": "/archive/photos/4233d8418c-pedigree-simple_3.png",
+      "sourceImageUrl": "https://www.basileas-minis.com/uploads/1/1/0/9/11094747/pedigree-simple_3.png",
+      "sourcePageUrl": "https://www.basileas-minis.com/ryder.html",
+      "sourcePages": [
+        "https://www.basileas-minis.com/ryder.html"
+      ],
+      "capturedAt": "2026-10-27",
+      "kind": "pedigree",
+      "sourceFile": "4233d8418c-pedigree-simple_3.png"
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-10-25",
+      "title": "Puppy photographs archived",
+      "description": "Seven original photographs preserved, including the three merle candidates."
+    },
+    {
+      "date": "2026-10-27",
+      "title": "Family records archived",
+      "description": "Profiles, health results, original image URLs and pedigree documents saved from Basileas Minis."
+    }
+  ]
+}

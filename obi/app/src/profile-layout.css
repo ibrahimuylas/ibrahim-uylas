@@ -1,0 +1,117 @@
+/* Page rhythm and the selected Gallery and field notes profile layout. */
+body{background:var(--surface);-webkit-font-smoothing:antialiased}
+.app-shell{margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;border-radius:0;box-shadow:none}
+.app-shell>main{flex:1;min-width:0}
+.site-header{flex-shrink:0;background:#fff}
+.site-footer{margin-top:auto;flex-shrink:0;padding:16px 40px;font-size:11px;line-height:1.6}
+.tree-intro{padding:0 0 22px}
+.tree-intro h1{font-size:clamp(27px,2.6vw,38px);font-weight:600;letter-spacing:-.035em;line-height:1.2}
+.tree-intro p{max-width:none;font-size:15px;line-height:1.65;margin-top:10px}
+.wordmark strong{font-weight:650;letter-spacing:-.055em}
+.wordmark span{letter-spacing:-.025em}
+.inspector .profile-heading h2{font-size:34px;font-weight:600;letter-spacing:-.035em}
+.inspector .profile-heading p{font-size:14px;line-height:1.65}
+.dog-label strong{font-weight:580;letter-spacing:-.025em}
+.candidate-group-heading{top:24px}
+.candidate-group-heading strong{font-size:29px;letter-spacing:-.025em;font-weight:580}
+.candidate-group-status{font-size:17px;top:23px;padding:7px 12px}
+.siblings-group{background:#f3f5f7;border-color:#cbd5df;box-shadow:none}
+.siblings-group .candidate-group-heading{color:#596d80}
+.dog-node.ancestor .dog-label strong{font-size:18px;line-height:1.3}
+.dog-node.ancestor .node-role{font-size:15px}
+.dog-node.ancestor .photo-frame{height:162px}
+.profile-drawer{width:min(920px,76vw)}
+.profile-drawer .dialog-header{min-height:66px;padding:12px 28px;background:#fff}
+.profile-drawer .dialog-header h2{font-size:18px;font-weight:600;letter-spacing:-.025em}
+.profile-drawer .dialog-content{padding:24px 32px 28px}
+.full-profile{display:flex;flex-direction:column}
+.full-profile .profile-heading{order:-1;margin:0 0 20px}
+.full-profile .profile-heading h2{font-size:36px;font-weight:600;letter-spacing:-.04em}
+.full-profile .profile-heading p{font-size:14px;margin-top:5px}
+.full-profile .detail-gallery{max-width:none;margin:0}
+.full-profile .detail-gallery .photo-frame{aspect-ratio:2.2;border-radius:10px;box-shadow:none}
+.full-profile .detail-gallery .photo-open img{object-fit:contain;object-position:center}
+.full-profile .detail-gallery .photo-frame{background:#eaf0f4}
+.inspector .thumbnail-strip,.full-profile .thumbnail-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,86px),1fr));overflow:visible}
+.thumbnail-strip button{min-width:0;width:100%}
+.full-profile .thumbnail-strip{grid-template-columns:repeat(auto-fit,minmax(min(100%,110px),1fr));gap:10px;margin-top:8px;padding:2px 1px 4px}
+.full-profile .thumbnail-strip button{aspect-ratio:1.6;opacity:.8;border-radius:7px}
+.full-profile .thumbnail-strip button.active{opacity:1}
+.full-profile .thumbnail-strip img{object-fit:contain;background:#eaf0f4}
+.full-profile .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px 0;padding:22px 0;margin:0;background:none;border-radius:0;border-bottom:1px solid var(--rule)}
+.full-profile .facts>div{display:flex;align-items:center;gap:14px;min-width:0;padding:0 18px;border-left:1px solid var(--rule);font-size:14px}
+.full-profile .facts>div:first-child{padding-left:0;border:0}
+.full-profile .facts svg{flex-shrink:0;color:#365c80}
+.full-profile .facts dt{font-size:13px;margin-bottom:4px}
+.full-profile .facts dd{font-weight:550;line-height:1.5;overflow-wrap:anywhere}
+.full-profile h3{font-size:19px;font-weight:600;letter-spacing:-.025em;margin:0 0 8px}
+.profile-notes{padding:22px 0;border-bottom:1px solid var(--rule)}
+.full-profile .overview-text{font-size:14px;line-height:1.75;margin:6px 0 0}
+.full-profile .relatives{display:flex;align-items:center;gap:24px;padding:22px 0;border-bottom:1px solid var(--rule)}
+.full-profile .relatives h3{margin:0;align-self:flex-start;padding-top:10px}
+.parent-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;flex:1;min-width:0}
+.parent-link{display:flex;align-items:center;gap:14px;text-align:left;padding:8px;border-radius:10px;min-width:0;transition:background 180ms}
+.parent-link:hover{background:var(--pale)}
+.parent-link .parent-avatar{position:relative;width:68px;height:68px;flex:0 0 68px;overflow:hidden;border-radius:50%}
+.parent-avatar img{position:absolute;left:0;top:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center}
+.parent-link>span:not(.parent-avatar){flex:1;min-width:0}
+.parent-link small{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
+.parent-link strong{display:block;font-size:14px;line-height:1.45;font-weight:550;overflow-wrap:anywhere}
+.parent-link>svg{flex-shrink:0;color:var(--blue)}
+.full-profile .health-heading{margin:22px 0 8px}
+.full-profile .health-verification{margin-bottom:14px}
+.health-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.health-groups>section{border:1px solid var(--rule);border-radius:9px;overflow:hidden}
+.health-groups h4{font-size:13px;font-weight:600;margin:0;padding:12px 14px;background:var(--pale)}
+.full-profile .health-groups .health-table{font-size:13px}
+.full-profile .health-groups th,.full-profile .health-groups td{padding:11px 12px;line-height:1.5}
+.full-profile .health-groups td{padding-right:30px}
+.health-groups .health-table th{width:45%}
+.health-groups tr:last-child th,.health-groups tr:last-child td{border-bottom:0}
+.full-profile .health-note{margin:14px 0 0;font-size:11px;line-height:1.65}
+.full-profile .health-summary{margin:20px 0 0;padding:20px;border:0;border-radius:9px}
+.full-profile .health-summary h3{font-size:18px;margin:0 0 7px}
+.full-profile .health-summary>.eyebrow{display:none}
+.full-profile .health-summary dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;margin:18px 0}
+.full-profile .health-summary dl>div+div{padding:0;margin:0;border:0}
+.full-profile .health-summary dd{font-size:12px;line-height:1.7}
+.full-profile .summary-limit{padding-top:12px}
+.full-profile .photo-credit{font-size:11px;margin-top:22px;padding-top:16px}
+.full-profile .source-record{margin-top:16px;padding-top:16px;font-size:12px}
+.full-profile .source-record h3{font-size:15px}
+.relationship-source{margin-top:20px;padding-top:16px;border-top:1px solid var(--rule)}
+.relationship-source>p{margin-bottom:10px}
+.full-profile .source-record .text-link{font-size:12px}
+@media(max-width:1200px) and (min-width:1025px){
+ .tree-intro h1{font-size:28px}.tree-intro p{font-size:14px}
+ .profile-drawer{width:min(860px,88vw)}
+}
+@media(max-width:1024px){
+ .site-footer{padding:16px 18px;font-size:10px}
+ .tree-intro{padding:0 3px 16px}.tree-intro h1{font-size:27px;letter-spacing:-.035em}.tree-intro p{font-size:14px;margin-top:8px}
+ .candidate-group-heading strong{font-size:32px}.candidate-group-status{font-size:23px;top:20px}
+ .inspector .profile-heading h2{font-size:30px}
+ .profile-drawer{width:100vw}
+ .profile-drawer .dialog-header{padding:12px 16px;min-height:62px}.profile-drawer .dialog-header h2{font-size:16px}
+ .profile-drawer .dialog-content{padding:20px 18px 24px}
+ .full-profile .profile-heading h2{font-size:32px}
+ .full-profile .detail-gallery .photo-frame{aspect-ratio:1.55}
+ .full-profile .thumbnail-strip{grid-template-columns:repeat(auto-fit,minmax(min(100%,86px),1fr));gap:8px}
+ .full-profile .thumbnail-strip button{aspect-ratio:1.4}
+ .full-profile .facts{grid-template-columns:1fr;gap:16px;padding:20px 0}
+ .full-profile .facts>div{border:0;padding:0;gap:14px}
+ .full-profile .facts>div>div{display:grid;grid-template-columns:80px 1fr;gap:12px;flex:1}
+ .full-profile .facts dt{margin:0}
+ .full-profile .relatives{display:block;padding:20px 0}.full-profile .relatives h3{padding:0;margin-bottom:12px}
+ .parent-links{gap:10px}.parent-link{flex-wrap:wrap;gap:8px;padding:6px}
+ .parent-link .parent-avatar{position:relative;width:48px;height:48px;flex-basis:48px}.parent-link>span:not(.parent-avatar){flex-basis:calc(100% - 58px)}.parent-link>svg{display:none}
+ .parent-link strong{font-size:13px}.parent-link small{font-size:11px}
+ .health-groups{grid-template-columns:1fr;gap:16px}
+ .full-profile .health-summary{padding:18px}.full-profile .health-summary dl{grid-template-columns:1fr;gap:16px}
+}
+
+/* The graph cannot contribute to its own observed container size. In WebKit,
+   auto-sized parents plus a 100%-height flow can feed resize back into fitting. */
+.tree-canvas{position:relative;height:auto;min-height:340px;aspect-ratio:var(--tree-aspect);contain:layout size;overflow:hidden}
+.tree-canvas>.react-flow{position:absolute;inset:0;width:100%;height:100%}
+.expanded .tree-canvas{flex:1;min-height:0;aspect-ratio:auto}

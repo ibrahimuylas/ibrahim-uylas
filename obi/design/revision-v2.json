@@ -1,0 +1,98 @@
+{
+  "version": 2,
+  "createdAt": "2026-10-27",
+  "status": "Revised static mockup; awaiting visual selection before implementation",
+  "basedOn": "mockups/02-soy-agaci.png",
+  "visualTarget": "mockups/02-family-tree-en-v2.png",
+  "generator": "built-in image_gen",
+  "language": "en",
+  "domain": "kira.uylas.net",
+  "nameProvisional": true,
+  "selectedPuppyId": null,
+  "layout": {
+    "desktop": "Three-generation family tree plus selected dog's detail panel.",
+    "mobile": "Full tree overview fitted to width; selected dog's details below.",
+    "initialView": "Fit the complete tree within the available viewport width and height, respecting the inspector and controls. Derive bounds from rendered nodes and padding; do not hardcode device dimensions."
+  },
+  "interaction": {
+    "photos": [
+      "Each dog's real-photo carousel maintains its own active index.",
+      "Show left/right buttons on hover and keyboard focus for multi-photo nodes only.",
+      "Arrow clicks change the photo without selecting another dog or initiating canvas pan.",
+      "Body click selects dog and opens its details.",
+      "On touch devices show accessible arrows and support image swiping; do not depend on hover.",
+      "Show image position and count. Do not mix adult AI concepts into real-photo galleries.",
+      "Support a full-size viewer preserving original aspect ratio and source link.",
+      "Synchronize selected dog's active image between its tree node and detail panel."
+    ],
+    "tree": [
+      "Zoom in/out buttons, Fit to screen reset and expand control.",
+      "Cmd + mouse wheel over canvas zooms around the pointer. Ctrl + wheel can be equivalent on non-Mac platforms.",
+      "Handle wheel only within the tree canvas and only for the intended zoom gesture. Preserve ordinary page scrolling and browser zoom outside it.",
+      "Drag blank canvas to pan. Image arrows, links and buttons must not initiate pan.",
+      "Touch: pinch to zoom, drag background to pan; distinguish image swipes from canvas gestures.",
+      "Keep zoom bounded and controls reachable; refit on initial render. Resize automatically refits only while in fit mode, preserving user exploration otherwise.",
+      "Provide keyboard-operable buttons and visible focus. No keyboard-only user must need wheel/pinch gestures."
+    ]
+  },
+  "provenance": {
+    "fields": [
+      "sourcePageUrl",
+      "sourceImageUrl",
+      "capturedAt",
+      "localPath",
+      "sha256",
+      "subjectIds",
+      "associationEvidence",
+      "kind"
+    ],
+    "display": [
+      "Show full source URL in each dog detail panel.",
+      "Show archive date separately from any source-provided examination or birth dates.",
+      "Offer original source and saved-source view.",
+      "Retain source attribution for every health result and breeder description, inheriting from profile source only when unambiguous."
+    ],
+    "archiveManifest": "archive/photo-manifest.json",
+    "savedPageDirectory": "archive/pages-2026-10-27",
+    "coverage": "44 downloaded and image-verified source files from all four family profile pages plus explicitly identified images on additional gallery/index/past-litter pages. Includes three pedigree documents and four great-grandparent photos. Unlabelled images on shared galleries are inventoried but not attributed or downloaded. Do not claim exhaustive identification of every family dog in those galleries.",
+    "photoFiles": {
+      "billie": 6,
+      "zane": 6,
+      "jay": 2,
+      "ryder": 21,
+      "halsey": 1,
+      "not-an-illusion": 1
+    },
+    "billieDistinctGalleryPhotos": 5
+  },
+  "verifiedFacts": {
+    "billie": {
+      "sourcePageUrl": "https://www.basileas-minis.com/billie123.html",
+      "formalName": "Basileas Journey Continues",
+      "height": "39 cm",
+      "colour": "Blue merle",
+      "HD": "A/A",
+      "ED": "0:0",
+      "MDR1": "+/+ (clear)",
+      "NAD": "+/- (carrier)"
+    },
+    "zane": {
+      "sourcePageUrl": "https://www.basileas-minis.com/zane.html",
+      "formalName": "Basileas Lil Bit N Zane",
+      "HD": "B/C",
+      "NAD": "+/+"
+    }
+  },
+  "constraints": [
+    "Do not infer puppy health results from parental tests.",
+    "Eyes clear refers to health, not eye colour.",
+    "Use exact original photo files in the implemented site; raster mockup photos are generative approximations.",
+    "Adult appearance images remain explicitly labelled speculative AI concepts.",
+    "Keep all three puppy candidates equally represented until chosen.",
+    "No deployment, commit or application scaffold in this mockup revision."
+  ],
+  "prompts": {
+    "initial": "Use case: ui-mockup. Revise the attached selected genealogy design into ONE polished production-quality English responsive website design, maintaining its elegant cool off-white, navy and muted blue visual system, clear sans typography and airy family tree. This is a personal archive, kira.uylas.net, called \"kira / family archive\". Not a breeder sales website. Current date 27 October 2026. Kira is a provisional name, no puppy selected yet. All visible product text MUST be English. Retain real names.\nREFERENCE ROLES: first image is the selected original UI mockup, layout/style target to refine, translate ALL Turkish text to English, do not carry Turkish words into new design. Second image is a labelled family photo contact sheet containing exact real photos (Billie top left, Zane top centre, Jay top right, Ryder bottom left, Halsey bottom centre, Not An Illusion bottom right). Third and fourth images are source page screenshots for factual/reference photos only, not visual design. Source pages are https://www.basileas-minis.com/billie123.html and https://www.basileas-minis.com/zane.html . The selected UI reference contains all 3 actual puppy portraits, preserve their three distinct markings and identity. No imaginary replacement dogs or AI adult image standing in for a real parent.\nTARGET: 2048 x 1440 landscape board with desktop web 1440 x 1024 on the left and matching 390 x 844 mobile viewport on right, scaled proportionately with generous gutter. ONE coherent product design in two responsive breakpoints. No device bezels, browser/OS chrome, notch, device shadows or annotation clutter. Body font 14–16px before scaling, readable source text. Crisp modern flat product UI, use white-space and subtle rules rather than nested cards, no heavy shadows, no generic dashboard metrics.\n\nDESKTOP:\nHeader: \"kira / family archive\", navigation \"Family tree\" selected, \"Puppies\", \"Photos\", \"Sources\". Small unobtrusive \"Name provisional\".\nHeading \"One family. Three little possibilities.\" Subtitle \"Kira hasn't been chosen yet. Meet the family.\"\nMain area is a well-bounded, spacious interactive family-tree viewport taking 70% width, and right detail panel separated by fine vertical rule, about30%. Entire 3-generation tree MUST fit initial canvas bounds; no node clipped, no huge empty margins. Use crisp thin blue-grey connector lines exactly topology below. Put a minimal toolbar along bottom of TREE only: minus button, \"Fit to screen\" button with fit icon and subtle selected appearance, plus button, full-screen icon button. Tiny helper text nearby \"Drag to pan · ⌘ + scroll to zoom\". Do not put toolbar under details; don't confuse controls with tree connectors. This visible initial state represents automatic fitting to available screen width. Hover controls below describe one node, not all simultaneously.\nEXACT TREE: top row 4 grandparents: Jay (Maternal grandmother), Ryder (Maternal grandfather), Halsey (Paternal grandmother), Not An Illusion (Paternal grandfather). Jay and Ryder paired by connector descend to Billie; Halsey and Not An Illusion paired descend to Zane. Second row Billie (Mother), Zane (Father). Join these parents then one shared descent branch to 3 equal original puppy nodes: Puppy 01 / Copper face, Puppy 02 / Wide white blaze, Puppy 03 / Small white marking. No candidate pre-selected as Kira. Three puppy photos are actual originals, not adults. Small text link \"View other siblings →\" and \"Adult appearance concepts →\" can sit beneath the puppies, above toolbar. These links are supporting, not big buttons.\nTREE PHOTO INTERACTION VISUAL: Billie node selected with thin blue outline and visibly hovered. Overlay left and right circular chevron buttons INSIDE opposite edges of Billie's photo at vertical centre, with clear white shapes on translucent dark discs for contrast; tiny translucent \"1 / 6\" photo counter bottom right. Small pointer by right chevron can communicate hover. Billie has six archived source photo files. Show count subtly also on Zane node, \"6 photos\", Ryder \"21 photos\", Jay \"2 photos\" if uncluttered, but avoid counts on all nodes if space tight. No arrows on one-photo puppy nodes. Arrows change only the photo, not selection; click body opens profile. On unhovered nodes hide arrow buttons, keep small photo count only. Make the controls real-looking, not diagram annotations.\nDETAIL PANEL: large REAL Billie photograph (merle standing on grass from family ref top LEFT), photo count \"1 / 6\", left/right accessible arrow overlays; below a tidy row of three thumbnail previews if enough room, otherwise omit. Heading \"Billie\", small \"Mother · Basileas Journey Continues\"; \"39 cm · Blue merle\". Tabs \"Overview\" and \"Health\" with Health selected. Four precise rows: \"Hips (HD)    A/A\", \"Elbows (ED)    0:0\", \"MDR1    +/+ clear\", \"NAD    +/− carrier\". Carrier uses a gentle amber label, NOT +/+ carrier. One button \"View full profile\".\nSource provenance visibly below: heading \"Source record\", actual clickable address split cleanly across lines if needed \"https://www.basileas-minis.com/\" then \"billie123.html ↗\". Next line \"Archived 27 Oct 2026\". Optional small \"Open saved copy\" secondary link. This is the original source URL, not merely a generic domain or 'View source'. No fabricated certificates or dates. All facts retain source-page and photo URLs in future implementation. The mockup should clearly communicate durable archive provenance.\n\nMOBILE:\nSame English header, compact hamburger, heading \"Family tree\", note \"Kira hasn't been chosen yet.\"\nA miniature but CLEAN full family overview fitted to viewport, 4 grandparents,2parents,3puppies, with real small photos and SHORT names only; no long relationship captions squeezed into tiny nodes. All nodes visible initially. Right below viewport a fixed-within-tree zoom toolbar \"-\", \"Fit\", \"+\", expand icon. Tiny touch hint \"Pinch to zoom · drag to explore\". Desktop Cmd+scroll does not appear as mobile instruction.\nBelow tree, selected Billie profile begins as an integrated bottom sheet/detail section that can expand, with real landscape image and ALWAYS visible photo chevrons on mobile, \"1 / 6\" counter, \"Billie · Mother\", short HD and NAD rows and source URL (same actual URL, wrap neatly), archived date. Avoid duplicating same Billie hero twice on mobile; tiny node + larger detail is appropriate. Mobile user's tap/swipe changes photo; hover is not required. Fit control makes navigation recoverable after zoom.\nFocus on genealogy, accessible photo browsing, and source reliability. Do not cram unrelated features. No Turkish text. No generated adult photos presented as actual family members. Do not label candidate photos as chosen Kira. Preserve design's readability and visual calm.",
+    "targetedCorrection": "Edit the FIRST attached UI mockup with narrowly targeted factual corrections. Preserve its exact composition, English copy, cool white/navy/blue style, genealogy topology, all real main portraits, all health values, source URLs, desktop/mobile framing, hover arrow controls, zoom toolbar and Cmd+scroll hint. Do not redesign. Output one corrected mockup at same dimensions/aspect ratio.\nSecond attachment is a contact sheet of REAL BILLIE photos. Use it ONLY to correct the three small thumbnail previews below Billie's hero in the desktop inspector: thumbnail 1 must be Billie standing on grass (second reference bottom left), thumbnail 2 must be Billie on a mountain (second reference top left), thumbnail 3 must be Billie jumping the blue/yellow agility hurdle (second reference top right). Current two black-white dog thumbnails are WRONG: they are Ryder, a different dog. Replace those two with correct Billie photos. Preserve the hero photo and all tree portraits.\nBillie has FIVE distinct photo compositions: the contact sheet's bottom left and bottom right are the same photo in different file versions. Everywhere a counter or caption refers to Billie change \"1 / 6\" to \"1 / 5\" and \"6 photos\" to \"5 photos\", in desktop node, desktop hero and mobile hero. Zane still has 6 photos.\nRemove the photograph-count lines under ALL FOUR grandparents Jay, Ryder, Halsey, Not An Illusion. Keep their names and relationship labels and their actual photographs unchanged. Halsey and Not An Illusion currently incorrectly show 6 photos; DO NOT leave these incorrect numbers.\nEverything else stays unchanged. In particular NAD remains \"+/− carrier\", Hips A/A, Elbows 0:0, MDR1 +/+ clear, source full address https://www.basileas-minis.com/billie123.html, archived 27 Oct 2026. All text English. Desktop controls \"- / Fit to screen / + / expand\", helper \"Drag to pan · ⌘ + scroll to zoom\". Mobile controls with pinch-to-zoom helper stay. Preserve three distinct original puppy portraits. Maintain readable text."
+  }
+}
