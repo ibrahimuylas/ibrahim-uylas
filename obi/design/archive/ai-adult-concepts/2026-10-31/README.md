@@ -1,5 +1,7 @@
 # Updated adult concepts — 31 October 2026
 
+> Identity correction: the user confirmed that latest Photo 3 belongs to candidate 01 and latest Photo 1 belongs to candidate 03. Concepts 01 and 03 in this historical generation used incorrect real-photo pairs and are superseded by `../2026-10-31-corrected-identities-v6/`. Candidate 02 is unaffected. Prompts below remain historical records.
+
 Generated with the built-in `image_gen` tool from the three new user-provided puppy portraits. Each call uses the matching real portrait as the identity reference and the matching 29 October concept only as a composition/style reference. The final prompts and original generation paths are preserved in `prompts.json`.
 
 Identity mapping remains 01 Copper face / Photo 1, 02 Wide white blaze / Photo 2, 03 Small white marking / Photo 3, checked against the previous real individual portraits. New source photographs and their SHA-256 manifest are in `../../puppies-2026-10-31/`. The date is the archive receipt date; the photographs' capture date and photographer were not supplied.

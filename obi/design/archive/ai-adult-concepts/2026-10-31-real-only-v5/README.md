@@ -1,5 +1,7 @@
 # Real-photo-only adult concepts — 31 October 2026
 
+> Identity correction: the user confirmed that latest Photo 3 belongs to candidate 01 and latest Photo 1 belongs to candidate 03. Concepts 01 and 03 in this historical generation used incorrect real-photo pairs and are superseded by `../2026-10-31-corrected-identities-v6/`. Candidate 02 is unaffected. Prompts below remain historical records.
+
 The user explicitly rejected previous AI images as references. These three new concepts were generated from scratch with the built-in `image_gen` tool. Each call supplied exactly two real photographs of the same candidate: the latest basket portrait and the earlier individual portrait held by a person. No prior AI image was supplied for identity, style or composition. The precise input paths, prompts and generated originals are recorded in `prompts.json`.
 
 Identity mapping: 01 Copper face, 02 Wide white blaze, 03 Small white marking. Both photos' observed face asymmetry, copper/white distribution, nose, ears, chest, forelegs, paw tips and visible flank patterns informed each prompt. Each individual's observed blue/grey irises were considered separately. The adult's hidden areas and mature proportions remain illustrative completion, and exact future eye colour or unseen markings cannot be verified from these inputs.

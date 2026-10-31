@@ -1,0 +1,36 @@
+[
+  {
+    "n": "01",
+    "latestUpload": "Photo 3.jpg",
+    "output": "puppy-01-adult-corrected-v6.png",
+    "generator": "built-in image_gen",
+    "referencePolicy": "real-photos-only-user-corrected-identity",
+    "references": [
+      "app/public/archive/photos/puppy-03-2026-10-31.jpg",
+      "app/public/archive/photos/whatsapp-image-2026-10-25-at-11-41-56.jpeg"
+    ],
+    "prompt": "Use case: photorealistic-natural. Generate a fresh adult concept from exactly these TWO REAL puppy photographs. No prior AI image is a reference.\nIdentity: candidate 01, a FEMALE Miniature American Shepherd. Image 1 is the user-confirmed latest upload Photo 3. Image 2 is her matching earlier individual portrait held by a person. Age the SAME puppy plausibly to a compact athletic 18–24-month adult female, with moderate feathering, realistic adult muzzle/head proportions.\nCRITICAL: this is ONE adult shown twice. The full-body photograph and close portrait MUST have the SAME PAIR OF EYES, with the SAME iris colour for each corresponding eye. Have the face look straight at the camera in BOTH panels, under the SAME soft neutral light, with no mirrored head, no head tilt, no shadow-induced colour shift. Copy the eye design consistently across panels. As in the real latest photograph, the viewer-left iris is muted cool steel blue; viewer-right is a closely related cool slate blue-grey, only subtly greyer. BOTH eyes remain cool blue/grey; neither iris has brown, amber, hazel, yellow or a coloured outer ring. The full-body dog's eyes must clearly retain that same blue/grey pair rather than both turning dark grey or brown. Do not make one eye vivid icy blue while the other becomes dull or brown. Crisp iris texture, dark natural pupils and subtle matching catchlights.\nPreserve identity from the actual photos: copper-dominant muzzle and cheeks, copper brows, finely streaked silver/charcoal crown, grey folded ears with darker edges, dark irregular eyeliner. Preserve the small pale central nose-bridge detail at its observed extent; do not invent a broad white stripe. Black nose. Show the same flank as latest Photo 3: predominantly pale silver with fine peppering and separated irregular charcoal patches, with observed positions guiding the adult map; no near-solid black saddle. Earlier photo supplies tan forelegs, short white toe tips and small dark leg/shoulder patches; no tall white boots. White chest bib. Hidden body and tail areas are plausible completion.\nComposition: landscape 3:2 paired photographs, left about 60% a complete standing adult in a three-quarter flank body view with FRONT-FACING head, all four paws and entire tail comfortably visible; right about 40% a close FRONT-FACING face and upper chest of the IDENTICAL adult. Keep all face markings, ears, nose, and especially iris colours consistent between panels. Thin plain divider. Quiet outdoor grass/earth setting, neutral natural daylight and realistic fur detail. No basket, flowers, toys, person, collar or extra dogs.\nText: small white serif '01 · Copper face' at upper left, and 'AI concept · Appearance may vary' at lower right.",
+    "source": "/Users/uylas/.codex/generated_images/01a19394-917f-7ba3-b586-6ee681a8b72b/exec-9a8c4302-d657-4320-8b5e-bbcdff51dc31.png",
+    "referenceSha256": [
+      "f952fa09d8f2efb7770afa617c405d9929a4fef34d889a8ca769d0f32d435480",
+      "19641bb0051417aa37d7577c4269df9b849f6d4b8ca64d0896c17fb06de5dca6"
+    ]
+  },
+  {
+    "n": "03",
+    "latestUpload": "Photo 1.jpg",
+    "output": "puppy-03-adult-corrected-v6.png",
+    "generator": "built-in image_gen",
+    "referencePolicy": "real-photos-only-user-corrected-identity",
+    "references": [
+      "app/public/archive/photos/puppy-01-2026-10-31.jpg",
+      "app/public/archive/photos/whatsapp-image-2026-10-25-at-11-32-06.jpeg"
+    ],
+    "prompt": "Use case: photorealistic-natural.\nCreate a fresh possible adult appearance of the SAME FEMALE Miniature American Shepherd in the TWO supplied REAL photographs, about 18–24 months old. Only these two real images are references; no previous AI image may guide identity, style or composition.\nImage 1: latest real basket portrait, assigned to this candidate by the user's explicit identity correction. The upload's file number is NOT its candidate number. It is authoritative for current face, ears, eyes and visible flank.\nImage 2: the matching earlier real portrait held by a person, authoritative for chest, front legs, paw white and supporting facial markings.\nMature anatomy naturally into a compact, athletic adult female with moderate adult feathering, a developed muzzle and realistic adult head/eye proportions. Map the visible actual silver/charcoal merle, copper and white boundaries from the photographs instead of inventing a generic breed pattern. Preserve facial asymmetry, actual nose pigment, ear marbling, copper eyebrows and cheeks, chest white and the unequal extent of white toe tips. Show the same flank as in the latest photograph and carry its visible dark patch map onto the adult. Hidden body, rear legs and tail are plausible completion, not known patterns.\nEyes: derive each iris independently from the latest REAL photograph, supported by the older photograph. Preserve the observed natural blue/grey nuances as one adult possibility. Do not force a common grey iris across dogs, invent brown sectors or impose heterochromia. Natural pupil size, catchlights and detailed iris texture; no glowing or oversaturated eyes.\nLandscape 3:2 paired photographs: left roughly 60% full body standing in three-quarter flank view with head toward camera, whole tail, ears and four paws comfortably inside frame; right roughly 40% close face/upper chest of the SAME adult, with markings identical between panels. Narrow plain divider. Natural neutral daylight, quiet outdoor earth/grass setting, soft bokeh, realistic fine fur texture. No basket, toys, flowers, human, collar or additional dog. Small white serif title at upper left, and small 'AI concept · Appearance may vary' at lower right.\nCandidate 03, archive descriptor 'Small white marking'. The LATEST image is uploaded Photo 1, a wide frame: warm copper cheeks, eyebrows and muzzle, fine grey/pale central nose-bridge flecking, irregular dark eyeliner, silver-grey folded ears and streaked silver crown. Use the exact pale central facial marking seen in both REAL photographs rather than exaggerating the descriptor into a solid white forehead blaze. The latest irises are distinctly natural cornflower blue. The nose is black. Latest visible body is pale silver with an obvious irregular dark vertical band behind the shoulder/neck and separate dark flank patches. The EARLIER image shows a white chest, tan forelegs and unequal white paw ends, with more white on the viewer-right forepaw; keep that asymmetry. Preserve the pale silver flank and the observed shoulder band, not the finer-peppered body belonging to the other candidate. Title exactly: '03 · Small white marking'.",
+    "source": "/Users/uylas/.codex/generated_images/01a19394-917f-7ba3-b586-6ee681a8b72b/exec-5e23f13c-a6d9-4219-bfcb-c30b6f915727.png",
+    "referenceSha256": [
+      "d39c88bdb47fd3c2914f2d590589996615c8581fc50f1ddb8fe613f9a6fd1f7f",
+      "975d02e4e9f9b9d45d9da8f4707353516da333835876187d1876c16fe7672b7d"
+    ]
+  }
+]

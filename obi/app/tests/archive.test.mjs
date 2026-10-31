@@ -99,11 +99,19 @@ test('source exceptions and missing puppy results remain explicit',()=>{
 });
 
 test('each candidate carousel leads with the new portrait, retains the old photo and one updated AI concept',()=>{
+ const confirmed={
+  'puppy-01':{file:'Photo 3.jpg',sha256:'f952fa09d8f2efb7770afa617c405d9929a4fef34d889a8ca769d0f32d435480'},
+  'puppy-02':{file:'Photo 2.jpg',sha256:'42801a0ba277a23791b60b14c3c6b23ae640f7e9d00dee06d3301fc6af5d3eb9'},
+  'puppy-03':{file:'Photo 1.jpg',sha256:'d39c88bdb47fd3c2914f2d590589996615c8581fc50f1ddb8fe613f9a6fd1f7f'},
+ };
+ const manifest=JSON.parse(fs.readFileSync(path.join(root,'public/archive/puppies-2026-10-31-manifest.json')));
  for(const dog of archive.dogs.filter(d=>d.role==='Candidate')){
   const items=galleryItems(dog);
   assert.equal(items.length,3);
   assert.equal(items[0].sourceKind,'user-upload');
-  assert.equal(items[0].sourceFile,`Photo ${Number(dog.id.slice(-2))}.jpg`);
+  assert.equal(items[0].sourceFile,confirmed[dog.id].file);
+  assert.equal(items[0].sha256,confirmed[dog.id].sha256);
+  assert.deepEqual(manifest.photos.find(p=>p.sha256===items[0].sha256).subjectIds,[dog.id]);
   assert.equal(items[1].id,dog.id);
   assert.ok(items[1].sourceImageUrl);
   assert.equal(items[1].capturedAt,'2026-10-25');

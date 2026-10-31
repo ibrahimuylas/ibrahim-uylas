@@ -1,7 +1,7 @@
 {
   "archivedAt": "2026-10-31",
   "sourceKind": "user-upload",
-  "note": "Three original photographs provided by the user. Archive date is the receipt date; capture date and photographer are not supplied. Identity matched against the existing individual portraits by facial markings. No external source URL was supplied.",
+  "note": "Three unchanged original photographs provided by the user. Archive date is the receipt date; capture date and photographer are unknown. The user corrected the initial candidate 01/03 assignments: Photo 3 belongs to candidate 01; Photo 1 belongs to candidate 03; Photo 2 stays with candidate 02. Existing IDs and filenames retain ingestion numbering and do not establish subject identity. No external source URL was supplied.",
   "photos": [
     {
       "id": "puppy-01-2026-10-31",
@@ -15,7 +15,7 @@
       "kind": "photo",
       "sha256": "d39c88bdb47fd3c2914f2d590589996615c8581fc50f1ddb8fe613f9a6fd1f7f",
       "subjectIds": [
-        "puppy-01"
+        "puppy-03"
       ],
       "localPath": "puppy-01-2026-10-31.jpg",
       "dimensions": [
@@ -57,7 +57,7 @@
       "kind": "photo",
       "sha256": "f952fa09d8f2efb7770afa617c405d9929a4fef34d889a8ca769d0f32d435480",
       "subjectIds": [
-        "puppy-03"
+        "puppy-01"
       ],
       "localPath": "puppy-03-2026-10-31.jpg",
       "dimensions": [
@@ -66,5 +66,13 @@
       ],
       "bytes": 142932
     }
-  ]
+  ],
+  "identityAssignments": {
+    "confirmedBy": "user",
+    "mapping": {
+      "Photo 1.jpg": "puppy-03",
+      "Photo 2.jpg": "puppy-02",
+      "Photo 3.jpg": "puppy-01"
+    }
+  }
 }
