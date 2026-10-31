@@ -1170,23 +1170,25 @@
           "kind": "photo"
         }
       ],
-      "concept": "/media/ai-puppy-01-2026-10-31.webp",
+      "concept": "/media/ai-puppy-01-2026-10-31-real-only-v5.webp",
       "overview": [
         "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
         "No individual test results or confirmed future eye colour are recorded."
       ],
       "concepts": [
         {
-          "id": "ai-01-2026-10-31",
-          "src": "/media/ai-puppy-01-2026-10-31.webp",
-          "original": "/media/ai-puppy-01-2026-10-31.webp",
+          "id": "ai-01-2026-10-31-real-only-v5",
+          "src": "/media/ai-puppy-01-2026-10-31-real-only-v5.webp",
+          "original": "/media/ai-puppy-01-2026-10-31-real-only-v5.webp",
           "kind": "ai-concept",
           "variant": "updated",
           "label": "AI concept",
           "createdAt": "2026-10-31",
           "referencePhotoIds": [
-            "puppy-01-2026-10-31"
-          ]
+            "puppy-01-2026-10-31",
+            "puppy-01"
+          ],
+          "referencePolicy": "real-photos-only"
         }
       ],
       "sourceKind": "litter"
@@ -1232,23 +1234,25 @@
           "kind": "photo"
         }
       ],
-      "concept": "/media/ai-puppy-02-2026-10-31.webp",
+      "concept": "/media/ai-puppy-02-2026-10-31-real-only-v5.webp",
       "overview": [
         "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
         "No individual test results or confirmed future eye colour are recorded."
       ],
       "concepts": [
         {
-          "id": "ai-02-2026-10-31",
-          "src": "/media/ai-puppy-02-2026-10-31.webp",
-          "original": "/media/ai-puppy-02-2026-10-31.webp",
+          "id": "ai-02-2026-10-31-real-only-v5",
+          "src": "/media/ai-puppy-02-2026-10-31-real-only-v5.webp",
+          "original": "/media/ai-puppy-02-2026-10-31-real-only-v5.webp",
           "kind": "ai-concept",
           "variant": "updated",
           "label": "AI concept",
           "createdAt": "2026-10-31",
           "referencePhotoIds": [
-            "puppy-02-2026-10-31"
-          ]
+            "puppy-02-2026-10-31",
+            "puppy-02"
+          ],
+          "referencePolicy": "real-photos-only"
         }
       ],
       "sourceKind": "litter"
@@ -1294,23 +1298,25 @@
           "kind": "photo"
         }
       ],
-      "concept": "/media/ai-puppy-03-2026-10-31.webp",
+      "concept": "/media/ai-puppy-03-2026-10-31-real-only-v5.webp",
       "overview": [
         "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
         "No individual test results or confirmed future eye colour are recorded."
       ],
       "concepts": [
         {
-          "id": "ai-03-2026-10-31",
-          "src": "/media/ai-puppy-03-2026-10-31.webp",
-          "original": "/media/ai-puppy-03-2026-10-31.webp",
+          "id": "ai-03-2026-10-31-real-only-v5",
+          "src": "/media/ai-puppy-03-2026-10-31-real-only-v5.webp",
+          "original": "/media/ai-puppy-03-2026-10-31-real-only-v5.webp",
           "kind": "ai-concept",
           "variant": "updated",
           "label": "AI concept",
           "createdAt": "2026-10-31",
           "referencePhotoIds": [
-            "puppy-03-2026-10-31"
-          ]
+            "puppy-03-2026-10-31",
+            "puppy-03"
+          ],
+          "referencePolicy": "real-photos-only"
         }
       ],
       "sourceKind": "litter"
@@ -1584,7 +1590,7 @@
     {
       "date": "2026-10-31",
       "title": "New puppy portraits and adult concepts",
-      "description": "Three clearer portraits provided by the user were archived. Each adult concept was redesigned using the new face, eye and coat details; earlier real photographs remain in the galleries."
+      "description": "Three clearer portraits provided by the user were archived. Each adult concept was generated afresh using only that candidate’s two real photographs; previous AI images were excluded from the references. Earlier real photographs remain in the galleries."
     }
   ]
 }

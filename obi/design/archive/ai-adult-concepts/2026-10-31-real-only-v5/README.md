@@ -1,0 +1,9 @@
+# Real-photo-only adult concepts — 31 October 2026
+
+The user explicitly rejected previous AI images as references. These three new concepts were generated from scratch with the built-in `image_gen` tool. Each call supplied exactly two real photographs of the same candidate: the latest basket portrait and the earlier individual portrait held by a person. No prior AI image was supplied for identity, style or composition. The precise input paths, prompts and generated originals are recorded in `prompts.json`.
+
+Identity mapping: 01 Copper face, 02 Wide white blaze, 03 Small white marking. Both photos' observed face asymmetry, copper/white distribution, nose, ears, chest, forelegs, paw tips and visible flank patterns informed each prompt. Each individual's observed blue/grey irises were considered separately. The adult's hidden areas and mature proportions remain illustrative completion, and exact future eye colour or unseen markings cannot be verified from these inputs.
+
+Visual review against the real inputs: 01 retains a copper-dominant muzzle, fine central merling without a broad white blaze, blue irises, tan forelegs and short white toe tips; 02 retains the broad irregular blaze, dark asymmetric eye patches, mottled nose and larger flank islands; 03 retains the small lower nose-bridge white marking, silver crown, copper cheeks and uneven white paw ends. These are visual identity checks, not a claim of pixel-identical markings or guaranteed adult appearance.
+
+The app uses `app/public/media/ai-puppy-0{1,2,3}-2026-10-31-real-only-v5.webp` and separate bounded thumbnails. New filenames prevent cached earlier concepts from being mistaken for this generation. Earlier AI originals remain in the design archive. Current candidate galleries retain both real photographs and one active adult concept.

@@ -110,6 +110,8 @@ test('each candidate carousel leads with the new portrait, retains the old photo
   assert.deepEqual(items.slice(dog.photos.length).map(p=>p.variant),['updated']);
   for(const item of items.slice(dog.photos.length)){
    assert.equal(item.kind,'ai-concept');
+   assert.equal(item.referencePolicy,'real-photos-only');
+   assert.deepEqual(item.referencePhotoIds,dog.photos.map(photo=>photo.id));
    assert.equal(item.sourceImageUrl,undefined);
    assert.match(mediaDescription(dog,item,1),/AI adult concept/);
    assert.ok(fs.existsSync(path.join(root,'public',item.src)));

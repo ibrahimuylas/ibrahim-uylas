@@ -223,5 +223,6 @@
   "Show {0} — AI adult concept": "{0} — YZ yetişkin tasarımını göster",
   "User-provided photograph · archived": "Kullanıcının sağladığı fotoğraf · arşivlendi",
   "New puppy portraits and adult concepts": "Yeni yavru portreleri ve yetişkin tasarımları",
-  "Three clearer portraits provided by the user were archived. Each adult concept was redesigned using the new face, eye and coat details; earlier real photographs remain in the galleries.": "Kullanıcının sağladığı üç daha net portre arşivlendi. Her yetişkin tasarımı yeni yüz, göz ve tüy ayrıntılarıyla yeniden hazırlandı; önceki gerçek fotoğraflar galerilerde korunuyor."
+  "Three clearer portraits provided by the user were archived. Each adult concept was redesigned using the new face, eye and coat details; earlier real photographs remain in the galleries.": "Kullanıcının sağladığı üç daha net portre arşivlendi. Her yetişkin tasarımı yeni yüz, göz ve tüy ayrıntılarıyla yeniden hazırlandı; önceki gerçek fotoğraflar galerilerde korunuyor.",
+  "Three clearer portraits provided by the user were archived. Each adult concept was generated afresh using only that candidate’s two real photographs; previous AI images were excluded from the references. Earlier real photographs remain in the galleries.": "Kullanıcının sağladığı üç daha net portre arşivlendi. Her yetişkin tasarımı yalnızca ilgili yavrunun iki gerçek fotoğrafıyla sıfırdan üretildi; önceki YZ görselleri referanslara dahil edilmedi. Önceki gerçek fotoğraflar galerilerde korunuyor."
 }
