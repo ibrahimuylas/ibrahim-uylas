@@ -2,11 +2,12 @@ import {healthSummary} from '../src/health-summary.js';
 import {healthGroups,parentRole} from '../src/profile-records.js';
 import {buildFamilyLayout,familyEdgePath} from '../src/family-layout.js';
 import {nextOverlay,archiveHash} from '../src/overlay-navigation.js';
-import {galleryItems, mediaDescription} from '../src/gallery-items.js';
+import {galleryItems, mediaDescription, photoArchiveLabel} from '../src/gallery-items.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 const root=path.resolve(import.meta.dirname,'..');
 const archive=JSON.parse(fs.readFileSync(path.join(root,'src/data/archive.json'),'utf8'));
 test('tree includes every recorded dog and parent relationship in the correct generation',()=>{
@@ -57,12 +58,27 @@ test('profile groups retain every original result once and resolve documented pa
  }
  assert.equal(parentRole('unrecorded'),'Parent');
 });
-test('every profile, health result and real photograph retains a source URL',()=>{
+test('every profile, health result and real photograph retains honest source provenance',()=>{
  for(const dog of archive.dogs){
   assert.match(dog.sourcePageUrl,/^https:\/\/www\.basileas-minis\.com\//);
   assert.ok(archive.sources.some(s=>s.id===dog.sourceId));
   for(const t of dog.tests)assert.equal(t.sourcePageUrl,dog.sourcePageUrl);
-  for(const p of dog.photos){assert.match(p.sourceImageUrl,/^https:\/\//);assert.ok(fs.existsSync(path.join(root,'public',p.src)));assert.ok(fs.existsSync(path.join(root,'public',p.original)));}
+  for(const p of dog.photos){
+   if(p.sourceKind==='user-upload'){
+    assert.equal(p.sourceImageUrl,undefined);
+    assert.equal(p.sourcePageUrl,undefined);
+    assert.equal(p.captureDate,null);
+    assert.equal(p.dateBasis,'archive-receipt-date');
+    assert.doesNotMatch(photoArchiveLabel(p),/Basileas/);
+    const original=fs.readFileSync(path.join(root,'public',p.original));
+    assert.equal(createHash('sha256').update(original).digest('hex'),p.sha256);
+   } else {
+    assert.match(p.sourceImageUrl,/^https:\/\//);
+    assert.match(photoArchiveLabel(p),/Basileas Minis/);
+   }
+   assert.ok(fs.existsSync(path.join(root,'public',p.src)));
+   assert.ok(fs.existsSync(path.join(root,'public',p.original)));
+  }
  }
 });
 test('parentage resolves without cycles; all candidates and siblings share the documented parents',()=>{
@@ -82,13 +98,17 @@ test('source exceptions and missing puppy results remain explicit',()=>{
  for(const d of archive.dogs.filter(d=>d.role==='Candidate')){assert.ok(d.concept);assert.ok(fs.existsSync(path.join(root,'public',d.concept)));assert.ok(!d.photos.some(p=>p.src===d.concept));}
 });
 
-test('each candidate carousel includes the original and one updated concept with honest provenance',()=>{
+test('each candidate carousel leads with the new portrait, retains the old photo and one updated AI concept',()=>{
  for(const dog of archive.dogs.filter(d=>d.role==='Candidate')){
   const items=galleryItems(dog);
-  assert.equal(items.length,2);
-  assert.ok(items[0].sourceImageUrl);
-  assert.deepEqual(items.slice(1).map(p=>p.variant),['updated']);
-  for(const item of items.slice(1)){
+  assert.equal(items.length,3);
+  assert.equal(items[0].sourceKind,'user-upload');
+  assert.equal(items[0].sourceFile,`Photo ${Number(dog.id.slice(-2))}.jpg`);
+  assert.equal(items[1].id,dog.id);
+  assert.ok(items[1].sourceImageUrl);
+  assert.equal(items[1].capturedAt,'2026-10-25');
+  assert.deepEqual(items.slice(dog.photos.length).map(p=>p.variant),['updated']);
+  for(const item of items.slice(dog.photos.length)){
    assert.equal(item.kind,'ai-concept');
    assert.equal(item.sourceImageUrl,undefined);
    assert.match(mediaDescription(dog,item,1),/AI adult concept/);

@@ -129,18 +129,18 @@
     "width": 384,
     "height": 256
   },
-  "/media/ai-puppy-01-2026-10-29.webp": {
-    "src": "/media/thumbs/ee86c7240d442a8d-384.webp",
+  "/media/ai-puppy-01-2026-10-31.webp": {
+    "src": "/media/thumbs/66b28ca2b203a2e2-384.webp",
     "width": 384,
     "height": 256
   },
-  "/media/ai-puppy-02-2026-10-29.webp": {
-    "src": "/media/thumbs/4e25ffd461e6b964-384.webp",
+  "/media/ai-puppy-02-2026-10-31.webp": {
+    "src": "/media/thumbs/bda31928778fb353-384.webp",
     "width": 384,
     "height": 256
   },
-  "/media/ai-puppy-03-2026-10-29.webp": {
-    "src": "/media/thumbs/eedbc922f092cec9-384.webp",
+  "/media/ai-puppy-03-2026-10-31.webp": {
+    "src": "/media/thumbs/5edb62df864198dc-384.webp",
     "width": 384,
     "height": 256
   },
@@ -214,14 +214,29 @@
     "width": 384,
     "height": 256
   },
+  "/media/puppy-01-2026-10-31.webp": {
+    "src": "/media/thumbs/9ccdfd37ec8236c5-384.webp",
+    "width": 384,
+    "height": 278
+  },
   "/media/puppy-01.webp": {
     "src": "/media/thumbs/81352426644adad9-384.webp",
     "width": 288,
     "height": 384
   },
+  "/media/puppy-02-2026-10-31.webp": {
+    "src": "/media/thumbs/a64a7b575ed954ec-384.webp",
+    "width": 384,
+    "height": 324
+  },
   "/media/puppy-02.webp": {
     "src": "/media/thumbs/b52fc888c1bc11e3-384.webp",
     "width": 288,
+    "height": 384
+  },
+  "/media/puppy-03-2026-10-31.webp": {
+    "src": "/media/thumbs/c615d8dd8269786e-384.webp",
+    "width": 355,
     "height": 384
   },
   "/media/puppy-03.webp": {

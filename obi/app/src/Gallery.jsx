@@ -1,6 +1,6 @@
 import { translate, locale } from './i18n';
 import { useRef } from 'react';
-import { galleryItems, mediaDescription } from './gallery-items';
+import { galleryItems, mediaDescription, photoArchiveLabel } from './gallery-items';
 import { thumbnailSource } from './image-sources';
 import { CaretLeft, CaretRight, ArrowSquareOut } from '@phosphor-icons/react';
 
@@ -18,7 +18,7 @@ export function Gallery({ dog, index = 0, change, onOpen, compact = false, selec
       touch.current = null;
     }}>
       <button className="photo-open" onClick={onOpen} aria-label={translate(`${compact ? 'Select' : 'Enlarge photo of'} ${dog.name}`)}>
-        <img key={current.id} src={compact ? thumbnailSource(current.src) : current.src} decoding="async" alt={translate(mediaDescription(dog,current,index))} draggable="false" />
+        <img key={current.id} src={compact ? thumbnailSource(current.src) : current.src} decoding="async" style={{objectPosition:current.objectPosition}} alt={translate(mediaDescription(dog,current,index))} draggable="false" />
       </button>
       {current.kind==='ai-concept' && <span className="media-kind ai-label">{translate(current.label)}</span>}
       {photos.length > 1 && <>
@@ -28,13 +28,13 @@ export function Gallery({ dog, index = 0, change, onOpen, compact = false, selec
       </>}
     </div>
     {thumbs && photos.length > 1 && <div className="thumbnail-strip" aria-label={translate(`${dog.name} photographs`)}>
-      {photos.map((p, i) => <button key={p.id} onClick={() => change(dog.id, i)} aria-label={translate(`Show ${mediaDescription(dog,p,i)}`)} aria-pressed={index === i} className={index===i?'active':''}><img src={thumbnailSource(p.src)} alt="" loading="lazy" decoding="async" /></button>)}
+      {photos.map((p, i) => <button key={p.id} onClick={() => change(dog.id, i)} aria-label={translate(`Show ${mediaDescription(dog,p,i)}`)} aria-pressed={index === i} className={index===i?'active':''}><img src={thumbnailSource(p.src)} style={{objectPosition:p.objectPosition}} alt="" loading="lazy" decoding="async" /></button>)}
     </div>}
   </div>;
 }
 
 export function PhotoCredit({ photo }) {
   if (photo.kind === 'ai-concept') return <div className="photo-credit ai-credit"><strong>{translate(photo.label)}</strong><span>{translate("Imagined adult appearance · not a photograph or a prediction.")}</span><a href={photo.original} target="_blank" rel="noreferrer">{translate("Open AI concept ")}<ArrowSquareOut size={14}/></a></div>;
-  return <div className="photo-credit"><span>{translate("Photograph: Basileas Minis · archived ")}{translate(formatDate(photo.capturedAt))}</span><a href={photo.sourceImageUrl} target="_blank" rel="noreferrer">{translate("Original source ")}<ArrowSquareOut size={14}/></a><a href={photo.original} target="_blank" rel="noreferrer">{translate("Saved original ")}<ArrowSquareOut size={14}/></a></div>;
+  return <div className="photo-credit"><span>{translate(photoArchiveLabel(photo))}{translate(formatDate(photo.capturedAt))}</span>{photo.sourceImageUrl&&<a href={photo.sourceImageUrl} target="_blank" rel="noreferrer">{translate("Original source ")}<ArrowSquareOut size={14}/></a>}<a href={photo.original} target="_blank" rel="noreferrer">{translate("Saved original ")}<ArrowSquareOut size={14}/></a></div>;
 }
 export function formatDate(value) { return new Intl.DateTimeFormat(locale==='tr'?'tr-TR':'en-GB', {day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T12:00:00Z')); }

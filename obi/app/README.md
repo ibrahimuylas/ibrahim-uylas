@@ -30,7 +30,7 @@ For an explicitly authorised future publication, run `npm run deploy:production`
 
 ## Content and provenance
 
-`src/data/archive.json` holds the profiles, health results, relationships, photographs and saved page text. Every real photo has an original image URL, source page URL, capture date, local display image and saved original. Health entries retain a source page URL and capture date.
+`src/data/archive.json` holds the profiles, health results, relationships, photographs and saved page text. Breeder-source photos retain their original image URL, source page URL, archive date, local display image and saved original. User-provided photos retain their original bytes, receipt date and explicit upload provenance; no external URL, photographer or capture date is invented. Health entries retain a source page URL and archive date.
 
 `public/media` contains optimized display photographs and the translated AI concepts. `public/archive/photos` keeps original source files. `public/archive/pages` contains safe text snapshots, rather than executable third-party HTML. The source manifest is at `public/archive/photo-manifest.json`; archival inputs and raw page snapshots remain in `../design/archive`.
 
@@ -38,7 +38,7 @@ There are 17 profiles: six parents/grandparents, four great-grandparents, three 
 
 The puppy photographs were saved on 25 October 2026. Source-page snapshots were saved on 27 October 2026, after some puppy photographs had been removed. These are archive dates, not birth or examination dates.
 
-Source exceptions are deliberately preserved: Billie’s NAD result is `+/− (carrier)` and Zane’s hip result is `B/C (FCI)`. Puppy results are not inferred. An eye examination marked “clear” is not an eye colour. Each candidate gallery contains the original photograph followed by lighter and darker speculative AI adult concepts. Concepts have explicit AI labels and never receive breeder-photo attribution. Original source records remain separate from generated assets.
+Source exceptions are deliberately preserved: Billie’s NAD result is `+/− (carrier)` and Zane’s hip result is `B/C (FCI)`. Puppy results are not inferred. An eye examination marked “clear” is not an eye colour. Each candidate gallery contains the latest real portrait, previous real photographs, then one current speculative AI adult concept. Concepts have explicit AI labels and never receive breeder-photo attribution. Original source records remain separate from generated assets.
 
 To regenerate content from the existing archive, `scripts/import-archive.py` requires Python, Pillow and BeautifulSoup. It copies originals, creates display derivatives and rebuilds the JSON; it does not crawl the live website. The English AI assets are maintained separately. Refreshing the source archive requires reviewing new photo identities and source evidence first.
 
@@ -100,3 +100,11 @@ Replaced both older AI variants for each candidate with its updated 29 October c
 Validation from `obi/app`: 25 application tests and 4 packaging tests passed; production build passed (existing chunk-size warning). Live Turkish Puppies carousels loaded all three new WebP images. No filenames containing Kira or beginning `xx-` remain in the project outside dependencies. No commit or push performed.
 
 A root-level blog test run was also triggered during the move; it failed on existing unrelated article-count expectations and Likya hover policies. No blog files were changed by this task.
+
+## New portraits and adult concepts — 31 October 2026
+
+Archived the three user-provided JPEGs without changing their bytes and added WebP display copies. Photo 1 matches candidate 01 (Copper face), Photo 2 candidate 02 (Wide white blaze), and Photo 3 candidate 03 (Small white marking). Each gallery now shows the new portrait, previous real photograph and one redesigned AI adult diptych. New portraits have individual focal positions for cropped cards; full-size originals remain available. The comparison date follows the displayed photo instead of a hard-coded 25 October caption.
+
+New uploads use explicit user-provided provenance, with no invented breeder URL or photographer credit. 31 October is their receipt/archive date; capture dates are unknown. Source originals and their hash manifest are in `../design/archive/puppies-2026-10-31/`; AI PNGs, reference mappings and built-in image generation prompts are in `../design/archive/ai-adult-concepts/2026-10-31/`. The current archive includes these reviewed additions; the initial-import script does not recreate subsequent curation.
+
+Published to https://obi.uylas.net as deploy `6ae64be873d6cbdd90181644`. Validation: 25 app tests, 4 hosting tests and production build passed (existing chunk-size warning). Both English and Turkish routes returned HTTP 200 with the current bundle and all six new photo/AI references. All 15 new live display/original/thumbnail files matched local SHA-256 digests. Browser visual/interaction QA was unavailable because local browser access was disabled in Work settings; no mobile or desktop screenshot verification is claimed. No commit or push; existing unrelated root work was preserved.

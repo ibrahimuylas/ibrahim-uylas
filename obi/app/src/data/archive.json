@@ -1148,6 +1148,19 @@
       "tests": [],
       "photos": [
         {
+          "id": "puppy-01-2026-10-31",
+          "src": "/media/puppy-01-2026-10-31.webp",
+          "original": "/archive/photos/puppy-01-2026-10-31.jpg",
+          "sourceKind": "user-upload",
+          "sourceFile": "Photo 1.jpg",
+          "capturedAt": "2026-10-31",
+          "dateBasis": "archive-receipt-date",
+          "captureDate": null,
+          "kind": "photo",
+          "sha256": "d39c88bdb47fd3c2914f2d590589996615c8581fc50f1ddb8fe613f9a6fd1f7f",
+          "objectPosition": "78% 45%"
+        },
+        {
           "id": "puppy-01",
           "src": "/media/puppy-01.webp",
           "original": "/archive/photos/whatsapp-image-2026-10-25-at-11-41-56.jpeg",
@@ -1157,20 +1170,23 @@
           "kind": "photo"
         }
       ],
-      "concept": "/media/ai-puppy-01-2026-10-29.webp",
+      "concept": "/media/ai-puppy-01-2026-10-31.webp",
       "overview": [
         "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
         "No individual test results or confirmed future eye colour are recorded."
       ],
       "concepts": [
         {
-          "id": "ai-01-2026-10-29",
-          "src": "/media/ai-puppy-01-2026-10-29.webp",
-          "original": "/media/ai-puppy-01-2026-10-29.webp",
+          "id": "ai-01-2026-10-31",
+          "src": "/media/ai-puppy-01-2026-10-31.webp",
+          "original": "/media/ai-puppy-01-2026-10-31.webp",
           "kind": "ai-concept",
           "variant": "updated",
           "label": "AI concept",
-          "createdAt": "2026-10-29"
+          "createdAt": "2026-10-31",
+          "referencePhotoIds": [
+            "puppy-01-2026-10-31"
+          ]
         }
       ],
       "sourceKind": "litter"
@@ -1194,6 +1210,19 @@
       "tests": [],
       "photos": [
         {
+          "id": "puppy-02-2026-10-31",
+          "src": "/media/puppy-02-2026-10-31.webp",
+          "original": "/archive/photos/puppy-02-2026-10-31.jpg",
+          "sourceKind": "user-upload",
+          "sourceFile": "Photo 2.jpg",
+          "capturedAt": "2026-10-31",
+          "dateBasis": "archive-receipt-date",
+          "captureDate": null,
+          "kind": "photo",
+          "sha256": "42801a0ba277a23791b60b14c3c6b23ae640f7e9d00dee06d3301fc6af5d3eb9",
+          "objectPosition": "74% 48%"
+        },
+        {
           "id": "puppy-02",
           "src": "/media/puppy-02.webp",
           "original": "/archive/photos/whatsapp-image-2026-10-25-at-11-29-15.jpeg",
@@ -1203,20 +1232,23 @@
           "kind": "photo"
         }
       ],
-      "concept": "/media/ai-puppy-02-2026-10-29.webp",
+      "concept": "/media/ai-puppy-02-2026-10-31.webp",
       "overview": [
         "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
         "No individual test results or confirmed future eye colour are recorded."
       ],
       "concepts": [
         {
-          "id": "ai-02-2026-10-29",
-          "src": "/media/ai-puppy-02-2026-10-29.webp",
-          "original": "/media/ai-puppy-02-2026-10-29.webp",
+          "id": "ai-02-2026-10-31",
+          "src": "/media/ai-puppy-02-2026-10-31.webp",
+          "original": "/media/ai-puppy-02-2026-10-31.webp",
           "kind": "ai-concept",
           "variant": "updated",
           "label": "AI concept",
-          "createdAt": "2026-10-29"
+          "createdAt": "2026-10-31",
+          "referencePhotoIds": [
+            "puppy-02-2026-10-31"
+          ]
         }
       ],
       "sourceKind": "litter"
@@ -1240,6 +1272,19 @@
       "tests": [],
       "photos": [
         {
+          "id": "puppy-03-2026-10-31",
+          "src": "/media/puppy-03-2026-10-31.webp",
+          "original": "/archive/photos/puppy-03-2026-10-31.jpg",
+          "sourceKind": "user-upload",
+          "sourceFile": "Photo 3.jpg",
+          "capturedAt": "2026-10-31",
+          "dateBasis": "archive-receipt-date",
+          "captureDate": null,
+          "kind": "photo",
+          "sha256": "f952fa09d8f2efb7770afa617c405d9929a4fef34d889a8ca769d0f32d435480",
+          "objectPosition": "65% 48%"
+        },
+        {
           "id": "puppy-03",
           "src": "/media/puppy-03.webp",
           "original": "/archive/photos/whatsapp-image-2026-10-25-at-11-32-06.jpeg",
@@ -1249,20 +1294,23 @@
           "kind": "photo"
         }
       ],
-      "concept": "/media/ai-puppy-03-2026-10-29.webp",
+      "concept": "/media/ai-puppy-03-2026-10-31.webp",
       "overview": [
         "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
         "No individual test results or confirmed future eye colour are recorded."
       ],
       "concepts": [
         {
-          "id": "ai-03-2026-10-29",
-          "src": "/media/ai-puppy-03-2026-10-29.webp",
-          "original": "/media/ai-puppy-03-2026-10-29.webp",
+          "id": "ai-03-2026-10-31",
+          "src": "/media/ai-puppy-03-2026-10-31.webp",
+          "original": "/media/ai-puppy-03-2026-10-31.webp",
           "kind": "ai-concept",
           "variant": "updated",
           "label": "AI concept",
-          "createdAt": "2026-10-29"
+          "createdAt": "2026-10-31",
+          "referencePhotoIds": [
+            "puppy-03-2026-10-31"
+          ]
         }
       ],
       "sourceKind": "litter"
@@ -1532,6 +1580,11 @@
       "date": "2026-10-27",
       "title": "Family records archived",
       "description": "Profiles, health results, original image URLs and pedigree documents saved from Basileas Minis."
+    },
+    {
+      "date": "2026-10-31",
+      "title": "New puppy portraits and adult concepts",
+      "description": "Three clearer portraits provided by the user were archived. Each adult concept was redesigned using the new face, eye and coat details; earlier real photographs remain in the galleries."
     }
   ]
 }
