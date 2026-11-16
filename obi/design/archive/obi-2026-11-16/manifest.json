@@ -1,0 +1,31 @@
+{
+  "receivedAt": "2026-11-16",
+  "photo": {
+    "id": "obi-seven-weeks-2026-11-16",
+    "src": "/media/obi-seven-weeks-2026-11-16.webp",
+    "original": "/archive/photos/obi-seven-weeks-2026-11-16.JPG",
+    "sourceKind": "user-upload",
+    "sourceFile": "b4230520-bb5b-46cb-90d1-7dd8411bd8d8.JPG",
+    "capturedAt": "2026-11-16",
+    "dateBasis": "archive-receipt-date",
+    "captureDate": null,
+    "kind": "photo",
+    "sha256": "7da2742d1b4d3372d24ae83136d7ebfd47c6129f39891a0dbb23f3bd6a036f8c",
+    "objectPosition": "70% 38%",
+    "reportedAgeWeeks": 7
+  },
+  "familyConfirmation": {
+    "dogId": "puppy-03",
+    "confirmedAt": "2026-11-16",
+    "birthDate": "2026-09-29",
+    "expectedHomeDate": "2026-11-28",
+    "homeDateStatus": "approximate",
+    "sourceKind": "user-confirmed",
+    "featuredPuppyIds": [
+      "puppy-03",
+      "puppy-01",
+      "puppy-02"
+    ]
+  },
+  "note": "Receipt date, not capture date. Original upload bytes preserved; identity, birth date, reported age and approximate arrival supplied by the user. No photographer or external source URL supplied."
+}

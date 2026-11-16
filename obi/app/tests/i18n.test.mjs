@@ -34,5 +34,13 @@ test('language destinations preserve deep links and root language routes',()=>{
  assert.equal(languageUrl('en',hash),'/'+hash);
  assert.equal(languageUrl('tr'),'/tr');
 });
+test('Obi breeder notes have translations and an archived source, separate from individual health results',()=>{
+ const notes=archive.obi.breederNotes;
+ assert.ok(archive.sources.some(s=>s.id===notes.sourceId&&s.url===notes.sourcePageUrl));
+ for(const item of notes.items){assert.notEqual(tr(item.title),item.title);assert.notEqual(tr(item.text),item.text);}
+ assert.equal(tr('Records'),'Kayıtlar');
+ assert.equal(tr('Show siblings'),'Kardeşleri göster');
+ assert.equal(tr('Hide siblings'),'Kardeşleri gizle');
+});
 
 test('only Turkish paths select Turkish, including the trailing-slash form',()=>{assert.equal(localeForPath('/tr'),'tr');assert.equal(localeForPath('/tr/'),'tr');assert.equal(localeForPath('/'),'en');assert.equal(localeForPath('/travel'),'en');assert.equal(tr('1 of 3 · Puppy 01'),'1 / 3 · Yavru 01');});

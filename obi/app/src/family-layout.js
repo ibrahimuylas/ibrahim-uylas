@@ -12,7 +12,8 @@ export function familyEdgePath({sourceX,sourceY,targetX,targetY,data}) {
 // Lay out the recorded pedigree, including every sibling and every known ancestor.
 // Ancestor branches reserve their own horizontal span, so adding a generation
 // cannot overlap the neighbouring branch. No unrecorded relatives are invented.
-export function buildFamilyLayout(dogs) {
+export function buildFamilyLayout(dogs, {showSiblings = true} = {}) {
+  if (!showSiblings) dogs = dogs.filter(d => d.role !== 'Sibling');
   const byId=new Map(dogs.map(d=>[d.id,d]));
   const parents=new Set(dogs.flatMap(d=>d.parents));
   const leaves=dogs.filter(d=>!parents.has(d.id));
@@ -42,16 +43,16 @@ export function buildFamilyLayout(dogs) {
   let x=0;
   for(const id of roots){place(id,x);x+=span(id)+80;}
   const ancestralWidth=Math.max(0,x-80);
-  const orderedLeaves=[...leaves.filter(d=>d.role==='Candidate'),...leaves.filter(d=>d.role!=='Candidate')];
+  const orderedLeaves=[...leaves.filter(d=>d.role==='Obi'),...leaves.filter(d=>d.role!=='Obi')];
   const leafWidth=orderedLeaves.length*250+Math.max(0,orderedLeaves.length-1)*36;
   const totalWidth=Math.max(ancestralWidth,leafWidth);
   for(const p of positions.values())p.x+=(totalWidth-ancestralWidth)/2;
   orderedLeaves.forEach((d,i)=>positions.set(d.id,{id:d.id,x:(totalWidth-leafWidth)/2+i*286,y:depth*360+100,width:250,tier:'puppy'}));
   const groups=[];
-  for(const [role,title] of [['Candidate','Our three candidates'],['Sibling','Other siblings']]){
+  for(const [role,title] of [['Obi','Obi'],['Sibling','Her siblings']]){
     const members=dogs.filter(d=>d.role===role).map(d=>positions.get(d.id));if(!members.length)continue;
     const left=Math.min(...members.map(p=>p.x))-14,top=Math.min(...members.map(p=>p.y))-100;
-    groups.push({id:`group:${role}`,x:left,y:top,width:Math.max(...members.map(p=>p.x+p.width))-left+14,height:410,title,candidate:role==='Candidate',members:members.map(p=>p.id)});
+    groups.push({id:`group:${role}`,x:left,y:top,width:Math.max(...members.map(p=>p.x+p.width))-left+14,height:410,title,candidate:role==='Obi',members:members.map(p=>p.id)});
   }
   const families=new Map();
   for(const d of dogs){if(!d.parents.length)continue;const key=[...d.parents].sort().join('|');if(!families.has(key))families.set(key,{parents:d.parents,children:[]});families.get(key).children.push(d.id);}

@@ -1,3 +1,8 @@
+export const archiveViews = ['obi', 'family', 'photos', 'sources'];
+export function archiveView(value) {
+  return value === 'puppies' ? 'obi' : archiveViews.includes(value) ? value : 'obi';
+}
+
 export function nextOverlay(previous,type,id) {
   return {type,id,depth:(previous?.depth||0)+1,trail:previous?[...(previous.trail||[]),{type:previous.type,id:previous.id}]:[]};
 }

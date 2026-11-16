@@ -4209,5 +4209,24 @@
       "distinctPhotographs": 5,
       "method": "visual comparison; both versions preserved"
     }
-  }
+  },
+  "userUploads": [
+    {
+      "id": "obi-seven-weeks-2026-11-16",
+      "src": "/media/obi-seven-weeks-2026-11-16.webp",
+      "original": "/archive/photos/obi-seven-weeks-2026-11-16.JPG",
+      "sourceKind": "user-upload",
+      "sourceFile": "b4230520-bb5b-46cb-90d1-7dd8411bd8d8.JPG",
+      "capturedAt": "2026-11-16",
+      "dateBasis": "archive-receipt-date",
+      "captureDate": null,
+      "kind": "photo",
+      "sha256": "7da2742d1b4d3372d24ae83136d7ebfd47c6129f39891a0dbb23f3bd6a036f8c",
+      "objectPosition": "70% 38%",
+      "reportedAgeWeeks": 7,
+      "subjectIds": [
+        "puppy-03"
+      ]
+    }
+  ]
 }

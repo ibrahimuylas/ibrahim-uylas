@@ -1,0 +1,163 @@
+/* Selected Quiet Editorial mock, with supplied photographs and live records. */
+.obi-home .site-header{height:64px;padding:0 max(40px,calc((100vw - 1170px)/2))}
+.obi-home .wordmark strong{font-family:'DM Serif Display',Georgia,serif;font-size:42px;font-weight:400;letter-spacing:-2px}
+.obi-page{max-width:1330px;margin:auto;padding:32px clamp(24px,6vw,80px) 64px}
+.obi-hero{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:76px;align-items:start}
+.obi-introduction{min-width:0;padding-top:12px}
+.obi-introduction>.eyebrow{font-size:12px;letter-spacing:3px;color:#416f96}
+.obi-introduction h1{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(64px,7.7vw,102px);font-weight:400;line-height:1.06;letter-spacing:-3.5px;margin:18px 0 6px;white-space:nowrap}
+.obi-introduction h1>span{color:#5689ad}
+.obi-lead{font-size:25px;line-height:1.45;color:var(--muted);max-width:480px}
+.obi-key-dates{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.3fr);margin:12px 0 22px;gap:22px}
+.obi-key-dates>div{display:flex;align-items:flex-start;gap:14px;min-width:0}
+.obi-key-dates>div+div{border-left:1px solid #b7cedf;padding-left:24px}
+.obi-key-dates svg{color:#4f87ad;flex:none;margin-top:3px}
+.obi-key-dates dt{font-size:11px;font-weight:650;letter-spacing:1.6px;color:#426e93;margin-bottom:5px}
+.obi-key-dates dd{margin:0;font-size:18px;line-height:1.5;font-weight:650;letter-spacing:-.4px}
+.obi-key-dates small{font-size:13px;color:var(--muted);line-height:1.5}
+.obi-facts{margin:0 0 24px}
+.obi-facts>div{display:grid;grid-template-columns:164px minmax(0,1fr);gap:16px;padding:6px 0;border-bottom:1px solid #cbdbe7;font-size:14px;line-height:1.6}
+.obi-facts dt{color:var(--muted)}
+.obi-facts dd{margin:0;font-weight:550}
+.obi-facts a{display:inline-flex;gap:10px;align-items:center}
+.obi-introduction>.text-link{font-size:17px;gap:24px;padding:5px 0;min-height:44px}
+.obi-portrait{min-width:0;width:100%;max-width:494px}
+.obi-portrait .photo-frame{aspect-ratio:1;background:#eaf0f4;border-radius:18px}
+.obi-portrait .photo-open img{object-fit:cover}
+.obi-portrait .ai-frame .photo-open img{object-fit:contain}
+.obi-portrait .thumbnail-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;overflow:visible;margin-top:14px;padding:2px 0 0}
+.obi-portrait .thumbnail-strip button{aspect-ratio:1.25;border-radius:7px;min-width:0;width:100%}
+.obi-portrait .thumbnail-strip img{object-fit:cover;background:#eaf0f4}
+.obi-portrait .thumbnail-strip button:last-child img{object-fit:contain}
+.obi-chapter{padding:30px 0 24px;margin-top:30px;border-top:1px solid #b7cedf}
+.obi-section-heading{max-width:690px;margin-bottom:22px}
+.obi-section-heading h2{font-family:'DM Serif Display',Georgia,serif;font-size:40px;letter-spacing:-1.1px;line-height:1.2;margin:8px 0 9px;font-weight:400}
+.obi-section-heading p,.obi-personal-records>p{font-size:14px;line-height:1.65;color:var(--muted)}
+.obi-story{padding-top:18px}
+.obi-story>.obi-section-heading>.eyebrow{display:none}
+.obi-story .obi-section-heading h2{font-size:50px;margin:0}
+.obi-milestones{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.obi-milestones li{position:relative;min-width:0;padding:0 0 0 36px}
+.obi-milestones li:before{content:'';position:absolute;left:3px;top:7px;width:14px;height:14px;background:#5689ad;border-radius:50%}
+.obi-milestones li:not(:last-child):after{content:'';position:absolute;left:160px;right:-22px;top:14px;border-top:1px solid #bdd1e0}
+.obi-milestones time{position:relative;z-index:1;background:var(--surface);padding-right:10px;font-size:12px;letter-spacing:.7px;color:#466b8c;font-weight:650}
+.obi-milestones h3{font-family:'DM Serif Display',Georgia,serif;font-size:23px;font-weight:400;margin:10px 0 6px;letter-spacing:-.3px;line-height:1.3}
+.obi-milestones p,.obi-breeder-notes p{font-size:14px;line-height:1.65;color:var(--muted)}
+.obi-family{display:grid;grid-template-columns:1fr 2fr;gap:34px;align-items:center;padding:30px 0 0;margin-top:14px}
+.obi-family .obi-section-heading{margin:0}
+.obi-family .obi-section-heading .eyebrow{font-size:10px;letter-spacing:2px;color:#416f96}
+.obi-family .obi-section-heading h2{font-size:40px;margin:8px 0 6px}
+.obi-parents{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;min-width:0}
+.obi-parent{display:flex;align-items:center;gap:16px;padding:0 0 0 28px;border-left:1px solid #bdd1e0;text-align:left;min-width:0;min-height:118px}
+.obi-parent>.parent-avatar{width:112px;height:112px;position:relative;overflow:hidden;flex:none;border-radius:50%}
+.obi-parent>.parent-avatar img{width:100%;height:100%;object-fit:cover}
+.obi-parent>span:nth-child(2){min-width:0;flex:1}
+.obi-parent small,.obi-parent strong,.obi-parent>span>span{display:block}
+.obi-parent small{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+.obi-parent strong{font-family:'DM Serif Display',Georgia,serif;font-size:30px;font-weight:400;letter-spacing:-.5px;margin:3px 0}
+.obi-parent>span>span{font-size:12px;color:var(--muted);line-height:1.5}
+.obi-parent>svg{display:none}
+.obi-breeder-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px}
+.obi-breeder-notes h3{font-size:16px;font-weight:600;margin-bottom:8px}
+.obi-source-line{display:flex;align-items:center;flex-wrap:wrap;gap:12px 24px;margin-top:26px;font-size:11px;color:var(--muted)}
+.obi-source-line a{display:inline-flex;align-items:center;gap:5px}
+.obi-source-line .text-link{font-size:12px}
+.obi-disclosure{border-top:1px solid var(--rule);margin-top:22px;padding-top:18px}
+.obi-disclosure summary{cursor:pointer;font-size:15px;font-weight:550;line-height:1.6;padding:8px 0}
+.obi-disclosure summary span{font-size:11px;font-weight:400;color:var(--muted);margin-left:14px}
+.obi-disclosure>div{padding:16px 0 8px}
+.obi-disclosure p{font-size:13px;line-height:1.8;color:var(--muted);margin-bottom:12px}
+.obi-secondary{margin-top:0;padding:16px 0}
+.obi-adult-concept{width:100%;height:auto;border-radius:12px;margin-top:16px}
+.obi-siblings{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.obi-siblings button{text-align:left;min-width:0;font-size:12px}
+.obi-siblings img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;margin-bottom:9px}
+.tree-family-options{display:flex;justify-content:flex-end;padding:0 0 12px;flex:none}
+.tree-family-options button{padding:8px 12px;min-height:40px;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--muted);font-size:12px}
+.tree-family-options button[aria-pressed=true]{background:var(--pale);border-color:#9fb8ce;color:#244e76}
+.family-tree .mobile-candidates>div{grid-template-columns:1fr}
+.family-tree .mobile-candidates button{flex-direction:row;text-align:left;min-height:54px}
+.family-tree .mobile-candidates img{width:42px;height:46px}
+
+@media(max-width:1100px){
+ .obi-hero{gap:36px}
+ .obi-introduction h1{font-size:72px}
+ .obi-lead{font-size:21px}
+ .obi-key-dates{gap:16px;margin:24px 0}
+ .obi-key-dates>div{gap:9px}
+ .obi-key-dates>div+div{padding-left:16px}
+ .obi-key-dates svg{width:24px;height:24px}
+ .obi-key-dates dd{font-size:14px}
+ .obi-key-dates dt{font-size:10px;letter-spacing:1px}
+ .obi-facts>div{grid-template-columns:112px 1fr;font-size:12px}
+ .obi-family{grid-template-columns:1fr;gap:24px}
+ .obi-parent{min-height:96px}
+ .obi-parent>.parent-avatar{width:86px;height:86px}
+ .obi-milestones{gap:22px}
+ .obi-milestones li:not(:last-child):after{left:140px;right:-12px}
+}
+@media(max-width:1024px){
+ .obi-home .site-header{height:auto;padding:10px 16px}
+ .obi-home .wordmark strong{font-size:31px;letter-spacing:-1.4px}
+ .obi-page{padding:26px 24px 40px}
+ .obi-introduction{padding-top:0}
+ .obi-introduction h1{font-size:clamp(48px,6.7vw,68px);letter-spacing:-2px;margin-top:14px}
+ .obi-lead{font-size:19px}
+ .obi-key-dates{grid-template-columns:1fr;gap:12px;margin:20px 0}
+ .obi-key-dates>div+div{padding:0;border:0}
+ .obi-key-dates dd{font-size:15px}
+ .obi-key-dates small{font-size:12px}
+ .obi-facts>div{grid-template-columns:104px 1fr;padding:7px 0;font-size:12px;gap:10px}
+ .obi-portrait{position:sticky;top:24px}
+ .obi-portrait .thumbnail-strip{gap:8px}
+ .obi-section-heading h2{font-size:35px}
+ .obi-milestones li{padding-left:25px}
+ .obi-milestones time{letter-spacing:0;font-size:11px}
+ .obi-milestones li:not(:last-child):after{display:none}
+ .obi-milestones h3{font-size:22px}
+ .tree-family-options{padding:6px 0 10px}
+}
+@media(max-width:640px){
+ .obi-page{padding:24px 18px 36px}
+ .obi-hero{grid-template-columns:1fr;gap:16px}
+ .obi-introduction{display:contents}
+ .obi-introduction>.eyebrow{order:-4;font-size:10px;letter-spacing:2px}
+ .obi-introduction>h1{order:-3;font-size:clamp(49px,10.8vw,64px);margin:0;letter-spacing:-2px}
+ .obi-introduction>.obi-lead{order:-2;font-size:19px}
+ .obi-portrait{order:-1;position:static;max-width:none;margin-top:4px}
+ .obi-portrait .photo-frame{aspect-ratio:1.05;border-radius:14px}
+ .obi-portrait .thumbnail-strip{gap:9px;margin-top:10px}
+ .obi-portrait .thumbnail-strip button{aspect-ratio:1.3}
+ .obi-key-dates{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:8px 0 5px}
+ .obi-key-dates>div{gap:8px}
+ .obi-key-dates>div+div{border-left:1px solid #b7cedf;padding-left:14px}
+ .obi-key-dates svg{width:22px;height:22px}
+ .obi-key-dates dt{font-size:9px;letter-spacing:.7px}
+ .obi-key-dates dd{font-size:13px;letter-spacing:-.3px}
+ .obi-key-dates small{font-size:11px}
+ .obi-facts{margin:0}
+ .obi-facts>div{grid-template-columns:105px 1fr;font-size:13px;padding:9px 0}
+ .obi-introduction>.text-link{font-size:15px;justify-content:space-between}
+ .obi-chapter{margin-top:26px;padding:24px 0 10px}
+ .obi-section-heading h2,.obi-story .obi-section-heading h2{font-size:34px}
+ .obi-milestones{grid-template-columns:1fr;gap:0}
+ .obi-milestones li{padding:0 0 24px 28px}
+ .obi-milestones li:before{left:0;width:11px;height:11px;top:7px}
+ .obi-milestones li:not(:last-child):after{display:block;left:5px;right:auto;top:20px;bottom:0;border-top:0;border-left:1px solid #bdd1e0}
+ .obi-milestones li:last-child{padding-bottom:0}
+ .obi-milestones time{font-size:12px}
+ .obi-milestones h3{margin-top:6px}
+ .obi-family{gap:20px}
+ .obi-family .obi-section-heading h2{font-size:34px}
+ .obi-parents{grid-template-columns:1fr;gap:18px}
+ .obi-parent{border:0;padding:0;gap:18px;min-height:88px}
+ .obi-parent+.obi-parent{border-top:1px solid var(--rule);padding-top:18px}
+ .obi-parent>.parent-avatar{width:82px;height:82px}
+ .obi-parent strong{font-size:28px}
+ .obi-breeder-notes{grid-template-columns:1fr;gap:18px}
+ .obi-siblings{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 12px}
+ .obi-disclosure summary span{display:block;margin-left:16px}
+}
+
+/* The Turkish greeting needs a narrower display size than “Meet Obi”. */
+html[lang=tr] .obi-introduction h1{font-size:clamp(49px,6.4vw,84px)}

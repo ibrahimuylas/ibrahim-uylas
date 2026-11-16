@@ -14,7 +14,7 @@ import '@xyflow/react/dist/style.css';
 
 function DogNode({ data }) {
   const {dog,index,change,onSelect,selected,tier}=data;
-  return <div className={`dog-node ${tier} ${selected?'is-selected':''}`}>
+  return <div className={`dog-node ${tier} ${dog.role==='Obi'?'is-obi':''} ${selected?'is-selected':''}`}>
     <Handle type="target" position={Position.Top}/>
     <Gallery dog={dog} index={index} change={change} compact selected={selected} onOpen={()=>onSelect(dog.id)} />
     <button className="dog-label nodrag nopan" onClick={()=>onSelect(dog.id)} aria-pressed={selected}><strong>{translate(dog.name)}</strong><span className="node-role">{translate(dog.descriptor || dog.role)}</span>{tier==='parent' && <span className="node-formal">{translate(dog.formalName)}</span>}{tier==='parent' && <span className="node-count">{translate(dog.photos.length)}{translate(" photos")}</span>}</button>
@@ -23,15 +23,17 @@ function DogNode({ data }) {
   </div>;
 }
 function Junction(){return <div className="junction"><Handle type="target" position={Position.Top}/><Handle id="left" type="target" position={Position.Left}/><Handle id="right" type="target" position={Position.Right}/><Handle type="source" position={Position.Bottom}/></div>;}
-function CandidateGroup({data}){return <div className={`candidate-group ${data.candidate?'':'siblings-group'}`} aria-label={translate(data.candidate?'Our three candidates. One of these puppies will be Obi; no puppy has been chosen yet.':'Other siblings from the same litter')}><Handle type="target" position={Position.Top}/><div className="candidate-group-heading"><strong>{translate(data.title)}</strong></div>{data.candidate&&<span className="candidate-group-status">{translate("Not chosen yet")}</span>}</div>;}
+function CandidateGroup({data}){return <div className={`candidate-group ${data.candidate?'':'siblings-group'}`} aria-label={translate(data.candidate?'Obi, confirmed as Puppy 03. Coming home around 28 November 2026.':'Other siblings from the same litter')}><Handle type="target" position={Position.Top}/><div className="candidate-group-heading"><strong>{translate(data.title)}</strong></div>{data.candidate&&<span className="candidate-group-status">{translate("Coming home")}</span>}</div>;}
 const nodeTypes={dog:DogNode,junction:Junction,candidates:CandidateGroup};
 function FamilyEdge(props){return <path className={`react-flow__edge-path family-connector ${props.data.active?'is-active':''}`} d={familyEdgePath(props)} pathLength="1" style={{...props.style,'--draw-delay':props.data.delay+'ms'}}/>;}
 const motionDuration=duration=>matchMedia('(prefers-reduced-motion: reduce)').matches?0:duration;
 const edgeTypes={family:FamilyEdge};
-function TreeInner({ dogs, selected, indexes, change, onSelect, onSiblings, onConcepts, onOpenProfile }) {
+function TreeInner({ dogs, selected, indexes, change, onSelect, onObi, onOpenProfile }) {
   const mobile=useMobile();
   const ownsFullscreen=useRef(false);const expandedRequested=useRef(false);
-  const layout=useMemo(()=>buildFamilyLayout(dogs),[dogs]);
+  const [showSiblings,setShowSiblings]=useState(()=>dogs.find(d=>d.id===selected)?.role==='Sibling');
+  useEffect(()=>{if(dogs.find(d=>d.id===selected)?.role==='Sibling'){fitting.current=true;setFitMode(true);setShowSiblings(true);}},[dogs,selected]);
+  const layout=useMemo(()=>buildFamilyLayout(dogs,{showSiblings}),[dogs,showSiblings]);
   const flow=useReactFlow();const initialized=flow.viewportInitialized;const wrapper=useRef(null);const canvas=useRef(null);const fitting=useRef(true);
   const [entering,setEntering]=useState(true);
   useEffect(()=>{const timer=setTimeout(()=>setEntering(false),1350);return()=>clearTimeout(timer);},[]);
@@ -80,6 +82,7 @@ function TreeInner({ dogs, selected, indexes, change, onSelect, onSiblings, onCo
     ...layout.junctions.map(({id,x,y})=>({id,type:'junction',position:{x,y},style:{width:1,height:1},draggable:false,focusable:false}))
   ],[layout,dogs,indexes,change,onSelect,selected]);
   const visibleEdges=useMemo(()=>layout.edges.map(edge=>({...edge,type:'family',selectable:false,data:{...edge.data,active:edge.relatives.includes(selected)}})),[layout,selected]);
+  const toggleSiblings=()=>{fitting.current=true;setFitMode(true);if(showSiblings&&dogs.find(d=>d.id===selected)?.role==='Sibling')onSelect(dogs.find(d=>d.role==='Obi').id,false);setShowSiblings(value=>!value);};
   const manual=()=>{fitting.current=false;setFitMode(false);};
   const selectedDog=dogs.find(d=>d.id===selected);
   const toggleExpanded=()=>{
@@ -92,12 +95,13 @@ function TreeInner({ dogs, selected, indexes, change, onSelect, onSiblings, onCo
   };
   const tree=<section ref={wrapper} role={expanded?'dialog':undefined} aria-modal={expanded?true:undefined} className={`family-tree ${expanded?'expanded':''} ${entering?'tree-entering':''}`} aria-label={translate("Interactive family tree")}>
     {expanded&&<div className="expanded-tree-header"><div><span className="eyebrow">{translate("FAMILY TREE")}</span><h2>{translate("Explore the family")}</h2></div><button className="expanded-close" onClick={toggleExpanded}><X size={20}/><span>{translate("Done")}</span></button></div>}
+    <div className="tree-family-options"><button aria-pressed={showSiblings} onClick={toggleSiblings}>{translate(showSiblings?'Hide siblings':'Show siblings')}</button></div>
     <div ref={canvas} className="tree-canvas" style={{'--tree-aspect':`${layout.width} / ${layout.height}`}}>
       <ReactFlow nodes={nodes} edges={visibleEdges} nodeTypes={nodeTypes} edgeTypes={edgeTypes} nodesDraggable={false} nodesConnectable={false} elementsSelectable={false} nodesFocusable={false} edgesFocusable={false} minZoom={MIN_ZOOM} maxZoom={2.5} zoomOnScroll={false} zoomOnPinch zoomOnDoubleClick={false} zoomActivationKeyCode={null} panOnScroll={false} preventScrolling={false} panOnDrag selectionKeyCode={null} deleteKeyCode={null} onMoveStart={event=>{if(event)manual();}} onMove={(_,viewport)=>setZoom(viewport.zoom)} attributionPosition="bottom-right" />
     </div>
-    {!expanded&&<div className="mobile-candidates" aria-label={translate("Choose a candidate to view")}><span className="eyebrow">{translate("OUR THREE CANDIDATES")}</span><div>{dogs.filter(d=>d.role==='Candidate').map(d=><button key={d.id} aria-pressed={selected===d.id} onClick={()=>onSelect(d.id)}><img src={thumbnailSource(d.photos[0].src)} style={{objectPosition:d.photos[0].objectPosition}} alt=""/><span>{translate(d.name)}</span></button>)}</div></div>}
+    {!expanded&&<div className="mobile-candidates" aria-label={translate("Choose a puppy to view")}><span className="eyebrow">{translate("OBI")}</span><div>{dogs.filter(d=>d.role==='Obi').map(d=><button key={d.id} aria-pressed={selected===d.id} onClick={()=>onSelect(d.id)}><img src={thumbnailSource(d.photos[0].src)} style={{objectPosition:d.photos[0].objectPosition}} alt=""/><span>{translate(d.name)}</span></button>)}</div></div>}
     {expanded&&!mobile&&selectedDog&&<div className="expanded-selection"><img src={thumbnailSource(selectedDog.photos[0].src)} style={{objectPosition:selectedDog.photos[0].objectPosition}} alt=""/><div><strong>{translate(selectedDog.name)}</strong><span>{translate(selectedDog.descriptor||selectedDog.role)}</span></div><button onClick={()=>onOpenProfile(selectedDog.id)}>{translate("View profile ")}<ArrowRight size={18}/></button></div>}
-    <div className="tree-links"><button onClick={onSiblings}>{translate("View other siblings ")}<ArrowRight size={16}/></button><span/><button onClick={onConcepts}>{translate("Adult appearance concepts ")}<ArrowRight size={16}/></button></div>
+    <div className="tree-links"><button onClick={onObi}>{translate("About Obi ")}<ArrowRight size={16}/></button></div>
     <div className="tree-controls">
       <div className="zoom-buttons"><button aria-label={translate("Zoom out")} disabled={zoom<=MIN_ZOOM+.001} onClick={()=>{manual();zoomOut({duration:motionDuration(280)});}}><Minus size={20}/></button><button className={`fit-button ${fitMode?'active':''}`} onClick={()=>fit()}><CornersOut size={20}/><span className="desktop-label">{translate("Fit to screen")}</span><span className="mobile-label">{translate("Fit")}</span></button><button aria-label={translate("Zoom in")} disabled={zoom>=2.499} onClick={()=>{manual();zoomIn({duration:motionDuration(280)});}}><Plus size={20}/></button><button ref={expanded?undefined:expandButton} aria-label={translate(expanded?'Exit expanded tree':'Expand family tree')} aria-pressed={expanded} onClick={toggleExpanded}>{expanded?<ArrowsIn size={20}/>:<ArrowsOut size={20}/>}<span className="mobile-label expand-label">{translate(expanded?'Close':'Expand')}</span></button></div>
       <span className="tree-help desktop-label">{translate("Drag to pan · ⌘ + scroll to zoom")}</span><span className="tree-help mobile-label">{translate("Pinch to zoom · drag to explore")}</span>

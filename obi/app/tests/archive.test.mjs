@@ -1,7 +1,7 @@
 import {healthSummary} from '../src/health-summary.js';
 import {healthGroups,parentRole} from '../src/profile-records.js';
 import {buildFamilyLayout,familyEdgePath} from '../src/family-layout.js';
-import {nextOverlay,archiveHash} from '../src/overlay-navigation.js';
+import {nextOverlay,archiveHash,archiveView,archiveViews} from '../src/overlay-navigation.js';
 import {galleryItems, mediaDescription, photoArchiveLabel} from '../src/gallery-items.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -48,6 +48,25 @@ test('overlay history preserves multi-generation and gallery return trails',()=>
  assert.equal(archiveHash('family','billie'),'#family?dog=billie');
  assert.equal(root.trail.length,0);
 });
+test('Obi is the landing page and old puppy links keep reaching her record',()=>{
+ assert.equal(archiveView(undefined),'obi');
+ assert.equal(archiveView('puppies'),'obi');
+ assert.equal(archiveView('family'),'family');
+ assert.equal(archiveView('unknown'),'obi');
+ assert.deepEqual(archiveViews,['obi','family','photos','sources']);
+});
+test('hiding siblings retains every ancestor and reduces the tree without changing the source archive',()=>{
+ const hidden=buildFamilyLayout(archive.dogs,{showSiblings:false});
+ const full=buildFamilyLayout(archive.dogs,{showSiblings:true});
+ assert.equal(full.placements.length-hidden.placements.length,6);
+ assert.deepEqual(hidden.placements.map(p=>p.id).sort(),archive.dogs.filter(d=>d.role!=='Sibling').map(d=>d.id).sort());
+ assert.equal(hidden.groups.length,1);
+ assert.deepEqual(hidden.groups[0].members,['puppy-03']);
+ assert.ok(!hidden.edges.some(e=>e.target==='group:Sibling'));
+ assert.ok(hidden.edges.some(e=>e.target==='group:Obi'));
+ assert.ok(hidden.width<full.width);
+ assert.equal(archive.dogs.filter(d=>d.role==='Sibling').length,6);
+});
 test('profile groups retain every original result once and resolve documented parent roles',()=>{
  for(const dog of archive.dogs){
   const rows=healthGroups(dog.tests).flatMap(group=>group.rows);
@@ -81,13 +100,13 @@ test('every profile, health result and real photograph retains honest source pro
   }
  }
 });
-test('parentage resolves without cycles; all candidates and siblings share the documented parents',()=>{
+test('parentage resolves without cycles; Obi and all siblings share the documented parents',()=>{
  const byId=new Map(archive.dogs.map(d=>[d.id,d]));
  const walk=(id,seen=new Set())=>{assert.ok(byId.has(id));assert.ok(!seen.has(id),`Cycle at ${id}`);for(const p of byId.get(id).parents)walk(p,new Set([...seen,id]));};
  for(const d of archive.dogs)walk(d.id);
  for(const d of archive.dogs.filter(d=>d.id.startsWith('puppy-')))assert.deepEqual(d.parents,['billie','zane']);
- assert.equal(archive.dogs.filter(d=>d.role==='Candidate').length,3);
- assert.equal(archive.dogs.filter(d=>d.role==='Sibling').length,4);
+ assert.equal(archive.dogs.filter(d=>d.role==='Obi').length,1);
+ assert.equal(archive.dogs.filter(d=>d.role==='Sibling').length,6);
 });
 test('source exceptions and missing puppy results remain explicit',()=>{
  const billie=archive.dogs.find(d=>d.id==='billie');const zane=archive.dogs.find(d=>d.id==='zane');
@@ -95,31 +114,35 @@ test('source exceptions and missing puppy results remain explicit',()=>{
  assert.equal(zane.tests.find(t=>t.name==='Hips (HD)').result,'B/C (FCI)');
  assert.equal(billie.photos.length,5);
  for(const d of archive.dogs.filter(d=>d.id.startsWith('puppy-')))assert.equal(d.tests.length,0);
- for(const d of archive.dogs.filter(d=>d.role==='Candidate')){assert.ok(d.concept);assert.ok(fs.existsSync(path.join(root,'public',d.concept)));assert.ok(!d.photos.some(p=>p.src===d.concept));}
+ for(const d of archive.dogs.filter(d=>archive.obi.featuredPuppyIds.includes(d.id))){assert.ok(d.concept);assert.ok(fs.existsSync(path.join(root,'public',d.concept)));assert.ok(!d.photos.some(p=>p.src===d.concept));}
 });
 
-test('each candidate carousel leads with the new portrait, retains the old photo and one updated AI concept',()=>{
+test('each featured puppy retains real photo history followed by one current AI concept',()=>{
  const confirmed={
   'puppy-01':{file:'Photo 3.jpg',sha256:'f952fa09d8f2efb7770afa617c405d9929a4fef34d889a8ca769d0f32d435480'},
   'puppy-02':{file:'Photo 2.jpg',sha256:'42801a0ba277a23791b60b14c3c6b23ae640f7e9d00dee06d3301fc6af5d3eb9'},
   'puppy-03':{file:'Photo 1.jpg',sha256:'d39c88bdb47fd3c2914f2d590589996615c8581fc50f1ddb8fe613f9a6fd1f7f'},
  };
  const manifest=JSON.parse(fs.readFileSync(path.join(root,'public/archive/puppies-2026-10-31-manifest.json')));
- for(const dog of archive.dogs.filter(d=>d.role==='Candidate')){
+ for(const dog of archive.dogs.filter(d=>archive.obi.featuredPuppyIds.includes(d.id))){
   const items=galleryItems(dog);
-  assert.equal(items.length,3);
+  assert.equal(items.length,dog.id===archive.obi.dogId?4:3);
   assert.equal(items[0].sourceKind,'user-upload');
-  assert.equal(items[0].sourceFile,confirmed[dog.id].file);
-  assert.equal(items[0].sha256,confirmed[dog.id].sha256);
-  assert.deepEqual(manifest.photos.find(p=>p.sha256===items[0].sha256).subjectIds,[dog.id]);
-  assert.equal(items[1].id,dog.id);
-  assert.ok(items[1].sourceImageUrl);
-  assert.equal(items[1].capturedAt,'2026-10-25');
+  const october=dog.photos.find(p=>p.capturedAt==='2026-10-31');
+  assert.equal(october.sourceFile,confirmed[dog.id].file);
+  assert.equal(october.sha256,confirmed[dog.id].sha256);
+  assert.deepEqual(manifest.photos.find(p=>p.sha256===october.sha256).subjectIds,[dog.id]);
+  const earlier=dog.photos.at(-1);
+  assert.equal(earlier.id,dog.id);
+  assert.ok(earlier.sourceImageUrl);
+  assert.equal(earlier.capturedAt,'2026-10-25');
   assert.deepEqual(items.slice(dog.photos.length).map(p=>p.variant),['updated']);
   for(const item of items.slice(dog.photos.length)){
    assert.equal(item.kind,'ai-concept');
-   assert.equal(item.referencePolicy,'real-photos-only');
-   assert.deepEqual(item.referencePhotoIds,dog.photos.map(photo=>photo.id));
+   if(dog.id!==archive.obi.dogId){
+    assert.equal(item.referencePolicy,'real-photos-only');
+    assert.deepEqual(item.referencePhotoIds,dog.photos.map(photo=>photo.id));
+   }
    assert.equal(item.sourceImageUrl,undefined);
    assert.match(mediaDescription(dog,item,1),/AI adult concept/);
    assert.ok(fs.existsSync(path.join(root,'public',item.src)));
@@ -146,9 +169,25 @@ test('health interpretation preserves carrier and hip exceptions and never inven
 test('shared litter connects only to the two group borders, above their cards',()=>{
  const graph=buildFamilyLayout(archive.dogs);
  const litter=graph.edges.filter(e=>e.source==='family:billie|zane');
- assert.deepEqual(litter.map(e=>e.target).sort(),['group:Candidate','group:Sibling']);
+ assert.deepEqual(litter.map(e=>e.target).sort(),['group:Obi','group:Sibling']);
  assert.ok(!graph.edges.some(e=>e.target.startsWith('puppy-')));
  const junction=graph.junctions.find(j=>j.id==='family:billie|zane');
  for(const group of graph.groups)assert.ok(junction.y<group.y);
  assert.deepEqual(graph.groups.flatMap(g=>g.members).sort(),archive.dogs.filter(d=>d.id.startsWith('puppy-')).map(d=>d.id).sort());
+});
+
+ test('Obi is confirmed without changing her stable pedigree identity or inferring health or eye colour',()=>{
+ const obi=archive.dogs.find(d=>d.id===archive.obi.dogId);
+ assert.equal(obi.id,'puppy-03');
+ assert.equal(obi.name,'Obi');
+ assert.equal(obi.role,'Obi');
+ assert.equal(obi.birthDate,'2026-09-29');
+ assert.equal(archive.obi.expectedHomeDate,'2026-11-28');
+ assert.equal(archive.obi.homeDateStatus,'approximate');
+ assert.equal(obi.facts['Eye colour'],'Not confirmed');
+ assert.deepEqual(obi.tests,[]);
+ assert.equal(archive.obi.featuredPuppyIds[0],obi.id);
+ assert.equal(obi.photos[0].reportedAgeWeeks,7);
+ assert.deepEqual(obi.concepts[0].referencePhotoIds,[obi.photos[0].id]);
+ for(const dog of archive.dogs)for(const text of dog.overview)assert.doesNotMatch(text,/not been selected yet/);
 });

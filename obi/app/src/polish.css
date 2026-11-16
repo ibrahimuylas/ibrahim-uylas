@@ -143,3 +143,9 @@ h1,h2{font-weight:580}h1{letter-spacing:-1.6px}h3{font-weight:600}
   transition:none!important;
  }
 }
+
+/* Confirmed identity stays visible independently of the inspected profile. */
+.dog-node.is-obi .dog-label strong{color:#245e8c}
+.dog-node.is-obi .photo-frame{outline:3px solid #527ea4;outline-offset:4px}
+.obi-card{border:1px solid #b6cfe2;border-radius:12px;padding:14px;background:#f2f7fb}
+.obi-dates{line-height:1.8}

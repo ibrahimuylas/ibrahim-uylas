@@ -129,6 +129,11 @@
     "width": 384,
     "height": 256
   },
+  "/media/ai-obi-adult-2026-11-16.webp": {
+    "src": "/media/thumbs/29b15d7548c06e58-384.webp",
+    "width": 384,
+    "height": 256
+  },
   "/media/ai-puppy-01-2026-10-31-corrected-v6.webp": {
     "src": "/media/thumbs/7f3d9c314a1055b7-384.webp",
     "width": 384,
@@ -136,11 +141,6 @@
   },
   "/media/ai-puppy-02-2026-10-31-real-only-v5.webp": {
     "src": "/media/thumbs/9b4e1bf205bbb25a-384.webp",
-    "width": 384,
-    "height": 256
-  },
-  "/media/ai-puppy-03-2026-10-31-corrected-v6.webp": {
-    "src": "/media/thumbs/4699c8e1dbeef529-384.webp",
     "width": 384,
     "height": 256
   },
@@ -213,6 +213,11 @@
     "src": "/media/thumbs/3a2705934b3550d1-384.webp",
     "width": 384,
     "height": 256
+  },
+  "/media/obi-seven-weeks-2026-11-16.webp": {
+    "src": "/media/thumbs/e654aad944cb8828-384.webp",
+    "width": 288,
+    "height": 384
   },
   "/media/puppy-01-2026-10-31.webp": {
     "src": "/media/thumbs/9ccdfd37ec8236c5-384.webp",

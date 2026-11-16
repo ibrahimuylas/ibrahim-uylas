@@ -1,0 +1,10 @@
+{
+  "tool": "built-in image_gen",
+  "createdAt": "2026-11-16",
+  "subjectId": "puppy-03",
+  "name": "Obi",
+  "primaryReference": "../../obi-2026-11-16/obi-seven-weeks-original.JPG",
+  "styleReference": "../2026-10-31/puppy-03-adult-v4.png",
+  "output": "obi-adult-v5.png",
+  "prompt": "Use case: identity-based adult dog concept for Obi's family archive website.\nInput 1 is the PRIMARY and newest identity reference: Obi, a seven-week-old female miniature American shepherd, confirmed former Puppy 03. Input 2 is an OLDER speculative concept, only a composition/style reference, never identity truth.\nCreate an updated photorealistic landscape diptych showing the SAME plausibly adult female dog in both panels: full-body three-quarter standing view on the left (about 60% width), close head portrait on the right (about 40%), thin ivory divider, soft natural garden background. Match the newest puppy's individual facial identity: silver/grey and black blue-merle crown and floppy ears, warm copper brows, cheeks and legs, pale speckled narrow central facial marking rather than a wide white blaze, black nose, white chin/chest and paw tips. Preserve irregular merle pattern distribution visible in reference 1 as plausibly as possible; do not default to the old generic pattern. Natural mature miniature American shepherd proportions, medium long adult coat and calm expression; no exaggerated show coat or oversized head. The new photo's eyes appear dark with muted grey-blue iris edges: use restrained muted grey-blue irises with naturally dark pupils, not vivid electric blue; this is only illustrative, final eye colour is unknown. No humans or hands. Refined editorial photographic treatment matching input 2. Small elegant serif label at top left exactly \"Obi\". Small unobtrusive footer at bottom right exactly \"AI concept · Appearance may vary\". No numbers or former candidate label. Both panels must depict the identical dog and coat pattern."
+}

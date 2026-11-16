@@ -1133,7 +1133,7 @@
       "id": "puppy-01",
       "name": "Puppy 01",
       "formalName": "Copper face",
-      "role": "Candidate",
+      "role": "Sibling",
       "descriptor": "Copper face",
       "sourceId": "puppies",
       "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
@@ -1173,7 +1173,7 @@
       ],
       "concept": "/media/ai-puppy-01-2026-10-31-corrected-v6.webp",
       "overview": [
-        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "Obi’s sibling from Billie and Zane’s litter. Puppy numbers are archive labels, not registered names.",
         "No individual test results or confirmed future eye colour are recorded."
       ],
       "concepts": [
@@ -1198,7 +1198,7 @@
       "id": "puppy-02",
       "name": "Puppy 02",
       "formalName": "Wide white blaze",
-      "role": "Candidate",
+      "role": "Sibling",
       "descriptor": "Wide white blaze",
       "sourceId": "puppies",
       "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
@@ -1237,7 +1237,7 @@
       ],
       "concept": "/media/ai-puppy-02-2026-10-31-real-only-v5.webp",
       "overview": [
-        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "Obi’s sibling from Billie and Zane’s litter. Puppy numbers are archive labels, not registered names.",
         "No individual test results or confirmed future eye colour are recorded."
       ],
       "concepts": [
@@ -1260,15 +1260,19 @@
     },
     {
       "id": "puppy-03",
-      "name": "Puppy 03",
-      "formalName": "Small white marking",
-      "role": "Candidate",
-      "descriptor": "Small white marking",
+      "name": "Obi",
+      "formalName": "Obi",
+      "role": "Obi",
+      "descriptor": "Puppy 03 · Our girl",
       "sourceId": "puppies",
       "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
       "capturedAt": "2026-10-25",
       "facts": {
-        "Parents": "Billie × Zane"
+        "Born": "29 September 2026",
+        "Coming home": "Around 28 November 2026",
+        "Sex": "Female",
+        "Parents": "Billie × Zane",
+        "Eye colour": "Not confirmed"
       },
       "parents": [
         "billie",
@@ -1276,6 +1280,20 @@
       ],
       "tests": [],
       "photos": [
+        {
+          "id": "obi-seven-weeks-2026-11-16",
+          "src": "/media/obi-seven-weeks-2026-11-16.webp",
+          "original": "/archive/photos/obi-seven-weeks-2026-11-16.JPG",
+          "sourceKind": "user-upload",
+          "sourceFile": "b4230520-bb5b-46cb-90d1-7dd8411bd8d8.JPG",
+          "capturedAt": "2026-11-16",
+          "dateBasis": "archive-receipt-date",
+          "captureDate": null,
+          "kind": "photo",
+          "sha256": "7da2742d1b4d3372d24ae83136d7ebfd47c6129f39891a0dbb23f3bd6a036f8c",
+          "objectPosition": "70% 38%",
+          "reportedAgeWeeks": 7
+        },
         {
           "id": "puppy-01-2026-10-31",
           "src": "/media/puppy-01-2026-10-31.webp",
@@ -1300,28 +1318,32 @@
           "kind": "photo"
         }
       ],
-      "concept": "/media/ai-puppy-03-2026-10-31-corrected-v6.webp",
+      "concept": "/media/ai-obi-adult-2026-11-16.webp",
       "overview": [
-        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
-        "No individual test results or confirmed future eye colour are recorded."
+        "Puppy 03 is Obi. Her identity and birth date, 29 September 2026, were confirmed by her family on 16 November 2026.",
+        "She is expected home around 28 November 2026; the arrival date is approximate.",
+        "The latest photograph was shared as a seven-week portrait. Her eyes look dark with a muted blue-grey edge in this light; her final eye colour is not confirmed. No individual health results are recorded."
       ],
       "concepts": [
         {
-          "id": "ai-03-2026-10-31-corrected-v6",
-          "src": "/media/ai-puppy-03-2026-10-31-corrected-v6.webp",
-          "original": "/media/ai-puppy-03-2026-10-31-corrected-v6.webp",
+          "id": "ai-obi-2026-11-16",
+          "src": "/media/ai-obi-adult-2026-11-16.webp",
+          "original": "/media/ai-obi-adult-2026-11-16.webp",
           "kind": "ai-concept",
           "variant": "updated",
           "label": "AI concept",
-          "createdAt": "2026-10-31",
+          "createdAt": "2026-11-16",
           "referencePhotoIds": [
-            "puppy-01-2026-10-31",
-            "puppy-03"
+            "obi-seven-weeks-2026-11-16"
           ],
-          "referencePolicy": "real-photos-only"
+          "styleReference": "design/archive/ai-adult-concepts/2026-10-31/puppy-03-adult-v4.png",
+          "note": "Speculative adult appearance; muted blue-grey eyes are illustrative, not confirmed.",
+          "referencePolicy": "new-real-photo-with-archived-style-reference"
         }
       ],
-      "sourceKind": "litter"
+      "sourceKind": "litter",
+      "birthDate": "2026-09-29",
+      "sex": "Female"
     },
     {
       "id": "puppy-04",
@@ -1353,7 +1375,7 @@
       ],
       "concept": null,
       "overview": [
-        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "Obi’s sibling from Billie and Zane’s litter. Puppy numbers are archive labels, not registered names.",
         "No individual test results or confirmed future eye colour are recorded."
       ],
       "sourceKind": "litter"
@@ -1388,7 +1410,7 @@
       ],
       "concept": null,
       "overview": [
-        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "Obi’s sibling from Billie and Zane’s litter. Puppy numbers are archive labels, not registered names.",
         "No individual test results or confirmed future eye colour are recorded."
       ],
       "sourceKind": "litter"
@@ -1423,7 +1445,7 @@
       ],
       "concept": null,
       "overview": [
-        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "Obi’s sibling from Billie and Zane’s litter. Puppy numbers are archive labels, not registered names.",
         "No individual test results or confirmed future eye colour are recorded."
       ],
       "sourceKind": "litter"
@@ -1458,7 +1480,7 @@
       ],
       "concept": null,
       "overview": [
-        "Archived puppy photograph. Puppy numbers are archive labels, not registered names. Obi has not been selected yet.",
+        "Obi’s sibling from Billie and Zane’s litter. Puppy numbers are archive labels, not registered names.",
         "No individual test results or confirmed future eye colour are recorded."
       ],
       "sourceKind": "litter"
@@ -1593,6 +1615,47 @@
       "date": "2026-10-31",
       "title": "New puppy portraits and adult concepts",
       "description": "Three clearer portraits provided by the user were archived. The user corrected the latest portrait identities: Photo 3 belongs to candidate 01 and Photo 1 belongs to candidate 03. Their adult concepts were regenerated from the corrected real-photo pairs; candidate 02 remains unchanged."
+    },
+    {
+      "date": "2026-11-16",
+      "title": "Meet Obi · Puppy 03",
+      "description": "Her family confirmed Puppy 03 as Obi, born 29 September 2026 and expected home around 28 November. Her seven-week portrait was archived and her speculative adult concept updated."
     }
-  ]
+  ],
+  "obi": {
+    "dogId": "puppy-03",
+    "confirmedAt": "2026-11-16",
+    "birthDate": "2026-09-29",
+    "expectedHomeDate": "2026-11-28",
+    "homeDateStatus": "approximate",
+    "sourceKind": "user-confirmed",
+    "featuredPuppyIds": [
+      "puppy-03",
+      "puppy-01",
+      "puppy-02"
+    ],
+    "breederNotes": {
+      "sourceId": "puppies",
+      "sourcePageUrl": "https://www.basileas-minis.com/puppies.html",
+      "archivedAt": "2026-10-27",
+      "items": [
+        {
+          "title": "Her litter",
+          "text": "Billie and Zane’s litter is based in Scotland. The breeder advertised readiness for new homes at the end of November."
+        },
+        {
+          "title": "Growing up at home",
+          "text": "The breeder describes litters born in the bedroom, moving to a living-room puppy pen at around three to four weeks."
+        },
+        {
+          "title": "Early experiences",
+          "text": "The breeder describes early neurological stimulation, different surfaces and toys, garden play, crate and litter-box training, and vehicle travel as their puppy-raising programme."
+        },
+        {
+          "title": "Registration",
+          "text": "The breeder states that their litters are AKC registered and eligible for The Kennel Club Activity Register as Miniature American Shepherds. Obi’s individual registration documents have not been archived."
+        }
+      ]
+    }
+  }
 }

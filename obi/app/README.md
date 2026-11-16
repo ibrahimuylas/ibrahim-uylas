@@ -1,6 +1,6 @@
 # Obi · Family archive
 
-An English, responsive archive for Obi and her family. Her name is Obi; none of the three merle candidates has been selected. Built from the approved family-tree design in `../design/mockups/02-family-tree-en-v2.png`.
+An English, responsive archive for Obi and her family. Puppy 03 is confirmed as Obi, a female born 29 September 2026 and expected home around 28 November 2026. Built from the approved family-tree design in `../design/mockups/02-family-tree-en-v2.png`.
 
 ## Run and build
 
@@ -25,7 +25,7 @@ For an explicitly authorised future publication, run `npm run deploy:production`
 - A data-driven four-generation tree showing all 17 recorded profiles, with initial fit, zoom buttons, Cmd/Ctrl + wheel, touch pinch, drag-to-pan, fit reset and expanded view.
 - Independent photo galleries on family nodes, synchronized with the selected profile. Hover/focus arrows, touch controls, full-size viewing, keyboard navigation and original-image links.
 - Full health tables, profile notes, links to parents, original source URLs and saved source text.
-- Three puppy candidates, four sibling photographs, separately labelled English AI adult concepts, a filterable photo album and archive history.
+- Obi, six siblings, separately labelled English AI adult concepts, a filterable photo album and archive history.
 - Desktop navigation and a compact mobile menu. Hash links preserve the selected section and family member.
 
 ## Content and provenance
@@ -34,11 +34,11 @@ For an explicitly authorised future publication, run `npm run deploy:production`
 
 `public/media` contains optimized display photographs and the translated AI concepts. `public/archive/photos` keeps original source files. `public/archive/pages` contains safe text snapshots, rather than executable third-party HTML. The source manifest is at `public/archive/photo-manifest.json`; archival inputs and raw page snapshots remain in `../design/archive`.
 
-There are 17 profiles: six parents/grandparents, four great-grandparents, three candidates and four siblings. Forty-four source files were retrieved from family profile pages and explicitly identified images elsewhere, including three pedigree documents. Some source files depict the same photograph; both versions are preserved but Billie’s duplicate is shown once. Seven earlier puppy photographs are retained separately. Shared unlabelled galleries are inventoried without guessing the dogs’ identities; collection is not claimed to be an exhaustive identification of those galleries.
+There are 17 profiles: six parents/grandparents, four great-grandparents, Obi and six siblings. Forty-four source files were retrieved from family profile pages and explicitly identified images elsewhere, including three pedigree documents. Some source files depict the same photograph; both versions are preserved but Billie’s duplicate is shown once. Seven earlier puppy photographs are retained separately. Shared unlabelled galleries are inventoried without guessing the dogs’ identities; collection is not claimed to be an exhaustive identification of those galleries.
 
 The puppy photographs were saved on 25 October 2026. Source-page snapshots were saved on 27 October 2026, after some puppy photographs had been removed. These are archive dates, not birth or examination dates.
 
-Source exceptions are deliberately preserved: Billie’s NAD result is `+/− (carrier)` and Zane’s hip result is `B/C (FCI)`. Puppy results are not inferred. An eye examination marked “clear” is not an eye colour. Each candidate gallery contains the latest real portrait, previous real photographs, then one current speculative AI adult concept. Concepts have explicit AI labels and never receive breeder-photo attribution. Original source records remain separate from generated assets.
+Source exceptions are deliberately preserved: Billie’s NAD result is `+/− (carrier)` and Zane’s hip result is `B/C (FCI)`. Puppy results are not inferred. An eye examination marked “clear” is not an eye colour. Each featured puppy gallery contains its latest real portrait, previous real photographs, then one current speculative AI adult concept. Obi’s latest portrait and concept were added on 16 November 2026; sibling concepts retain the 31 October versions. Concepts have explicit AI labels and never receive breeder-photo attribution. Original source records remain separate from generated assets.
 
 To regenerate content from the existing archive, `scripts/import-archive.py` requires Python, Pillow and BeautifulSoup. It copies originals, creates display derivatives and rebuilds the JSON; it does not crawl the live website. The English AI assets are maintained separately. Refreshing the source archive requires reviewing new photo identities and source evidence first.
 
@@ -118,3 +118,40 @@ Each generated pair was visually compared with its two real references for facia
 ### Corrected candidate identities
 
 The initial assignments of the latest uploads for candidates 01 and 03 were reversed. Following the user’s correction, their latest real photographs were swapped in the galleries and both affected adult concepts were regenerated from the corrected two-real-photo pairs. Candidate 02 and its existing concept were retained. Current generation inputs and original PNGs are in `../design/archive/ai-adult-concepts/2026-10-31-corrected-identities-v6/`. Public and design photo manifests record the user-confirmed subject mapping; original bytes and upload IDs remain unchanged. Regression checks assert the exact upload filename, SHA-256 content identity and manifest subject for each candidate, alongside its matching earlier portrait and AI reference IDs.
+
+
+## Obi confirmed — 16 November 2026
+
+Puppy 03 is Obi; the stable `puppy-03` ID and pedigree links are retained. The family confirmed her birth date as 29 September 2026 and her expected homecoming as around 28 November 2026 (approximate). Home selection, puppy cards, adult comparison and album now lead with Obi; the tree highlights her separately from all six siblings. English and Turkish copy and project guidance follow the confirmed identity.
+
+The seven-week upload is preserved byte-for-byte in `../design/archive/obi-2026-11-16/` and `public/archive/photos/`; receipt date is 16 November, capture date unknown. The new AI adult diptych uses this photo as its primary identity reference and the older concept only for composition. Original generation and exact prompt are in `../design/archive/ai-adult-concepts/2026-11-16/`. The superseded October concept remains archived. Eye colour remains unconfirmed; muted blue-grey AI eyes are illustrative. Family-supplied dates and identity are explicitly separate from the archived breeder litter-page source.
+
+Validation: 26 application tests, four hosting tests and production build passed (existing chunk-size warning). Browser QA checked desktop English tree and adult comparison, Turkish mobile layout at 390 × 844, full profile with all four gallery items, exact birth date and approximate homecoming, AI labelling, and preserved source attribution. No physical iPhone retest is claimed.
+
+Published to https://obi.uylas.net as Netlify production deploy `6afae28e7e21a54b9c12724c`. Verified the live Turkish comparison with the new portrait and fully loaded 1536 px adult concept, correct dates and explicit AI label. No commit or push; unrelated root changes preserved.
+
+## Obi’s personal home — 16 November 2026
+
+The landing page is now Obi’s own record, replacing the puppy-selection screen. Navigation is Obi / Family tree / Photos / Records. Her page collects her gallery, dates, breed, breeder, parent profiles, family milestones, source-backed breeder notes and individual document availability. The old `#puppies` route resolves to this page; profile, photo and source overlay links retain browser-history behaviour. The Photos page defaults to Obi’s three real photos, with family photographs available through the filter.
+
+Sibling cards and the standalone adult AI concept are collapsed secondary sections. The tree excludes six siblings initially; Show/Hide siblings rebuilds and refits the graph while retaining every recorded ancestor. A direct sibling link remains inspectable, and the full archive is unchanged. Mobile keeps one Obi shortcut, visible sibling control, full-screen tree and the existing no-motion mitigation.
+
+Breeder notes cite the saved 27 October litter page. Claims about puppy raising and registration remain attributed to the breeder’s programme; individual health results, vaccinations, microchip details and registration documents are explicitly not yet archived for Obi. Parent profiles retain every original health result and source.
+
+Validation: 29 app tests and four hosting tests pass; production build passes with the existing bundle-size warning. Desktop English and Turkish/mobile 390 × 844 QA confirms the personal landing page, collapsed secondary sections, 11/17-dog sibling toggle, parent profile access with complete health rows, Obi-only initial album, and old puppy deep-link compatibility. No physical iPhone retest is claimed.
+
+Published as Netlify production deploy `6afae9ddff2ac360bf9c41bd` at https://obi.uylas.net. The live Turkish homepage has the Obi / Family tree / Photos / Records navigation, her loaded real gallery, dates, parent links and collapsed AI/sibling sections. No Git commit or push; unrelated repository work preserved.
+
+## Selected editorial design — 16 November 2026
+
+Implemented the first displayed mock, `../design/mockups/obi-home-2026-11-16/01-quiet-editorial.png`: left-side serif greeting and profile, prominent birth/homecoming dates, right-side real gallery, horizontal timeline and compact unboxed parent strip. All three original mockups and exact built-in Image Gen prompts remain in that folder.
+
+DM Serif Display (Latin and Latin-ext) is bundled locally alongside Inter. Phone layout is one column with a vertical timeline; tablets retain a compact split layout. Both languages passed seven viewport checks from 320 to 1440 px, including 844 × 390 landscape. The Turkish greeting’s initial desktop overflow was fixed. Gallery/profile/source interactions and mobile tree no-motion protection remain intact. See `qa/obi-editorial/design-qa.md` for comparison images, 14 responsive observations and checked interactions. Physical iPhone verification remains outside this browser QA.
+
+Validation: 29 application tests, four hosting tests and production build passed (existing chunk-size warning). No commit or push.
+
+Selected editorial design published to https://obi.uylas.net as production deploy `6afaf88b3f08a369a02c4f39`. Live Turkish mobile verification at 390 × 844 confirms the new greeting, no page/heading overflow and four visible gallery thumbnails. Evidence: `qa/obi-editorial/production-mobile.jpg`. Local preview remains available on port 4173 for further iteration. No commit or push; unrelated changes preserved.
+
+## Commit preparation reconciliation — 16 November 2026
+
+Prepared against the clean `codex/obi-family-archive` checkout so the confirmed October upload identities and real-photo-only sibling concepts remain intact. The accepted November Obi concept retains its actual input provenance (new real photo plus an archived composition/style reference); it is not labelled as a real-photo-only generation. Historical corrected concepts, manifests and regression assertions are preserved.
