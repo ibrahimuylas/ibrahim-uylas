@@ -1,0 +1,23 @@
+{
+  "displayOrder": [
+    {
+      "option": 1,
+      "direction": "Quiet Editorial",
+      "file": "01-quiet-editorial.png"
+    },
+    {
+      "option": 2,
+      "direction": "A Little Photo Journal",
+      "file": "02-photo-journal.png"
+    },
+    {
+      "option": 3,
+      "direction": "Modern Personal Record",
+      "file": "03-personal-record.png"
+    }
+  ],
+  "selectedOption": 1,
+  "selectedFile": "01-quiet-editorial.png",
+  "selectedAt": "2026-11-16",
+  "note": "User explicitly selected first displayed generated mockup; source order matches observed display order."
+}

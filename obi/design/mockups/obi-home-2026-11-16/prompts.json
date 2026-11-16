@@ -1,0 +1,33 @@
+{
+  "createdAt": "2026-11-16",
+  "tool": "built-in image_gen",
+  "task": "Three independent mockups for Obi’s personal homepage; no implementation or publication.",
+  "references": [
+    "/var/folders/y_/wpm7ltr94vj4f0m5tcc8dcdr0000gn/T/codex-clipboard-e6a371d1-82e6-47f1-8f19-77ca2a146473.png",
+    "/Users/uylas/Projects/ibrahim-uylas/obi/design/archive/obi-2026-11-16/obi-seven-weeks-original.JPG"
+  ],
+  "currentFacts": {
+    "name": "Obi",
+    "id": "puppy-03",
+    "birthDate": "2026-09-29",
+    "expectedHomeDate": "2026-11-28",
+    "homeDateStatus": "approximate",
+    "eyeColour": "Not confirmed"
+  },
+  "directions": [
+    {
+      "key": "editorial",
+      "name": "Quiet Editorial",
+      "prompt": "Create a realistic, production-quality UI design with clear hierarchy, strong typography, intentional imagery, purposeful spacing, and pixel-crisp readable text.\nTarget: one independent desktop website mockup of Obi's personal home page, 1440 x 1280 pixels, a natural desktop page crop showing the hero, main facts, and the start of her story and parents. No device or browser chrome. Fill the image with website UI only, not a presentation slide.\nReferences: input 1 is the user's CURRENT page screenshot, supplying exact content, source photographs, four-item navigation and existing blue/ivory identity. Input 2 is the actual seven-week portrait of Obi; use this exact photograph as the dominant image with the same puppy identity, pose, hands and room background, not a newly imagined dog, not an adult concept. Treat the page screenshot as a content reference, not a layout to duplicate. Design a genuinely different layout and information hierarchy. Obi is a confirmed individual, not a puppy for sale or a set of candidates.\nCurrent date anchor: 16 November 2026. Confirmed content: Obi, female Miniature American Shepherd. Born 29 September 2026. Coming home around 28 November 2026, approximate, not already home. Parents Billie and Zane. Breeder Basileas Minis. Eye colour not confirmed. Do not invent a health status, weight, temperament, final eye colour, or future events. Her story: born 29 Sep; chosen/identity confirmed 16 Nov; expected home around 28 Nov.\nKeep wordmark exactly \"Obi\", navigation \"Obi\", \"Family tree\", \"Photos\", \"Records\", compact \"TR\" language switch. English visible text, as in the supplied screenshot. One clear supporting action \"Explore her family tree\". The hero must make the real puppy photo, name, and two key dates immediately understandable. Keep siblings and AI adult material off the primary canvas; those are collapsed secondary sections further down, not promotional cards. Parent mini portraits may use the photos visible in input 1; never use Obi as a parent. No AI prediction as a real photo.\nFollow a coherent existing blue/ivory family: navy #10294c, muted #587294, powder blue #e6f2ff, ivory white #f8fbfe. No more than two font families; body 14–16 px, comfortable line lengths, restrained headings. Differentiate sections with grouping, space, hierarchy and fine dividers before borders or shadows. Avoid nested cards, app-in-a-card, excessive badge pills, dashboard metrics, irrelevant features, giant dead space, illegible microtext, and decorative illustration. One design only; no multiple variants or mobile inset in the same image.\nDirection name: Quiet Editorial.\nRecompose as an elegant editorial spread. Left 45%: small \"HER LITTLE WORLD\", a beautifully set medium-large serif \"Meet Obi.\", short two-line welcoming sentence, then clean two-column typeset facts with birth and approximate arrival emphasized first. Right 45%: generous vertical real portrait, softly squared corners, slim thumbnail row beneath. The hero is balanced with a narrow gutter; no duplicated image. A thin full-width divider leads into one horizontal three-stop story timeline, then a modest parent strip with two small portraits and names. Serif only for the main name and story heading, Inter-like sans serif for all UI. Bright ivory, navy text, dusty blue rules, almost no boxed surfaces. Calm, polished, lovingly personal, with strong alignment and much better information density than the current huge photo/table layout. This should feel like a tasteful contemporary family journal, not a corporate landing page."
+    },
+    {
+      "key": "journal",
+      "name": "A Little Photo Journal"
+    },
+    {
+      "key": "record",
+      "name": "Modern Personal Record"
+    }
+  ],
+  "selectionRule": "Option numbers bind to generated-image display order in chat, never submission order."
+}
