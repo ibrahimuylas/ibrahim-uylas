@@ -16,6 +16,10 @@ Bu klasör, Likya Yolu rehberinin tek veri kaynağıdır. Arayüz bileşenleri v
 - `release-readiness.js`: Kanonik rehber kabuğunun açılabilmesi için gerekli veri kapsamını değerlendirir. Yayın karar ve geri alma akışı `site/docs/likya-release-gate.md` dosyasındadır.
 - `preparation-center.js`: Güncel hazırlık merkezi için dokuz konuyu, seçime bağlı ama evrensel gereksinimleri gizlemeyen kontrol listesi kurallarını ve tarihsel arşiv bağlantılarını tutar.
 
+## Kullanıcı nüshasından kitap notları
+
+`book-reference-evidence.js`, kullanıcının paylaştığı Altuğ Şenel imzalı *Adım Adım Likya Yolu* nüshasının 51–122 ve 237–346. sayfalar arasındaki etap notlarını sayfa referansı ve özgün özetlerle saklar. Bu kayıtlar resmî pafta sınırı, güncel mesafe, su, işletme veya geçiş koşulu olarak yayınlanmaz; önce resmî envanter ve bağımsız güncel gözlemlerle karşılaştırma kuyruğuna girer.
+
 ## Güncel olmayan veri kuralı
 
 2014 yazıları, GPS gömüsü ve topluluk paylaşımları güncel rota/koşul verisi değildir. Her değişken bilgi, ayrı kaynak ve `reviewDueAt` kaydı olmadan kullanıcıya güncelmiş gibi gösterilemez.

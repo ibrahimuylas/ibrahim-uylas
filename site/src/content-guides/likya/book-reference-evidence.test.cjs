@@ -2,9 +2,11 @@ const assert = require('node:assert/strict')
 const test = require('node:test')
 
 const {
+  bookReferenceEvidence,
   buildBookReferenceEvidenceCoverage,
   isCompleteBookReferenceEvidence
 } = require('./book-reference-evidence')
+const { sourceById: likyaSourceById } = require('./sources')
 
 const sourceById = {
   'likya-guidebook-test': {
@@ -51,4 +53,19 @@ test('keeps book context out of the public release path', () => {
 
   assert.equal(coverage[0].status, 'book-context-indexed')
   assert.equal(coverage[0].doNotPublish, true)
+})
+
+test('indexes the user-provided Altuğ Şenel pages as paraphrased historical context', () => {
+  assert.equal(bookReferenceEvidence.length, 22)
+
+  bookReferenceEvidence.forEach(evidence => {
+    assert.equal(
+      isCompleteBookReferenceEvidence(evidence, likyaSourceById),
+      true,
+      evidence.id
+    )
+    assert.equal(evidence.sourceId, 'book-altug-senel-adim-adim')
+    assert.equal(evidence.rightsStatus, 'citation-only')
+    assert.equal('quote' in evidence, false)
+  })
 })
