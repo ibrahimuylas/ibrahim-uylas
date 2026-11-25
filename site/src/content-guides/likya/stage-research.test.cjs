@@ -30,8 +30,30 @@ test('keeps GPS candidates in research until practical-stage evidence exists', (
   )
   assert.equal(
     report.sections.filter(section => section.status === 'unmapped').length,
-    1
+    0
   )
+  assert.equal(
+    report.sections.find(section => section.sectionId === 'ktb-pafta-17')
+      .status,
+    'needs-review'
+  )
+  for (const section of routeSections) {
+    const candidates = stageResearchRecords
+      .filter(record => record.officialSectionIds.includes(section.id))
+      .flatMap(record => record.externalGpsLinks || [])
+      .filter(link => link.routeMatchStatus === 'candidate')
+    assert.ok(candidates.length > 0, `${section.id} GPS adayı içermeli`)
+    assert.ok(candidates.every(link => link.externalDownloadOnly === true))
+  }
+  const southernBranch = stageResearchRecords.find(record =>
+    record.officialSectionIds.includes('ktb-pafta-17')
+  )
+  assert.equal(
+    southernBranch.externalGpsLinks.find(link => link.recordId === '31198631')
+      .routeMatchStatus,
+    'rejected'
+  )
+  assert.equal(hasEligibleResearchEvidence(southernBranch), false)
 })
 
 test('keeps incomplete research distinct from eligible evidence', () => {

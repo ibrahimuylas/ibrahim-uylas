@@ -39,10 +39,24 @@ const stageResearchRecords = [
     id: 'western-pafta-2-faralya-alinca-wikiloc-candidate',
     researchStatus: 'research',
     researchOwner: 'Likya rehber editoryal araştırması',
-    updatedAt: '2026-08-28',
+    updatedAt: '2026-10-15',
     officialSectionIds: ['ktb-pafta-2'],
-    sourceIds: ['ktb-likya-route-home', 'wikiloc-58521662'],
+    sourceIds: ['ktb-likya-route-home', 'wikiloc-58521662', 'wikiloc-22769736'],
     externalGpsLinks: [
+      {
+        provider: 'wikiloc',
+        url: 'https://www.wikiloc.com/hiking-trails/likya-yolu-lycian-way-03-faralya-kabak-22769736',
+        sourceId: 'wikiloc-22769736',
+        recordId: '22769736',
+        author: 'altugsenel',
+        recordedAt: '2018-02',
+        uploadedAt: '2018-02-19',
+        reviewedAt: '2026-10-15',
+        routeMatchStatus: 'candidate',
+        externalDownloadOnly: true,
+        matchNotes:
+          'David Alp Yoltay’ın araç hareketi karışmış 258066011 numaralı ikinci gün kaydı yerine Faralya–Kabak alt kesimi adayıdır. Kelebekler Vadisi inişini ve Kabak–Alınca devamını kapsamaz. Pafta 2 tamamı için 58521662 kaydıyla birlikte incelenmeli; Kabak köyü/koyu birleşim noktaları ayrıca karşılaştırılmalıdır.'
+      },
       {
         provider: 'wikiloc',
         url: 'https://www.wikiloc.com/hiking-trails/likya-yolu-yuruyusu-faralya-alinca-etabi-58521662',
@@ -221,10 +235,28 @@ const stageResearchRecords = [
     id: 'western-pafta-9-hacioglan-wikiloc-candidate',
     researchStatus: 'research',
     researchOwner: 'Likya rehber editoryal araştırması',
-    updatedAt: '2026-08-28',
+    updatedAt: '2026-10-15',
     officialSectionIds: ['ktb-pafta-9'],
-    sourceIds: ['ktb-likya-route-home', 'wikiloc-249421274'],
+    sourceIds: [
+      'ktb-likya-route-home',
+      'wikiloc-249421274',
+      'wikiloc-59521959'
+    ],
     externalGpsLinks: [
+      {
+        provider: 'wikiloc',
+        url: 'https://fi.wikiloc.com/vaellus-reitit/likya-yolu-lycian-way-11by-gokceoren-hacioglan-phellos-cukurbag-59521959',
+        sourceId: 'wikiloc-59521959',
+        recordId: '59521959',
+        author: 'altugsenel',
+        recordedAt: '2011-06',
+        uploadedAt: '2020-10-30',
+        reviewedAt: '2026-10-15',
+        routeMatchStatus: 'candidate',
+        externalDownloadOnly: true,
+        matchNotes:
+          'Gökçeören–Hacıoğlan Deresi–Phellos–Çukurbağ kaydı, Hacıoğlan ara noktasını içerir. Tek yer adlı Pafta 9 sınırı ayrıca belirlenmelidir; kayıt Pafta 10 tarafına da devam eder. Kaynak güncel geçiş kanıtı değildir.'
+      },
       {
         provider: 'wikiloc',
         url: 'https://www.wikiloc.com/hiking-trails/likya-yolu-9-gun-saribelen-gokceoren-hacioglan-19-km-249421274',
@@ -247,10 +279,24 @@ const stageResearchRecords = [
     id: 'western-pafta-10-derekoy-cukurbag-wikiloc-candidate',
     researchStatus: 'research',
     researchOwner: 'Likya rehber editoryal araştırması',
-    updatedAt: '2026-08-28',
+    updatedAt: '2026-10-15',
     officialSectionIds: ['ktb-pafta-10'],
-    sourceIds: ['ktb-likya-route-home', 'wikiloc-54664242'],
+    sourceIds: ['ktb-likya-route-home', 'wikiloc-54664242', 'wikiloc-59521959'],
     externalGpsLinks: [
+      {
+        provider: 'wikiloc',
+        url: 'https://fi.wikiloc.com/vaellus-reitit/likya-yolu-lycian-way-11by-gokceoren-hacioglan-phellos-cukurbag-59521959',
+        sourceId: 'wikiloc-59521959',
+        recordId: '59521959',
+        author: 'altugsenel',
+        recordedAt: '2011-06',
+        uploadedAt: '2020-10-30',
+        reviewedAt: '2026-10-15',
+        routeMatchStatus: 'candidate',
+        externalDownloadOnly: true,
+        matchNotes:
+          'Phellos–Çukurbağ kesimini içeren daha geniş Gökçeören çıkışlı adaydır. Kaynak işaretli patika ve kestirmesiz yürüyüş beyan eder; Dereköy başlangıcı ve pafta sınırı haritada doğrulanmalıdır. 54664242 kaydındaki bilinçli orman yolu sapmalarının yerine karşılaştırılacak adaydır.'
+      },
       {
         provider: 'wikiloc',
         url: 'https://tr.wikiloc.com/gezi-yuruyus-rotalari/derekoy-phellos-cukurbag-likya-yolu-lycian-way-16072020-54664242',
@@ -427,12 +473,46 @@ const stageResearchRecords = [
   },
   {
     id: 'central-pafta-17-demre-beymelek-yeni-yol-wikiloc-candidate',
-    researchStatus: 'research',
+    researchStatus: 'needs-review',
     researchOwner: 'Likya rehber editoryal araştırması',
-    updatedAt: '2026-08-28',
+    updatedAt: '2026-10-15',
     officialSectionIds: ['ktb-pafta-17'],
-    sourceIds: ['ktb-likya-route-home', 'wikiloc-31198631'],
+    sourceIds: [
+      'ktb-likya-route-home',
+      'ktb-pafta-17-detail',
+      'wikiloc-31198631',
+      'wikiloc-48212039',
+      'wikiloc-18027142'
+    ],
     externalGpsLinks: [
+      {
+        provider: 'wikiloc',
+        url: 'https://www.wikiloc.com/hiking-trails/st-nicholas-yolu-rota8-beymelek-ision-kale-myra-48212039',
+        sourceId: 'wikiloc-48212039',
+        recordId: '48212039',
+        author: 'altugsenel',
+        recordedAt: '2014-08',
+        uploadedAt: '2020-04-03',
+        reviewedAt: '2026-10-15',
+        routeMatchStatus: 'candidate',
+        externalDownloadOnly: true,
+        matchNotes:
+          'Pafta 17 güney kolunun Myra–İsion–Yukarı Beymelek yaklaşımı için ters yönlü kısmi adaydır; Myra, İsion Kale ve Taşevler ara noktaları vardır. Lagün–Bonda devamını kapsamaz. 18027142 ile eklem yeri ve resmî Kınık yaklaşımı karşılaştırılmadan kesintisiz tam pafta sayılmamalıdır.'
+      },
+      {
+        provider: 'wikiloc',
+        url: 'https://www.wikiloc.com/hiking-trails/likya-yolu-st-nicholas-yolu-2-alternatif-parkur-finike-demre-18027142',
+        sourceId: 'wikiloc-18027142',
+        recordId: '18027142',
+        author: 'Emre Demircioglu',
+        recordedAt: '2016-10',
+        uploadedAt: '2017-06-01',
+        reviewedAt: '2026-10-15',
+        routeMatchStatus: 'candidate',
+        externalDownloadOnly: true,
+        matchNotes:
+          'Finike–Demre alternatif güney kolu için geniş kapsamlı adaydır. Yazar Myra–Beymelek makilik alanı arasındaki yaklaşık 4 km’yi önceki gün yürüdüğünü ve sapmalar olabileceğini açıklar. 48212039 yaklaşımıyla bağlantı ve lagün–Kaklık–Dinektepe geçişi haritada doğrulanmalıdır; tek başına tam pafta kanıtı değildir.'
+      },
       {
         provider: 'wikiloc',
         url: 'https://www.wikiloc.com/hiking-trails/likya-yolu-finike-demre-beymelek-31198631',
@@ -441,15 +521,15 @@ const stageResearchRecords = [
         author: 'Mustafa Aygün',
         recordedAt: '2018-12',
         uploadedAt: '2018-12-08',
-        reviewedAt: '2026-08-28',
-        routeMatchStatus: 'candidate',
+        reviewedAt: '2026-10-15',
+        routeMatchStatus: 'rejected',
         externalDownloadOnly: true,
         matchNotes:
-          'Kayıt Finike–Demre (Beymelek) başlığını taşır; sahibi rotadan saptığını ve yürüyüşü tamamlayamadığını belirtir. Bu nedenle Demre–Beymelek–Yeni Yol için yalnızca düşük güvenli adaydır.'
+          'Tam pafta navigasyonu için reddedildi: yazar rotadan sapma, kesilen GPS ve tamamlanamayan yürüyüş bildirir. Araştırma geçmişi olarak korunur; eksik kesimleri doldurmak veya tam pafta kapsamı iddia etmek için kullanılamaz.'
       }
     ],
     notes:
-      'Düşük güvenli haricî GPS adayı; kilometre, su, zorluk veya güncel koşul iddiası taşımaz ve ziyaretçiye gösterilmez.'
+      'İki tamamlayıcı adayın resmî güney kolu üzerinde birleştirilmesi henüz doğrulanmadı. Tam pafta GPS uygunluğu açık; eski kesintili kayıt reddedildi. Ziyaretçiye gösterilmez.'
   },
   {
     id: 'central-pafta-18-finike-wikiloc-candidate',
@@ -738,6 +818,32 @@ const stageResearchRecords = [
       'Geniş kapsamlı haricî GPS adayı; kilometre, su, zorluk veya güncel koşul iddiası taşımaz ve ziyaretçiye gösterilmez.'
   },
   {
+    id: 'eastern-pafta-29-yayla-kuzdere-gedelme-wikiloc-candidate',
+    researchStatus: 'research',
+    researchOwner: 'Likya rehber editoryal araştırması',
+    updatedAt: '2026-10-15',
+    officialSectionIds: ['ktb-pafta-29'],
+    sourceIds: ['ktb-pafta-29-detail', 'wikiloc-48750651'],
+    externalGpsLinks: [
+      {
+        provider: 'wikiloc',
+        url: 'https://www.wikiloc.com/hiking-trails/likya-yolu-lycian-way-25ay-yayla-kuzdere-gedelme-goynuk-yayla-48750651',
+        sourceId: 'wikiloc-48750651',
+        recordId: '48750651',
+        author: 'altugsenel',
+        recordedAt: '2018-02',
+        uploadedAt: '2020-05-01',
+        reviewedAt: '2026-10-15',
+        routeMatchStatus: 'candidate',
+        externalDownloadOnly: true,
+        matchNotes:
+          'Bakanlığın Tekedağı–Güneşli başlıklı Pafta 29 ayrıntısı Yayla Kuzdere–Gedelma ve Kuzdere–Gedelma birleşimini tarif eder. Bu kayıt batı kolunu ve Gedelme sonrası Göynük Yayla devamını içerir; doğu kolunun yerine kullanılamaz. Kaynak, Gedelme camisi üstündeki revize girişi açıklar. Resmî pafta sınırı, iz geometrisi, yön ve güncel geçiş ayrıca doğrulanmalıdır.'
+      }
+    ],
+    notes:
+      'Pafta başlığına değil resmî ayrıntı tarifine dayalı batı kolu adayıdır. Göynük Yayla uzantısı pafta sınırında ayrılmalıdır; kaynak tarihi güncel koşul kanıtı değildir.'
+  },
+  {
     id: 'eastern-pafta-30-ovacik-goynuk-kanyon-wikiloc-candidate',
     researchStatus: 'research',
     researchOwner: 'Likya rehber editoryal araştırması',
@@ -767,10 +873,29 @@ const stageResearchRecords = [
     id: 'eastern-pafta-31-saricinar-hisarcandir-wikiloc-candidate',
     researchStatus: 'research',
     researchOwner: 'Likya rehber editoryal araştırması',
-    updatedAt: '2026-08-28',
+    updatedAt: '2026-10-15',
     officialSectionIds: ['ktb-pafta-31'],
-    sourceIds: ['ktb-likya-route-home', 'wikiloc-23809595'],
+    sourceIds: [
+      'ktb-likya-route-home',
+      'ktb-pafta-31-detail',
+      'wikiloc-23809595',
+      'wikiloc-22774675'
+    ],
     externalGpsLinks: [
+      {
+        provider: 'wikiloc',
+        url: 'https://www.wikiloc.com/hiking-trails/likya-yolu-lycian-way-27-goynuk-hisarcandir-22774675',
+        sourceId: 'wikiloc-22774675',
+        recordId: '22774675',
+        author: 'altugsenel',
+        recordedAt: '2018-02',
+        uploadedAt: '2018-02-19',
+        reviewedAt: '2026-10-15',
+        routeMatchStatus: 'candidate',
+        externalDownloadOnly: true,
+        matchNotes:
+          'Bakanlığın Pafta 31 tarifindeki Göynük Kanyonu–Sarıçınar çevresi–Hisarçandır hattı için tek yönlü adaydır. Sarıçınar Düzlüğü, Dayısı/Hüdacık Geçidi, Elmayanı ve Hisarçandır ara noktaları vardır. Eski gidiş-dönüş 23809595 kaydının kapsamadığı Hisarçandır devamını içerir. Pafta sınırı ve iz geometrisi ayrıca karşılaştırılmalıdır.'
+      },
       {
         provider: 'wikiloc',
         url: 'https://tr.wikiloc.com/gezi-yuruyus-rotalari/goynuk-kanyonu-sari-cinar-likya-yolu-23809595',

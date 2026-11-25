@@ -62,7 +62,11 @@ test('creates one non-public research card for every official pafta', () => {
   )
   assert.equal(
     board.filter(card => card.coverageStatus === 'unmapped').length,
-    1
+    0
+  )
+  assert.equal(
+    board.find(card => card.sectionId === 'ktb-pafta-17').coverageStatus,
+    'needs-review'
   )
   assert.ok(
     board.every(

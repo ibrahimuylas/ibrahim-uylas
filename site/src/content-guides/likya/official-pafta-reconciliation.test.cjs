@@ -32,7 +32,7 @@ test('creates a non-public official-pafta review item for every pafta', () => {
   )
   assert.equal(
     queue.find(item => item.sectionId === 'ktb-pafta-29').status,
-    'unmapped'
+    'candidate-review'
   )
   assert.ok(
     queue.every(

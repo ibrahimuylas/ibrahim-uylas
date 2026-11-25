@@ -94,6 +94,43 @@ const buildPaftaReviewHistoryIndex = reviews =>
 
 const paftaReconciliationReviews = [
   {
+    id: 'review-pafta-29-official-description-2026-10-15',
+    sectionId: 'ktb-pafta-29',
+    candidateRecordId:
+      'eastern-pafta-29-yayla-kuzdere-gedelme-wikiloc-candidate',
+    status: 'needs-evidence',
+    officialReference: {
+      sourceId: 'ktb-pafta-29-detail',
+      url: 'https://likyayolu.ktb.gov.tr/TR-236474/pafta-29-tekedagi---gunesli.html',
+      checkedAt: '2026-10-15'
+    },
+    observationSourceIds: ['ktb-pafta-29-detail', 'wikiloc-48750651'],
+    candidateScopeStatus:
+      'western-branch-description-aligned-geometry-unchecked',
+    reviewedAt: '2026-10-15',
+    reviewedBy: 'Likya rehber editoryal araştırması',
+    decisionNote:
+      'Resmî sayfanın Tekedağı–Güneşli başlığına rağmen ayrıntı Yayla Kuzdere–Gedelma batı kolunu ve Kuzdere’den gelen doğu koluyla birleşmeyi anlatır. 48750651, batı kolu ve Gedelme sonrası devamı için adaydır. Göynük Yayla uzantısı, pafta sınırı, eski/yeni giriş ve doğu kolunun ayrı iz gereksinimi harita üzerinde çözülmeden tam eşleşme sayılmaz.'
+  },
+  {
+    id: 'review-pafta-31-hisarcandir-extension-2026-10-15',
+    sectionId: 'ktb-pafta-31',
+    candidateRecordId:
+      'eastern-pafta-31-saricinar-hisarcandir-wikiloc-candidate',
+    status: 'needs-evidence',
+    officialReference: {
+      sourceId: 'ktb-pafta-31-detail',
+      url: 'https://likyayolu.ktb.gov.tr/TR-236479/pafta-31-saricinar---hisarcandir.html',
+      checkedAt: '2026-10-15'
+    },
+    observationSourceIds: ['ktb-pafta-31-detail', 'wikiloc-22774675'],
+    candidateScopeStatus: 'hisarcandir-continuation-found-geometry-unchecked',
+    reviewedAt: '2026-10-15',
+    reviewedBy: 'Likya rehber editoryal araştırması',
+    decisionNote:
+      '22774675, Göynük çıkışlı tek yönlü kayıtta Sarıçınar Düzlüğü, Dayısı/Hüdacık, Elmayanı ve Hisarçandır ara noktalarını içerir. 23809595 kaydının yalnızca alt kesim gidiş-dönüş olması sorununu kapsam düzeyinde giderir. Resmî pafta sınırı ve geometri eşleştirmesi henüz tamamlanmadı.'
+  },
+  {
     id: 'review-pafta-1-candidate-scope-2026-08-28',
     sectionId: 'ktb-pafta-1',
     candidateRecordId: 'western-pafta-1-ovacik-kirme-wikiloc-candidate',
