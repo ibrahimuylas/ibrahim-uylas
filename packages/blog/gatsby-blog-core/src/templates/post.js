@@ -23,10 +23,20 @@ export const pageQuery = graphql`
     $includeTimeToRead: Boolean!
     $includeTableOfContents: Boolean!
     $imageQuality: Int!
+    $translationId: String
+    $hasTranslation: Boolean! = false
   ) {
     post: article(id: { eq: $id }) {
       ...ArticleInformation
       ...ArticleThumbnailHero
+    }
+    translation: mdx(id: { eq: $translationId }) @include(if: $hasTranslation) {
+      frontmatter {
+        title
+        description
+      }
+      timeToRead @include(if: $includeTimeToRead)
+      tableOfContents(maxDepth: 2) @include(if: $includeTableOfContents)
     }
     tagCategoryPosts: allArticle(
       filter: {

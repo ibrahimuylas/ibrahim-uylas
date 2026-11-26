@@ -28,6 +28,16 @@ const copy = {
     published: 'Yayımlandı',
     updated: 'Güncellendi',
     readingTime: 'Okuma Süresi',
+    relatedPosts: 'İlgili Yazılar',
+    openGuide: 'Ana rehbere git',
+    newsletter: {
+      title: 'Yeni rota ve kamp rehberlerini kaçırma',
+      description:
+        'Yeni bir rota, kamp alanı veya ekipman rehberi yayımladığımda kısa bir e-postayla haber almak için listeye katıl.',
+      email: 'Email adresi',
+      placeholder: 'Email adresiniz buraya...',
+      submit: 'Kayıt ol'
+    },
     minutes: count => `${count} dk`,
     copyright: 'Tüm hakları saklıdır.'
   },
@@ -59,6 +69,16 @@ const copy = {
     published: 'Published',
     updated: 'Updated',
     readingTime: 'Reading time',
+    relatedPosts: 'Related posts',
+    openGuide: 'Open the guide',
+    newsletter: {
+      title: 'Get new route and camping guides',
+      description:
+        'Sign up for a short email when I publish a new route, campsite or gear guide.',
+      email: 'Email address',
+      placeholder: 'you@example.com',
+      submit: 'Subscribe'
+    },
     minutes: count => `${count} min`,
     copyright: 'All rights reserved.',
     description:
@@ -91,6 +111,35 @@ const categoryName = (category, language) =>
     ? namesByPath[category.slug] || category.name
     : category.name
 
+const englishDate = new Intl.DateTimeFormat('en-GB', {
+  dateStyle: 'long',
+  timeZone: 'UTC'
+})
+
+const localizeArticle = (source, translation) => {
+  if (!translation) return source
+
+  return {
+    ...source,
+    ...translation.frontmatter,
+    date:
+      source.datePublished &&
+      englishDate.format(new Date(source.datePublished)),
+    modified:
+      source.dateModified && englishDate.format(new Date(source.dateModified)),
+    timeToRead: translation.timeToRead,
+    tableOfContents: translation.tableOfContents,
+    category: source.category && {
+      ...source.category,
+      name: categoryName(source.category, 'en')
+    },
+    tags: source.tags?.filter(Boolean).map(tag => {
+      const { href, fallbackLanguage } = getLocalizedLink(tag.slug, 'en')
+      return { ...tag, slug: href, hrefLang: fallbackLanguage }
+    })
+  }
+}
+
 const localizeMenu = (items, language) => {
   if (language === 'tr' || !items) return items
 
@@ -115,4 +164,4 @@ const localizeMenu = (items, language) => {
   })
 }
 
-module.exports = { categoryName, copy, localizeMenu }
+module.exports = { copy, localizeArticle, localizeMenu }

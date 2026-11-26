@@ -6,6 +6,8 @@ const translations = require('./translations.json')
 
 const siteDirectory = path.join(__dirname, '../..')
 const template = name => path.join(siteDirectory, 'src/templates', name)
+const postTemplate =
+  require.resolve('../../../packages/blog/gatsby-blog-core/src/templates/post.js')
 const byId = new Map(
   translations.map(translation => [translation.id, translation])
 )
@@ -14,6 +16,8 @@ const articleQuery = `{
   allArticle {
     nodes {
       id slug private draft link
+      category { id }
+      tags { id }
       parent {
         ... on Mdx {
           parent { ... on File { relativePath absolutePath } }
@@ -107,10 +111,18 @@ const createEnglishPages = async ({ graphql, actions }) => {
       )
     }
 
+    const tagsIds = (article.tags || []).filter(Boolean).map(tag => tag.id)
     actions.createPage({
       path: en,
-      component: `${template('english-article.jsx')}?__contentFilePath=${mdx.internal.contentFilePath}`,
-      context: { articleId: article.id, translationId: mdx.id }
+      component: `${postTemplate}?__contentFilePath=${mdx.internal.contentFilePath}`,
+      context: {
+        id: article.id,
+        categoryId: article.category?.id,
+        tagsIds,
+        hasTags: tagsIds.length > 0,
+        hasTranslation: true,
+        translationId: mdx.id
+      }
     })
   }
 }

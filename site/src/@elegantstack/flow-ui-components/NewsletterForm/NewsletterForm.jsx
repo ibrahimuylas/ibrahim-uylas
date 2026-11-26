@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Box, Input, Button, Message, Spinner } from 'theme-ui'
 import { currentPagePath, trackEvent } from '../../../utils/analytics'
+import { copy } from '../../../i18n/copy'
 
 const styles = {
   msg: {
@@ -19,8 +20,10 @@ const NewsletterForm = ({
   submitting,
   message,
   success,
-  compact
+  compact,
+  language = 'tr'
 }) => {
+  const labels = copy[language].newsletter
   const hasTrackedSuccess = useRef(false)
 
   useEffect(() => {
@@ -66,8 +69,8 @@ const NewsletterForm = ({
             <Input
               name='email'
               type='email'
-              placeholder='Email adresiniz buraya...'
-              aria-label='Email adresi'
+              placeholder={labels.placeholder}
+              aria-label={labels.email}
               required
               sx={
                 compact
@@ -110,7 +113,7 @@ const NewsletterForm = ({
                 : styles.button
             }
           >
-            Kayıt ol {submitting && <Spinner size='20' />}
+            {labels.submit} {submitting && <Spinner size='20' />}
           </Button>
         </>
       )}
@@ -126,7 +129,8 @@ NewsletterForm.propTypes = {
   submitting: PropTypes.bool,
   message: PropTypes.string,
   success: PropTypes.bool,
-  compact: PropTypes.bool
+  compact: PropTypes.bool,
+  language: PropTypes.oneOf(['tr', 'en'])
 }
 
 NewsletterForm.defaultProps = {

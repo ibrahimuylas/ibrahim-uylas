@@ -20,11 +20,19 @@ import { trackEvent } from '../../../utils/analytics'
 import categoryGuideLinks from '../../../content-guides/categoryGuideLinks'
 import guideMeta from '../../../content-guides/likya/guide-meta'
 import { stageGuideByArticleSlug } from '../../../content-guides/likya/stage-guides'
+import { copy, localizeArticle } from '../../../i18n/copy'
+import { fallbackLinkTitle, getLocalizedLink } from '../../../i18n/language'
 // import AuthorExpanded from '@widgets/AuthorExpanded'
 import { PostHead, PostImage, PostBody, PostTagsShare } from '@widgets/Post'
 
 const Post = ({
-  data: { post, tagCategoryPosts, tagPosts, categoryPosts, previous, next },
+  data: {
+    post: sourcePost,
+    translation,
+    tagCategoryPosts,
+    tagPosts,
+    categoryPosts
+  },
   ...props
 }) => {
   const relatedPosts = [
@@ -33,12 +41,16 @@ const Post = ({
     ...(categoryPosts ? categoryPosts.nodes : [])
   ]
   const { pageContext: { services = {}, siteUrl } = {} } = props
-  const categoryGuide = post.category
-    ? categoryGuideLinks[post.category.name]
-    : null
+  const language = translation ? 'en' : 'tr'
+  const labels = copy[language]
+  const post = localizeArticle(sourcePost, translation)
+  const categoryGuide = categoryGuideLinks[sourcePost.category?.name]
+  const guideCopy = categoryGuide?.[language] || categoryGuide
+  const guideLink = getLocalizedLink(categoryGuide?.path, language)
   const isLikyaPreview = process.env.GATSBY_LIKYA_GUIDE_PREVIEW === 'true'
 
   if (
+    !translation &&
     isLikyaGuideShellEnabled({
       path: props.location?.pathname,
       slug: post.slug,
@@ -59,6 +71,7 @@ const Post = ({
   }
 
   if (
+    !translation &&
     isLikyaStageGuideEnabled({
       slug: post.slug,
       stageGuideByArticleSlug,
@@ -100,7 +113,7 @@ const Post = ({
             <div
               {...(post.private === true ? {} : { 'data-pagefind-body': '' })}
             >
-              <PostHead {...post} />
+              <PostHead {...post} language={language} />
               <Divider line />
               <div data-pagefind-ignore='all'>
                 <ArticleContents items={post.tableOfContents?.items} />
@@ -151,7 +164,7 @@ const Post = ({
                     m: 0
                   }}
                 >
-                  {categoryGuide.title}
+                  {guideCopy.title}
                 </Heading>
                 <Text
                   as='p'
@@ -164,12 +177,18 @@ const Post = ({
                     maxWidth: `38rem`
                   }}
                 >
-                  {categoryGuide.description}
+                  {guideCopy.description}
                 </Text>
               </Box>
               <Button
-                as={Link}
-                to={categoryGuide.path}
+                {...(guideLink.fallbackLanguage
+                  ? {
+                      as: 'a',
+                      href: guideLink.href,
+                      hrefLang: guideLink.fallbackLanguage,
+                      title: fallbackLinkTitle[guideLink.fallbackLanguage]
+                    }
+                  : { as: Link, to: guideLink.href })}
                 sx={{
                   display: `inline-flex`,
                   alignItems: `center`,
@@ -202,7 +221,7 @@ const Post = ({
                   }
                 }}
               >
-                Ana rehbere git <FaArrowRight size={13} aria-hidden='true' />
+                {labels.openGuide} <FaArrowRight size={13} aria-hidden='true' />
               </Button>
             </Box>
           )}
@@ -211,7 +230,7 @@ const Post = ({
           <Divider />
           {post.category && (
             <CardList
-              title='İlgili Yazılar'
+              title={labels.relatedPosts}
               nodes={relatedPosts}
               variant={['horizontal-md']}
               columns={[1, 2, 2, 2]}
@@ -227,7 +246,7 @@ const Post = ({
           {services.mailchimp && (
             <>
               <Divider space={5} />
-              <NewsletterExpanded />
+              <NewsletterExpanded language={language} />
             </>
           )}
         </Main>

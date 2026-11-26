@@ -1,6 +1,6 @@
 const fs = require('node:fs')
 const path = require('node:path')
-const { categoryName, copy } = require('../src/i18n/copy')
+const { copy, localizeArticle } = require('../src/i18n/copy')
 const { getPageLanguage, shouldNoIndex } = require('../src/i18n/language')
 const translations = require('../src/i18n/translations.json')
 const {
@@ -258,24 +258,32 @@ if (!fs.existsSync(equipmentGuidePath)) {
 const pagefindFailures = []
 const articlePages = findPageDataFiles(pageDataDirectory).flatMap(file => {
   const pageData = JSON.parse(fs.readFileSync(file, 'utf8'))
-  const { post, source, translation } = pageData.result?.data || {}
-  if (post) return [{ route: pageData.path, post }]
-  if (!source || !translation?.frontmatter) return []
-
-  return [
-    {
-      route: pageData.path,
-      post: {
-        ...source,
-        ...translation.frontmatter,
-        timeToRead: translation.timeToRead,
-        category: source.category && {
-          name: categoryName(source.category, 'en')
-        }
-      }
-    }
-  ]
+  const { post, translation } = pageData.result?.data || {}
+  return post
+    ? [{ route: pageData.path, post: localizeArticle(post, translation) }]
+    : []
 })
+
+const englishSample = routeToHtmlPath(
+  publicDirectory,
+  '/en/what-does-outdoor-mean/'
+)
+if (fs.existsSync(englishSample)) {
+  const articleHtml = fs.readFileSync(englishSample, 'utf8')
+  const visibleArticleText = decodeHtmlText(articleHtml)
+  const missingSections = [
+    'Tags',
+    'Share',
+    'Camping guide',
+    'Related posts',
+    'Get new route and camping guides'
+  ].filter(label => !visibleArticleText.includes(label))
+  if (missingSections.length || visibleArticleText.includes('(Türkçe)')) {
+    pagefindFailures.push(
+      `English article layout or link labels failed: missing ${missingSections.join(', ') || 'none'}, parenthesized language labels: ${visibleArticleText.includes('(Türkçe)')}`
+    )
+  }
+}
 const eligibleArticleFiles = new Set()
 const eligibleCounts = { tr: 0, en: 0 }
 
@@ -331,14 +339,14 @@ articlePages.forEach(({ route, post }) => {
   if (!html.includes('data-pagefind-ignore="index"')) {
     pagefindFailures.push(`${route}: running-head metadata is not ignored`)
   }
-  if (language === 'tr' && !html.includes('data-pagefind-ignore="all"')) {
+  if (!html.includes('data-pagefind-ignore="all"')) {
     pagefindFailures.push(`${route}: article contents are not fully ignored`)
   }
 
   const deferredEmbedCount = countMatches(html, /\bdata-deferred-embed=/g)
   const fullyIgnoredCount = countMatches(html, /\bdata-pagefind-ignore="all"/g)
 
-  if (fullyIgnoredCount < deferredEmbedCount + (language === 'tr' ? 1 : 0)) {
+  if (fullyIgnoredCount < deferredEmbedCount + 1) {
     pagefindFailures.push(`${route}: a deferred embed is not fully ignored`)
   }
 

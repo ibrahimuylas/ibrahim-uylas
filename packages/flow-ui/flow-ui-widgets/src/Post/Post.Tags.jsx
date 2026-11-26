@@ -20,8 +20,12 @@ export const PostTags = ({ tags, private: isPrivate }) =>
         Tags
       </Heading>
       <Box variant='lists.badges'>
-        {tags.map(({ id, name, slug }) => {
-          const linkProps = isPrivate ? {} : { as: Link, to: slug }
+        {tags.map(({ id, name, slug, hrefLang }) => {
+          const linkProps = isPrivate
+            ? {}
+            : hrefLang
+              ? { as: 'a', href: slug, hrefLang, lang: hrefLang }
+              : { as: Link, to: slug }
 
           return (
             <Badge variant='tag' key={id} {...linkProps}>

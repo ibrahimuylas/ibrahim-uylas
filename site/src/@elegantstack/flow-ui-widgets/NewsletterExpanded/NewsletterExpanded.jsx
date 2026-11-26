@@ -4,6 +4,7 @@ import { Card, Text, Heading, Box } from 'theme-ui'
 import NewsletterForm from '@components/NewsletterForm'
 import useMailChimp from '@helpers/useMailChimp'
 import { FaRegPaperPlane, FaWind } from 'react-icons/fa'
+import { copy } from '../../../i18n/copy'
 
 const styles = {
   card: {
@@ -42,7 +43,8 @@ const styles = {
   }
 }
 
-const NewsletterExpanded = ({ simple = false }) => {
+const NewsletterExpanded = ({ simple = false, language = 'tr' }) => {
+  const labels = copy[language].newsletter
   const { handleSubmit, canSubmit, submitting, message, success } =
     useMailChimp()
 
@@ -55,13 +57,11 @@ const NewsletterExpanded = ({ simple = false }) => {
             <FaWind css={css(styles.wind)} />
           </Box>
         )}
-        <Heading variant='h2'>Yeni rota ve kamp rehberlerini kaçırma</Heading>
-        <Text variant='p'>
-          Yeni bir rota, kamp alanı veya ekipman rehberi yayımladığımda kısa bir
-          e-postayla haber almak için listeye katıl.
-        </Text>
+        <Heading variant='h2'>{labels.title}</Heading>
+        <Text variant='p'>{labels.description}</Text>
         <Box sx={styles.form}>
           <NewsletterForm
+            language={language}
             {...{
               handleSubmit,
               canSubmit,

@@ -7,7 +7,7 @@ import DeferredEmbed from '../../../components/DeferredEmbed'
 import {
   getLocalizedLink,
   getPageLanguage,
-  languageNames
+  fallbackLinkTitle
 } from '../../../i18n/language'
 
 const MdxContentContext = createContext(null)
@@ -35,18 +35,11 @@ const ArticleLink = ({ href, children, ...props }) => {
     <Link
       {...props}
       href={target}
-      hrefLang={fallbackLanguage}
+      hrefLang={fallbackLanguage || props.hrefLang}
+      title={props.title || fallbackLinkTitle[fallbackLanguage]}
       sx={articleLinkStyles}
     >
       {children}
-      {fallbackLanguage && (
-        <>
-          {' '}
-          (
-          <span lang={fallbackLanguage}>{languageNames[fallbackLanguage]}</span>
-          )
-        </>
-      )}
     </Link>
   )
 }
