@@ -1,5 +1,6 @@
 const googleAnalyticsMeasurementId = process.env.GATSBY_GA_MEASUREMENT_ID
 const { getSourcePath, shouldNoIndex } = require('./src/i18n/language')
+const { homeCategoryPostsPerGroup } = require('./src/i18n/collections')
 const siteUrl = 'https://www.ibrahimuylas.com'
 const isProductionDeploy = process.env.CONTEXT === 'production'
 const nativeCommentsEnabled =
@@ -57,7 +58,7 @@ module.exports = {
         // Add theme options here. Check documentation for available options.
         siteUrl,
         fonts: false,
-        homeCategoryPostsPerGroup: 6,
+        homeCategoryPostsPerGroup,
         services: {
           comments: {
             enabled: nativeCommentsEnabled,

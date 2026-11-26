@@ -12,10 +12,17 @@ const GUIDE_ROUTES = {
 
 exports.onCreatePage = ({ page, actions }) => {
   const guideId = GUIDE_ROUTES[page.path]
+  const isTurkishAuthor = page.path.startsWith('/author/')
 
-  if (!guideId || page.context?.guideId === guideId) {
-    return
+  if (isTurkishAuthor && !page.context?.authorHeading) {
+    actions.deletePage(page)
+    actions.createPage({
+      ...page,
+      context: { ...page.context, authorHeading: 'Yazarın yazıları' }
+    })
   }
+
+  if (!guideId || page.context?.guideId === guideId) return
 
   actions.deletePage(page)
   actions.createPage({

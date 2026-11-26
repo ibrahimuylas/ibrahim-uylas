@@ -1,10 +1,4 @@
-const categoryPaths = {
-  'diger-her-sey': 'everything-else',
-  'doga-yuruyusleri-ve-kamp-ekipmanlari': 'gear',
-  'doga-yuruyusleri': 'hiking',
-  kampcilik: 'camping',
-  rotalar: 'routes'
-}
+const homeCategoryPostsPerGroup = 6
 
 const tagNames = {
   antalyakampyerleri: 'Campsites in Antalya',
@@ -67,4 +61,4 @@ const parseCollectionPath = path => {
 
 const tagName = slug => tagNames[parseCollectionPath(slug)?.name]
 
-module.exports = { categoryPaths, parseCollectionPath, tagName }
+module.exports = { homeCategoryPostsPerGroup, parseCollectionPath, tagName }

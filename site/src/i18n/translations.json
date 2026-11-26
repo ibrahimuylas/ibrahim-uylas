@@ -3,7 +3,7 @@
     "id": "page:home",
     "tr": "/",
     "en": "/en/",
-    "template": "english-home.jsx"
+    "template": "posts.js"
   },
   {
     "id": "article:kampçılık/outdoor-ne-demek/index.mdx",
@@ -16,187 +16,187 @@
     "id": "page:/404/",
     "tr": "/404/",
     "en": "/en/404/",
-    "template": "english-404.jsx"
+    "template": "not-found.jsx"
   },
   {
     "id": "page:/author/ibrahim-uylas/",
     "tr": "/author/ibrahim-uylas/",
     "en": "/en/author/ibrahim-uylas/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/10/",
     "tr": "/author/ibrahim-uylas/page/10/",
     "en": "/en/author/ibrahim-uylas/page/10/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/11/",
     "tr": "/author/ibrahim-uylas/page/11/",
     "en": "/en/author/ibrahim-uylas/page/11/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/12/",
     "tr": "/author/ibrahim-uylas/page/12/",
     "en": "/en/author/ibrahim-uylas/page/12/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/13/",
     "tr": "/author/ibrahim-uylas/page/13/",
     "en": "/en/author/ibrahim-uylas/page/13/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/14/",
     "tr": "/author/ibrahim-uylas/page/14/",
     "en": "/en/author/ibrahim-uylas/page/14/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/15/",
     "tr": "/author/ibrahim-uylas/page/15/",
     "en": "/en/author/ibrahim-uylas/page/15/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/16/",
     "tr": "/author/ibrahim-uylas/page/16/",
     "en": "/en/author/ibrahim-uylas/page/16/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/17/",
     "tr": "/author/ibrahim-uylas/page/17/",
     "en": "/en/author/ibrahim-uylas/page/17/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/18/",
     "tr": "/author/ibrahim-uylas/page/18/",
     "en": "/en/author/ibrahim-uylas/page/18/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/19/",
     "tr": "/author/ibrahim-uylas/page/19/",
     "en": "/en/author/ibrahim-uylas/page/19/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/2/",
     "tr": "/author/ibrahim-uylas/page/2/",
     "en": "/en/author/ibrahim-uylas/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/20/",
     "tr": "/author/ibrahim-uylas/page/20/",
     "en": "/en/author/ibrahim-uylas/page/20/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/21/",
     "tr": "/author/ibrahim-uylas/page/21/",
     "en": "/en/author/ibrahim-uylas/page/21/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/22/",
     "tr": "/author/ibrahim-uylas/page/22/",
     "en": "/en/author/ibrahim-uylas/page/22/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/23/",
     "tr": "/author/ibrahim-uylas/page/23/",
     "en": "/en/author/ibrahim-uylas/page/23/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/24/",
     "tr": "/author/ibrahim-uylas/page/24/",
     "en": "/en/author/ibrahim-uylas/page/24/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/25/",
     "tr": "/author/ibrahim-uylas/page/25/",
     "en": "/en/author/ibrahim-uylas/page/25/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/26/",
     "tr": "/author/ibrahim-uylas/page/26/",
     "en": "/en/author/ibrahim-uylas/page/26/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/27/",
     "tr": "/author/ibrahim-uylas/page/27/",
     "en": "/en/author/ibrahim-uylas/page/27/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/28/",
     "tr": "/author/ibrahim-uylas/page/28/",
     "en": "/en/author/ibrahim-uylas/page/28/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/29/",
     "tr": "/author/ibrahim-uylas/page/29/",
     "en": "/en/author/ibrahim-uylas/page/29/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/3/",
     "tr": "/author/ibrahim-uylas/page/3/",
     "en": "/en/author/ibrahim-uylas/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/30/",
     "tr": "/author/ibrahim-uylas/page/30/",
     "en": "/en/author/ibrahim-uylas/page/30/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/4/",
     "tr": "/author/ibrahim-uylas/page/4/",
     "en": "/en/author/ibrahim-uylas/page/4/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/5/",
     "tr": "/author/ibrahim-uylas/page/5/",
     "en": "/en/author/ibrahim-uylas/page/5/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/6/",
     "tr": "/author/ibrahim-uylas/page/6/",
     "en": "/en/author/ibrahim-uylas/page/6/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/7/",
     "tr": "/author/ibrahim-uylas/page/7/",
     "en": "/en/author/ibrahim-uylas/page/7/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/8/",
     "tr": "/author/ibrahim-uylas/page/8/",
     "en": "/en/author/ibrahim-uylas/page/8/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/author/ibrahim-uylas/page/9/",
     "tr": "/author/ibrahim-uylas/page/9/",
     "en": "/en/author/ibrahim-uylas/page/9/",
-    "template": "english-collection.jsx"
+    "template": "collection.author.js"
   },
   {
     "id": "page:/category/diger-her-sey/",
@@ -208,67 +208,67 @@
     "id": "page:/category/diger-her-sey/page/10/",
     "tr": "/category/diger-her-sey/page/10/",
     "en": "/en/category/everything-else/page/10/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/diger-her-sey/page/11/",
     "tr": "/category/diger-her-sey/page/11/",
     "en": "/en/category/everything-else/page/11/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/diger-her-sey/page/12/",
     "tr": "/category/diger-her-sey/page/12/",
     "en": "/en/category/everything-else/page/12/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/diger-her-sey/page/2/",
     "tr": "/category/diger-her-sey/page/2/",
     "en": "/en/category/everything-else/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/diger-her-sey/page/3/",
     "tr": "/category/diger-her-sey/page/3/",
     "en": "/en/category/everything-else/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/diger-her-sey/page/4/",
     "tr": "/category/diger-her-sey/page/4/",
     "en": "/en/category/everything-else/page/4/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/diger-her-sey/page/5/",
     "tr": "/category/diger-her-sey/page/5/",
     "en": "/en/category/everything-else/page/5/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/diger-her-sey/page/6/",
     "tr": "/category/diger-her-sey/page/6/",
     "en": "/en/category/everything-else/page/6/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/diger-her-sey/page/7/",
     "tr": "/category/diger-her-sey/page/7/",
     "en": "/en/category/everything-else/page/7/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/diger-her-sey/page/8/",
     "tr": "/category/diger-her-sey/page/8/",
     "en": "/en/category/everything-else/page/8/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/diger-her-sey/page/9/",
     "tr": "/category/diger-her-sey/page/9/",
     "en": "/en/category/everything-else/page/9/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/doga-yuruyusleri-ve-kamp-ekipmanlari/",
@@ -280,19 +280,19 @@
     "id": "page:/category/doga-yuruyusleri-ve-kamp-ekipmanlari/page/2/",
     "tr": "/category/doga-yuruyusleri-ve-kamp-ekipmanlari/page/2/",
     "en": "/en/category/gear/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/doga-yuruyusleri-ve-kamp-ekipmanlari/page/3/",
     "tr": "/category/doga-yuruyusleri-ve-kamp-ekipmanlari/page/3/",
     "en": "/en/category/gear/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/doga-yuruyusleri-ve-kamp-ekipmanlari/page/4/",
     "tr": "/category/doga-yuruyusleri-ve-kamp-ekipmanlari/page/4/",
     "en": "/en/category/gear/page/4/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/doga-yuruyusleri/",
@@ -304,7 +304,7 @@
     "id": "page:/category/doga-yuruyusleri/page/2/",
     "tr": "/category/doga-yuruyusleri/page/2/",
     "en": "/en/category/hiking/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/kampcilik/",
@@ -316,13 +316,13 @@
     "id": "page:/category/kampcilik/page/2/",
     "tr": "/category/kampcilik/page/2/",
     "en": "/en/category/camping/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/kampcilik/page/3/",
     "tr": "/category/kampcilik/page/3/",
     "en": "/en/category/camping/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/rotalar/",
@@ -334,61 +334,61 @@
     "id": "page:/category/rotalar/page/10/",
     "tr": "/category/rotalar/page/10/",
     "en": "/en/category/routes/page/10/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/rotalar/page/11/",
     "tr": "/category/rotalar/page/11/",
     "en": "/en/category/routes/page/11/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/rotalar/page/2/",
     "tr": "/category/rotalar/page/2/",
     "en": "/en/category/routes/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/rotalar/page/3/",
     "tr": "/category/rotalar/page/3/",
     "en": "/en/category/routes/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/rotalar/page/4/",
     "tr": "/category/rotalar/page/4/",
     "en": "/en/category/routes/page/4/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/rotalar/page/5/",
     "tr": "/category/rotalar/page/5/",
     "en": "/en/category/routes/page/5/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/rotalar/page/6/",
     "tr": "/category/rotalar/page/6/",
     "en": "/en/category/routes/page/6/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/rotalar/page/7/",
     "tr": "/category/rotalar/page/7/",
     "en": "/en/category/routes/page/7/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/rotalar/page/8/",
     "tr": "/category/rotalar/page/8/",
     "en": "/en/category/routes/page/8/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/category/rotalar/page/9/",
     "tr": "/category/rotalar/page/9/",
     "en": "/en/category/routes/page/9/",
-    "template": "english-collection.jsx"
+    "template": "collection.category.js"
   },
   {
     "id": "page:/iletisim/",
@@ -400,607 +400,607 @@
     "id": "page:/tag/antalyakampyerleri/",
     "tr": "/tag/antalyakampyerleri/",
     "en": "/en/tag/antalyakampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/artvinkampyerleri/",
     "tr": "/tag/artvinkampyerleri/",
     "en": "/en/tag/artvinkampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/batinkampyerleri/",
     "tr": "/tag/batinkampyerleri/",
     "en": "/en/tag/batinkampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/bilecikkampyerleri/",
     "tr": "/tag/bilecikkampyerleri/",
     "en": "/en/tag/bilecikkampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/bolukampyerleri/",
     "tr": "/tag/bolukampyerleri/",
     "en": "/en/tag/bolukampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/bursakampyerleri/",
     "tr": "/tag/bursakampyerleri/",
     "en": "/en/tag/bursakampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/cadir/",
     "tr": "/tag/cadir/",
     "en": "/en/tag/cadir/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/digerhersey/",
     "tr": "/tag/digerhersey/",
     "en": "/en/tag/digerhersey/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/digerhersey/page/10/",
     "tr": "/tag/digerhersey/page/10/",
     "en": "/en/tag/digerhersey/page/10/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/digerhersey/page/11/",
     "tr": "/tag/digerhersey/page/11/",
     "en": "/en/tag/digerhersey/page/11/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/digerhersey/page/12/",
     "tr": "/tag/digerhersey/page/12/",
     "en": "/en/tag/digerhersey/page/12/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/digerhersey/page/2/",
     "tr": "/tag/digerhersey/page/2/",
     "en": "/en/tag/digerhersey/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/digerhersey/page/3/",
     "tr": "/tag/digerhersey/page/3/",
     "en": "/en/tag/digerhersey/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/digerhersey/page/4/",
     "tr": "/tag/digerhersey/page/4/",
     "en": "/en/tag/digerhersey/page/4/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/digerhersey/page/5/",
     "tr": "/tag/digerhersey/page/5/",
     "en": "/en/tag/digerhersey/page/5/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/digerhersey/page/6/",
     "tr": "/tag/digerhersey/page/6/",
     "en": "/en/tag/digerhersey/page/6/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/digerhersey/page/7/",
     "tr": "/tag/digerhersey/page/7/",
     "en": "/en/tag/digerhersey/page/7/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/digerhersey/page/8/",
     "tr": "/tag/digerhersey/page/8/",
     "en": "/en/tag/digerhersey/page/8/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/digerhersey/page/9/",
     "tr": "/tag/digerhersey/page/9/",
     "en": "/en/tag/digerhersey/page/9/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/djipocket2/",
     "tr": "/tag/djipocket2/",
     "en": "/en/tag/djipocket2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/dogadakamp/",
     "tr": "/tag/dogadakamp/",
     "en": "/en/tag/dogadakamp/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/dogadakamp/page/2/",
     "tr": "/tag/dogadakamp/page/2/",
     "en": "/en/tag/dogadakamp/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/dogayuruyusleri/",
     "tr": "/tag/dogayuruyusleri/",
     "en": "/en/tag/dogayuruyusleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/dogayuruyusleri/page/2/",
     "tr": "/tag/dogayuruyusleri/page/2/",
     "en": "/en/tag/dogayuruyusleri/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/dogayuruyusleri/page/3/",
     "tr": "/tag/dogayuruyusleri/page/3/",
     "en": "/en/tag/dogayuruyusleri/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/dogayuruyusleri/page/4/",
     "tr": "/tag/dogayuruyusleri/page/4/",
     "en": "/en/tag/dogayuruyusleri/page/4/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/duzcekampyerleri/",
     "tr": "/tag/duzcekampyerleri/",
     "en": "/en/tag/duzcekampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/elektronikekipmanlar/",
     "tr": "/tag/elektronikekipmanlar/",
     "en": "/en/tag/elektronikekipmanlar/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/frigyolu/",
     "tr": "/tag/frigyolu/",
     "en": "/en/tag/frigyolu/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/hiking/",
     "tr": "/tag/hiking/",
     "en": "/en/tag/hiking/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/hiking/page/2/",
     "tr": "/tag/hiking/page/2/",
     "en": "/en/tag/hiking/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/hiking/page/3/",
     "tr": "/tag/hiking/page/3/",
     "en": "/en/tag/hiking/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/ilk-kamp/",
     "tr": "/tag/ilk-kamp/",
     "en": "/en/tag/ilk-kamp/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/iskocya/",
     "tr": "/tag/iskocya/",
     "en": "/en/tag/iskocya/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/istanbulkampyerleri/",
     "tr": "/tag/istanbulkampyerleri/",
     "en": "/en/tag/istanbulkampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/izmirkampyerleri/",
     "tr": "/tag/izmirkampyerleri/",
     "en": "/en/tag/izmirkampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampalani/",
     "tr": "/tag/kampalani/",
     "en": "/en/tag/kampalani/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampcadiri/",
     "tr": "/tag/kampcadiri/",
     "en": "/en/tag/kampcadiri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampcantalistesi/",
     "tr": "/tag/kampcantalistesi/",
     "en": "/en/tag/kampcantalistesi/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampcilik/",
     "tr": "/tag/kampcilik/",
     "en": "/en/tag/kampcilik/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampcilik/page/2/",
     "tr": "/tag/kampcilik/page/2/",
     "en": "/en/tag/kampcilik/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampcilik/page/3/",
     "tr": "/tag/kampcilik/page/3/",
     "en": "/en/tag/kampcilik/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampcilik/page/4/",
     "tr": "/tag/kampcilik/page/4/",
     "en": "/en/tag/kampcilik/page/4/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampcilik/page/5/",
     "tr": "/tag/kampcilik/page/5/",
     "en": "/en/tag/kampcilik/page/5/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampcilik/page/6/",
     "tr": "/tag/kampcilik/page/6/",
     "en": "/en/tag/kampcilik/page/6/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampekipmanlari/",
     "tr": "/tag/kampekipmanlari/",
     "en": "/en/tag/kampekipmanlari/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampekipmanlari/page/2/",
     "tr": "/tag/kampekipmanlari/page/2/",
     "en": "/en/tag/kampekipmanlari/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampekipmanlari/page/3/",
     "tr": "/tag/kampekipmanlari/page/3/",
     "en": "/en/tag/kampekipmanlari/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampekipmanlari/page/4/",
     "tr": "/tag/kampekipmanlari/page/4/",
     "en": "/en/tag/kampekipmanlari/page/4/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampguvenligi/",
     "tr": "/tag/kampguvenligi/",
     "en": "/en/tag/kampguvenligi/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampmati/",
     "tr": "/tag/kampmati/",
     "en": "/en/tag/kampmati/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampmutfagi/",
     "tr": "/tag/kampmutfagi/",
     "en": "/en/tag/kampmutfagi/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampyerleriverotalar/",
     "tr": "/tag/kampyerleriverotalar/",
     "en": "/en/tag/kampyerleriverotalar/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampyerleriverotalar/page/10/",
     "tr": "/tag/kampyerleriverotalar/page/10/",
     "en": "/en/tag/kampyerleriverotalar/page/10/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampyerleriverotalar/page/11/",
     "tr": "/tag/kampyerleriverotalar/page/11/",
     "en": "/en/tag/kampyerleriverotalar/page/11/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampyerleriverotalar/page/2/",
     "tr": "/tag/kampyerleriverotalar/page/2/",
     "en": "/en/tag/kampyerleriverotalar/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampyerleriverotalar/page/3/",
     "tr": "/tag/kampyerleriverotalar/page/3/",
     "en": "/en/tag/kampyerleriverotalar/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampyerleriverotalar/page/4/",
     "tr": "/tag/kampyerleriverotalar/page/4/",
     "en": "/en/tag/kampyerleriverotalar/page/4/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampyerleriverotalar/page/5/",
     "tr": "/tag/kampyerleriverotalar/page/5/",
     "en": "/en/tag/kampyerleriverotalar/page/5/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampyerleriverotalar/page/6/",
     "tr": "/tag/kampyerleriverotalar/page/6/",
     "en": "/en/tag/kampyerleriverotalar/page/6/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampyerleriverotalar/page/7/",
     "tr": "/tag/kampyerleriverotalar/page/7/",
     "en": "/en/tag/kampyerleriverotalar/page/7/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampyerleriverotalar/page/8/",
     "tr": "/tag/kampyerleriverotalar/page/8/",
     "en": "/en/tag/kampyerleriverotalar/page/8/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kampyerleriverotalar/page/9/",
     "tr": "/tag/kampyerleriverotalar/page/9/",
     "en": "/en/tag/kampyerleriverotalar/page/9/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/karabukkampyerleri/",
     "tr": "/tag/karabukkampyerleri/",
     "en": "/en/tag/karabukkampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kirklarelikampyerleri/",
     "tr": "/tag/kirklarelikampyerleri/",
     "en": "/en/tag/kirklarelikampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kitap/",
     "tr": "/tag/kitap/",
     "en": "/en/tag/kitap/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kocaelikampyerleri/",
     "tr": "/tag/kocaelikampyerleri/",
     "en": "/en/tag/kocaelikampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kocaelikampyerleri/page/2/",
     "tr": "/tag/kocaelikampyerleri/page/2/",
     "en": "/en/tag/kocaelikampyerleri/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/kocaelikampyerleri/page/3/",
     "tr": "/tag/kocaelikampyerleri/page/3/",
     "en": "/en/tag/kocaelikampyerleri/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/likyayolu/",
     "tr": "/tag/likyayolu/",
     "en": "/en/tag/likyayolu/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/likyayolu/page/2/",
     "tr": "/tag/likyayolu/page/2/",
     "en": "/en/tag/likyayolu/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/likyayolu/page/3/",
     "tr": "/tag/likyayolu/page/3/",
     "en": "/en/tag/likyayolu/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/likyayolu/page/4/",
     "tr": "/tag/likyayolu/page/4/",
     "en": "/en/tag/likyayolu/page/4/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/likyayolurotasi/",
     "tr": "/tag/likyayolurotasi/",
     "en": "/en/tag/likyayolurotasi/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/likyayolurotasi/page/2/",
     "tr": "/tag/likyayolurotasi/page/2/",
     "en": "/en/tag/likyayolurotasi/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/muglakampyerleri/",
     "tr": "/tag/muglakampyerleri/",
     "en": "/en/tag/muglakampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/quechua/",
     "tr": "/tag/quechua/",
     "en": "/en/tag/quechua/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/rdegeri/",
     "tr": "/tag/rdegeri/",
     "en": "/en/tag/rdegeri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/rizekampyerleri/",
     "tr": "/tag/rizekampyerleri/",
     "en": "/en/tag/rizekampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/sakaryakampyerleri/",
     "tr": "/tag/sakaryakampyerleri/",
     "en": "/en/tag/sakaryakampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/sinopkampyerleri/",
     "tr": "/tag/sinopkampyerleri/",
     "en": "/en/tag/sinopkampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/trabzonkampyerleri/",
     "tr": "/tag/trabzonkampyerleri/",
     "en": "/en/tag/trabzonkampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/trekking/",
     "tr": "/tag/trekking/",
     "en": "/en/tag/trekking/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/trekking/page/2/",
     "tr": "/tag/trekking/page/2/",
     "en": "/en/tag/trekking/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/trekking/page/3/",
     "tr": "/tag/trekking/page/3/",
     "en": "/en/tag/trekking/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/trekking/page/4/",
     "tr": "/tag/trekking/page/4/",
     "en": "/en/tag/trekking/page/4/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/uykutulumu/",
     "tr": "/tag/uykutulumu/",
     "en": "/en/tag/uykutulumu/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yagmurluk/",
     "tr": "/tag/yagmurluk/",
     "en": "/en/tag/yagmurluk/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yalovakampyerleri/",
     "tr": "/tag/yalovakampyerleri/",
     "en": "/en/tag/yalovakampyerleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yolhikayeleri/",
     "tr": "/tag/yolhikayeleri/",
     "en": "/en/tag/yolhikayeleri/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yolhikayeleri/page/10/",
     "tr": "/tag/yolhikayeleri/page/10/",
     "en": "/en/tag/yolhikayeleri/page/10/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yolhikayeleri/page/2/",
     "tr": "/tag/yolhikayeleri/page/2/",
     "en": "/en/tag/yolhikayeleri/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yolhikayeleri/page/3/",
     "tr": "/tag/yolhikayeleri/page/3/",
     "en": "/en/tag/yolhikayeleri/page/3/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yolhikayeleri/page/4/",
     "tr": "/tag/yolhikayeleri/page/4/",
     "en": "/en/tag/yolhikayeleri/page/4/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yolhikayeleri/page/5/",
     "tr": "/tag/yolhikayeleri/page/5/",
     "en": "/en/tag/yolhikayeleri/page/5/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yolhikayeleri/page/6/",
     "tr": "/tag/yolhikayeleri/page/6/",
     "en": "/en/tag/yolhikayeleri/page/6/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yolhikayeleri/page/7/",
     "tr": "/tag/yolhikayeleri/page/7/",
     "en": "/en/tag/yolhikayeleri/page/7/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yolhikayeleri/page/8/",
     "tr": "/tag/yolhikayeleri/page/8/",
     "en": "/en/tag/yolhikayeleri/page/8/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yolhikayeleri/page/9/",
     "tr": "/tag/yolhikayeleri/page/9/",
     "en": "/en/tag/yolhikayeleri/page/9/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yuruyusekipmanlari/",
     "tr": "/tag/yuruyusekipmanlari/",
     "en": "/en/tag/yuruyusekipmanlari/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "page:/tag/yuruyusekipmanlari/page/2/",
     "tr": "/tag/yuruyusekipmanlari/page/2/",
     "en": "/en/tag/yuruyusekipmanlari/page/2/",
-    "template": "english-collection.jsx"
+    "template": "collection.tag.js"
   },
   {
     "id": "article:doğa-yürüyüşleri/hiking-nedir/index.mdx",

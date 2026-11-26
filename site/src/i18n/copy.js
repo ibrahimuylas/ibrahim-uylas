@@ -31,6 +31,29 @@ const copy = {
     readingTime: 'Okuma Süresi',
     relatedPosts: 'İlgili Yazılar',
     openGuide: 'Ana rehbere git',
+    homepage: {
+      title: 'Kampçılık, Doğa Yürüyüşü ve Rota Rehberleri',
+      heading: 'Kampçılık, doğa yürüyüşü ve rota rehberleri',
+      description:
+        'Kampçılık, doğa yürüyüşü, trekking, rota ve kamp ekipmanı rehberleri. Kişisel deneyimler, hazırlık notları ve yol hikâyeleri.',
+      introduction:
+        'Kamp hazırlığı, rota seçimi, ekipman kullanımı ve yol hikâyeleri; gerçek deneyimlerden süzülen pratik rehberler.',
+      start: 'Doğaya çıkmaya buradan başla',
+      featured: 'Öne çıkanlar ve son yazılar',
+      authorImage: 'İbrahim Uylaş doğa yürüyüşünde',
+      authorIntro:
+        'Ben İbrahim Uylaş. Kampçı, doğa yürüyüşçüsü, maceracı, motosiklet tutkunu, yol yapmayı seven, yolda olan ve yolda yaşayan bir bilgisayar mühendisiyim.',
+      authorAbout:
+        "Şu aralar Londra'da yaşamaktayım ve kampçılık, doğa yürüyüşleri, ekipmanlar, rotalar ve yol anılarımı sizinle paylaşıyorum. Sende tecrübelerini yorum olarak ekleyip katkıda bulunabilirsin.",
+      authorLink: 'Bu adam kim?',
+      authorLinkLabel: 'İbrahim Uylaş kimdir'
+    },
+    pagination: {
+      previous: 'Önceki',
+      next: 'Sonraki',
+      page: 'Sayfa',
+      label: 'Sayfalama'
+    },
     newsletter: {
       title: 'Yeni rota ve kamp rehberlerini kaçırma',
       description:
@@ -72,6 +95,29 @@ const copy = {
     readingTime: 'Reading time',
     relatedPosts: 'Related posts',
     openGuide: 'Open the guide',
+    homepage: {
+      title: 'Camping, Hiking and Route Guides',
+      heading: 'Camping, hiking and route guides',
+      description:
+        'Camping, hiking, trekking and gear guides, with route notes and personal stories from the road.',
+      introduction:
+        'Practical guides drawn from my own experience of planning camping trips, choosing routes and using gear, along with stories from the road.',
+      start: 'Start planning your next trip',
+      featured: 'Featured and recent articles',
+      authorImage: 'İbrahim Uylaş out hiking',
+      authorIntro:
+        'I’m İbrahim Uylaş, a computer engineer who loves camping, hiking, adventure, motorcycling and life on the road.',
+      authorAbout:
+        'I’m currently based in London. I share camping and hiking advice, gear tips, routes and stories from my travels. You can add your own experiences in the comments.',
+      authorLink: 'About me',
+      authorLinkLabel: 'About İbrahim Uylaş'
+    },
+    pagination: {
+      previous: 'Previous',
+      next: 'Next',
+      page: 'Page',
+      label: 'Pagination'
+    },
     newsletter: {
       title: 'Get new route and camping guides',
       description:
@@ -84,9 +130,7 @@ const copy = {
       error: 'We couldn’t complete your subscription. Please try again shortly.'
     },
     minutes: count => `${count} min`,
-    copyright: 'All rights reserved.',
-    description:
-      'Camping, hiking, routes and gear. Personal stories from the trail, preparation notes and practical guides.'
+    copyright: 'All rights reserved.'
   }
 }
 
@@ -161,6 +205,7 @@ const localizePreview = (post, previews, { preserveSource = false } = {}) => {
     ...post,
     title: preview.title,
     excerpt: preview.description,
+    thumbnailText: preview.thumbnailText,
     date: preserveSource
       ? post.date
       : preview.date && englishDate.format(new Date(preview.date)),

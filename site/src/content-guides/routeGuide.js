@@ -135,6 +135,7 @@ const likyaSlugs = [
 
 const articleGroups = Object.fromEntries([
   ...likyaSlugs.map(slug => [slug, 'likya-yolu']),
+  ['likya-yolu-2014-planim', 'likya-yolu'],
   ...Object.entries(routeGroups).flatMap(([group, slugs]) =>
     slugs.map(slug => [slug, group])
   )
@@ -232,7 +233,7 @@ const routeGuide = {
       id: 'likya-yolu',
       title: 'Likya Yolu rotaları',
       description:
-        'Güncel rehberin rota seçimi ve pafta envanterini keşfet; 2014 tarihsel planı ile 11 etap/günlük arşivini bağlamıyla birlikte incele.',
+        '2014 rota planını incele, yürüdüğüm 11 etabı ve günlüklerini keşfet.',
       layout: 'route',
       featuredSlug: 'likya-yolu-rotasi',
       items: likyaStages,
@@ -316,5 +317,6 @@ module.exports.likyaStages = likyaStages
 module.exports.routeGroups = routeGroups
 module.exports.allRouteSlugs = [
   ...likyaSlugs,
+  'likya-yolu-2014-planim',
   ...Object.values(routeGroups).flat()
 ]

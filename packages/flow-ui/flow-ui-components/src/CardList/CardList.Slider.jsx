@@ -10,6 +10,7 @@ import styles from './CardList.Slider.Styles'
 const CardListSlider = React.forwardRef((props, ref) => {
   const {
     columns,
+    language = 'tr',
     slidesToScroll,
     smoothAutoScroll,
     autoPlay,
@@ -25,6 +26,10 @@ const CardListSlider = React.forwardRef((props, ref) => {
   } = props
 
   const context = useThemeUI()
+  const previous = language === 'en' ? 'Previous slide' : 'Önceki slayta git'
+  const next = language === 'en' ? 'Next slide' : 'Sonraki slayta git'
+  const slideLabel = index =>
+    language === 'en' ? `Go to slide ${index + 1}` : `${index + 1}. slayta git`
 
   const animationSettings = {
     slidesToScroll: 1,
@@ -79,28 +84,20 @@ const CardListSlider = React.forwardRef((props, ref) => {
       ...(controlPosition === 'over' && styles.controlOver)
     }),
     prevArrow: (
-      <IconButton
-        sx={styles.arrowPrev}
-        aria-label='Önceki slayta git'
-        title='Önceki slayta git'
-      >
-        <FaChevronLeft />
+      <IconButton sx={styles.arrowPrev} aria-label={previous} title={previous}>
+        <FaChevronLeft aria-hidden='true' />
       </IconButton>
     ),
     nextArrow: (
-      <IconButton
-        sx={styles.arrowNext}
-        aria-label='Sonraki slayta git'
-        title='Sonraki slayta git'
-      >
-        <FaChevronRight />
+      <IconButton sx={styles.arrowNext} aria-label={next} title={next}>
+        <FaChevronRight aria-hidden='true' />
       </IconButton>
     ),
     customPaging: index => (
       <button
         type='button'
-        aria-label={`${index + 1}. slayta git`}
-        title={`${index + 1}. slayta git`}
+        aria-label={slideLabel(index)}
+        title={slideLabel(index)}
       />
     )
   }

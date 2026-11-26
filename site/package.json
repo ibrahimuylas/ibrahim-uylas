@@ -9,7 +9,7 @@
     "build": "npm run build:gatsby && npm run build:sanitize && npm run build:index",
     "build:gatsby": "GATSBY_CPU_COUNT=${GATSBY_CPU_COUNT:-2} gatsby build",
     "build:sanitize": "node scripts/sanitize-generated-html.js",
-    "build:index": "pagefind --site public",
+    "build:index": "pagefind --site public --glob '**/index.html'",
     "clean": "gatsby clean",
     "serve": "gatsby serve",
     "validate:html": "node scripts/validate-generated-html.js",

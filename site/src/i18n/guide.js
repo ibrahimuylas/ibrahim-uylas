@@ -1,5 +1,21 @@
 const english = require('./guide-copy.en.json')
 const { getLocalizedLink } = require('./language')
+const guideMeta = require('../content-guides/likya/guide-meta')
+const {
+  isLikyaGuideShellEnabled
+} = require('../components/likyaGuideShellPolicy')
+
+const likyaPath = '/likya-yolu-rotasi/'
+const historicalLikyaSections = {
+  tr: {
+    planlayici: 'gün-gün-likya-yolu-planım',
+    'tum-etaplar': '11-günde-yürüdüğüm-230-kmlik-rota'
+  },
+  en: {
+    planlayici: 'day-by-day-my-lycian-way-plan',
+    'tum-etaplar': 'i-walked-a-230-km-route-in-11-days'
+  }
+}
 
 const copyFields = new Set([
   'allContentDescription',
@@ -36,6 +52,19 @@ const localizeGuide = (guide, language) => {
 }
 
 const guidePath = (path, language) => {
+  if (path?.startsWith(`${likyaPath}#`)) {
+    const anchor = path.split('#')[1]
+    const showInteractiveGuide =
+      language === 'tr' &&
+      isLikyaGuideShellEnabled({
+        path: likyaPath,
+        guideMeta,
+        preview: process.env.GATSBY_LIKYA_GUIDE_PREVIEW === 'true'
+      })
+    const destination = historicalLikyaSections[language]?.[anchor]
+    if (!showInteractiveGuide && destination)
+      return `${getLocalizedLink(likyaPath, language).href}#${destination}`
+  }
   if (language === 'tr') return path
   const alias =
     path === '/category/ekipmanlar/'

@@ -26,6 +26,7 @@ const CardList = React.forwardRef((props, ref) => {
     aside,
     asNavFor,
     loading,
+    language,
     accentColor,
     accentColorByCategory,
     ...rest
@@ -89,6 +90,7 @@ const CardList = React.forwardRef((props, ref) => {
       {slider ? (
         <CardListSlider
           ref={ref}
+          language={language}
           // beforeChange={index => changeSlide(index)}
           {...rest}
         >

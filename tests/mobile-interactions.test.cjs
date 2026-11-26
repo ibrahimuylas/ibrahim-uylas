@@ -213,7 +213,7 @@ test('Instagram and newsletter share a compact responsive homepage section', () 
 
   assert.match(
     homepage,
-    /<InstagramShowcase showNewsletter=\{services\.mailchimp\} \/>/
+    /<InstagramShowcase\s+language=\{language\}\s+showNewsletter=\{services\.mailchimp\}\s*\/>/
   )
   assert.doesNotMatch(homepage, /NewsletterExpanded/)
   assert.match(newsletter, /data-instagram-newsletter/)
@@ -330,7 +330,7 @@ test('homepage profile card uses the responsive portrait instead of the greeting
     profileCard,
     /src='\.\.\/\.\.\/\.\.\/\.\.\/content\/assets\/bu-adam-kim\.jpeg'/
   )
-  assert.match(profileCard, /alt='İbrahim Uylaş doğa yürüyüşünde'/)
+  assert.match(profileCard, /alt=\{labels\.authorImage\}/)
   assert.match(
     profileCard,
     /min-width: 768px\) and \(max-width: 1199px\)[\s\S]*flexDirection: `row`/

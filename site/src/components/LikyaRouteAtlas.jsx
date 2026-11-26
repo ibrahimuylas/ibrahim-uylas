@@ -235,9 +235,11 @@ const RegionFilter = ({ filters, setFilters, location }) => (
               bg: isSelected ? 'alpha' : 'contentBg',
               border: '1px solid',
               borderColor: isSelected ? 'alpha' : 'omegaLight',
-              '&:hover': {
-                color: isSelected ? 'white' : 'alphaDarker',
-                bg: isSelected ? 'alphaDark' : 'alphaLighter'
+              '@media (hover: hover) and (pointer: fine)': {
+                '&:hover': {
+                  color: isSelected ? 'white' : 'alphaDarker',
+                  bg: isSelected ? 'alphaDark' : 'alphaLighter'
+                }
               }
             }}
           >
@@ -352,7 +354,9 @@ const LikyaRouteAtlas = ({ location, mapCollectionUrl, sections }) => {
               border: '1px solid',
               borderColor: 'omegaLight',
               mt: 3,
-              '&:hover': { bg: 'omegaLighter', borderColor: 'omegaDark' }
+              '@media (hover: hover) and (pointer: fine)': {
+                '&:hover': { bg: 'omegaLighter', borderColor: 'omegaDark' }
+              }
             }}
           >
             Filtreleri temizle
@@ -407,7 +411,9 @@ const LikyaRouteAtlas = ({ location, mapCollectionUrl, sections }) => {
               color: 'white',
               bg: 'alpha',
               border: 0,
-              '&:hover': { bg: 'alphaDark' }
+              '@media (hover: hover) and (pointer: fine)': {
+                '&:hover': { bg: 'alphaDark' }
+              }
             }}
           >
             Tüm bölümleri göster

@@ -5,40 +5,50 @@ import Pagination from '@components/Pagination'
 import CardList from '@components/CardList'
 import Divider from '@components/Divider'
 import Seo from '@widgets/Seo'
+import { localizeCollectionData } from './collection-data'
 
-const PageCollection = ({ data: { posts, collectionInfo }, ...props }) => (
-  <Layout {...props}>
-    <Seo title={collectionInfo.name} description={collectionInfo.description} />
-    <Divider />
-    <Stack effectProps={{ effect: 'fadeInDown' }}>
-      <PageTitle
-        header={collectionInfo.name}
-        subheader={collectionInfo.title}
-        running={collectionInfo.description}
-        totalCount={posts.totalCount}
+const PageCollection = ({ data, ...props }) => {
+  const { posts, collectionInfo } = localizeCollectionData(
+    data,
+    props.pageContext
+  )
+  return (
+    <Layout {...props}>
+      <Seo
+        title={collectionInfo.name}
+        description={collectionInfo.description}
       />
-    </Stack>
-    <Divider />
-    <Stack>
-      <Main>
-        {posts.nodes && (
-          <CardList
-            nodes={posts.nodes}
-            variant={['horizontal-md', 'vertical']}
-            columns={[1, 2, 3, 3]}
-            omitCategory={
-              props.pageContext &&
-              props.pageContext.collectionType === 'category'
-            }
-          />
-        )}
-      </Main>
-    </Stack>
-    <Divider />
-    <PreFooter>
-      <Pagination {...posts.pageInfo} {...collectionInfo} />
-    </PreFooter>
-  </Layout>
-)
+      <Divider />
+      <Stack effectProps={{ effect: 'fadeInDown' }}>
+        <PageTitle
+          header={collectionInfo.name}
+          subheader={collectionInfo.title}
+          running={collectionInfo.description}
+          totalCount={posts.totalCount}
+        />
+      </Stack>
+      <Divider />
+      <Stack>
+        <Main>
+          {posts.nodes && (
+            <CardList
+              nodes={posts.nodes}
+              variant={['horizontal-md', 'vertical']}
+              columns={[1, 2, 3, 3]}
+              omitCategory={
+                props.pageContext &&
+                props.pageContext.collectionType === 'category'
+              }
+            />
+          )}
+        </Main>
+      </Stack>
+      <Divider />
+      <PreFooter>
+        <Pagination {...posts.pageInfo} {...collectionInfo} />
+      </PreFooter>
+    </Layout>
+  )
+}
 
 export default PageCollection

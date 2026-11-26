@@ -1,8 +1,17 @@
 const { createHash } = require('node:crypto')
 const fs = require('node:fs/promises')
 const path = require('node:path')
-const { normalizePath, getPageLanguage } = require('./language')
-const { categoryPaths, parseCollectionPath, tagName } = require('./collections')
+const {
+  getLocalizedLink,
+  normalizePath,
+  getPageLanguage
+} = require('./language')
+const { localizePreview } = require('./copy')
+const {
+  homeCategoryPostsPerGroup,
+  parseCollectionPath,
+  tagName
+} = require('./collections')
 const categoryGuideLinks = require('../content-guides/categoryGuideLinks')
 const translations = require('./translations.json')
 
@@ -10,6 +19,7 @@ const siteDirectory = path.join(__dirname, '../..')
 const template = name => path.join(siteDirectory, 'src/templates', name)
 const postTemplate =
   require.resolve('../../../packages/blog/gatsby-blog-core/src/templates/post.js')
+const blogTemplates = path.dirname(postTemplate)
 const byId = new Map(
   translations.map(translation => [translation.id, translation])
 )
@@ -17,7 +27,7 @@ const byId = new Map(
 const articleQuery = `{
   allArticle(sort: { date: DESC }) {
     nodes {
-      id slug private draft link date
+      id slug private draft link date featured
       category { id name slug }
       author { name slug }
       tags { id slug }
@@ -55,7 +65,6 @@ const getCollectionContext = (translation, collection, articles, previews) => {
     return { slug, guideId: guideIds[name], previews }
   }
 
-  const pageCount = Math.ceil(members.length / collectionPageSize)
   const start = (page - 1) * collectionPageSize
   const visible = members.slice(start, start + collectionPageSize)
   const category = categoryGuideLinks[members[0]?.category?.name]?.en
@@ -71,25 +80,43 @@ const getCollectionContext = (translation, collection, articles, previews) => {
     )
   }
 
+  const previewTranslations = Object.fromEntries(
+    visible
+      .filter(post => previews[post.slug])
+      .map(post => {
+        const { title, excerpt, date, thumbnailText, slug, category, author } =
+          localizePreview(post, previews)
+        return [
+          post.slug,
+          { title, excerpt, date, thumbnailText, slug, category, author }
+        ]
+      })
+  )
+
   return {
-    title: page === 1 ? title : `${title} · Page ${page}`,
-    description:
-      kind === 'category'
-        ? category.description
-        : kind === 'author'
-          ? `Camping, hiking, routes and gear articles by ${title}.`
-          : `Articles and guides about ${title}.`,
-    kind,
-    articleIds: visible.map(article => article.id),
-    totalCount: members.length,
-    pagination: {
-      slug: `/en/${kind}/${kind === 'category' ? categoryPaths[name] : name}/`,
-      currentPage: page,
-      pageCount,
-      hasNextPage: page < pageCount,
-      hasPreviousPage: page > 1
+    slug,
+    skip: start,
+    limit: collectionPageSize,
+    localizedCollection: {
+      name: page === 1 || kind === 'author' ? title : `${title} · Page ${page}`,
+      slug: getLocalizedLink(slug, 'en').href,
+      ...(kind === 'author' && slug === '/author/ibrahim-uylas/'
+        ? {
+            title: 'Software developer on the road',
+            description:
+              'An engineer with a passion for trekking, camping, travel and the outdoors.'
+          }
+        : {
+            description:
+              kind === 'category'
+                ? category.description
+                : kind === 'tag'
+                  ? `Articles and guides about ${title}.`
+                  : undefined
+          })
     },
-    previews: selectPreviews(visible, previews)
+    ...(kind === 'author' && { authorHeading: 'Articles by this author' }),
+    previewTranslations
   }
 }
 
@@ -98,6 +125,20 @@ const selectPreviews = (articles, previews) =>
     articles
       .filter(article => previews[article.slug])
       .map(article => [article.slug, previews[article.slug]])
+  )
+
+const getHomePreviews = (articles, previews) =>
+  selectPreviews(
+    [
+      ...articles.filter(article => article.featured).slice(0, 10),
+      ...articles.slice(0, 6),
+      ...Object.keys(categoryGuideLinks).flatMap(name =>
+        articles
+          .filter(article => article.category?.name === name)
+          .slice(0, homeCategoryPostsPerGroup)
+      )
+    ],
+    previews
   )
 
 const getRelatedPreviews = (article, articles, previews) => {
@@ -136,7 +177,7 @@ const createEnglishPages = async ({ graphql, actions }) => {
       allFile(filter: { sourceInstanceName: { eq: "englishContent" } }) {
         nodes {
           relativePath
-          childMdx { id internal { contentFilePath } frontmatter { title description } }
+          childMdx { id internal { contentFilePath } frontmatter { title description thumbnailText } }
         }
       }
     }`
@@ -183,13 +224,12 @@ const createEnglishPages = async ({ graphql, actions }) => {
 
     if (translation.template) {
       const collection = parseCollectionPath(tr)
-      const latest =
-        tr === '/'
-          ? publicArticles.filter(article => previews[article.slug]).slice(0, 6)
-          : []
       actions.createPage({
         path: en,
-        component: template(translation.template),
+        component:
+          tr === '/' || translation.template.startsWith('collection.')
+            ? path.join(blogTemplates, translation.template)
+            : template(translation.template),
         context: collection
           ? getCollectionContext(
               translation,
@@ -197,10 +237,9 @@ const createEnglishPages = async ({ graphql, actions }) => {
               publicArticles,
               previews
             )
-          : {
-              articleIds: latest.map(article => article.id),
-              previews: selectPreviews(latest, previews)
-            }
+          : tr === '/'
+            ? { previews: getHomePreviews(publicArticles, previews) }
+            : {}
       })
       continue
     }

@@ -1,7 +1,11 @@
 const fs = require('node:fs')
 const path = require('node:path')
 const { copy, localizeArticle } = require('../src/i18n/copy')
-const { getPageLanguage, shouldNoIndex } = require('../src/i18n/language')
+const {
+  getPageLanguage,
+  normalizePath,
+  shouldNoIndex
+} = require('../src/i18n/language')
 const translations = require('../src/i18n/translations.json')
 const {
   countMatches,
@@ -17,6 +21,7 @@ const publicDirectory = path.resolve(__dirname, '..', 'public')
 const invalidParagraphChildren = /<(?:div|pre)\b/i
 const paragraph = /<p\b[^>]*>[\s\S]*?<\/p>/gi
 const homepagePath = path.join(publicDirectory, 'index.html')
+const englishHomepagePath = path.join(publicDirectory, 'en', 'index.html')
 const contactPath = path.join(publicDirectory, 'iletisim', 'index.html')
 const campingGuidePath = path.join(
   publicDirectory,
@@ -74,6 +79,48 @@ if (failures.length) {
   process.exitCode = 1
 } else {
   console.log('Generated HTML nesting is valid.')
+}
+
+const englishHome = fs.readFileSync(englishHomepagePath, 'utf8')
+const missingEnglishHomeContent = [
+  'id="one-cikanlar"',
+  'slick-slider',
+  'Featured and recent articles',
+  'aria-label="Next slide"',
+  'href="/en/about-ibrahim-uylas/"',
+  'alt="İbrahim Uylaş out hiking"',
+  'I’m İbrahim Uylaş',
+  'data-instagram-state="loading"',
+  ...[
+    'kampcilik',
+    'doga-yuruyusleri',
+    'rotalar',
+    'doga-yuruyusleri-ve-kamp-ekipmanlari',
+    'diger-her-sey'
+  ].map(slug => `id="ana-/category/${slug}/"`)
+].filter(value => !englishHome.includes(value))
+
+if (missingEnglishHomeContent.length) {
+  console.error('Generated English homepage is missing sections or content:')
+  missingEnglishHomeContent.forEach(value => console.error(`- ${value}`))
+  process.exitCode = 1
+}
+
+const localizedPageChecks = [
+  ['/404/', 'Sayfa bulunamadı'],
+  ['/en/404/', 'Page not found'],
+  ['/en/author/ibrahim-uylas/', 'Software developer on the road'],
+  ['/en/category/camping/page/2/', 'aria-label="Pagination"']
+]
+for (const [route, expected] of localizedPageChecks) {
+  const file = routeToHtmlPath(publicDirectory, route)
+  if (
+    !fs.existsSync(file) ||
+    !fs.readFileSync(file, 'utf8').includes(expected)
+  ) {
+    console.error(`${route}: missing localized content ${expected}`)
+    process.exitCode = 1
+  }
 }
 
 const instagramPages = [
@@ -367,7 +414,10 @@ articlePages.forEach(({ route, post }) => {
     const conditionalChromeLabels = [
       'İçindekiler',
       'Haritayı yükle',
-      'Videoyu yükle'
+      'Videoyu yükle',
+      'Contents',
+      'Load map',
+      'Load video'
     ]
     const countText = (text, label) => text.split(label).length - 1
     const leakedChrome = runningHeadLabels.filter(
@@ -451,6 +501,27 @@ const sitemapUrls = new Set(
   })
 )
 const siteUrl = 'https://www.ibrahimuylas.com'
+const mappedRoutes = new Set(translations.flatMap(({ tr, en }) => [tr, en]))
+const anchorIdsByRoute = new Map()
+const getAnchorIds = route => {
+  if (!anchorIdsByRoute.has(route)) {
+    const file = routeToHtmlPath(publicDirectory, route)
+    const ids = fs.existsSync(file)
+      ? [...fs.readFileSync(file, 'utf8').matchAll(/\sid="([^"]+)"/g)].map(
+          ([, id]) => decodeHtmlText(id)
+        )
+      : []
+    anchorIdsByRoute.set(route, new Set(ids))
+  }
+  return anchorIdsByRoute.get(route)
+}
+const untranslatedControls = [
+  'aria-label="Sayfalama"',
+  '>Gömülü içerik<',
+  '>Haritayı yükle<',
+  '>Videoyu yükle<',
+  '>YouTube videosu<'
+]
 const languageFailures = translations.flatMap(({ tr, en }) =>
   [tr, en].flatMap(route => {
     const language = getPageLanguage(route)
@@ -484,6 +555,35 @@ const languageFailures = translations.flatMap(({ tr, en }) =>
     if (sitemapUrls.has(canonical) === shouldNoIndex(route))
       failures.push(`${route}: incorrect sitemap inclusion`)
 
+    if (language === 'en') {
+      for (const control of untranslatedControls) {
+        if (html.includes(control))
+          failures.push(`${route}: untranslated control ${control}`)
+      }
+      for (const [tag, href] of html.matchAll(
+        /<a\b[^>]*\shref="([^"]+)"[^>]*>/g
+      )) {
+        if (
+          !href.startsWith('/') &&
+          !href.startsWith('#') &&
+          !href.startsWith(siteUrl + '/')
+        )
+          continue
+        const url = new URL(decodeHtmlText(href), `${siteUrl}${route}`)
+        const target = normalizePath(url.pathname)
+        if (url.origin !== siteUrl || !mappedRoutes.has(target)) continue
+        if (getPageLanguage(target) === 'tr' && !/\shreflang="tr"/i.test(tag))
+          failures.push(
+            `${route}: links to Turkish page ${href} without a language indication`
+          )
+        if (
+          url.hash &&
+          !getAnchorIds(target).has(decodeURIComponent(url.hash.slice(1)))
+        )
+          failures.push(`${route}: missing anchor target ${href}`)
+      }
+    }
+
     const alternate = language === 'tr' ? en : tr
     const alternateLanguage = getPageLanguage(alternate)
     const languageSwitch =
@@ -516,6 +616,17 @@ const languageFailures = translations.flatMap(({ tr, en }) =>
     return failures
   })
 )
+
+const inventory = JSON.parse(
+  fs.readFileSync(
+    path.resolve(publicDirectory, '../.cache/translation-inventory.json'),
+    'utf8'
+  )
+)
+for (const entry of inventory) {
+  if (entry.status !== 'translated')
+    languageFailures.push(`${entry.tr}: translation status is ${entry.status}`)
+}
 
 if (languageFailures.length) {
   console.error('Generated language pairs are invalid:')

@@ -322,8 +322,10 @@ const ContextSelect = ({ label, name, value, onSelect }) => {
                   borderRadius: 'sm',
                   fontSize: 1,
                   fontWeight: isSelected ? 'bold' : 'normal',
-                  '&:hover': {
-                    bg: isSelected ? 'alphaDark' : 'alphaLighter'
+                  '@media (hover: hover) and (pointer: fine)': {
+                    '&:hover': {
+                      bg: isSelected ? 'alphaDark' : 'alphaLighter'
+                    }
                   }
                 }}
               >
@@ -559,7 +561,9 @@ const LikyaPreparationChecklist = ({ location }) => {
             bg: 'contentBg',
             border: '1px solid',
             borderColor: 'omegaLight',
-            '&:hover': { bg: 'omegaLighter', borderColor: 'omegaDark' }
+            '@media (hover: hover) and (pointer: fine)': {
+              '&:hover': { bg: 'omegaLighter', borderColor: 'omegaDark' }
+            }
           }}
         >
           <FaRedo aria-hidden='true' size={12} /> Tümünü temizle
@@ -574,7 +578,9 @@ const LikyaPreparationChecklist = ({ location }) => {
             bg: 'contentBg',
             border: '1px solid',
             borderColor: 'omegaLight',
-            '&:hover': { bg: 'omegaLighter', borderColor: 'omegaDark' }
+            '@media (hover: hover) and (pointer: fine)': {
+              '&:hover': { bg: 'omegaLighter', borderColor: 'omegaDark' }
+            }
           }}
         >
           <FaClipboard aria-hidden='true' size={12} /> Listeyi kopyala
@@ -589,7 +595,9 @@ const LikyaPreparationChecklist = ({ location }) => {
             bg: 'contentBg',
             border: '1px solid',
             borderColor: 'omegaLight',
-            '&:hover': { bg: 'omegaLighter', borderColor: 'omegaDark' }
+            '@media (hover: hover) and (pointer: fine)': {
+              '&:hover': { bg: 'omegaLighter', borderColor: 'omegaDark' }
+            }
           }}
         >
           <FaPrint aria-hidden='true' size={12} /> Yazdır

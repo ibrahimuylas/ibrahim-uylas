@@ -318,8 +318,7 @@ const ContactForm = ({ language = 'tr' }) => {
       <Box aria-live='polite'>
         {status === 'success' && (
           <Message variant='success' sx={{ m: 0 }}>
-            {labels.message} ulaştı. Teşekkür ederim; en kısa sürede dönüş
-            yapacağım.
+            {labels.success}
           </Message>
         )}
         {status === 'error' && (

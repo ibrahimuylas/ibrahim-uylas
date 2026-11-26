@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import { useLocation } from '@reach/router'
 import { Button, Flex, Box } from 'theme-ui'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import normalizeSlug from '@components/utils/normalizeSlug'
+import { copy } from '../../../i18n/copy'
+import { getPageLanguage } from '../../../i18n/language'
 
 const pagingParam = 'page'
 
@@ -37,7 +40,9 @@ const Pagination = ({
   basePath = '',
   slug = ''
 }) => {
-  if (!hasNextPage && !hasPreviousPage) return ''
+  const { pathname } = useLocation()
+  const labels = copy[getPageLanguage(pathname)].pagination
+  if (!hasNextPage && !hasPreviousPage) return null
   let prefixPath = normalizeSlug(basePath + slug)
   let pagingPath = normalizeSlug(prefixPath + pagingParam)
 
@@ -46,23 +51,23 @@ const Pagination = ({
   const nextLink = `${pagingPath}${currentPage + 1}`
 
   return (
-    <Flex sx={styles.wrapper}>
+    <Flex as='nav' aria-label={labels.label} sx={styles.wrapper}>
       <Box sx={styles.item}>
         {hasPreviousPage && (
           <Button variant='mute' as={Link} to={prevLink} sx={styles.button}>
-            <FaChevronLeft />
-            Önceki
+            <FaChevronLeft aria-hidden='true' />
+            {labels.previous}
           </Button>
         )}
       </Box>
       <Box sx={{ ...styles.item, ...styles.number }}>
-        Sayfa <strong>{currentPage}</strong> (<strong>{pageCount}</strong>)
+        {labels.page} <strong>{currentPage}</strong> (<strong>{pageCount}</strong>)
       </Box>
       <Box sx={styles.item}>
         {hasNextPage && (
           <Button variant='dark' as={Link} to={nextLink} sx={styles.button}>
-            Sonraki
-            <FaChevronRight />
+            {labels.next}
+            <FaChevronRight aria-hidden='true' />
           </Button>
         )}
       </Box>
