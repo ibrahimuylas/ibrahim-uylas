@@ -2,6 +2,8 @@ const { createHash } = require('node:crypto')
 const fs = require('node:fs/promises')
 const path = require('node:path')
 const { normalizePath, getPageLanguage } = require('./language')
+const { categoryPaths, parseCollectionPath, tagName } = require('./collections')
+const categoryGuideLinks = require('../content-guides/categoryGuideLinks')
 const translations = require('./translations.json')
 
 const siteDirectory = path.join(__dirname, '../..')
@@ -13,11 +15,12 @@ const byId = new Map(
 )
 
 const articleQuery = `{
-  allArticle {
+  allArticle(sort: { date: DESC }) {
     nodes {
-      id slug private draft link
-      category { id }
-      tags { id }
+      id slug private draft link date
+      category { id name slug }
+      author { name slug }
+      tags { id slug }
       parent {
         ... on Mdx {
           parent { ... on File { relativePath absolutePath } }
@@ -29,6 +32,93 @@ const articleQuery = `{
 
 const articleIdentity = article =>
   `article:${article.parent?.parent?.relativePath}`
+
+const guideIds = {
+  'diger-her-sey': 'diger',
+  'doga-yuruyusleri-ve-kamp-ekipmanlari': 'ekipmanlar',
+  'doga-yuruyusleri': 'doga-yuruyusleri',
+  kampcilik: 'kampcilik',
+  rotalar: 'rotalar'
+}
+
+const collectionPageSize = 6
+
+const inCollection = ({ kind, slug }, article) =>
+  kind === 'tag'
+    ? article.tags?.some(tag => tag?.slug === slug)
+    : article[kind]?.slug === slug
+
+const getCollectionContext = (translation, collection, articles, previews) => {
+  const { kind, name, page, slug } = collection
+  const members = articles.filter(article => inCollection(collection, article))
+  if (translation.template === 'camping-category.js') {
+    return { slug, guideId: guideIds[name], previews }
+  }
+
+  const pageCount = Math.ceil(members.length / collectionPageSize)
+  const start = (page - 1) * collectionPageSize
+  const visible = members.slice(start, start + collectionPageSize)
+  const category = categoryGuideLinks[members[0]?.category?.name]?.en
+  const title =
+    kind === 'tag'
+      ? tagName(slug)
+      : kind === 'author'
+        ? members[0]?.author?.name
+        : category?.title
+  if (!title || !visible.length) {
+    throw new Error(
+      `English collection ${translation.en} has no title or articles`
+    )
+  }
+
+  return {
+    title: page === 1 ? title : `${title} · Page ${page}`,
+    description:
+      kind === 'category'
+        ? category.description
+        : kind === 'author'
+          ? `Camping, hiking, routes and gear articles by ${title}.`
+          : `Articles and guides about ${title}.`,
+    kind,
+    articleIds: visible.map(article => article.id),
+    totalCount: members.length,
+    pagination: {
+      slug: `/en/${kind}/${kind === 'category' ? categoryPaths[name] : name}/`,
+      currentPage: page,
+      pageCount,
+      hasNextPage: page < pageCount,
+      hasPreviousPage: page > 1
+    },
+    previews: selectPreviews(visible, previews)
+  }
+}
+
+const selectPreviews = (articles, previews) =>
+  Object.fromEntries(
+    articles
+      .filter(article => previews[article.slug])
+      .map(article => [article.slug, previews[article.slug]])
+  )
+
+const getRelatedPreviews = (article, articles, previews) => {
+  const eligible = articles.filter(candidate => candidate.id !== article.id)
+  const tagIds = new Set(
+    (article.tags || []).filter(Boolean).map(tag => tag.id)
+  )
+  const hasTag = candidate => candidate.tags?.some(tag => tagIds.has(tag?.id))
+  const hasCategory = candidate =>
+    candidate.category?.id === article.category?.id
+  return selectPreviews(
+    [
+      ...eligible
+        .filter(candidate => hasTag(candidate) && hasCategory(candidate))
+        .slice(0, 6),
+      ...eligible.filter(hasTag).slice(0, 6),
+      ...eligible.filter(hasCategory).slice(0, 6)
+    ],
+    previews
+  )
+}
 
 const queryData = async (graphql, query) => {
   const { data, errors } = await graphql(query)
@@ -59,6 +149,18 @@ const createEnglishPages = async ({ graphql, actions }) => {
   const files = new Map(
     allFile.nodes.map(file => [file.relativePath, file.childMdx])
   )
+  const publicArticles = allArticle.nodes.filter(
+    article => !article.private && !article.draft && !article.link
+  )
+  const previews = Object.fromEntries(
+    publicArticles.flatMap(article => {
+      const translation = byId.get(articleIdentity(article))
+      const frontmatter = files.get(translation?.translation)?.frontmatter
+      return frontmatter
+        ? [[article.slug, { ...frontmatter, date: article.date }]]
+        : []
+    })
+  )
   const routes = new Set()
 
   for (const translation of translations) {
@@ -80,9 +182,25 @@ const createEnglishPages = async ({ graphql, actions }) => {
     routes.add(en)
 
     if (translation.template) {
+      const collection = parseCollectionPath(tr)
+      const latest =
+        tr === '/'
+          ? publicArticles.filter(article => previews[article.slug]).slice(0, 6)
+          : []
       actions.createPage({
         path: en,
-        component: template(translation.template)
+        component: template(translation.template),
+        context: collection
+          ? getCollectionContext(
+              translation,
+              collection,
+              publicArticles,
+              previews
+            )
+          : {
+              articleIds: latest.map(article => article.id),
+              previews: selectPreviews(latest, previews)
+            }
       })
       continue
     }
@@ -121,7 +239,8 @@ const createEnglishPages = async ({ graphql, actions }) => {
         tagsIds,
         hasTags: tagsIds.length > 0,
         hasTranslation: true,
-        translationId: mdx.id
+        translationId: mdx.id,
+        previews: getRelatedPreviews(article, publicArticles, previews)
       }
     })
   }

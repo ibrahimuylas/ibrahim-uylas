@@ -19,29 +19,29 @@ const styles = {
   }
 }
 
-const PostShare = ({ location, title }) => {
+const PostShare = ({ location, title, language = 'tr' }) => {
   const url = location && location.href
 
-  const Facebook = ({ children }) => (
-    <FacebookShareButton url={url} quote={title}>
+  const Facebook = ({ children, label }) => (
+    <FacebookShareButton aria-label={label} url={url} quote={title}>
       {children}
     </FacebookShareButton>
   )
 
-  const Twitter = ({ children }) => (
-    <TwitterShareButton url={url} title={title}>
+  const Twitter = ({ children, label }) => (
+    <TwitterShareButton aria-label={label} url={url} title={title}>
       {children}
     </TwitterShareButton>
   )
 
-  const Linkedin = ({ children }) => (
-    <LinkedinShareButton url={url} quote={title}>
+  const Linkedin = ({ children, label }) => (
+    <LinkedinShareButton aria-label={label} url={url} quote={title}>
       {children}
     </LinkedinShareButton>
   )
 
-  const Email = ({ children }) => (
-    <EmailShareButton url={url} subject={title}>
+  const Email = ({ children, label }) => (
+    <EmailShareButton aria-label={label} url={url} subject={title}>
       {children}
     </EmailShareButton>
   )
@@ -60,7 +60,7 @@ const PostShare = ({ location, title }) => {
   return (
     <Flex sx={styles.wrapper}>
       <Heading variant='h5' sx={styles.heading}>
-        Share
+        {language === 'en' ? 'Share' : 'Paylaş'}
       </Heading>
       {buttonsWithIcons.map(({ name, color, Icon }) => {
         const ShareButton = buttons[name]
@@ -72,7 +72,11 @@ const PostShare = ({ location, title }) => {
               key={`share-${name}`}
               sx={{ color }}
             >
-              <ShareButton>
+              <ShareButton label={
+                language === 'en'
+                  ? (name === 'email' ? 'Share by email' : `Share on ${name}`)
+                  : (name === 'email' ? 'E-postayla paylaş' : `${name} ile paylaş`)
+              }>
                 <Icon />
               </ShareButton>
             </IconButton>

@@ -34,6 +34,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
+        thumbnailText
       }
       timeToRead @include(if: $includeTimeToRead)
       tableOfContents(maxDepth: 2) @include(if: $includeTableOfContents)

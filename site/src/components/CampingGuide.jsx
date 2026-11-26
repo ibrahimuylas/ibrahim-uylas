@@ -1,5 +1,7 @@
+import LocaleLink from '../i18n/LocaleLink'
+import { copy } from '../i18n/copy'
+import { guideCategoryName, guideCopy, guidePath } from '../i18n/guide'
 import React, { useEffect, useMemo, useState } from 'react'
-import { Link as GatsbyLink } from 'gatsby'
 import { GatsbyImage as Img, StaticImage } from 'gatsby-plugin-image'
 import { FaChevronDown, FaRegClock, FaSearch } from 'react-icons/fa'
 import {
@@ -66,55 +68,72 @@ const getGuideTopicLinks = guide => [
   }))
 ]
 
-const getGuideContentsItems = guide => [
+const getGuideContentsItems = (guide, language) => [
   ...getGuideTopicLinks(guide).map(item => ({
     title: item.label,
     url: `#${item.id}`
   })),
-  { title: 'Yeni eklenenler', url: '#yeni-eklenenler' },
-  { title: 'Tüm içerikler', url: '#tum-icerikler' }
+  { title: guideCopy('Yeni eklenenler', language), url: '#yeni-eklenenler' },
+  { title: guideCopy('Tüm içerikler', language), url: '#tum-icerikler' }
 ]
 
-const displayDate = value => {
+const displayDate = (value, language) => {
   if (!value) return ''
 
-  return new Intl.DateTimeFormat('tr-TR', {
+  return new Intl.DateTimeFormat(language === 'en' ? 'en-GB' : 'tr-TR', {
     day: 'numeric',
     month: 'long',
     year: 'numeric'
   }).format(new Date(`${value}T00:00:00`))
 }
 
-const ArticleMeta = ({ article }) => (
-  <Flex
-    sx={{
-      alignItems: `center`,
-      flexWrap: `wrap`,
-      gap: 2,
-      color: `omegaDark`,
-      fontSize: 1,
-      mt: 2
-    }}
-  >
-    {article.category?.name && <Text as='span'>{article.category.name}</Text>}
-    {article.timeToRead && (
-      <>
-        <Text as='span' aria-hidden='true'>
-          •
+const GuideLanguageContext = React.createContext('tr')
+
+const GuideLink = ({ to, ...props }) => {
+  const language = React.useContext(GuideLanguageContext)
+  return (
+    <LocaleLink {...props} to={guidePath(to, language)} language={language} />
+  )
+}
+
+const ArticleMeta = ({ article }) => {
+  const language = React.useContext(GuideLanguageContext)
+
+  return (
+    <Flex
+      sx={{
+        alignItems: `center`,
+        flexWrap: `wrap`,
+        gap: 2,
+        color: `omegaDark`,
+        fontSize: 1,
+        mt: 2
+      }}
+    >
+      {article.category?.name && (
+        <Text as='span'>
+          {guideCategoryName(article.category.name, language)}
         </Text>
-        <Text as='span'>{article.timeToRead} dk</Text>
-      </>
-    )}
-    {article.date && (
-      <>
-        <Text as='span' aria-hidden='true'>
-          •
-        </Text>
-        <Text as='span'>{displayDate(article.date)}</Text>
-      </>
-    )}
-  </Flex>
-)
+      )}
+      {article.timeToRead && (
+        <>
+          <Text as='span' aria-hidden='true'>
+            •
+          </Text>
+          <Text as='span'>{copy[language].minutes(article.timeToRead)}</Text>
+        </>
+      )}
+      {article.date && (
+        <>
+          <Text as='span' aria-hidden='true'>
+            •
+          </Text>
+          <Text as='span'>{displayDate(article.date, language)}</Text>
+        </>
+      )}
+    </Flex>
+  )
+}
 
 const ArticleLinkCard = ({
   article,
@@ -127,6 +146,7 @@ const ArticleLinkCard = ({
   step,
   withImage
 }) => {
+  const language = React.useContext(GuideLanguageContext)
   const image = withImage
     ? getImageVariant(article.thumbnail, 'guideCard')
     : null
@@ -198,7 +218,7 @@ const ArticleLinkCard = ({
                 py: 1
               }}
             >
-              Öne çıkan
+              {guideCopy('Öne çıkan', language)}
             </Text>
           )}
         </Box>
@@ -265,7 +285,7 @@ const ArticleLinkCard = ({
                       textTransform: `uppercase`
                     }}
                   >
-                    {article.category.name}
+                    {guideCategoryName(article.category.name, language)}
                   </Text>
                 )}
                 {article.timeToRead && (
@@ -273,7 +293,9 @@ const ArticleLinkCard = ({
                     <Text as='span' aria-hidden='true'>
                       •
                     </Text>
-                    <Text as='span'>{article.timeToRead} dk</Text>
+                    <Text as='span'>
+                      {copy[language].minutes(article.timeToRead)}
+                    </Text>
                   </>
                 )}
               </Flex>
@@ -293,7 +315,7 @@ const ArticleLinkCard = ({
                   mb: 2
                 }}
               >
-                Öne çıkan
+                {guideCopy('Öne çıkan', language)}
               </Text>
             )}
             <Heading
@@ -319,7 +341,7 @@ const ArticleLinkCard = ({
               }}
             >
               <Link
-                as={GatsbyLink}
+                as={GuideLink}
                 to={article.slug}
                 onClick={onActivate}
                 sx={{
@@ -399,7 +421,7 @@ const ArticleLinkCard = ({
                   pt: 3
                 }}
               >
-                {displayDate(article.date)}
+                {displayDate(article.date, language)}
               </Text>
               <Box sx={{ display: [`block`, `none`] }}>
                 <ArticleMeta article={article} />
@@ -413,6 +435,7 @@ const ArticleLinkCard = ({
 }
 
 const RouteArticleCard = ({ item, policy, trackLink }) => {
+  const language = React.useContext(GuideLanguageContext)
   const { article } = item
   const image = getImageVariant(article.thumbnail, 'guideCard')
 
@@ -481,7 +504,7 @@ const RouteArticleCard = ({ item, policy, trackLink }) => {
           }}
         >
           <Link
-            as={GatsbyLink}
+            as={GuideLink}
             to={article.slug}
             onClick={trackLink(item.sectionId, article.slug)}
             sx={{ color: `inherit`, ...focusStyle }}
@@ -498,7 +521,7 @@ const RouteArticleCard = ({ item, policy, trackLink }) => {
         <ArticleMeta article={article} />
         {item.journalSlug && (
           <Link
-            as={GatsbyLink}
+            as={GuideLink}
             to={policy.articlePath(item.journalSlug)}
             onClick={trackLink(item.sectionId, item.journalSlug)}
             sx={{
@@ -511,7 +534,8 @@ const RouteArticleCard = ({ item, policy, trackLink }) => {
               ...focusStyle
             }}
           >
-            {item.journalLabel || 'Yürüyüş günlüğünü oku'} →
+            {item.journalLabel || guideCopy('Yürüyüş günlüğünü oku', language)}{' '}
+            →
           </Link>
         )}
       </Box>
@@ -719,7 +743,7 @@ const RouteSection = ({ guide, section, policy, featuredSlugs, trackLink }) => {
           {section.links.map(link => (
             <Link
               key={link.path}
-              as={link.path.startsWith('/') ? GatsbyLink : undefined}
+              as={link.path.startsWith('/') ? GuideLink : undefined}
               to={link.path.startsWith('/') ? link.path : undefined}
               href={link.path.startsWith('/') ? undefined : link.path}
               onClick={
@@ -825,7 +849,7 @@ const EquipmentSection = ({
 
   const moreLink = section.moreLink && (
     <Link
-      as={GatsbyLink}
+      as={GuideLink}
       to={section.moreLink.path}
       onClick={trackLink(section.id, section.moreLink.path)}
       sx={{
@@ -993,7 +1017,7 @@ const TopicSection = ({
           </Text>
           {section.moreLink && (
             <Link
-              as={GatsbyLink}
+              as={GuideLink}
               to={section.moreLink.path}
               onClick={trackLink(section.id, section.moreLink.path)}
               sx={{
@@ -1117,7 +1141,8 @@ const GuideCategory = ({
   articles = [],
   latestArticles = [],
   guide = defaultGuide,
-  policy = defaultPolicy
+  policy = defaultPolicy,
+  language = 'tr'
 }) => {
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('Tümü')
@@ -1271,7 +1296,7 @@ const GuideCategory = ({
   })
 
   const guideTopicLinks = getGuideTopicLinks(guide)
-  const guideContentsItems = getGuideContentsItems(guide)
+  const guideContentsItems = getGuideContentsItems(guide, language)
   const contentCount =
     guide.contentCountScope === 'primary'
       ? articles.filter(
@@ -1291,9 +1316,9 @@ const GuideCategory = ({
     other: Math.max(0, contentCount - likyaCount)
   }
   const stats = guide.hero.stats || [
-    { key: 'content', label: 'İçerik' },
-    { key: 'topics', label: 'Konu' },
-    { key: 'beginning', label: 'Başlangıç' }
+    { key: 'content', label: guideCopy('İçerik', language) },
+    { key: 'topics', label: guideCopy('Konu', language) },
+    { key: 'beginning', label: guideCopy('Başlangıç', language) }
   ]
   const heroArticle = guide.hero.imageSlug
     ? articleLookup.get(guide.hero.imageSlug)
@@ -1311,7 +1336,7 @@ const GuideCategory = ({
       track: trackEvent
     })
 
-  return (
+  const content = (
     <Box>
       <Box
         as='header'
@@ -1397,7 +1422,7 @@ const GuideCategory = ({
           >
             <Button
               as='a'
-              href={guide.hero.ctaHref || '#baslangic'}
+              href={guidePath(guide.hero.ctaHref || '#baslangic', language)}
               sx={{
                 justifyContent: `center`,
                 width: [`100%`, `auto`],
@@ -1420,7 +1445,10 @@ const GuideCategory = ({
             </Button>
             <Button
               as='a'
-              href={guide.hero.secondaryCtaHref || '#tum-icerikler'}
+              href={guidePath(
+                guide.hero.secondaryCtaHref || '#tum-icerikler',
+                language
+              )}
               variant='mute'
               sx={{
                 justifyContent: `center`,
@@ -1445,11 +1473,12 @@ const GuideCategory = ({
                 ...focusStyle
               }}
             >
-              {guide.hero.secondaryCtaLabel || 'Tüm içeriklerde ara'}
+              {guide.hero.secondaryCtaLabel ||
+                guideCopy('Tüm içeriklerde ara', language)}
             </Button>
           </Flex>
           <Flex
-            aria-label='Rehber özeti'
+            aria-label={guideCopy('Rehber özeti', language)}
             sx={{
               order: [4, 4, 5],
               display: `grid`,
@@ -1529,7 +1558,11 @@ const GuideCategory = ({
 
       <Box
         as='nav'
-        aria-label={`${guide.title} konuları`}
+        aria-label={
+          language === 'en'
+            ? `${guide.title} topics`
+            : `${guide.title} konuları`
+        }
         sx={{ py: guide.compactSpacing ? [2, 3] : [4, 5] }}
       >
         <Flex
@@ -1720,7 +1753,7 @@ const GuideCategory = ({
             mb: 4
           }}
         >
-          Yeni eklenenler
+          {guideCopy('Yeni eklenenler', language)}
         </Heading>
         <Box
           onClick={event => {
@@ -1775,7 +1808,7 @@ const GuideCategory = ({
                 m: 0
               }}
             >
-              Tüm içerikler
+              {guideCopy('Tüm içerikler', language)}
             </Heading>
             <Text
               as='p'
@@ -1807,7 +1840,7 @@ const GuideCategory = ({
                 border: 0
               }}
             >
-              İçeriklerde ara
+              {guideCopy('İçeriklerde ara', language)}
             </Label>
             <Box
               aria-hidden='true'
@@ -1832,7 +1865,7 @@ const GuideCategory = ({
                 setQuery(event.target.value)
                 setVisibleArticleCount(6)
               }}
-              placeholder='İçeriklerde ara...'
+              placeholder={guideCopy('İçeriklerde ara...', language)}
               sx={{
                 minHeight: 52,
                 bg: `contentBg`,
@@ -1851,14 +1884,19 @@ const GuideCategory = ({
 
         <Flex
           role='group'
-          aria-label='İçerikleri kategoriye göre filtrele'
+          aria-label={guideCopy(
+            'İçerikleri kategoriye göre filtrele',
+            language
+          )}
           sx={{ flexWrap: `wrap`, gap: 2, mb: [4, 5] }}
         >
           {categories.map(item => {
             const selected = category === item
             const label =
               guide.groupFilters?.find(filter => filter.id === item)?.label ||
-              item
+              (item === 'Tümü'
+                ? guideCopy(item, language)
+                : guideCategoryName(item, language))
 
             return (
               <Button
@@ -1914,7 +1952,9 @@ const GuideCategory = ({
             border: 0
           }}
         >
-          {filteredArticles.length} içerik gösteriliyor
+          {language === 'en'
+            ? `${filteredArticles.length} articles shown`
+            : `${filteredArticles.length} içerik gösteriliyor`}
         </Text>
 
         {filteredArticles.length ? (
@@ -1941,7 +1981,7 @@ const GuideCategory = ({
                 return (
                   <Box as='li' key={article.id} sx={{ minWidth: 0 }}>
                     <Link
-                      as={GatsbyLink}
+                      as={GuideLink}
                       to={article.slug}
                       onClick={trackLink('tum-icerikler', article.slug)}
                       sx={{
@@ -2010,7 +2050,7 @@ const GuideCategory = ({
                               mb: 2
                             }}
                           >
-                            {article.category.name}
+                            {guideCategoryName(article.category.name, language)}
                           </Text>
                         )}
                         <Heading
@@ -2038,7 +2078,11 @@ const GuideCategory = ({
                             }}
                           >
                             <FaRegClock aria-hidden='true' />
-                            <Text as='span'>{article.timeToRead} dk okuma</Text>
+                            <Text as='span'>
+                              {language === 'en'
+                                ? `${article.timeToRead} min read`
+                                : `${article.timeToRead} dk okuma`}
+                            </Text>
                           </Flex>
                         )}
                       </Flex>
@@ -2075,7 +2119,7 @@ const GuideCategory = ({
                     ...focusStyle
                   }}
                 >
-                  Daha fazla içerik yükle
+                  {guideCopy('Daha fazla içerik yükle', language)}
                   <FaChevronDown aria-hidden='true' />
                 </Button>
               </Flex>
@@ -2095,10 +2139,13 @@ const GuideCategory = ({
             }}
           >
             <Heading as='h3' sx={{ color: `heading`, fontSize: 4, mt: 0 }}>
-              Aramana uygun içerik bulunamadı
+              {guideCopy('Aramana uygun içerik bulunamadı', language)}
             </Heading>
             <Text as='p' sx={{ color: `text`, mb: 3 }}>
-              Başka bir kelime deneyebilir veya aramayı temizleyebilirsin.
+              {guideCopy(
+                'Başka bir kelime deneyebilir veya aramayı temizleyebilirsin.',
+                language
+              )}
             </Text>
             <Button
               type='button'
@@ -2110,12 +2157,18 @@ const GuideCategory = ({
               }}
               sx={{ minHeight: 44, ...focusStyle }}
             >
-              Aramayı temizle
+              {guideCopy('Aramayı temizle', language)}
             </Button>
           </Box>
         )}
       </Box>
     </Box>
+  )
+
+  return (
+    <GuideLanguageContext.Provider value={language}>
+      {content}
+    </GuideLanguageContext.Provider>
   )
 }
 

@@ -20,10 +20,20 @@ import { trackEvent } from '../../../utils/analytics'
 import categoryGuideLinks from '../../../content-guides/categoryGuideLinks'
 import guideMeta from '../../../content-guides/likya/guide-meta'
 import { stageGuideByArticleSlug } from '../../../content-guides/likya/stage-guides'
-import { copy, localizeArticle } from '../../../i18n/copy'
+import { copy, localizeArticle, localizePreview } from '../../../i18n/copy'
 import { fallbackLinkTitle, getLocalizedLink } from '../../../i18n/language'
+import LocaleLink from '../../../i18n/LocaleLink'
 // import AuthorExpanded from '@widgets/AuthorExpanded'
 import { PostHead, PostImage, PostBody, PostTagsShare } from '@widgets/Post'
+
+const EnglishArticleLink = ({ href, ...props }) =>
+  href?.startsWith('/') && !href.startsWith('//') ? (
+    <LocaleLink to={href} language='en' {...props} />
+  ) : (
+    <a href={href} {...props} />
+  )
+
+const englishMdx = { a: EnglishArticleLink }
 
 const Post = ({
   data: {
@@ -40,7 +50,7 @@ const Post = ({
     ...(tagPosts ? tagPosts.nodes : []),
     ...(categoryPosts ? categoryPosts.nodes : [])
   ]
-  const { pageContext: { services = {}, siteUrl } = {} } = props
+  const { pageContext: { services = {}, siteUrl, previews } = {} } = props
   const language = translation ? 'en' : 'tr'
   const labels = copy[language]
   const post = localizeArticle(sourcePost, translation)
@@ -109,7 +119,11 @@ const Post = ({
       <Stack>
         <Main>
           <CardComponent variant='paper-lg'>
-            <PostImage {...post} inCardLarge />
+            <PostImage
+              {...post}
+              title={post.thumbnailText || post.title}
+              inCardLarge
+            />
             <div
               {...(post.private === true ? {} : { 'data-pagefind-body': '' })}
             >
@@ -118,15 +132,25 @@ const Post = ({
               <div data-pagefind-ignore='all'>
                 <ArticleContents items={post.tableOfContents?.items} />
               </div>
-              <PostBody {...post} />
+              <PostBody
+                {...post}
+                mdxComponents={translation ? englishMdx : undefined}
+              />
             </div>
-            <PostTagsShare {...post} location={props.location} />
-            {services.reactions?.enabled && <ArticleReactions {...post} />}
+            <PostTagsShare
+              {...post}
+              location={props.location}
+              language={language}
+            />
+            {services.reactions?.enabled && (
+              <ArticleReactions {...post} language={language} />
+            )}
             {services.comments?.enabled && (
               <DeferredComments
                 {...post}
                 siteUrl={siteUrl}
                 comments={services.comments}
+                language={language}
               />
             )}
           </CardComponent>
@@ -231,7 +255,7 @@ const Post = ({
           {post.category && (
             <CardList
               title={labels.relatedPosts}
-              nodes={relatedPosts}
+              nodes={relatedPosts.map(post => localizePreview(post, previews))}
               variant={['horizontal-md']}
               columns={[1, 2, 2, 2]}
               limit={6}

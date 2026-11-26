@@ -10,6 +10,9 @@ import equipmentGuide from '../content-guides/equipmentGuide'
 import hikingGuide from '../content-guides/hikingGuide'
 import otherGuide from '../content-guides/otherGuide'
 import routeGuide from '../content-guides/routeGuide'
+import { localizePreview } from '../i18n/copy'
+import { localizeGuide } from '../i18n/guide'
+import { getLocalizedLink, getPageLanguage } from '../i18n/language'
 
 const guides = {
   kampcilik: campingGuide,
@@ -32,7 +35,15 @@ const CampingCategoryPage = ({
   pageContext,
   ...props
 }) => {
-  const guide = guides[pageContext.guideId] || campingGuide
+  const language = getPageLanguage(props.location?.pathname)
+  const guide = localizeGuide(
+    guides[pageContext.guideId] || campingGuide,
+    language
+  )
+  const previews = pageContext.previews
+  const articles = hubArticles.nodes.map(article =>
+    localizePreview(article, previews, { preserveSource: true })
+  )
   const ogImages = {
     kampcilik: campingOgImage,
     'doga-yuruyusleri': hikingOgImage,
@@ -42,7 +53,7 @@ const CampingCategoryPage = ({
   }
   const siteUrl = (pageContext.siteUrl || '').replace(/\/$/, '')
   const guideArticles = categoryGuidePolicy.selectGuideArticles({
-    articles: hubArticles.nodes,
+    articles,
     curatedSlugs: getAllCuratedSlugs(guide),
     primaryCategory: guide.primaryCategory,
     categories: guide.hubCategories,
@@ -53,7 +64,7 @@ const CampingCategoryPage = ({
     '@type': 'CollectionPage',
     name: guide.title,
     description: guide.description,
-    url: `${siteUrl}${guide.path}`,
+    url: `${siteUrl}${getLocalizedLink(guide.path, language).href}`,
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: guideArticles.length,
@@ -61,7 +72,7 @@ const CampingCategoryPage = ({
         '@type': 'ListItem',
         position: index + 1,
         name: article.title,
-        url: `${siteUrl}${article.slug}`
+        url: `${siteUrl}${getLocalizedLink(article.slug, language).href}`
       }))
     }
   }
@@ -82,10 +93,13 @@ const CampingCategoryPage = ({
       <Stack effectProps={{ effect: false }}>
         <Main>
           <GuideCategory
-            articles={hubArticles.nodes}
-            latestArticles={latestArticles.nodes}
+            articles={articles}
+            latestArticles={latestArticles.nodes.map(article =>
+              localizePreview(article, previews)
+            )}
             guide={guide}
             policy={categoryGuidePolicy}
+            language={language}
           />
         </Main>
       </Stack>

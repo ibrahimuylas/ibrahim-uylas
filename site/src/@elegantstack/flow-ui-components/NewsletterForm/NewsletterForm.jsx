@@ -60,8 +60,14 @@ const NewsletterForm = ({
             gridColumn: compact ? `1 / -1` : undefined,
             fontSize: compact ? 1 : undefined
           }}
-          dangerouslySetInnerHTML={{ __html: message }}
-        />
+          role='status'
+        >
+          {language === 'en'
+            ? success
+              ? labels.success
+              : labels.error
+            : message}
+        </Message>
       )}
       {canSubmit && (
         <>

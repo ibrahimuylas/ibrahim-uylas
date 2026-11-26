@@ -7,7 +7,7 @@ const {
 } = require('./language')
 const { localizeMenu } = require('./copy')
 
-test('keeps navigation labels clean and describes untranslated destinations', () => {
+test('keeps navigation labels clean and maps destinations to English', () => {
   const [contact, camping] = localizeMenu(
     [
       { name: 'İletişim', slug: '/iletisim/' },
@@ -16,12 +16,12 @@ test('keeps navigation labels clean and describes untranslated destinations', ()
     'en'
   )
   assert.equal(contact.name, 'Contact')
-  assert.equal(contact.slug, '/iletisim/')
-  assert.equal(contact.fallbackLanguage, 'tr')
-  assert.equal(contact.title, 'Page in Turkish')
+  assert.equal(contact.slug, '/en/contact/')
+  assert.equal(contact.fallbackLanguage, undefined)
+  assert.equal(contact.title, undefined)
   assert.equal(camping.name, 'Camping')
-  assert.equal(camping.fallbackLanguage, 'tr')
-  assert.equal(camping.title, 'Page in Turkish')
+  assert.equal(camping.slug, '/en/category/camping/')
+  assert.equal(camping.fallbackLanguage, undefined)
 })
 
 test('keeps both URLs authoritative and offers the matching article in the preferred language', () => {
@@ -42,7 +42,7 @@ test('keeps both URLs authoritative and offers the matching article in the prefe
     null
   )
   assert.equal(
-    getLanguageSuggestion('/kamp-hayatina-bulasmak-ister-misiniz/', null, [
+    getLanguageSuggestion('/untranslated-example/', null, [
       'en'
     ]),
     null
@@ -57,8 +57,8 @@ test('follows published translations and identifies fallback destinations withou
       fallbackLanguage: undefined
     }
   )
-  assert.deepEqual(getLocalizedLink('/category/kampcilik/', 'en'), {
-    href: '/category/kampcilik/',
+  assert.deepEqual(getLocalizedLink('/untranslated-example/', 'en'), {
+    href: '/untranslated-example/',
     fallbackLanguage: 'tr'
   })
   assert.deepEqual(getLocalizedLink('https://example.com/', 'en'), {

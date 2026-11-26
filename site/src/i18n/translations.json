@@ -11,5 +11,2213 @@
     "en": "/en/what-does-outdoor-mean/",
     "translation": "what-does-outdoor-mean.mdx",
     "sourceRevision": "a30c8e4d71ce01da17b86a30dc76af48495020dee9e7a0959fc53709bf96bc0b"
+  },
+  {
+    "id": "page:/404/",
+    "tr": "/404/",
+    "en": "/en/404/",
+    "template": "english-404.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/",
+    "tr": "/author/ibrahim-uylas/",
+    "en": "/en/author/ibrahim-uylas/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/10/",
+    "tr": "/author/ibrahim-uylas/page/10/",
+    "en": "/en/author/ibrahim-uylas/page/10/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/11/",
+    "tr": "/author/ibrahim-uylas/page/11/",
+    "en": "/en/author/ibrahim-uylas/page/11/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/12/",
+    "tr": "/author/ibrahim-uylas/page/12/",
+    "en": "/en/author/ibrahim-uylas/page/12/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/13/",
+    "tr": "/author/ibrahim-uylas/page/13/",
+    "en": "/en/author/ibrahim-uylas/page/13/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/14/",
+    "tr": "/author/ibrahim-uylas/page/14/",
+    "en": "/en/author/ibrahim-uylas/page/14/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/15/",
+    "tr": "/author/ibrahim-uylas/page/15/",
+    "en": "/en/author/ibrahim-uylas/page/15/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/16/",
+    "tr": "/author/ibrahim-uylas/page/16/",
+    "en": "/en/author/ibrahim-uylas/page/16/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/17/",
+    "tr": "/author/ibrahim-uylas/page/17/",
+    "en": "/en/author/ibrahim-uylas/page/17/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/18/",
+    "tr": "/author/ibrahim-uylas/page/18/",
+    "en": "/en/author/ibrahim-uylas/page/18/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/19/",
+    "tr": "/author/ibrahim-uylas/page/19/",
+    "en": "/en/author/ibrahim-uylas/page/19/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/2/",
+    "tr": "/author/ibrahim-uylas/page/2/",
+    "en": "/en/author/ibrahim-uylas/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/20/",
+    "tr": "/author/ibrahim-uylas/page/20/",
+    "en": "/en/author/ibrahim-uylas/page/20/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/21/",
+    "tr": "/author/ibrahim-uylas/page/21/",
+    "en": "/en/author/ibrahim-uylas/page/21/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/22/",
+    "tr": "/author/ibrahim-uylas/page/22/",
+    "en": "/en/author/ibrahim-uylas/page/22/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/23/",
+    "tr": "/author/ibrahim-uylas/page/23/",
+    "en": "/en/author/ibrahim-uylas/page/23/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/24/",
+    "tr": "/author/ibrahim-uylas/page/24/",
+    "en": "/en/author/ibrahim-uylas/page/24/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/25/",
+    "tr": "/author/ibrahim-uylas/page/25/",
+    "en": "/en/author/ibrahim-uylas/page/25/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/26/",
+    "tr": "/author/ibrahim-uylas/page/26/",
+    "en": "/en/author/ibrahim-uylas/page/26/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/27/",
+    "tr": "/author/ibrahim-uylas/page/27/",
+    "en": "/en/author/ibrahim-uylas/page/27/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/28/",
+    "tr": "/author/ibrahim-uylas/page/28/",
+    "en": "/en/author/ibrahim-uylas/page/28/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/29/",
+    "tr": "/author/ibrahim-uylas/page/29/",
+    "en": "/en/author/ibrahim-uylas/page/29/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/3/",
+    "tr": "/author/ibrahim-uylas/page/3/",
+    "en": "/en/author/ibrahim-uylas/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/30/",
+    "tr": "/author/ibrahim-uylas/page/30/",
+    "en": "/en/author/ibrahim-uylas/page/30/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/4/",
+    "tr": "/author/ibrahim-uylas/page/4/",
+    "en": "/en/author/ibrahim-uylas/page/4/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/5/",
+    "tr": "/author/ibrahim-uylas/page/5/",
+    "en": "/en/author/ibrahim-uylas/page/5/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/6/",
+    "tr": "/author/ibrahim-uylas/page/6/",
+    "en": "/en/author/ibrahim-uylas/page/6/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/7/",
+    "tr": "/author/ibrahim-uylas/page/7/",
+    "en": "/en/author/ibrahim-uylas/page/7/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/8/",
+    "tr": "/author/ibrahim-uylas/page/8/",
+    "en": "/en/author/ibrahim-uylas/page/8/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/author/ibrahim-uylas/page/9/",
+    "tr": "/author/ibrahim-uylas/page/9/",
+    "en": "/en/author/ibrahim-uylas/page/9/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/diger-her-sey/",
+    "tr": "/category/diger-her-sey/",
+    "en": "/en/category/everything-else/",
+    "template": "camping-category.js"
+  },
+  {
+    "id": "page:/category/diger-her-sey/page/10/",
+    "tr": "/category/diger-her-sey/page/10/",
+    "en": "/en/category/everything-else/page/10/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/diger-her-sey/page/11/",
+    "tr": "/category/diger-her-sey/page/11/",
+    "en": "/en/category/everything-else/page/11/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/diger-her-sey/page/12/",
+    "tr": "/category/diger-her-sey/page/12/",
+    "en": "/en/category/everything-else/page/12/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/diger-her-sey/page/2/",
+    "tr": "/category/diger-her-sey/page/2/",
+    "en": "/en/category/everything-else/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/diger-her-sey/page/3/",
+    "tr": "/category/diger-her-sey/page/3/",
+    "en": "/en/category/everything-else/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/diger-her-sey/page/4/",
+    "tr": "/category/diger-her-sey/page/4/",
+    "en": "/en/category/everything-else/page/4/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/diger-her-sey/page/5/",
+    "tr": "/category/diger-her-sey/page/5/",
+    "en": "/en/category/everything-else/page/5/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/diger-her-sey/page/6/",
+    "tr": "/category/diger-her-sey/page/6/",
+    "en": "/en/category/everything-else/page/6/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/diger-her-sey/page/7/",
+    "tr": "/category/diger-her-sey/page/7/",
+    "en": "/en/category/everything-else/page/7/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/diger-her-sey/page/8/",
+    "tr": "/category/diger-her-sey/page/8/",
+    "en": "/en/category/everything-else/page/8/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/diger-her-sey/page/9/",
+    "tr": "/category/diger-her-sey/page/9/",
+    "en": "/en/category/everything-else/page/9/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/doga-yuruyusleri-ve-kamp-ekipmanlari/",
+    "tr": "/category/doga-yuruyusleri-ve-kamp-ekipmanlari/",
+    "en": "/en/category/gear/",
+    "template": "camping-category.js"
+  },
+  {
+    "id": "page:/category/doga-yuruyusleri-ve-kamp-ekipmanlari/page/2/",
+    "tr": "/category/doga-yuruyusleri-ve-kamp-ekipmanlari/page/2/",
+    "en": "/en/category/gear/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/doga-yuruyusleri-ve-kamp-ekipmanlari/page/3/",
+    "tr": "/category/doga-yuruyusleri-ve-kamp-ekipmanlari/page/3/",
+    "en": "/en/category/gear/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/doga-yuruyusleri-ve-kamp-ekipmanlari/page/4/",
+    "tr": "/category/doga-yuruyusleri-ve-kamp-ekipmanlari/page/4/",
+    "en": "/en/category/gear/page/4/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/doga-yuruyusleri/",
+    "tr": "/category/doga-yuruyusleri/",
+    "en": "/en/category/hiking/",
+    "template": "camping-category.js"
+  },
+  {
+    "id": "page:/category/doga-yuruyusleri/page/2/",
+    "tr": "/category/doga-yuruyusleri/page/2/",
+    "en": "/en/category/hiking/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/kampcilik/",
+    "tr": "/category/kampcilik/",
+    "en": "/en/category/camping/",
+    "template": "camping-category.js"
+  },
+  {
+    "id": "page:/category/kampcilik/page/2/",
+    "tr": "/category/kampcilik/page/2/",
+    "en": "/en/category/camping/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/kampcilik/page/3/",
+    "tr": "/category/kampcilik/page/3/",
+    "en": "/en/category/camping/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/rotalar/",
+    "tr": "/category/rotalar/",
+    "en": "/en/category/routes/",
+    "template": "camping-category.js"
+  },
+  {
+    "id": "page:/category/rotalar/page/10/",
+    "tr": "/category/rotalar/page/10/",
+    "en": "/en/category/routes/page/10/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/rotalar/page/11/",
+    "tr": "/category/rotalar/page/11/",
+    "en": "/en/category/routes/page/11/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/rotalar/page/2/",
+    "tr": "/category/rotalar/page/2/",
+    "en": "/en/category/routes/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/rotalar/page/3/",
+    "tr": "/category/rotalar/page/3/",
+    "en": "/en/category/routes/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/rotalar/page/4/",
+    "tr": "/category/rotalar/page/4/",
+    "en": "/en/category/routes/page/4/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/rotalar/page/5/",
+    "tr": "/category/rotalar/page/5/",
+    "en": "/en/category/routes/page/5/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/rotalar/page/6/",
+    "tr": "/category/rotalar/page/6/",
+    "en": "/en/category/routes/page/6/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/rotalar/page/7/",
+    "tr": "/category/rotalar/page/7/",
+    "en": "/en/category/routes/page/7/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/rotalar/page/8/",
+    "tr": "/category/rotalar/page/8/",
+    "en": "/en/category/routes/page/8/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/category/rotalar/page/9/",
+    "tr": "/category/rotalar/page/9/",
+    "en": "/en/category/routes/page/9/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/iletisim/",
+    "tr": "/iletisim/",
+    "en": "/en/contact/",
+    "template": "english-contact.jsx"
+  },
+  {
+    "id": "page:/tag/antalyakampyerleri/",
+    "tr": "/tag/antalyakampyerleri/",
+    "en": "/en/tag/antalyakampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/artvinkampyerleri/",
+    "tr": "/tag/artvinkampyerleri/",
+    "en": "/en/tag/artvinkampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/batinkampyerleri/",
+    "tr": "/tag/batinkampyerleri/",
+    "en": "/en/tag/batinkampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/bilecikkampyerleri/",
+    "tr": "/tag/bilecikkampyerleri/",
+    "en": "/en/tag/bilecikkampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/bolukampyerleri/",
+    "tr": "/tag/bolukampyerleri/",
+    "en": "/en/tag/bolukampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/bursakampyerleri/",
+    "tr": "/tag/bursakampyerleri/",
+    "en": "/en/tag/bursakampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/cadir/",
+    "tr": "/tag/cadir/",
+    "en": "/en/tag/cadir/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/digerhersey/",
+    "tr": "/tag/digerhersey/",
+    "en": "/en/tag/digerhersey/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/digerhersey/page/10/",
+    "tr": "/tag/digerhersey/page/10/",
+    "en": "/en/tag/digerhersey/page/10/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/digerhersey/page/11/",
+    "tr": "/tag/digerhersey/page/11/",
+    "en": "/en/tag/digerhersey/page/11/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/digerhersey/page/12/",
+    "tr": "/tag/digerhersey/page/12/",
+    "en": "/en/tag/digerhersey/page/12/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/digerhersey/page/2/",
+    "tr": "/tag/digerhersey/page/2/",
+    "en": "/en/tag/digerhersey/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/digerhersey/page/3/",
+    "tr": "/tag/digerhersey/page/3/",
+    "en": "/en/tag/digerhersey/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/digerhersey/page/4/",
+    "tr": "/tag/digerhersey/page/4/",
+    "en": "/en/tag/digerhersey/page/4/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/digerhersey/page/5/",
+    "tr": "/tag/digerhersey/page/5/",
+    "en": "/en/tag/digerhersey/page/5/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/digerhersey/page/6/",
+    "tr": "/tag/digerhersey/page/6/",
+    "en": "/en/tag/digerhersey/page/6/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/digerhersey/page/7/",
+    "tr": "/tag/digerhersey/page/7/",
+    "en": "/en/tag/digerhersey/page/7/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/digerhersey/page/8/",
+    "tr": "/tag/digerhersey/page/8/",
+    "en": "/en/tag/digerhersey/page/8/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/digerhersey/page/9/",
+    "tr": "/tag/digerhersey/page/9/",
+    "en": "/en/tag/digerhersey/page/9/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/djipocket2/",
+    "tr": "/tag/djipocket2/",
+    "en": "/en/tag/djipocket2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/dogadakamp/",
+    "tr": "/tag/dogadakamp/",
+    "en": "/en/tag/dogadakamp/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/dogadakamp/page/2/",
+    "tr": "/tag/dogadakamp/page/2/",
+    "en": "/en/tag/dogadakamp/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/dogayuruyusleri/",
+    "tr": "/tag/dogayuruyusleri/",
+    "en": "/en/tag/dogayuruyusleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/dogayuruyusleri/page/2/",
+    "tr": "/tag/dogayuruyusleri/page/2/",
+    "en": "/en/tag/dogayuruyusleri/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/dogayuruyusleri/page/3/",
+    "tr": "/tag/dogayuruyusleri/page/3/",
+    "en": "/en/tag/dogayuruyusleri/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/dogayuruyusleri/page/4/",
+    "tr": "/tag/dogayuruyusleri/page/4/",
+    "en": "/en/tag/dogayuruyusleri/page/4/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/duzcekampyerleri/",
+    "tr": "/tag/duzcekampyerleri/",
+    "en": "/en/tag/duzcekampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/elektronikekipmanlar/",
+    "tr": "/tag/elektronikekipmanlar/",
+    "en": "/en/tag/elektronikekipmanlar/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/frigyolu/",
+    "tr": "/tag/frigyolu/",
+    "en": "/en/tag/frigyolu/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/hiking/",
+    "tr": "/tag/hiking/",
+    "en": "/en/tag/hiking/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/hiking/page/2/",
+    "tr": "/tag/hiking/page/2/",
+    "en": "/en/tag/hiking/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/hiking/page/3/",
+    "tr": "/tag/hiking/page/3/",
+    "en": "/en/tag/hiking/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/ilk-kamp/",
+    "tr": "/tag/ilk-kamp/",
+    "en": "/en/tag/ilk-kamp/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/iskocya/",
+    "tr": "/tag/iskocya/",
+    "en": "/en/tag/iskocya/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/istanbulkampyerleri/",
+    "tr": "/tag/istanbulkampyerleri/",
+    "en": "/en/tag/istanbulkampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/izmirkampyerleri/",
+    "tr": "/tag/izmirkampyerleri/",
+    "en": "/en/tag/izmirkampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampalani/",
+    "tr": "/tag/kampalani/",
+    "en": "/en/tag/kampalani/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampcadiri/",
+    "tr": "/tag/kampcadiri/",
+    "en": "/en/tag/kampcadiri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampcantalistesi/",
+    "tr": "/tag/kampcantalistesi/",
+    "en": "/en/tag/kampcantalistesi/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampcilik/",
+    "tr": "/tag/kampcilik/",
+    "en": "/en/tag/kampcilik/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampcilik/page/2/",
+    "tr": "/tag/kampcilik/page/2/",
+    "en": "/en/tag/kampcilik/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampcilik/page/3/",
+    "tr": "/tag/kampcilik/page/3/",
+    "en": "/en/tag/kampcilik/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampcilik/page/4/",
+    "tr": "/tag/kampcilik/page/4/",
+    "en": "/en/tag/kampcilik/page/4/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampcilik/page/5/",
+    "tr": "/tag/kampcilik/page/5/",
+    "en": "/en/tag/kampcilik/page/5/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampcilik/page/6/",
+    "tr": "/tag/kampcilik/page/6/",
+    "en": "/en/tag/kampcilik/page/6/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampekipmanlari/",
+    "tr": "/tag/kampekipmanlari/",
+    "en": "/en/tag/kampekipmanlari/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampekipmanlari/page/2/",
+    "tr": "/tag/kampekipmanlari/page/2/",
+    "en": "/en/tag/kampekipmanlari/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampekipmanlari/page/3/",
+    "tr": "/tag/kampekipmanlari/page/3/",
+    "en": "/en/tag/kampekipmanlari/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampekipmanlari/page/4/",
+    "tr": "/tag/kampekipmanlari/page/4/",
+    "en": "/en/tag/kampekipmanlari/page/4/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampguvenligi/",
+    "tr": "/tag/kampguvenligi/",
+    "en": "/en/tag/kampguvenligi/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampmati/",
+    "tr": "/tag/kampmati/",
+    "en": "/en/tag/kampmati/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampmutfagi/",
+    "tr": "/tag/kampmutfagi/",
+    "en": "/en/tag/kampmutfagi/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampyerleriverotalar/",
+    "tr": "/tag/kampyerleriverotalar/",
+    "en": "/en/tag/kampyerleriverotalar/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampyerleriverotalar/page/10/",
+    "tr": "/tag/kampyerleriverotalar/page/10/",
+    "en": "/en/tag/kampyerleriverotalar/page/10/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampyerleriverotalar/page/11/",
+    "tr": "/tag/kampyerleriverotalar/page/11/",
+    "en": "/en/tag/kampyerleriverotalar/page/11/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampyerleriverotalar/page/2/",
+    "tr": "/tag/kampyerleriverotalar/page/2/",
+    "en": "/en/tag/kampyerleriverotalar/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampyerleriverotalar/page/3/",
+    "tr": "/tag/kampyerleriverotalar/page/3/",
+    "en": "/en/tag/kampyerleriverotalar/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampyerleriverotalar/page/4/",
+    "tr": "/tag/kampyerleriverotalar/page/4/",
+    "en": "/en/tag/kampyerleriverotalar/page/4/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampyerleriverotalar/page/5/",
+    "tr": "/tag/kampyerleriverotalar/page/5/",
+    "en": "/en/tag/kampyerleriverotalar/page/5/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampyerleriverotalar/page/6/",
+    "tr": "/tag/kampyerleriverotalar/page/6/",
+    "en": "/en/tag/kampyerleriverotalar/page/6/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampyerleriverotalar/page/7/",
+    "tr": "/tag/kampyerleriverotalar/page/7/",
+    "en": "/en/tag/kampyerleriverotalar/page/7/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampyerleriverotalar/page/8/",
+    "tr": "/tag/kampyerleriverotalar/page/8/",
+    "en": "/en/tag/kampyerleriverotalar/page/8/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kampyerleriverotalar/page/9/",
+    "tr": "/tag/kampyerleriverotalar/page/9/",
+    "en": "/en/tag/kampyerleriverotalar/page/9/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/karabukkampyerleri/",
+    "tr": "/tag/karabukkampyerleri/",
+    "en": "/en/tag/karabukkampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kirklarelikampyerleri/",
+    "tr": "/tag/kirklarelikampyerleri/",
+    "en": "/en/tag/kirklarelikampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kitap/",
+    "tr": "/tag/kitap/",
+    "en": "/en/tag/kitap/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kocaelikampyerleri/",
+    "tr": "/tag/kocaelikampyerleri/",
+    "en": "/en/tag/kocaelikampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kocaelikampyerleri/page/2/",
+    "tr": "/tag/kocaelikampyerleri/page/2/",
+    "en": "/en/tag/kocaelikampyerleri/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/kocaelikampyerleri/page/3/",
+    "tr": "/tag/kocaelikampyerleri/page/3/",
+    "en": "/en/tag/kocaelikampyerleri/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/likyayolu/",
+    "tr": "/tag/likyayolu/",
+    "en": "/en/tag/likyayolu/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/likyayolu/page/2/",
+    "tr": "/tag/likyayolu/page/2/",
+    "en": "/en/tag/likyayolu/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/likyayolu/page/3/",
+    "tr": "/tag/likyayolu/page/3/",
+    "en": "/en/tag/likyayolu/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/likyayolu/page/4/",
+    "tr": "/tag/likyayolu/page/4/",
+    "en": "/en/tag/likyayolu/page/4/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/likyayolurotasi/",
+    "tr": "/tag/likyayolurotasi/",
+    "en": "/en/tag/likyayolurotasi/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/likyayolurotasi/page/2/",
+    "tr": "/tag/likyayolurotasi/page/2/",
+    "en": "/en/tag/likyayolurotasi/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/muglakampyerleri/",
+    "tr": "/tag/muglakampyerleri/",
+    "en": "/en/tag/muglakampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/quechua/",
+    "tr": "/tag/quechua/",
+    "en": "/en/tag/quechua/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/rdegeri/",
+    "tr": "/tag/rdegeri/",
+    "en": "/en/tag/rdegeri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/rizekampyerleri/",
+    "tr": "/tag/rizekampyerleri/",
+    "en": "/en/tag/rizekampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/sakaryakampyerleri/",
+    "tr": "/tag/sakaryakampyerleri/",
+    "en": "/en/tag/sakaryakampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/sinopkampyerleri/",
+    "tr": "/tag/sinopkampyerleri/",
+    "en": "/en/tag/sinopkampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/trabzonkampyerleri/",
+    "tr": "/tag/trabzonkampyerleri/",
+    "en": "/en/tag/trabzonkampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/trekking/",
+    "tr": "/tag/trekking/",
+    "en": "/en/tag/trekking/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/trekking/page/2/",
+    "tr": "/tag/trekking/page/2/",
+    "en": "/en/tag/trekking/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/trekking/page/3/",
+    "tr": "/tag/trekking/page/3/",
+    "en": "/en/tag/trekking/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/trekking/page/4/",
+    "tr": "/tag/trekking/page/4/",
+    "en": "/en/tag/trekking/page/4/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/uykutulumu/",
+    "tr": "/tag/uykutulumu/",
+    "en": "/en/tag/uykutulumu/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yagmurluk/",
+    "tr": "/tag/yagmurluk/",
+    "en": "/en/tag/yagmurluk/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yalovakampyerleri/",
+    "tr": "/tag/yalovakampyerleri/",
+    "en": "/en/tag/yalovakampyerleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yolhikayeleri/",
+    "tr": "/tag/yolhikayeleri/",
+    "en": "/en/tag/yolhikayeleri/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yolhikayeleri/page/10/",
+    "tr": "/tag/yolhikayeleri/page/10/",
+    "en": "/en/tag/yolhikayeleri/page/10/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yolhikayeleri/page/2/",
+    "tr": "/tag/yolhikayeleri/page/2/",
+    "en": "/en/tag/yolhikayeleri/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yolhikayeleri/page/3/",
+    "tr": "/tag/yolhikayeleri/page/3/",
+    "en": "/en/tag/yolhikayeleri/page/3/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yolhikayeleri/page/4/",
+    "tr": "/tag/yolhikayeleri/page/4/",
+    "en": "/en/tag/yolhikayeleri/page/4/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yolhikayeleri/page/5/",
+    "tr": "/tag/yolhikayeleri/page/5/",
+    "en": "/en/tag/yolhikayeleri/page/5/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yolhikayeleri/page/6/",
+    "tr": "/tag/yolhikayeleri/page/6/",
+    "en": "/en/tag/yolhikayeleri/page/6/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yolhikayeleri/page/7/",
+    "tr": "/tag/yolhikayeleri/page/7/",
+    "en": "/en/tag/yolhikayeleri/page/7/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yolhikayeleri/page/8/",
+    "tr": "/tag/yolhikayeleri/page/8/",
+    "en": "/en/tag/yolhikayeleri/page/8/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yolhikayeleri/page/9/",
+    "tr": "/tag/yolhikayeleri/page/9/",
+    "en": "/en/tag/yolhikayeleri/page/9/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yuruyusekipmanlari/",
+    "tr": "/tag/yuruyusekipmanlari/",
+    "en": "/en/tag/yuruyusekipmanlari/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "page:/tag/yuruyusekipmanlari/page/2/",
+    "tr": "/tag/yuruyusekipmanlari/page/2/",
+    "en": "/en/tag/yuruyusekipmanlari/page/2/",
+    "template": "english-collection.jsx"
+  },
+  {
+    "id": "article:doğa-yürüyüşleri/hiking-nedir/index.mdx",
+    "tr": "/hiking-ne-demek/",
+    "en": "/en/what-is-hiking/",
+    "translation": "what-is-hiking.mdx",
+    "sourceRevision": "4cea53fc1cdc38890d428cf767c678280facc55c872b58fdef0091666d69c0ad"
+  },
+  {
+    "id": "article:doğa-yürüyüşleri/trekking-nedir/index.mdx",
+    "tr": "/trekking-ne-demek/",
+    "en": "/en/what-is-trekking/",
+    "translation": "what-is-trekking.mdx",
+    "sourceRevision": "5a77fd488146ed1c0bd97dac98752bbc79a9c0ca473917ad5aa96a64ed176e3b"
+  },
+  {
+    "id": "article:diğer/neden-yola-çıkmalı/index.mdx",
+    "tr": "/neden-yola-cikmali/",
+    "en": "/en/why-get-out-there/",
+    "translation": "why-get-out-there.mdx",
+    "sourceRevision": "26f9e517fc7cdfd159d79cfb97962411cfd11a5964c79b83a75282cf9383ddb5"
+  },
+  {
+    "id": "article:kampçılık/çarşak-ne-demek/index.mdx",
+    "tr": "/carsak-ne-demek/",
+    "en": "/en/what-is-scree/",
+    "translation": "what-is-scree.mdx",
+    "sourceRevision": "37880438beac0f14de8a72bc369cafc198e8a9499f316a487db5c76950956161"
+  },
+  {
+    "id": "article:diğer/kim-bu-adam/index.mdx",
+    "tr": "/ibrahim-uylas-kimdir/",
+    "en": "/en/about-ibrahim-uylas/",
+    "translation": "about-ibrahim-uylas.mdx",
+    "sourceRevision": "47f85b3160d9b202b0503305c5fcd5d518901780df9ec25ca7604fd561a47999"
+  },
+  {
+    "id": "article:doğa-yürüyüşleri/trekking-ile-hiking-arasındaki-farklar-nelerdir/index.mdx",
+    "tr": "/trekking-ile-hiking-arasindaki-farklar-nelerdir/",
+    "en": "/en/hiking-vs-trekking/",
+    "translation": "hiking-vs-trekking.mdx",
+    "sourceRevision": "f5dce6ee344f6ee3ca5dfe46b784aad681197010b6654b7a6771b9396072933e"
+  },
+  {
+    "id": "article:kampçılık/ilk-kamp-nerede-yapilir/index.mdx",
+    "tr": "/ilk-kamp-nerede-yapilir/",
+    "en": "/en/where-to-camp-for-the-first-time/",
+    "translation": "where-to-camp-for-the-first-time.mdx",
+    "sourceRevision": "3a665312c739d3441d826ab6128801722a6c8bbbd4140317b24da4ce91e30f15"
+  },
+  {
+    "id": "article:ekipmanlar/2-seconds-easy-3-kamp-çadırı/index.mdx",
+    "tr": "/2-seconds-easy-3-kamp-cadiri/",
+    "en": "/en/quechua-2-seconds-fresh-black-3-person-tent-review/",
+    "translation": "quechua-2-seconds-fresh-black-3-person-tent-review.mdx",
+    "sourceRevision": "748728954d3e25afddea2cc3e077b4f4d889fb87245a071249923c02ba90e03a"
+  },
+  {
+    "id": "article:diğer/i̇lk-maraton-koşusu-ve-belkide-son/index.mdx",
+    "tr": "/32.km-ilk-maraton-kosusu/",
+    "en": "/en/kilometre-32-my-first-marathon/",
+    "translation": "kilometre-32-my-first-marathon.mdx",
+    "sourceRevision": "e14ea383f30133a761d7453a646242ff5f18106e64431a69983211042935ba84"
+  },
+  {
+    "id": "article:diğer/8-bin-kişiyle-kamp-alkışlar-interrail-türkiye’ye/index.mdx",
+    "tr": "/8-bin-kisiyle-kamp-alkislar-interrail-turkiyeye/",
+    "en": "/en/camping-with-8-000-people-hats-off-to-interrail-turkiye/",
+    "translation": "camping-with-8-000-people-hats-off-to-interrail-turkiye.mdx",
+    "sourceRevision": "fe2669e647221849b7ab89dd88d675a90e4da9d86176a2566762d90668553496"
+  },
+  {
+    "id": "article:diğer/abant-gölünde-kamp-yapmalı-mı/index.mdx",
+    "tr": "/abant-golunde-kamp-yapmali-mi/",
+    "en": "/en/is-lake-abant-a-good-place-to-camp/",
+    "translation": "is-lake-abant-a-good-place-to-camp.mdx",
+    "sourceRevision": "d2e6f434da73eb068427c9d00167cd19d15cb49656488f5d5892ec7f36b8390a"
+  },
+  {
+    "id": "article:rotalar/acelle-yaylası/index.mdx",
+    "tr": "/acelle-yaylasi/",
+    "en": "/en/acelle-highland-camping-directions-and-hiking-routes/",
+    "translation": "acelle-highland-camping-directions-and-hiking-routes.mdx",
+    "sourceRevision": "fa5a9a4f96bd80ba28161d6541b87b529b3f95f7c622705a27525d7308884c26"
+  },
+  {
+    "id": "article:rotalar/aktur-camping/index.mdx",
+    "tr": "/aktur-camping/",
+    "en": "/en/aktur-camping/",
+    "translation": "aktur-camping.mdx",
+    "sourceRevision": "5e421bbe73571997d15ea18d4bd9ac6f8b5a5ae3a89e3f1dadd9f42329d3266c"
+  },
+  {
+    "id": "article:rotalar/aşıklar-nebiler-şelalesi/index.mdx",
+    "tr": "/asiklar-nebiler-selalesi/",
+    "en": "/en/asiklar-nebiler-waterfall/",
+    "translation": "asiklar-nebiler-waterfall.mdx",
+    "sourceRevision": "de96cd133f70f4e28f9dc4c097cded5d2ebd238bf559b1065805d651397cfcbd"
+  },
+  {
+    "id": "article:diğer/ayı-sesi-mi-o/index.mdx",
+    "tr": "/ayi-sesi-mi-o/",
+    "en": "/en/was-that-a-bear/",
+    "translation": "was-that-a-bear.mdx",
+    "sourceRevision": "388b75044ce8f2c2300a123e030ac699332db785ce3bac39529c2f6b91d69a72"
+  },
+  {
+    "id": "article:rotalar/aytepe/index.mdx",
+    "tr": "/aytepe-kamp-yerleri/",
+    "en": "/en/aytepe/",
+    "translation": "aytepe.mdx",
+    "sourceRevision": "4974363a739da33ed80a97ebc5f218df0fc32913b2e15feb0fb4f8bb953855c5"
+  },
+  {
+    "id": "article:diğer/azrail-bu-kez-beni-teğet-geçti/index.mdx",
+    "tr": "/azrail-bu-kez-beni-teget-gecti/",
+    "en": "/en/a-close-brush-with-death/",
+    "translation": "a-close-brush-with-death.mdx",
+    "sourceRevision": "1ef11d6384cef3b218486fd0dd2ab95f741a62bfdee174e06546c93eb1ef1894"
+  },
+  {
+    "id": "article:rotalar/baraklı-göleti/index.mdx",
+    "tr": "/barakli-goleti/",
+    "en": "/en/barakli-pond-directions-and-camping-in-bursa/",
+    "translation": "barakli-pond-directions-and-camping-in-bursa.mdx",
+    "sourceRevision": "0018f8328e2e9e424ee973cb6d9abc5ab9ed38b357fdceacb5535909c182056d"
+  },
+  {
+    "id": "article:rotalar/beğendik-koyu/index.mdx",
+    "tr": "/begendik-koyu/",
+    "en": "/en/begendik-bay/",
+    "translation": "begendik-bay.mdx",
+    "sourceRevision": "0e3f6173026c4d8754e3e65513a7e16cb6b23efcabf472c727dae842a43f8787"
+  },
+  {
+    "id": "article:rotalar/belgrad-ormanları/index.mdx",
+    "tr": "/belgrad-ormanlari/",
+    "en": "/en/belgrad-forest/",
+    "translation": "belgrad-forest.mdx",
+    "sourceRevision": "83a18c725fdc7296252f66533ad41bd065148771d6662e564741089ea57cb8b4"
+  },
+  {
+    "id": "article:diğer/bir-hayale-yolculuk-isle-of-skye/index.mdx",
+    "tr": "/bir-hayale-yolculuk-isle-of-skye/",
+    "en": "/en/a-trip-id-dreamed-of-the-isle-of-skye/",
+    "translation": "a-trip-id-dreamed-of-the-isle-of-skye.mdx",
+    "sourceRevision": "a0264c0362581e06bc4ae1a8eb244a44063b2218682e50f80c1edb4366a91d31"
+  },
+  {
+    "id": "article:rotalar/bolu-abant-gölü/index.mdx",
+    "tr": "/bolu-abant-golu/",
+    "en": "/en/lake-abant-bolu/",
+    "translation": "lake-abant-bolu.mdx",
+    "sourceRevision": "e92a42e8e25491bdc8d9e75a30b902caa5fe0cd083263ac4a30d4c7eec862938"
+  },
+  {
+    "id": "article:rotalar/bolu-yedigöller/index.mdx",
+    "tr": "/bolu-yedigoller/",
+    "en": "/en/yedigoller-bolu/",
+    "translation": "yedigoller-bolu.mdx",
+    "sourceRevision": "7611b027bf3582578b1ff303a8729989182a32882b2d6acae4bc0015fac937a4"
+  },
+  {
+    "id": "article:rotalar/borçka-karagöl/index.mdx",
+    "tr": "/borcka-karagol/",
+    "en": "/en/karagol-borcka/",
+    "translation": "karagol-borcka.mdx",
+    "sourceRevision": "1985d3efabfc8b266db8ab9b4e6a46a534eec9116ceb07fcb71d3e00d60483b4"
+  },
+  {
+    "id": "article:diğer/botların-kıymeti-bilinmeli/index.mdx",
+    "tr": "/botlarin-kiymeti-bilinmeli/",
+    "en": "/en/never-take-your-boots-for-granted/",
+    "translation": "never-take-your-boots-for-granted.mdx",
+    "sourceRevision": "ef5ab732e35ab53100555dc55e3c19230986b7793c3e3c3773335f0e748e870e"
+  },
+  {
+    "id": "article:rotalar/bozcaarmut-göleti/index.mdx",
+    "tr": "/bozcaarmut-goleti/",
+    "en": "/en/bozcaarmut-pond-camping-and-hiking-in-bilecik/",
+    "translation": "bozcaarmut-pond-camping-and-hiking-in-bilecik.mdx",
+    "sourceRevision": "011c7c7baa80de4a784374e3637a416a7a012d21aba5bbc021223df63f74c008"
+  },
+  {
+    "id": "article:kampçılık/buff-nedir-ne-i̇şe-yarar/index.mdx",
+    "tr": "/buff-nedir-ne-ise-yarar/",
+    "en": "/en/what-is-a-buff-and-how-do-you-use-it/",
+    "translation": "what-is-a-buff-and-how-do-you-use-it.mdx",
+    "sourceRevision": "a1fe37e109cab4c383c73467be6f353a9ad4d6bd5f4f5bca9d7674558ed2fbee"
+  },
+  {
+    "id": "article:diğer/bunun-adı-aşk-likya-yolu/index.mdx",
+    "tr": "/bunun-adi-ask-likya-yolu/",
+    "en": "/en/this-must-be-love-preparing-to-walk-the-lycian-way/",
+    "translation": "this-must-be-love-preparing-to-walk-the-lycian-way.mdx",
+    "sourceRevision": "efffee476c9d68f98e06bc3fe391e1d3ed543b85573be28462f2495e715e447d"
+  },
+  {
+    "id": "article:ekipmanlar/cadir-alirken-nelere-dikkat-edilmeli/index.mdx",
+    "tr": "/cadir-alirken-nelere-dikkat-edilmeli/",
+    "en": "/en/how-to-choose-the-right-tent/",
+    "translation": "how-to-choose-the-right-tent.mdx",
+    "sourceRevision": "346ab3b91b6a5a73410279a3d638cbc8ed3d85a5caa7cbe980a339e6dfe83de4"
+  },
+  {
+    "id": "article:rotalar/çakrazşeyhler-plajı/index.mdx",
+    "tr": "/cakrazseyhler-plaji/",
+    "en": "/en/cakrazseyhler-beach/",
+    "translation": "cakrazseyhler-beach.mdx",
+    "sourceRevision": "432213d9bb78cb49e17bf8db61cf12f1c9f05159f02127174d037e12e5253bde"
+  },
+  {
+    "id": "article:rotalar/cehennem-şelaleleri/index.mdx",
+    "tr": "/cehennem-selaleleri/",
+    "en": "/en/cehennem-waterfalls-directions-and-photos/",
+    "translation": "cehennem-waterfalls-directions-and-photos.mdx",
+    "sourceRevision": "2b58b6b053712d701aca579523b25bb6189726a114aef5a6f1c6714e78dae693"
+  },
+  {
+    "id": "article:diğer/erikli-yaylası-çifte-şelaleler-trekking/index.mdx",
+    "tr": "/cifte-selaleler-erikli-yaylasi-trekking/",
+    "en": "/en/hiking-to-the-twin-waterfalls-from-erikli-highland/",
+    "translation": "hiking-to-the-twin-waterfalls-from-erikli-highland.mdx",
+    "sourceRevision": "3a9c8367589e9e081244a5b0dae576b13c73af899fedaca7f82045ca26be8526"
+  },
+  {
+    "id": "article:kampçılık/cliff-reis-i̇le-kampçılık/index.mdx",
+    "tr": "/cliff-jacobson-ile-kampcilik/",
+    "en": "/en/camping-with-captain-cliff/",
+    "translation": "camping-with-captain-cliff.mdx",
+    "sourceRevision": "f20e408af623b48f0f2e7d14ad3e797e8e3c02949db902b00d4d12dc6c2f1e2c"
+  },
+  {
+    "id": "article:diğer/dağ-başında-bekle-geliyorum/index.mdx",
+    "tr": "/dag-basinda-bekle-geliyorum/",
+    "en": "/en/wait-for-me-on-the-mountain/",
+    "translation": "wait-for-me-on-the-mountain.mdx",
+    "sourceRevision": "c7959ad32a0c2ba805019446c7065ccfa81535bc92454ab68a57eb9b2eb75155"
+  },
+  {
+    "id": "article:diğer/dağın-başında-da-dünya-küçükmüş/index.mdx",
+    "tr": "/dagin-basinda-da-dunya-kucukmus/",
+    "en": "/en/its-a-small-world-even-on-a-mountaintop/",
+    "translation": "its-a-small-world-even-on-a-mountaintop.mdx",
+    "sourceRevision": "66adcf96a0757fa978ef6c8428ccc19a89959fd015349b74ebad82cb2cc40c6a"
+  },
+  {
+    "id": "article:rotalar/delmece-yaylası/index.mdx",
+    "tr": "/delmece-yaylasi/",
+    "en": "/en/delmece-highland/",
+    "translation": "delmece-highland.mdx",
+    "sourceRevision": "285d83ae3f9b88c3010f94660f18eec13a151b1aa4f4a45876d92100107a63d0"
+  },
+  {
+    "id": "article:doğa-yürüyüşleri/doğa-yürüyüşleri-i̇çin-gerekli-ekipmanlar/index.mdx",
+    "tr": "/doga-yuruyusleri-icin-gerekli-ekipmanlar/",
+    "en": "/en/hiking-gear-checklist/",
+    "translation": "hiking-gear-checklist.mdx",
+    "sourceRevision": "abf4cf5b92c4734c07d12e6ffe035d41f4c8e1abd69cc3f1fa8f72831772c9cc"
+  },
+  {
+    "id": "article:doğa-yürüyüşleri/doğa-yürüyüşlerinde-çorap-tercihi/index.mdx",
+    "tr": "/doga-yuruyuslerinde-corap-tercihi/",
+    "en": "/en/how-to-choose-hiking-socks/",
+    "translation": "how-to-choose-hiking-socks.mdx",
+    "sourceRevision": "8cb2b69221d757a470bf7642d1dc25babe782367caa47b5a1858abcc80ac3636"
+  },
+  {
+    "id": "article:doğa-yürüyüşleri/doğa-yürüyüşlerinde-dikkat-edilmesi-gerekenler/index.mdx",
+    "tr": "/doga-yuruyuslerinde-dikkat-edilmesi-gerekenler/",
+    "en": "/en/what-to-check-before-going-hiking/",
+    "translation": "what-to-check-before-going-hiking.mdx",
+    "sourceRevision": "ce8938fa2004081b7248795d45234d334838069ab424f4519a08bc0d1ab48f86"
+  },
+  {
+    "id": "article:doğa-yürüyüşleri/doğa-yürüyüşlerinde-nasıl-giyinilmelidir/index.mdx",
+    "tr": "/doga-yuruyuslerinde-nasil-giyinilmelidir/",
+    "en": "/en/how-to-dress-for-a-hike/",
+    "translation": "how-to-dress-for-a-hike.mdx",
+    "sourceRevision": "8c9e228ffc5d7973954ece9f4a64b6213ac28dc6aab589668f4412ebe784e0c5"
+  },
+  {
+    "id": "article:doğa-yürüyüşleri/doğa-yürüyüşlerinin-faydaları/index.mdx",
+    "tr": "/doga-yuruyusunun-faydalari-nelerdir/",
+    "en": "/en/the-benefits-of-hiking/",
+    "translation": "the-benefits-of-hiking.mdx",
+    "sourceRevision": "50808b332231b480b7a7a5789cee0b6b9a9ee83edf03e008d5dd0f8c3cb6cc4b"
+  },
+  {
+    "id": "article:kampçılık/doğada-kamp-yapmak-güvenli-midir/index.mdx",
+    "tr": "/dogada-kamp-yapmak-guvenli-midir/",
+    "en": "/en/is-wild-camping-safe/",
+    "translation": "is-wild-camping-safe.mdx",
+    "sourceRevision": "23176f4241629b97a2e2feefc770136f7744e4312754e154958f62b9fe18fae7"
+  },
+  {
+    "id": "article:diğer/doğu-karadeniz-kampı/index.mdx",
+    "tr": "/dogu-karadeniz-kampi/",
+    "en": "/en/camping-in-the-eastern-black-sea-region/",
+    "translation": "camping-in-the-eastern-black-sea-region.mdx",
+    "sourceRevision": "e7edf1240f850d82accede2482597c44685b8cd81f7bade5fe41fc3dd71192fa"
+  },
+  {
+    "id": "article:rotalar/dupnisa-mağarası/index.mdx",
+    "tr": "/dupnisa-magarasi/",
+    "en": "/en/dupnisa-cave/",
+    "translation": "dupnisa-cave.mdx",
+    "sourceRevision": "bc3cdded10db17bfab288b505db45d64572c90367786845bc75c6ac851057414"
+  },
+  {
+    "id": "article:ekipmanlar/el-yapımı-kamp-bıçağı/index.mdx",
+    "tr": "/el-yapimi-kamp-bicagi/",
+    "en": "/en/a-handmade-camping-knife/",
+    "translation": "a-handmade-camping-knife.mdx",
+    "sourceRevision": "03f1f1d1819b531298a728bcc101a470fd2978e95979d7f782b0428db94871c7"
+  },
+  {
+    "id": "article:diğer/endurocuyuz-biz-mi-acaba/index.mdx",
+    "tr": "/endurocuyuz-biz-mi-acaba/",
+    "en": "/en/are-we-really-enduro-riders/",
+    "translation": "are-we-really-enduro-riders.mdx",
+    "sourceRevision": "7971e2bf53c9b98f78c3d228658c82c58657ca47392d562a929e7cea177efe70"
+  },
+  {
+    "id": "article:rotalar/ercuva-yaylası/index.mdx",
+    "tr": "/ercuva-yaylasi/",
+    "en": "/en/ercuva-highland/",
+    "translation": "ercuva-highland.mdx",
+    "sourceRevision": "d3c9844db4830d1f269929e9e1bd32231a886850e9c7f37d3b444072636d54bf"
+  },
+  {
+    "id": "article:rotalar/erfelek-tatlıca-şelaleleri/index.mdx",
+    "tr": "/erfelek-tatlica-selaleleri/",
+    "en": "/en/erfelek-tatlica-waterfalls/",
+    "translation": "erfelek-tatlica-waterfalls.mdx",
+    "sourceRevision": "61316c0c1a0f958a2cda2b30821d6ea54059792880934e88691d2ef60706b8e0"
+  },
+  {
+    "id": "article:diğer/erikli-şelalesi-bahar-kampı/index.mdx",
+    "tr": "/erikli-selalesi-bahar-kampi/",
+    "en": "/en/spring-camping-at-erikli-waterfall/",
+    "translation": "spring-camping-at-erikli-waterfall.mdx",
+    "sourceRevision": "c214ed22d9d611169638cfe4670c1af47c86387e8b835eb6bb7e1a3bccf87b36"
+  },
+  {
+    "id": "article:rotalar/erikli-yaylası-erikli-şelalesi/index.mdx",
+    "tr": "/erikli-yaylasi-erikli-selalesi/",
+    "en": "/en/erikli-highland-and-waterfall/",
+    "translation": "erikli-highland-and-waterfall.mdx",
+    "sourceRevision": "3ac6963575f3e67048a073c1ccfd406bac958e6ddb8abbe04a1c15f682d094b2"
+  },
+  {
+    "id": "article:diğer/eşek-saldırısı-nedir-arkadaş/index.mdx",
+    "tr": "/esek-saldirisi-nedir-arkadas/",
+    "en": "/en/what-do-you-mean-attacked-by-a-donkey/",
+    "translation": "what-do-you-mean-attacked-by-a-donkey.mdx",
+    "sourceRevision": "4d030d45031a80f212e4bbe3c43e9b864d848dfdb0f1bafaad96fde2e789a71f"
+  },
+  {
+    "id": "article:diğer/delmece-yaylası-trekking/index.mdx",
+    "tr": "/esenkoy-delmece-yaylasi-narli-trekking/",
+    "en": "/en/hiking-at-delmece-highland/",
+    "translation": "hiking-at-delmece-highland.mdx",
+    "sourceRevision": "13744088f34507ba9a15f6dd8d3d444375940f595f4db61fac3c46bafc88f066"
+  },
+  {
+    "id": "article:diğer/evde-kano-yapımı/index.mdx",
+    "tr": "/evde-kano-yapimi/",
+    "en": "/en/building-a-canoe-at-home-the-story-of-plankton-step-by-step/",
+    "translation": "building-a-canoe-at-home-the-story-of-plankton-step-by-step.mdx",
+    "sourceRevision": "ae2bd3e5af9931241b3044590041e4f20dfa4f229a7c458b6c659f99d1de34e2"
+  },
+  {
+    "id": "article:ekipmanlar/ferrino-çadır-kazığı/index.mdx",
+    "tr": "/ferrino-cadir-kazigi/",
+    "en": "/en/ferrino-steel-tent-peg-review/",
+    "translation": "ferrino-steel-tent-peg-review.mdx",
+    "sourceRevision": "aadbcbbcf044c82db63e43003a59db537095084c2e8c29cf5c88d6d3b14d809c"
+  },
+  {
+    "id": "article:ekipmanlar/ferrino-lightent-2-kamp-çadırı/index.mdx",
+    "tr": "/ferrino-lightent-2-kamp-cadiri/",
+    "en": "/en/ferrino-lightent-2-tent-review-is-it-light-and-who-is-it-for/",
+    "translation": "ferrino-lightent-2-tent-review-is-it-light-and-who-is-it-for.mdx",
+    "sourceRevision": "ae61a05a8fb63043001f2b334677fc970d084981b23c1e59b85b50dff76a68be"
+  },
+  {
+    "id": "article:diğer/frig-yolu-da-nedir-ki/index.mdx",
+    "tr": "/frig-yolu-da-nedir-ki/",
+    "en": "/en/what-is-the-phrygian-way/",
+    "translation": "what-is-the-phrygian-way.mdx",
+    "sourceRevision": "878650d81f991ec3bd7799b9dcf9aa89e3a4a55f25bacca0045f2f0795059d74"
+  },
+  {
+    "id": "article:rotalar/gebze-denizli-göleti/index.mdx",
+    "tr": "/gebze-denizli-goleti/",
+    "en": "/en/gebze-denizli-pond-camping-directions-and-routes/",
+    "translation": "gebze-denizli-pond-camping-directions-and-routes.mdx",
+    "sourceRevision": "6982601b18197fb86f8abd2f22e9a5d10d14ad22aa90d7e3239312ff3b83c849"
+  },
+  {
+    "id": "article:diğer/her-şeyi-bırakıp-gezgin-olmak/index.mdx",
+    "tr": "/gezgin-olmak/",
+    "en": "/en/being-a-traveller/",
+    "translation": "being-a-traveller.mdx",
+    "sourceRevision": "0b4fcb927ccf70d36a09b246c2d113bd0c7589c01e944c83df17d53b9e62d2c9"
+  },
+  {
+    "id": "article:kampçılık/gtx-ayakkabı-ne-demek/index.mdx",
+    "tr": "/gtx-ayakkabi-ne-demek/",
+    "en": "/en/what-does-gtx-mean-on-footwear/",
+    "translation": "what-does-gtx-mean-on-footwear.mdx",
+    "sourceRevision": "7c6f7b4642bff48923481801c0554e1eecf86ff0766e5dc0157a42f00ea9deaa"
+  },
+  {
+    "id": "article:kampçılık/güvenli-kamp-ateşi-i̇çin-en-i̇yi-10-i̇pucu/index.mdx",
+    "tr": "/guvenli-kamp-atesi-icin-en-iyi-10-ipucu/",
+    "en": "/en/10-tips-for-a-safe-campfire/",
+    "translation": "10-tips-for-a-safe-campfire.mdx",
+    "sourceRevision": "a2f9fe361bff7eb2479c434d71b0f56625ca50644cea7402300daa59b89eca7f"
+  },
+  {
+    "id": "article:rotalar/hacılı-köyü-şelaleleri/index.mdx",
+    "tr": "/hacili-koyu-selaleleri/",
+    "en": "/en/hacili-village-waterfalls/",
+    "translation": "hacili-village-waterfalls.mdx",
+    "sourceRevision": "912e277dd5586f759268b24c63a25a8a068344ce34552c82020d09d4ce646ed4"
+  },
+  {
+    "id": "article:diğer/hayalleri-olanlara-selam-olsun/index.mdx",
+    "tr": "/hayalleri-olanlara-selam-olsun/",
+    "en": "/en/heres-to-everyone-with-a-dream/",
+    "translation": "heres-to-everyone-with-a-dream.mdx",
+    "sourceRevision": "ebafff071ea19670c4249438c9c599c3756e0e4441193005f01f726f978620f8"
+  },
+  {
+    "id": "article:diğer/kim-bu-adam-2014/index.mdx",
+    "tr": "/ibrahim-uylas-kimdir-2014/",
+    "en": "/en/who-was-i-in-2014/",
+    "translation": "who-was-i-in-2014.mdx",
+    "sourceRevision": "fef0cf96d5ce1d9c084b93e7bf16e51a333bb6b2750ff07e28a8705e5fe04821"
+  },
+  {
+    "id": "article:diğer/i̇ğneada-kampı/index.mdx",
+    "tr": "/igneada-kampi/",
+    "en": "/en/camping-in-igneada/",
+    "translation": "camping-in-igneada.mdx",
+    "sourceRevision": "175793262912b64692c1fcd2dd8e5e92e9ab1aef7df1aba0b65ba234777d8653"
+  },
+  {
+    "id": "article:rotalar/i̇ğneada-longozlar/index.mdx",
+    "tr": "/igneada-longozlar/",
+    "en": "/en/igneada-floodplain-forests/",
+    "translation": "igneada-floodplain-forests.mdx",
+    "sourceRevision": "01dda039a3c79abe540d0d5f4198cbc7eb5e31bc9e1a2dfaa97436f30c0a19f8"
+  },
+  {
+    "id": "article:kampçılık/i̇ki-kişilik-uyku-tulumu-hakkında/index.mdx",
+    "tr": "/iki-kisilik-uyku-tulumu-hakkinda/",
+    "en": "/en/double-sleeping-bags/",
+    "translation": "double-sleeping-bags.mdx",
+    "sourceRevision": "01cf022c8ffca5a0f46ba240950e1050f151e013805a3de31a4d4191e244a500"
+  },
+  {
+    "id": "article:kampçılık/ilk-kamp-icin-gerekli-malzemeler/index.mdx",
+    "tr": "/ilk-kamp-icin-gerekli-malzemeler/",
+    "en": "/en/what-to-pack-for-your-first-camping-trip/",
+    "translation": "what-to-pack-for-your-first-camping-trip.mdx",
+    "sourceRevision": "f4b9de7b7c27da451e5e7f976c397a465bcfb9f6ec9b3fe199fb5d5d67f00062"
+  },
+  {
+    "id": "article:diğer/i̇nönü-yaylası-sonbahar-kampı/index.mdx",
+    "tr": "/inonu-yaylasi-sonbahar-kampi/",
+    "en": "/en/autumn-camping-at-inonu-highland/",
+    "translation": "autumn-camping-at-inonu-highland.mdx",
+    "sourceRevision": "54274541f3791f424d9558e067d39eae9ac430c5d3bb58126165c6c965f6834e"
+  },
+  {
+    "id": "article:rotalar/i̇nönü-yaylası/index.mdx",
+    "tr": "/inonu-yaylasi/",
+    "en": "/en/inonu-highland/",
+    "translation": "inonu-highland.mdx",
+    "sourceRevision": "0841c3f7e804232409839f32677cd8d13108abcf567fb891db493be172df9e9a"
+  },
+  {
+    "id": "article:diğer/i̇nönü-yaylasından-aytepeye-trekking/index.mdx",
+    "tr": "/inonu-yaylasindan-aytepeye-trekking/",
+    "en": "/en/hiking-from-inonu-highland-to-aytepe/",
+    "translation": "hiking-from-inonu-highland-to-aytepe.mdx",
+    "sourceRevision": "9e4d609ff30297237013aa4826dff22dcb6dce447565fa113082b6c51e33307b"
+  },
+  {
+    "id": "article:diğer/i̇skoç-yaylaları-ben-nevis-2-bölüm/index.mdx",
+    "tr": "/iskoc-yaylalari-ben-nevis-2.-bolum/",
+    "en": "/en/scottish-highlands-part-2-ben-nevis/",
+    "translation": "scottish-highlands-part-2-ben-nevis.mdx",
+    "sourceRevision": "f4a80dcdd3767e93e1e048bbb4355a6bc3750e948e315dfe31996636f7d916b4"
+  },
+  {
+    "id": "article:diğer/scottish-highlands-inverness-1-bölüm/index.mdx",
+    "tr": "/iskoc-yaylalari-inverness-1.-bolum/",
+    "en": "/en/scottish-highlands-part-1-inverness/",
+    "translation": "scottish-highlands-part-1-inverness.mdx",
+    "sourceRevision": "8973dddc7520cfefd600376cef5c4b5057fbd4322ff54ea5698975e710ccbd1d"
+  },
+  {
+    "id": "article:diğer/i̇skoç-yaylaları-isle-of-skye-3-bölüm/index.mdx",
+    "tr": "/iskoc-yaylalari-isle-of-skye-3.-bolum/",
+    "en": "/en/scottish-highlands-part-3-the-isle-of-skye/",
+    "translation": "scottish-highlands-part-3-the-isle-of-skye.mdx",
+    "sourceRevision": "349f64dfd9cea14bd94b09c3dd948c366013cd297fa83f78be1b3bd177d082c7"
+  },
+  {
+    "id": "article:diğer/i̇skoç-yaylaları-nc500-rotası-4-bölüm/index.mdx",
+    "tr": "/iskoc-yaylalari-nc500-rotasi-4.-bolum/",
+    "en": "/en/scottish-highlands-part-4-the-nc500/",
+    "translation": "scottish-highlands-part-4-the-nc500.mdx",
+    "sourceRevision": "d46817bc1b37d31cf380b34077901fa70f880f16e2759da7758201eba1c38cf6"
+  },
+  {
+    "id": "article:diğer/i̇znik-sansarak-kanyonu/index.mdx",
+    "tr": "/iznik-sansarak-kanyonu/",
+    "en": "/en/sansarak-canyon-iznik/",
+    "translation": "sansarak-canyon-iznik.mdx",
+    "sourceRevision": "fa8c5e84cec9ffb1e478c284ee68c86cac5b2033a2391b05afd178f54293a14f"
+  },
+  {
+    "id": "article:ekipmanlar/jack-wolfskin-erkek-trekking-botu/index.mdx",
+    "tr": "/jack-wolfskin-erkek-trekking-botu/",
+    "en": "/en/jack-wolfskin-mens-trekking-boots/",
+    "translation": "jack-wolfskin-mens-trekking-boots.mdx",
+    "sourceRevision": "cb4c44f2e7190caea164ad4f776bccab1a5a04bd6db86c1ba6ff706c136c42ac"
+  },
+  {
+    "id": "article:diğer/kaçkar-dağları-anlık-bilinç-kaybı/index.mdx",
+    "tr": "/kackar-daglari-anlik-bilinc-kaybi/",
+    "en": "/en/a-brief-loss-of-consciousness-in-the-kackar-mountains/",
+    "translation": "a-brief-loss-of-consciousness-in-the-kackar-mountains.mdx",
+    "sourceRevision": "75360047b221492ea7a55d37ee954305709df1e7cb0cb86249b1ce2f64f56a02"
+  },
+  {
+    "id": "article:diğer/kaçkar-dağları-naletleme-geçidi/index.mdx",
+    "tr": "/kackar-daglari-naletleme-gecidi/",
+    "en": "/en/naletleme-pass-in-the-kackar-mountains/",
+    "translation": "naletleme-pass-in-the-kackar-mountains.mdx",
+    "sourceRevision": "555479804c517f629455971ec2239dedebb9d4b6f3ad8add97e9a4f7305a9d96"
+  },
+  {
+    "id": "article:diğer/kaçkar’lardan-gelen-telefon/index.mdx",
+    "tr": "/kackarlardan-gelen-telefon/",
+    "en": "/en/a-phone-call-from-the-kackar-mountains/",
+    "translation": "a-phone-call-from-the-kackar-mountains.mdx",
+    "sourceRevision": "9de172f8a3e69b926a0b807d063568b36c27bcae8b0846c7a0152baf3676fc50"
+  },
+  {
+    "id": "article:ekipmanlar/kamp-ekipmanlarinin-evrimi/index.mdx",
+    "tr": "/kamp-ekipmanlarinin-evrimi/",
+    "en": "/en/how-camping-gear-has-changed-from-tents-to-sleeping-bags/",
+    "translation": "how-camping-gear-has-changed-from-tents-to-sleeping-bags.mdx",
+    "sourceRevision": "9494e99489912a26edd6039d1f1e55faabf3f572e55a3e371318bcd5681b6c83"
+  },
+  {
+    "id": "article:ekipmanlar/kamp-hamağı/index.mdx",
+    "tr": "/kamp-hamagi/",
+    "en": "/en/camping-hammocks/",
+    "translation": "camping-hammocks.mdx",
+    "sourceRevision": "f1d30af3502eb8a2b2c8112abaae521a81aa581d622cece20d01c1e0bd8dea96"
+  },
+  {
+    "id": "article:kampçılık/kamp-hayatına-bulaşmak-i̇ster-misiniz/index.mdx",
+    "tr": "/kamp-hayatina-bulasmak-ister-misiniz/",
+    "en": "/en/fancy-taking-up-camping/",
+    "translation": "fancy-taking-up-camping.mdx",
+    "sourceRevision": "5b63d0de43fcf65c44a5d04e36bef19d92f021e35e7429e93705109e5d10937d"
+  },
+  {
+    "id": "article:ekipmanlar/kamplarda-ve-doğa-yürüyüşlerinde-dji-pocket-2-i̇ncelemesi/index.mdx",
+    "tr": "/kamplarda-ve-doga-yuruyuslerinde-dji-pocket-2-incelemesi/",
+    "en": "/en/dji-pocket-2-review-for-camping-and-hiking/",
+    "translation": "dji-pocket-2-review-for-camping-and-hiking.mdx",
+    "sourceRevision": "a612f22c54b62196b952317bbefa80f06d61dec9efa7ee09751f8835339c0254"
+  },
+  {
+    "id": "article:rotalar/kaputaş-plajı/index.mdx",
+    "tr": "/kaputas-plaji/",
+    "en": "/en/kaputas-beach/",
+    "translation": "kaputas-beach.mdx",
+    "sourceRevision": "d46f0c166828efecc20a783997e130b98c65e92da9ebf98a5c7086bdca6cbc8e"
+  },
+  {
+    "id": "article:rotalar/karaaslan-kamping/index.mdx",
+    "tr": "/karaaslan-kamping/",
+    "en": "/en/karaaslan-camping/",
+    "translation": "karaaslan-camping.mdx",
+    "sourceRevision": "e65931aca70f7e22195e080edb08a2c5f8a01147609b9a9699b72453f4b0ee5e"
+  },
+  {
+    "id": "article:rotalar/karacaköy-göleti/index.mdx",
+    "tr": "/karacakoy-goleti/",
+    "en": "/en/karacakoy-pond-directions-camping-and-routes/",
+    "translation": "karacakoy-pond-directions-camping-and-routes.mdx",
+    "sourceRevision": "eefdf730a633ef0d0093465fb6c533c475876c0aa85fcb8a9a65cd3462e68fc1"
+  },
+  {
+    "id": "article:rotalar/karlık-yaylası/index.mdx",
+    "tr": "/karlik-yaylasi/",
+    "en": "/en/karlik-highland/",
+    "translation": "karlik-highland.mdx",
+    "sourceRevision": "b4e7fd45c63dbdc4c61719e366e4ab28fb8dad085d0ac59a9d750201f1db259d"
+  },
+  {
+    "id": "article:diğer/arabayla-kaya-üstü-yaylası-mı-sakın/index.mdx",
+    "tr": "/kaya-ustu-yaylasi-kampi/",
+    "en": "/en/driving-to-kayaustu-highland-think-again/",
+    "translation": "driving-to-kayaustu-highland-think-again.mdx",
+    "sourceRevision": "ed6c304019cee27a8c7547b051db9218b4cb8dcbea2fa8687f0927eeda3ee055"
+  },
+  {
+    "id": "article:rotalar/kayaüstü-yaylası/index.mdx",
+    "tr": "/kayaustu-yaylasi/",
+    "en": "/en/kayaustu-highland/",
+    "translation": "kayaustu-highland.mdx",
+    "sourceRevision": "be2121c9080d9dcc512f587ef851bcfda8ad9e5911fc733e9486a6946f575344"
+  },
+  {
+    "id": "article:diğer/kaz-dağları-trekking/index.mdx",
+    "tr": "/kaz-daglari-trekking/",
+    "en": "/en/hiking-in-the-kaz-mountains/",
+    "translation": "hiking-in-the-kaz-mountains.mdx",
+    "sourceRevision": "601b4d2a0e9f3ececc130069113c08a99f0b6a7de58a99d3da8f285763539d6a"
+  },
+  {
+    "id": "article:rotalar/keramet-köyü-kaplıcası/index.mdx",
+    "tr": "/keramet-koyu-kaplicasi/",
+    "en": "/en/keramet-village-hot-spring/",
+    "translation": "keramet-village-hot-spring.mdx",
+    "sourceRevision": "7150286cee02e84d16e04169846689af14594e7478aa4b48b96eed2f8dcede2b"
+  },
+  {
+    "id": "article:rotalar/kerpe/index.mdx",
+    "tr": "/kerpe-kamp-yerleri/",
+    "en": "/en/kerpe/",
+    "translation": "kerpe.mdx",
+    "sourceRevision": "90e92b85b71b02859083ddb3d6ff726bf007c771e77aa4ffafd779c52e44a25b"
+  },
+  {
+    "id": "article:diğer/kerpe-kampı/index.mdx",
+    "tr": "/kerpe-kampi/",
+    "en": "/en/camping-in-kerpe/",
+    "translation": "camping-in-kerpe.mdx",
+    "sourceRevision": "34ecaefd0f4c3a2fbfa4d3e7b04b1de0e038e03db6ff85cb00a01dc6a1943468"
+  },
+  {
+    "id": "article:rotalar/kilimli-koyu/index.mdx",
+    "tr": "/kilimli-koyu/",
+    "en": "/en/kilimli-bay/",
+    "translation": "kilimli-bay.mdx",
+    "sourceRevision": "782bd5931ff7282681b4b53e116127b6841f1269b1076fb7613d37b7dc05a5f1"
+  },
+  {
+    "id": "article:diğer/kurumsal-hayat-mı-doğal-hayat-mı/index.mdx",
+    "tr": "/kurumsal-hayat-mi-dogal-hayat-mi/",
+    "en": "/en/corporate-life-or-life-outdoors/",
+    "translation": "corporate-life-or-life-outdoors.mdx",
+    "sourceRevision": "e9de1ce6b9f30c896466d46f94aac57de490a2071c22df6b19f39db6a01bfdc4"
+  },
+  {
+    "id": "article:diğer/likya-parkuru-sırt-çantam/index.mdx",
+    "tr": "/likya-parkuru-sirt-cantam/",
+    "en": "/en/my-lycian-way-backpack-2014-gear-list/",
+    "translation": "my-lycian-way-backpack-2014-gear-list.mdx",
+    "sourceRevision": "5bcf8024f9f9666d299cce8c1de0b86b91fcb74df555f916e27a09354448a01a"
+  },
+  {
+    "id": "article:diğer/likya-yolu-1-gün/index.mdx",
+    "tr": "/likya-yolu-1.-gun/",
+    "en": "/en/lycian-way-day-1-journal-oludeniz-to-kabak-bay/",
+    "translation": "lycian-way-day-1-journal-oludeniz-to-kabak-bay.mdx",
+    "sourceRevision": "0892335f628623e21480b707be1f068b235d5e3045e9c5bc2ce279bcb1e9acc9"
+  },
+  {
+    "id": "article:diğer/likya-yolu-10-gün/index.mdx",
+    "tr": "/likya-yolu-10.-gun/",
+    "en": "/en/lycian-way-day-10-journal-kas-to-kormen-island/",
+    "translation": "lycian-way-day-10-journal-kas-to-kormen-island.mdx",
+    "sourceRevision": "872d0932c4faa0d3cad128d7fae37b7655a096866e1654ad95a7740f7d8564e8"
+  },
+  {
+    "id": "article:diğer/likya-yolu-11-günde-yürüdüğüm-parkur/index.mdx",
+    "tr": "/likya-yolu-11-gunde-yurudugum-parkur/",
+    "en": "/en/an-11-day-lycian-way-hike-oludeniz-to-kaleucagiz/",
+    "translation": "an-11-day-lycian-way-hike-oludeniz-to-kaleucagiz.mdx",
+    "sourceRevision": "f58b73540ad7000c5168d950efbf95508f3d1e3d603ffba1449b8f2986b80a4f"
+  },
+  {
+    "id": "article:diğer/likya-yolu-11-gün/index.mdx",
+    "tr": "/likya-yolu-11.-gun/",
+    "en": "/en/lycian-way-day-11-journal-kormen-island-to-kaleucagiz/",
+    "translation": "lycian-way-day-11-journal-kormen-island-to-kaleucagiz.mdx",
+    "sourceRevision": "7d8c9e80ddf0da7e39023dc026372a08ca0ff29b91922077f881ad3428524dde"
+  },
+  {
+    "id": "article:diğer/likya-yolu-2-gün/index.mdx",
+    "tr": "/likya-yolu-2.-gun/",
+    "en": "/en/lycian-way-day-2-journal-kabak-bay-to-sidyma/",
+    "translation": "lycian-way-day-2-journal-kabak-bay-to-sidyma.mdx",
+    "sourceRevision": "877f3a3856e8ed69a09f03d7756cca33f3eeb0fd7a1399cac4bb612377635b16"
+  },
+  {
+    "id": "article:diğer/likya-yolu-2014-planim/index.mdx",
+    "tr": "/likya-yolu-2014-planim/",
+    "en": "/en/my-2014-lycian-way-plan-and-trail-notes/",
+    "translation": "my-2014-lycian-way-plan-and-trail-notes.mdx",
+    "sourceRevision": "3f176e6a882f2fc32930f14d8cb253d97f219482aea7a4c279622c6d509b55d4"
+  },
+  {
+    "id": "article:diğer/likya-yolu-3-gün/index.mdx",
+    "tr": "/likya-yolu-3.-gun/",
+    "en": "/en/lycian-way-day-3-journal-sidyma-to-karadere/",
+    "translation": "lycian-way-day-3-journal-sidyma-to-karadere.mdx",
+    "sourceRevision": "f773cf1d79ae3701d8dcc3a439a00310d43be4f1c4bc510d6694c8956ba2fa96"
+  },
+  {
+    "id": "article:diğer/likya-yolu-4-gün/index.mdx",
+    "tr": "/likya-yolu-4.-gun/",
+    "en": "/en/lycian-way-day-4-journal-karadere-to-kinik/",
+    "translation": "lycian-way-day-4-journal-karadere-to-kinik.mdx",
+    "sourceRevision": "d0e90a75a87590a7e807f31ea9af7fd31605a26f368d71b557915f6aae26b6b4"
+  },
+  {
+    "id": "article:diğer/likya-yolu-5-gün/index.mdx",
+    "tr": "/likya-yolu-5.-gun/",
+    "en": "/en/lycian-way-day-5-journal-kinik-to-uzumlu/",
+    "translation": "lycian-way-day-5-journal-kinik-to-uzumlu.mdx",
+    "sourceRevision": "6771574bfa53f7e827ab78606370cc7836990e56206ff9fb3c68d80915d6ef8f"
+  },
+  {
+    "id": "article:diğer/likya-yolu-6-gün/index.mdx",
+    "tr": "/likya-yolu-6.-gun/",
+    "en": "/en/lycian-way-day-6-journal-uzumlu-to-bezirgan/",
+    "translation": "lycian-way-day-6-journal-uzumlu-to-bezirgan.mdx",
+    "sourceRevision": "f1333c8f624c4aba43082bc3c5d4d0a2f167dc23fab26d945f48db102621d31a"
+  },
+  {
+    "id": "article:diğer/likya-yolu-7-gün/index.mdx",
+    "tr": "/likya-yolu-7.-gun/",
+    "en": "/en/lycian-way-day-7-journal-bezirgan-to-saribelen/",
+    "translation": "lycian-way-day-7-journal-bezirgan-to-saribelen.mdx",
+    "sourceRevision": "bd8517fdf93be5a48b18c96ab2e66e54146b557b56f854266646461a98ad3e1a"
+  },
+  {
+    "id": "article:diğer/likya-yolu-8-gün/index.mdx",
+    "tr": "/likya-yolu-8.-gun/",
+    "en": "/en/lycian-way-day-8-journal-saribelen-to-gokceoren/",
+    "translation": "lycian-way-day-8-journal-saribelen-to-gokceoren.mdx",
+    "sourceRevision": "ba2c0891611819f38fa0d4cdd516fe5a7dd048fc5940eeaf01b271dbc6a32808"
+  },
+  {
+    "id": "article:diğer/likya-yolu-9-gün/index.mdx",
+    "tr": "/likya-yolu-9.-gun/",
+    "en": "/en/lycian-way-day-9-journal-gokceoren-to-kas/",
+    "translation": "lycian-way-day-9-journal-gokceoren-to-kas.mdx",
+    "sourceRevision": "73c6025cff3d3ad28f8cf2427273ca45dc2a711c743c59e6aa406c80aac59dbd"
+  },
+  {
+    "id": "article:diğer/likya-yolu-hazırlıkları/index.mdx",
+    "tr": "/likya-yolu-hazirliklari/",
+    "en": "/en/preparing-for-the-lycian-way-my-2014-plan-and-training-notes/",
+    "translation": "preparing-for-the-lycian-way-my-2014-plan-and-training-notes.mdx",
+    "sourceRevision": "6b98ae4ad96128cf02ace42929edb1d86c2469e035708af6d988e6a080f233e3"
+  },
+  {
+    "id": "article:rotalar/likya-yolu-rotası-bezirgandan-sarıbelene/index.mdx",
+    "tr": "/likya-yolu-rotasi-bezirgandan-saribelene/",
+    "en": "/en/lycian-way-stage-7-bezirgan-to-saribelen-12-km/",
+    "translation": "lycian-way-stage-7-bezirgan-to-saribelen-12-km.mdx",
+    "sourceRevision": "dbf913a36eeb12f10b90c05974bc1cbd5e4b392bbcac8011fe0a2d0a0d8a131e"
+  },
+  {
+    "id": "article:rotalar/likya-yolu-rotası-gökçeörenden-kaşa/index.mdx",
+    "tr": "/likya-yolu-rotasi-gokceorenden-kasa/",
+    "en": "/en/lycian-way-stage-9-gokceoren-to-kas-28-km/",
+    "translation": "lycian-way-stage-9-gokceoren-to-kas-28-km.mdx",
+    "sourceRevision": "eb6ce628ddb8b2f1ac6c9b774262b86b3e0c0abb1f520bbf96798ee6ad5bfffe"
+  },
+  {
+    "id": "article:rotalar/likya-yolu-rotası-kabak-koyundan-sidyma-antik-kentine/index.mdx",
+    "tr": "/likya-yolu-rotasi-kabak-koyundan-sidyma-antik-kentine/",
+    "en": "/en/lycian-way-stage-2-kabak-bay-to-sidyma-23-km/",
+    "translation": "lycian-way-stage-2-kabak-bay-to-sidyma-23-km.mdx",
+    "sourceRevision": "c9f0ed82c5e9bf4f39cc84d1a7f8731013bcbd64592b5f0e3b4de56e6695b485"
+  },
+  {
+    "id": "article:rotalar/likya-yolu-rotası-karadereden-kınıka/index.mdx",
+    "tr": "/likya-yolu-rotasi-karadereden-kinika/",
+    "en": "/en/lycian-way-stage-4-karadere-to-kinik-15-km/",
+    "translation": "lycian-way-stage-4-karadere-to-kinik-15-km.mdx",
+    "sourceRevision": "26aa32408ad7d860e0c782231dbdaf927d333403aec968a14f9ddc6adb242c86"
+  },
+  {
+    "id": "article:rotalar/likya-yolu-rotası-kaşdan-körmen-adasına/index.mdx",
+    "tr": "/likya-yolu-rotasi-kasdan-kormen-adasina/",
+    "en": "/en/lycian-way-stage-10-kas-to-kormen-island-13-km/",
+    "translation": "lycian-way-stage-10-kas-to-kormen-island-13-km.mdx",
+    "sourceRevision": "6011cf3c85fc682b18f39094728399545b41b59bce46aa84ff5de1f3d5ffde58"
+  },
+  {
+    "id": "article:rotalar/likya-yolu-rotası-kınıkdan-üzümlüye/index.mdx",
+    "tr": "/likya-yolu-rotasi-kinikdan-uzumluye/",
+    "en": "/en/lycian-way-stage-5-kinik-to-uzumlu-22-km/",
+    "translation": "lycian-way-stage-5-kinik-to-uzumlu-22-km.mdx",
+    "sourceRevision": "8933b57c05ecd74f857608565691bc0e032f33940a719084cdab8059926f2be5"
+  },
+  {
+    "id": "article:rotalar/likya-yolu-rotası-körmen-adasından-kaleüçağıza/index.mdx",
+    "tr": "/likya-yolu-rotasi-kormen-adasindan-kaleucagiza/",
+    "en": "/en/lycian-way-stage-11-kormen-island-to-kaleucagiz-23-km/",
+    "translation": "lycian-way-stage-11-kormen-island-to-kaleucagiz-23-km.mdx",
+    "sourceRevision": "d59c52b437cd919beba1ed898ee131cae70d2b07e7ed4a8db723684b5a91b0ad"
+  },
+  {
+    "id": "article:rotalar/likya-yolu-rotası-ölüdenizden-kabak-koyuna/index.mdx",
+    "tr": "/likya-yolu-rotasi-oludenizden-kabak-koyuna/",
+    "en": "/en/lycian-way-stage-1-oludeniz-to-kabak-bay-25-km/",
+    "translation": "lycian-way-stage-1-oludeniz-to-kabak-bay-25-km.mdx",
+    "sourceRevision": "eacb1bbca410fe3c84a340678043b50650e6203b5f4c7a7481f0ac1adea3d02a"
+  },
+  {
+    "id": "article:rotalar/likya-yolu-rotası-sarıbelenden-gökçeörene/index.mdx",
+    "tr": "/likya-yolu-rotasi-saribelenden-gokceorene/",
+    "en": "/en/lycian-way-stage-8-saribelen-to-gokceoren-12-km/",
+    "translation": "lycian-way-stage-8-saribelen-to-gokceoren-12-km.mdx",
+    "sourceRevision": "cfb65a06e34119bf9b0e313d2de7a1e8ceb21664e3007a23d850aa4751a90952"
+  },
+  {
+    "id": "article:rotalar/likya-yolu-rotası-sidymadan-karadereye/index.mdx",
+    "tr": "/likya-yolu-rotasi-sidymadan-karadereye/",
+    "en": "/en/lycian-way-stage-3-sidyma-to-karadere-17-km/",
+    "translation": "lycian-way-stage-3-sidyma-to-karadere-17-km.mdx",
+    "sourceRevision": "60fe4878f3f02caebea57ac1a416d891b5dbc8f507f96112118fed5d502a0864"
+  },
+  {
+    "id": "article:rotalar/likya-yolu-rotası-üzümlüden-bezirgan-köyüne/index.mdx",
+    "tr": "/likya-yolu-rotasi-uzumluden-bezirgan-koyune/",
+    "en": "/en/lycian-way-stage-6-uzumlu-to-bezirgan-22-km/",
+    "translation": "lycian-way-stage-6-uzumlu-to-bezirgan-22-km.mdx",
+    "sourceRevision": "247f4ea5f6cf47d54fcb210d8a380a31126481aa05bfdb1da74918828ee4baf2"
+  },
+  {
+    "id": "article:diğer/likya-yolu-rotası/index.mdx",
+    "tr": "/likya-yolu-rotasi/",
+    "en": "/en/the-lycian-way-route-map-stages-and-a-509-km-plan/",
+    "translation": "the-lycian-way-route-map-stages-and-a-509-km-plan.mdx",
+    "sourceRevision": "e310567734bbc0d8a3215a2d70c06e0a14c243da7002479488970a97a35c31a2"
+  },
+  {
+    "id": "article:diğer/likya-yoluna-neden-tek-gidiyorsun/index.mdx",
+    "tr": "/likya-yoluna-neden-tek-gidiyorsun/",
+    "en": "/en/why-i-chose-to-walk-the-lycian-way-alone/",
+    "translation": "why-i-chose-to-walk-the-lycian-way-alone.mdx",
+    "sourceRevision": "57a5bfd55d01f8f5d71c76f0738fb922759509cc1eff77f399da42a345b0fb33"
+  },
+  {
+    "id": "article:diğer/likya’ya-1-kala/index.mdx",
+    "tr": "/likyaya-1-kala/",
+    "en": "/en/just-before-the-lycian-way-notes-ahead-of-a-509-km-walk/",
+    "translation": "just-before-the-lycian-way-notes-ahead-of-a-509-km-walk.mdx",
+    "sourceRevision": "36049f736d4b6e90e57c224c1cfcd138728de500c30ab1d31046450e2f682b52"
+  },
+  {
+    "id": "article:ekipmanlar/yeni-botlarım-lowa-zephyr/index.mdx",
+    "tr": "/lowa-zephyr-gtx-mid-bot-sage/",
+    "en": "/en/my-new-lowa-zephyr-boots/",
+    "translation": "my-new-lowa-zephyr-boots.mdx",
+    "sourceRevision": "ce1303af5eb12633dac063a34253fdcfc8301b9b1e406812ad254231a40fee3d"
+  },
+  {
+    "id": "article:diğer/mahcup-şaşkın-ve-mutlu/index.mdx",
+    "tr": "/mahcup-saskin-ve-mutlu/",
+    "en": "/en/embarrassed-surprised-and-happy/",
+    "translation": "embarrassed-surprised-and-happy.mdx",
+    "sourceRevision": "ad9846a691ee81e90005d2a388111641a77ac7394c2ea70a64e9bc2d3f34029b"
+  },
+  {
+    "id": "article:diğer/menekşe-subatımı-yaylası-kampı/index.mdx",
+    "tr": "/menekse-subatimi-yaylasi-kampi/",
+    "en": "/en/camping-at-menekse-subatimi-highland/",
+    "translation": "camping-at-menekse-subatimi-highland.mdx",
+    "sourceRevision": "7d5e0542c4e63c7d0955640edbd60f53af0faaf5ddc1704918a5c8b9e93e50cb"
+  },
+  {
+    "id": "article:rotalar/menekşe-subatımı-yaylası/index.mdx",
+    "tr": "/menekse-subatimi-yaylasi/",
+    "en": "/en/menekse-subatimi-highland/",
+    "translation": "menekse-subatimi-highland.mdx",
+    "sourceRevision": "7c9843fac2ec7853a0c14cbe0be53da751a87246f1702488afe2dbc162df1a3f"
+  },
+  {
+    "id": "article:rotalar/menekşe-yaylası/index.mdx",
+    "tr": "/menekse-yaylasi/",
+    "en": "/en/menekse-highland/",
+    "translation": "menekse-highland.mdx",
+    "sourceRevision": "584e3f5626302349ce30217fffaa769e607b0dcd65e48d6af184c28fe82b8302"
+  },
+  {
+    "id": "article:ekipmanlar/msr-pocket-rocket-kamp-ocağı/index.mdx",
+    "tr": "/msr-pocket-rocket-kamp-ocagi/",
+    "en": "/en/msr-pocketrocket-camp-stove/",
+    "translation": "msr-pocketrocket-camp-stove.mdx",
+    "sourceRevision": "9adc5b419ada62e730d21149de4eef77f52278863a4e63fd23b8d91f23fd8296"
+  },
+  {
+    "id": "article:ekipmanlar/nurgaz-vidalı-kamp-ocağı-kartuşu/index.mdx",
+    "tr": "/nurgaz-vidali-kamp-ocagi-kartusu/",
+    "en": "/en/nurgaz-screw-on-camp-stove-canister/",
+    "translation": "nurgaz-screw-on-camp-stove-canister.mdx",
+    "sourceRevision": "36062204c2bbc6a8d0fb5332bae78004a893a6b6df2d8e3af2e13a361f175e37"
+  },
+  {
+    "id": "article:rotalar/olgunlar-meretet-yaylası/index.mdx",
+    "tr": "/olgunlar-meretet-yaylasi/",
+    "en": "/en/olgunlar-meretet-highland/",
+    "translation": "olgunlar-meretet-highland.mdx",
+    "sourceRevision": "94515b6b28fd254293db3651296c47c392bfc552717c48f2d4d4281c1caa941a"
+  },
+  {
+    "id": "article:diğer/ormandan-gelen-çığlık/index.mdx",
+    "tr": "/ormandan-gelen-ciglik/",
+    "en": "/en/a-scream-from-the-woods/",
+    "translation": "a-scream-from-the-woods.mdx",
+    "sourceRevision": "7390ee28d5363f91fb94184dc4f5cd9a15ca89959ed818b507cb27e45e21d624"
+  },
+  {
+    "id": "article:rotalar/papaz-çayırı/index.mdx",
+    "tr": "/papaz-cayiri/",
+    "en": "/en/papaz-cayiri/",
+    "translation": "papaz-cayiri.mdx",
+    "sourceRevision": "8a2c345a36b891010dfd476982f127a93c10838391e9ff37726360a888558b94"
+  },
+  {
+    "id": "article:rotalar/patara-plajı/index.mdx",
+    "tr": "/patara-plaji/",
+    "en": "/en/patara-beach/",
+    "translation": "patara-beach.mdx",
+    "sourceRevision": "f8a3e24801e66ccdb7df49f0776e093982dfcd20ae918480c157e3c0db9da5f6"
+  },
+  {
+    "id": "article:rotalar/pürenli-yaylası/index.mdx",
+    "tr": "/purenli-yaylasi/",
+    "en": "/en/purenli-highland/",
+    "translation": "purenli-highland.mdx",
+    "sourceRevision": "1f42ccf03073552aa8f7ea1685d3c531788762928545f33dbaa7b7bd29dc61df"
+  },
+  {
+    "id": "article:kampçılık/r-degeri-nedir/index.mdx",
+    "tr": "/r-degeri-nedir/",
+    "en": "/en/what-does-the-r-value-of-a-sleeping-mat-mean/",
+    "translation": "what-does-the-r-value-of-a-sleeping-mat-mean.mdx",
+    "sourceRevision": "2711df47300a8c344883d0c9e18e85bae074eb89394fe8888770d9b826a00df8"
+  },
+  {
+    "id": "article:diğer/rubicon-bir-başka-hayalin-başlangıcı/index.mdx",
+    "tr": "/rubicon-bir-baska-hayalin-baslangici/",
+    "en": "/en/rubicon-the-start-of-another-dream/",
+    "translation": "rubicon-the-start-of-another-dream.mdx",
+    "sourceRevision": "87d7a1089e676c4d9928a5e84e0359079ad5fcb009fc51de765b3b571368c6f7"
+  },
+  {
+    "id": "article:rotalar/safranbolu-tokatlı-kanyonu/index.mdx",
+    "tr": "/safranbolu-tokatli-kanyonu/",
+    "en": "/en/tokatli-canyon-safranbolu/",
+    "translation": "tokatli-canyon-safranbolu.mdx",
+    "sourceRevision": "de95af2f98f64a26eef0ecdfa467accdaa2d7f6d37b0801d8bffb782e50b1d3b"
+  },
+  {
+    "id": "article:rotalar/saklı-koy/index.mdx",
+    "tr": "/sakli-koy/",
+    "en": "/en/sakli-bay/",
+    "translation": "sakli-bay.mdx",
+    "sourceRevision": "bae8bc40c40c1c188b56960625e34ff21a377114a4cdd8ace0313a94b0bbb59f"
+  },
+  {
+    "id": "article:rotalar/saklıkent-kanyonu/index.mdx",
+    "tr": "/saklikent-kanyonu/",
+    "en": "/en/saklikent-canyon/",
+    "translation": "saklikent-canyon.mdx",
+    "sourceRevision": "c74b984a6ac799ddc9fcddbfd193ea1eeb845c647ed281e5a3e78dbeda113403"
+  },
+  {
+    "id": "article:ekipmanlar/salomon-speedcross-3/index.mdx",
+    "tr": "/salomon-speedcross-3/",
+    "en": "/en/salomon-speedcross-3/",
+    "translation": "salomon-speedcross-3.mdx",
+    "sourceRevision": "6d82f6b749735050fdd3ea87df6f0079d36dba6897ec8c48ca94190724780abb"
+  },
+  {
+    "id": "article:rotalar/sansarak-kanyonu/index.mdx",
+    "tr": "/sansarak-kanyonu/",
+    "en": "/en/sansarak-canyon/",
+    "translation": "sansarak-canyon.mdx",
+    "sourceRevision": "7d85ae8397c26b8b1a405b425cf3ff9e10470956a66d9bdf9bcb3c8f18697ac5"
+  },
+  {
+    "id": "article:rotalar/sardala-koyu/index.mdx",
+    "tr": "/sardala-koyu/",
+    "en": "/en/sardala-bay/",
+    "translation": "sardala-bay.mdx",
+    "sourceRevision": "e3aead428788caba044252e5d3f1c0d17ac71ae23ab30f27b6834fcde9b5ca36"
+  },
+  {
+    "id": "article:rotalar/şavşat-karagöl/index.mdx",
+    "tr": "/savsat-karagol/",
+    "en": "/en/savsat-karagol-directions-and-camping-in-artvin/",
+    "translation": "savsat-karagol-directions-and-camping-in-artvin.mdx",
+    "sourceRevision": "ee21ded03e02ac84101a7415c70add84001e403daa8f990ca93354d44427f59e"
+  },
+  {
+    "id": "article:rotalar/serindere-kanyonu/index.mdx",
+    "tr": "/serindere-kanyonu-kamp-alani/",
+    "en": "/en/serindere-canyon/",
+    "translation": "serindere-canyon.mdx",
+    "sourceRevision": "3400f24e2f94aea81390e911acfc3f0a6ce373adb0aff24cf16e9329e66ae8cb"
+  },
+  {
+    "id": "article:diğer/serindere-kanyonu/index.mdx",
+    "tr": "/serindere-kanyonu/",
+    "en": "/en/serindere-canyon-serindere-kanyonu/",
+    "translation": "serindere-canyon-serindere-kanyonu.mdx",
+    "sourceRevision": "8c99106f5fab84cac3bad5ab0c35135a87464af13d7a2c4732b0d6556924a505"
+  },
+  {
+    "id": "article:rotalar/sıcakdere-kanyonu/index.mdx",
+    "tr": "/sicakdere-kanyonu/",
+    "en": "/en/sicakdere-canyon/",
+    "translation": "sicakdere-canyon.mdx",
+    "sourceRevision": "0afb31b12bfb29f8a4c9c2e4e791adedf78a86d378bb06a13609a1eeb3d08f83"
+  },
+  {
+    "id": "article:rotalar/şile-saklıgöl/index.mdx",
+    "tr": "/sile-sakligol/",
+    "en": "/en/sakligol-sile/",
+    "translation": "sakligol-sile.mdx",
+    "sourceRevision": "701c55ec8c3c57b3979bb88bcc394466796b35cc1f58b5d24d4a88ad9450776e"
+  },
+  {
+    "id": "article:rotalar/sinekli-yaylası/index.mdx",
+    "tr": "/sinekli-yaylasi/",
+    "en": "/en/sinekli-highland/",
+    "translation": "sinekli-highland.mdx",
+    "sourceRevision": "c93371c560927292ad567c90b8237b45b12e16a0d32fef6b62829081a31c1ca9"
+  },
+  {
+    "id": "article:diğer/son-6dk/index.mdx",
+    "tr": "/son-6dk/",
+    "en": "/en/the-last-six-minutes/",
+    "translation": "the-last-six-minutes.mdx",
+    "sourceRevision": "298b8440bb0504ffe0af4dd6d484327e259d0e2f92c165bc74dcdab45018d8ab"
+  },
+  {
+    "id": "article:ekipmanlar/su-geçirmez-yürüyüş-tozluğu/index.mdx",
+    "tr": "/su-gecirmez-yuruyus-tozlugu/",
+    "en": "/en/waterproof-hiking-gaiters/",
+    "translation": "waterproof-hiking-gaiters.mdx",
+    "sourceRevision": "f89fb9d9498c85d7b49cab6e3ae81c1aea8e31e47876227d6b879d2daac27ed9"
+  },
+  {
+    "id": "article:diğer/sülüklü-göl-azrail-teğet-geçti/index.mdx",
+    "tr": "/suluklu-gol-azrail-teget-gecti/",
+    "en": "/en/a-close-brush-with-death-at-suluklu-gol/",
+    "translation": "a-close-brush-with-death-at-suluklu-gol.mdx",
+    "sourceRevision": "1eac4b490a57fea794e7d4f62a741c11301f395bd0280207d539f0bd02fe962d"
+  },
+  {
+    "id": "article:diğer/sülüklü-göl-trekking/index.mdx",
+    "tr": "/suluklu-gol-trekking/",
+    "en": "/en/hiking-at-suluklu-gol/",
+    "translation": "hiking-at-suluklu-gol.mdx",
+    "sourceRevision": "b2ca9505effadf1a83616fdf4aeef8137e3a116dd09e8ab4e0766cd6668f4e2e"
+  },
+  {
+    "id": "article:rotalar/taraklı-karagöl-yaylası/index.mdx",
+    "tr": "/tarakli-karagol-yaylasi/",
+    "en": "/en/tarakli-karagol-highland/",
+    "translation": "tarakli-karagol-highland.mdx",
+    "sourceRevision": "53fb1f037292f2c7d1252672e9308c789122f8db72e3aa40ac8dd535fb209b2b"
+  },
+  {
+    "id": "article:ekipmanlar/tchibo-polar-buff/index.mdx",
+    "tr": "/tchibo-polar-buff/",
+    "en": "/en/tchibo-fleece-buff/",
+    "translation": "tchibo-fleece-buff.mdx",
+    "sourceRevision": "2774c83adc5c67dce75ea8267ffc5e646274b3c903055b2275c21d110a1a0799"
+  },
+  {
+    "id": "article:doğa-yürüyüşleri/tek-başına-doğa-yürüyüşü/index.mdx",
+    "tr": "/tek-basina-doga-yuruyusu/",
+    "en": "/en/hiking-alone/",
+    "translation": "hiking-alone.mdx",
+    "sourceRevision": "73cf4d9cd0f8be77eb3b2bcf9d7277f5dec114550fd953d0af6c35cf092b21f8"
+  },
+  {
+    "id": "article:diğer/tek-başına-i̇skoç-yaylalarında-29-günde-5500km/index.mdx",
+    "tr": "/tek-basina-iskoc-yaylalarinda-29-gunde-5500km/",
+    "en": "/en/5-500-km-in-29-days-solo-in-the-scottish-highlands/",
+    "translation": "5-500-km-in-29-days-solo-in-the-scottish-highlands.mdx",
+    "sourceRevision": "94d997883d92da91c835af5a06c31a4d82f5ea784d29d795ec28d0647d5a447c"
+  },
+  {
+    "id": "article:ekipmanlar/the-north-face-m-storm-hike-erkek-ayakkabı/index.mdx",
+    "tr": "/the-north-face-m-storm-hike-gtx-erkek-ayakkabi-t932zs/",
+    "en": "/en/the-north-face-m-storm-hike-mens-shoes/",
+    "translation": "the-north-face-m-storm-hike-mens-shoes.mdx",
+    "sourceRevision": "ea9a2df8ea533e8dfef068e63c4484cedb4c87d5dce8a161216cbcc2cc315e89"
+  },
+  {
+    "id": "article:rotalar/trabzon-uzungöl/index.mdx",
+    "tr": "/trabzon-uzungol/",
+    "en": "/en/uzungol-trabzon/",
+    "translation": "uzungol-trabzon.mdx",
+    "sourceRevision": "e07e6f5f439907f1104be34fba1d828a45a9a58543c4ecd4f4450a16cc40852c"
+  },
+  {
+    "id": "article:ekipmanlar/trangia-tencere-seti-406287-kılıflı/index.mdx",
+    "tr": "/trangia-kamp-tencere-seti/",
+    "en": "/en/trangia-406287-cookset-with-case/",
+    "translation": "trangia-406287-cookset-with-case.mdx",
+    "sourceRevision": "79ca0d6b8bdca9a9db4a3c6242a60ca11c48bbd9a05727ce9eda207d6a0ecb81"
+  },
+  {
+    "id": "article:doğa-yürüyüşleri/trekking-ayakkabısı-nasıl-olmalı/index.mdx",
+    "tr": "/trekking-ayakkabisi-nasil-olmali/",
+    "en": "/en/how-to-choose-trekking-shoes/",
+    "translation": "how-to-choose-trekking-shoes.mdx",
+    "sourceRevision": "1c2247547398cb5b718ff78c6b51bb31795c36c3e87c600d2408509b76a5958c"
+  },
+  {
+    "id": "article:rotalar/turnalık-yaylası/index.mdx",
+    "tr": "/turnalik-yaylasi/",
+    "en": "/en/turnalik-highland/",
+    "translation": "turnalik-highland.mdx",
+    "sourceRevision": "0d46762a43e7f84af99b89b3914a289db5cadce48028e30a4b311001b617f287"
+  },
+  {
+    "id": "article:kampçılık/uyku-tulumu-alırken-nelere-dikkat-edilmelidir/index.mdx",
+    "tr": "/uyku-tulumu-alirken-nelere-dikkat-edilmelidir/",
+    "en": "/en/what-to-look-for-when-buying-a-sleeping-bag/",
+    "translation": "what-to-look-for-when-buying-a-sleeping-bag.mdx",
+    "sourceRevision": "7412e7202a4079f31a663010630a863638add683a54f0e8b87080b0243ec569e"
+  },
+  {
+    "id": "article:kampçılık/uyku-tulumu-nasil-kullanilir/index.mdx",
+    "tr": "/uyku-tulumu-nasil-kullanilir/",
+    "en": "/en/using-a-sleeping-bag-temperature-ratings-care-and-more/",
+    "translation": "using-a-sleeping-bag-temperature-ratings-care-and-more.mdx",
+    "sourceRevision": "4f99a036ecf7bf84342ceed498b02da701a62cbce093972d65aa0325a0256905"
+  },
+  {
+    "id": "article:kampçılık/uyku-tulumu-yetersiz-kalırsa-ne-yapmalıyım/index.mdx",
+    "tr": "/uyku-tulumu-yetersiz-kalirsa-ne-yapilmalidir/",
+    "en": "/en/what-to-do-when-your-sleeping-bag-isnt-warm-enough/",
+    "translation": "what-to-do-when-your-sleeping-bag-isnt-warm-enough.mdx",
+    "sourceRevision": "99d473ccd8d954a20513d03b844f0ce8e23da23db0fd9da419fea358f30f75d0"
+  },
+  {
+    "id": "article:ekipmanlar/xiaomi-mi-araç-şarjı/index.mdx",
+    "tr": "/xiaomi-mi-arac-sarji/",
+    "en": "/en/xiaomi-mi-car-charger/",
+    "translation": "xiaomi-mi-car-charger.mdx",
+    "sourceRevision": "7358401432b1df7733040be169a47936fc2e10ac1e4fb0a729f4b67f8e64b71f"
+  },
+  {
+    "id": "article:diğer/ya-kampta-biri-kaybolursa/index.mdx",
+    "tr": "/ya-kampta-biri-kaybolursa/",
+    "en": "/en/what-if-someone-goes-missing-on-a-camping-trip/",
+    "translation": "what-if-someone-goes-missing-on-a-camping-trip.mdx",
+    "sourceRevision": "d6ec2cead4a6877b2869b7c0ac4030560b3c6fea2e53c27354eccd87597dc4a3"
+  },
+  {
+    "id": "article:ekipmanlar/yağmurluk-nasıl-seçilir-su-geçirmez-mont-rehberi/index.mdx",
+    "tr": "/yagmurluk-nasil-secilir/",
+    "en": "/en/how-to-choose-a-waterproof-jacket/",
+    "translation": "how-to-choose-a-waterproof-jacket.mdx",
+    "sourceRevision": "4ea3e128cb41279996289ded674368dc5550c7a1c8881aa1ab091d487ae17805"
+  },
+  {
+    "id": "article:diğer/yalova-trekking/index.mdx",
+    "tr": "/yalova-fistikli-trekking/",
+    "en": "/en/hiking-from-yalova-to-fistikli-a-57-km-walk/",
+    "translation": "hiking-from-yalova-to-fistikli-a-57-km-walk.mdx",
+    "sourceRevision": "2f289bd9878c8cb311dc116d172b51b60d94d1569e17a09b1616dbdb94e910ee"
+  },
+  {
+    "id": "article:diğer/bolu-yedigöller-tek-başıma-i̇lk-trekking-maceram/index.mdx",
+    "tr": "/yedigoller-trekking-tek-basima-ilk-yolculuk/",
+    "en": "/en/my-first-solo-trek-in-yedigoller-bolu/",
+    "translation": "my-first-solo-trek-in-yedigoller-bolu.mdx",
+    "sourceRevision": "5cb95714de2051c0ef28c15f60abd50b2b98143b9107d1e5e938d7301cc1e4d4"
+  },
+  {
+    "id": "article:rotalar/yukarı-kavrun-yaylası/index.mdx",
+    "tr": "/yukari-kavrun-yaylasi/",
+    "en": "/en/yukari-kavrun-highland/",
+    "translation": "yukari-kavrun-highland.mdx",
+    "sourceRevision": "577bf5d418bc926f209be9862fcc252fc1df7dcfb42fd94341df7343ddc2410e"
+  },
+  {
+    "id": "article:doğa-yürüyüşleri/yürüyüş-batonu-nedir-nasıl-olmalıdır/index.mdx",
+    "tr": "/yuruyus-batonu-ne-ise-yarar/",
+    "en": "/en/what-are-trekking-poles-and-how-do-you-choose-them/",
+    "translation": "what-are-trekking-poles-and-how-do-you-choose-them.mdx",
+    "sourceRevision": "6597e2df46a5bfa056e0f6f31ceb1238561f72fb4d77126ab6274eea33b22ec7"
+  },
+  {
+    "id": "article:diğer/i̇znik-trekking/index.mdx",
+    "tr": "/yuvacik-iznik-trekking/",
+    "en": "/en/hiking-in-iznik/",
+    "translation": "hiking-in-iznik.mdx",
+    "sourceRevision": "21d734e04bf23cac7639e6be4d55c2cd4333b7c2be5f38c2f3dd205232bc1fec"
   }
 ]

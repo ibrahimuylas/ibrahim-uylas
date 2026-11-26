@@ -117,8 +117,10 @@ test('page contents navigation uses page wording outside article contents', () =
 
   assert.match(
     contents,
-    /const navigationLabel = showInlineNavigation \? `Bu yazıda` : `Bu sayfada`/
+    /const navigationLabel = showInlineNavigation \? labels\.article : labels\.page/
   )
+  assert.match(contents, /article: 'Bu yazıda',[\s\S]*?page: 'Bu sayfada'/)
+  assert.match(contents, /article: 'In this article',[\s\S]*?page: 'On this page'/)
   assert.match(contents, /label=\{navigationLabel\}/)
   assert.match(sheet, /label,/)
   assert.match(sheet, /\{label\}/)
@@ -186,14 +188,14 @@ test('Instagram waits for live data and keeps its heading on one line', () => {
 
   assert.match(showcase, /useState\('loading'\)/)
   assert.match(showcase, /status === 'loading'/)
-  assert.match(showcase, /<InstagramSkeleton \/>/)
+  assert.match(showcase, /<InstagramSkeleton labels=\{labels\} \/>/)
   assert.match(showcase, /<Box sx=\{\{ width: `100%`, minWidth: 0 \}\}>/)
   assert.match(
     showcase,
-    /status !== 'ready' \|\| !feed[\s\S]*<InstagramNewsletter \/>/
+    /status !== 'ready' \|\| !feed[\s\S]*<InstagramNewsletter language=\{language\} \/>/
   )
   assert.match(showcase, /data-instagram-state='loading'/)
-  assert.match(showcase, /aria-label='Instagram bölümü yükleniyor'/)
+  assert.match(showcase, /aria-label=\{labels\.loading\}/)
   assert.match(showcase, /Yoldaki hikâyeleri kaçırma/)
   assert.match(showcase, /whiteSpace: `nowrap`/)
   assert.doesNotMatch(showcase, /FALLBACK_PROFILE|localPortrait/)

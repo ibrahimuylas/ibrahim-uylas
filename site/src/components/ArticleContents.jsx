@@ -1,3 +1,4 @@
+import { getPageLanguage } from '../i18n/language'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
@@ -67,6 +68,7 @@ const styles = {
 
 const EligibleArticleContents = ({ items, showInlineNavigation }) => {
   const { pathname } = useLocation()
+  const english = getPageLanguage(pathname) === 'en'
   const navigationRef = useRef(null)
   const invokingElementRef = useRef(null)
   const focusFrameRef = useRef(null)
@@ -82,7 +84,22 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
   const [isDesktopNavigation, setIsDesktopNavigation] = useState(false)
   const [isMobileDock, setIsMobileDock] = useState(false)
   const [isSheetOpen, setIsSheetOpen] = useState(false)
-  const navigationLabel = showInlineNavigation ? `Bu yazıda` : `Bu sayfada`
+  const labels = english
+    ? {
+        article: 'In this article',
+        page: 'On this page',
+        contents: 'Contents',
+        close: 'Close contents',
+        section: 'Go to section'
+      }
+    : {
+        article: 'Bu yazıda',
+        page: 'Bu sayfada',
+        contents: 'İçindekiler',
+        close: 'İçindekileri kapat',
+        section: 'Bölüme git'
+      }
+  const navigationLabel = showInlineNavigation ? labels.article : labels.page
 
   const cancelPendingFocus = useCallback(() => {
     if (focusFrameRef.current !== null) {
@@ -393,7 +410,7 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
         <Box
           as='nav'
           ref={navigationRef}
-          aria-label='İçindekiler'
+          aria-label={labels.contents}
           sx={{
             bg: 'omegaLighter',
             borderRadius: 'default',
@@ -424,6 +441,8 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
             <ArticleContentsRail
               items={items}
               onItemSelect={handleRailItemSelect}
+              navigationLabel={labels.contents}
+              sectionLabel={labels.section}
             />
           ) : (
             <>
@@ -491,6 +510,7 @@ const EligibleArticleContents = ({ items, showInlineNavigation }) => {
           <ArticleContentsSheet
             items={items}
             label={navigationLabel}
+            closeLabel={labels.close}
             onAfterUnlock={handleAfterSheetUnlock}
             onDismiss={handleDismissSheet}
             onItemSelect={handleItemSelect}

@@ -12,6 +12,7 @@ import {
 } from 'theme-ui'
 import { FaPaperPlane } from 'react-icons/fa'
 import { currentPagePath, trackEvent } from '../utils/analytics'
+import { contact, subjectOptions } from '../i18n/contact'
 
 const FORM_NAME = 'iletisim'
 
@@ -59,35 +60,36 @@ const setRequiredValidationMessage = message => event => {
   event.currentTarget.setCustomValidity(message)
 }
 
-const setEmailValidationMessage = event => {
+const setEmailValidationMessage = labels => event => {
   const field = event.currentTarget
   const message = field.validity.valueMissing
-    ? 'Lütfen e-posta adresini yaz.'
-    : 'Lütfen geçerli bir e-posta adresi yaz.'
+    ? labels.emailRequired
+    : labels.emailInvalid
 
   field.setCustomValidity(message)
 }
 
-const setMessageValidationMessage = event => {
+const setMessageValidationMessage = labels => event => {
   const field = event.currentTarget
   const message = field.validity.valueMissing
-    ? 'Lütfen mesajını yaz.'
-    : 'Mesajın en az 10 karakter olmalı.'
+    ? labels.messageRequired
+    : labels.messageTooShort
 
   field.setCustomValidity(message)
 }
 
-const validateMessageLength = event => {
+const validateMessageLength = labels => event => {
   const field = event.currentTarget
   const message =
     field.value.length > 0 && field.value.length < field.minLength
-      ? 'Mesajın en az 10 karakter olmalı.'
+      ? labels.messageTooShort
       : ''
 
   field.setCustomValidity(message)
 }
 
-const ContactForm = () => {
+const ContactForm = ({ language = 'tr' }) => {
+  const labels = contact[language]
   const [status, setStatus] = useState('idle')
 
   const handleSubmit = async event => {
@@ -159,7 +161,7 @@ const ContactForm = () => {
         }}
       >
         <Label htmlFor='contact-bot-field'>
-          Bu alanı boş bırak
+          {labels.honeypot}
           <Input
             id='contact-bot-field'
             name='bot-field'
@@ -178,32 +180,32 @@ const ContactForm = () => {
       >
         <Box>
           <Label htmlFor='contact-name' sx={labelStyle}>
-            Adın
+            {labels.name}
           </Label>
           <Input
             id='contact-name'
             name='name'
             type='text'
-            placeholder='Nasıl hitap edeyim?'
+            placeholder={labels.namePlaceholder}
             autoComplete='name'
             required
-            onInvalid={setRequiredValidationMessage('Lütfen adını yaz.')}
+            onInvalid={setRequiredValidationMessage(labels.nameRequired)}
             onInput={clearValidationMessage}
             sx={fieldStyle}
           />
         </Box>
         <Box>
           <Label htmlFor='contact-email' sx={labelStyle}>
-            E-posta adresin
+            {labels.email}
           </Label>
           <Input
             id='contact-email'
             name='email'
             type='email'
-            placeholder='sen@ornek.com'
+            placeholder={labels.emailPlaceholder}
             autoComplete='email'
             required
-            onInvalid={setEmailValidationMessage}
+            onInvalid={setEmailValidationMessage(labels)}
             onInput={clearValidationMessage}
             sx={fieldStyle}
           />
@@ -212,42 +214,41 @@ const ContactForm = () => {
 
       <Box>
         <Label htmlFor='contact-subject' sx={labelStyle}>
-          Ne hakkında yazıyorsun?
+          {labels.subject}
         </Label>
         <Select
           id='contact-subject'
           name='subject'
           defaultValue=''
           required
-          onInvalid={setRequiredValidationMessage('Lütfen bir konu seç.')}
+          onInvalid={setRequiredValidationMessage(labels.subjectRequired)}
           onInput={clearValidationMessage}
           sx={fieldStyle}
         >
           <option value='' disabled>
-            Bir konu seç
+            {labels.subjectPrompt}
           </option>
-          <option value='Rota veya kamp sorusu'>Rota veya kamp sorusu</option>
-          <option value='Ekipman önerisi'>Ekipman önerisi</option>
-          <option value='İş birliği'>İş birliği</option>
-          <option value='Site hakkında'>Site hakkında</option>
-          <option value='Sadece merhaba'>Sadece merhaba</option>
-          <option value='Diğer'>Diğer</option>
+          {subjectOptions.map(([value, english]) => (
+            <option key={value} value={value}>
+              {language === 'en' ? english : value}
+            </option>
+          ))}
         </Select>
       </Box>
 
       <Box>
         <Label htmlFor='contact-message' sx={labelStyle}>
-          Mesajın
+          {labels.message}
         </Label>
         <Textarea
           id='contact-message'
           name='message'
-          placeholder='Aklındakini anlat, mümkün olduğunca kısa sürede dönüş yapayım.'
+          placeholder={labels.messagePlaceholder}
           rows={7}
           minLength={10}
           required
-          onInvalid={setMessageValidationMessage}
-          onInput={validateMessageLength}
+          onInvalid={setMessageValidationMessage(labels)}
+          onInput={validateMessageLength(labels)}
           sx={{
             ...fieldStyle,
             minHeight: 160,
@@ -276,7 +277,7 @@ const ContactForm = () => {
             m: 0
           }}
         >
-          Bilgilerini yalnızca sana dönüş yapmak için kullanırım.
+          {labels.privacy}
         </Text>
         <Button
           type='submit'
@@ -304,11 +305,11 @@ const ContactForm = () => {
         >
           {isSubmitting ? (
             <>
-              Gönderiliyor <Spinner size='18' />
+              {labels.submitting} <Spinner size='18' />
             </>
           ) : (
             <>
-              Mesajı gönder <FaPaperPlane aria-hidden='true' />
+              {labels.submit} <FaPaperPlane aria-hidden='true' />
             </>
           )}
         </Button>
@@ -317,13 +318,13 @@ const ContactForm = () => {
       <Box aria-live='polite'>
         {status === 'success' && (
           <Message variant='success' sx={{ m: 0 }}>
-            Mesajın ulaştı. Teşekkür ederim; en kısa sürede dönüş yapacağım.
+            {labels.message} ulaştı. Teşekkür ederim; en kısa sürede dönüş
+            yapacağım.
           </Message>
         )}
         {status === 'error' && (
           <Message variant='error' sx={{ m: 0 }}>
-            Mesaj gönderilemedi. Lütfen tekrar dene veya doğrudan
-            ibrahim@uylas.net&apos;e e-posta gönder.
+            {labels.error}
           </Message>
         )}
       </Box>

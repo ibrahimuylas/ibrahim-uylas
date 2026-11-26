@@ -137,6 +137,7 @@ const styles = {
 const ArticleContentsSheet = ({
   items,
   label,
+  closeLabel,
   onAfterUnlock,
   onDismiss,
   onItemSelect,
@@ -282,7 +283,7 @@ const ArticleContentsSheet = ({
             ref={closeButtonRef}
             as='button'
             type='button'
-            aria-label='İçindekileri kapat'
+            aria-label={closeLabel}
             data-suppress-focus-ring={
               suppressCloseFocusRing ? `true` : undefined
             }

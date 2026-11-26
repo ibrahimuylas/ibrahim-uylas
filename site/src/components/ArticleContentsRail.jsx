@@ -159,7 +159,12 @@ const getSectionDetail = (item, sectionIds) => {
   return ``
 }
 
-const ArticleContentsRail = ({ items, onItemSelect }) => {
+const ArticleContentsRail = ({
+  items,
+  onItemSelect,
+  navigationLabel,
+  sectionLabel
+}) => {
   const railRef = useRef(null)
   const previewRef = useRef(null)
   const blurFrameRef = useRef(null)
@@ -414,7 +419,7 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
       <Box
         as='nav'
         ref={railRef}
-        aria-label='Yazı bölümleri'
+        aria-label={navigationLabel}
         onPointerLeave={event => {
           if (isHoverPointerEvent(event)) setPreview(null)
         }}
@@ -429,7 +434,7 @@ const ArticleContentsRail = ({ items, onItemSelect }) => {
                 <Box
                   as='button'
                   type='button'
-                  aria-label={`Bölüme git: ${item.title}`}
+                  aria-label={`${sectionLabel}: ${item.title}`}
                   aria-describedby={
                     isActive ? `article-contents-preview` : undefined
                   }

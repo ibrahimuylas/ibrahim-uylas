@@ -65,6 +65,7 @@ const getSourcePath = pathname => {
 }
 
 const shouldNoIndex = pathname =>
+  getSourcePath(pathname) === '/404/' ||
   /^\/(?:author|tag)\//.test(getSourcePath(pathname)) ||
   /\/page\/\d+\/?$/.test(getSourcePath(pathname))
 

@@ -1,4 +1,5 @@
 const { getLocalizedLink, fallbackLinkTitle } = require('./language')
+const { tagName } = require('./collections')
 
 const copy = {
   tr: {
@@ -77,7 +78,10 @@ const copy = {
         'Sign up for a short email when I publish a new route, campsite or gear guide.',
       email: 'Email address',
       placeholder: 'you@example.com',
-      submit: 'Subscribe'
+      submit: 'Subscribe',
+      success:
+        'Thanks for signing up. Check your inbox for the confirmation link.',
+      error: 'We couldn’t complete your subscription. Please try again shortly.'
     },
     minutes: count => `${count} min`,
     copyright: 'All rights reserved.',
@@ -135,7 +139,38 @@ const localizeArticle = (source, translation) => {
     },
     tags: source.tags?.filter(Boolean).map(tag => {
       const { href, fallbackLanguage } = getLocalizedLink(tag.slug, 'en')
-      return { ...tag, slug: href, hrefLang: fallbackLanguage }
+      return {
+        ...tag,
+        name: tagName(tag.slug) || tag.name,
+        slug: href,
+        hrefLang: fallbackLanguage
+      }
+    })
+  }
+}
+
+const localizePreview = (post, previews, { preserveSource = false } = {}) => {
+  const preview = previews?.[post.slug]
+  if (!preview) return post
+  const category = post.category && {
+    ...post.category,
+    name: categoryName(post.category, 'en'),
+    slug: getLocalizedLink(post.category.slug, 'en').href
+  }
+  return {
+    ...post,
+    title: preview.title,
+    excerpt: preview.description,
+    date: preserveSource
+      ? post.date
+      : preview.date && englishDate.format(new Date(preview.date)),
+    category: preserveSource ? post.category : category,
+    slug: preserveSource ? post.slug : getLocalizedLink(post.slug, 'en').href,
+    ...(post.author && {
+      author: {
+        ...post.author,
+        slug: getLocalizedLink(post.author.slug, 'en').href
+      }
     })
   }
 }
@@ -164,4 +199,10 @@ const localizeMenu = (items, language) => {
   })
 }
 
-module.exports = { copy, localizeArticle, localizeMenu }
+module.exports = {
+  categoryName,
+  copy,
+  localizeArticle,
+  localizeMenu,
+  localizePreview
+}

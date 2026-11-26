@@ -1,3 +1,4 @@
+import commentCopy from '../i18n/comments'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Turnstile } from '@marsidev/react-turnstile'
@@ -96,13 +97,22 @@ const secondaryActionStyle = {
   }
 }
 
-const formatDate = value =>
-  new Intl.DateTimeFormat('tr-TR', {
+const formatDate = (value, language) =>
+  new Intl.DateTimeFormat(language === 'en' ? 'en-GB' : 'tr-TR', {
     dateStyle: 'medium',
     timeStyle: 'short'
   }).format(new Date(value))
 
-const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
+const CommentForm = ({
+  path,
+  title,
+  replyTo,
+  siteKey,
+  onCancel,
+  onSaved,
+  language
+}) => {
+  const labels = commentCopy[language]
   const [colorMode] = useColorMode()
   const [form, setForm] = useState(initialForm)
   const [token, setToken] = useState('')
@@ -133,7 +143,7 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
     event.preventDefault()
     if (!token) {
       setState('error')
-      setMessage('Lütfen güvenlik doğrulamasını tamamla.')
+      setMessage(labels.securityRequired)
       return
     }
     setState('sending')
@@ -158,22 +168,18 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
         result = null
       }
       if (!response.ok || !result?.ok)
-        throw new Error(
-          result?.error || 'Yorum kaydedilemedi. Lütfen tekrar dene.'
-        )
+        throw new Error(result?.error || labels.saveError)
       setForm(initialForm)
       setState('saved')
-      setMessage(
-        form.notifyReplies
-          ? 'Yorumun yayınlandı. Bildirimleri açmak için e-postandaki bağlantıyı doğrula.'
-          : 'Yorumun yayınlandı.'
-      )
+      setMessage(form.notifyReplies ? labels.savedWithEmail : labels.saved)
       setToken('')
       turnstileRef.current?.reset()
       await onSaved()
     } catch (error) {
       setState('error')
-      setMessage(error.message || 'Yorum kaydedilemedi. Lütfen tekrar dene.')
+      setMessage(
+        language === 'en' ? labels.saveError : error.message || labels.saveError
+      )
       setToken('')
       turnstileRef.current?.reset()
     }
@@ -211,7 +217,7 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
               <FaReply aria-hidden='true' />
             </Box>
             <Text as='p' sx={{ color: 'heading', m: 0 }}>
-              <strong>{replyTo.authorName}</strong> yorumuna yanıt veriyorsun.
+              {labels.replying(replyTo.authorName)}
             </Text>
           </Flex>
           <Button
@@ -220,7 +226,7 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
             onClick={onCancel}
             sx={secondaryActionStyle}
           >
-            <FaTimes aria-hidden='true' /> Vazgeç
+            <FaTimes aria-hidden='true' /> {labels.cancel}
           </Button>
         </Flex>
       )}
@@ -234,14 +240,14 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
       >
         <Box>
           <Label htmlFor='comment-name' sx={labelStyle}>
-            Adın
+            {labels.name}
           </Label>
           <Input
             id='comment-name'
             name='name'
             value={form.name}
             onChange={update}
-            placeholder='Nasıl hitap edelim?'
+            placeholder={labels.namePrompt}
             autoComplete='name'
             maxLength={80}
             required
@@ -250,7 +256,7 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
         </Box>
         <Box>
           <Label htmlFor='comment-email' sx={labelStyle}>
-            E-posta adresin
+            {labels.email}
           </Label>
           <Input
             id='comment-email'
@@ -258,7 +264,7 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
             type='email'
             value={form.email}
             onChange={update}
-            placeholder='sen@ornek.com'
+            placeholder={labels.emailPrompt}
             autoComplete='email'
             maxLength={254}
             required
@@ -269,14 +275,14 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
 
       <Box>
         <Label htmlFor='comment-body' sx={labelStyle}>
-          Yorumun
+          {labels.comment}
         </Label>
         <Textarea
           id='comment-body'
           name='comment'
           value={form.comment}
           onChange={update}
-          placeholder='Bu yazı hakkında ne düşünüyorsun?'
+          placeholder={labels.commentPrompt}
           maxLength={5000}
           rows={6}
           required
@@ -326,8 +332,7 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
           onChange={update}
           sx={{ mt: '3px' }}
         />
-        Yorumuma doğrudan yanıt gelirse e-posta gönder. Önce adresimi
-        doğrulayacağım.
+        {labels.notify}
       </Label>
 
       <Box
@@ -350,7 +355,7 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
               as='p'
               sx={{ color: 'heading', fontSize: 1, fontWeight: 'bold', m: 0 }}
             >
-              Güvenlik doğrulaması
+              {labels.security}
             </Text>
           </Flex>
           {siteKey ? (
@@ -360,7 +365,7 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
                 ref={turnstileRef}
                 siteKey={siteKey}
                 options={{
-                  language: 'tr',
+                  language,
                   appearance: 'always',
                   size: 'flexible',
                   theme: colorMode === 'dark' ? 'dark' : 'light'
@@ -372,7 +377,7 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
             </Box>
           ) : (
             <Text as='p' role='alert' sx={{ color: 'error', m: 0 }}>
-              Yorum güvenliği yapılandırılmamış.
+              {labels.securityUnavailable}
             </Text>
           )}
         </Box>
@@ -405,10 +410,10 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
             <FaPaperPlane aria-hidden='true' />
           )}
           {isSending
-            ? 'Gönderiliyor…'
+            ? labels.sending
             : replyTo
-              ? 'Yanıtı yayınla'
-              : 'Yorumu yayınla'}
+              ? labels.sendReply
+              : labels.sendComment}
         </Button>
       </Box>
 
@@ -459,8 +464,7 @@ const CommentForm = ({ path, title, replyTo, siteKey, onCancel, onSaved }) => {
           as='p'
           sx={{ color: 'omegaDark', fontSize: 0, lineHeight: 1.6, m: 0 }}
         >
-          E-posta adresin yayınlanmaz. Yorumlar otomatik yayınlanır ve
-          gerektiğinde yönetici tarafından gizlenebilir.
+          {labels.privacy}
         </Text>
       </Flex>
     </Box>
@@ -479,68 +483,72 @@ CommentForm.propTypes = {
   onSaved: PropTypes.func.isRequired
 }
 
-const CommentCard = ({ comment, onReply, nested = false }) => (
-  <Box
-    id={`yorum-${comment.id}`}
-    as='article'
-    sx={{
-      p: nested ? [2, 3] : 3,
-      bg: nested ? 'omegaLighter' : 'transparent',
-      '& + article': nested
-        ? {
-            borderTop: '1px solid',
-            borderColor: 'omegaLight'
-          }
-        : undefined
-    }}
-  >
-    <Flex sx={{ alignItems: 'flex-start', justifyContent: 'space-between' }}>
-      <Flex
-        sx={{
-          alignItems: 'baseline',
-          flexWrap: 'wrap',
-          columnGap: 2,
-          rowGap: 1,
-          minWidth: 0
-        }}
-      >
-        <Text as='strong' sx={{ color: 'heading', fontSize: nested ? 1 : 2 }}>
-          {comment.authorName}
-        </Text>
-        <Text
-          as='time'
-          dateTime={comment.createdAt}
-          sx={{ color: 'omegaDark', fontSize: 0 }}
-        >
-          {formatDate(comment.createdAt)}
-          {comment.editedAt ? ' · Düzenlendi' : ''}
-        </Text>
-      </Flex>
-      <Button
-        type='button'
-        variant='mute'
-        onClick={() => onReply(comment)}
-        sx={{ ...secondaryActionStyle, flex: '0 0 auto', ml: 2 }}
-      >
-        <FaReply aria-hidden='true' /> Yanıtla
-      </Button>
-    </Flex>
-    <Text
-      as='p'
+const CommentCard = ({ comment, onReply, nested = false, language }) => {
+  const labels = commentCopy[language]
+
+  return (
+    <Box
+      id={`yorum-${comment.id}`}
+      as='article'
       sx={{
-        color: 'article',
-        whiteSpace: 'pre-wrap',
-        overflowWrap: 'anywhere',
-        fontSize: nested ? 1 : 2,
-        lineHeight: 1.55,
-        mt: 2,
-        mb: 0
+        p: nested ? [2, 3] : 3,
+        bg: nested ? 'omegaLighter' : 'transparent',
+        '& + article': nested
+          ? {
+              borderTop: '1px solid',
+              borderColor: 'omegaLight'
+            }
+          : undefined
       }}
     >
-      {comment.body}
-    </Text>
-  </Box>
-)
+      <Flex sx={{ alignItems: 'flex-start', justifyContent: 'space-between' }}>
+        <Flex
+          sx={{
+            alignItems: 'baseline',
+            flexWrap: 'wrap',
+            columnGap: 2,
+            rowGap: 1,
+            minWidth: 0
+          }}
+        >
+          <Text as='strong' sx={{ color: 'heading', fontSize: nested ? 1 : 2 }}>
+            {comment.authorName}
+          </Text>
+          <Text
+            as='time'
+            dateTime={comment.createdAt}
+            sx={{ color: 'omegaDark', fontSize: 0 }}
+          >
+            {formatDate(comment.createdAt, language)}
+            {comment.editedAt ? ` · ${labels.edited}` : ''}
+          </Text>
+        </Flex>
+        <Button
+          type='button'
+          variant='mute'
+          onClick={() => onReply(comment)}
+          sx={{ ...secondaryActionStyle, flex: '0 0 auto', ml: 2 }}
+        >
+          <FaReply aria-hidden='true' /> {labels.reply}
+        </Button>
+      </Flex>
+      <Text
+        as='p'
+        sx={{
+          color: 'article',
+          whiteSpace: 'pre-wrap',
+          overflowWrap: 'anywhere',
+          fontSize: nested ? 1 : 2,
+          lineHeight: 1.55,
+          mt: 2,
+          mb: 0
+        }}
+      >
+        {comment.body}
+      </Text>
+    </Box>
+  )
+}
 
 CommentCard.propTypes = {
   comment: PropTypes.object.isRequired,
@@ -548,7 +556,8 @@ CommentCard.propTypes = {
   nested: PropTypes.bool
 }
 
-const Comments = ({ title, slug, comments }) => {
+const Comments = ({ title, slug, comments, language = 'tr' }) => {
+  const labels = commentCopy[language]
   const path = slug?.startsWith('/')
     ? slug
     : typeof window !== 'undefined'
@@ -580,10 +589,14 @@ const Comments = ({ title, slug, comments }) => {
         setStatus('ready')
       } catch (loadError) {
         setStatus('error')
-        setError(loadError.message || 'Yorumlar şu anda yüklenemiyor.')
+        setError(
+          language === 'en'
+            ? labels.loadError
+            : loadError.message || labels.loadError
+        )
       }
     },
-    [path, sort]
+    [labels, language, path, sort]
   )
 
   useEffect(() => {
@@ -600,6 +613,7 @@ const Comments = ({ title, slug, comments }) => {
       <CommentForm
         path={path}
         title={title || 'Yazı'}
+        language={language}
         replyTo={replyTo}
         siteKey={comments.turnstileSiteKey}
         onCancel={() => setReplyTo(null)}
@@ -625,12 +639,10 @@ const Comments = ({ title, slug, comments }) => {
             as='p'
             sx={{ color: 'heading', fontSize: 2, fontWeight: 'bold', m: 0 }}
           >
-            Konuşmalar
+            {labels.discussion}
           </Text>
           <Text as='p' sx={{ color: 'omegaDark', fontSize: 0, mt: 1, mb: 0 }}>
-            {commentCount
-              ? `${commentCount} yorum`
-              : 'Sohbeti sen başlatabilirsin.'}
+            {commentCount ? labels.count(commentCount) : labels.first}
           </Text>
         </Box>
         <Label
@@ -657,7 +669,7 @@ const Comments = ({ title, slug, comments }) => {
               border: 0
             }}
           >
-            Sıralama
+            {labels.sort}
           </Box>
           <Select
             id='comment-sort'
@@ -674,8 +686,8 @@ const Comments = ({ title, slug, comments }) => {
               fontSize: '16px'
             }}
           >
-            <option value='newest'>En yeni</option>
-            <option value='oldest'>En eski</option>
+            <option value='newest'>{labels.newest}</option>
+            <option value='oldest'>{labels.oldest}</option>
           </Select>
         </Label>
       </Flex>
@@ -685,7 +697,7 @@ const Comments = ({ title, slug, comments }) => {
           role='status'
           sx={{ alignItems: 'center', justifyContent: 'center', gap: 2, py: 5 }}
         >
-          <Spinner size={20} /> <Text>Yorumlar yükleniyor…</Text>
+          <Spinner size={20} /> <Text>{labels.loading}</Text>
         </Flex>
       )}
       {error && (
@@ -717,10 +729,10 @@ const Comments = ({ title, slug, comments }) => {
             <FaRegCommentDots size={21} aria-hidden='true' />
           </Flex>
           <Text as='p' sx={{ color: 'heading', fontWeight: 'bold', m: 0 }}>
-            Henüz yorum yok
+            {labels.empty}
           </Text>
           <Text as='p' sx={{ color: 'omegaDark', fontSize: 1, mt: 1, mb: 0 }}>
-            Bu yazı hakkındaki ilk düşünceyi sen paylaşabilirsin.
+            {labels.invite}
           </Text>
         </Flex>
       )}
@@ -738,11 +750,15 @@ const Comments = ({ title, slug, comments }) => {
             boxShadow: theme => `0 16px 42px -40px ${theme.colors.omegaDarker}`
           }}
         >
-          <CommentCard comment={root} onReply={setReplyTo} />
+          <CommentCard
+            comment={root}
+            onReply={setReplyTo}
+            language={language}
+          />
           {Boolean(root.replies?.length) && (
             <Box
               data-comment-replies
-              aria-label={`${root.authorName} yorumuna verilen yanıtlar`}
+              aria-label={labels.replies(root.authorName)}
               sx={{
                 mx: [2, 3],
                 mb: [2, 3],
@@ -758,6 +774,7 @@ const Comments = ({ title, slug, comments }) => {
                   comment={reply}
                   onReply={setReplyTo}
                   nested
+                  language={language}
                 />
               ))}
             </Box>
@@ -772,7 +789,7 @@ const Comments = ({ title, slug, comments }) => {
           onClick={() => load({ append: true, nextCursor: cursor })}
           sx={{ ...secondaryActionStyle, mt: 3 }}
         >
-          {status === 'loading' ? 'Yükleniyor…' : 'Daha fazla yorum göster'}
+          {status === 'loading' ? labels.loadingMore : labels.more}
         </Button>
       )}
     </Box>
