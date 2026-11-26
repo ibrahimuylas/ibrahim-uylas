@@ -75,9 +75,22 @@ export default function LanguageSelector({ pathname, language, links }) {
 
   if (!links) return null
 
-  const select = selectedLanguage => {
+  const select = (event, selectedLanguage) => {
     rememberPreference(selectedLanguage)
     setSuggestion(null)
+
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    )
+      return
+
+    // Load the destination document instead of letting Gatsby intercept the link.
+    event.preventDefault()
+    window.location.assign(event.currentTarget.href)
   }
 
   return (
@@ -107,7 +120,7 @@ export default function LanguageSelector({ pathname, language, links }) {
                   : 'Bu sayfayı Türkçe oku'
                 : languageNames[targetLanguage]
             }
-            onClick={() => select(targetLanguage)}
+            onClick={event => select(event, targetLanguage)}
             sx={
               isSuggested ? { ...linkStyle, color: 'alphaDarker' } : linkStyle
             }
