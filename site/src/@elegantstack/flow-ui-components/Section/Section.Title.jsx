@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { useLocation } from '@reach/router'
 import { Heading, Badge, Flex } from 'theme-ui'
 import Divider from '@components/Divider'
+import { copy } from '../../../i18n/copy'
+import { getPageLanguage } from '../../../i18n/language'
 
 const styles = {
   wrapper: {
@@ -39,6 +42,8 @@ const styles = {
 }
 
 const SectionTitle = ({ title, titleLink, titleColor, omitTitle, variant }) => {
+  const { pathname } = useLocation()
+  const labels = copy[getPageLanguage(pathname)]
   const linkProps = titleLink && {
     as: Link,
     to: titleLink
@@ -64,7 +69,7 @@ const SectionTitle = ({ title, titleLink, titleColor, omitTitle, variant }) => {
         )}
         {titleLink && (
           <Badge variant='tag' sx={styles.badge} {...linkProps}>
-            Daha Fazla
+            {labels.sectionMore}
           </Badge>
         )}
       </Flex>

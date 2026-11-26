@@ -87,6 +87,7 @@ const missingEnglishHomeContent = [
   'slick-slider',
   'Featured and recent articles',
   'aria-label="Next slide"',
+  '>See more</a>',
   'href="/en/about-ibrahim-uylas/"',
   'alt="İbrahim Uylaş out hiking"',
   'I’m İbrahim Uylaş',
@@ -103,6 +104,14 @@ const missingEnglishHomeContent = [
 if (missingEnglishHomeContent.length) {
   console.error('Generated English homepage is missing sections or content:')
   missingEnglishHomeContent.forEach(value => console.error(`- ${value}`))
+  process.exitCode = 1
+}
+
+if (
+  !/\b\d+ min<\//.test(englishHome) ||
+  /\b\d+\s+(?:<!-- -->\s*)?dk<\//.test(englishHome)
+) {
+  console.error('Generated English homepage has incorrect reading time units.')
   process.exitCode = 1
 }
 
