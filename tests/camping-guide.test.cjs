@@ -214,7 +214,7 @@ test('all content uses an editorial grid and local category filters', () => {
   )
   assert.match(
     campingGuideComponent,
-    /aria-label='İçerikleri kategoriye göre filtrele'/
+    /aria-label=\{guideCopy\(\s*'İçerikleri kategoriye göre filtrele',\s*language\s*\)\}/
   )
   assert.match(
     campingGuideComponent,

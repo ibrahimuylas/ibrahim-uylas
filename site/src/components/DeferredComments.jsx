@@ -4,6 +4,7 @@ import { Box, Button, Flex, Heading, Text } from 'theme-ui'
 import Comments from './Comments'
 
 const DeferredComments = props => {
+  const english = props.language === 'en'
   const containerRef = useRef(null)
   const [active, setActive] = useState(false)
 
@@ -67,7 +68,7 @@ const DeferredComments = props => {
               mb: 2
             }}
           >
-            Sohbet
+            {english ? 'Discussion' : 'Sohbet'}
           </Text>
           <Heading
             id='comments-heading'
@@ -81,7 +82,7 @@ const DeferredComments = props => {
               m: 0
             }}
           >
-            Yorumlar
+            {english ? 'Comments' : 'Yorumlar'}
           </Heading>
         </Box>
         {active && (
@@ -95,7 +96,9 @@ const DeferredComments = props => {
               maxWidth: `21rem`
             }}
           >
-            Deneyimini paylaş, başka okurlara yol göster.
+            {english
+              ? 'Share your experience to help other readers.'
+              : 'Deneyimini paylaş, başka okurlara yol göster.'}
           </Text>
         )}
       </Flex>
@@ -104,8 +107,9 @@ const DeferredComments = props => {
       ) : (
         <Box sx={{ mt: 3 }}>
           <Text as='p' sx={{ color: `text`, lineHeight: 1.7, m: 0, mb: 3 }}>
-            Bu yazı hakkında fikrini paylaş. Yorum alanı, sayfa açıldığında
-            değil sen istediğinde yüklenir.
+            {english
+              ? 'Tell me what you think of this article. Use the button below to open the comments.'
+              : 'Bu yazı hakkında fikrini paylaş. Yorum alanı, sayfa açıldığında değil sen istediğinde yüklenir.'}
           </Text>
           <Flex
             sx={{
@@ -119,7 +123,7 @@ const DeferredComments = props => {
               onClick={() => setActive(true)}
               sx={{ borderRadius: `999px` }}
             >
-              Yorumları aç
+              {english ? 'Open comments' : 'Yorumları aç'}
             </Button>
           </Flex>
         </Box>

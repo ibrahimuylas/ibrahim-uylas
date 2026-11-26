@@ -6,6 +6,27 @@ import { currentPagePath, trackEvent } from '../utils/analytics'
 import policy from './instagramShowcasePolicy'
 import InstagramNewsletter from './InstagramNewsletter'
 
+const instagram = {
+  tr: {
+    loading: 'Instagram bölümü yükleniyor',
+    heading: 'Yoldaki hikâyeleri kaçırma',
+    followLink: 'Instagram’da @uylasonwheels profilini aç',
+    messageLink: 'Instagram’da @uylasonwheels ile mesajlaşmayı aç',
+    follow: 'Takip et',
+    message: 'Mesaj at',
+    posts: 'Son 6 paylaşım'
+  },
+  en: {
+    loading: 'Loading Instagram posts',
+    heading: 'Follow the stories from the road',
+    followLink: 'Open the @uylasonwheels profile on Instagram',
+    messageLink: 'Send a message to @uylasonwheels on Instagram',
+    follow: 'Follow',
+    message: 'Message',
+    posts: 'Latest six posts'
+  }
+}
+
 const PROFILE_URL = 'https://www.instagram.com/uylasonwheels/'
 const MESSAGE_URL = 'https://ig.me/m/uylasonwheels'
 const focusStyle = {
@@ -55,13 +76,13 @@ const skeletonStyle = {
   borderRadius: [`12px`, `16px`]
 }
 
-const InstagramSkeleton = () => (
+const InstagramSkeleton = ({ labels }) => (
   <Box
     as='section'
     role='status'
     aria-live='polite'
     aria-busy='true'
-    aria-label='Instagram bölümü yükleniyor'
+    aria-label={labels.loading}
     data-instagram-state='loading'
     sx={sectionStyle}
   >
@@ -152,7 +173,8 @@ const InstagramSkeleton = () => (
   </Box>
 )
 
-const InstagramShowcase = ({ showNewsletter = true }) => {
+const InstagramShowcase = ({ showNewsletter = true, language = 'tr' }) => {
+  const labels = instagram[language]
   const [status, setStatus] = useState('loading')
   const [feed, setFeed] = useState(null)
 
@@ -183,8 +205,8 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
   if (status === 'loading') {
     return (
       <Box sx={{ width: `100%`, minWidth: 0 }}>
-        <InstagramSkeleton />
-        {showNewsletter && <InstagramNewsletter />}
+        <InstagramSkeleton labels={labels} />
+        {showNewsletter && <InstagramNewsletter language={language} />}
       </Box>
     )
   }
@@ -192,7 +214,7 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
   if (status !== 'ready' || !feed) {
     return showNewsletter ? (
       <Box sx={{ width: `100%`, minWidth: 0 }}>
-        <InstagramNewsletter />
+        <InstagramNewsletter language={language} />
       </Box>
     ) : null
   }
@@ -259,7 +281,7 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
               m: 0
             }}
           >
-            Yoldaki hikâyeleri kaçırma
+            {labels.heading}
           </Heading>
           <ThemeImage
             src={feed.profileImageUrl}
@@ -342,7 +364,7 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
           >
             <Link
               href={PROFILE_URL}
-              aria-label='Instagram’da @uylasonwheels profilini aç'
+              aria-label={labels.followLink}
               onClick={activation('profile')}
               sx={{
                 variant: `buttons.primary`,
@@ -369,11 +391,11 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
                 ...focusStyle
               }}
             >
-              Takip et
+              {labels.follow}
             </Link>
             <Link
               href={MESSAGE_URL}
-              aria-label='Instagram’da @uylasonwheels ile mesajlaşmayı aç'
+              aria-label={labels.messageLink}
               onClick={activation('message')}
               sx={{
                 variant: `buttons.mute`,
@@ -400,7 +422,7 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
                 ...focusStyle
               }}
             >
-              Mesaj at
+              {labels.message}
             </Link>
           </Flex>
         </Box>
@@ -417,7 +439,7 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
             border: 0
           }}
         >
-          Son 6 paylaşım
+          {labels.posts}
         </Text>
         <Box sx={{ ...railStyle, mt: [3, 4] }}>
           {feed.posts.map((post, index) => (
@@ -495,7 +517,7 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
           ))}
         </Box>
       </Box>
-      {showNewsletter && <InstagramNewsletter />}
+      {showNewsletter && <InstagramNewsletter language={language} />}
     </Box>
   )
 }
@@ -503,5 +525,6 @@ const InstagramShowcase = ({ showNewsletter = true }) => {
 export default InstagramShowcase
 
 InstagramShowcase.propTypes = {
+  language: PropTypes.oneOf(['en', 'tr']),
   showNewsletter: PropTypes.bool
 }

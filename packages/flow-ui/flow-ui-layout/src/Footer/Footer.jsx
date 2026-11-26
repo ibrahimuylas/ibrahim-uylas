@@ -12,14 +12,14 @@ const styles = {
   }
 }
 
-export const Footer = () => (
+export const Footer = ({ items, homePath, copyright }) => (
   <Box sx={styles.wrapper}>
     <Container variant='compact' sx={styles.container}>
       <Flex variant='layout.footer'>
         <Box>
-          <FooterLogo />
+          <FooterLogo homePath={homePath} copyright={copyright} />
         </Box>
-        <FooterMenu />
+        <FooterMenu items={items} />
         <Box>
           <FooterSocial />
         </Box>

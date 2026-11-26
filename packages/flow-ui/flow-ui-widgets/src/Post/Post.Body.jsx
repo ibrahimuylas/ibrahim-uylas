@@ -6,8 +6,12 @@ const MdxContentContext = createContext(null)
 
 export const MdxContentProvider = MdxContentContext.Provider
 
-export const PostBody = () => {
+export const PostBody = ({ mdxComponents }) => {
   const content = useContext(MdxContentContext)
 
-  return <MDXProvider components={components}>{content}</MDXProvider>
+  return (
+    <MDXProvider components={{ ...components, ...mdxComponents }}>
+      {content}
+    </MDXProvider>
+  )
 }

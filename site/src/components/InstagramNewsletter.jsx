@@ -4,7 +4,7 @@ import { FaRegPaperPlane } from 'react-icons/fa'
 import NewsletterForm from '@components/NewsletterForm'
 import useMailChimp from '@helpers/useMailChimp'
 
-const InstagramNewsletter = () => {
+const InstagramNewsletter = ({ language = 'tr' }) => {
   const { handleSubmit, canSubmit, submitting, message, success } =
     useMailChimp()
 
@@ -64,7 +64,9 @@ const InstagramNewsletter = () => {
                 m: 0
               }}
             >
-              Yeni yazılardan haberdar ol
+              {language === 'en'
+                ? 'Get new articles by email'
+                : 'Yeni yazılardan haberdar ol'}
             </Heading>
             <Text
               as='p'
@@ -76,12 +78,15 @@ const InstagramNewsletter = () => {
                 mb: 0
               }}
             >
-              Yeni rota ve kamp rehberlerini kısa bir e-postayla paylaşırım.
+              {language === 'en'
+                ? 'I’ll send a short email when I publish a new route or camping guide.'
+                : 'Yeni rota ve kamp rehberlerini kısa bir e-postayla paylaşırım.'}
             </Text>
           </Box>
         </Flex>
         <NewsletterForm
           compact
+          language={language}
           {...{
             handleSubmit,
             canSubmit,

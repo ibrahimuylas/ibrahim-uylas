@@ -91,20 +91,20 @@ const routeToHtmlPath = (publicDirectory, route) => {
   return path.join(publicDirectory, relativePath)
 }
 
-const validatePagefindEntry = (entry, eligibleCount) => {
+const validatePagefindEntry = (entry, eligibleCount, language = 'tr') => {
   const failures = []
-  const languages = entry?.languages
-  const turkish = languages?.tr
+  const index = entry?.languages?.[language]
+  const label = language === 'tr' ? 'Turkish' : 'English'
 
   if (entry?.version !== '1.5.2') {
     failures.push('Pagefind entry does not report version 1.5.2')
   }
-  if (!turkish || typeof turkish.hash !== 'string' || turkish.wasm !== 'tr') {
-    failures.push('Pagefind entry does not contain Turkish index metadata')
+  if (!index || typeof index.hash !== 'string' || index.wasm !== language) {
+    failures.push(`Pagefind entry does not contain ${label} index metadata`)
   }
-  if (turkish?.page_count !== eligibleCount) {
+  if (index?.page_count !== eligibleCount) {
     failures.push(
-      `Pagefind reports ${turkish?.page_count ?? 'no'} indexed pages; expected ${eligibleCount}`
+      `Pagefind reports ${index?.page_count ?? 'no'} indexed pages; expected ${eligibleCount}`
     )
   }
 

@@ -5,12 +5,12 @@ import { Box, Button, Flex, Heading, Message, Spinner, Text } from 'theme-ui'
 const VISITOR_STORAGE_KEY = 'article-reaction-visitor-v1'
 
 const reactionOptions = [
-  { key: 'like', emoji: '👍', label: 'Beğendim' },
-  { key: 'funny', emoji: '😂', label: 'Eğlendim' },
-  { key: 'love', emoji: '😍', label: 'Bayıldım' },
-  { key: 'surprised', emoji: '😮', label: 'Şaşırdım' },
-  { key: 'angry', emoji: '😡', label: 'Kızdım' },
-  { key: 'sad', emoji: '😢', label: 'Üzüldüm' }
+  { key: 'like', emoji: '👍', label: { tr: 'Beğendim', en: 'Like' } },
+  { key: 'funny', emoji: '😂', label: { tr: 'Eğlendim', en: 'Funny' } },
+  { key: 'love', emoji: '😍', label: { tr: 'Bayıldım', en: 'Love' } },
+  { key: 'surprised', emoji: '😮', label: { tr: 'Şaşırdım', en: 'Surprised' } },
+  { key: 'angry', emoji: '😡', label: { tr: 'Kızdım', en: 'Angry' } },
+  { key: 'sad', emoji: '😢', label: { tr: 'Üzüldüm', en: 'Sad' } }
 ]
 
 const createVisitorId = () => {
@@ -48,7 +48,29 @@ const parseResponse = async response => {
   return result
 }
 
-const ArticleReactions = ({ title, slug }) => {
+const reactionLabels = {
+  tr: {
+    heading: 'Bu yazıyı nasıl buldun?',
+    first: 'İlk tepkiyi sen verebilirsin.',
+    toolbar: 'Yazı tepkileri',
+    loading: 'Yükleniyor…',
+    loadError: 'Tepkiler şu anda yüklenemiyor.',
+    voteError: 'Tepkin kaydedilemedi.',
+    count: number => `${number} tepki`
+  },
+  en: {
+    heading: 'What did you think of this article?',
+    first: 'Be the first to react.',
+    toolbar: 'Article reactions',
+    loading: 'Loading…',
+    loadError: 'Reactions could not be loaded.',
+    voteError: 'Your reaction could not be saved.',
+    count: number => `${number} ${number === 1 ? 'reaction' : 'reactions'}`
+  }
+}
+
+const ArticleReactions = ({ title, slug, language = 'tr' }) => {
+  const labels = reactionLabels[language]
   const path = slug?.startsWith('/')
     ? slug
     : typeof window !== 'undefined'
@@ -89,7 +111,11 @@ const ArticleReactions = ({ title, slug }) => {
         setStatus('ready')
       } catch (loadError) {
         if (cancelled) return
-        setError(loadError.message || 'Tepkiler şu anda yüklenemiyor.')
+        setError(
+          language === 'en'
+            ? labels.loadError
+            : loadError.message || labels.loadError
+        )
         setStatus('error')
       }
     }
@@ -98,7 +124,7 @@ const ArticleReactions = ({ title, slug }) => {
     return () => {
       cancelled = true
     }
-  }, [applyResult, path])
+  }, [applyResult, labels, language, path])
 
   const total = useMemo(
     () =>
@@ -127,7 +153,11 @@ const ArticleReactions = ({ title, slug }) => {
       applyResult(await parseResponse(response))
       setStatus('ready')
     } catch (voteError) {
-      setError(voteError.message || 'Tepkin kaydedilemedi.')
+      setError(
+        language === 'en'
+          ? labels.voteError
+          : voteError.message || labels.voteError
+      )
       setStatus('error')
     }
   }
@@ -161,22 +191,23 @@ const ArticleReactions = ({ title, slug }) => {
             as='h2'
             sx={{ color: 'heading', fontSize: [2, 3], m: 0 }}
           >
-            Bu yazıyı nasıl buldun?
+            {labels.heading}
           </Heading>
           <Text as='p' sx={{ color: 'omegaDark', fontSize: 1, mt: 1, mb: 0 }}>
-            {total ? `${total} tepki` : 'İlk tepkiyi sen verebilirsin.'}
+            {total ? labels.count(total) : labels.first}
           </Text>
         </Box>
         {status === 'loading' && (
           <Flex role='status' sx={{ alignItems: 'center', gap: 2 }}>
-            <Spinner size={18} /> <Text sx={{ fontSize: 1 }}>Yükleniyor…</Text>
+            <Spinner size={18} />{' '}
+            <Text sx={{ fontSize: 1 }}>{labels.loading}</Text>
           </Flex>
         )}
       </Flex>
 
       <Box
         role='toolbar'
-        aria-label='Yazı tepkileri'
+        aria-label={labels.toolbar}
         sx={{
           display: 'grid',
           gridTemplateColumns: [
@@ -194,7 +225,7 @@ const ArticleReactions = ({ title, slug }) => {
               type='button'
               variant='mute'
               aria-pressed={active}
-              aria-label={`${option.label}: ${counts[option.key] || 0} tepki`}
+              aria-label={`${option.label[language]}: ${labels.count(counts[option.key] || 0)}`}
               disabled={!visitor || status === 'loading' || status === 'saving'}
               onClick={() => vote(option.key)}
               sx={{
@@ -241,7 +272,7 @@ const ArticleReactions = ({ title, slug }) => {
                 {option.emoji}
               </Box>
               <Text as='span' sx={{ fontSize: 0, fontWeight: 'bold' }}>
-                {option.label}
+                {option.label[language]}
               </Text>
               <Text as='span' sx={{ color: 'omegaDark', fontSize: 0 }}>
                 {counts[option.key] || 0}

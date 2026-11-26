@@ -10,6 +10,9 @@ import ArticleContents from '../../../components/ArticleContents'
 import HomepageCategories from '../../../components/HomepageCategories'
 import categoryColors from '../../../components/categoryColors'
 import InstagramShowcase from '../../../components/InstagramShowcase'
+import guideLinks from '../../../content-guides/categoryGuideLinks'
+import { categoryName, copy, localizePreview } from '../../../i18n/copy'
+import { getLocalizedLink, getPageLanguage } from '../../../i18n/language'
 
 const categoryDescriptions = {
   Kampçılık: 'Kamp hazırlığı, güvenlik ve temel kamp deneyimleri.',
@@ -28,25 +31,28 @@ const Posts = ({
   },
   ...props
 }) => {
-  const { pageContext: { services = {} } = {} } = props
-  let categories = useBlogCategories()
+  const { pageContext: { services = {}, previews } = {} } = props
+  const language = getPageLanguage(props.location?.pathname)
+  const labels = copy[language].homepage
+  const categories = useBlogCategories()
   const featuredSlugs = new Set(
     (featuredPosts.nodes || []).map(post => post.slug).filter(Boolean)
   )
   const withCategoryColors = nodes =>
     (nodes || []).map(post => {
       const categoryColor = categoryColors[post.category?.name]
+      const localized = localizePreview(post, previews)
 
       return categoryColor
         ? {
-            ...post,
+            ...localized,
             category: {
-              ...post.category,
+              ...localized.category,
               color: categoryColor
             },
             accentColor: categoryColor
           }
-        : post
+        : localized
     })
 
   const featuredNodes = withCategoryColors(featuredPosts.nodes)
@@ -65,6 +71,8 @@ const Posts = ({
     .filter(Boolean)
     .map(group => ({
       ...group,
+      heading: categoryName(group.nodes[0].category, language),
+      slug: group.nodes[0].category.slug,
       nodes: withCategoryColors(
         group.nodes.filter(post => !featuredSlugs.has(post.slug))
       )
@@ -82,36 +90,38 @@ const Posts = ({
     .filter(Boolean)
     .map(category => ({
       ...category,
+      name: categoryName(category, language),
+      slug: getLocalizedLink(category.slug, language).href,
       color: categoryColors[category.name] || category.color,
-      description: categoryDescriptions[category.name]
+      description:
+        language === 'en'
+          ? guideLinks[category.name].en.description
+          : categoryDescriptions[category.name]
     }))
 
-  categories = sortedCategories
-
   const homeContentsItems = [
-    { title: 'Öne çıkanlar ve son yazılar', url: '#one-cikanlar' },
-    ...sortedPostGroup.filter(Boolean).map(group => ({
-      title: group.categoryName,
-      url: `#ana-${group.nodes[0].category.slug}`
+    { title: labels.featured, url: '#one-cikanlar' },
+    ...sortedPostGroup.map(group => ({
+      title: group.heading,
+      url: `#ana-${group.slug}`
     }))
   ]
 
   return (
     <Layout {...props}>
       <Seo
-        title='Kampçılık, Doğa Yürüyüşü ve Rota Rehberleri'
-        description='Kampçılık, doğa yürüyüşü, trekking, rota ve kamp ekipmanı rehberleri. Kişisel deneyimler, hazırlık notları ve yol hikâyeleri.'
+        title={labels.title}
+        description={labels.description}
         imageData={homeOgImage?.childImageSharp?.gatsbyImageData}
       />
       <Divider space={[3, 2]} />
       <Stack effectProps={{ effect: false }}>
         <Box sx={{ py: [2, 3], width: `100%`, maxWidth: `none` }}>
           <Heading as='h1' variant='h1'>
-            Kampçılık, doğa yürüyüşü ve rota rehberleri
+            {labels.heading}
           </Heading>
           <Text sx={{ display: `block`, width: `100%` }}>
-            Kamp hazırlığı, rota seçimi, ekipman kullanımı ve yol hikâyeleri;
-            gerçek deneyimlerden süzülen pratik rehberler.
+            {labels.introduction}
           </Text>
         </Box>
       </Stack>
@@ -121,17 +131,22 @@ const Posts = ({
           as='h2'
           sx={{ fontSize: [4, 5], lineHeight: 1.2, mb: 3, mt: 0 }}
         >
-          Doğaya çıkmaya buradan başla
+          {labels.start}
         </Heading>
         <HomepageCategories
-          categories={categories}
+          categories={sortedCategories}
           variant='horizontal'
           omitTitle
         />
       </Stack>
       <Divider space={[4, 3]} />
       <ArticleContents items={homeContentsItems} showInlineNavigation={false} />
-      <Box id='one-cikanlar' sx={{ scrollMarginTop: `24px` }}>
+      <Box
+        as='section'
+        aria-label={labels.featured}
+        id='one-cikanlar'
+        sx={{ scrollMarginTop: `24px` }}
+      >
         <Stack
           direction='column'
           contentSx={{
@@ -148,6 +163,7 @@ const Posts = ({
               variant='horizontal-cover'
               slider
               fade
+              language={language}
               controlPosition='over'
               loading='eager'
               accentColorByCategory={categoryColors}
@@ -177,26 +193,29 @@ const Posts = ({
               }
             }}
           >
-            <BannerVertical />
+            <BannerVertical language={language} />
           </Sidebar>
         </Stack>
       </Box>
       <Divider space={[5, 4]} />
       <Stack effectProps={{ effect: false }}>
-        <InstagramShowcase showNewsletter={services.mailchimp} />
+        <InstagramShowcase
+          language={language}
+          showNewsletter={services.mailchimp}
+        />
       </Stack>
       <Divider space={[5, 4]} />
       {sortedPostGroup.length > 0 &&
         sortedPostGroup.map((group, index) => (
           <Box
             key={`${group.categoryName}.list`}
-            id={`ana-${group.nodes[0].category.slug}`}
+            id={`ana-${group.slug}`}
             sx={{ scrollMarginTop: `24px` }}
           >
             {index % 2 === 0 ? (
               <Stack
-                title={group.categoryName}
-                titleLink={group.nodes[0].category.slug}
+                title={group.heading}
+                titleLink={getLocalizedLink(group.slug, language).href}
                 titleColor={categoryColors[group.categoryName]}
               >
                 <Main>
@@ -227,8 +246,8 @@ const Posts = ({
               </Stack>
             ) : (
               <Stack
-                title={group.categoryName}
-                titleLink={group.nodes[0].category.slug}
+                title={group.heading}
+                titleLink={getLocalizedLink(group.slug, language).href}
                 titleColor={categoryColors[group.categoryName]}
                 direction={['column', 'column', 'column', 'row']}
               >

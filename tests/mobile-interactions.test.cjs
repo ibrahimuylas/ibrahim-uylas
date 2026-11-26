@@ -117,8 +117,10 @@ test('page contents navigation uses page wording outside article contents', () =
 
   assert.match(
     contents,
-    /const navigationLabel = showInlineNavigation \? `Bu yazıda` : `Bu sayfada`/
+    /const navigationLabel = showInlineNavigation \? labels\.article : labels\.page/
   )
+  assert.match(contents, /article: 'Bu yazıda',[\s\S]*?page: 'Bu sayfada'/)
+  assert.match(contents, /article: 'In this article',[\s\S]*?page: 'On this page'/)
   assert.match(contents, /label=\{navigationLabel\}/)
   assert.match(sheet, /label,/)
   assert.match(sheet, /\{label\}/)
@@ -162,10 +164,10 @@ test('mobile action dock uses a compact translucent surface without Safari artif
   assert.match(dock, /borderColor: `rgba\(255, 255, 255, 0\.18\)`/)
   assert.match(dock, /borderRadius: `full`/)
   assert.match(dock, /bg: `rgba\(29, 37, 51, 0\.68\)`/)
-  assert.match(dock, /location\?\.pathname && location\.pathname !== `\/`/)
+  assert.match(dock, /location\?\.pathname && location\.pathname !== labels\.homePath/)
   assert.match(
     dock,
-    /showHomeAction[\s\S]*as=\{GatsbyLink\}[\s\S]*to='\/'[\s\S]*aria-label='Ana sayfaya dön'/
+    /showHomeAction[\s\S]*as=\{GatsbyLink\}[\s\S]*to=\{labels\.homePath\}[\s\S]*aria-label=/
   )
   assert.match(dock, /<FaHome aria-hidden='true' focusable='false' \/>/)
   assert.match(
@@ -186,14 +188,14 @@ test('Instagram waits for live data and keeps its heading on one line', () => {
 
   assert.match(showcase, /useState\('loading'\)/)
   assert.match(showcase, /status === 'loading'/)
-  assert.match(showcase, /<InstagramSkeleton \/>/)
+  assert.match(showcase, /<InstagramSkeleton labels=\{labels\} \/>/)
   assert.match(showcase, /<Box sx=\{\{ width: `100%`, minWidth: 0 \}\}>/)
   assert.match(
     showcase,
-    /status !== 'ready' \|\| !feed[\s\S]*<InstagramNewsletter \/>/
+    /status !== 'ready' \|\| !feed[\s\S]*<InstagramNewsletter language=\{language\} \/>/
   )
   assert.match(showcase, /data-instagram-state='loading'/)
-  assert.match(showcase, /aria-label='Instagram bölümü yükleniyor'/)
+  assert.match(showcase, /aria-label=\{labels\.loading\}/)
   assert.match(showcase, /Yoldaki hikâyeleri kaçırma/)
   assert.match(showcase, /whiteSpace: `nowrap`/)
   assert.doesNotMatch(showcase, /FALLBACK_PROFILE|localPortrait/)
@@ -211,7 +213,7 @@ test('Instagram and newsletter share a compact responsive homepage section', () 
 
   assert.match(
     homepage,
-    /<InstagramShowcase showNewsletter=\{services\.mailchimp\} \/>/
+    /<InstagramShowcase\s+language=\{language\}\s+showNewsletter=\{services\.mailchimp\}\s*\/>/
   )
   assert.doesNotMatch(homepage, /NewsletterExpanded/)
   assert.match(newsletter, /data-instagram-newsletter/)
@@ -282,7 +284,7 @@ test('article links use dark-mode contrast without changing global links', () =>
   assert.doesNotMatch(rootStyles, /\ba:\s*\{/)
   assert.match(
     postBody,
-    /const ArticleLink = props => <Link \{\.\.\.props\} sx=\{articleLinkStyles\} \/>/
+    /<Link[\s\S]*sx=\{articleLinkStyles\}/
   )
   assert.match(
     postBody,
@@ -328,7 +330,7 @@ test('homepage profile card uses the responsive portrait instead of the greeting
     profileCard,
     /src='\.\.\/\.\.\/\.\.\/\.\.\/content\/assets\/bu-adam-kim\.jpeg'/
   )
-  assert.match(profileCard, /alt='İbrahim Uylaş doğa yürüyüşünde'/)
+  assert.match(profileCard, /alt=\{labels\.authorImage\}/)
   assert.match(
     profileCard,
     /min-width: 768px\) and \(max-width: 1199px\)[\s\S]*flexDirection: `row`/

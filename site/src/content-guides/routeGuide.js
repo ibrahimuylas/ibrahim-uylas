@@ -135,6 +135,7 @@ const likyaSlugs = [
 
 const articleGroups = Object.fromEntries([
   ...likyaSlugs.map(slug => [slug, 'likya-yolu']),
+  ['likya-yolu-2014-planim', 'likya-yolu'],
   ...Object.entries(routeGroups).flatMap(([group, slugs]) =>
     slugs.map(slug => [slug, group])
   )
@@ -155,8 +156,9 @@ const routeGuide = {
   hero: {
     eyebrow: 'Açık hava günlüğü',
     ctaLabel: 'Likya Yolu’nu planla',
-    ctaHref: '#likya-yolu',
-    secondaryCtaLabel: 'Tüm rotaları keşfet',
+    ctaHref: '/likya-yolu-rotasi/#planlayici',
+    secondaryCtaLabel: 'Tüm Likya etapları',
+    secondaryCtaHref: '/likya-yolu-rotasi/#tum-etaplar',
     imageAlt: 'Pusula, topoğrafik harita ve Likya Yolu’nda yürüyüş rotası',
     imageType: 'static',
     stats: [
@@ -212,7 +214,8 @@ const routeGuide = {
     {
       slug: 'likya-yolu-rotasi',
       label: 'Likya Yolu’nu planla',
-      summary: 'Haritayı, etapları ve 509 km’lik tarihsel planı incele.'
+      summary:
+        'Modern rota rehberinden başla; 2014 tarihsel plan ve günlükler ayrı arşivde kalır.'
     },
     {
       slug: 'likya-yolu-rotasi-oludenizden-kabak-koyuna',
@@ -230,11 +233,15 @@ const routeGuide = {
       id: 'likya-yolu',
       title: 'Likya Yolu rotaları',
       description:
-        '509 km’lik tarihsel planı, 11 etap rehberini ve her etaba eşlik eden yürüyüş günlüklerini tek bir akışta incele.',
+        '2014 rota planını incele, yürüdüğüm 11 etabı ve günlüklerini keşfet.',
       layout: 'route',
       featuredSlug: 'likya-yolu-rotasi',
       items: likyaStages,
       links: [
+        {
+          label: 'Tüm Likya etapları',
+          path: '/likya-yolu-rotasi/#tum-etaplar'
+        },
         {
           label: '11 günde yürüdüğüm 230 km',
           path: '/likya-yolu-11-gunde-yurudugum-parkur/'
@@ -310,5 +317,6 @@ module.exports.likyaStages = likyaStages
 module.exports.routeGroups = routeGroups
 module.exports.allRouteSlugs = [
   ...likyaSlugs,
+  'likya-yolu-2014-planim',
   ...Object.values(routeGroups).flat()
 ]

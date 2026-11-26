@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link as GLink } from 'gatsby'
-import { Link, Text } from 'theme-ui'
+import { Text } from 'theme-ui'
 import TextList from '@components/TextList'
 import PageTitle from '@components/PageTitle'
+import LocaleLink from '../../../i18n/LocaleLink'
+import { copy } from '../../../i18n/copy'
 
 const styles = {
   item: {
@@ -16,34 +17,36 @@ export const PostHead = ({
   date,
   modified,
   timeToRead,
-  category
+  category,
+  language = 'tr'
 }) => {
+  const labels = copy[language]
   const info = (
     <TextList>
       {author && author.slug && (
         <Text data-pagefind-ignore='index' sx={styles.item}>
-          {`Yazan `}
-          <Link variant='mute' as={GLink} to={author.slug}>
+          {`${labels.author} `}
+          <LocaleLink variant='mute' to={author.slug} language={language}>
             <strong>{author.name}</strong>
-          </Link>
+          </LocaleLink>
         </Text>
       )}
       {category && category.slug && (
         <Text data-pagefind-ignore='index' sx={styles.item}>
-          {`Kategori `}
-          <Link variant='mute' as={GLink} to={category.slug}>
+          {`${labels.category} `}
+          <LocaleLink variant='mute' to={category.slug} language={language}>
             <strong data-pagefind-meta='category'>{category.name}</strong>
-          </Link>
+          </LocaleLink>
         </Text>
       )}
       {date && (
         <Text data-pagefind-ignore='index' sx={styles.item}>
-          {`Yayımlandı: ${date}`}
+          {`${labels.published}: ${date}`}
         </Text>
       )}
       {modified && (
         <Text data-pagefind-ignore='index' sx={styles.item}>
-          {`Güncellendi: ${modified}`}
+          {`${labels.updated}: ${modified}`}
         </Text>
       )}
       {timeToRead && (
@@ -51,7 +54,7 @@ export const PostHead = ({
           data-pagefind-ignore='index'
           sx={{ ...styles.item, color: `error` }}
         >
-          <strong>{timeToRead} dk</strong>
+          <strong>{labels.minutes(timeToRead)}</strong>
         </Text>
       )}
     </TextList>

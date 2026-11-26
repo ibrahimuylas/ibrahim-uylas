@@ -13,15 +13,19 @@ const styles = {
   }
 }
 
-export const PostTags = ({ tags, private: isPrivate }) =>
+export const PostTags = ({ tags, private: isPrivate, language = 'tr' }) =>
   tags && tags.length > 0 ? (
     <Flex sx={styles.wrapper}>
       <Heading variant='h5' sx={styles.heading}>
-        Tags
+        {language === 'en' ? 'Tags' : 'Etiketler'}
       </Heading>
       <Box variant='lists.badges'>
-        {tags.map(({ id, name, slug }) => {
-          const linkProps = isPrivate ? {} : { as: Link, to: slug }
+        {tags.map(({ id, name, slug, hrefLang }) => {
+          const linkProps = isPrivate
+            ? {}
+            : hrefLang
+              ? { as: 'a', href: slug, hrefLang, lang: hrefLang }
+              : { as: Link, to: slug }
 
           return (
             <Badge variant='tag' key={id} {...linkProps}>

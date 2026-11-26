@@ -43,10 +43,9 @@ const articles = findMdxFiles(postsDirectory).map(file => {
 const routeArticles = articles.filter(article => article.category === 'Rotalar')
 
 test('route guide keeps all route articles explicitly grouped', () => {
-  assert.equal(routeArticles.length, 62)
   assert.equal(routeGuide.likyaSlugs.length, 12)
-  assert.equal(new Set(routeGuide.allRouteSlugs).size, 62)
-  assert.equal(Object.keys(routeGuide.articleGroups).length, 62)
+  assert.equal(new Set(routeGuide.allRouteSlugs).size, routeArticles.length)
+  assert.equal(Object.keys(routeGuide.articleGroups).length, routeArticles.length)
 
   routeArticles.forEach(article => {
     assert.ok(

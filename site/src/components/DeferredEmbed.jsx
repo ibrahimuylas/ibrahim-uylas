@@ -1,26 +1,50 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
+import { useLocation } from '@reach/router'
 import { Box, Button, Flex, Spinner, Text } from 'theme-ui'
 import { FaMapMarkedAlt, FaPlay } from 'react-icons/fa'
+import { getPageLanguage } from '../i18n/language'
 
 const labels = {
-  youtube: {
-    action: 'Videoyu yükle',
-    pending: 'Video yükleniyor',
-    title: 'YouTube videosu'
+  tr: {
+    youtube: {
+      action: 'Videoyu yükle',
+      pending: 'Video yükleniyor',
+      title: 'YouTube videosu'
+    },
+    route: {
+      action: 'Haritayı yükle',
+      pending: 'Harita yükleniyor',
+      title: 'Rota haritası'
+    }
   },
-  route: {
-    action: 'Haritayı yükle',
-    pending: 'Harita yükleniyor',
-    title: 'Rota haritası'
+  en: {
+    youtube: {
+      action: 'Load video',
+      pending: 'Loading video…',
+      title: 'YouTube video'
+    },
+    route: {
+      action: 'Load map',
+      pending: 'Loading map…',
+      title: 'Route map'
+    }
   }
 }
 
 const DeferredEmbed = ({ src, provider = 'route', title, width, height }) => {
+  const { pathname } = useLocation()
   const containerRef = useRef(null)
   const [active, setActive] = useState(false)
   const [loaded, setLoaded] = useState(false)
-  const copy = labels[provider] || labels.route
+  const language = getPageLanguage(pathname)
+  const copy = labels[language][provider] || labels[language].route
+  const displayedTitle =
+    !title ||
+    (language === 'en' &&
+      ['Gömülü içerik', 'YouTube videosu', 'Rota haritası'].includes(title))
+      ? copy.title
+      : title
   const Icon = provider === 'youtube' ? FaPlay : FaMapMarkedAlt
   const numericHeight = Number.parseInt(height, 10)
   const reservedHeight = Number.isFinite(numericHeight)
@@ -54,14 +78,14 @@ const DeferredEmbed = ({ src, provider = 'route', title, width, height }) => {
   const iframeProps = useMemo(
     () => ({
       src,
-      title: title || copy.title,
+      title: displayedTitle,
       width: width || '100%',
       height: reservedHeight,
       loading: 'lazy',
       referrerPolicy: 'strict-origin-when-cross-origin',
       allowFullScreen: true
     }),
-    [copy.title, reservedHeight, src, title, width]
+    [displayedTitle, reservedHeight, src, width]
   )
 
   return (
@@ -114,7 +138,7 @@ const DeferredEmbed = ({ src, provider = 'route', title, width, height }) => {
             <Icon />
           </Box>
           <Text sx={{ color: `text`, fontWeight: `bold` }}>
-            {title || copy.title}
+            {displayedTitle}
           </Text>
           {active ? (
             <Flex

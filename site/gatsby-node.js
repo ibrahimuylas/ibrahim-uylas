@@ -1,4 +1,6 @@
 const path = require('node:path')
+const likya = require('./src/content-guides/likya')
+const { createEnglishPages, writeTranslationInventory } = require('./src/i18n/gatsby')
 
 const GUIDE_ROUTES = {
   '/category/kampcilik/': 'kampcilik',
@@ -10,10 +12,17 @@ const GUIDE_ROUTES = {
 
 exports.onCreatePage = ({ page, actions }) => {
   const guideId = GUIDE_ROUTES[page.path]
+  const isTurkishAuthor = page.path.startsWith('/author/')
 
-  if (!guideId || page.context?.guideId === guideId) {
-    return
+  if (isTurkishAuthor && !page.context?.authorHeading) {
+    actions.deletePage(page)
+    actions.createPage({
+      ...page,
+      context: { ...page.context, authorHeading: 'Yazarın yazıları' }
+    })
   }
+
+  if (!guideId || page.context?.guideId === guideId) return
 
   actions.deletePage(page)
   actions.createPage({
@@ -25,3 +34,32 @@ exports.onCreatePage = ({ page, actions }) => {
     }
   })
 }
+
+exports.createPages = async ({ actions, graphql }) => {
+  const publicationReadiness = likya.buildPaftaPublicationReadiness({
+    routeSections: likya.routeSections,
+    stageResearchRecords: likya.stageResearchRecords,
+    paftaReconciliationReviews: likya.paftaReconciliationReviews,
+    officialPaftaObservations: likya.officialPaftaObservations,
+    paftaPublicationRecords: likya.paftaPublicationRecords
+  })
+  const paftaPages = likya.buildPublishedPaftaGuidePages({
+    routeSections: likya.routeSections,
+    paftaPublicationRecords: likya.paftaPublicationRecords,
+    publicationReadiness
+  })
+
+  paftaPages.forEach(page => {
+    actions.createPage({
+      path: page.path,
+      component: path.resolve('./src/templates/likya-pafta-guide.jsx'),
+      context: {
+        sectionId: page.sectionId
+      }
+    })
+  })
+
+  await createEnglishPages({ actions, graphql })
+}
+
+exports.onPostBuild = writeTranslationInventory

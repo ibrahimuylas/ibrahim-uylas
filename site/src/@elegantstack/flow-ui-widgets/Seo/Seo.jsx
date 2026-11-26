@@ -6,6 +6,14 @@ import { getSrc } from 'gatsby-plugin-image'
 import useSiteMetadata from '@helpers-blog/useSiteMetadata'
 import getImageVariant from '@components/utils/getImageVariant'
 import favicon from '../../../../content/assets/favicon.png'
+import { copy } from '../../../i18n/copy'
+import {
+  getLanguageLinks,
+  getLocalizedLink,
+  getPageLanguage,
+  normalizePath,
+  shouldNoIndex
+} from '../../../i18n/language'
 
 const Seo = ({
   title,
@@ -22,22 +30,23 @@ const Seo = ({
   children,
   thumbnail,
   imageData,
-  siteUrl,
-  locale
+  siteUrl
 }) => {
   const site = useSiteMetadata()
   const { pathname } = useLocation()
+  const language = getPageLanguage(pathname)
+  const labels = copy[language]
+  const languageLinks = getLanguageLinks(pathname)
   const resolvedSiteUrl = (siteUrl || site.siteUrl || '').replace(/\/$/, '')
-  const canonicalUrl = resolvedSiteUrl && `${resolvedSiteUrl}${pathname || '/'}`
-  const shouldNoIndex =
-    /^\/(?:author|tag)\//.test(pathname) || /\/page\/\d+\/?$/.test(pathname)
+  const canonicalUrl =
+    resolvedSiteUrl && `${resolvedSiteUrl}${normalizePath(pathname || '/')}`
   const published = datePublished || date
 
   const social = (author && author.social) || site.social || []
   const twitter =
     social.find(s => s.name && s.name.toLowerCase() === 'twitter') || {}
 
-  description = description || excerpt || site.description
+  description = description || excerpt || labels.description || site.description
 
   const imageSrc =
     getSrc(getImageVariant(thumbnail, 'hero')) || getSrc(imageData)
@@ -83,14 +92,14 @@ const Seo = ({
   }
 
   if (timeToRead) {
-    metaTags.push({ name: 'twitter:label1', value: 'Okuma Süresi' })
+    metaTags.push({ name: 'twitter:label1', content: labels.readingTime })
     metaTags.push({
       name: 'twitter:data1',
-      value: `${timeToRead} dk`
+      content: labels.minutes(timeToRead)
     })
   }
 
-  if (shouldNoIndex) {
+  if (shouldNoIndex(pathname)) {
     metaTags.push({ name: 'robots', content: 'noindex,follow' })
   }
 
@@ -109,6 +118,7 @@ const Seo = ({
     const articleJsonLd = helmetJsonLdProp({
       '@context': 'https://schema.org',
       '@type': 'Article',
+      inLanguage: language,
       headline: title,
       image: imageUrl,
       datePublished: published,
@@ -117,7 +127,7 @@ const Seo = ({
         '@type': 'Person',
         name: author.name,
         ...(author.slug && {
-          url: `${resolvedSiteUrl}${author.slug}`
+          url: `${resolvedSiteUrl}${getLocalizedLink(author.slug, language).href}`
         })
       },
       mainEntityOfPage: canonicalUrl
@@ -135,13 +145,13 @@ const Seo = ({
           '@type': 'ListItem',
           position: 1,
           name: site.name,
-          item: resolvedSiteUrl
+          item: `${resolvedSiteUrl}${labels.homePath}`
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: category.name,
-          item: `${resolvedSiteUrl}${category.slug}`
+          item: `${resolvedSiteUrl}${getLocalizedLink(category.slug, language).href}`
         },
         {
           '@type': 'ListItem',
@@ -184,7 +194,7 @@ const Seo = ({
   return (
     <Helmet
       htmlAttributes={{
-        lang: locale || 'tr'
+        lang: language
       }}
       title={title}
       titleTemplate={`%s | ${site.title}`}
@@ -193,6 +203,27 @@ const Seo = ({
     >
       <link rel='icon' type='image/png' href={favicon} />
       {canonicalUrl && <link rel='canonical' href={canonicalUrl} />}
+      {resolvedSiteUrl && languageLinks && (
+        <link
+          rel='alternate'
+          hrefLang='tr'
+          href={`${resolvedSiteUrl}${languageLinks.tr}`}
+        />
+      )}
+      {resolvedSiteUrl && languageLinks && (
+        <link
+          rel='alternate'
+          hrefLang='en'
+          href={`${resolvedSiteUrl}${languageLinks.en}`}
+        />
+      )}
+      {resolvedSiteUrl && languageLinks && (
+        <link
+          rel='alternate'
+          hrefLang='x-default'
+          href={`${resolvedSiteUrl}${languageLinks.tr}`}
+        />
+      )}
       {children}
     </Helmet>
   )

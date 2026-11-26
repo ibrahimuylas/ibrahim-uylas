@@ -3,6 +3,8 @@ import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import { Flex, Box, Button, Text } from 'theme-ui'
 import Divider from '@components/Divider'
+import { copy } from '../../../i18n/copy'
+import { getLocalizedLink } from '../../../i18n/language'
 
 const styles = {
   wrapper: {
@@ -63,43 +65,40 @@ const styles = {
   }
 }
 
-const BannerVertical = () => (
-  <Flex sx={styles.wrapper}>
-    <Box sx={styles.image}>
-      <StaticImage
-        src='../../../../content/assets/bu-adam-kim.jpeg'
-        alt='İbrahim Uylaş doğa yürüyüşünde'
-        layout='fullWidth'
-        placeholder='blurred'
-        quality={92}
-        style={{ width: `100%`, height: `100%` }}
-        imgStyle={{ objectFit: `cover`, objectPosition: `50% 38%` }}
-      />
-    </Box>
-    <Flex sx={styles.content}>
-      <Text variant='small'>
-        Ben İbrahim Uylaş. Kampçı, doğa yürüyüşçüsü, maceracı, motosiklet
-        tutkunu, yol yapmayı seven, yolda olan ve yolda yaşayan bir bilgisayar
-        mühendisiyim.
-      </Text>
-      <Divider space={3} />
+const BannerVertical = ({ language = 'tr' }) => {
+  const labels = copy[language].homepage
+  return (
+    <Flex sx={styles.wrapper}>
+      <Box sx={styles.image}>
+        <StaticImage
+          src='../../../../content/assets/bu-adam-kim.jpeg'
+          alt={labels.authorImage}
+          layout='fullWidth'
+          placeholder='blurred'
+          quality={92}
+          style={{ width: `100%`, height: `100%` }}
+          imgStyle={{ objectFit: `cover`, objectPosition: `50% 38%` }}
+        />
+      </Box>
+      <Flex sx={styles.content}>
+        <Text variant='small'>{labels.authorIntro}</Text>
+        <Divider space={3} />
 
-      <Text variant='small' sx={styles.list}>
-        Şu aralar Londra'da yaşamaktayım ve kampçılık, doğa yürüyüşleri,
-        ekipmanlar, rotalar ve yol anılarımı sizinle paylaşıyorum. Sende
-        tecrübelerini yorum olarak ekleyip katkıda bulunabilirsin.
-      </Text>
-      <Button
-        variant='primary'
-        as={Link}
-        to='/ibrahim-uylas-kimdir/'
-        sx={styles.button}
-        aria-label='ibrahim uylaş kimdir'
-      >
-        Bu adam kim?
-      </Button>
+        <Text variant='small' sx={styles.list}>
+          {labels.authorAbout}
+        </Text>
+        <Button
+          variant='primary'
+          as={Link}
+          to={getLocalizedLink('/ibrahim-uylas-kimdir/', language).href}
+          sx={styles.button}
+          aria-label={labels.authorLinkLabel}
+        >
+          {labels.authorLink}
+        </Button>
+      </Flex>
     </Flex>
-  </Flex>
-)
+  )
+}
 
 export default BannerVertical

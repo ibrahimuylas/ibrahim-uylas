@@ -1,0 +1,82 @@
+const labels = {
+  tr: {
+    securityRequired: 'Lütfen güvenlik doğrulamasını tamamla.',
+    saveError: 'Yorum kaydedilemedi. Lütfen tekrar dene.',
+    saved: 'Yorumun yayınlandı.',
+    savedWithEmail:
+      'Yorumun yayınlandı. Bildirimleri açmak için e-postandaki bağlantıyı doğrula.',
+    replying: name => `${name} yorumuna yanıt veriyorsun.`,
+    cancel: 'Vazgeç',
+    name: 'Adın',
+    namePrompt: 'Nasıl hitap edelim?',
+    email: 'E-posta adresin',
+    emailPrompt: 'sen@ornek.com',
+    comment: 'Yorumun',
+    commentPrompt: 'Bu yazı hakkında ne düşünüyorsun?',
+    notify:
+      'Yorumuma doğrudan yanıt gelirse e-posta gönder. Önce adresimi doğrulayacağım.',
+    security: 'Güvenlik doğrulaması',
+    securityUnavailable: 'Yorum güvenliği yapılandırılmamış.',
+    sending: 'Gönderiliyor…',
+    sendReply: 'Yanıtı yayınla',
+    sendComment: 'Yorumu yayınla',
+    privacy:
+      'E-posta adresin yayınlanmaz. Yorumlar otomatik yayınlanır ve gerektiğinde yönetici tarafından gizlenebilir.',
+    edited: 'Düzenlendi',
+    reply: 'Yanıtla',
+    loadError: 'Yorumlar şu anda yüklenemiyor.',
+    discussion: 'Konuşmalar',
+    count: count => `${count} yorum`,
+    first: 'Sohbeti sen başlatabilirsin.',
+    sort: 'Sıralama',
+    newest: 'En yeni',
+    oldest: 'En eski',
+    loading: 'Yorumlar yükleniyor…',
+    empty: 'Henüz yorum yok',
+    invite: 'Bu yazı hakkındaki ilk düşünceyi sen paylaşabilirsin.',
+    replies: name => `${name} yorumuna verilen yanıtlar`,
+    loadingMore: 'Yükleniyor…',
+    more: 'Daha fazla yorum göster'
+  },
+  en: {
+    securityRequired: 'Complete the security check.',
+    saveError: 'Your comment could not be saved. Please try again.',
+    saved: 'Your comment is live.',
+    savedWithEmail:
+      'Your comment is live. Confirm your email address to turn on reply notifications.',
+    replying: name => `Replying to ${name}.`,
+    cancel: 'Cancel',
+    name: 'Your name',
+    namePrompt: 'What should I call you?',
+    email: 'Your email address',
+    emailPrompt: 'you@example.com',
+    comment: 'Your comment',
+    commentPrompt: 'What did you think of this article?',
+    notify:
+      'Email me about direct replies to my comment. I’ll need to verify my address first.',
+    security: 'Security check',
+    securityUnavailable: 'Comment verification is unavailable.',
+    sending: 'Sending…',
+    sendReply: 'Post reply',
+    sendComment: 'Post comment',
+    privacy:
+      'Your email address stays private. Comments appear automatically and may be hidden by a moderator.',
+    edited: 'Edited',
+    reply: 'Reply',
+    loadError: 'Comments could not be loaded.',
+    discussion: 'Discussion',
+    count: count => `${count} ${count === 1 ? 'comment' : 'comments'}`,
+    first: 'You can start the conversation.',
+    sort: 'Sort comments',
+    newest: 'Newest',
+    oldest: 'Oldest',
+    loading: 'Loading comments…',
+    empty: 'No comments yet',
+    invite: 'Be the first to share your thoughts on this article.',
+    replies: name => `Replies to ${name}`,
+    loadingMore: 'Loading…',
+    more: 'Show more comments'
+  }
+}
+
+module.exports = labels

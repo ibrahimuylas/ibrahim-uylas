@@ -56,21 +56,23 @@ const HomepageCategories = ({ variant, categories, ...props }) => (
   <Section aside={variant === 'vertical'} title='Topics' {...props}>
     <Box sx={styles[variant]}>
       {categories &&
-        categories.map(({ id, name, slug, totalCount, icon, description }) => {
-          const buttonProps = {
-            key: id,
-            name,
-            description,
-            number: totalCount,
-            to: slug,
-            iconPath: icon,
-            iconColor: categoryColors[name],
-            Icon: !icon && FaArchive,
-            variant
-          }
+        categories.map(
+          ({ id, name, slug, totalCount, icon, color, description }) => {
+            const buttonProps = {
+              key: id,
+              name,
+              description,
+              number: totalCount,
+              to: slug,
+              iconPath: icon,
+              iconColor: color || categoryColors[name],
+              Icon: !icon && FaArchive,
+              variant
+            }
 
-          return totalCount !== 0 && <IconButton {...buttonProps} />
-        })}
+            return totalCount !== 0 && <IconButton {...buttonProps} />
+          }
+        )}
     </Box>
   </Section>
 )
