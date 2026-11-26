@@ -478,8 +478,13 @@ const languageFailures = translations.flatMap(({ tr, en }) =>
 
     const alternate = language === 'tr' ? en : tr
     const alternateLanguage = getPageLanguage(alternate)
-    const switchLink = [...html.matchAll(/<a\b[^>]*>/gi)].some(
-      ([tag]) =>
+    const languageSwitch =
+      extractElement(html, 'data-language-switch="true"') || ''
+    const switchLinks = [...languageSwitch.matchAll(/<a\b[^>]*>/gi)].map(
+      ([tag]) => tag
+    )
+    const switchLink = switchLinks.some(
+      tag =>
         tag.includes(`href="${alternate}"`) &&
         tag.toLowerCase().includes(`hreflang="${alternateLanguage}"`) &&
         tag.includes(` lang="${alternateLanguage}"`)
@@ -487,6 +492,17 @@ const languageFailures = translations.flatMap(({ tr, en }) =>
     if (!switchLink)
       failures.push(
         `${route}: missing static language switch link to ${alternate}`
+      )
+    if (
+      switchLinks.length !== 2 ||
+      !switchLinks.some(
+        tag =>
+          tag.includes('aria-current="page"') && tag.includes(`href="${route}"`)
+      ) ||
+      decodeHtmlText(languageSwitch) !== 'TREN'
+    )
+      failures.push(
+        `${route}: expected a compact TR/EN switch with the current language marked`
       )
 
     return failures

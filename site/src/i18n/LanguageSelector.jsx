@@ -1,30 +1,35 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Flex, Link } from 'theme-ui'
-import {
-  getLanguageLinks,
-  getLanguageSuggestion,
-  languageNames,
-  preferenceKey
-} from './language'
+import { Box, Flex } from 'theme-ui'
+import { getLanguageSuggestion, languageNames, preferenceKey } from './language'
 
 const linkStyle = {
   display: 'inline-flex',
   alignItems: 'center',
-  minHeight: 44,
-  px: 2,
-  borderRadius: 'default',
-  color: 'heading',
-  textDecoration: 'underline',
+  justifyContent: 'center',
+  width: 44,
+  height: 44,
+  borderRadius: 'full',
+  color: 'article',
+  fontFamily: 'body',
+  fontSize: 0,
+  fontWeight: 'semibold',
+  lineHeight: 1,
+  textDecoration: 'none',
   touchAction: 'manipulation',
   '@media (hover: hover) and (pointer: fine)': {
-    '&:hover': { bg: 'omegaLighter' }
+    '&:hover': { color: 'heading', bg: 'headerBg' }
   },
   '&:focus-visible': {
     outline: '3px solid',
     outlineColor: 'alpha',
-    outlineOffset: 2
+    outlineOffset: -2
   },
-  '&[aria-current="page"]': { fontWeight: 'bold', textDecoration: 'none' }
+  '&[aria-current="page"]': {
+    color: 'heading',
+    bg: 'languageSwitchSelected',
+    fontWeight: 'bold',
+    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12)'
+  }
 }
 
 function readPreference() {
@@ -43,8 +48,7 @@ function rememberPreference(language) {
   }
 }
 
-export default function LanguageSelector({ pathname, language }) {
-  const links = getLanguageLinks(pathname)
+export default function LanguageSelector({ pathname, language, links }) {
   const [suggestion, setSuggestion] = useState(null)
 
   useEffect(() => {
@@ -77,47 +81,41 @@ export default function LanguageSelector({ pathname, language }) {
   }
 
   return (
-    <Box
+    <Flex
       as='nav'
       aria-label={language === 'en' ? 'Language' : 'Dil'}
-      sx={{ fontSize: 0 }}
+      data-language-switch='true'
+      sx={{ p: '2px', bg: 'languageSwitchTrack', borderRadius: 'full' }}
     >
-      <Flex
-        sx={{
-          alignItems: 'center',
-          justifyContent: 'flex-end',
-          whiteSpace: 'nowrap'
-        }}
-      >
-        {Object.entries(links).map(([targetLanguage, href]) => (
-          <Link
+      {Object.entries(links).map(([targetLanguage, href]) => {
+        const code = targetLanguage.toUpperCase()
+        const isSuggested = targetLanguage === suggestion
+
+        return (
+          <Box
+            as='a'
             key={targetLanguage}
             href={href}
             hrefLang={targetLanguage}
             lang={targetLanguage}
+            aria-label={`${code} ${languageNames[targetLanguage]}`}
             aria-current={targetLanguage === language ? 'page' : undefined}
+            title={
+              isSuggested
+                ? targetLanguage === 'en'
+                  ? 'Read this page in English'
+                  : 'Bu sayfayı Türkçe oku'
+                : languageNames[targetLanguage]
+            }
             onClick={() => select(targetLanguage)}
-            sx={linkStyle}
+            sx={
+              isSuggested ? { ...linkStyle, color: 'alphaDarker' } : linkStyle
+            }
           >
-            {languageNames[targetLanguage]}
-          </Link>
-        ))}
-      </Flex>
-      {suggestion && links[suggestion] && (
-        <Box sx={{ textAlign: 'right' }}>
-          <Link
-            href={links[suggestion]}
-            hrefLang={suggestion}
-            lang={suggestion}
-            onClick={() => select(suggestion)}
-            sx={linkStyle}
-          >
-            {suggestion === 'en'
-              ? 'Read this page in English'
-              : 'Bu sayfayı Türkçe oku'}
-          </Link>
-        </Box>
-      )}
-    </Box>
+            {code}
+          </Box>
+        )
+      })}
+    </Flex>
   )
 }

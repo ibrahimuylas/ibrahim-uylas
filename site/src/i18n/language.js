@@ -1,6 +1,7 @@
 const translations = require('./translations.json')
 
 const languageNames = { tr: 'Türkçe', en: 'English' }
+const fallbackLinkTitle = { tr: 'Page in Turkish', en: 'İngilizce sayfa' }
 const preferenceKey = 'site-language-v1'
 
 const normalizePath = pathname =>
@@ -68,6 +69,7 @@ const shouldNoIndex = pathname =>
   /\/page\/\d+\/?$/.test(getSourcePath(pathname))
 
 module.exports = {
+  fallbackLinkTitle,
   getLanguageLinks,
   getLanguageSuggestion,
   getLocalizedLink,

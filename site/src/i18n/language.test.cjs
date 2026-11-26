@@ -5,6 +5,24 @@ const {
   getLanguageSuggestion,
   getLocalizedLink
 } = require('./language')
+const { localizeMenu } = require('./copy')
+
+test('keeps navigation labels clean and describes untranslated destinations', () => {
+  const [contact, camping] = localizeMenu(
+    [
+      { name: 'İletişim', slug: '/iletisim/' },
+      { name: 'Kampçılık', slug: '/category/kampcilik/' }
+    ],
+    'en'
+  )
+  assert.equal(contact.name, 'Contact')
+  assert.equal(contact.slug, '/iletisim/')
+  assert.equal(contact.fallbackLanguage, 'tr')
+  assert.equal(contact.title, 'Page in Turkish')
+  assert.equal(camping.name, 'Camping')
+  assert.equal(camping.fallbackLanguage, 'tr')
+  assert.equal(camping.title, 'Page in Turkish')
+})
 
 test('keeps both URLs authoritative and offers the matching article in the preferred language', () => {
   assert.deepEqual(getLanguageLinks('/outdoor-ne-demek/'), {

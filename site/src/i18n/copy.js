@@ -1,4 +1,4 @@
-const { getLocalizedLink, languageNames } = require('./language')
+const { getLocalizedLink, fallbackLinkTitle } = require('./language')
 
 const copy = {
   tr: {
@@ -110,7 +110,7 @@ const localizeMenu = (items, language) => {
       slug: href,
       name,
       fallbackLanguage,
-      fallbackLabel: languageNames[fallbackLanguage]
+      title: item.title || fallbackLinkTitle[fallbackLanguage]
     }
   })
 }

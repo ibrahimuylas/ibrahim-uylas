@@ -16,14 +16,14 @@ const styles = {
   }
 }
 
-export const HeaderMenu = ({ mobileMenu = {}, items, menuTitle = 'Main Menu', drawerLabel = 'Menu' }) => {
+export const HeaderMenu = ({ mobileMenu = {}, items, desktopItems, menuTitle = 'Main Menu', drawerLabel = 'Menu' }) => {
   const metadata = useSiteMetadata()
   const headerMenu = items || metadata.headerMenu
 
   const desktopMenuNav = (
     <Navigation
       variant='horizontal'
-      items={headerMenu}
+      items={desktopItems || headerMenu}
       wrapperStyle={styles.desktopMenuWrapper}
     />
   )

@@ -86,6 +86,8 @@ export default {
   contentBg: white,
   headerBg: white,
   footerBg: white,
+  languageSwitchTrack: gray[200],
+  languageSwitchSelected: white,
 
   logoLightOpacity: 1,
   logoDarkOpacity: 0,
@@ -121,6 +123,8 @@ export default {
       contentBg: gray[800],
       headerBg: gray[800],
       footerBg: gray[800],
+      languageSwitchTrack: gray[900],
+      languageSwitchSelected: gray[700],
 
       logoLightOpacity: 0,
       logoDarkOpacity: 1,

@@ -27,14 +27,14 @@ const NavigationDivider = ({ index }) =>
 
 const NavigationItem = ({
   name,
+  title,
   slug,
   url,
   Icon,
   color,
   variant,
   iconOnly,
-  fallbackLanguage,
-  fallbackLabel
+  fallbackLanguage
 }) => {
   let linkProps = {
     sx: iconOnly ? { variant: 'icon' } : responsiveVariantStyles(variant)
@@ -65,10 +65,9 @@ const NavigationItem = ({
       {Icon && <Icon color={color} />}
     </IconButton>
   ) : (
-    <NavLink {...linkProps}>
+    <NavLink {...linkProps} title={title}>
       {Icon && <Icon color={color} />}
       {name}
-      {fallbackLanguage && <> (<span lang={fallbackLanguage}>{fallbackLabel}</span>)</>}
     </NavLink>
   )
 }
