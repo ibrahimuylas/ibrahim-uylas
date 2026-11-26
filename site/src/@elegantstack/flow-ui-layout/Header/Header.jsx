@@ -1,10 +1,14 @@
 import React, { useContext } from 'react'
 import { Container, Box, Flex } from 'theme-ui'
 import pageContextProvider from '@helpers/pageContextProvider'
+import useSiteMetadata from '@helpers-blog/useSiteMetadata'
 import { HeaderLogo } from '@layout/Header/Header.Logo'
 import { HeaderMenu } from '@layout/Header/Header.Menu'
 import { HeaderColorMode } from '@layout/Header/Header.ColorMode'
 import BlogSearch from '../../../components/BlogSearch'
+import LanguageSelector from '../../../i18n/LanguageSelector'
+import { copy, localizeMenu } from '../../../i18n/copy'
+import { getPageLanguage } from '../../../i18n/language'
 
 const styles = {
   wrapper: {
@@ -54,24 +58,39 @@ const styles = {
 export const Header = ({ children }) => {
   const context = useContext(pageContextProvider)
   const { mobileMenu, darkMode } = context.pageContext
+  const { headerMenu } = useSiteMetadata()
+  const pathname = context.location?.pathname || '/'
+  const language = getPageLanguage(pathname)
+  const labels = copy[language]
 
   return (
     <Box sx={styles.wrapper}>
       <Container variant='compact' sx={styles.container}>
         <Flex variant='layout.header'>
           <Box sx={styles.logoContainer}>
-            <HeaderLogo />
+            <HeaderLogo to={labels.homePath} />
           </Box>
           <Box sx={styles.searchContainer}>
             <BlogSearch location={context.location} />
           </Box>
           <Box sx={styles.menuContainer}>
-            <HeaderMenu mobileMenu={mobileMenu} />
+            <HeaderMenu
+              items={localizeMenu(headerMenu, language)}
+              mobileMenu={localizeMenu([mobileMenu || {}], language)[0]}
+              menuTitle={labels.mainMenu}
+              drawerLabel={labels.menu}
+            />
           </Box>
           <Box sx={styles.colorModeContainer}>
-            {darkMode && <HeaderColorMode />}
+            {darkMode && (
+              <HeaderColorMode
+                lightLabel={labels.themeLight}
+                darkLabel={labels.themeDark}
+              />
+            )}
           </Box>
         </Flex>
+        <LanguageSelector pathname={pathname} language={language} />
       </Container>
       {children}
     </Box>

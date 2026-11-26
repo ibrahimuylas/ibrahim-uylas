@@ -18,8 +18,8 @@ const CONTEXT_EXCERPT_LENGTH = 280
 const collapseSearchTerm = value =>
   typeof value === `string` ? value.replace(/\s+/gu, ` `).trim() : ``
 
-const normalizeSearchTerm = value =>
-  collapseSearchTerm(value).toLocaleLowerCase(`tr`)
+const normalizeSearchTerm = (value, language = `tr`) =>
+  collapseSearchTerm(value).toLocaleLowerCase(language)
 
 const hasMinimumSearchLength = value =>
   Array.from(collapseSearchTerm(value)).length >= 2

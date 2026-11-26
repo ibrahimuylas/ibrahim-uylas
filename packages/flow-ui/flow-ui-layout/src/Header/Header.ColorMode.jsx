@@ -34,13 +34,13 @@ const styles = {
   }
 }
 
-export const HeaderColorMode = () => {
+export const HeaderColorMode = ({ lightLabel = `Açık temaya geç`, darkLabel = `Koyu temaya geç` }) => {
   const [colorMode, setColorMode] = useColorMode()
   const isDark = colorMode === `dark`
 
   const handleChange = () => setColorMode(isDark ? `light` : `dark`)
 
-  const label = isDark ? `Açık temaya geç` : `Koyu temaya geç`
+  const label = isDark ? lightLabel : darkLabel
 
   return (
     <IconButton aria-label={label} onClick={handleChange} sx={styles.trigger}>

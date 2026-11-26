@@ -5,6 +5,8 @@ import { Box } from 'theme-ui'
 import { FaSearch } from 'react-icons/fa'
 import BlogSearchDialog from './BlogSearchDialog'
 import policy from './blogSearchPolicy'
+import { copy } from '../i18n/copy'
+import { getPageLanguage } from '../i18n/language'
 
 const HEADER_MEDIA_QUERY = `(min-width: 768px)`
 const loadPagefindBrowser = policy.createPagefindLoader(attempt => {
@@ -67,6 +69,8 @@ const styles = {
 }
 
 const BlogSearch = ({ loadPagefind, location, variant }) => {
+  const language = getPageLanguage(location?.pathname)
+  const labels = copy[language]
   const invokingElementRef = useRef(null)
   const portalHostRef = useRef(null)
   const focusFrameRef = useRef(null)
@@ -199,7 +203,7 @@ const BlogSearch = ({ loadPagefind, location, variant }) => {
       <Box
         as='button'
         type='button'
-        aria-label='Arama'
+        aria-label={labels.search}
         aria-haspopup='dialog'
         aria-expanded={isOpen}
         onClick={handleOpen}
@@ -244,13 +248,14 @@ const BlogSearch = ({ loadPagefind, location, variant }) => {
       >
         <FaSearch aria-hidden='true' focusable='false' />
         <Box as='span' sx={styles.prompt}>
-          Yazılarda ara
+          {labels.searchPosts}
         </Box>
       </Box>
       {portalHost &&
         isOpen &&
         createPortal(
           <BlogSearchDialog
+            language={language}
             loadPagefind={loadPagefind}
             onAfterUnlock={handleAfterUnlock}
             onDismiss={handleDismiss}

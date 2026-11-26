@@ -9,12 +9,12 @@ const styles = {
   }
 }
 
-export const FooterMenu = () => {
+export const FooterMenu = ({ items }) => {
   const { footerMenu } = useSiteMetadata()
 
   return (
     <>
-      {footerMenu.map(menu => (
+      {(items || footerMenu).map(menu => (
         <Box key={`footer-menu-${menu.title}`}>
           <Navigation
             variant={[`horizontal`, `vertical`]}

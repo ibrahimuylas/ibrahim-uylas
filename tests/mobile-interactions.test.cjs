@@ -162,10 +162,10 @@ test('mobile action dock uses a compact translucent surface without Safari artif
   assert.match(dock, /borderColor: `rgba\(255, 255, 255, 0\.18\)`/)
   assert.match(dock, /borderRadius: `full`/)
   assert.match(dock, /bg: `rgba\(29, 37, 51, 0\.68\)`/)
-  assert.match(dock, /location\?\.pathname && location\.pathname !== `\/`/)
+  assert.match(dock, /location\?\.pathname && location\.pathname !== labels\.homePath/)
   assert.match(
     dock,
-    /showHomeAction[\s\S]*as=\{GatsbyLink\}[\s\S]*to='\/'[\s\S]*aria-label='Ana sayfaya dön'/
+    /showHomeAction[\s\S]*as=\{GatsbyLink\}[\s\S]*to=\{labels\.homePath\}[\s\S]*aria-label=/
   )
   assert.match(dock, /<FaHome aria-hidden='true' focusable='false' \/>/)
   assert.match(
@@ -282,7 +282,7 @@ test('article links use dark-mode contrast without changing global links', () =>
   assert.doesNotMatch(rootStyles, /\ba:\s*\{/)
   assert.match(
     postBody,
-    /const ArticleLink = props => <Link \{\.\.\.props\} sx=\{articleLinkStyles\} \/>/
+    /<Link[\s\S]*sx=\{articleLinkStyles\}/
   )
   assert.match(
     postBody,

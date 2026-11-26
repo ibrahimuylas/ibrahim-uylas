@@ -5,6 +5,7 @@ import { Box, Flex, Heading, Input, Label, Link, Text } from 'theme-ui'
 import { FaSearch, FaTimes } from 'react-icons/fa'
 import { trackEvent } from '../utils/analytics'
 import policy from './blogSearchPolicy'
+import { copy } from '../i18n/copy'
 
 const {
   appendRankedResults,
@@ -31,20 +32,20 @@ const createInitialSearchState = () => ({
   loadingMore: false
 })
 
-const statusMessage = searchState => {
+const statusMessage = (searchState, labels) => {
   switch (searchState.status) {
     case `minimum`:
-      return `Aramak için en az iki karakter yazın.`
+      return labels.searchMinimum
     case `loading`:
-      return `Sonuçlar aranıyor…`
+      return labels.searchLoading
     case `unavailable`:
-      return `Arama şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.`
+      return labels.searchUnavailable
     case `complete`:
       return searchState.total === 0
-        ? `Sonuç bulunamadı.`
-        : `${searchState.total} sonuç bulundu.`
+        ? labels.searchEmpty
+        : labels.searchCount(searchState.total)
     default:
-      return `Aramak istediğiniz kelimeyi yazın.`
+      return labels.searchPrompt
   }
 }
 
@@ -338,6 +339,7 @@ const styles = {
 }
 
 const BlogSearchDialog = ({
+  language = 'tr',
   loadPagefind,
   onAfterUnlock,
   onDismiss,
@@ -390,7 +392,7 @@ const BlogSearchDialog = ({
 
   useEffect(() => {
     const collapsedTerm = collapseSearchTerm(query)
-    const normalizedTerm = normalizeSearchTerm(query)
+    const normalizedTerm = normalizeSearchTerm(query, language)
     const generation = requestGuardRef.current.issue()
 
     activeQueryGenerationRef.current = generation
@@ -473,7 +475,7 @@ const BlogSearchDialog = ({
     return () => {
       requestGuardRef.current.invalidate()
     }
-  }, [getPagefindForSession, query])
+  }, [getPagefindForSession, language, query])
 
   useEffect(
     () => () => {
@@ -603,6 +605,7 @@ const BlogSearchDialog = ({
   }
 
   const showResults = searchState.results.length > 0
+  const labels = copy[language]
   const showMore =
     searchState.status === `complete` &&
     searchState.results.length < searchState.handles.length
@@ -628,12 +631,12 @@ const BlogSearchDialog = ({
             variant='h3'
             sx={styles.heading}
           >
-            Yazılarda ara
+            {labels.searchPosts}
           </Heading>
           <Box
             as='button'
             type='button'
-            aria-label='Aramayı kapat'
+            aria-label={labels.closeSearch}
             onClick={onDismiss}
             sx={styles.close}
           >
@@ -641,7 +644,7 @@ const BlogSearchDialog = ({
           </Box>
         </Flex>
         <Label htmlFor='blog-search-query' sx={styles.label}>
-          Arama
+          {labels.search}
         </Label>
         <Box sx={styles.inputWrapper}>
           <FaSearch aria-hidden='true' focusable='false' />
@@ -659,7 +662,7 @@ const BlogSearchDialog = ({
           />
         </Box>
         <Text as='p' role='status' aria-live='polite' sx={styles.status}>
-          {statusMessage(searchState)}
+          {statusMessage(searchState, labels)}
         </Text>
         <Box data-blog-search-results sx={styles.resultsViewport}>
           {showResults && (
@@ -733,7 +736,7 @@ const BlogSearchDialog = ({
               onClick={handleLoadMore}
               sx={styles.more}
             >
-              {searchState.loadingMore ? `Yükleniyor…` : `Daha fazla göster`}
+              {searchState.loadingMore ? labels.loadingMore : labels.more}
             </Box>
           )}
         </Box>
@@ -743,6 +746,7 @@ const BlogSearchDialog = ({
 }
 
 BlogSearchDialog.propTypes = {
+  language: PropTypes.oneOf(['tr', 'en']),
   loadPagefind: PropTypes.func.isRequired,
   onAfterUnlock: PropTypes.func.isRequired,
   onDismiss: PropTypes.func.isRequired,

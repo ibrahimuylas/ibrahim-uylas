@@ -5,6 +5,8 @@ import { Box, Flex } from 'theme-ui'
 import { FaHome } from 'react-icons/fa'
 import BlogSearch from './BlogSearch'
 import ScrollToTop from './ScrollToTop'
+import { copy } from '../i18n/copy'
+import { getPageLanguage } from '../i18n/language'
 
 const styles = {
   dock: {
@@ -84,8 +86,10 @@ const MobileActionDock = ({ location }) => {
   const [isVisible, setIsVisible] = useState(false)
   const visibleState = useRef(false)
   const animationFrame = useRef(null)
+  const language = getPageLanguage(location?.pathname)
+  const labels = copy[language]
   const showHomeAction = Boolean(
-    location?.pathname && location.pathname !== `/`
+    location?.pathname && location.pathname !== labels.homePath
   )
 
   useEffect(() => {
@@ -122,7 +126,7 @@ const MobileActionDock = ({ location }) => {
 
   return (
     <Flex
-      aria-label='Mobil hızlı işlemler'
+      aria-label={labels.mobileActions}
       sx={{
         ...styles.dock,
         opacity: isVisible ? 1 : 0,
@@ -133,8 +137,8 @@ const MobileActionDock = ({ location }) => {
       {showHomeAction && (
         <Box
           as={GatsbyLink}
-          to='/'
-          aria-label='Ana sayfaya dön'
+          to={labels.homePath}
+          aria-label={labels.backHome}
           data-mobile-home-action
           sx={{ ...styles.action, ...styles.homeAction }}
         >
@@ -146,7 +150,7 @@ const MobileActionDock = ({ location }) => {
         <BlogSearch location={location} variant='mobileDock' />
       </Box>
       <Box sx={styles.action}>
-        <ScrollToTop variant='mobileDock' />
+        <ScrollToTop variant='mobileDock' label={labels.scrollTop} />
       </Box>
     </Flex>
   )

@@ -1,8 +1,14 @@
 import React, { createContext, useContext } from 'react'
 import { MDXProvider } from '@mdx-js/react'
+import { useLocation } from '@reach/router'
 import { Link } from 'theme-ui'
 import components from '@components/Mdx'
 import DeferredEmbed from '../../../components/DeferredEmbed'
+import {
+  getLocalizedLink,
+  getPageLanguage,
+  languageNames
+} from '../../../i18n/language'
 
 const MdxContentContext = createContext(null)
 
@@ -18,7 +24,32 @@ const articleLinkStyles = {
   }
 }
 
-const ArticleLink = props => <Link {...props} sx={articleLinkStyles} />
+const ArticleLink = ({ href, children, ...props }) => {
+  const { pathname } = useLocation()
+  const { href: target, fallbackLanguage } = getLocalizedLink(
+    href,
+    getPageLanguage(pathname)
+  )
+
+  return (
+    <Link
+      {...props}
+      href={target}
+      hrefLang={fallbackLanguage}
+      sx={articleLinkStyles}
+    >
+      {children}
+      {fallbackLanguage && (
+        <>
+          {' '}
+          (
+          <span lang={fallbackLanguage}>{languageNames[fallbackLanguage]}</span>
+          )
+        </>
+      )}
+    </Link>
+  )
+}
 
 export const MdxContentProvider = MdxContentContext.Provider
 

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "page:home",
+    "tr": "/",
+    "en": "/en/",
+    "template": "english-home.jsx"
+  },
+  {
+    "id": "article:kampçılık/outdoor-ne-demek/index.mdx",
+    "tr": "/outdoor-ne-demek/",
+    "en": "/en/what-does-outdoor-mean/",
+    "translation": "what-does-outdoor-mean.mdx",
+    "sourceRevision": "a30c8e4d71ce01da17b86a30dc76af48495020dee9e7a0959fc53709bf96bc0b"
+  }
+]

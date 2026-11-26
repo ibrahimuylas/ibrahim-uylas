@@ -54,7 +54,7 @@ const styles = {
   }
 }
 
-const ScrollToTop = ({ variant }) => {
+const ScrollToTop = ({ variant, label = 'Sayfanın başına dön' }) => {
   const [isVisible, setIsVisible] = useState(false)
   const visibleState = useRef(false)
   const animationFrame = useRef(null)
@@ -109,7 +109,7 @@ const ScrollToTop = ({ variant }) => {
   return (
     <IconButton
       type='button'
-      aria-label='Sayfanın başına dön'
+      aria-label={label}
       onClick={handleClick}
       sx={
         isDockButton
@@ -161,6 +161,7 @@ const ScrollToTop = ({ variant }) => {
 }
 
 ScrollToTop.propTypes = {
+  label: PropTypes.string,
   variant: PropTypes.oneOf([`default`, `mobileDock`])
 }
 

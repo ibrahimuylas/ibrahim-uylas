@@ -1,5 +1,8 @@
 const fs = require('node:fs')
 const path = require('node:path')
+const { categoryName, copy } = require('../src/i18n/copy')
+const { getPageLanguage, shouldNoIndex } = require('../src/i18n/language')
+const translations = require('../src/i18n/translations.json')
 const {
   countMatches,
   decodeHtmlText,
@@ -255,11 +258,26 @@ if (!fs.existsSync(equipmentGuidePath)) {
 const pagefindFailures = []
 const articlePages = findPageDataFiles(pageDataDirectory).flatMap(file => {
   const pageData = JSON.parse(fs.readFileSync(file, 'utf8'))
-  const post = pageData.result?.data?.post
+  const { post, source, translation } = pageData.result?.data || {}
+  if (post) return [{ route: pageData.path, post }]
+  if (!source || !translation?.frontmatter) return []
 
-  return post ? [{ route: pageData.path, post }] : []
+  return [
+    {
+      route: pageData.path,
+      post: {
+        ...source,
+        ...translation.frontmatter,
+        timeToRead: translation.timeToRead,
+        category: source.category && {
+          name: categoryName(source.category, 'en')
+        }
+      }
+    }
+  ]
 })
 const eligibleArticleFiles = new Set()
+const eligibleCounts = { tr: 0, en: 0 }
 
 articlePages.forEach(({ route, post }) => {
   const articlePath = routeToHtmlPath(publicDirectory, route)
@@ -280,6 +298,9 @@ articlePages.forEach(({ route, post }) => {
   }
 
   eligibleArticleFiles.add(articlePath)
+  const language = getPageLanguage(route)
+  const labels = copy[language]
+  eligibleCounts[language] += 1
 
   if (bodyCount !== 1) {
     pagefindFailures.push(
@@ -302,22 +323,22 @@ articlePages.forEach(({ route, post }) => {
       `${route}: category metadata does not match page data`
     )
   }
-  if (!/<html\b[^>]*\blang="tr"/i.test(html)) {
+  if (!new RegExp(`<html\\b[^>]*\\blang="${language}"`, 'i').test(html)) {
     pagefindFailures.push(
-      `${route}: generated document language is not Turkish`
+      `${route}: generated document language is not ${language}`
     )
   }
   if (!html.includes('data-pagefind-ignore="index"')) {
     pagefindFailures.push(`${route}: running-head metadata is not ignored`)
   }
-  if (!html.includes('data-pagefind-ignore="all"')) {
+  if (language === 'tr' && !html.includes('data-pagefind-ignore="all"')) {
     pagefindFailures.push(`${route}: article contents are not fully ignored`)
   }
 
   const deferredEmbedCount = countMatches(html, /\bdata-deferred-embed=/g)
   const fullyIgnoredCount = countMatches(html, /\bdata-pagefind-ignore="all"/g)
 
-  if (fullyIgnoredCount < deferredEmbedCount + 1) {
+  if (fullyIgnoredCount < deferredEmbedCount + (language === 'tr' ? 1 : 0)) {
     pagefindFailures.push(`${route}: a deferred embed is not fully ignored`)
   }
 
@@ -329,11 +350,11 @@ articlePages.forEach(({ route, post }) => {
     const scopedText = decodeHtmlText(scope || '')
     const searchableText = decodeHtmlText(searchableScope || '')
     const runningHeadLabels = [
-      `Yazan ${post.author?.name || ''}`.trim(),
-      `Kategori ${post.category?.name || ''}`.trim(),
-      post.date ? `Yayımlandı: ${post.date}` : null,
-      post.modified ? `Güncellendi: ${post.modified}` : null,
-      post.timeToRead ? `${post.timeToRead} dk` : null
+      post.author && `${labels.author} ${post.author.name}`,
+      post.category && `${labels.category} ${post.category.name}`,
+      post.date && `${labels.published}: ${post.date}`,
+      post.modified && `${labels.updated}: ${post.modified}`,
+      post.timeToRead && labels.minutes(post.timeToRead)
     ].filter(Boolean)
     const conditionalChromeLabels = [
       'İçindekiler',
@@ -393,7 +414,8 @@ if (!pagefindArtifactsExist) {
 } else {
   const pagefindEntry = JSON.parse(fs.readFileSync(pagefindEntryPath, 'utf8'))
   pagefindFailures.push(
-    ...validatePagefindEntry(pagefindEntry, eligibleArticleFiles.size)
+    ...validatePagefindEntry(pagefindEntry, eligibleCounts.tr),
+    ...validatePagefindEntry(pagefindEntry, eligibleCounts.en, 'en')
   )
 }
 
@@ -403,6 +425,80 @@ if (pagefindFailures.length) {
   process.exitCode = 1
 } else {
   console.log(
-    `Generated Pagefind article contract is valid (${eligibleArticleFiles.size} eligible, ${articlePages.length - eligibleArticleFiles.size} private).`
+    `Generated Pagefind article contract is valid (${eligibleCounts.tr} Turkish, ${eligibleCounts.en} English, ${articlePages.length - eligibleArticleFiles.size} private).`
+  )
+}
+
+const sitemapIndex = fs.readFileSync(
+  path.join(publicDirectory, 'sitemap-index.xml'),
+  'utf8'
+)
+const sitemapUrls = new Set(
+  [...sitemapIndex.matchAll(/<loc>([^<]+)<\/loc>/g)].flatMap(([, url]) => {
+    const sitemap = fs.readFileSync(
+      path.join(publicDirectory, path.basename(new URL(url).pathname)),
+      'utf8'
+    )
+    return [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1])
+  })
+)
+const siteUrl = 'https://www.ibrahimuylas.com'
+const languageFailures = translations.flatMap(({ tr, en }) =>
+  [tr, en].flatMap(route => {
+    const language = getPageLanguage(route)
+    const file = routeToHtmlPath(publicDirectory, route)
+    if (!fs.existsSync(file)) return [`${route}: missing generated HTML`]
+
+    const html = fs.readFileSync(file, 'utf8')
+    const canonical = `${siteUrl}${route}`
+    const head = html.split('</head>', 1)[0]
+    const headLinks = [...head.matchAll(/<link\b[^>]*>/gi)].map(([tag]) => tag)
+    const hasLink = (rel, href, lang) =>
+      headLinks.some(
+        tag =>
+          tag.includes(`rel="${rel}"`) &&
+          tag.includes(`href="${href}"`) &&
+          (!lang || tag.toLowerCase().includes(`hreflang="${lang}"`))
+      )
+    const failures = []
+    if (!head.match(/<html\b[^>]*>/i)?.[0].includes(`lang="${language}"`))
+      failures.push(`${route}: incorrect HTML language`)
+    if (!hasLink('canonical', canonical))
+      failures.push(`${route}: missing self-referencing canonical`)
+    for (const [lang, alternate] of Object.entries({
+      tr,
+      en,
+      'x-default': tr
+    })) {
+      if (!hasLink('alternate', `${siteUrl}${alternate}`, lang))
+        failures.push(`${route}: missing ${lang} alternate to ${alternate}`)
+    }
+    if (sitemapUrls.has(canonical) === shouldNoIndex(route))
+      failures.push(`${route}: incorrect sitemap inclusion`)
+
+    const alternate = language === 'tr' ? en : tr
+    const alternateLanguage = getPageLanguage(alternate)
+    const switchLink = [...html.matchAll(/<a\b[^>]*>/gi)].some(
+      ([tag]) =>
+        tag.includes(`href="${alternate}"`) &&
+        tag.toLowerCase().includes(`hreflang="${alternateLanguage}"`) &&
+        tag.includes(` lang="${alternateLanguage}"`)
+    )
+    if (!switchLink)
+      failures.push(
+        `${route}: missing static language switch link to ${alternate}`
+      )
+
+    return failures
+  })
+)
+
+if (languageFailures.length) {
+  console.error('Generated language pairs are invalid:')
+  languageFailures.forEach(failure => console.error(`- ${failure}`))
+  process.exitCode = 1
+} else {
+  console.log(
+    `Generated language pairs are valid (${translations.length} pairs).`
   )
 }

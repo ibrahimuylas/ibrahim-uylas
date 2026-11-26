@@ -32,7 +32,9 @@ const NavigationItem = ({
   Icon,
   color,
   variant,
-  iconOnly
+  iconOnly,
+  fallbackLanguage,
+  fallbackLabel
 }) => {
   let linkProps = {
     sx: iconOnly ? { variant: 'icon' } : responsiveVariantStyles(variant)
@@ -52,8 +54,9 @@ const NavigationItem = ({
   if (slug) {
     linkProps = {
       ...linkProps,
-      as: Link,
-      to: slug
+      ...(fallbackLanguage
+        ? { as: 'a', href: slug, hrefLang: fallbackLanguage }
+        : { as: Link, to: slug })
     }
   }
 
@@ -65,6 +68,7 @@ const NavigationItem = ({
     <NavLink {...linkProps}>
       {Icon && <Icon color={color} />}
       {name}
+      {fallbackLanguage && <> (<span lang={fallbackLanguage}>{fallbackLabel}</span>)</>}
     </NavLink>
   )
 }

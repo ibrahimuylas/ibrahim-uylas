@@ -1,5 +1,6 @@
 const path = require('node:path')
 const likya = require('./src/content-guides/likya')
+const { createEnglishPages, writeTranslationInventory } = require('./src/i18n/gatsby')
 
 const GUIDE_ROUTES = {
   '/category/kampcilik/': 'kampcilik',
@@ -27,7 +28,7 @@ exports.onCreatePage = ({ page, actions }) => {
   })
 }
 
-exports.createPages = ({ actions }) => {
+exports.createPages = async ({ actions, graphql }) => {
   const publicationReadiness = likya.buildPaftaPublicationReadiness({
     routeSections: likya.routeSections,
     stageResearchRecords: likya.stageResearchRecords,
@@ -50,4 +51,8 @@ exports.createPages = ({ actions }) => {
       }
     })
   })
+
+  await createEnglishPages({ actions, graphql })
 }
+
+exports.onPostBuild = writeTranslationInventory

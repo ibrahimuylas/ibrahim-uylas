@@ -14,13 +14,13 @@ const styles = {
   }
 }
 
-export const FooterLogo = () => (
+export const FooterLogo = ({ homePath = '/', copyright = 'All Rights Reserved.' }) => (
   <>
     <Box sx={styles.logo}>
-      <HeaderLogo grayscale />
+      <HeaderLogo grayscale to={homePath} />
     </Box>
     <Box sx={styles.copyright}>
-      © {new Date().getFullYear()}, All Rights Reserved.
+      © {new Date().getFullYear()}, {copyright}
     </Box>
   </>
 )

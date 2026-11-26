@@ -1,4 +1,5 @@
 const googleAnalyticsMeasurementId = process.env.GATSBY_GA_MEASUREMENT_ID
+const { getSourcePath, shouldNoIndex } = require('./src/i18n/language')
 const siteUrl = 'https://www.ibrahimuylas.com'
 const isProductionDeploy = process.env.CONTEXT === 'production'
 const nativeCommentsEnabled =
@@ -22,12 +23,26 @@ module.exports = {
       options: {
         excludes: [
           '/admin/**',
+          '/404/',
           '/author/**',
           '/tag/**',
           '/**/page/**',
           '/authors/',
           '/contact/'
-        ]
+        ],
+        filterPages: ({ path }, pattern, { minimatch, withoutTrailingSlash }) =>
+          shouldNoIndex(path) ||
+          minimatch(
+            withoutTrailingSlash(getSourcePath(path)),
+            withoutTrailingSlash(pattern)
+          )
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'englishContent',
+        path: `${__dirname}/content/translations/en`
       }
     },
     {
