@@ -114,7 +114,11 @@ const Post = ({
 
   return (
     <Layout {...props}>
-      <Seo {...post} siteUrl={siteUrl} />
+      <Seo
+        {...post}
+        imageData={post.seoImage?.gatsbyImageData}
+        siteUrl={siteUrl}
+      />
       <Divider space={3} />
       <Stack>
         <Main>
