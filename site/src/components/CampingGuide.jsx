@@ -1953,7 +1953,7 @@ const GuideCategory = ({
           }}
         >
           {language === 'en'
-            ? `${filteredArticles.length} articles shown`
+            ? `${filteredArticles.length} ${filteredArticles.length === 1 ? 'article' : 'articles'} shown`
             : `${filteredArticles.length} içerik gösteriliyor`}
         </Text>
 

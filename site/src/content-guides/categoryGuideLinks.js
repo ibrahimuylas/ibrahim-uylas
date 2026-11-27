@@ -27,7 +27,7 @@ const categoryGuideLinks = {
     description:
       'Günübirlik yürüyüşlerden çok günlük parkurlara kadar rotanı araştırıp planlamaya başla.',
     en: {
-      title: 'Routes guide',
+      title: 'Route guide',
       description:
         'Find and plan your next route, from day walks to multi-day trails.'
     }

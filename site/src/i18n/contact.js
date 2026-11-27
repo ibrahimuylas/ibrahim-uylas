@@ -44,7 +44,7 @@ const contact = {
       'Get in touch with İbrahim Uylaş about routes, camping, gear, working together or just to say hello.',
     heading: 'Something on your mind? Let’s talk.',
     intro:
-      'Have a question about a route, a gear idea, a proposal to work together or just want to say hello? Drop me a note using the form below.',
+      'Got a question about a route, an idea about gear or a project we could work on together? Use the form below to drop me a line, even if it’s just to say hello.',
     honeypot: 'Leave this field empty',
     name: 'Your name',
     namePlaceholder: 'What should I call you?',
@@ -61,7 +61,7 @@ const contact = {
       'Tell me what’s on your mind and I’ll get back to you as soon as I can.',
     messageRequired: 'Enter your message.',
     messageTooShort: 'Your message must be at least 10 characters long.',
-    privacy: 'I’ll use your details to reply to your message.',
+    privacy: 'I’ll only use your details to reply to your message.',
     submitting: 'Sending',
     submit: 'Send message',
     success: 'Thanks for your message. I’ll get back to you as soon as I can.',

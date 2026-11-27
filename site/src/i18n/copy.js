@@ -68,7 +68,7 @@ const copy = {
   en: {
     home: 'Home',
     homePath: '/en/',
-    backHome: 'Back to homepage',
+    backHome: 'Back to the homepage',
     mainMenu: 'Main menu',
     scrollTop: 'Back to top',
     mobileActions: 'Mobile quick actions',
@@ -94,7 +94,7 @@ const copy = {
     updated: 'Updated',
     readingTime: 'Reading time',
     relatedPosts: 'Related posts',
-    openGuide: 'Open the guide',
+    openGuide: 'Go to the main guide',
     homepage: {
       title: 'Camping, Hiking and Route Guides',
       heading: 'Camping, hiking and route guides',
@@ -102,14 +102,14 @@ const copy = {
         'Camping, hiking, trekking and gear guides, with route notes and personal stories from the road.',
       introduction:
         'Practical guides drawn from my own experience of planning camping trips, choosing routes and using gear, along with stories from the road.',
-      start: 'Start planning your next trip',
+      start: 'Heading outdoors? Start here.',
       featured: 'Featured and recent articles',
       authorImage: 'İbrahim Uylaş out hiking',
       authorIntro:
         'I’m İbrahim Uylaş, a computer engineer who loves camping, hiking, adventure, motorcycling and life on the road.',
       authorAbout:
-        'I’m currently based in London. I share camping and hiking advice, gear tips, routes and stories from my travels. You can add your own experiences in the comments.',
-      authorLink: 'About me',
+        'I’m currently based in London. I share camping and hiking advice, gear tips, routes and stories from my travels. I’d love to hear your own stories in the comments.',
+      authorLink: 'Who’s this guy?',
       authorLinkLabel: 'About İbrahim Uylaş'
     },
     pagination: {
