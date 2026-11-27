@@ -437,9 +437,10 @@ if (!Array.isArray(inventory)) {
         `${source} must lock canonical ${canonical} with explicit slug "${expectedExplicitSlug}"; found "${explicitSlug}"`
       )
     }
-    if (modifiedDate !== '2026-07-22') {
+    const expectedReviewDate = entry.reviewedAt || '2026-07-22'
+    if (modifiedDate !== expectedReviewDate) {
       fail(
-        `${source} must declare its substantive review date as 2026-07-22; found "${modifiedDate}"`
+        `${source} must declare its substantive review date as ${expectedReviewDate}; found "${modifiedDate}"`
       )
     }
     if (!publishedDate) {
@@ -495,7 +496,9 @@ if (!Array.isArray(inventory)) {
       const html = fs.readFileSync(generatedHtmlPath, 'utf8')
       const descriptions = htmlMetaContents(html, 'name', 'description')
       const renderedText = decodeHtmlText(html)
-      const expectedDescription = decodeHtmlText(builtPost?.excerpt || '')
+      const expectedDescription = decodeHtmlText(
+        builtPost?.description || builtPost?.excerpt || ''
+      )
 
       if (
         descriptions.length !== 1 ||
@@ -1343,14 +1346,14 @@ if (!Array.isArray(inventory)) {
   const uniqueEditorialDestinations = new Set(
     editorialInternalLinks.map(link => link.href)
   )
-  if (editorialInternalLinks.length !== 177) {
+  if (editorialInternalLinks.length !== 178) {
     fail(
-      `Expected 177 editorial internal-link occurrences, found ${editorialInternalLinks.length}`
+      `Expected 178 editorial internal-link occurrences, found ${editorialInternalLinks.length}`
     )
   }
-  if (uniqueEditorialDestinations.size !== 30) {
+  if (uniqueEditorialDestinations.size !== 31) {
     fail(
-      `Expected 30 unique editorial internal destinations, found ${uniqueEditorialDestinations.size}`
+      `Expected 31 unique editorial internal destinations, found ${uniqueEditorialDestinations.size}`
     )
   }
   if (externalMaps.length !== 13) {

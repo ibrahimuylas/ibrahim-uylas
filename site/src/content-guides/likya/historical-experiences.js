@@ -1,7 +1,7 @@
 const historicalExperiences = [
   {
     id: 'ibrahim-2014-full-plan',
-    articleSlug: 'likya-yolu-rotasi',
+    articleSlug: 'likya-yolu-2014-planim',
     experienceDate: '2014-09',
     routeCoverage: 'Ölüdeniz–Hisarçandır hazırlık planı',
     distanceKm: 465,
@@ -14,7 +14,7 @@ const historicalExperiences = [
   },
   {
     id: 'ibrahim-2014-route-variants',
-    articleSlug: 'likya-yolu-rotasi',
+    articleSlug: 'likya-yolu-2014-planim',
     experienceDate: '2014-09',
     routeCoverage: 'Alternatif kolları içeren tarihsel plan',
     distanceKm: 509,
@@ -32,7 +32,7 @@ const historicalExperiences = [
     routeCoverage: 'Ölüdeniz–Hisarçandır tek hat tarihsel GPS bağlamı',
     distanceKm: 430,
     contentKind: 'historical-gps',
-    sourceIds: ['ibrahim-2014-likya-route-plan', 'wikiloc-10846819'],
+    sourceIds: ['wikiloc-10846819'],
     relatedSectionIds: [],
     reconciliationStatus: 'needs-reconciliation',
     historicalDisclaimer:

@@ -505,17 +505,17 @@ const sources = [
   },
   {
     id: 'ibrahim-2014-likya-route-plan',
-    title: 'Likya Yolu Rotası: Harita, Etaplar ve 509 km Planı',
+    title: '2014 Likya Yolu Planım ve Yolda Tuttuğum Notlar',
     publisher: 'İbrahim Uylaş',
-    url: '/likya-yolu-rotasi/',
+    url: '/likya-yolu-2014-planim/',
     sourceType: 'first-hand',
     authorityScope: ['historical-plan', 'historical-route-variant'],
     publishedAt: '2021-03-23',
-    updatedAt: '2026-07-22',
+    updatedAt: '2026-11-27',
     accessedAt: '2026-08-27',
     reuse: 'file-reuse-permitted',
     notes:
-      '2014 hazırlık planı, 465 km kâğıt üzeri rota ve 430 km tarihsel GPS bağlamı için birincil site içi kaynaktır; güncel koşul kaynağı değildir.'
+      '2014 hazırlık planı, 465 km kâğıt üzeri güzergâh ve alternatif kollarla 509 km bağlamı için birincil site içi kaynaktır; güncel koşul kaynağı değildir.'
   },
   {
     id: 'ibrahim-2014-likya-walk',
