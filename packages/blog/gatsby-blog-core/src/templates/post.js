@@ -29,6 +29,11 @@ export const pageQuery = graphql`
     post: article(id: { eq: $id }) {
       ...ArticleInformation
       ...ArticleThumbnailHero
+      ... on MdxArticleProxy {
+        seoImage {
+          gatsbyImageData(width: 1600, quality: $imageQuality)
+        }
+      }
     }
     translation: mdx(id: { eq: $translationId }) @include(if: $hasTranslation) {
       frontmatter {

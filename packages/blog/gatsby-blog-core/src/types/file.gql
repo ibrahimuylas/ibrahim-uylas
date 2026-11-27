@@ -36,6 +36,11 @@ type MdxArticleProxy implements Node & Article
     @fileByRelativePath
     @reduce(to: "id")
     @link(by: "parent.id")
+  seoImage: ImageSharp
+    @proxyField(from: "parent.frontmatter.seoImage")
+    @fileByRelativePath
+    @reduce(to: "id")
+    @link(by: "parent.id")
   tableOfContents(maxDepth: Int = 6): JSON
     @link(from: "parent", on: "Mdx")
     @proxyResolver(on: "Mdx")
