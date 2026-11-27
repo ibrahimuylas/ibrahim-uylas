@@ -551,6 +551,13 @@ const languageFailures = translations.flatMap(({ tr, en }) =>
     const failures = []
     if (!head.match(/<html\b[^>]*>/i)?.[0].includes(`lang="${language}"`))
       failures.push(`${route}: incorrect HTML language`)
+    const headScripts = [...head.matchAll(/<script>([\s\S]*?)<\/script>/g)]
+    if (
+      !headScripts.some(([, script]) => script.includes('theme-ui-color-mode'))
+    )
+      failures.push(`${route}: missing synchronous color mode initialization`)
+    if (/<button\b[^>]*\saria-label="(?:Menu|Menü)"/.test(html))
+      failures.push(`${route}: mobile header still renders a menu trigger`)
     if (!hasLink('canonical', canonical))
       failures.push(`${route}: missing self-referencing canonical`)
     for (const [lang, alternate] of Object.entries({
@@ -625,6 +632,22 @@ const languageFailures = translations.flatMap(({ tr, en }) =>
     return failures
   })
 )
+
+for (const { route, post } of articlePages) {
+  if (post.private !== true) continue
+
+  if (sitemapUrls.has(`${siteUrl}${route}`))
+    languageFailures.push(`${route}: private article is listed in the sitemap`)
+
+  const file = routeToHtmlPath(publicDirectory, route)
+  if (
+    fs.existsSync(file) &&
+    !/<meta\b[^>]*\bname="robots"[^>]*\bcontent="noindex,follow"/.test(
+      fs.readFileSync(file, 'utf8')
+    )
+  )
+    languageFailures.push(`${route}: private article is missing noindex`)
+}
 
 const inventory = JSON.parse(
   fs.readFileSync(
