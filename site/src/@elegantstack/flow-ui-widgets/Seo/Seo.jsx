@@ -30,7 +30,8 @@ const Seo = ({
   children,
   thumbnail,
   imageData,
-  siteUrl
+  siteUrl,
+  private: isPrivate
 }) => {
   const site = useSiteMetadata()
   const { pathname } = useLocation()
@@ -99,7 +100,7 @@ const Seo = ({
     })
   }
 
-  if (shouldNoIndex(pathname)) {
+  if (isPrivate === true || shouldNoIndex(pathname)) {
     metaTags.push({ name: 'robots', content: 'noindex,follow' })
   }
 

@@ -1,5 +1,9 @@
 const googleAnalyticsMeasurementId = process.env.GATSBY_GA_MEASUREMENT_ID
-const { getSourcePath, shouldNoIndex } = require('./src/i18n/language')
+const {
+  getSourcePath,
+  normalizePath,
+  shouldNoIndex
+} = require('./src/i18n/language')
 const { homeCategoryPostsPerGroup } = require('./src/i18n/collections')
 const siteUrl = 'https://www.ibrahimuylas.com'
 const isProductionDeploy = process.env.CONTEXT === 'production'
@@ -22,6 +26,21 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
+        query: `{
+          site { siteMetadata { siteUrl } }
+          allSitePage { nodes { path } }
+          privateArticles: allArticle(filter: { private: { eq: true } }) {
+            nodes { slug }
+          }
+        }`,
+        resolvePages: ({ allSitePage, privateArticles }) => {
+          const privatePaths = new Set(
+            privateArticles.nodes.map(({ slug }) => normalizePath(slug))
+          )
+          return allSitePage.nodes.filter(
+            ({ path }) => !privatePaths.has(getSourcePath(path))
+          )
+        },
         excludes: [
           '/admin/**',
           '/404/',

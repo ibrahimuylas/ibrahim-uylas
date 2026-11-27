@@ -633,6 +633,22 @@ const languageFailures = translations.flatMap(({ tr, en }) =>
   })
 )
 
+for (const { route, post } of articlePages) {
+  if (post.private !== true) continue
+
+  if (sitemapUrls.has(`${siteUrl}${route}`))
+    languageFailures.push(`${route}: private article is listed in the sitemap`)
+
+  const file = routeToHtmlPath(publicDirectory, route)
+  if (
+    fs.existsSync(file) &&
+    !/<meta\b[^>]*\bname="robots"[^>]*\bcontent="noindex,follow"/.test(
+      fs.readFileSync(file, 'utf8')
+    )
+  )
+    languageFailures.push(`${route}: private article is missing noindex`)
+}
+
 const inventory = JSON.parse(
   fs.readFileSync(
     path.resolve(publicDirectory, '../.cache/translation-inventory.json'),
