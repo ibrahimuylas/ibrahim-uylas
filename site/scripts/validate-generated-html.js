@@ -551,6 +551,11 @@ const languageFailures = translations.flatMap(({ tr, en }) =>
     const failures = []
     if (!head.match(/<html\b[^>]*>/i)?.[0].includes(`lang="${language}"`))
       failures.push(`${route}: incorrect HTML language`)
+    const headScripts = [...head.matchAll(/<script>([\s\S]*?)<\/script>/g)]
+    if (
+      !headScripts.some(([, script]) => script.includes('theme-ui-color-mode'))
+    )
+      failures.push(`${route}: missing synchronous color mode initialization`)
     if (!hasLink('canonical', canonical))
       failures.push(`${route}: missing self-referencing canonical`)
     for (const [lang, alternate] of Object.entries({

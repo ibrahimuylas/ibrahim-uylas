@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { IconButton, useColorMode } from 'theme-ui'
 import { FaMoon, FaSun } from 'react-icons/fa'
 
@@ -36,9 +36,12 @@ const styles = {
 
 export const HeaderColorMode = ({ lightLabel = `Açık temaya geç`, darkLabel = `Koyu temaya geç` }) => {
   const [colorMode, setColorMode] = useColorMode()
-  const isDark = colorMode === `dark`
+  const [hasHydrated, setHasHydrated] = useState(false)
+  const isDark = hasHydrated && colorMode === `dark`
 
-  const handleChange = () => setColorMode(isDark ? `light` : `dark`)
+  useEffect(() => setHasHydrated(true), [])
+
+  const handleChange = () => setColorMode(colorMode === `dark` ? `light` : `dark`)
 
   const label = isDark ? lightLabel : darkLabel
 
