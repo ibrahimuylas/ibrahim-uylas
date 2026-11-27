@@ -5,6 +5,10 @@ import { getLanguageSuggestion, languageNames, preferenceKey } from './language'
 
 const switchDuration = 160
 const reduceMotion = '(prefers-reduced-motion: reduce)'
+const segmentWidth = 40
+const labelPadding = '16px'
+const checkSize = 14
+const checkInset = '0.5rem'
 const switchStyle = {
   position: 'relative',
   flexShrink: 0,
@@ -17,7 +21,9 @@ const linkStyle = {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  width: 40,
+  flexShrink: 0,
+  boxSizing: 'border-box',
+  width: segmentWidth,
   height: 48,
   fontFamily: 'body',
   fontSize: 0,
@@ -55,7 +61,7 @@ const linkStyle = {
 // Flag artwork from Wikimedia Commons (Flag of Turkey and Flag of England).
 const flagStyles = {
   tr: {
-    pl: '16px',
+    pl: labelPadding,
     color: '#fff',
     bg: '#e30a17',
     borderRadius: '999px 0 0 999px',
@@ -66,11 +72,12 @@ const flagStyles = {
     textShadow: '0 1px 3px rgba(55, 0, 15, .9)'
   },
   en: {
+    pr: labelPadding,
     color: '#122743',
     bg: '#f8f6f4',
     borderRadius: '0 999px 999px 0',
     backgroundImage:
-      'radial-gradient(ellipse 52% 32% at center, #fff 35%, rgba(255, 255, 255, .65) 65%, transparent 100%), linear-gradient(140deg, rgba(255, 255, 255, .25), transparent 45%, rgba(99, 51, 54, .14)), url("/flags/en.png")',
+      'radial-gradient(ellipse 52% 32% at 30% center, #fff 35%, rgba(255, 255, 255, .65) 65%, transparent 100%), linear-gradient(140deg, rgba(255, 255, 255, .25), transparent 45%, rgba(99, 51, 54, .14)), url("/flags/en.png")',
     backgroundPosition: 'center',
     textShadow: '0 0 2px #fff'
   }
@@ -82,29 +89,43 @@ const indicatorStyle = {
   inset: '0 auto 0 0',
   width: '50%',
   pointerEvents: 'none',
-  borderRadius: '999px 8px 8px 999px',
-  boxShadow: 'inset 0 0 0 1px #fff, inset 0 0 0 3px #122743',
+  borderRadius: flagStyles.tr.borderRadius,
   transform: 'translateX(0)',
   transition: `transform ${switchDuration}ms ease-out, border-radius ${switchDuration}ms ease-out`,
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    inset: 0,
+    borderRadius: 'inherit',
+    boxShadow: '0 0 0 1px #fff, 0 0 0 2px #122743',
+    clipPath: 'inset(-2px 0 -2px -2px)'
+  },
   '&[data-side="en"]': {
-    borderRadius: '8px 999px 999px 8px',
-    transform: 'translateX(100%)'
+    borderRadius: flagStyles.en.borderRadius,
+    transform: 'translateX(100%)',
+    '&::before': { clipPath: 'inset(-2px -2px -2px 0)' }
   },
   [`@media ${reduceMotion}`]: { transition: 'none' }
 }
 
 const checkStyle = {
   position: 'absolute',
-  right: 2,
+  right: checkInset,
   bottom: 1,
   display: 'grid',
   placeItems: 'center',
-  width: 14,
-  height: 14,
+  width: checkSize,
+  height: checkSize,
   border: '1px solid #fff',
   borderRadius: 'full',
   bg: '#122743',
   color: '#fff',
+  transform: 'translateX(0)',
+  transition: `transform ${switchDuration}ms ease-out`,
+  '[data-side="en"] > &': {
+    transform: `translateX(calc(${checkInset} + ${checkInset} - ${segmentWidth - checkSize}px))`
+  },
+  [`@media ${reduceMotion}`]: { transition: 'none' },
   svg: {
     width: 8,
     height: 8
