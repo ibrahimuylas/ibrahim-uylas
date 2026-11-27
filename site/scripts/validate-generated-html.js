@@ -556,6 +556,8 @@ const languageFailures = translations.flatMap(({ tr, en }) =>
       !headScripts.some(([, script]) => script.includes('theme-ui-color-mode'))
     )
       failures.push(`${route}: missing synchronous color mode initialization`)
+    if (/<button\b[^>]*\saria-label="(?:Menu|Menü)"/.test(html))
+      failures.push(`${route}: mobile header still renders a menu trigger`)
     if (!hasLink('canonical', canonical))
       failures.push(`${route}: missing self-referencing canonical`)
     for (const [lang, alternate] of Object.entries({

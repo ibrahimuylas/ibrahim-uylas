@@ -261,7 +261,10 @@ test('desktop header centers search and reuses the mobile theme icon button', ()
   assert.match(header, /position: \[`static`, null, `absolute`\]/)
   assert.match(header, /left: \[`auto`, null, `50%`\]/)
   assert.match(header, /transform: \[`none`, null, `translate\(-50%, -50%\)`\]/)
-  assert.match(header, /ml: \[0, null, `auto`\]/)
+  assert.match(
+    header,
+    /menuContainer: \{[^}]*display: \[`none`, null, `block`\][^}]*ml: `auto`/
+  )
   assert.match(header, /mr: \[`auto`, null, 0\]/)
   assert.match(header, /width: \[`120px !important`, `150px !important`\]/)
   assert.doesNotMatch(colorMode, /rc-switch|<Switch/)
